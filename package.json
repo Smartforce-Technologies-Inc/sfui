@@ -12,8 +12,9 @@
     "node": ">=10"
   },
   "scripts": {
-    "build": "microbundle-crl --no-compress --format modern,cjs",
-    "start": "microbundle-crl watch --no-compress --format modern,cjs",
+    "clean": "rimraf dist",
+    "build": "run-s clean && microbundle-crl --no-compress --format modern,cjs",
+    "start": "run-s clean && microbundle-crl watch --no-compress --format modern,cjs",
     "prepare": "run-s build",
     "test": "run-s test:unit test:lint test:build",
     "test:build": "run-s build",
@@ -21,12 +22,22 @@
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
     "predeploy": "cd example && npm install && npm run build",
-    "deploy": "gh-pages -d example/build"
+    "deploy": "gh-pages -d example/build",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "peerDependencies": {
-    "react": "^16.0.0"
+    "react": "^16.0.0",
+    "@material-ui/core": "^4.11.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.11.4",
+    "@material-ui/core": "^4.11.0",
+    "@storybook/addon-actions": "^6.0.17",
+    "@storybook/addon-essentials": "^6.0.17",
+    "@storybook/addon-links": "^6.0.17",
+    "@storybook/preset-scss": "^1.0.2",
+    "@storybook/react": "^6.0.17",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
@@ -36,9 +47,10 @@
     "@types/react-dom": "^16.9.7",
     "@typescript-eslint/eslint-plugin": "^2.26.0",
     "@typescript-eslint/parser": "^2.26.0",
-    "microbundle-crl": "^0.13.10",
     "babel-eslint": "^10.0.3",
+    "babel-loader": "^8.1.0",
     "cross-env": "^7.0.2",
+    "css-loader": "^4.2.2",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.7.0",
     "eslint-config-standard": "^14.1.0",
@@ -50,14 +62,20 @@
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-standard": "^4.0.1",
     "gh-pages": "^2.2.0",
+    "microbundle-crl": "^0.13.10",
+    "node-sass": "^4.14.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-is": "^16.13.1",
     "react-scripts": "^3.4.1",
+    "sass-loader": "^10.0.1",
+    "style-loader": "^1.2.1",
     "typescript": "^3.7.5"
   },
   "files": [
     "dist"
-  ]
+  ],
+  "dependencies": {}
 }
