@@ -1,10 +1,10 @@
 {
   "name": "sfui",
   "version": "1.0.0",
-  "description": "Smartforce UI Library",
-  "author": "pdcastano",
+  "description": "SmartForce UI Library",
+  "author": "SmartForce Technologies, Inc.",
   "license": "MIT",
-  "repository": "pdcastano/sfui",
+  "repository": "AdventosCorp/sfui",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.tsx",
