@@ -2,45 +2,40 @@ import React from 'react';
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, Meta } from '@storybook/react/types-6-0';
 
-import { SFButton, SFButtonProps } from './SFButton';
+import { SFSwitch, SFSwitchProps } from './SFSwitch';
 
 export default {
-  title: 'Components/SFButton',
-  component: SFButton
+  title: 'Components/SFSwitch',
+  component: SFSwitch
 } as Meta;
 
-const Template: Story<SFButtonProps> = (args) => (
-  <SFButton {...args}>Click Me</SFButton>
-);
+const Template: Story<SFSwitchProps> = (args) => <SFSwitch {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-  text: 'Primary Button',
-  onClick: (): void => {
-    console.log('Clicked');
+  text: 'Primary Switch',
+  onChangeonChange: (): void => {
+    console.log('Switched');
   }
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  text: 'Secondary Button',
   color: 'Secondary',
-  onClick: (): void => {
-    console.log('Clicked');
+  onChange: (): void => {
+    console.log('Switched');
   }
 };
 
 export const Default = Template.bind({});
 Default.args = {
-  text: 'Default Button',
   color: 'default',
-  onClick: (): void => {
-    console.log('Clicked');
+  onChange: (): void => {
+    console.log('Switched');
   }
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  text: 'Disabled Button',
   disabled: true
 };
