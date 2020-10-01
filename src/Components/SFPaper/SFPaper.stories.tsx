@@ -9,12 +9,10 @@ export default {
   component: SFPaper
 } as Meta;
 
-const Template: Story<SFPaperProps> = (args) => <SFPaper {...args} />;
-
-export const Primary = Template.bind({});
-
-export const Secondary = Template.bind({});
+const Template: Story<SFPaperProps> = (args) => (
+  <SFPaper {...args}>
+    <p>All Stories are wrapped into a SFPaper component</p>
+  </SFPaper>
+);
 
 export const Default = Template.bind({});
-
-export const Disabled = Template.bind({});

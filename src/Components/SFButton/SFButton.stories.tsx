@@ -10,37 +10,98 @@ export default {
 } as Meta;
 
 const Template: Story<SFButtonProps> = (args) => (
-  <SFButton {...args}>Click Me</SFButton>
+  <div>
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr' }}>
+      <div>
+        <SFButton sfColor='blue' size='small' {...args}>
+          Click Me
+        </SFButton>
+      </div>
+      <div>
+        <SFButton sfColor='red' size='small' {...args}>
+          Click Me
+        </SFButton>
+      </div>
+      <div>
+        <SFButton sfColor='grey' size='small' {...args}>
+          Click Me
+        </SFButton>
+      </div>
+      <div>
+        <SFButton sfColor='blue' size='small' disabled {...args}>
+          Click Me
+        </SFButton>
+      </div>
+    </div>
+    <br />
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr' }}>
+      <div>
+        <SFButton sfColor='blue' {...args}>
+          Click Me
+        </SFButton>
+      </div>
+      <div>
+        <SFButton sfColor='red' {...args}>
+          Click Me
+        </SFButton>
+      </div>
+      <div>
+        <SFButton sfColor='grey' {...args}>
+          Click Me
+        </SFButton>
+      </div>
+      <div>
+        <SFButton sfColor='blue' disabled {...args}>
+          Click Me
+        </SFButton>
+      </div>
+    </div>
+    <br />
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr' }}>
+      <div>
+        <SFButton sfColor='blue' size='large' {...args}>
+          Click Me
+        </SFButton>
+      </div>
+      <div>
+        <SFButton sfColor='red' size='large' {...args}>
+          Click Me
+        </SFButton>
+      </div>
+      <div>
+        <SFButton sfColor='grey' size='large' {...args}>
+          Click Me
+        </SFButton>
+      </div>
+      <div>
+        <SFButton sfColor='blue' size='large' disabled {...args}>
+          Click Me
+        </SFButton>
+      </div>
+    </div>
+  </div>
 );
 
-export const Primary = Template.bind({});
-Primary.args = {
-  text: 'Primary Button',
+export const Contained = Template.bind({});
+Contained.args = {
+  variant: 'contained',
   onClick: (): void => {
     console.log('Clicked');
   }
 };
 
-export const Secondary = Template.bind({});
-Secondary.args = {
-  text: 'Secondary Button',
-  color: 'Secondary',
+export const Outlined = Template.bind({});
+Outlined.args = {
+  variant: 'outlined',
   onClick: (): void => {
     console.log('Clicked');
   }
 };
 
-export const Default = Template.bind({});
-Default.args = {
-  text: 'Default Button',
-  color: 'default',
+export const Text = Template.bind({});
+Text.args = {
+  variant: 'text',
   onClick: (): void => {
     console.log('Clicked');
   }
-};
-
-export const Disabled = Template.bind({});
-Disabled.args = {
-  text: 'Disabled Button',
-  disabled: true
 };

@@ -1,0 +1,65 @@
+import React, { useState } from 'react';
+
+import { SFThemeProvider, createSFTheme, SFTheme } from '../SFTheme/SFTheme';
+
+import { SFPaper } from '../Components/SFPaper/SFPaper';
+import { SFSwitch } from '../Components/SFSwitch/SFSwitch';
+import { useSFMediaQuery, SFStylesProvider } from '../SFUtils/SFUtils';
+
+export interface StorybookWrapperProps {
+  children: React.ReactNode;
+}
+
+const StorybookWrapper = ({
+  children
+}: StorybookWrapperProps): React.ReactElement<StorybookWrapperProps> => {
+  const [nightMode, setNightMode] = useState(false);
+  const prefersDarkMode: boolean = useSFMediaQuery(
+    '(prefers-color-scheme: dark)'
+  );
+
+  const theme: SFTheme = createSFTheme(
+    prefersDarkMode || nightMode ? 'night' : 'day'
+  );
+
+  const toggleSwitch = (): void => {
+    setNightMode((value) => !value);
+  };
+
+  return (
+    <SFThemeProvider theme={theme}>
+      <SFStylesProvider injectFirst>
+        <div
+          id='sf-topbar'
+          style={{
+            backgroundColor: theme.palette.background.paper
+          }}
+        >
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              padding: '5px 1rem',
+              borderBottom: `2px solid ${theme.palette.primary.main}`
+            }}
+          >
+            <h2
+              style={{
+                display: 'inline-block',
+                margin: '7px 0',
+                color: theme.palette.text.primary
+              }}
+            >
+              SFUI Library
+            </h2>
+            <SFSwitch checked={nightMode} onChange={toggleSwitch} />
+          </div>
+          <br />
+        </div>
+        <SFPaper style={{ padding: '1rem' }}>{children}</SFPaper>
+      </SFStylesProvider>
+    </SFThemeProvider>
+  );
+};
+
+export default StorybookWrapper;

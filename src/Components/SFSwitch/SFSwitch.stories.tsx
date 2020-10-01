@@ -11,25 +11,18 @@ export default {
 
 const Template: Story<SFSwitchProps> = (args) => <SFSwitch {...args} />;
 
-export const Primary = Template.bind({});
-Primary.args = {
-  text: 'Primary Switch',
-  onChangeonChange: (): void => {
-    console.log('Switched');
-  }
-};
-
-export const Secondary = Template.bind({});
-Secondary.args = {
-  color: 'Secondary',
+export const Default = Template.bind({});
+Default.args = {
+  label: 'Off / On',
   onChange: (): void => {
     console.log('Switched');
   }
 };
 
-export const Default = Template.bind({});
-Default.args = {
-  color: 'default',
+export const Small = Template.bind({});
+Small.args = {
+  label: 'Off / On',
+  size: 'small',
   onChange: (): void => {
     console.log('Switched');
   }
@@ -37,5 +30,19 @@ Default.args = {
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  disabled: true
+  label: 'Off / On',
+  disabled: true,
+  onChange: (): void => {
+    console.log('Switched');
+  }
+};
+
+export const DisabledChecked = Template.bind({});
+DisabledChecked.args = {
+  label: 'Off / On',
+  disabled: true,
+  checked: true,
+  onChange: (): void => {
+    console.log('Switched');
+  }
 };

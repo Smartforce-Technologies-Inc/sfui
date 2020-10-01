@@ -13,9 +13,24 @@ code {
     monospace;
 }
 
+hr {
+  margin: 0;
+  border: none;
+  border-bottom: 1px solid #666666;
+}
+
 .appWrapper {
   padding: 40px;
 }
-.appWrapper .appRow {
+
+.appWrapper .appGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 40px;
+}
+
+.appWrapper .appGrid .appRow {
+  display: flex;
+  justify-content: space-between;
   padding: 10px 0;
 }

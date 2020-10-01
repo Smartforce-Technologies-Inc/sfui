@@ -1,22 +1,43 @@
 import { createMuiTheme } from '@material-ui/core/styles';
+import { CommonThemeOptions } from './CommonThemeOptions';
+import {
+  SFGrey,
+  SFBlue,
+  SFBlueMainLight,
+  SFRedMainLight,
+  SFBackgroundLight,
+  SFSurfaceLight
+} from '../SFColors/SFColors';
 
-import purple from '@material-ui/core/colors/purple';
-import red from '@material-ui/core/colors/red';
-
-const DayTheme = createMuiTheme({
-  palette: {
-    type: 'light',
-    primary: {
-      light: purple[200],
-      main: purple[500],
-      dark: purple[700]
-    },
-    secondary: {
-      light: red[200],
-      main: red[500],
-      dark: red[700]
-    }
+CommonThemeOptions.palette = {
+  type: 'light',
+  primary: {
+    main: SFBlueMainLight
+  },
+  secondary: {
+    main: SFRedMainLight
+  },
+  background: {
+    default: SFBackgroundLight,
+    paper: SFSurfaceLight
+  },
+  grey: SFGrey,
+  // TODO - action prop is work in progress
+  action: {
+    active: SFGrey[200],
+    activatedOpacity: 0.3,
+    hover: SFBlue[100],
+    hoverOpacity: 0.04,
+    selected: 'rgba(0, 0, 0, 0.08)',
+    selectedOpacity: 0.08,
+    disabled: 'rgba(0, 0, 0, 0.26)',
+    disabledOpacity: 0.38,
+    disabledBackground: 'rgba(0, 0, 0, 0.12)',
+    focus: 'rgba(0, 0, 0, 0.12)',
+    focusOpacity: 0.12
   }
-});
+};
+
+const DayTheme = createMuiTheme(CommonThemeOptions);
 
 export { DayTheme };
