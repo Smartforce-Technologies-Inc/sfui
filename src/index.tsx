@@ -1,5 +1,3 @@
-import { format } from 'path';
-
 export * from './Components/SFButton/SFButton';
 export * from './Components/SFCheckbox/SFCheckbox';
 export * from './Components/SFIcon/SFIcon';
