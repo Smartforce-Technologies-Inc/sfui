@@ -4,7 +4,8 @@ import Paper, { PaperProps } from '@material-ui/core/Paper';
 
 const StyledPaper = withStyles({
   root: {
-    borderRadius: 0
+    borderRadius: 0,
+    height: '100%'
   }
 })(Paper);
 

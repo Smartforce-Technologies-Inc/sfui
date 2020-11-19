@@ -19,15 +19,6 @@ Default.args = {
   }
 };
 
-export const Small = Template.bind({});
-Small.args = {
-  label: 'Off / On',
-  size: 'small',
-  onChange: (): void => {
-    console.log('Switched');
-  }
-};
-
 export const Disabled = Template.bind({});
 Disabled.args = {
   label: 'Off / On',
