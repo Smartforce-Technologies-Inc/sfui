@@ -7,7 +7,8 @@ import {
   SFPaper,
   SFSwitch,
   useSFMediaQuery,
-  SFStylesProvider
+  SFStylesProvider,
+  SFIconButton
 } from 'sfui';
 
 import { MUIButtonsView, SFButtonsView } from './ButtonsView/ButtonsView';
@@ -46,7 +47,10 @@ const App = () => {
               </span>
             </h1>
             <br />
-
+           // Borrar
+           <br />
+            <SFIconButton disabled sfColor='#FF727F' sfSize={12} sfIcon='Bell' />
+            <br />
             <h3>Buttons</h3>
             <hr />
             <div className='appGrid'>
