@@ -9,6 +9,36 @@ export default {
   component: SFIconButton
 } as Meta;
 
-const Template: Story<SFIconButtonProps> = (args) => <SFIconButton {...args} />;
+const Template: Story<SFIconButtonProps> = (args) => (
+  <div
+    style={{
+      display: 'grid',
+      gridTemplateColumns: '1fr 1fr 1fr 1fr',
+      justifyItems: 'center',
+      alignItems: 'center'
+    }}
+  >
+    <div>
+      <SFIconButton {...args} sfSize='tiny' />
+    </div>
+    <div>
+      <SFIconButton {...args} sfSize='small' />
+    </div>
+    <div>
+      <SFIconButton {...args} sfSize='medium' />
+    </div>
+    <div>
+      <SFIconButton {...args} sfSize='large' />
+    </div>
+  </div>
+);
 
 export const Default = Template.bind({});
+Default.argTypes = {
+  onClick: { action: 'clicked' }
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  disabled: true
+};
