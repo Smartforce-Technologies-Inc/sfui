@@ -69,9 +69,7 @@ export const SFIconButton = ({
   const iconDefaultColor: string = isThemeLight ? SFGrey[600] : SFGrey[400];
   const disabledColor: string = isThemeLight ? SFGrey[200] : SFGrey[700];
   const colorPicked: string = sfColor ? sfColor : iconDefaultColor;
-  const iconButtonInnerProps: IconButtonInnerProps = getIconButtonInnerProps(
-    sfSize
-  );
+  const iconButtonInnerProps = getIconButtonInnerProps(sfSize);
 
   return (
     <StyledIconButton
