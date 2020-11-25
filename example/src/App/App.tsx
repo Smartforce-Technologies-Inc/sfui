@@ -46,11 +46,6 @@ const App = () => {
                 />
               </span>
             </h1>
-            <br />
-           // Borrar
-           <br />
-            <SFIconButton disabled sfColor='#FF727F' sfSize={12} sfIcon='Bell' />
-            <br />
             <h3>Buttons</h3>
             <hr />
             <div className='appGrid'>
