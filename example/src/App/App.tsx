@@ -7,8 +7,7 @@ import {
   SFPaper,
   SFSwitch,
   useSFMediaQuery,
-  SFStylesProvider,
-  SFIconButton
+  SFStylesProvider
 } from 'sfui';
 
 import { MUIButtonsView, SFButtonsView } from './ButtonsView/ButtonsView';
