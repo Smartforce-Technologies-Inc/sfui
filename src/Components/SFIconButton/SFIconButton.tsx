@@ -3,8 +3,7 @@ import { useTheme, Theme, withStyles } from '@material-ui/core/styles';
 import { SFGrey } from '../../SFColors/SFColors';
 import { SFIcon } from '../SFIcon/SFIcon';
 import IconButton, { IconButtonProps } from '@material-ui/core/IconButton';
-
-export type SFSize = 'tiny' | 'small' | 'medium' | 'large';
+type SFSize = 'tiny' | 'small' | 'medium' | 'large';
 interface IconButtonInnerProps {
   padding?: string;
   size?: string;
