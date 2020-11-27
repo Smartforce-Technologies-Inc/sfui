@@ -3,7 +3,7 @@ import { Theme, withStyles } from '@material-ui/core/styles';
 import Link, { LinkProps } from '@material-ui/core/Link';
 import { SFGrey } from '../../SFColors/SFColors';
 
-export type SFSize = 'small' | 'medium';
+type SFSize = 'small' | 'medium';
 const StyledLink = withStyles((theme: Theme) => ({
   root: {
     '&.MuiTypography-colorInherit': {
