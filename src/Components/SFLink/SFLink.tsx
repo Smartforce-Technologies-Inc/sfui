@@ -8,6 +8,9 @@ const StyledLink = withStyles((theme: Theme) => ({
   root: {
     '&.MuiTypography-colorInherit': {
       color: `${theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]}`
+    },
+    '&.MuiLink-root': {
+      cursor: 'pointer'
     }
   }
 }))(Link);
@@ -39,8 +42,7 @@ export const SFLink = ({
     <StyledLink
       {...props}
       style={{
-        fontSize: getLinkSize(sfSize),
-        cursor: 'pointer'
+        fontSize: getLinkSize(sfSize)
       }}
       color={sfColor}
     />
