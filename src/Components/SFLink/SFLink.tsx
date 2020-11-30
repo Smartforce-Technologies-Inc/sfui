@@ -39,7 +39,8 @@ export const SFLink = ({
     <StyledLink
       {...props}
       style={{
-        fontSize: getLinkSize(sfSize)
+        fontSize: getLinkSize(sfSize),
+        cursor: 'pointer'
       }}
       color={sfColor}
     />
