@@ -8,6 +8,9 @@ const StyledLink = withStyles((theme: Theme) => ({
   root: {
     '&.MuiTypography-colorInherit': {
       color: `${theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]}`
+    },
+    '&.MuiLink-root': {
+      cursor: 'pointer'
     }
   }
 }))(Link);
