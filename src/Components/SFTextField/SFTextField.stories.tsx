@@ -39,17 +39,24 @@ Disabled.args = {
   disabled: true
 };
 
+export const Empty = Default.bind({});
+Empty.args = {
+  label: 'Bagel',
+  defaultValue: ''
+};
+
 const AllTemplate: Story<SFTextFieldProps> = (args) => (
-  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
-    <div>
-      <SFTextField {...args} />
-    </div>
-    <div>
-      <SFTextField error helperText='Incorrect value' {...args} />
-    </div>
-    <div>
-      <SFTextField disabled {...args} />
-    </div>
+  <div
+    style={{
+      display: 'grid',
+      gridTemplateColumns: '1fr 1fr 1fr 1fr',
+      columnGap: '16px'
+    }}
+  >
+    <SFTextField {...args} />
+    <SFTextField error helperText='Incorrect value' {...args} />
+    <SFTextField disabled {...args} />
+    <SFTextField {...args} defaultValue='' />
   </div>
 );
 

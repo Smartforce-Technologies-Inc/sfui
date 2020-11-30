@@ -52,6 +52,8 @@ const StyledTextField = withStyles((theme: Theme) => ({
         }
       },
       '& .MuiFilledInput-input': {
+        fontWeight: 400,
+        fontSize: '16px',
         padding: '27px 12px 8px',
         '&.Mui-disabled': {
           color: theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
