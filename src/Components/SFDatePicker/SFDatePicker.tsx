@@ -16,17 +16,21 @@ import {
 } from '@material-ui/pickers';
 import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date';
 
-const useBackground = makeStyles((theme: Theme) =>
+const ButtonBackgrounds = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      backgroundColor: `${theme.palette.type !== 'light' ? SFGrey[800] : null}`
+      backgroundColor: `${
+        theme.palette.type !== 'light' ? SFGrey[800] : undefined
+      }`
     }
   })
 );
-const useStyles = makeStyles((theme: Theme) =>
+const PopOverStyle = makeStyles((theme: Theme) =>
   createStyles({
     paper: {
-      backgroundColor: `${theme.palette.type !== 'light' ? SFGrey[800] : null}`
+      backgroundColor: `${
+        theme.palette.type !== 'light' ? SFGrey[800] : undefined
+      }`
     }
   })
 );
@@ -121,12 +125,13 @@ export const SFDatePicker = ({
   const [selectedDate, handleDateChange] = React.useState<
     MaterialUiPickersDate
   >(null);
-  const classes = useStyles();
-  const backgrounds = useBackground();
+  const classes: Record<'paper', string> = PopOverStyle();
+  const backgrounds: Record<'root', string> = ButtonBackgrounds();
   return (
     <FormControl>
       <MuiPickersUtilsProvider utils={MomentUtils}>
         <StyledDatePicker
+          {...props}
           disableToolbar
           value={selectedDate}
           variant='inline'
@@ -134,7 +139,6 @@ export const SFDatePicker = ({
           inputVariant='filled'
           format='MM/DD/YYYY'
           PopoverProps={{ classes: classes }}
-          InputAdornmentProps={{ color: '#333333' }}
           InputProps={{ readOnly: true }}
           rightArrowButtonProps={{ classes: backgrounds }}
           leftArrowButtonProps={{ classes: backgrounds }}
@@ -142,7 +146,6 @@ export const SFDatePicker = ({
           onChange={(date) => {
             handleDateChange(date);
           }}
-          {...props}
         />
       </MuiPickersUtilsProvider>
     </FormControl>
