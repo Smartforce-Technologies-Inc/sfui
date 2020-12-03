@@ -1,14 +1,13 @@
 import * as React from 'react';
 import { withStyles, Theme } from '@material-ui/core/styles';
-import { FormControl, MenuItem } from '@material-ui/core';
-import { SFTextField, SFTextFieldProps } from '../SFTextField/SFTextField';
+import { FormControl, MenuItem, SelectProps } from '@material-ui/core';
+import { SFTextField } from '../SFTextField/SFTextField';
 import { SFIcon } from '../SFIcon/SFIcon';
 import { SFGrey } from '../../SFColors/SFColors';
 import { hexToRgba } from '../../helpers';
 
 const StyledSelect = withStyles(() => ({
   root: {
-    width: '100%',
     '& svg': {
       position: 'absolute',
       right: 18,
@@ -46,25 +45,32 @@ export interface SFOption {
   value: string;
 }
 
-export interface SFSelectProps extends SFTextFieldProps {
+export interface SFSelectProps extends SelectProps {
   options: SFOption[];
   value?: string;
+  helperText?: React.ReactNode;
 }
 
 export const SFSelect = ({
   options,
+  helperText,
+  label,
   ...props
 }: SFSelectProps): React.ReactElement<SFSelectProps> => {
   return (
-    <FormControl style={{ width: '100%' }}>
+    <FormControl fullWidth>
       <StyledSelect
         select
+        label={label}
+        helperText={helperText}
+        error={props.error}
+        disabled={props.disabled}
         SelectProps={{
           IconComponent: (props): React.ReactElement => (
             <SFIcon icon='Down-2' size='16' {...props} />
-          )
+          ),
+          ...props
         }}
-        {...props}
       >
         {options.map((option: SFOption, index: number) => (
           <StyledMenuItem key={`option-${index}`} value={option.value}>
