@@ -132,6 +132,7 @@ export const SFDatePicker = ({
       <MuiPickersUtilsProvider utils={MomentUtils}>
         <StyledDatePicker
           {...props}
+          fullWidth
           disableToolbar
           value={selectedDate}
           variant='inline'
