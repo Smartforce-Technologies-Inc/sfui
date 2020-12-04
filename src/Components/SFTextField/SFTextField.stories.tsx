@@ -56,7 +56,7 @@ const AllTemplate: Story<SFTextFieldProps> = (args) => (
     <SFTextField {...args} />
     <SFTextField error helperText='Incorrect value' {...args} />
     <SFTextField disabled {...args} />
-    <SFTextField {...args} defaultValue='' />
+    <SFTextField {...args} defaultValue='' helperText='Helper message' />
   </div>
 );
 
