@@ -1,6 +1,11 @@
 import { ThemeOptions } from '@material-ui/core/styles';
 
 const CommonThemeOptions: ThemeOptions = {
+  props: {
+    MuiButtonBase: {
+      disableRipple: true
+    }
+  },
   shape: {
     borderRadius: 2
   },
