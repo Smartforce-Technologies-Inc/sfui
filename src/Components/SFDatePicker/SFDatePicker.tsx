@@ -128,11 +128,10 @@ export const SFDatePicker = ({
   const classes: Record<'paper', string> = PopOverStyle();
   const backgrounds: Record<'root', string> = ButtonBackgrounds();
   return (
-    <FormControl>
+    <FormControl fullWidth>
       <MuiPickersUtilsProvider utils={MomentUtils}>
         <StyledDatePicker
           {...props}
-          fullWidth
           disableToolbar
           value={selectedDate}
           variant='inline'
