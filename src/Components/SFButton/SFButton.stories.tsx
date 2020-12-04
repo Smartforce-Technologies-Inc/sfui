@@ -41,42 +41,42 @@ const Template: Story<SFButtonProps> = (args) => (
       </SFButton>
     </div>
     <div style={{ justifySelf: 'center', alignSelf: 'center' }}>
-      <SFButton {...args} sfColor='blue' sfSize='medium'>
+      <SFButton {...args} sfColor='blue' size='medium'>
         Click Me
       </SFButton>
     </div>
     <div style={{ justifySelf: 'center', alignSelf: 'center' }}>
-      <SFButton {...args} sfColor='red' sfSize='medium'>
+      <SFButton {...args} sfColor='red' size='medium'>
         Click Me
       </SFButton>
     </div>
     <div style={{ justifySelf: 'center', alignSelf: 'center' }}>
-      <SFButton {...args} sfColor='grey' sfSize='medium'>
+      <SFButton {...args} sfColor='grey' size='medium'>
         Click Me
       </SFButton>
     </div>
     <div style={{ justifySelf: 'center', alignSelf: 'center' }}>
-      <SFButton {...args} sfColor='blue' disabled>
+      <SFButton {...args} sfColor='blue' size='medium' disabled>
         Click Me
       </SFButton>
     </div>
     <div style={{ justifySelf: 'center', alignSelf: 'center' }}>
-      <SFButton {...args} sfColor='blue' sfSize='large'>
+      <SFButton {...args} sfColor='blue' size='large'>
         Click Me
       </SFButton>
     </div>
     <div style={{ justifySelf: 'center', alignSelf: 'center' }}>
-      <SFButton {...args} sfColor='red' sfSize='large'>
+      <SFButton {...args} sfColor='red' size='large'>
         Click Me
       </SFButton>
     </div>
     <div style={{ justifySelf: 'center', alignSelf: 'center' }}>
-      <SFButton {...args} sfColor='grey' sfSize='large'>
+      <SFButton {...args} sfColor='grey' size='large'>
         Click Me
       </SFButton>
     </div>
     <div style={{ justifySelf: 'center', alignSelf: 'center' }}>
-      <SFButton {...args} sfColor='blue' sfSize='large' disabled>
+      <SFButton {...args} sfColor='blue' size='large' disabled>
         Click Me
       </SFButton>
     </div>

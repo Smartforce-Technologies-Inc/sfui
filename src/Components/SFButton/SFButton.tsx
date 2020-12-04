@@ -43,13 +43,13 @@ export const SFButton = ({
   color = 'primary',
   disableRipple = true,
   disableElevation = true,
-  sfSize = 'small',
+  size = 'small',
   fullWidth = false,
   sfColor,
   ...props
 }: SFButtonProps): React.ReactElement<SFButtonProps> => {
   let button: JSX.Element;
-  const ButtonInnerProps: ButtonInnerProps = getButtonInnerProps(sfSize);
+  const ButtonInnerProps: ButtonInnerProps = getButtonInnerProps(size);
 
   switch (sfColor) {
     case 'blue':
