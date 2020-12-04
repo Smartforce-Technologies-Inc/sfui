@@ -35,7 +35,6 @@ const getButtonInnerProps = (size?: SFSize): ButtonInnerProps => {
 
 export interface SFButtonProps extends ButtonProps {
   sfColor?: 'blue' | 'red' | 'grey';
-  sfSize?: SFSize;
 }
 
 export const SFButton = ({
