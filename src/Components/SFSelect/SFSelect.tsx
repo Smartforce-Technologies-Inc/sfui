@@ -40,13 +40,13 @@ const StyledMenuItem = withStyles((theme: Theme) => ({
   }
 }))(MenuItem);
 
-export interface SFOption {
+export interface SFSelectOption {
   label: string;
   value: string;
 }
 
 export interface SFSelectProps extends SelectProps {
-  options: SFOption[];
+  options: SFSelectOption[];
   value?: string;
   helperText?: React.ReactNode;
 }
@@ -66,13 +66,13 @@ export const SFSelect = ({
         error={props.error}
         disabled={props.disabled}
         SelectProps={{
+          ...props,
           IconComponent: (props): React.ReactElement => (
             <SFIcon icon='Down-2' size='16' {...props} />
-          ),
-          ...props
+          )
         }}
       >
-        {options.map((option: SFOption, index: number) => (
+        {options.map((option: SFSelectOption, index: number) => (
           <StyledMenuItem key={`option-${index}`} value={option.value}>
             {option.label}
           </StyledMenuItem>

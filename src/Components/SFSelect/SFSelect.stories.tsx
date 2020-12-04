@@ -1,8 +1,8 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { SFSelect, SFSelectProps, SFOption } from './SFSelect';
+import { SFSelect, SFSelectProps, SFSelectOption } from './SFSelect';
 
-const getOptions = (): SFOption[] => {
+const getOptions = (): SFSelectOption[] => {
   return [
     {
       label: 'Bagel number one',
