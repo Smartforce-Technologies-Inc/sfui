@@ -31,11 +31,12 @@ export default {
   args: {
     label: 'Bagel',
     options: getOptions()
-  }
+  },
+  argTypes: { onChange: { action: 'onChange event' } }
 } as Meta;
 
 const Template: Story<SFMultiSelectProps> = (args) => (
-  <SFMultiSelect {...args} options={getOptions()} />
+  <SFMultiSelect {...args} />
 );
 
 export const Default = Template.bind({});
