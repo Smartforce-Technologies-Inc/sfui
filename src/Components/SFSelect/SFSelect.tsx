@@ -25,7 +25,13 @@ const StyledMenuItem = withStyles((theme: Theme) => ({
           ? hexToRgba(SFGrey[200], 0.3)
           : hexToRgba(SFGrey[500], 0.3)
     },
-    '&.Mui-selected, &:active': {
+    '&:active': {
+      background:
+        theme.palette.type === 'light'
+          ? hexToRgba(SFGrey[200], 0.5)
+          : hexToRgba(SFGrey[500], 0.2)
+    },
+    '&.Mui-selected': {
       background:
         theme.palette.type === 'light'
           ? hexToRgba(SFGrey[200], 0.5)
