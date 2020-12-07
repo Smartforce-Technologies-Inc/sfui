@@ -9,8 +9,11 @@ const SFRadioGroupView = () => {
     { value: 'others', label: 'Others', disabled: false }
   ];
   return (
-    <div className='appRow'>
-      <SFRadioGroup label='Genders' defaultValue={'male'} options={options} />
+    <div className='radioGroupWraper'>
+      <h3>Radio Group</h3>
+      <div className='appRow'>
+        <SFRadioGroup label='Genders' defaultValue={'male'} options={options} />
+      </div>
     </div>
   );
 };
