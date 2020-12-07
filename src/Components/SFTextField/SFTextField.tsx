@@ -84,7 +84,7 @@ const StyledTextField = withStyles((theme: Theme) => ({
 }))(TextField);
 
 export interface SFTextFieldProps extends Partial<FilledTextFieldProps> {
-  variant?: 'filled'; // Make this prop optional
+  variant?: 'filled';
 }
 
 export const SFTextField = ({
@@ -94,8 +94,8 @@ export const SFTextField = ({
 }: SFTextFieldProps): React.ReactElement<SFTextFieldProps> => {
   color = 'primary';
   return (
-    <FormControl>
-      <StyledTextField color={color} variant={variant} {...props} />
+    <FormControl fullWidth>
+      <StyledTextField {...props} color={color} variant={variant} />
     </FormControl>
   );
 };
