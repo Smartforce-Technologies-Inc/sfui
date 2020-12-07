@@ -19,5 +19,13 @@
     "resolveJsonModule": true
   },
   "include": ["src"],
-  "exclude": ["node_modules", "dist", "example", ".storybook"]
+  "exclude": [
+    "node_modules",
+    "dist",
+    "example",
+    ".storybook",
+    "src/StorybookWrapper",
+    "src/**/*.stories.tsx",
+    "src/**/*.test.tsx"
+  ]
 }

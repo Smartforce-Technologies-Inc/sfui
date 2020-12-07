@@ -13,8 +13,8 @@
   },
   "scripts": {
     "clean": "rimraf dist",
-    "build": "run-s clean && microbundle-crl --no-compress --format modern,cjs",
-    "start": "run-s clean && microbundle-crl watch --no-compress --format modern,cjs",
+    "build": "run-s clean && microbundle-crl --no-compress --format modern,cjs && npm run copy-styles",
+    "start": "run-s clean && microbundle-crl watch --no-compress --format modern,cjs && npm run copy-styles",
     "prepare": "run-s build",
     "test": "run-s test:unit test:lint test:build",
     "test:build": "run-s build",
@@ -24,7 +24,8 @@
     "predeploy": "cd example && npm install && npm run build",
     "deploy": "gh-pages -d example/build",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "copy-styles": "cpx \"src/SFColors/**/*.scss\" dist/styles/SFColors"
   },
   "peerDependencies": {
     "react": "^16.0.0",
@@ -48,7 +49,8 @@
     "@typescript-eslint/eslint-plugin": "^2.26.0",
     "@typescript-eslint/parser": "^2.26.0",
     "babel-eslint": "^10.0.3",
-    "babel-loader": "^8.1.0",
+    "babel-loader": "^8.2.2",
+    "cpx": "^1.5.0",
     "cross-env": "^7.0.2",
     "css-loader": "^4.2.2",
     "eslint": "^6.8.0",
@@ -70,7 +72,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-is": "^16.13.1",
-    "react-scripts": "^3.4.1",
+    "react-scripts": "^4.0.0",
     "sass-loader": "^10.0.1",
     "style-loader": "^1.2.1",
     "typescript": "^3.7.5"
