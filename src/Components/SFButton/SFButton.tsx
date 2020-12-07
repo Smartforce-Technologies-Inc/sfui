@@ -5,13 +5,12 @@ import BlueButton from './CustomButtons/BlueButton';
 import RedButton from './CustomButtons/RedButton';
 import GreyButton from './CustomButtons/GreyButton';
 
-type SFSize = 'small' | 'medium' | 'large';
 interface ButtonInnerProps {
   padding?: string;
   size?: string;
   lineHeight?: string;
 }
-const getButtonInnerProps = (size?: SFSize): ButtonInnerProps => {
+const getButtonInnerProps = (size?: string): ButtonInnerProps => {
   const result: ButtonInnerProps = {};
   switch (size) {
     case 'small':
@@ -42,8 +41,7 @@ export const SFButton = ({
   color = 'primary',
   disableRipple = true,
   disableElevation = true,
-  size = 'small',
-  fullWidth = false,
+  size = 'medium',
   sfColor,
   ...props
 }: SFButtonProps): React.ReactElement<SFButtonProps> => {
