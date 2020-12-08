@@ -2,7 +2,7 @@ import * as React from 'react';
 import RadioGroup, { RadioGroupProps } from '@material-ui/core/RadioGroup';
 import FormControl from '@material-ui/core/FormControl';
 import { SFFormControlLabel } from '../SFFormControlLabel/SFFormControlLabel';
-import { SFRadio } from '../SFRadio/SFRadio';
+import { SFRadio } from './SFRadio/SFRadio';
 
 export interface SFRadioOptionsProps {
   value: string;

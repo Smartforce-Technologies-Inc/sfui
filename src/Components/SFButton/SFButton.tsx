@@ -9,7 +9,9 @@ interface ButtonInnerProps {
   padding?: string;
   size?: string;
   lineHeight?: string;
+  height?: string;
 }
+
 const getButtonInnerProps = (size?: string): ButtonInnerProps => {
   const result: ButtonInnerProps = {};
   switch (size) {
@@ -17,16 +19,19 @@ const getButtonInnerProps = (size?: string): ButtonInnerProps => {
       result.padding = '4px 10px';
       result.size = '13px';
       result.lineHeight = '22px';
+      result.height = '30px';
       break;
     case 'large':
       result.padding = '8px 22px';
       result.size = '15px';
       result.lineHeight = '26px';
+      result.height = '42px';
       break;
     default:
       result.padding = '6px 16px';
       result.size = '14px';
       result.lineHeight = '24px';
+      result.height = '36px';
       break;
   }
   return result;
@@ -47,6 +52,12 @@ export const SFButton = ({
 }: SFButtonProps): React.ReactElement<SFButtonProps> => {
   let button: JSX.Element;
   const ButtonInnerProps: ButtonInnerProps = getButtonInnerProps(size);
+  const ButtonInnerStyle = {
+    padding: ButtonInnerProps.padding,
+    fontSize: ButtonInnerProps.size,
+    lineHeight: ButtonInnerProps.lineHeight,
+    height: ButtonInnerProps.height
+  };
 
   switch (sfColor) {
     case 'blue':
@@ -56,11 +67,7 @@ export const SFButton = ({
           variant={variant}
           disableElevation={disableElevation}
           disableRipple={disableRipple}
-          style={{
-            padding: ButtonInnerProps.padding,
-            fontSize: ButtonInnerProps.size,
-            lineHeight: ButtonInnerProps.lineHeight
-          }}
+          style={ButtonInnerStyle}
         />
       );
       break;
@@ -71,11 +78,7 @@ export const SFButton = ({
           variant={variant}
           disableElevation={disableElevation}
           disableRipple={disableRipple}
-          style={{
-            padding: ButtonInnerProps.padding,
-            fontSize: ButtonInnerProps.size,
-            lineHeight: ButtonInnerProps.lineHeight
-          }}
+          style={ButtonInnerStyle}
         />
       );
       break;
@@ -86,11 +89,7 @@ export const SFButton = ({
           variant={variant}
           disableElevation={disableElevation}
           disableRipple={disableRipple}
-          style={{
-            padding: ButtonInnerProps.padding,
-            fontSize: ButtonInnerProps.size,
-            lineHeight: ButtonInnerProps.lineHeight
-          }}
+          style={ButtonInnerStyle}
         />
       );
       break;
@@ -102,11 +101,7 @@ export const SFButton = ({
           color={color}
           disableElevation={disableElevation}
           disableRipple={disableRipple}
-          style={{
-            padding: ButtonInnerProps.padding,
-            fontSize: ButtonInnerProps.size,
-            lineHeight: ButtonInnerProps.lineHeight
-          }}
+          style={ButtonInnerStyle}
         />
       );
   }

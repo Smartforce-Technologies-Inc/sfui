@@ -2,8 +2,8 @@ import * as React from 'react';
 import { withStyles, Theme } from '@material-ui/core/styles';
 import Radio, { RadioProps } from '@material-ui/core/Radio';
 import FormControl from '@material-ui/core/FormControl';
-import { SFFormControlLabel } from '../SFFormControlLabel/SFFormControlLabel';
-import { SFGrey } from '../../SFColors/SFColors';
+import { SFFormControlLabel } from '../../SFFormControlLabel/SFFormControlLabel';
+import { SFGrey } from '../../../SFColors/SFColors';
 
 const StyledRadio = withStyles((theme: Theme) => ({
   root: {
