@@ -32,17 +32,6 @@ const renderButtonsColumn = (
         </SFButton>
       </div>
       <div className='appRow'>
-        <SFButton sfColor='red' size={size}>
-          <span style={{ textTransform: 'capitalize' }}>{size}</span>
-        </SFButton>
-        <SFButton sfColor='red' variant='outlined' size={size}>
-          <span style={{ textTransform: 'capitalize' }}>{size}</span>
-        </SFButton>
-        <SFButton sfColor='red' variant='text' size={size}>
-          <span style={{ textTransform: 'capitalize' }}>{size}</span>
-        </SFButton>
-      </div>
-      <div className='appRow'>
         <SFButton sfColor='grey' size={size}>
           <span style={{ textTransform: 'capitalize' }}>{size}</span>
         </SFButton>
@@ -50,6 +39,17 @@ const renderButtonsColumn = (
           <span style={{ textTransform: 'capitalize' }}>{size}</span>
         </SFButton>
         <SFButton sfColor='grey' variant='text' size={size}>
+          <span style={{ textTransform: 'capitalize' }}>{size}</span>
+        </SFButton>
+      </div>
+      <div className='appRow'>
+        <SFButton sfColor='red' size={size}>
+          <span style={{ textTransform: 'capitalize' }}>{size}</span>
+        </SFButton>
+        <SFButton sfColor='red' variant='outlined' size={size}>
+          <span style={{ textTransform: 'capitalize' }}>{size}</span>
+        </SFButton>
+        <SFButton sfColor='red' variant='text' size={size}>
           <span style={{ textTransform: 'capitalize' }}>{size}</span>
         </SFButton>
       </div>

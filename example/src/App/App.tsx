@@ -13,7 +13,10 @@ import {
 import { SFButtonsView } from './ButtonsView/ButtonsView';
 import { SFSwitchesView } from './SwitchesView/SwitchesView';
 import { SFCheckboxesView } from './CheckboxesView/CheckboxesView';
+import { SFDatePickerView } from './DatePickerView/DatePickerView';
+import { SFIconButtonView } from './IconButtonView/IconButtonView';
 import { SFRadioView } from './RadioView/RadioView';
+import { SFSelectView } from './SelectView/SelectView';
 import { SFRadioGroupView } from './RadioGroupView/RadioGroupView';
 import { SFTextFieldsView } from './TextFieldsView/TextFieldsView';
 
@@ -34,7 +37,11 @@ const App = () => {
   return (
     <SFThemeProvider theme={theme}>
       <SFStylesProvider injectFirst>
-        <SFPaper>
+        <SFPaper
+          style={{
+            backgroundColor: theme.palette.background.default
+          }}
+        >
           <div className='appWrapper'>
             <h1
               style={{
@@ -54,7 +61,8 @@ const App = () => {
 
             <SFButtonsView />
 
-            <div className='appGrid col-3'>
+            <div className='appGrid col-4'>
+              <SFIconButtonView />
               <SFCheckboxesView />
               <SFRadioView />
               <SFSwitchesView />
@@ -63,6 +71,10 @@ const App = () => {
             <div className='appGrid col-2'>
               <SFTextFieldsView />
               <SFRadioGroupView />
+            </div>
+            <div className='appGrid col-2'>
+              <SFSelectView />
+              <SFDatePickerView />
             </div>
           </div>
         </SFPaper>
