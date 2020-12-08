@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 
-import { SFCard, SFCardProps } from './SFCard';
+import { SFCard, SFCardProps, sfElevations } from './SFCard';
 
 export default {
   title: 'Components/SFCard',
@@ -10,27 +10,30 @@ export default {
 
 const Template: Story<SFCardProps> = (args) => <SFCard {...args} />;
 
+const ElevationNums: sfElevations[] = [0, 1, 2, 3, 4, 6, 8, 9, 12, 16, 24];
+
 const Elevations: Story<SFCardProps> = (args) => (
   <div
     style={{
       display: 'grid',
       gridTemplateColumns: '1fr 1fr 1fr 1fr',
+      columnGap: '10px',
+      rowGap: '15px',
       justifyItems: 'center',
       alignItems: 'center'
     }}
   >
-    <div>
-      <SFCard {...args} sfElevation={4} />
-    </div>
-    <div>
-      <SFCard {...args} sfElevation={6} />
-    </div>
-    <div>
-      <SFCard {...args} sfElevation={12} />
-    </div>
-    <div>
-      <SFCard {...args} sfElevation={24} />
-    </div>
+    {ElevationNums.map((value) => {
+      return (
+        <div>
+          <SFCard
+            {...args}
+            sfElevation={value}
+            children={<p>Elevation {value}</p>}
+          />
+        </div>
+      );
+    })}
   </div>
 );
 
@@ -51,6 +54,3 @@ TopLoading.args = {
 };
 
 export const Elevation = Elevations.bind({});
-Elevation.args = {
-  children: [<p>A children</p>, <p>Another children</p>]
-};
