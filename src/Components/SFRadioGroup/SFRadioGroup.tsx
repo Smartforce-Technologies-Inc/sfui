@@ -14,7 +14,6 @@ export interface SFRadioGroupProps extends RadioGroupProps {
   label?: string;
   color?: 'default' | 'primary' | 'secondary' | undefined;
   options: SFRadioOptionsProps[];
-  onChange?: (event: object) => void;
 }
 
 export const SFRadioGroup = ({
