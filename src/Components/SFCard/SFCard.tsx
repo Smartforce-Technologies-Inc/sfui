@@ -67,7 +67,7 @@ export const SFCard = ({
             <p>Loading...</p>
           </div>
         ) : (
-          { children }
+          children
         )}
       </div>
     </SFPaper>
