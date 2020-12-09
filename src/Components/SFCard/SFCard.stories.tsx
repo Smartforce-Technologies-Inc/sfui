@@ -8,7 +8,12 @@ export default {
   component: SFCard
 } as Meta;
 
-const Template: Story<SFCardProps> = (args) => <SFCard {...args} />;
+const Template: Story<SFCardProps> = (args) => (
+  <SFCard {...args}>
+    <p>A children</p>
+    <p>Another children</p>
+  </SFCard>
+);
 
 const ElevationNums: sfElevations[] = [0, 1, 2, 3, 4, 6, 8, 9, 12, 16, 24];
 
@@ -34,9 +39,7 @@ const Elevations: Story<SFCardProps> = (args) => (
 );
 
 export const Default = Template.bind({});
-Default.args = {
-  children: [<p>A children</p>, <p>Another children</p>]
-};
+Default.args = {};
 
 export const DefaultLoading = Template.bind({});
 DefaultLoading.args = {

@@ -1,5 +1,4 @@
 import { ThemeOptions } from '@material-ui/core/styles';
-import { SFGrey } from '../SFColors/SFColors';
 
 const CommonThemeOptions: ThemeOptions = {
   props: {

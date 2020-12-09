@@ -1,3 +1,5 @@
+@import '~sfui/dist/styles/SFColors/SFColors.module.scss';
+
 body {
   margin: 0;
   padding: 0;
@@ -16,7 +18,7 @@ code {
 hr {
   margin: 0;
   border: none;
-  border-bottom: 1px solid #666666;
+  border-bottom: 1px solid $sf-grey-600;
 }
 
 .appWrapper {
@@ -25,8 +27,20 @@ hr {
 
 .appWrapper .appGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 40px;
+  grid-gap: 60px;
+  row-gap: 15px;
+
+  &.col-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &.col-3 {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  &.col-4 {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
 }
 
 .appWrapper .appGrid .appRow {

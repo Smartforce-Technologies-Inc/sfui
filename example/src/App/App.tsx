@@ -10,9 +10,13 @@ import {
   SFStylesProvider
 } from 'sfui';
 
-import { MUIButtonsView, SFButtonsView } from './ButtonsView/ButtonsView';
+import { SFButtonsView } from './ButtonsView/ButtonsView';
 import { SFSwitchesView } from './SwitchesView/SwitchesView';
 import { SFCheckboxesView } from './CheckboxesView/CheckboxesView';
+import { SFDatePickerView } from './DatePickerView/DatePickerView';
+import { SFIconButtonView } from './IconButtonView/IconButtonView';
+import { SFRadioView } from './RadioView/RadioView';
+import { SFSelectView } from './SelectView/SelectView';
 import { SFRadioGroupView } from './RadioGroupView/RadioGroupView';
 import { SFTextFieldsView } from './TextFieldsView/TextFieldsView';
 
@@ -33,53 +37,44 @@ const App = () => {
   return (
     <SFThemeProvider theme={theme}>
       <SFStylesProvider injectFirst>
-        <SFPaper>
+        <SFPaper
+          style={{
+            backgroundColor: theme.palette.background.default
+          }}
+        >
           <div className='appWrapper'>
-            <h1>
+            <h1
+              style={{
+                margin: '10px 0',
+                display: 'flex',
+                justifyContent: 'space-between'
+              }}
+            >
               SmartForce UI Library{' '}
-              <span style={{ float: 'right' }}>
-                <SFSwitch
-                  label='Night Mode'
-                  checked={nightMode}
-                  onChange={toggleSwitch}
-                />
-              </span>
+              <SFSwitch
+                label='Night Mode'
+                checked={nightMode}
+                onChange={toggleSwitch}
+              />
             </h1>
-            <br />
+            <hr style={{ borderColor: theme.palette.primary.main }} />
 
-            <h3>Buttons</h3>
-            <hr />
-            <div className='appGrid'>
-              <div>
-                <MUIButtonsView />
-              </div>
-              <div>
-                <SFButtonsView />
-              </div>
-            </div>
+            <SFButtonsView />
 
-            <h3>TextFields</h3>
-            <hr />
-            <div className='appGrid'>
-              <SFTextFieldsView />
-            </div>
-
-            <h3>Switches</h3>
-            <hr />
-            <div className='appGrid'>
+            <div className='appGrid col-4'>
+              <SFIconButtonView />
+              <SFCheckboxesView />
+              <SFRadioView />
               <SFSwitchesView />
             </div>
 
-            <h3>Checkboxes</h3>
-            <hr />
-            <div className='appGrid'>
-              <SFCheckboxesView />
-            </div>
-
-            <h3>Radio Group</h3>
-            <hr />
-            <div className='appGrid'>
+            <div className='appGrid col-2'>
+              <SFTextFieldsView />
               <SFRadioGroupView />
+            </div>
+            <div className='appGrid col-2'>
+              <SFSelectView />
+              <SFDatePickerView />
             </div>
           </div>
         </SFPaper>

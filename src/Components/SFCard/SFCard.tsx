@@ -49,7 +49,7 @@ export const SFCard = ({
   loadingAtTop = false,
   children
 }: SFCardProps): React.ReactElement<SFCardProps> => {
-  const externalClass: string = className ? className : '';
+  const externalClass: string = className || '';
   const customCardStyles: Record<'root', string> = cardStyles();
   const styledPaper: Record<'root', string> = paperStyles();
 

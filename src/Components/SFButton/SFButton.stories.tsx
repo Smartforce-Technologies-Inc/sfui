@@ -21,22 +21,22 @@ const Template: Story<SFButtonProps> = (args) => (
     }}
   >
     <div style={{ justifySelf: 'center', alignSelf: 'center' }}>
-      <SFButton {...args} sfColor='blue'>
+      <SFButton {...args} sfColor='blue' size='small'>
         Click Me
       </SFButton>
     </div>
     <div style={{ justifySelf: 'center', alignSelf: 'center' }}>
-      <SFButton {...args} sfColor='red'>
+      <SFButton {...args} sfColor='red' size='small'>
         Click Me
       </SFButton>
     </div>
     <div style={{ justifySelf: 'center', alignSelf: 'center' }}>
-      <SFButton {...args} sfColor='grey'>
+      <SFButton {...args} sfColor='grey' size='small'>
         Click Me
       </SFButton>
     </div>
     <div style={{ justifySelf: 'center', alignSelf: 'center' }}>
-      <SFButton {...args} sfColor='blue' disabled>
+      <SFButton {...args} sfColor='blue' size='small' disabled>
         Click Me
       </SFButton>
     </div>
