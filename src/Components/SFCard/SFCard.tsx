@@ -39,7 +39,7 @@ export interface SFCardProps {
   className?: string;
   isLoading?: boolean;
   loadingAtTop?: boolean;
-  children?: React.ReactNode | null;
+  children?: React.ReactNode;
 }
 
 export const SFCard = ({

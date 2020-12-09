@@ -25,7 +25,7 @@ const Elevations: Story<SFCardProps> = (args) => (
   >
     {ElevationNums.map((value, index) => {
       return (
-        <SFCard {...args} sfElevation={value} key={index.toString()}>
+        <SFCard {...args} sfElevation={value} key={`${value}${index}`}>
           <p>Elevation {value}</p>
         </SFCard>
       );
