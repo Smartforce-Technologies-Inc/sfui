@@ -23,15 +23,11 @@ const Elevations: Story<SFCardProps> = (args) => (
       alignItems: 'center'
     }}
   >
-    {ElevationNums.map((value) => {
+    {ElevationNums.map((value, index) => {
       return (
-        <div>
-          <SFCard
-            {...args}
-            sfElevation={value}
-            children={<p>Elevation {value}</p>}
-          />
-        </div>
+        <SFCard {...args} sfElevation={value} key={`${value}${index}`}>
+          <p>Elevation {value}</p>
+        </SFCard>
       );
     })}
   </div>
