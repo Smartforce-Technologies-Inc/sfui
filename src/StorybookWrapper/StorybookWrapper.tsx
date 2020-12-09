@@ -32,7 +32,7 @@ const StorybookWrapper = ({
         <div
           id='sf-topbar'
           style={{
-            backgroundColor: theme.palette.background.paper
+            backgroundColor: theme.palette.background.default
           }}
         >
           <div
@@ -56,7 +56,14 @@ const StorybookWrapper = ({
           </div>
           <br />
         </div>
-        <SFPaper style={{ padding: '1rem' }}>{children}</SFPaper>
+        <SFPaper
+          style={{
+            padding: '1rem',
+            backgroundColor: theme.palette.background.default
+          }}
+        >
+          {children}
+        </SFPaper>
       </SFStylesProvider>
     </SFThemeProvider>
   );

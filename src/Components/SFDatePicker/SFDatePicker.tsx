@@ -8,7 +8,7 @@ import {
 import FormControl from '@material-ui/core/FormControl';
 import MomentUtils from '@date-io/moment';
 import { SFGrey, SFRed } from '../../SFColors/SFColors';
-import { SFIconButton } from '../SFIconButton/SFIconButton';
+import { SFIcon } from '../SFIcon/SFIcon';
 import {
   KeyboardDatePicker,
   MuiPickersUtilsProvider,
@@ -122,11 +122,13 @@ export interface SFDatePickerProps extends Partial<KeyboardDatePickerProps> {}
 export const SFDatePicker = ({
   ...props
 }: SFDatePickerProps): React.ReactElement<KeyboardDatePickerProps> => {
-  const [selectedDate, handleDateChange] = React.useState<
-    MaterialUiPickersDate
-  >(null);
+  const [
+    selectedDate,
+    handleDateChange
+  ] = React.useState<MaterialUiPickersDate>(null);
   const classes: Record<'paper', string> = PopOverStyle();
   const backgrounds: Record<'root', string> = ButtonBackgrounds();
+
   return (
     <FormControl fullWidth>
       <MuiPickersUtilsProvider utils={MomentUtils}>
@@ -142,8 +144,8 @@ export const SFDatePicker = ({
           InputProps={{ readOnly: true }}
           rightArrowButtonProps={{ classes: backgrounds }}
           leftArrowButtonProps={{ classes: backgrounds }}
-          keyboardIcon={<SFIconButton sfIcon='Bell' sfSize='medium' />}
-          onChange={(date) => {
+          keyboardIcon={<SFIcon icon='Callendar' size='32' />}
+          onChange={(date: MaterialUiPickersDate): void => {
             handleDateChange(date);
           }}
         />

@@ -3,7 +3,9 @@ import { useTheme, Theme, withStyles } from '@material-ui/core/styles';
 import { SFGrey } from '../../SFColors/SFColors';
 import { SFIcon } from '../SFIcon/SFIcon';
 import IconButton, { IconButtonProps } from '@material-ui/core/IconButton';
+
 type SFSize = 'tiny' | 'small' | 'medium' | 'large';
+
 interface IconButtonInnerProps {
   padding?: string;
   size?: string;
@@ -67,7 +69,7 @@ export const SFIconButton = ({
   const isThemeLight: boolean = theme.palette.type === 'light';
   const iconDefaultColor: string = isThemeLight ? SFGrey[600] : SFGrey[400];
   const disabledColor: string = isThemeLight ? SFGrey[200] : SFGrey[700];
-  const colorPicked: string = sfColor ? sfColor : iconDefaultColor;
+  const colorPicked: string = sfColor || iconDefaultColor;
   const iconButtonInnerProps: IconButtonInnerProps = getIconButtonInnerProps(
     sfSize
   );

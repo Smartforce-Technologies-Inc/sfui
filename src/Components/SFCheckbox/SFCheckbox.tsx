@@ -1,12 +1,14 @@
 import * as React from 'react';
-import { withStyles, Theme } from '@material-ui/core/styles';
+import { withStyles, Theme, useTheme } from '@material-ui/core/styles';
 import Checkbox, { CheckboxProps } from '@material-ui/core/Checkbox';
 import FormControl from '@material-ui/core/FormControl';
 import { SFGrey } from '../../SFColors/SFColors';
 import { SFFormControlLabel } from '../SFFormControlLabel/SFFormControlLabel';
+import { SFIcon } from '../SFIcon/SFIcon';
 
 const StyledCheckbox = withStyles((theme: Theme) => ({
   root: {
+    padding: 0,
     color: `${theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400]}`
   },
   colorPrimary: {
@@ -44,25 +46,64 @@ const StyledCheckbox = withStyles((theme: Theme) => ({
   }
 }))(Checkbox);
 
+const getIconUncheckedColor = (
+  theme: Theme,
+  disabled: boolean | undefined
+): string => {
+  if (disabled) {
+    return theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700];
+  }
+  return theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400];
+};
+
+const getIconCheckedColor = (
+  theme: Theme,
+  disabled: boolean | undefined
+): string => {
+  if (disabled) {
+    return theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700];
+  }
+  return theme.palette.primary.main;
+};
+
 export interface SFCheckboxProps extends CheckboxProps {
   label?: string;
 }
 
 export const SFCheckbox = ({
   disableRipple = true,
-  color,
   label,
   ...props
 }: SFCheckboxProps): React.ReactElement<SFCheckboxProps> => {
-  color = 'primary';
+  const theme: Theme = useTheme();
+  const iconCheckedColor: string = getIconCheckedColor(theme, props.disabled);
+  const iconUncheckedColor: string = getIconUncheckedColor(
+    theme,
+    props.disabled
+  );
+
   return (
     <FormControl>
       <SFFormControlLabel
         control={
           <StyledCheckbox
-            color={color}
-            disableRipple={disableRipple}
             {...props}
+            color='primary'
+            disableRipple={disableRipple}
+            icon={
+              <SFIcon
+                icon='Checkbox-Unselected'
+                size={42}
+                color={iconUncheckedColor}
+              />
+            }
+            checkedIcon={
+              <SFIcon
+                icon='Checkbox-Selected'
+                size={42}
+                color={iconCheckedColor}
+              />
+            }
           />
         }
         label={label}
