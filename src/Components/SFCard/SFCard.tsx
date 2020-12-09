@@ -39,7 +39,7 @@ export interface SFCardProps {
   className?: string;
   isLoading?: boolean;
   loadingAtTop?: boolean;
-  children?: React.ReactNode;
+  children?: React.ReactNode | null;
 }
 
 export const SFCard = ({
@@ -67,7 +67,7 @@ export const SFCard = ({
             <p>Loading...</p>
           </div>
         ) : (
-          { children }
+          children
         )}
       </div>
     </SFPaper>
