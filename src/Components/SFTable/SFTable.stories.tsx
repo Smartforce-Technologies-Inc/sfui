@@ -1,6 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { SFTable, SFTableProps, SFTableColumn } from './SFTable';
+import { SFTable, SFTableProps, SFTableColumn, RowData } from './SFTable';
+import { SFIcon } from '../SFIcon/SFIcon';
 
 const getColumns = (): SFTableColumn[] => {
   return [
@@ -13,7 +14,7 @@ const getColumns = (): SFTableColumn[] => {
   ];
 };
 
-const getRows = () => {
+const getRows = (): RowData[] => {
   return [
     {
       one: 'Body row one',
@@ -70,20 +71,9 @@ export default {
   title: 'Components/SFTable',
   component: SFTable,
   args: {
-    columns: getColumns(),
-    data: getRows()
+    columns: getColumns()
   },
   argTypes: {
-    columns: {
-      table: {
-        disable: true
-      }
-    },
-    data: {
-      table: {
-        disable: true
-      }
-    },
     options: {
       table: {
         disable: true
@@ -92,7 +82,9 @@ export default {
   }
 } as Meta;
 
-const Template: Story<SFTableProps> = (args) => <SFTable {...args} />;
+const Template: Story<SFTableProps> = (args) => (
+  <SFTable {...args} data={getRows()} />
+);
 
 export const Default = Template.bind({});
 Default.args = {
@@ -145,7 +137,7 @@ Pagination.args = {
 export const StickyHeader = Template.bind({});
 StickyHeader.args = {
   options: {
-    maxBodyHeight: '20vh',
+    maxBodyHeight: 300,
     toolbar: false,
     paging: false,
     sorting: false,
@@ -205,31 +197,58 @@ Actions.args = {
     paging: false,
     sorting: false,
     draggable: false,
-    selection: false
+    selection: false,
+    actionsColumnIndex: -1
   },
   actions: [
     {
-      icon: 'save',
+      icon: (): JSX.Element => <SFIcon icon='Share' />,
       tooltip: 'Action one'
     },
     {
-      icon: 'save',
+      icon: (): JSX.Element => <SFIcon icon='Trash' />,
       tooltip: 'Action two'
     }
   ]
 };
 
-export const WithKnobs = ({
-  sorting,
-  search,
-  toolbar,
-  selection,
-  paging,
+export const Draggable = Template.bind({});
+Draggable.args = {
+  options: {
+    search: false,
+    toolbar: false,
+    showTitle: false,
+    paging: false,
+    sorting: false,
+    draggable: true,
+    selection: false
+  }
+};
+
+interface StoryWithKnobs {
+  sorting: boolean;
+  search: boolean;
+  toolbar: boolean;
+  selection: boolean;
+  paging: boolean;
+  draggable: boolean;
+  showTitle: boolean;
+  title: string;
+  maxBodyHeight: number | string;
+  columns: SFTableColumn[];
+}
+export const WithKnobs: Story<StoryWithKnobs> = ({
+  sorting = false,
+  search = false,
+  toolbar = false,
+  selection = false,
+  paging = false,
+  draggable = false,
   showTitle = false,
   title = '',
   maxBodyHeight,
-  ...args
-}) => {
+  columns
+}): JSX.Element => {
   return (
     <SFTable
       title={title}
@@ -239,11 +258,12 @@ export const WithKnobs = ({
         toolbar,
         showTitle,
         paging,
+        draggable,
         selection,
-        maxBodyHeight,
-        draggable: false
+        maxBodyHeight
       }}
-      {...args}
+      data={getRows()}
+      columns={columns}
     />
   );
 };
@@ -270,6 +290,11 @@ WithKnobs.argTypes = {
     }
   },
   paging: {
+    control: {
+      type: 'boolean'
+    }
+  },
+  draggable: {
     control: {
       type: 'boolean'
     }
