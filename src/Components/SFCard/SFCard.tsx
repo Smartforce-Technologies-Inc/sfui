@@ -26,7 +26,7 @@ const cardStyles = makeStyles({
   }
 });
 
-const paperStyles = makeStyles({
+const usePaperStyles = makeStyles({
   root: {
     border: `1px solid ${SFGrey[100]}`,
     borderRadius: '2px'
@@ -52,7 +52,7 @@ export const SFCard = ({
 }: SFCardProps): React.ReactElement<SFCardProps> => {
   const externalClass: string = className || '';
   const customCardStyles: Record<'root', string> = cardStyles();
-  const styledPaper: Record<'root', string> = paperStyles();
+  const styledPaper: Record<'root', string> = usePaperStyles();
 
   return (
     <SFPaper

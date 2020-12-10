@@ -15,8 +15,6 @@ const Template: Story<SFIconButtonProps> = (args) => (
       display: 'grid',
       gridTemplateColumns: '1fr 1fr 1fr 1fr',
       justifyItems: 'center'
-
-      // alignItems: 'center'
     }}
   >
     <div>
