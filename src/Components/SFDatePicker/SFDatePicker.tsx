@@ -122,10 +122,9 @@ export interface SFDatePickerProps extends Partial<KeyboardDatePickerProps> {}
 export const SFDatePicker = ({
   ...props
 }: SFDatePickerProps): React.ReactElement<KeyboardDatePickerProps> => {
-  const [
-    selectedDate,
-    handleDateChange
-  ] = React.useState<MaterialUiPickersDate>(null);
+  const [selectedDate, handleDateChange] = React.useState<
+    MaterialUiPickersDate
+  >(null);
   const classes: Record<'paper', string> = PopOverStyle();
   const backgrounds: Record<'root', string> = ButtonBackgrounds();
 
