@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { withStyles, Theme } from '@material-ui/core/styles';
+import { withStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import {
   FormControl,
   MenuItem,
@@ -57,6 +57,13 @@ const StyledMenuItem = withStyles((theme: Theme) => ({
   }
 }))(MenuItem);
 
+const useMenuStyles = makeStyles({
+  paper: {
+    marginTop: '63px',
+    borderRadius: '0px 0px 2px 2px'
+  }
+});
+
 export interface SFMultiSelectProps extends SelectProps {
   options: SFMultiSelectOption[];
   defaultValue: string[];
@@ -75,6 +82,7 @@ export const SFMultiSelect = ({
 }: SFMultiSelectProps): React.ReactElement<SFMultiSelectProps> => {
   const valueInit: string[] = value || defaultValue;
   const [selected, setSelected] = React.useState<string[]>(valueInit);
+  const customMenuStyles: Record<'paper', string> = useMenuStyles();
 
   const handleChange = (
     event: React.ChangeEvent<{
@@ -113,6 +121,12 @@ export const SFMultiSelect = ({
           multiple: true,
           defaultValue: defaultValue,
           value: selected,
+          MenuProps: {
+            variant: 'menu',
+            autoFocus: false,
+            disableAutoFocusItem: true,
+            classes: customMenuStyles
+          },
           onChange: handleChange,
           renderValue: renderSelected,
           IconComponent: (props): React.ReactElement => (
