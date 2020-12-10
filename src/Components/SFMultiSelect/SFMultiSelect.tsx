@@ -17,8 +17,17 @@ export interface SFMultiSelectOption {
   value: string;
 }
 
-const StyledSelect = withStyles(() => ({
+const StyledSelect = withStyles((theme: Theme) => ({
   root: {
+    backgroundColor: theme.palette.background.paper,
+    '& .MuiInputBase-root': {
+      '&.Mui-focused': {
+        backgroundColor: theme.palette.background.paper,
+        '& .MuiSelect-root': {
+          backgroundColor: theme.palette.background.paper
+        }
+      }
+    },
     '& svg': {
       position: 'absolute',
       right: 18,
