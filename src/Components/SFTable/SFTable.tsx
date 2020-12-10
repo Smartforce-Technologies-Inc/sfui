@@ -6,7 +6,7 @@ import {
   createStyles,
   useTheme
 } from '@material-ui/core/styles';
-import { Paper } from '@material-ui/core';
+import { Paper, CheckboxProps } from '@material-ui/core';
 import MaterialTable, {
   MTableBodyRow,
   MaterialTableProps,
@@ -136,7 +136,7 @@ export const SFTable = ({
   const iconUncheckedColor: string =
     theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400];
 
-  const selectionProps = {
+  const selectionProps: CheckboxProps = {
     classes: useSelectionStyles(props),
     checkedIcon: (
       <SFIcon icon='Checkbox-Selected' size={42} color={iconCheckedColor} />
