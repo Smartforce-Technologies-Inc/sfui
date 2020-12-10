@@ -28,7 +28,8 @@ const cardStyles = makeStyles({
 
 const paperStyles = makeStyles({
   root: {
-    border: `1px solid ${SFGrey[100]}`
+    border: `1px solid ${SFGrey[100]}`,
+    borderRadius: '2px'
   }
 });
 
