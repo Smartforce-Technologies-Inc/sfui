@@ -57,7 +57,10 @@ const StorybookWrapper = ({
           <br />
         </div>
         <SFPaper
+          id='sf-story-wrapper'
           style={{
+            height: '100%',
+            minHeight: 'calc(100vh - 106px)',
             padding: '1rem',
             backgroundColor: theme.palette.background.default
           }}

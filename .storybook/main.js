@@ -3,14 +3,6 @@ module.exports = {
   addons: [
     '@storybook/preset-create-react-app',
     '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    {
-      name: '@storybook/preset-scss',
-      options: {
-        cssLoaderOptions: {
-          modules: true
-        }
-      }
-    }
+    '@storybook/addon-essentials'
   ]
 };

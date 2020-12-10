@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { withStyles, Theme } from '@material-ui/core/styles';
+import { withStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { FormControl, MenuItem, SelectProps } from '@material-ui/core';
 import { SFTextField } from '../SFTextField/SFTextField';
 import { SFIcon } from '../SFIcon/SFIcon';
@@ -46,6 +46,18 @@ const StyledMenuItem = withStyles((theme: Theme) => ({
   }
 }))(MenuItem);
 
+const useMenuStyles = makeStyles({
+  paper: {
+    marginTop: '54px',
+    borderRadius: '0px 0px 2px 2px'
+  },
+  '@media screen and (max-width: 600px)': {
+    paper: {
+      marginTop: '60px'
+    }
+  }
+});
+
 export interface SFSelectOption {
   label: string;
   value: string;
@@ -63,6 +75,8 @@ export const SFSelect = ({
   label,
   ...props
 }: SFSelectProps): React.ReactElement<SFSelectProps> => {
+  const customMenuStyles: Record<'paper', string> = useMenuStyles();
+
   return (
     <FormControl fullWidth>
       <StyledSelect
@@ -75,7 +89,13 @@ export const SFSelect = ({
           ...props,
           IconComponent: (props): React.ReactElement => (
             <SFIcon icon='Down-2' size='16' {...props} />
-          )
+          ),
+          MenuProps: {
+            variant: 'menu',
+            autoFocus: false,
+            disableAutoFocusItem: true,
+            classes: customMenuStyles
+          }
         }}
       >
         {options.map((option: SFSelectOption, index: number) => (
