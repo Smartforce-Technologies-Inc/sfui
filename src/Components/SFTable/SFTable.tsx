@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import {
   withStyles,
   Theme,
@@ -11,9 +11,11 @@ import MaterialTable, {
   MTableBodyRow,
   MaterialTableProps,
   Column,
-  Options
+  Options,
+  Icons
 } from 'material-table';
 import { SFBlue, SFGrey } from '../../SFColors/SFColors';
+import { SFIcon } from '../SFIcon/SFIcon';
 import { hexToRgba } from '../../helpers';
 
 const StyledRow = withStyles((theme: Theme) => ({
@@ -77,7 +79,45 @@ const useSelectionStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export interface RowData {}
+const tableIcons: Icons = {
+  Export: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
+    <SFIcon icon='Download' {...props} ref={ref} />
+  )),
+  Filter: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
+    <SFIcon icon='Adjustments' {...props} ref={ref} />
+  )),
+  SortArrow: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
+    <SFIcon icon='Up-7' {...props} ref={ref} />
+  )),
+  FirstPage: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
+    <SFIcon icon='Left-2' {...props} ref={ref} />
+  )),
+  LastPage: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
+    <SFIcon icon='Right-2' {...props} ref={ref} />
+  )),
+  NextPage: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
+    <SFIcon icon='Right-7' {...props} ref={ref} />
+  )),
+  PreviousPage: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
+    <SFIcon icon='Left-7' {...props} ref={ref} />
+  )),
+  ResetSearch: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
+    <SFIcon icon='Close' {...props} ref={ref} />
+  )),
+  Search: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
+    <SFIcon icon='Search' {...props} ref={ref} />
+  ))
+};
+
+interface RowTableData {
+  id: number;
+  checked: boolean;
+}
+
+export type RowData = {
+  [key: string]: number | string | boolean | undefined;
+} & { tableData?: RowTableData };
+
 export interface SFTableColumn extends Column<RowData> {}
 export interface SFTableOptions extends Options<RowData> {}
 export interface SFTableProps extends MaterialTableProps<RowData> {
@@ -91,9 +131,22 @@ export const SFTable = ({
   ...props
 }: SFTableProps): React.ReactElement<SFTableProps> => {
   const theme = useTheme();
-  const selectionClasses = useSelectionStyles(props);
 
-  const columnsWithStyles: SFTableColumn[] = columns.map(
+  const iconCheckedColor: string = theme.palette.primary.main;
+  const iconUncheckedColor: string =
+    theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400];
+
+  const selectionProps = {
+    classes: useSelectionStyles(props),
+    checkedIcon: (
+      <SFIcon icon='Checkbox-Selected' size={42} color={iconCheckedColor} />
+    ),
+    icon: (
+      <SFIcon icon='Checkbox-Unselected' size={42} color={iconUncheckedColor} />
+    )
+  };
+
+  const customColumns: SFTableColumn[] = columns.map(
     (column: SFTableColumn) => {
       return {
         ...column,
@@ -110,7 +163,7 @@ export const SFTable = ({
     }
   );
 
-  const optionsWithStyles: SFTableOptions = {
+  const customOptions: SFTableOptions = {
     ...options,
     headerStyle: {
       borderBottom: `2px solid  ${
@@ -120,8 +173,8 @@ export const SFTable = ({
       color: `${theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]}`,
       fontSize: 14
     },
-    rowStyle: (rowData): React.CSSProperties => {
-      if (rowData.tableData.checked) {
+    rowStyle: (rowData: RowData): React.CSSProperties => {
+      if (rowData?.tableData?.checked) {
         return {
           backgroundColor:
             theme.palette.type === 'light'
@@ -132,22 +185,25 @@ export const SFTable = ({
       return {};
     },
     selectionProps: {
-      classes: selectionClasses
+      ...selectionProps
     },
     headerSelectionProps: {
-      classes: selectionClasses,
-      indeterminate: false
+      indeterminate: false,
+      ...selectionProps
     }
   };
 
   return (
     <MaterialTable
       {...props}
-      columns={columnsWithStyles}
-      options={optionsWithStyles}
+      icons={tableIcons}
+      columns={customColumns}
+      options={customOptions}
       components={{
-        Container: (props): JSX.Element => <StyledContainer {...props} />,
-        Row: (props): JSX.Element => <StyledRow {...props} />
+        // eslint-disable-next-line
+        Container: (props: any): JSX.Element => <StyledContainer {...props} />,
+        // eslint-disable-next-line
+        Row: (props: any): JSX.Element => <StyledRow {...props} />
       }}
     />
   );
