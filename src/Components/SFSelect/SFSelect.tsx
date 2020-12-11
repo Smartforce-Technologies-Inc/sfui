@@ -6,7 +6,7 @@ import { SFIcon } from '../SFIcon/SFIcon';
 import { SFGrey } from '../../SFColors/SFColors';
 import { hexToRgba } from '../../helpers';
 
-const StyledSelect = withStyles((theme: Theme) => ({
+const StyledSelect = withStyles(() => ({
   root: {
     '& svg': {
       position: 'absolute',

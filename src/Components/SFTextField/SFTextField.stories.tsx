@@ -45,6 +45,17 @@ Empty.args = {
   defaultValue: ''
 };
 
+export const Multiline = Default.bind({});
+Multiline.args = {
+  label: 'Bagel',
+  defaultValue:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lobortis a erat eu mattis. ' +
+    'Donec fringilla molestie justo pulvinar dignissim. Pellentesque sit amet ex a velit maximus aliquet sit amet id justo.' +
+    ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lobortis a erat eu mattis.' +
+    ' Donec fringilla molestie justo pulvinar dignissim. Pellentesque sit amet ex a velit maximus aliquet sit amet id justo.',
+  multiline: true
+};
+
 const AllTemplate: Story<SFTextFieldProps> = (args) => (
   <div
     style={{

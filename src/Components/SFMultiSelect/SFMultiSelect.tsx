@@ -17,7 +17,7 @@ export interface SFMultiSelectOption {
   value: string;
 }
 
-const StyledSelect = withStyles((theme: Theme) => ({
+const StyledSelect = withStyles(() => ({
   root: {
     '& svg': {
       position: 'absolute',

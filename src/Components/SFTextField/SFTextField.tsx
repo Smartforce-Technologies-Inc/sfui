@@ -56,6 +56,15 @@ const StyledTextField = withStyles((theme: Theme) => ({
           padding: '27px 12px 8px !important'
         }
       },
+      '&.MuiFilledInput-multiline': {
+        '&.Mui-focused, &:active': {
+          padding: '26px 11px 7px'
+        },
+        padding: '27px 12px 8px',
+        '& textarea.MuiFilledInput-input': {
+          padding: 0
+        }
+      },
       '& .MuiFilledInput-input': {
         fontWeight: 400,
         fontSize: '16px',
@@ -94,13 +103,14 @@ export interface SFTextFieldProps extends Partial<FilledTextFieldProps> {
 
 export const SFTextField = ({
   variant = 'filled',
+  rows = 4,
   color,
   ...props
 }: SFTextFieldProps): React.ReactElement<SFTextFieldProps> => {
   color = 'primary';
   return (
     <FormControl fullWidth>
-      <StyledTextField {...props} color={color} variant={variant} />
+      <StyledTextField {...props} color={color} variant={variant} rows={rows} />
     </FormControl>
   );
 };
