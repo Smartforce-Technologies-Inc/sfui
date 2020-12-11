@@ -12,6 +12,7 @@ export * from './Components/SFRadioGroup/SFRadioGroup';
 export * from './Components/SFSelect/SFSelect';
 export * from './Components/SFSwitch/SFSwitch';
 export * from './Components/SFTextField/SFTextField';
+export * from './Components/SFTable/SFTable';
 
 export * from './SFTheme/SFTheme';
 export * from './SFColors/SFColors';

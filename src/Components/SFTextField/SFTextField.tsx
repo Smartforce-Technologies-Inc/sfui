@@ -6,13 +6,18 @@ import { SFGrey, SFRed } from '../../SFColors/SFColors';
 
 const StyledTextField = withStyles((theme: Theme) => ({
   root: {
+    '& .MuiInputBase-root': {
+      backgroundColor: theme.palette.background.paper,
+      '&.Mui-focused': {
+        backgroundColor: theme.palette.background.paper
+      }
+    },
     boxSizing: 'border-box',
     '& .MuiFilledInput-root': {
       border: `1px solid ${
         theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
       }`,
       borderRadius: 2,
-      backgroundColor: 'transparent',
       boxSizing: 'border-box',
       '&:before': {
         content: `none !important`
