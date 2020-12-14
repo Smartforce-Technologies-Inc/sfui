@@ -15,20 +15,16 @@ code {
     monospace;
 }
 
-hr {
-  margin: 0;
-  border: none;
-  border-bottom: 1px solid $sf-grey-600;
-}
-
 .appWrapper {
-  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  padding: 25px 50px;
 }
 
-.appWrapper .appGrid {
+.appGrid {
   display: grid;
-  grid-gap: 60px;
-  row-gap: 15px;
+  column-gap: 15px;
+  row-gap: 10px;
 
   &.col-2 {
     grid-template-columns: 1fr 1fr;
@@ -43,8 +39,65 @@ hr {
   }
 }
 
-.appWrapper .appGrid .appRow {
+.title {
   display: flex;
   justify-content: space-between;
-  padding: 10px 0;
+  &.main {
+    margin: 5px 10px;
+    font-size: 32px;
+    font-weight: bolder;
+  }
+
+  &.content {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 30px;
+  }
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  padding: 25px 5px;
+
+  & .contentBody {
+    display: grid;
+    justify-items: center;
+
+    &.group {
+      justify-items: stretch;
+      align-items: stretch !important;
+    }
+
+    &.item {
+      gap: 10px 20px;
+      align-items: center;
+      justify-items: center;
+      &.one {
+        grid-template-columns: 1fr;
+      }
+      &.two {
+        grid-template-columns: 1fr 1fr;
+      }
+      &.three {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+      &.four {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+      }
+      &.five {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      }
+      &.large {
+        width: 90%;
+      }
+    }
+  }
+}
+
+.contentDivider {
+  margin: 10px 0;
+  border: none;
+  border-bottom: 1px solid $sf-grey-600;
 }

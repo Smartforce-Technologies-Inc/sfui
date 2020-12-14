@@ -4,24 +4,15 @@ import { SFSwitch } from 'sfui';
 
 const SFSwitchesView = () => {
   return (
-    <div className='switchesWrapper'>
-      <h3>Switches</h3>
-      <div className='appRow'>
-        <SFSwitch />
-        <SFSwitch label='Bagel' />
-      </div>
-      <div className='appRow'>
-        <SFSwitch disabled />
-        <SFSwitch label='Bagel' disabled />
-      </div>
-      <div className='appRow'>
-        <SFSwitch checked />
-        <SFSwitch label='Bagel' checked />
-      </div>
-      <div className='appRow'>
-        <SFSwitch checked disabled />
-        <SFSwitch checked label='Bagel' disabled />
-      </div>
+    <div className='contentBody item two'>
+      <SFSwitch />
+      <SFSwitch label='Bagel' />
+      <SFSwitch disabled />
+      <SFSwitch label='Bagel' disabled />
+      <SFSwitch checked />
+      <SFSwitch label='Bagel' checked />
+      <SFSwitch checked disabled />
+      <SFSwitch checked label='Bagel' disabled />
     </div>
   );
 };

@@ -4,27 +4,16 @@ import { SFTextField } from 'sfui';
 
 const SFTextFieldsView = () => {
   return (
-    <div className='textFieldWrapper'>
-      <h3>TextFields</h3>
-      <div className='appRow'>
-        <SFTextField label='Bagel' />
-      </div>
-      <div className='appRow'>
-        <SFTextField label='Bagel' value='This is a bagel' />
-      </div>
-      <div className='appRow'>
-        <SFTextField label='Bagel' value='This is a bagel' disabled />
-      </div>
-      <div className='appRow'>
-        <SFTextField label='Bagel' value='This is a bagel' error />
-      </div>
-      <div className='appRow'>
-        <SFTextField
-          label='Bagel'
-          value='This is a bagel'
-          helperText='Helper Message'
-        />
-      </div>
+    <div className='contentBody item one large'>
+      <SFTextField label='Bagel' />
+      <SFTextField label='Bagel' value='This is a bagel' />
+      <SFTextField label='Bagel' value='This is a bagel' disabled />
+      <SFTextField label='Bagel' value='This is a bagel' error />
+      <SFTextField
+        label='Bagel'
+        value='This is a bagel'
+        helperText='Helper Message'
+      />
     </div>
   );
 };

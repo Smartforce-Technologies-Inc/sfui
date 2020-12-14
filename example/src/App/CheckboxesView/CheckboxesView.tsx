@@ -4,24 +4,15 @@ import { SFCheckbox } from 'sfui';
 
 const SFCheckboxesView = () => {
   return (
-    <div className='ckeckbox-wrapper'>
-      <h3>Checkboxes</h3>
-      <div className='appRow'>
-        <SFCheckbox />
-        <SFCheckbox label='Bagel' />
-      </div>
-      <div className='appRow'>
-        <SFCheckbox disabled />
-        <SFCheckbox label='Bagel' disabled />
-      </div>
-      <div className='appRow'>
-        <SFCheckbox checked />
-        <SFCheckbox label='Bagel' checked />
-      </div>
-      <div className='appRow'>
-        <SFCheckbox checked disabled />
-        <SFCheckbox label='Bagel' checked disabled />
-      </div>
+    <div className='contentBody item two'>
+      <SFCheckbox />
+      <SFCheckbox label='Bagel' />
+      <SFCheckbox disabled />
+      <SFCheckbox label='Bagel' disabled />
+      <SFCheckbox checked />
+      <SFCheckbox label='Bagel' checked />
+      <SFCheckbox checked disabled />
+      <SFCheckbox label='Bagel' checked disabled />
     </div>
   );
 };
