@@ -46,8 +46,8 @@ const App = () => {
             backgroundColor: theme.palette.background.default
           }}
         >
-          <div className='appWrapper'>
-            <h1 className='title main'>
+          <div className='layout-body'>
+            <h1 className='text text-header'>
               SmartForce UI Library{' '}
               <SFSwitch
                 label={switchLabel}
@@ -55,75 +55,78 @@ const App = () => {
                 onChange={toggleSwitch}
               />
             </h1>
+
             <hr
               className='contentDivider'
               style={{ borderColor: theme.palette.primary.main }}
             />
 
-            <div className='contentContainer'>
-              <div className='contentBody'>
-                <h1 className='title content'>Buttons</h1>
+            <div className='layout'>
+              <div className='layout-content'>
+                <h2 className='text-title'>Buttons</h2>
                 <SFButtonsView />
               </div>
             </div>
 
-            <div className='contentContainer'>
-              <div className='contentBody item five group'>
-                <div className='contentBody'>
-                  <h1 className='title content'>Icon button</h1>
+            <div className='layout'>
+              <div className='layout-columns five'>
+                <div className='layout-content'>
+                  <h2 className='text-content'>Icon button</h2>
                   <SFIconButtonView />
                 </div>
-                <div className='contentBody'>
-                  <h1 className='title content'>Checkboxes</h1>
+                <div className='layout-content'>
+                  <h2 className='text-content'>Checkboxes</h2>
                   <SFCheckboxesView />
                 </div>
-                <div className='contentBody'>
-                  <h1 className='title content'>Radio</h1>
+                <div className='layout-content'>
+                  <h2 className='text-content'>Radio</h2>
                   <SFRadioView />
                 </div>
-                <div className='contentBody'>
-                  <h1 className='title content'>Radio Group</h1>
+                <div className='layout-content'>
+                  <h2 className='text-content'>Radio Group</h2>
                   <SFRadioGroupView />
                 </div>
-                <div className='contentBody'>
-                  <h1 className='title content'>Switches</h1>
+                <div className='layout-content'>
+                  <h2 className='text-content'>Switches</h2>
                   <SFSwitchesView />
                 </div>
               </div>
             </div>
-
-            <div className='contentContainer'>
-              <div className='contentBody item two group'>
-                <div className='contentBody item large'>
-                  <h1 className='title content'>Text Fields</h1>
+            <div className='layout'>
+              <div className='layout-columns two'>
+                <div className='layout-content'>
+                  <h1 className='text-content'>Links</h1>
+                  <SFLinksView />
+                </div>
+              </div>
+            </div>
+            <div className='layout'>
+              <div className='layout-columns two'>
+                <div className='layout-content large'>
+                  <h1 className='text-content'>Text Fields</h1>
                   <SFTextFieldsView />
                 </div>
-                <div className='contentBody item large'>
-                  <h1 className='title content'>Date Pickers</h1>
+                <div className='layout-content large'>
+                  <h1 className='text-content'>Date Pickers</h1>
                   <SFDatePickerView />
                 </div>
               </div>
             </div>
-            <div className='contentContainer'>
-              <div className='contentBody item two group'>
-                <div className='contentBody item large'>
-                  <h1 className='title content'>Text field multiline</h1>
+            <div className='layout'>
+              <div className='layout-columns two'>
+                <div className='layout-content large'>
+                  <h1 className='text-content'>Text field multiline</h1>
                   <SFTextFieldsMultilineView />
                 </div>
-                <div className='contentBody item large'>
-                  <h1 className='title content'>Simple select</h1>
+                <div className='layout-content large'>
+                  <h1 className='text-content'>Simple select</h1>
                   <SFSelectView />
-                  <h1 className='title content'>Multiple select</h1>
+                  <h1 className='text-content'>Multiple select</h1>
                   <SFMultiSelectView />
                 </div>
               </div>
             </div>
-            <div className='contentContainer'>
-              <div className='contentBody'>
-                <h1 className='title content'>Links</h1>
-                <SFLinksView />
-              </div>
-            </div>
+            <div className='layout'></div>
           </div>
         </SFPaper>
       </SFStylesProvider>

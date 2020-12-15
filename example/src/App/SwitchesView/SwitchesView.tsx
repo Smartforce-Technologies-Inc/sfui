@@ -4,7 +4,7 @@ import { SFSwitch } from 'sfui';
 
 const SFSwitchesView = () => {
   return (
-    <div className='contentBody item two'>
+    <div className='layout-columns two'>
       <SFSwitch />
       <SFSwitch label='Bagel' />
       <SFSwitch disabled />

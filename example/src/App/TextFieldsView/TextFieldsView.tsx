@@ -4,7 +4,7 @@ import { SFTextField } from 'sfui';
 
 const SFTextFieldsView = () => {
   return (
-    <div className='contentBody item one large'>
+    <div className='layout-columns one'>
       <SFTextField label='Bagel' />
       <SFTextField label='Bagel' value='This is a bagel' />
       <SFTextField label='Bagel' value='This is a bagel' disabled />

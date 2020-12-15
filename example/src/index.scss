@@ -15,87 +15,80 @@ code {
     monospace;
 }
 
-.appWrapper {
-  display: flex;
-  flex-direction: column;
-  padding: 25px 50px;
+@mixin columns($numColumns) {
+  grid-template-columns: repeat($numColumns, 1fr);
 }
 
-.appGrid {
-  display: grid;
-  column-gap: 15px;
-  row-gap: 10px;
-
-  &.col-2 {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  &.col-3 {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-
-  &.col-4 {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-  }
-}
-
-.title {
+.text {
   display: flex;
   justify-content: space-between;
-  &.main {
-    margin: 5px 10px;
+  &-header {
+    margin: 10px;
+    padding: 20px 0;
     font-size: 32px;
+    font-weight: bolder;
+    width: 100%;
+  }
+  &-title {
+    margin: 5px 10px;
+    font-size: 24px;
     font-weight: bolder;
   }
 
-  &.content {
+  &-content {
     font-size: 20px;
     font-weight: 700;
     margin-bottom: 30px;
   }
-}
 
-.contentContainer {
-  display: flex;
-  flex-direction: column;
-  row-gap: 10px;
-  padding: 25px 5px;
-
-  & .contentBody {
-    display: grid;
-    justify-items: center;
-
-    &.group {
-      justify-items: stretch;
-      align-items: stretch !important;
-    }
-
-    &.item {
-      gap: 10px 20px;
-      align-items: center;
-      justify-items: center;
-      &.one {
-        grid-template-columns: 1fr;
-      }
-      &.two {
-        grid-template-columns: 1fr 1fr;
-      }
-      &.three {
-        grid-template-columns: 1fr 1fr 1fr;
-      }
-      &.four {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-      }
-      &.five {
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-      }
-      &.large {
-        width: 95%;
-      }
-    }
+  &-code {
+    font-size: 16px;
+    font-weight: 500;
+    padding: 5px 10px;
   }
 }
 
+.layout {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+  &-body {
+    row-gap: 10px;
+    padding: 0 30px;
+  }
+  &-code {
+    background-color: azure;
+  }
+  &-content {
+    height: 100%;
+    &.large {
+      width: 100%;
+    }
+  }
+  &-columns {
+    display: grid;
+    gap: 10px 20px;
+    align-items: center;
+    justify-items: center;
+    &.one {
+      align-items: stretch !important;
+      width: 90%;
+      @include columns(1);
+    }
+    &.two {
+      @include columns(2);
+    }
+    &.three {
+      @include columns(3);
+    }
+    &.four {
+      @include columns(4);
+    }
+    &.five {
+      @include columns(5);
+    }
+  }
+}
 .contentDivider {
   margin: 10px 0;
   border: none;

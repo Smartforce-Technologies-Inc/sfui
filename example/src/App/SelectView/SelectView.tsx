@@ -21,7 +21,7 @@ const getOptions = (): SFSelectOption[] => {
 
 const SFSelectView = () => {
   return (
-    <div className='contentBody item one large'>
+    <div className='layout-columns one'>
       <SFSelect label='Bagel' options={getOptions()} />
       <SFSelect label='Bagel' options={getOptions()} value='Bagel number one' />
       <SFSelect
