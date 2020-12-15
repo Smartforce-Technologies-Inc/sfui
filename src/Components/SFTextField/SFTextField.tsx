@@ -72,6 +72,9 @@ const StyledTextField = withStyles((theme: Theme) => ({
         '&.Mui-disabled': {
           color: theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
         }
+      },
+      '& .MuiSelect-select:focus': {
+        backgroundColor: 'transparent'
       }
     },
     '& .MuiInputLabel-filled': {
