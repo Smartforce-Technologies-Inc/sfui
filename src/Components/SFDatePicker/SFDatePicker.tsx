@@ -33,7 +33,8 @@ const usePopOverStyle = makeStyles((theme: Theme) =>
     paper: {
       backgroundColor: `${
         theme.palette.type !== 'light' ? SFGrey[800] : undefined
-      }`
+      }`,
+      marginTop: '54px'
     }
   })
 );
@@ -144,22 +145,25 @@ export const SFDatePicker = ({
   const [selectedDate, handleDateChange] = React.useState<ParsableDate>(value);
   const popOverStyle: Record<'paper', string> = usePopOverStyle();
   const arrowStyle: Record<'root', string> = useButtonBackgrounds();
+  const containerRef = React.createRef<HTMLDivElement>();
 
   return (
     <FormControl fullWidth>
       <MuiPickersUtilsProvider utils={MomentUtils}>
         <StyledDatePicker
           {...props}
+          ref={containerRef}
           disableToolbar
           value={selectedDate}
           variant='inline'
           label='mm/dd/yyyy'
           inputVariant='filled'
-          translate='yes'
           format='MM/DD/YYYY'
           PopoverProps={{
             classes: popOverStyle,
-            anchorPosition: { top: 10, left: -120 }
+            container: containerRef.current,
+            anchorOrigin: { vertical: 'top', horizontal: 'left' },
+            transformOrigin: { vertical: 'top', horizontal: 'left' }
           }}
           InputProps={{ readOnly: true }}
           rightArrowButtonProps={{ classes: arrowStyle }}
