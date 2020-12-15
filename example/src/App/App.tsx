@@ -61,8 +61,10 @@ const App = () => {
             />
 
             <div className='contentContainer'>
-              <h1 className='title content'>Buttons</h1>
-              <SFButtonsView />
+              <div className='contentBody'>
+                <h1 className='title content'>Buttons</h1>
+                <SFButtonsView />
+              </div>
             </div>
 
             <div className='contentContainer'>
@@ -117,8 +119,10 @@ const App = () => {
               </div>
             </div>
             <div className='contentContainer'>
-              <h1 className='title content'>Links</h1>
-              <SFLinksView />
+              <div className='contentBody'>
+                <h1 className='title content'>Links</h1>
+                <SFLinksView />
+              </div>
             </div>
           </div>
         </SFPaper>
