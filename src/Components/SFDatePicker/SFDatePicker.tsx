@@ -15,8 +15,10 @@ import {
   KeyboardDatePickerProps
 } from '@material-ui/pickers';
 import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date';
+import { ParsableDate } from '@material-ui/pickers/constants/prop-types';
+import { hexToRgba } from '../../helpers';
 
-const ButtonBackgrounds = makeStyles((theme: Theme) =>
+const useButtonBackgrounds = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       backgroundColor: `${
@@ -25,24 +27,27 @@ const ButtonBackgrounds = makeStyles((theme: Theme) =>
     }
   })
 );
-const PopOverStyle = makeStyles((theme: Theme) =>
+
+const usePopOverStyle = makeStyles((theme: Theme) =>
   createStyles({
     paper: {
       backgroundColor: `${
         theme.palette.type !== 'light' ? SFGrey[800] : undefined
-      }`
+      }`,
+      marginTop: '54px'
     }
   })
 );
+
 const StyledDatePicker = withStyles((theme: Theme) => ({
   root: {
     boxSizing: 'border-box',
     '& .MuiFilledInput-root': {
+      backgroundColor: theme.palette.background.paper,
       border: `1px solid ${
         theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
       }`,
       borderRadius: 2,
-      backgroundColor: 'transparent',
       boxSizing: 'border-box',
       '&:before': {
         content: `none !important`
@@ -88,6 +93,22 @@ const StyledDatePicker = withStyles((theme: Theme) => ({
         '&.Mui-disabled': {
           color: `${theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]}`
         }
+      },
+      '& .MuiIconButton-root': {
+        '&:hover': {
+          backgroundColor: `${
+            theme.palette.type === 'light'
+              ? hexToRgba(SFGrey[200], 0.3)
+              : hexToRgba(SFGrey[500], 0.3)
+          }`
+        },
+        '&:active': {
+          backgroundColor: `${
+            theme.palette.type === 'light'
+              ? hexToRgba(SFGrey[200], 0.5)
+              : hexToRgba(SFGrey[500], 0.2)
+          }`
+        }
       }
     },
     '& .MuiInputLabel-filled': {
@@ -107,43 +128,49 @@ const StyledDatePicker = withStyles((theme: Theme) => ({
       }
     },
     '& .MuiFormHelperText-root': {
+      backgroundColor: 'transparent',
       '&.Mui-error': {
         color: `${theme.palette.type === 'light' ? SFRed[700] : SFRed[200]}`
       }
     }
-  },
-  '& .MuiInputAdornment-root': {
-    color: `${theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400]}`
   }
 }))(KeyboardDatePicker);
 
 export interface SFDatePickerProps extends Partial<KeyboardDatePickerProps> {}
 
 export const SFDatePicker = ({
+  value = null,
   ...props
 }: SFDatePickerProps): React.ReactElement<KeyboardDatePickerProps> => {
-  const [selectedDate, handleDateChange] = React.useState<
-    MaterialUiPickersDate
-  >(null);
-  const classes: Record<'paper', string> = PopOverStyle();
-  const backgrounds: Record<'root', string> = ButtonBackgrounds();
+  const [selectedDate, handleDateChange] = React.useState<ParsableDate>(value);
+  const popOverStyle: Record<'paper', string> = usePopOverStyle();
+  const arrowStyle: Record<'root', string> = useButtonBackgrounds();
+  const containerRef = React.createRef<HTMLDivElement>();
 
   return (
     <FormControl fullWidth>
       <MuiPickersUtilsProvider utils={MomentUtils}>
         <StyledDatePicker
           {...props}
+          ref={containerRef}
           disableToolbar
           value={selectedDate}
           variant='inline'
           label='mm/dd/yyyy'
           inputVariant='filled'
           format='MM/DD/YYYY'
-          PopoverProps={{ classes: classes }}
+          PopoverProps={{
+            classes: popOverStyle,
+            container: containerRef.current,
+            anchorOrigin: { vertical: 'top', horizontal: 'left' },
+            transformOrigin: { vertical: 'top', horizontal: 'left' }
+          }}
           InputProps={{ readOnly: true }}
-          rightArrowButtonProps={{ classes: backgrounds }}
-          leftArrowButtonProps={{ classes: backgrounds }}
-          keyboardIcon={<SFIcon icon='Callendar' size='32' />}
+          rightArrowButtonProps={{ classes: arrowStyle }}
+          rightArrowIcon={<SFIcon icon='Right-2' size='10' />}
+          leftArrowButtonProps={{ classes: arrowStyle }}
+          leftArrowIcon={<SFIcon icon='Left-2' size='10' />}
+          keyboardIcon={<SFIcon icon='Callendar' size='24' />}
           onChange={(date: MaterialUiPickersDate): void => {
             handleDateChange(date);
           }}
