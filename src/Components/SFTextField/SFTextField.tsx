@@ -57,8 +57,11 @@ const StyledTextField = withStyles((theme: Theme) => ({
       },
       '&.MuiFilledInput-multiline': {
         padding: '27px 12px 8px',
+        '&.Mui-focused': {
+          padding: '26px 11px 7px'
+        },
         '&:not(.Mui-disabled)': {
-          '&.Mui-focused, &:active, &.Mui-error': {
+          '&:active, &.Mui-error': {
             padding: '26px 11px 7px'
           }
         },
