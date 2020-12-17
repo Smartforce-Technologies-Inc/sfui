@@ -53,7 +53,10 @@ Multiline.args = {
     'Donec fringilla molestie justo pulvinar dignissim. Pellentesque sit amet ex a velit maximus aliquet sit amet id justo.' +
     ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lobortis a erat eu mattis.' +
     ' Donec fringilla molestie justo pulvinar dignissim. Pellentesque sit amet ex a velit maximus aliquet sit amet id justo.',
-  multiline: true
+  multiline: true,
+  disabled: false,
+  error: false,
+  helperText: ''
 };
 
 const AllTemplate: Story<SFTextFieldProps> = (args) => (
