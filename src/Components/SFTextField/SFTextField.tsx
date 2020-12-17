@@ -30,8 +30,10 @@ const StyledTextField = withStyles((theme: Theme) => ({
       },
       '&:active': {
         border: `2px solid ${theme.palette.primary.main}`,
-        '& .MuiFilledInput-input': {
-          padding: '26px 11px 7px'
+        '&:not(.Mui-disabled)': {
+          '& .MuiFilledInput-input': {
+            padding: '26px 11px 7px'
+          }
         }
       },
       '&.Mui-focused': {
@@ -51,18 +53,25 @@ const StyledTextField = withStyles((theme: Theme) => ({
       '&.Mui-disabled': {
         border: `1px solid ${
           theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
-        }`,
-        '& .MuiFilledInput-input': {
-          padding: '27px 12px 8px !important'
-        }
+        }`
       },
       '&.MuiFilledInput-multiline': {
-        '&.Mui-focused, &:active': {
+        padding: '27px 12px 8px',
+        '&.Mui-focused': {
           padding: '26px 11px 7px'
         },
-        padding: '27px 12px 8px',
+        '&:not(.Mui-disabled)': {
+          '&:active, &.Mui-error': {
+            padding: '26px 11px 7px'
+          }
+        },
         '& textarea.MuiFilledInput-input': {
           padding: 0
+        },
+        '&:active': {
+          '& textarea.MuiFilledInput-input': {
+            padding: 0
+          }
         }
       },
       '& .MuiFilledInput-input': {
