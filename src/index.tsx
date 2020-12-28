@@ -10,6 +10,7 @@ export * from './Components/SFPaper/SFPaper';
 export * from './Components/SFRadioGroup/SFRadio/SFRadio';
 export * from './Components/SFRadioGroup/SFRadioGroup';
 export * from './Components/SFSelect/SFSelect';
+export * from './Components/SFSpinner/SFSpinner';
 export * from './Components/SFSwitch/SFSwitch';
 export * from './Components/SFTextField/SFTextField';
 export * from './Components/SFTable/SFTable';
