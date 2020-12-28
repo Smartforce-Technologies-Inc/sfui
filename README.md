@@ -32,7 +32,7 @@ class Example extends Component {
 
 You can try a demo app deployed into github pages [here](https://adventoscorp.github.io/sfui/).
 
-## Development tool
+## Development tools
 
 - We have based our react components library on [create-react-library](https://js.coach/package/create-react-library) project.
 - We have based ours react components on [Material-UI](https://material-ui.com/) library. Also we have used:
