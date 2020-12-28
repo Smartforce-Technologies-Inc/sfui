@@ -1,8 +1,8 @@
 import React from 'react';
-import { withStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
 import { CircularProgress, CircularProgressProps } from '@material-ui/core';
 
-const StyledSpinner = withStyles((theme: Theme) => ({
+const StyledSpinner = withStyles(() => ({
   root: {}
 }))(CircularProgress);
 
