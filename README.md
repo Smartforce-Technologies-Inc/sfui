@@ -17,7 +17,6 @@ npm install --save sfui
 import React, { Component } from 'react';
 
 import MyComponent from 'sfui';
-import 'sfui/dist/index.css';
 
 class Example extends Component {
   render() {

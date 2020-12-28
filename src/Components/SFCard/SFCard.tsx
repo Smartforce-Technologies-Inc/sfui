@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { CircularProgress } from '@material-ui/core';
+import { SFSpinner } from '../SFSpinner/SFSpinner';
 import { SFPaper } from '../SFPaper/SFPaper';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -64,7 +64,7 @@ export const SFCard = ({
           <div
             className={`loader ${loadingAtTop === true ? 'top' : undefined}`}
           >
-            <CircularProgress />
+            <SFSpinner />
             <p>Loading...</p>
           </div>
         ) : (
