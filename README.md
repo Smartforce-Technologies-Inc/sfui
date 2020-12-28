@@ -44,7 +44,7 @@ You can try a demo app deployed into github pages [here](https://adventoscorp.gi
 - We have added support for [Sass](https://sass-lang.com/) and [Css Modules](https://github.com/css-modules/css-modules)
 - We have added [Github Actions](https://docs.github.com/en/free-pro-team@latest/actions) for CI.
 
-## Development Scripts
+## Development scripts
 
 ### Into the root folder
 
