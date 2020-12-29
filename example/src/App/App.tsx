@@ -18,8 +18,10 @@ import { SFLinksView } from './LinksView/LinksView';
 import { SFMultiSelectView } from './MultiSelectView/MultiSelectView';
 import { SFRadioView } from './RadioView/RadioView';
 import { SFRadioGroupView } from './RadioGroupView/RadioGroupView';
-import { SFSwitchesView } from './SwitchesView/SwitchesView';
+
 import { SFSelectView } from './SelectView/SelectView';
+import { SFSpinnerView } from './SpinnerView/SpinnerView';
+import { SFSwitchesView } from './SwitchesView/SwitchesView';
 import { SFTextFieldsView } from './TextFieldsView/TextFieldsView';
 import { SFTextFieldsMultilineView } from './TextFieldsMultilineView/TextFieldsMultilineView';
 
@@ -46,87 +48,80 @@ const App = () => {
             backgroundColor: theme.palette.background.default
           }}
         >
-          <div className='layout-body'>
-            <h1 className='text text-header'>
-              SmartForce UI Library{' '}
-              <SFSwitch
-                label={switchLabel}
-                checked={nightMode}
-                onChange={toggleSwitch}
-              />
-            </h1>
-
-            <hr
-              className='contentDivider'
-              style={{ borderColor: theme.palette.primary.main }}
+          <h1 className='textHeader'>
+            SmartForce UI Library{' '}
+            <SFSwitch
+              label={switchLabel}
+              checked={nightMode}
+              onChange={toggleSwitch}
             />
-
-            <div className='layout'>
-              <div className='layout-content'>
-                <h2 className='text-title'>Buttons</h2>
-                <SFButtonsView />
-              </div>
+          </h1>
+          <hr
+            className='contentDivider'
+            style={{ borderColor: theme.palette.primary.main }}
+          />
+          <div className='content'>
+            <div className='section'>
+              <h4 className='title'>Buttons</h4>
+              <SFButtonsView />
             </div>
-
-            <div className='layout'>
-              <div className='layout-columns five'>
-                <div className='layout-content'>
-                  <h2 className='text-content'>Icon button</h2>
-                  <SFIconButtonView />
-                </div>
-                <div className='layout-content'>
-                  <h2 className='text-content'>Checkboxes</h2>
-                  <SFCheckboxesView />
-                </div>
-                <div className='layout-content'>
-                  <h2 className='text-content'>Radio</h2>
-                  <SFRadioView />
-                </div>
-                <div className='layout-content'>
-                  <h2 className='text-content'>Radio Group</h2>
-                  <SFRadioGroupView />
-                </div>
-                <div className='layout-content'>
-                  <h2 className='text-content'>Switches</h2>
-                  <SFSwitchesView />
-                </div>
-              </div>
+            <div className='section'>
+              <h4 className='title'>Links</h4>
+              <SFLinksView />
             </div>
-            <div className='layout'>
-              <div className='layout-columns two'>
-                <div className='layout-content'>
-                  <h1 className='text-content'>Links</h1>
-                  <SFLinksView />
-                </div>
-              </div>
+            <div className='section'>
+              <h4 className='title'>Progress Circular indeterminate</h4>
+              <SFSpinnerView />
             </div>
-            <div className='layout'>
-              <div className='layout-columns two'>
-                <div className='layout-content large'>
-                  <h1 className='text-content'>Text Fields</h1>
-                  <SFTextFieldsView />
-                </div>
-                <div className='layout-content large'>
-                  <h1 className='text-content'>Date Pickers</h1>
-                  <SFDatePickerView />
-                </div>
-              </div>
+          </div>
+          <div className='content'>
+            <div className='section'>
+              <h4>Icon Button</h4>
+              <SFIconButtonView />
             </div>
-            <div className='layout'>
-              <div className='layout-columns two'>
-                <div className='layout-content large'>
-                  <h1 className='text-content'>Text field multiline</h1>
-                  <SFTextFieldsMultilineView />
-                </div>
-                <div className='layout-content large'>
-                  <h1 className='text-content'>Simple select</h1>
-                  <SFSelectView />
-                  <h1 className='text-content'>Multiple select</h1>
-                  <SFMultiSelectView />
-                </div>
-              </div>
+            <div className='section'>
+              <h4>Checkbox</h4>
+              <SFCheckboxesView />
             </div>
-            <div className='layout'></div>
+            <div className='section'>
+              <h4>Radio button</h4>
+              <SFRadioView />
+            </div>
+            <div className='section'>
+              <h4>Radio group button</h4>
+              <SFRadioGroupView />
+            </div>
+            <div className='section'>
+              <h4>Switch</h4>
+              <SFSwitchesView />
+            </div>
+          </div>
+          <div className='content'>
+            <div className='section fullSize'>
+              <h4>Text field</h4>
+              <SFTextFieldsView />
+            </div>
+            <div className='section fullSize'>
+              <h4>Date picker</h4>
+              <SFDatePickerView />
+            </div>
+          </div>
+          <div className='content'>
+            <div className='section fullSize'>
+              <h4>Text field multiline</h4>
+              <SFTextFieldsMultilineView />
+            </div>
+            <div className='section fullSize'></div>
+          </div>
+          <div className='content'>
+            <div className='section fullSize'>
+              <h4>Simple Select</h4>
+              <SFSelectView />
+            </div>
+            <div className='section fullSize'>
+              <h4>Multiline Select</h4>
+              <SFMultiSelectView />
+            </div>
           </div>
         </SFPaper>
       </SFStylesProvider>

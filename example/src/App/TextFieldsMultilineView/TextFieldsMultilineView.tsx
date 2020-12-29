@@ -4,7 +4,7 @@ import { SFTextField } from 'sfui';
 
 const SFTextFieldsMultilineView = () => {
   return (
-    <div className='layout-columns one'>
+    <div className='content-inner oneColumn'>
       <SFTextField multiline label='Bagel' />
       <SFTextField
         multiline

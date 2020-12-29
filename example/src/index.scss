@@ -1,8 +1,12 @@
 @import '~sfui/dist/styles/SFColors/SFColors.module.scss';
 
-body {
+body,
+html {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -16,81 +20,68 @@ code {
 }
 
 @mixin columns($numColumns) {
+  display: grid;
+  justify-items: start;
   grid-template-columns: repeat($numColumns, 1fr);
 }
 
-.text {
+.textHeader {
+  margin: 0;
+  padding: 10px 30px;
   display: flex;
   justify-content: space-between;
-  &-header {
-    margin: 10px;
-    padding: 20px 0;
-    font-size: 32px;
-    font-weight: bolder;
-    width: 100%;
-  }
-  &-title {
-    margin: 5px 10px;
-    font-size: 24px;
-    font-weight: bolder;
-  }
-
-  &-content {
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 30px;
-  }
-
-  &-code {
-    font-size: 16px;
-    font-weight: 500;
-    padding: 5px 10px;
-  }
 }
 
-.layout {
+.content {
+  padding: 30px;
   display: flex;
-  flex-direction: column;
-  padding: 20px 0;
-  &-body {
-    row-gap: 10px;
-    padding: 0 30px;
-  }
-  &-code {
-    background-color: azure;
-  }
-  &-content {
-    height: 100%;
-    &.large {
+  justify-content: space-between;
+  & .section {
+    display: flex;
+    flex-direction: column;
+    margin: 0 30px 0 0;
+
+    &.fullSize {
       width: 100%;
     }
-  }
-  &-columns {
-    display: grid;
-    gap: 10px 20px;
-    align-items: center;
-    justify-items: center;
-    &.one {
-      align-items: stretch !important;
-      width: 90%;
-      @include columns(1);
+
+    & .title {
+      font-weight: 500;
     }
-    &.two {
-      @include columns(2);
-    }
-    &.three {
-      @include columns(3);
-    }
-    &.four {
-      @include columns(4);
-    }
-    &.five {
-      @include columns(5);
+    & .content-inner {
+      display: flex;
+
+      & .buttons {
+        margin-right: 63px;
+        align-content: start;
+        gap: 10px 15px;
+        @include columns(3);
+      }
+
+      &.links {
+        gap: 10px 15px;
+        align-items: end;
+        @include columns(2);
+      }
+
+      &.oneColumn {
+        gap: 10px 0;
+        @include columns(1);
+      }
+
+      &.twoColumns {
+        @include columns(2);
+      }
+
+      &.fourColumns {
+        @include columns(4);
+      }
     }
   }
 }
+
 .contentDivider {
-  margin: 10px 0;
+  margin: 0;
   border: none;
   border-bottom: 1px solid $sf-grey-600;
 }

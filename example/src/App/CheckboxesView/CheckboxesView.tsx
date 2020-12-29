@@ -4,7 +4,7 @@ import { SFCheckbox } from 'sfui';
 
 const SFCheckboxesView = () => {
   return (
-    <div className='layout-columns two'>
+    <div className='content-inner twoColumns'>
       <SFCheckbox />
       <SFCheckbox label='Bagel' />
       <SFCheckbox disabled />

@@ -4,7 +4,7 @@ import { SFLink } from 'sfui';
 
 const SFLinksView = () => {
   return (
-    <div className='layout-columns two'>
+    <div className='content-inner links'>
       <SFLink sfSize='medium' color='primary'>
         I am a link example
       </SFLink>

@@ -21,7 +21,7 @@ const getOptions = (): SFMultiSelectOption[] => {
 
 const SFMultiSelectView = () => {
   return (
-    <div className='layout-columns one'>
+    <div className='content-inner oneColumn'>
       <SFMultiSelect label='Bagel' options={getOptions()} defaultValue={[]} />
       <SFMultiSelect
         label='Bagel'

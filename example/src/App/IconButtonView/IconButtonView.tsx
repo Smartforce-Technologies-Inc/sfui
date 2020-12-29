@@ -4,7 +4,7 @@ import { SFIconButton } from 'sfui';
 
 const SFIconButtonView = () => {
   return (
-    <div className='layout-columns four'>
+    <div className='content-inner fourColumns'>
       <SFIconButton sfIcon='Callendar' sfSize='tiny' />
       <SFIconButton sfIcon='Callendar' sfSize='small' />
       <SFIconButton sfIcon='Callendar' sfSize='medium' />
