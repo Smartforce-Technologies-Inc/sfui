@@ -4,7 +4,7 @@ import { SFDatePicker } from 'sfui';
 
 const SFDatePickerView = () => {
   return (
-    <div className='content-inner oneColumn'>
+    <div className='fullSize'>
       <SFDatePicker label='Bagel' />
       <SFDatePicker label='Bagel' value={Date.now()} />
       <SFDatePicker label='Bagel' value={Date.now()} disabled />

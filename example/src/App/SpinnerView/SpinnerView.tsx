@@ -4,8 +4,10 @@ import { SFSpinner } from 'sfui';
 
 const SFSpinnerView = () => {
   return (
-    <div className='content-inner'>
-      <SFSpinner />
+    <div className='links'>
+      <div className='row'>
+        <SFSpinner />
+      </div>
     </div>
   );
 };

@@ -24,6 +24,7 @@ import { SFSpinnerView } from './SpinnerView/SpinnerView';
 import { SFSwitchesView } from './SwitchesView/SwitchesView';
 import { SFTextFieldsView } from './TextFieldsView/TextFieldsView';
 import { SFTextFieldsMultilineView } from './TextFieldsMultilineView/TextFieldsMultilineView';
+import { SFTableView } from './TableView/TableView';
 
 const App = () => {
   const [nightMode, setNightMode] = useState(false);
@@ -60,7 +61,7 @@ const App = () => {
             className='contentDivider'
             style={{ borderColor: theme.palette.primary.main }}
           />
-          <div className='content'>
+          <div className='content firstSection'>
             <div className='section'>
               <h4 className='title'>Buttons</h4>
               <SFButtonsView />
@@ -74,53 +75,58 @@ const App = () => {
               <SFSpinnerView />
             </div>
           </div>
-          <div className='content'>
+          <div className='content secondSection'>
             <div className='section'>
-              <h4>Icon Button</h4>
+              <h4 className='title'>Icon Button</h4>
               <SFIconButtonView />
             </div>
             <div className='section'>
-              <h4>Checkbox</h4>
+              <h4 className='title'>Checkbox</h4>
               <SFCheckboxesView />
             </div>
             <div className='section'>
-              <h4>Radio button</h4>
+              <h4 className='title'>Radio button</h4>
               <SFRadioView />
             </div>
             <div className='section'>
-              <h4>Radio group button</h4>
+              <h4 className='title'>Radio group button</h4>
               <SFRadioGroupView />
             </div>
             <div className='section'>
-              <h4>Switch</h4>
+              <h4 className='title'>Switch</h4>
               <SFSwitchesView />
             </div>
           </div>
-          <div className='content'>
-            <div className='section fullSize'>
-              <h4>Text field</h4>
+          <div className='content thirdSection'>
+            <div className='section'>
+              <h4 className='title'>Text field</h4>
               <SFTextFieldsView />
             </div>
-            <div className='section fullSize'>
-              <h4>Date picker</h4>
+            <div className='section'>
+              <h4 className='title'>Date picker</h4>
               <SFDatePickerView />
             </div>
           </div>
-          <div className='content'>
-            <div className='section fullSize'>
-              <h4>Text field multiline</h4>
+          <div className='content fourthSection'>
+            <div className='section'>
+              <h4 className='title'>Text field multiline</h4>
               <SFTextFieldsMultilineView />
             </div>
-            <div className='section fullSize'></div>
           </div>
-          <div className='content'>
-            <div className='section fullSize'>
-              <h4>Simple Select</h4>
+          <div className='content thirdSection'>
+            <div className='section'>
+              <h4 className='title'>Simple Select</h4>
               <SFSelectView />
             </div>
-            <div className='section fullSize'>
-              <h4>Multiline Select</h4>
+            <div className='section'>
+              <h4 className='title'>Multiline Select</h4>
               <SFMultiSelectView />
+            </div>
+          </div>
+          <div className='content fifthSection'>
+            <div className='section'>
+              <h4>Tables</h4>
+              <SFTableView />
             </div>
           </div>
         </SFPaper>
