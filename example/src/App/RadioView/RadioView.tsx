@@ -4,7 +4,7 @@ import { SFRadio } from 'sfui';
 
 const SFRadioView = () => {
   return (
-    <div className='radio'>
+    <div className='column'>
       <div className='row'>
         <SFRadio />
         <SFRadio label='Bagel' />

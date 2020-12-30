@@ -91,39 +91,7 @@ code {
     gap: 0 25px;
 
     .section {
-      .iconButtons {
-        .row {
-          display: flex;
-          gap: 0 20px;
-        }
-      }
-
-      .checkBoxes {
-        padding: 0 12px;
-        .row {
-          display: flex;
-          gap: 0 15px;
-        }
-      }
-
-      .radio {
-        padding: 0 6px;
-        .row {
-          display: flex;
-          gap: 0 15px;
-        }
-      }
-
-      .radioGroup {
-        padding: 0 15px;
-        .row {
-          display: flex;
-          gap: 0 15px;
-        }
-      }
-
-      .switches {
-        padding: 0 12px;
+      .column {
         .row {
           display: flex;
           gap: 0 15px;
@@ -142,9 +110,7 @@ code {
         display: flex;
         flex-direction: column;
         width: 100%;
-        div {
-          margin: 0 0 3px 0;
-        }
+        gap: 10px 0;
       }
     }
   }
@@ -155,14 +121,13 @@ code {
     gap: 0 20px;
 
     .section {
-      grid-template-rows: 1fr 7fr;
+      grid-template-rows: 1fr 9fr;
+
       .fullSize {
         width: 100%;
         display: flex;
         flex-direction: column;
-        div {
-          margin: 0 0 3px 0;
-        }
+        gap: 10px 0;
       }
     }
   }

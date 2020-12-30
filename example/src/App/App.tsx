@@ -13,6 +13,7 @@ import {
 import { SFButtonsView } from './ButtonsView/ButtonsView';
 import { SFCheckboxesView } from './CheckboxesView/CheckboxesView';
 import { SFDatePickerView } from './DatePickerView/DatePickerView';
+import { SFDialogsView } from './DialogsView/DialogsView';
 import { SFIconButtonView } from './IconButtonView/IconButtonView';
 import { SFLinksView } from './LinksView/LinksView';
 import { SFMultiSelectView } from './MultiSelectView/MultiSelectView';
@@ -71,7 +72,7 @@ const App = () => {
               <SFLinksView />
             </div>
             <div className='section'>
-              <h4 className='title'>Progress Circular indeterminate</h4>
+              <h4 className='title'>Progress Circular Indeterminate</h4>
               <SFSpinnerView />
             </div>
           </div>
@@ -85,11 +86,11 @@ const App = () => {
               <SFCheckboxesView />
             </div>
             <div className='section'>
-              <h4 className='title'>Radio button</h4>
+              <h4 className='title'>Radio Button</h4>
               <SFRadioView />
             </div>
             <div className='section'>
-              <h4 className='title'>Radio group button</h4>
+              <h4 className='title'>Radio Group Button</h4>
               <SFRadioGroupView />
             </div>
             <div className='section'>
@@ -99,18 +100,22 @@ const App = () => {
           </div>
           <div className='content thirdSection'>
             <div className='section'>
-              <h4 className='title'>Text field</h4>
+              <h4 className='title'>Text Field</h4>
               <SFTextFieldsView />
             </div>
             <div className='section'>
-              <h4 className='title'>Date picker</h4>
+              <h4 className='title'>Date Picker</h4>
               <SFDatePickerView />
             </div>
           </div>
           <div className='content fourthSection'>
             <div className='section'>
-              <h4 className='title'>Text field multiline</h4>
+              <h4 className='title'>Text Field Multiline</h4>
               <SFTextFieldsMultilineView />
+            </div>
+            <div className='section'>
+              <h4 className='title'>Dialog</h4>
+              <SFDialogsView />
             </div>
           </div>
           <div className='content thirdSection'>
