@@ -4,20 +4,28 @@ import {
   SFDialogProps,
   SFDialogActions,
   SFDialogContent,
+  SFDialogContentText,
   SFDialogTitle
 } from '../SFDialog/SFDialog';
-import { SFButtonProps } from '../SFButton/SFButton';
+import { SFButton, SFButtonProps } from '../SFButton/SFButton';
 
 export interface SFAlertProps extends SFDialogProps {
   title: string;
-  leftButton?: React.Component<SFButtonProps>;
-  rightButton?: React.Component<SFButtonProps>;
+  content: string;
+  leftAction?: SFAlertAction;
+  rightAction?: SFAlertAction;
+}
+
+export interface SFAlertAction {
+  label: string;
+  buttonProps?: SFButtonProps;
 }
 
 export const SFAlert = ({
   title,
-  leftButton,
-  rightButton,
+  content,
+  leftAction,
+  rightAction,
   children,
   ...props
 }: SFAlertProps): React.ReactElement<SFAlertProps> => {
@@ -25,10 +33,25 @@ export const SFAlert = ({
     <div>
       <SFDialog {...props}>
         <SFDialogTitle>{title}</SFDialogTitle>
-        <SFDialogContent>{children}</SFDialogContent>
+
+        <SFDialogContent>
+          <SFDialogContentText>{content}</SFDialogContentText>
+
+          {children}
+        </SFDialogContent>
+
         <SFDialogActions>
-          {leftButton !== undefined && leftButton}
-          {rightButton !== undefined && rightButton}
+          {leftAction && (
+            <SFButton sfColor='grey' variant='text' {...leftAction.buttonProps}>
+              {leftAction.label}
+            </SFButton>
+          )}
+
+          {rightAction && (
+            <SFButton sfColor='blue' {...rightAction.buttonProps}>
+              {rightAction.label}
+            </SFButton>
+          )}
         </SFDialogActions>
       </SFDialog>
     </div>
