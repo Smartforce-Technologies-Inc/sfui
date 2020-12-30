@@ -54,8 +54,8 @@ export const FormDialog = (args: SFAlertProps): JSX.Element => {
       title='Form dialog title'
       rightAction={{ label: 'Medium', buttonProps: { disabled } }}
     >
-      <br />
       <SFTextField
+        style={{ marginTop: 20 }}
         label='Bagel'
         placeholder='Please write something to enable button'
         onChange={(event): void => setDisabled(event.target.value.length === 0)}
