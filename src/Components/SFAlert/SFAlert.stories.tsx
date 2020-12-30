@@ -1,20 +1,35 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { SFAlert, SFAlertProps } from './SFAlert';
-import { SFButton } from '../SFButton/SFButton';
+import { SFTextField } from '../SFTextField/SFTextField';
 
 export default {
   title: 'Components/SFAlert',
   component: SFAlert,
   args: {
-    title: 'Lorem Ipsum',
-    leftButton: <SFButton sfColor='red'>Cancel</SFButton>,
-    rightButton: <SFButton sfColor='blue'>Agree</SFButton>,
+    title: 'Alert dialog title',
+    content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+      Mauris lobortis a erat eu mattis.`,
     open: true
   },
   argTypes: {
-    onClose: { action: 'onClose' },
-    actions: {
+    onClose: {
+      table: {
+        disable: true
+      },
+      action: 'onClose'
+    },
+    ref: {
+      table: {
+        disable: true
+      }
+    },
+    leftAction: {
+      table: {
+        disable: true
+      }
+    },
+    rightAction: {
       table: {
         disable: true
       }
@@ -22,22 +37,29 @@ export default {
   }
 } as Meta;
 
-const Template: Story<SFAlertProps> = (args) => (
-  <SFAlert {...args}>
-    <div>
-      <p>
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book. It has survived not only five
-        centuries, but also the leap into electronic typesetting, remaining
-        essentially unchanged. It was popularised in the 1960s with the release
-        of Letraset sheets containing Lorem Ipsum passages, and more recently
-        with desktop publishing software like Aldus PageMaker including versions
-        of Lorem Ipsum.
-      </p>
-    </div>
-  </SFAlert>
+export const AlertDialog = (args: SFAlertProps): JSX.Element => (
+  <SFAlert
+    leftAction={{ label: 'Medium' }}
+    rightAction={{ label: 'Medium' }}
+    {...args}
+  />
 );
 
-export const Default = Template.bind({});
+export const FormDialog = (args: SFAlertProps): JSX.Element => {
+  const [disabled, setDisabled] = React.useState<boolean>(true);
+
+  return (
+    <SFAlert
+      {...args}
+      title='Form dialog title'
+      rightAction={{ label: 'Medium', buttonProps: { disabled } }}
+    >
+      <br />
+      <SFTextField
+        label='Bagel'
+        placeholder='Please write something to enable button'
+        onChange={(event): void => setDisabled(event.target.value.length === 0)}
+      />
+    </SFAlert>
+  );
+};

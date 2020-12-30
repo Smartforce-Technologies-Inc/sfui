@@ -1,3 +1,4 @@
+export * from './Components/SFAlert/SFAlert';
 export * from './Components/SFButton/SFButton';
 export * from './Components/SFCard/SFCard';
 export * from './Components/SFCheckbox/SFCheckbox';
