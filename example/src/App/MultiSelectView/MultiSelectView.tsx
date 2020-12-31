@@ -1,8 +1,6 @@
 import React from 'react';
-
-import { SFSelect, SFSelectOption } from 'sfui';
-
-const getOptions = (): SFSelectOption[] => {
+import { SFMultiSelect, SFMultiSelectOption } from 'sfui';
+const getOptions = (): SFMultiSelectOption[] => {
   return [
     {
       label: 'Bagel number one',
@@ -19,31 +17,34 @@ const getOptions = (): SFSelectOption[] => {
   ];
 };
 
-const SFSelectView = () => {
+const SFMultiSelectView = () => {
   return (
     <div className='fullSize'>
-      <SFSelect label='Bagel' options={getOptions()} />
-      <SFSelect label='Bagel' options={getOptions()} value='Bagel number one' />
-      <SFSelect
+      <SFMultiSelect label='Bagel' options={getOptions()} defaultValue={[]} />
+      <SFMultiSelect
         label='Bagel'
         options={getOptions()}
-        value='Bagel number one'
+        defaultValue={['Bagel number one']}
+      />
+      <SFMultiSelect
+        label='Bagel'
+        options={getOptions()}
+        defaultValue={['Bagel number one']}
         disabled
       />
-      <SFSelect
+      <SFMultiSelect
         label='Bagel'
         options={getOptions()}
-        value='Bagel number one'
+        defaultValue={['Bagel number one']}
         error
       />
-      <SFSelect
+      <SFMultiSelect
         label='Bagel'
         options={getOptions()}
-        value='Bagel number one'
+        defaultValue={['Bagel number one']}
         helperText='Helper Message'
       />
     </div>
   );
 };
-
-export { SFSelectView };
+export { SFMultiSelectView };
