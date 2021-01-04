@@ -42,8 +42,9 @@ const usePopOverStyle = makeStyles((theme: Theme) =>
 const StyledDatePicker = withStyles((theme: Theme) => ({
   root: {
     boxSizing: 'border-box',
-    height: '56px',
+
     '& .MuiFilledInput-root': {
+      height: '56px',
       backgroundColor: theme.palette.background.paper,
       border: `1px solid ${
         theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]

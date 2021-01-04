@@ -63,5 +63,9 @@ export const SFRadio = ({
       </FormControl>
     );
   }
-  return <StyledRadio {...props} color='primary' disableRipple />;
+  return (
+    <FormControl>
+      <StyledRadio {...props} color='primary' disableRipple />
+    </FormControl>
+  );
 };
