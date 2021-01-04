@@ -59,7 +59,6 @@ const StyledMenuItem = withStyles((theme: Theme) => ({
 
 const useMenuStyles = makeStyles({
   paper: {
-    marginTop: '63px',
     borderRadius: '0px 0px 2px 2px'
   }
 });

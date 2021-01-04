@@ -14,8 +14,6 @@ import {
   MuiPickersUtilsProvider,
   KeyboardDatePickerProps
 } from '@material-ui/pickers';
-import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date';
-import { ParsableDate } from '@material-ui/pickers/constants/prop-types';
 import { hexToRgba } from '../../helpers';
 
 const useButtonBackgrounds = makeStyles((theme: Theme) =>
@@ -33,8 +31,7 @@ const usePopOverStyle = makeStyles((theme: Theme) =>
     paper: {
       backgroundColor: `${
         theme.palette.type !== 'light' ? SFGrey[800] : undefined
-      }`,
-      marginTop: '54px'
+      }`
     }
   })
 );
@@ -138,13 +135,12 @@ const StyledDatePicker = withStyles((theme: Theme) => ({
   }
 }))(KeyboardDatePicker);
 
-export interface SFDatePickerProps extends Partial<KeyboardDatePickerProps> {}
+export interface SFDatePickerProps extends KeyboardDatePickerProps {}
 
 export const SFDatePicker = ({
   value = null,
   ...props
 }: SFDatePickerProps): React.ReactElement<KeyboardDatePickerProps> => {
-  const [selectedDate, handleDateChange] = React.useState<ParsableDate>(value);
   const popOverStyle: Record<'paper', string> = usePopOverStyle();
   const arrowStyle: Record<'root', string> = useButtonBackgrounds();
   const containerRef = React.createRef<HTMLDivElement>();
@@ -156,7 +152,7 @@ export const SFDatePicker = ({
           {...props}
           ref={containerRef}
           disableToolbar
-          value={selectedDate}
+          value={value}
           variant='inline'
           label='mm/dd/yyyy'
           inputVariant='filled'
@@ -173,9 +169,6 @@ export const SFDatePicker = ({
           leftArrowButtonProps={{ classes: arrowStyle }}
           leftArrowIcon={<SFIcon icon='Left-2' size='10' />}
           keyboardIcon={<SFIcon icon='Callendar' size='24' />}
-          onChange={(date: MaterialUiPickersDate): void => {
-            handleDateChange(date);
-          }}
         />
       </MuiPickersUtilsProvider>
     </FormControl>
