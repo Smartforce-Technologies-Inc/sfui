@@ -6,58 +6,71 @@ import { SFTextField, SFTextFieldProps } from './SFTextField';
 
 export default {
   title: 'Components/SFTextField',
-  component: SFTextField
+  component: SFTextField,
+  args: {
+    label: 'Bagel'
+  },
+  argTypes: {
+    onChange: {
+      action: 'onChange',
+      table: {
+        disable: true
+      }
+    },
+    value: {
+      defaultValue: 'Some text',
+      control: {
+        type: 'text'
+      }
+    },
+    type: {
+      defaultValue: 'text',
+      control: {
+        type: 'select',
+        options: ['text', 'password']
+      }
+    },
+    disabled: {
+      control: {
+        type: 'boolean'
+      }
+    },
+    error: {
+      control: {
+        type: 'boolean'
+      }
+    },
+    helperText: {
+      control: {
+        type: 'text'
+      }
+    },
+    multiline: {
+      control: {
+        type: 'boolean'
+      }
+    },
+    defaultValue: {
+      table: {
+        disable: true
+      }
+    },
+    variant: {
+      table: {
+        disable: true
+      }
+    },
+    ref: {
+      table: {
+        disable: true
+      }
+    }
+  }
 } as Meta;
 
 const Template: Story<SFTextFieldProps> = (args) => <SFTextField {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {
-  label: 'Bagel',
-  defaultValue: 'Text Value'
-};
-
-export const Error = Template.bind({});
-Error.args = {
-  label: 'Bagel',
-  error: true,
-  defaultValue: 'Wrong Value',
-  helperText: 'Incorrect value'
-};
-
-export const Password = Template.bind({});
-Password.args = {
-  label: 'Bagel',
-  defaultValue: 'Text Value',
-  type: 'password'
-};
-
-export const Disabled = Template.bind({});
-Disabled.args = {
-  label: 'Bagel',
-  defaultValue: 'Text Value',
-  disabled: true
-};
-
-export const Empty = Default.bind({});
-Empty.args = {
-  label: 'Bagel',
-  defaultValue: ''
-};
-
-export const Multiline = Default.bind({});
-Multiline.args = {
-  label: 'Bagel',
-  defaultValue:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lobortis a erat eu mattis. ' +
-    'Donec fringilla molestie justo pulvinar dignissim. Pellentesque sit amet ex a velit maximus aliquet sit amet id justo.' +
-    ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lobortis a erat eu mattis.' +
-    ' Donec fringilla molestie justo pulvinar dignissim. Pellentesque sit amet ex a velit maximus aliquet sit amet id justo.',
-  multiline: true,
-  disabled: false,
-  error: false,
-  helperText: ''
-};
 
 const AllTemplate: Story<SFTextFieldProps> = (args) => (
   <div
@@ -68,14 +81,15 @@ const AllTemplate: Story<SFTextFieldProps> = (args) => (
     }}
   >
     <SFTextField {...args} />
-    <SFTextField error helperText='Incorrect value' {...args} />
-    <SFTextField disabled {...args} />
-    <SFTextField {...args} defaultValue='' helperText='Helper message' />
+    <SFTextField {...args} error helperText='Incorrect value' />
+    <SFTextField {...args} disabled />
+    <SFTextField {...args} value='' helperText='Helper message' />
   </div>
 );
 
 export const AllTogether = AllTemplate.bind({});
-AllTogether.args = {
-  label: 'Bagel',
-  defaultValue: 'Text Value'
+AllTogether.parameters = {
+  controls: {
+    disable: true
+  }
 };
