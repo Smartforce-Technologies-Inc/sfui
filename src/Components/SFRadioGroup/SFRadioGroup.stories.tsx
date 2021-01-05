@@ -8,11 +8,6 @@ import {
   SFRadioOptionsProps
 } from './SFRadioGroup';
 
-export default {
-  title: 'Components/SFRadioGroup',
-  component: SFRadioGroup
-} as Meta;
-
 const options: SFRadioOptionsProps[] = [
   { value: 'Bagel 1', label: 'Bagel 1', disabled: false },
   { value: 'Bagel 2', label: 'Bagel 2', disabled: false },
@@ -20,10 +15,32 @@ const options: SFRadioOptionsProps[] = [
   { value: 'Others', label: 'Others', disabled: true }
 ];
 
+export default {
+  title: 'Components/SFRadioGroup',
+  component: SFRadioGroup,
+  args: {
+    options,
+    label: 'Bagel'
+  },
+  argTypes: {
+    color: {
+      table: {
+        disable: true
+      }
+    },
+    options: {
+      table: {
+        disable: true
+      }
+    },
+    ref: {
+      table: {
+        disable: true
+      }
+    }
+  }
+} as Meta;
+
 const Template: Story<SFRadioGroupProps> = (args) => <SFRadioGroup {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {
-  label: 'Bagel',
-  options: options
-};
