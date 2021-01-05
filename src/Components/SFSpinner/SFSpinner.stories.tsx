@@ -4,14 +4,22 @@ import { SFSpinner, SFSpinnerProps } from './SFSpinner';
 
 export default {
   title: 'Components/SFSpinner',
-  component: SFSpinner
+  component: SFSpinner,
+  argTypes: {
+    size: {
+      defaultValue: 40,
+      control: {
+        type: 'number'
+      }
+    },
+    ref: {
+      table: {
+        disable: true
+      }
+    }
+  }
 } as Meta;
 
 const Template: Story<SFSpinnerProps> = (args) => <SFSpinner {...args} />;
 
 export const Default = Template.bind({});
-Default.parameters = {
-  controls: {
-    disable: true
-  }
-};
