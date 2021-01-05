@@ -20,10 +20,10 @@ export default {
       }
     },
     color: {
-      defaultValue: 'default',
+      defaultValue: 'inherited',
       control: {
         type: 'radio',
-        options: ['default', 'primary']
+        options: ['inherited', 'primary']
       }
     },
     ref: {
@@ -44,13 +44,6 @@ export default {
   }
 } as Meta;
 
-export const Default: Story = ({ text, color, ...args }) => {
-  return (
-    <SFLink
-      {...(args as SFLinkProps)}
-      color={color === 'default' ? undefined : color}
-    >
-      {text}
-    </SFLink>
-  );
+export const Default: Story = ({ text, ...args }) => {
+  return <SFLink {...(args as SFLinkProps)}>{text}</SFLink>;
 };
