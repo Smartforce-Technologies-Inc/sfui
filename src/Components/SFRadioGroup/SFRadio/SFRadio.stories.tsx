@@ -6,18 +6,49 @@ import { SFRadio, SFRadioProps } from './SFRadio';
 
 export default {
   title: 'Components/SFRadio',
-  component: SFRadio
+  component: SFRadio,
+  args: {
+    label: 'Bagel'
+  },
+  argTypes: {
+    checked: {
+      control: {
+        type: 'boolean'
+      }
+    },
+    disabled: {
+      control: {
+        type: 'boolean'
+      }
+    },
+    ref: {
+      table: {
+        disable: true
+      }
+    },
+    action: {
+      table: {
+        disable: true
+      }
+    },
+    focusVisibleClassName: {
+      table: {
+        disable: true
+      }
+    },
+    onFocusVisible: {
+      table: {
+        disable: true
+      }
+    },
+    TouchRippleProps: {
+      table: {
+        disable: true
+      }
+    }
+  }
 } as Meta;
 
 const Template: Story<SFRadioProps> = (args) => <SFRadio {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {
-  label: 'Bagel'
-};
-
-export const Disabled = Template.bind({});
-Disabled.args = {
-  label: 'Bagel',
-  disabled: true
-};

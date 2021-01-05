@@ -212,3 +212,8 @@ const Template: Story = () => (
 );
 
 export const Palette = Template.bind({});
+Palette.parameters = {
+  controls: {
+    disable: true
+  }
+};

@@ -6,34 +6,57 @@ import { SFSwitch, SFSwitchProps } from './SFSwitch';
 
 export default {
   title: 'Components/SFSwitch',
-  component: SFSwitch
+  component: SFSwitch,
+  args: {
+    label: 'Off / On'
+  },
+  argTypes: {
+    onChange: {
+      action: 'onChange',
+      table: {
+        disable: true
+      }
+    },
+    checked: {
+      defaultValue: false,
+      control: {
+        type: 'boolean'
+      }
+    },
+    disabled: {
+      defaultValue: false,
+      control: {
+        type: 'boolean'
+      }
+    },
+    ref: {
+      table: {
+        disable: true
+      }
+    },
+    action: {
+      table: {
+        disable: true
+      }
+    },
+    focusVisibleClassName: {
+      table: {
+        disable: true
+      }
+    },
+    onFocusVisible: {
+      table: {
+        disable: true
+      }
+    },
+    TouchRippleProps: {
+      table: {
+        disable: true
+      }
+    }
+  }
 } as Meta;
 
 const Template: Story<SFSwitchProps> = (args) => <SFSwitch {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {
-  label: 'Off / On',
-  onChange: (): void => {
-    console.log('Switched');
-  }
-};
-
-export const Disabled = Template.bind({});
-Disabled.args = {
-  label: 'Off / On',
-  disabled: true,
-  onChange: (): void => {
-    console.log('Switched');
-  }
-};
-
-export const DisabledChecked = Template.bind({});
-DisabledChecked.args = {
-  label: 'Off / On',
-  disabled: true,
-  checked: true,
-  onChange: (): void => {
-    console.log('Switched');
-  }
-};
