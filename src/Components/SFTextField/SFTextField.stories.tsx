@@ -17,19 +17,6 @@ export default {
         disable: true
       }
     },
-    value: {
-      defaultValue: 'Some text',
-      control: {
-        type: 'text'
-      }
-    },
-    type: {
-      defaultValue: 'text',
-      control: {
-        type: 'select',
-        options: ['text', 'password']
-      }
-    },
     disabled: {
       control: {
         type: 'boolean'
@@ -71,6 +58,39 @@ export default {
 const Template: Story<SFTextFieldProps> = (args) => <SFTextField {...args} />;
 
 export const Default = Template.bind({});
+Default.argTypes = {
+  value: {
+    defaultValue: 'Some text',
+    control: {
+      type: 'text'
+    }
+  },
+  type: {
+    defaultValue: 'text',
+    control: {
+      type: 'select',
+      options: ['text', 'password']
+    }
+  }
+};
+
+export const Number = Template.bind({});
+Number.args = {
+  type: 'number'
+};
+Number.argTypes = {
+  value: {
+    defaultValue: 20,
+    control: {
+      type: 'number'
+    }
+  },
+  type: {
+    table: {
+      disable: true
+    }
+  }
+};
 
 const AllTemplate: Story<SFTextFieldProps> = (args) => (
   <div
