@@ -5,7 +5,14 @@ import { SFCard, SFCardProps, sfElevations } from './SFCard';
 
 export default {
   title: 'Components/SFCard',
-  component: SFCard
+  component: SFCard,
+  argTypes: {
+    className: {
+      table: {
+        disable: true
+      }
+    }
+  }
 } as Meta;
 
 const Template: Story<SFCardProps> = (args) => (
@@ -39,17 +46,22 @@ const Elevations: Story<SFCardProps> = (args) => (
 );
 
 export const Default = Template.bind({});
-Default.args = {};
-
-export const DefaultLoading = Template.bind({});
-DefaultLoading.args = {
-  isLoading: true
-};
-
-export const TopLoading = Template.bind({});
-TopLoading.args = {
-  isLoading: true,
-  loadingAtTop: true
-};
 
 export const Elevation = Elevations.bind({});
+Elevation.argTypes = {
+  sfElevation: {
+    table: {
+      disable: true
+    }
+  },
+  isLoading: {
+    table: {
+      disable: true
+    }
+  },
+  loadingAtTop: {
+    table: {
+      disable: true
+    }
+  }
+};
