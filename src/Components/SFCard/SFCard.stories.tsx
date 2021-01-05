@@ -48,20 +48,8 @@ const Elevations: Story<SFCardProps> = (args) => (
 export const Default = Template.bind({});
 
 export const Elevation = Elevations.bind({});
-Elevation.argTypes = {
-  sfElevation: {
-    table: {
-      disable: true
-    }
-  },
-  isLoading: {
-    table: {
-      disable: true
-    }
-  },
-  loadingAtTop: {
-    table: {
-      disable: true
-    }
+Elevation.parameters = {
+  controls: {
+    disable: true
   }
 };
