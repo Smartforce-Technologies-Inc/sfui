@@ -5,35 +5,52 @@ import { SFLink, SFLinkProps } from './SFLink';
 
 export default {
   title: 'Components/SFLink',
-  component: SFLink
+  component: SFLink,
+  argTypes: {
+    onClick: {
+      action: 'onClick',
+      table: {
+        disable: true
+      }
+    },
+    text: {
+      defaultValue: 'I am a link example',
+      control: {
+        type: 'text'
+      }
+    },
+    color: {
+      defaultValue: 'default',
+      control: {
+        type: 'radio',
+        options: ['default', 'primary']
+      }
+    },
+    ref: {
+      table: {
+        disable: true
+      }
+    },
+    variantMapping: {
+      table: {
+        disable: true
+      }
+    },
+    TypographyClasses: {
+      table: {
+        disable: true
+      }
+    }
+  }
 } as Meta;
 
-const Template: Story<SFLinkProps> = (args) => (
-  <div
-    style={{
-      display: 'grid',
-      gridTemplateColumns: '1fr 1fr',
-      justifyItems: 'center',
-      alignItems: 'center'
-    }}
-  >
-    <SFLink {...args} sfSize='medium'>
-      I am a link example
+export const Default: Story = ({ text, color, ...args }) => {
+  return (
+    <SFLink
+      {...(args as SFLinkProps)}
+      color={color === 'default' ? undefined : color}
+    >
+      {text}
     </SFLink>
-    <SFLink {...args} sfSize='small'>
-      I am a link example
-    </SFLink>
-  </div>
-);
-
-export const Default = Template.bind({});
-Default.argTypes = {
-  onClick: { action: 'clicked' }
-};
-export const Primary = Template.bind({});
-Primary.args = {
-  color: 'primary'
-};
-Primary.argTypes = {
-  onClick: { action: 'clicked' }
+  );
 };
