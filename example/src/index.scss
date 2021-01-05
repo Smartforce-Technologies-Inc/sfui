@@ -4,7 +4,7 @@ html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  width: 100%;
+  width: 100vw;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -18,36 +18,25 @@ code {
 
 .bodyContent {
   display: grid;
-  grid-template-areas:
-    'title'
-    'firstSection'
-    'secondSection'
-    'thirdSection'
-    'forthSection'
-    'fifthSection'
-    'sixthSection'
-    'seventhSection';
   gap: 15px 0;
   padding: 10px;
 
-  & .textHeader {
+  .textHeader {
     grid-area: title;
     font-size: 1.6rem;
     margin: 0;
     padding: 10px 0;
     display: flex;
     flex-direction: column;
-    max-width: 80vw;
     justify-content: space-between;
     border-bottom: 1px solid $sf-grey-600;
   }
 
-  & .content {
-    max-width: 80vw;
-
-    & .section {
+  .content {
+    .section {
       display: flex;
       flex-direction: column;
+      width: 100%;
 
       .title {
         font-weight: 500;
@@ -55,15 +44,13 @@ code {
     }
   }
 
-  & .firstSection {
-    grid-area: firstSection;
-
-    & .buttons {
+  .firstSection {
+    .buttons {
       display: flex;
       flex-direction: column;
       gap: 25px;
 
-      & .contentItems {
+      .contentItems {
         display: flex;
         flex-direction: column;
         gap: 10px;
@@ -76,13 +63,12 @@ code {
     }
   }
 
-  & .secondSection {
-    grid-area: secondSection;
+  .secondSection {
     display: flex;
     gap: 25px;
     flex-direction: column;
 
-    & .section {
+    .section {
       .column {
         .row {
           display: flex;
@@ -92,10 +78,8 @@ code {
     }
   }
 
-  & .thirdSection {
-    grid-area: thirdSection;
-
-    & .section {
+  .thirdSection {
+    .section {
       .links {
         gap: 10px;
         display: flex;
@@ -110,9 +94,9 @@ code {
     }
   }
 
-  & .fourthSection {
-    grid-area: forthSection;
-
+  .fourthSection,
+  .fifthSection,
+  .sixthSection {
     .section {
       .fullSize {
         width: 100%;
@@ -123,118 +107,66 @@ code {
     }
   }
 
-  & .fifthSection {
-    grid-area: fifthSection;
-
-    .section {
-      .fullSize {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: 10px 0;
-      }
-    }
-  }
-
-  & .sixthSection {
-    grid-area: sixthSection;
-
-    .section {
-      .fullSize {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: 10px 0;
-      }
-    }
-  }
-
-  & .seventhSection {
-    grid-area: seventhSection;
+  .seventhSection {
+    display: grid;
 
     .section {
       .tables {
-        display: flex;
-        flex-direction: column;
+        display: grid;
         gap: 10px;
-        overflow: scroll;
 
         .row {
           display: flex;
           flex-direction: column;
           gap: 15px;
-          flex-wrap: wrap;
+          overflow-x: scroll;
         }
       }
     }
   }
 }
 
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
+@media only screen and (min-width: 768px) {
   .bodyContent {
     padding: 10px 30px;
 
-    & .textHeader {
+    .textHeader {
       font-size: 2.5rem;
       flex-direction: row;
-      max-width: 100%;
-    }
-
-    & .content {
-      max-width: 100%;
     }
   }
 }
 
 @media only screen and (min-width: 1024px) {
   .bodyContent {
-    padding: 10px 30px;
-
-    & .textHeader {
-      font-size: 2.5rem;
-      flex-direction: row;
-      max-width: 100%;
-    }
-
-    & .content {
-      max-width: 100%;
-    }
-
-    & .firstSection {
-      & .buttons {
+    .firstSection {
+      .buttons {
         flex-direction: row;
         justify-content: space-between;
       }
     }
 
-    & .secondSection {
+    .secondSection,
+    .thirdSection {
       flex-direction: row;
       justify-content: space-between;
     }
 
-    & .thirdSection {
+    .thirdSection {
       display: flex;
-      flex-direction: row;
-      justify-content: space-between;
     }
 
-    & .fourthSection,
+    .fourthSection,
     .fifthSection,
     .sixthSection {
       display: flex;
       flex-direction: row;
       gap: 10px;
-
-      .section {
-        width: 100%;
-      }
     }
 
-    & .seventhSection {
+    .seventhSection {
       .section {
         .tables {
-          display: flex;
-          flex-direction: row;
           gap: 15px;
 
           .row {
@@ -247,108 +179,3 @@ code {
     }
   }
 }
-/*
-.section {
-  display: grid;
-  grid-template-rows: 1fr 4fr;
-  justify-items: start;
-  align-items: start;
-}
-.content {
-  justify-content: space-between;
-  padding: 30px 30px 0 30px;
-  div {
-    .title {
-      font-weight: 500;
-    }
-  }
-  &.firstSection {
-    display: grid;
-    gap: 0 20px;
-    justify-content: normal;
-    .section {
-      .buttons {
-        display: grid;
-        //grid-template-columns: repeat(3, 1fr);
-        width: 100%;
-        .contentItems {
-          display: flex;
-          flex-direction: column;
-          gap: 10px;
-          .row {
-            display: flex;
-            gap: 0 25px;
-          }
-        }
-      }
-      .links {
-        display: grid;
-        .row {
-          padding: 10px 0;
-          gap: 0 20px;
-          align-items: flex-end;
-          display: flex;
-        }
-      }
-    }
-  }
-  &.secondSection {
-    display: grid;
-    //grid-template-columns: repeat(5, 1fr);
-    gap: 0 25px;
-
-    .section {
-      .column {
-        .row {
-          display: flex;
-          gap: 0 15px;
-        }
-      }
-    }
-  }
-  &.thirdSection {
-    display: grid;
-    //grid-template-columns: repeat(2, 1fr);
-    gap: 0 20px;
-    .section {
-      .fullSize {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        gap: 10px 0;
-      }
-    }
-  }
-  &.fourthSection {
-    display: grid;
-    //grid-template-columns: repeat(2, 1fr);
-    gap: 0 20px;
-
-    .section {
-      grid-template-rows: 1fr 9fr;
-
-      .fullSize {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: 10px 0;
-      }
-    }
-  }
-  &.fifthSection {
-    display: grid;
-    .section {
-      //grid-template-rows: 1fr 10fr;
-      .tables {
-        display: grid;
-        //grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-        .row {
-          display: flex;
-          flex-direction: column;
-          gap: 15px 0;
-        }
-      }
-    }
-  } 
-} */
