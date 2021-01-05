@@ -10,3 +10,8 @@ export default {
 const Template: Story<SFSpinnerProps> = (args) => <SFSpinner {...args} />;
 
 export const Default = Template.bind({});
+Default.parameters = {
+  controls: {
+    disable: true
+  }
+};
