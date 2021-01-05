@@ -32,7 +32,51 @@ export default {
     label: 'Bagel',
     options: getOptions()
   },
-  argTypes: { onChange: { action: 'onChange event' } }
+  argTypes: {
+    onChange: {
+      action: 'onChange',
+      table: {
+        disable: true
+      }
+    },
+    value: {
+      defaultValue: ['Bagel number one'],
+      control: {
+        type: 'multi-select',
+        options: getOptions().map((o: SFMultiSelectOption) => o.value)
+      }
+    },
+    disabled: {
+      control: {
+        type: 'boolean'
+      }
+    },
+    error: {
+      control: {
+        type: 'boolean'
+      }
+    },
+    helperText: {
+      control: {
+        type: 'text'
+      }
+    },
+    options: {
+      table: {
+        disable: true
+      }
+    },
+    defaultValue: {
+      table: {
+        disable: true
+      }
+    },
+    ref: {
+      table: {
+        disable: true
+      }
+    }
+  }
 } as Meta;
 
 const Template: Story<SFMultiSelectProps> = (args) => (
@@ -40,26 +84,6 @@ const Template: Story<SFMultiSelectProps> = (args) => (
 );
 
 export const Default = Template.bind({});
-Default.args = {
-  defaultValue: ['Bagel number one']
-};
-
-export const Error = Template.bind({});
-Error.args = {
-  error: true,
-  defaultValue: [],
-  helperText: 'Incorrect value'
-};
-export const Disabled = Template.bind({});
-Disabled.args = {
-  defaultValue: ['Bagel number one'],
-  disabled: true
-};
-
-export const Empty = Template.bind({});
-Empty.args = {
-  defaultValue: []
-};
 
 export const AllTogether = (args: SFMultiSelectProps): JSX.Element => (
   <div
@@ -69,9 +93,14 @@ export const AllTogether = (args: SFMultiSelectProps): JSX.Element => (
       columnGap: '16px'
     }}
   >
-    <SFMultiSelect {...Default.args} {...args} />
-    <SFMultiSelect {...Error.args} {...args} />
-    <SFMultiSelect {...Disabled.args} {...args} />
-    <SFMultiSelect {...Empty.args} {...args} />
+    <SFMultiSelect {...args} />
+    <SFMultiSelect {...args} error helperText='Incorrect value' />
+    <SFMultiSelect {...args} disabled />
+    <SFMultiSelect {...args} value={[]} />
   </div>
 );
+AllTogether.parameters = {
+  controls: {
+    disable: true
+  }
+};

@@ -26,30 +26,68 @@ export default {
     label: 'Bagel',
     options: getOptions()
   },
-  argTypes: { onChange: { action: 'onChange event' } }
+  argTypes: {
+    onChange: {
+      action: 'onChange',
+      table: {
+        disable: true
+      }
+    },
+    value: {
+      defaultValue: 'Bagel number one',
+      control: {
+        type: 'select',
+        options: getOptions().map((o: SFSelectOption) => o.value)
+      }
+    },
+    disabled: {
+      control: {
+        type: 'boolean'
+      }
+    },
+    error: {
+      control: {
+        type: 'boolean'
+      }
+    },
+    helperText: {
+      control: {
+        type: 'text'
+      }
+    },
+    options: {
+      table: {
+        disable: true
+      }
+    },
+    defaultValue: {
+      table: {
+        disable: true
+      }
+    },
+    ref: {
+      table: {
+        disable: true
+      }
+    }
+  }
 } as Meta;
 
 const Template: Story<SFSelectProps> = (args) => <SFSelect {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {
-  defaultValue: 'Bagel number one'
-};
-
-export const Error = Template.bind({});
-Error.args = {
-  error: true,
-  defaultValue: 'Bagel number one',
-  helperText: 'Incorrect value'
-};
-
-export const Disabled = Template.bind({});
-Disabled.args = {
-  defaultValue: 'Bagel number one',
-  disabled: true
-};
 
 export const Empty = Template.bind({});
+Empty.args = {
+  value: ''
+};
+Empty.argTypes = {
+  value: {
+    table: {
+      disable: true
+    }
+  }
+};
 
 export const AllTogether = (args: SFSelectProps): JSX.Element => (
   <div
@@ -59,9 +97,14 @@ export const AllTogether = (args: SFSelectProps): JSX.Element => (
       columnGap: '16px'
     }}
   >
-    <SFSelect {...Default.args} {...args} />
-    <SFSelect {...Error.args} {...args} />
-    <SFSelect {...Disabled.args} {...args} />
     <SFSelect {...args} />
+    <SFSelect {...args} error helperText='Incorrect value' />
+    <SFSelect {...args} disabled />
+    <SFSelect {...args} value='' />
   </div>
 );
+AllTogether.parameters = {
+  controls: {
+    disable: true
+  }
+};

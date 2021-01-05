@@ -16,3 +16,8 @@ const Template: Story<SFPaperProps> = (args) => (
 );
 
 export const Default = Template.bind({});
+Default.parameters = {
+  controls: {
+    disable: true
+  }
+};
