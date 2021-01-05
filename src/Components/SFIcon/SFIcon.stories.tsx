@@ -17,10 +17,7 @@ export default {
       }
     },
     color: {
-      control: {
-        type: 'select',
-        options: ['grey', 'blue', 'red']
-      }
+      control: 'color'
     },
     size: {
       control: {
