@@ -6,12 +6,52 @@ import { SFFormControlLabel } from '../SFFormControlLabel/SFFormControlLabel';
 import { SFIcon, SFIconProps } from './SFIcon';
 import SFIconSet from './icons/selection.json';
 
+const colors = { SFGrey: '#808080', SFBlue: '#0066FF', SFRed: '#DB343E' };
+
 export default {
   title: 'Components/SFIcon',
-  component: SFIcon
+  component: SFIcon,
+  argTypes: {
+    icon: {
+      control: {
+        type: 'select',
+        options: SFIconSet.icons.map((icon) => icon.properties.name)
+      }
+    },
+    color: {
+      control: {
+        type: 'select',
+        options: ['SFGrey', 'SFBlue', 'SFRed']
+      }
+    },
+    size: {
+      control: {
+        type: 'number'
+      }
+    },
+    className: {
+      table: {
+        disable: true
+      }
+    },
+    ref: {
+      table: {
+        disable: true
+      }
+    },
+    style: {
+      table: {
+        disable: true
+      }
+    }
+  }
 } as Meta;
 
-const Template: Story<SFIconProps> = (args) => (
+export const Default: Story<SFIconProps> = (args) => (
+  <SFIcon {...args} color={colors[args.color]} />
+);
+
+export const AllTogether: Story<SFIconProps> = (args) => (
   <div
     style={{
       display: 'grid',
@@ -36,5 +76,8 @@ const Template: Story<SFIconProps> = (args) => (
     ))}
   </div>
 );
-
-export const Default = Template.bind({});
+AllTogether.parameters = {
+  controls: {
+    disabled: true
+  }
+};
