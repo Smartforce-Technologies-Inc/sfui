@@ -6,8 +6,6 @@ import { SFFormControlLabel } from '../SFFormControlLabel/SFFormControlLabel';
 import { SFIcon, SFIconProps } from './SFIcon';
 import SFIconSet from './icons/selection.json';
 
-const colors = { SFGrey: '#808080', SFBlue: '#0066FF', SFRed: '#DB343E' };
-
 export default {
   title: 'Components/SFIcon',
   component: SFIcon,
@@ -21,7 +19,7 @@ export default {
     color: {
       control: {
         type: 'select',
-        options: ['SFGrey', 'SFBlue', 'SFRed']
+        options: ['grey', 'blue', 'red']
       }
     },
     size: {
@@ -47,9 +45,7 @@ export default {
   }
 } as Meta;
 
-export const Default: Story<SFIconProps> = (args) => (
-  <SFIcon {...args} color={colors[args.color]} />
-);
+export const Default: Story<SFIconProps> = (args) => <SFIcon {...args} />;
 
 export const AllTogether: Story<SFIconProps> = (args) => (
   <div
