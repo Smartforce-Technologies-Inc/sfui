@@ -43,9 +43,9 @@ export interface SFButtonProps extends ButtonProps {
 
 export const SFButton = ({
   variant = 'contained',
-  color = 'primary',
-  disableRipple = true,
-  disableElevation = true,
+  color,
+  disableRipple,
+  disableElevation,
   size = 'medium',
   sfColor,
   ...props
@@ -60,24 +60,13 @@ export const SFButton = ({
   };
 
   switch (sfColor) {
-    case 'blue':
-      button = (
-        <BlueButton
-          {...props}
-          variant={variant}
-          disableElevation={disableElevation}
-          disableRipple={disableRipple}
-          style={ButtonInnerStyle}
-        />
-      );
-      break;
     case 'red':
       button = (
         <RedButton
           {...props}
           variant={variant}
-          disableElevation={disableElevation}
-          disableRipple={disableRipple}
+          disableElevation
+          disableRipple
           style={ButtonInnerStyle}
         />
       );
@@ -87,23 +76,23 @@ export const SFButton = ({
         <GreyButton
           {...props}
           variant={variant}
-          disableElevation={disableElevation}
-          disableRipple={disableRipple}
+          disableElevation
+          disableRipple
           style={ButtonInnerStyle}
         />
       );
       break;
     default:
       button = (
-        <Button
+        <BlueButton
           {...props}
           variant={variant}
-          color={color}
-          disableElevation={disableElevation}
-          disableRipple={disableRipple}
+          disableElevation
+          disableRipple
           style={ButtonInnerStyle}
         />
       );
+      break;
   }
 
   return button;
