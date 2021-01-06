@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Button, { ButtonProps } from '@material-ui/core/Button';
+import { ButtonProps } from '@material-ui/core/Button';
 
 import BlueButton from './CustomButtons/BlueButton';
 import RedButton from './CustomButtons/RedButton';
