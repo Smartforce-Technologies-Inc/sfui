@@ -65,7 +65,7 @@ const useMenuStyles = makeStyles({
 
 export interface SFMultiSelectProps extends SelectProps {
   options: SFMultiSelectOption[];
-  defaultValue: string[];
+  defaultValue?: string[];
   value?: string[];
   helperText?: React.ReactNode;
 }
@@ -74,12 +74,12 @@ export const SFMultiSelect = ({
   options,
   helperText,
   label,
-  defaultValue,
+  defaultValue = [],
   value,
   onChange,
   ...props
 }: SFMultiSelectProps): React.ReactElement<SFMultiSelectProps> => {
-  const valueInit: string[] = value || defaultValue;
+  const valueInit: string[] = value ? value : defaultValue;
   const [selected, setSelected] = React.useState<string[]>(valueInit);
   const customMenuStyles: Record<'paper', string> = useMenuStyles();
 
