@@ -47,10 +47,9 @@ export const SFButton = ({
   disableRipple,
   disableElevation,
   size = 'medium',
-  sfColor,
+  sfColor = 'blue',
   ...props
 }: SFButtonProps): React.ReactElement<SFButtonProps> => {
-  let button: JSX.Element;
   const ButtonInnerProps: ButtonInnerProps = getButtonInnerProps(size);
   const ButtonInnerStyle = {
     padding: ButtonInnerProps.padding,
@@ -59,41 +58,21 @@ export const SFButton = ({
     height: ButtonInnerProps.height
   };
 
-  switch (sfColor) {
-    case 'red':
-      button = (
-        <RedButton
-          {...props}
-          variant={variant}
-          disableElevation
-          disableRipple
-          style={ButtonInnerStyle}
-        />
-      );
-      break;
-    case 'grey':
-      button = (
-        <GreyButton
-          {...props}
-          variant={variant}
-          disableElevation
-          disableRipple
-          style={ButtonInnerStyle}
-        />
-      );
-      break;
-    default:
-      button = (
-        <BlueButton
-          {...props}
-          variant={variant}
-          disableElevation
-          disableRipple
-          style={ButtonInnerStyle}
-        />
-      );
-      break;
-  }
+  const Buttons = {
+    grey: GreyButton,
+    blue: BlueButton,
+    red: RedButton
+  };
 
-  return button;
+  const ButtonComponent = Buttons[sfColor];
+
+  return (
+    <ButtonComponent
+      {...props}
+      variant={variant}
+      disableElevation={disableElevation}
+      disableRipple={disableRipple}
+      style={ButtonInnerStyle}
+    />
+  );
 };
