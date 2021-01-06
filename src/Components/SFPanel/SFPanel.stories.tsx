@@ -25,9 +25,30 @@ export default {
       }
     },
     elevation: {
-      defaultValue: 16,
+      defaultValue: 24,
       control: {
         type: 'number'
+      }
+    },
+    maxWidth: {
+      defaultValue: 450,
+      control: {
+        type: 'number'
+      }
+    },
+    ref: {
+      table: {
+        disable: true
+      }
+    },
+    leftAction: {
+      table: {
+        disable: true
+      }
+    },
+    rightAction: {
+      table: {
+        disable: true
       }
     }
   }
@@ -41,9 +62,9 @@ export const Panel = (args: SFPanelProps): JSX.Element => (
   >
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br />
     Mauris lobortis a erat eu mattis.
-    {/* <SFTextField style={{ marginTop: 24 }} label='Bagel' />
+    <SFTextField style={{ marginTop: 24 }} label='Bagel' />
     <SFTextField style={{ marginTop: 12 }} label='Bagel' />
     <SFTextField style={{ marginTop: 12 }} label='Bagel' />
-    <SFTextField style={{ marginTop: 12 }} label='Bagel' /> */}
+    <SFTextField style={{ marginTop: 12 }} label='Bagel' />
   </SFPanel>
 );
