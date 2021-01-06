@@ -43,7 +43,8 @@ export const SFDialogContentText = withStyles((theme: Theme) => ({
     color: `${theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]}`,
     fontSize: 16,
     fontStyle: 'normal',
-    fontWeight: 400
+    fontWeight: 400,
+    lineHeight: '24px'
   }
 }))(DialogContentText);
 
