@@ -10,7 +10,8 @@ export interface SFPanelAction {
 }
 
 export interface SFPanelProps extends SFDrawerProps {
-  title: string;
+  title?: string;
+  maxWidth?: number;
   leftAction?: SFPanelAction;
   rightAction?: SFPanelAction;
 }
@@ -25,6 +26,8 @@ const useStyles = makeStyles((theme: Theme) =>
       fontWeight: 500
     },
     content: {
+      maxWidth: (props: SFPanelProps): number | 'auto' =>
+        props.maxWidth || 'auto',
       padding: '0 24px',
       color: `${theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]}`,
       fontSize: 16,
@@ -48,7 +51,7 @@ export const SFPanel = ({
   children,
   ...props
 }: SFPanelProps): React.ReactElement<SFPanelProps> => {
-  const classes = useStyles();
+  const classes = useStyles(props);
 
   return (
     <div>
