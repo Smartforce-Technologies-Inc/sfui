@@ -2,7 +2,7 @@ import React from 'react';
 
 import { SFCheckbox } from 'sfui';
 
-const SFCheckboxesView = () => {
+const SFCheckboxesView = (): JSX.Element => {
   return (
     <div className='ckeckbox-wrapper'>
       <h3>Checkboxes</h3>

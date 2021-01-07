@@ -19,7 +19,7 @@ const getOptions = (): SFSelectOption[] => {
   ];
 };
 
-const SFSelectView = () => {
+const SFSelectView = (): JSX.Element => {
   return (
     <div className='selectWrapper'>
       <h3>Select</h3>

@@ -20,17 +20,17 @@ import { SFSelectView } from './SelectView/SelectView';
 import { SFRadioGroupView } from './RadioGroupView/RadioGroupView';
 import { SFTextFieldsView } from './TextFieldsView/TextFieldsView';
 
-const App = () => {
+const App = (): JSX.Element => {
   const [nightMode, setNightMode] = useState(false);
   const prefersDarkMode: boolean = useSFMediaQuery(
     '(prefers-color-scheme: dark)'
   );
 
-  let theme: SFTheme = createSFTheme(
+  const theme: SFTheme = createSFTheme(
     prefersDarkMode || nightMode ? 'night' : 'day'
   );
 
-  const toggleSwitch = () => {
+  const toggleSwitch = (): void => {
     setNightMode((value) => !value);
   };
 
