@@ -2,7 +2,7 @@ import React from 'react';
 
 import { SFTextField } from 'sfui';
 
-const SFTextFieldsView = () => {
+const SFTextFieldsView = (): JSX.Element => {
   return (
     <div className='textFieldWrapper'>
       <h3>TextFields</h3>
