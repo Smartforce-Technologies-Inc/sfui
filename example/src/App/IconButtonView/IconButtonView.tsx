@@ -2,7 +2,7 @@ import React from 'react';
 
 import { SFIconButton } from 'sfui';
 
-const SFIconButtonView = () => {
+const SFIconButtonView = (): JSX.Element => {
   return (
     <div className='icon-button-wrapper'>
       <h3>Icon button</h3>
