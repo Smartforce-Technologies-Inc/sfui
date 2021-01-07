@@ -4,6 +4,9 @@ const CommonThemeOptions: ThemeOptions = {
   props: {
     MuiButtonBase: {
       disableRipple: true
+    },
+    MuiDrawer: {
+      elevation: 24
     }
   },
   shape: {

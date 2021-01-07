@@ -201,7 +201,9 @@ export const SFTable = ({
       options={customOptions}
       components={{
         // eslint-disable-next-line
-        Container: (props: any): JSX.Element => <StyledContainer {...props} />,
+        Container: (props: any): JSX.Element => (
+          <StyledContainer {...props} elevation={2} />
+        ),
         // eslint-disable-next-line
         Row: (props: any): JSX.Element => <StyledRow {...props} />
       }}
