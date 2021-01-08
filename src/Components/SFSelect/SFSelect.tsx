@@ -48,13 +48,7 @@ const StyledMenuItem = withStyles((theme: Theme) => ({
 
 const useMenuStyles = makeStyles({
   paper: {
-    marginTop: '54px',
     borderRadius: '0px 0px 2px 2px'
-  },
-  '@media screen and (max-width: 600px)': {
-    paper: {
-      marginTop: '60px'
-    }
   }
 });
 

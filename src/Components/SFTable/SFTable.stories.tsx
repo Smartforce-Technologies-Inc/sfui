@@ -74,6 +74,11 @@ export default {
     columns: getColumns()
   },
   argTypes: {
+    columns: {
+      table: {
+        disable: true
+      }
+    },
     options: {
       table: {
         disable: true
@@ -85,145 +90,6 @@ export default {
 const Template: Story<SFTableProps> = (args) => (
   <SFTable {...args} data={getRows()} />
 );
-
-export const Default = Template.bind({});
-Default.args = {
-  options: {
-    toolbar: false,
-    paging: false,
-    sorting: false,
-    search: false,
-    draggable: false,
-    selection: false
-  }
-};
-
-export const Selection = Template.bind({});
-Selection.args = {
-  options: {
-    toolbar: false,
-    paging: false,
-    sorting: false,
-    search: false,
-    draggable: false,
-    selection: true
-  }
-};
-
-export const Sorting = Template.bind({});
-Sorting.args = {
-  options: {
-    toolbar: false,
-    paging: false,
-    sorting: true,
-    search: false,
-    draggable: false,
-    selection: false
-  }
-};
-
-export const Pagination = Template.bind({});
-Pagination.args = {
-  options: {
-    toolbar: false,
-    paging: true,
-    sorting: false,
-    search: false,
-    draggable: false,
-    selection: false
-  }
-};
-
-export const StickyHeader = Template.bind({});
-StickyHeader.args = {
-  options: {
-    maxBodyHeight: 300,
-    toolbar: false,
-    paging: false,
-    sorting: false,
-    search: false,
-    draggable: false,
-    selection: false
-  }
-};
-
-export const Export = Template.bind({});
-Export.args = {
-  options: {
-    exportButton: true,
-    toolbar: true,
-    showTitle: false,
-    paging: false,
-    sorting: false,
-    search: false,
-    draggable: false,
-    selection: false
-  }
-};
-
-export const Filtering = Template.bind({});
-Filtering.args = {
-  options: {
-    toolbar: false,
-    showTitle: false,
-    paging: false,
-    sorting: false,
-    search: false,
-    draggable: false,
-    selection: false,
-    filtering: true
-  }
-};
-
-export const Search = Template.bind({});
-Search.args = {
-  options: {
-    search: true,
-    toolbar: true,
-    showTitle: false,
-    paging: false,
-    sorting: false,
-    draggable: false,
-    selection: false
-  }
-};
-
-export const Actions = Template.bind({});
-Actions.args = {
-  options: {
-    search: false,
-    toolbar: false,
-    showTitle: false,
-    paging: false,
-    sorting: false,
-    draggable: false,
-    selection: false,
-    actionsColumnIndex: -1
-  },
-  actions: [
-    {
-      icon: (): JSX.Element => <SFIcon icon='Share' />,
-      tooltip: 'Action one'
-    },
-    {
-      icon: (): JSX.Element => <SFIcon icon='Trash' />,
-      tooltip: 'Action two'
-    }
-  ]
-};
-
-export const Draggable = Template.bind({});
-Draggable.args = {
-  options: {
-    search: false,
-    toolbar: false,
-    showTitle: false,
-    paging: false,
-    sorting: false,
-    draggable: true,
-    selection: false
-  }
-};
 
 interface StoryWithKnobs {
   sorting: boolean;
@@ -237,7 +103,7 @@ interface StoryWithKnobs {
   maxBodyHeight: number | string;
   columns: SFTableColumn[];
 }
-export const WithKnobs: Story<StoryWithKnobs> = ({
+export const Default: Story<StoryWithKnobs> = ({
   sorting = false,
   search = false,
   toolbar = false,
@@ -268,7 +134,7 @@ export const WithKnobs: Story<StoryWithKnobs> = ({
   );
 };
 
-WithKnobs.argTypes = {
+Default.argTypes = {
   sorting: {
     control: {
       type: 'boolean'

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { SFIconButton } from 'sfui';
 
-const SFIconButtonView = () => {
+const SFIconButtonView = (): JSX.Element => {
   return (
     <div className='column'>
       <div className='row'>

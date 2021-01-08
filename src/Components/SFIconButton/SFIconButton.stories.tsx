@@ -3,13 +3,79 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 
 import { SFIconButton, SFIconButtonProps } from './SFIconButton';
+import SFIconSet from '../SFIcon/icons/selection.json';
 
 export default {
   title: 'Components/SFIconButton',
-  component: SFIconButton
+  component: SFIconButton,
+  argTypes: {
+    onClick: { action: 'onClick', table: { disable: true } },
+    sfColor: {
+      defaultValue: 'grey',
+      control: {
+        type: 'radio',
+        options: ['blue', 'red', 'grey']
+      }
+    },
+    sfIcon: {
+      control: {
+        type: 'select',
+        options: SFIconSet.icons.map((icon) => icon.properties.name)
+      }
+    },
+    disabled: {
+      control: {
+        type: 'boolean'
+      }
+    },
+    color: {
+      table: {
+        disable: true
+      }
+    },
+    size: {
+      table: {
+        disable: true
+      }
+    },
+    action: {
+      table: {
+        disable: true
+      }
+    },
+    focusVisibleClassName: {
+      table: {
+        disable: true
+      }
+    },
+    onFocusVisible: {
+      table: {
+        disable: true
+      }
+    },
+    tabIndex: {
+      table: {
+        disable: true
+      }
+    },
+    TouchRippleProps: {
+      table: {
+        disable: true
+      }
+    },
+    ref: {
+      table: {
+        disable: true
+      }
+    }
+  }
 } as Meta;
 
-const Template: Story<SFIconButtonProps> = (args) => (
+export const Default: Story<SFIconButtonProps> = (args) => (
+  <SFIconButton {...args} />
+);
+
+export const AllSizes: Story<SFIconButtonProps> = (args) => (
   <div
     style={{
       display: 'grid',
@@ -31,13 +97,8 @@ const Template: Story<SFIconButtonProps> = (args) => (
     </div>
   </div>
 );
-
-export const Default = Template.bind({});
-Default.argTypes = {
-  onClick: { action: 'clicked' }
-};
-
-export const Disabled = Template.bind({});
-Disabled.args = {
-  disabled: true
+AllSizes.parameters = {
+  controls: {
+    disabled: true
+  }
 };

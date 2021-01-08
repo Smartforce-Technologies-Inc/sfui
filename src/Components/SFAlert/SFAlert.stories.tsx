@@ -8,8 +8,9 @@ export default {
   component: SFAlert,
   args: {
     title: 'Alert dialog title',
-    content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-      Mauris lobortis a erat eu mattis.`,
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' +
+      ' Mauris lobortis a erat eu mattis.',
     open: true
   },
   argTypes: {
@@ -18,6 +19,12 @@ export default {
         disable: true
       },
       action: 'onClose'
+    },
+    onClick: {
+      action: 'onClick',
+      table: {
+        disable: true
+      }
     },
     ref: {
       table: {

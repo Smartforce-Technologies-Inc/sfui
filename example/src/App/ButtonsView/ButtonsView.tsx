@@ -14,7 +14,7 @@ const SFButtonsView = () => {
 
 const renderButtonsColumn = (
   size: 'small' | 'medium' | 'large' | undefined
-) => {
+): JSX.Element => {
   return (
     <div className='contentItems'>
       <div className='row'>
@@ -55,10 +55,10 @@ const renderButtonsColumn = (
         <SFButton sfColor='blue' disabled={true} size={size}>
           <span style={{ textTransform: 'capitalize' }}>{size}</span>
         </SFButton>
-        <SFButton sfColor='blue' variant='outlined' disabled={true} size={size}>
+        <SFButton sfColor='blue' variant='outlined' disabled size={size}>
           <span style={{ textTransform: 'capitalize' }}>{size}</span>
         </SFButton>
-        <SFButton sfColor='blue' variant='text' disabled={true} size={size}>
+        <SFButton sfColor='blue' variant='text' disabled size={size}>
           <span style={{ textTransform: 'capitalize' }}>{size}</span>
         </SFButton>
       </div>

@@ -114,15 +114,19 @@ export interface SFTextFieldProps extends Partial<FilledTextFieldProps> {
 }
 
 export const SFTextField = ({
-  variant = 'filled',
+  variant,
   rows = 4,
   color,
   ...props
 }: SFTextFieldProps): React.ReactElement<SFTextFieldProps> => {
-  color = 'primary';
   return (
     <FormControl fullWidth>
-      <StyledTextField {...props} color={color} variant={variant} rows={rows} />
+      <StyledTextField
+        {...props}
+        color='primary'
+        variant='filled'
+        rows={rows}
+      />
     </FormControl>
   );
 };

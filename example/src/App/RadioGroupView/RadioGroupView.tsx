@@ -2,7 +2,7 @@ import React from 'react';
 
 import { SFRadioGroup, SFRadioOptionsProps } from 'sfui';
 
-const SFRadioGroupView = () => {
+const SFRadioGroupView = (): JSX.Element => {
   const options: SFRadioOptionsProps[] = [
     { value: 'male', label: 'Male', disabled: false },
     { value: 'female', label: 'Female', disabled: false },

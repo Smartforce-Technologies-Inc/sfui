@@ -27,7 +27,7 @@ import { SFTextFieldsView } from './TextFieldsView/TextFieldsView';
 import { SFTextFieldsMultilineView } from './TextFieldsMultilineView/TextFieldsMultilineView';
 import { SFTableView } from './TableView/TableView';
 
-const App = () => {
+const App = (): JSX.Element => {
   const [nightMode, setNightMode] = useState(false);
   const prefersDarkMode: boolean = useSFMediaQuery(
     '(prefers-color-scheme: dark)'
@@ -35,11 +35,11 @@ const App = () => {
   const switchLabel =
     nightMode === true || prefersDarkMode === true ? 'Day Mode' : 'Night Mode';
 
-  let theme: SFTheme = createSFTheme(
+  const theme: SFTheme = createSFTheme(
     prefersDarkMode || nightMode ? 'night' : 'day'
   );
 
-  const toggleSwitch = () => {
+  const toggleSwitch = (): void => {
     setNightMode((value) => !value);
   };
 

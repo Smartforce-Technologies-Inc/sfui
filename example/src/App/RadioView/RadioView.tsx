@@ -2,7 +2,7 @@ import React from 'react';
 
 import { SFRadio } from 'sfui';
 
-const SFRadioView = () => {
+const SFRadioView = (): JSX.Element => {
   return (
     <div className='column'>
       <div className='row'>

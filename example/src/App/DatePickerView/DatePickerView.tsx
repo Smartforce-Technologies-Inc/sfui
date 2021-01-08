@@ -2,7 +2,8 @@ import React from 'react';
 
 import { SFDatePicker } from 'sfui';
 
-const SFDatePickerView = () => {
+const SFDatePickerView = (): JSX.Element => {
+  const onChange = (): void => console.log('onChange');
   return (
     <div className='fullSize'>
       <SFDatePicker label='Bagel' />

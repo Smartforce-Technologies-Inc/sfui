@@ -8,10 +8,43 @@ import SFIconSet from './icons/selection.json';
 
 export default {
   title: 'Components/SFIcon',
-  component: SFIcon
+  component: SFIcon,
+  argTypes: {
+    icon: {
+      control: {
+        type: 'select',
+        options: SFIconSet.icons.map((icon) => icon.properties.name)
+      }
+    },
+    color: {
+      control: 'color'
+    },
+    size: {
+      control: {
+        type: 'number'
+      }
+    },
+    className: {
+      table: {
+        disable: true
+      }
+    },
+    ref: {
+      table: {
+        disable: true
+      }
+    },
+    style: {
+      table: {
+        disable: true
+      }
+    }
+  }
 } as Meta;
 
-const Template: Story<SFIconProps> = (args) => (
+export const Default: Story<SFIconProps> = (args) => <SFIcon {...args} />;
+
+export const AllTogether: Story<SFIconProps> = (args) => (
   <div
     style={{
       display: 'grid',
@@ -36,5 +69,8 @@ const Template: Story<SFIconProps> = (args) => (
     ))}
   </div>
 );
-
-export const Default = Template.bind({});
+AllTogether.parameters = {
+  controls: {
+    disabled: true
+  }
+};

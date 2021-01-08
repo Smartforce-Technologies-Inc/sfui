@@ -2,7 +2,7 @@ import React from 'react';
 
 import { SFSwitch } from 'sfui';
 
-const SFSwitchesView = () => {
+const SFSwitchesView = (): JSX.Element => {
   return (
     <div className='column'>
       <div className='row'>
