@@ -1,7 +1,7 @@
 import React from 'react';
 import { SFTextField } from 'sfui';
 
-const SFTextFieldsMultilineView = () => {
+const SFTextFieldsMultilineView = (): JSX.Element => {
   return (
     <div className='fullSize'>
       <SFTextField multiline label='Bagel' />

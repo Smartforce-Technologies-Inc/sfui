@@ -2,7 +2,7 @@ import React from 'react';
 
 import { SFTable, SFTableColumn, RowData } from 'sfui';
 
-const SFTableView = () => {
+const SFTableView = (): JSX.Element => {
   const getColumns = (): SFTableColumn[] => {
     return [
       { title: 'Head title one', field: 'one' },

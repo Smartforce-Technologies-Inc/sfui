@@ -17,7 +17,7 @@ const getOptions = (): SFMultiSelectOption[] => {
   ];
 };
 
-const SFMultiSelectView = () => {
+const SFMultiSelectView = (): JSX.Element => {
   return (
     <div className='fullSize'>
       <SFMultiSelect label='Bagel' options={getOptions()} defaultValue={[]} />

@@ -2,25 +2,18 @@ import * as React from 'react';
 
 import { SFAlert, SFTextField, SFButton } from 'sfui';
 
-const SFDialogsView = () => {
+const SFDialogsView = (): JSX.Element => {
   const [disabled, setDisabled] = React.useState<boolean>(true);
-  const [alertOpen, setAlertOpen] = React.useState<boolean>(false);
-  const [alert2Open, setAlert2Open] = React.useState<boolean>(false);
-
-  const switchAlert = (alertNum: number) => {
-    switch (alertNum) {
-      case 0:
-        setAlertOpen(!alertOpen);
-        break;
-      default:
-        setAlert2Open(!alert2Open);
-    }
-  };
+  const [alertTextOpen, setAlertTextOpen] = React.useState<boolean>(false);
+  const [alertFormOpen, setAlertFormOpen] = React.useState<boolean>(false);
 
   return (
     <div className='column'>
       <div className='row'>
-        <SFButton sfColor='blue' onClick={() => switchAlert(0)}>
+        <SFButton
+          sfColor='blue'
+          onClick={() => setAlertTextOpen(!alertTextOpen)}
+        >
           Open Dialog One
         </SFButton>
       </div>
@@ -28,7 +21,7 @@ const SFDialogsView = () => {
         <SFButton
           sfColor='red'
           onClick={() => {
-            switchAlert(1);
+            setAlertFormOpen(!alertFormOpen);
           }}
         >
           Open Dialog Two
@@ -38,25 +31,25 @@ const SFDialogsView = () => {
       <SFAlert
         leftAction={{
           label: 'Medium',
-          buttonProps: { onClick: () => switchAlert(0) }
+          buttonProps: { onClick: () => setAlertTextOpen(!alertTextOpen) }
         }}
         rightAction={{
           label: 'Medium',
-          buttonProps: { onClick: () => switchAlert(0) }
+          buttonProps: { onClick: () => setAlertTextOpen(!alertTextOpen) }
         }}
         title='Alert dialog title'
         content={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
       Mauris lobortis a erat eu mattis.`}
-        open={alertOpen}
+        open={alertTextOpen}
       />
       <SFAlert
         content={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
     Mauris lobortis a erat eu mattis.`}
-        open={alert2Open}
+        open={alertFormOpen}
         title='Form dialog title'
         leftAction={{
           label: 'Medium',
-          buttonProps: { onClick: () => switchAlert(1) }
+          buttonProps: { onClick: () => setAlertFormOpen(!alertFormOpen) }
         }}
         rightAction={{ label: 'Medium', buttonProps: { disabled } }}
       >

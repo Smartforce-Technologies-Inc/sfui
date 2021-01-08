@@ -11,7 +11,7 @@ const SFRadioGroupView = (): JSX.Element => {
   return (
     <div className='column'>
       <div className='row'>
-        <SFRadioGroup label='Genders' defaultValue={'male'} options={options} />
+        <SFRadioGroup label='Genders' defaultValue='male' options={options} />
       </div>
     </div>
   );

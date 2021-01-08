@@ -1,7 +1,7 @@
 import React from 'react';
 import { SFLink } from 'sfui';
 
-const SFLinksView = () => {
+const SFLinksView = (): JSX.Element => {
   return (
     <div className='links'>
       <div className='row'>
