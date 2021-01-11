@@ -1,50 +1,180 @@
 @import '~sfui/dist/styles/SFColors/SFColors.module.scss';
-
 body {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
-hr {
-  margin: 0;
-  border: none;
-  border-bottom: 1px solid $sf-grey-600;
-}
-
-.appWrapper {
-  padding: 40px;
-}
-
-.appWrapper .appGrid {
+.bodyContent {
   display: grid;
-  grid-gap: 60px;
-  row-gap: 15px;
+  grid-template-rows: repeat(auto, 1fr);
+  gap: 15px 0;
+  padding: 10px;
 
-  &.col-2 {
-    grid-template-columns: 1fr 1fr;
+  .textHeader {
+    font-size: 1.6rem;
+    margin: 0;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $sf-grey-600;
   }
 
-  &.col-3 {
-    grid-template-columns: 1fr 1fr 1fr;
+  .content {
+    .section {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      .title {
+        font-weight: 500;
+      }
+    }
   }
 
-  &.col-4 {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+  .firstSection {
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+
+      .contentItems {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        .row {
+          display: flex;
+          gap: 0 25px;
+        }
+      }
+    }
+  }
+
+  .secondSection {
+    display: flex;
+    gap: 25px;
+    flex-direction: column;
+
+    .section {
+      .column {
+        .row {
+          display: flex;
+          gap: 10px;
+        }
+      }
+    }
+  }
+
+  .thirdSection {
+    .section {
+      .links {
+        gap: 10px;
+        display: flex;
+        flex-direction: column;
+
+        .row {
+          display: flex;
+          gap: 10px;
+          align-items: flex-end;
+        }
+      }
+    }
+  }
+
+  .fourthSection,
+  .fifthSection,
+  .sixthSection {
+    .section {
+      .fullSize {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px 0;
+      }
+    }
+  }
+
+  .seventhSection {
+    display: grid;
+
+    .section {
+      .tables {
+        display: grid;
+        gap: 10px;
+
+        .row {
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+          overflow-x: scroll;
+        }
+      }
+    }
   }
 }
 
-.appWrapper .appGrid .appRow {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 0;
+@media only screen and (min-width: 768px) {
+  .bodyContent {
+    padding: 10px 30px;
+
+    .textHeader {
+      font-size: 2.5rem;
+      flex-direction: row;
+    }
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .bodyContent {
+    .firstSection {
+      .buttons {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+
+    .secondSection,
+    .thirdSection {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .thirdSection {
+      display: flex;
+    }
+
+    .fourthSection,
+    .fifthSection,
+    .sixthSection {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+    }
+
+    .seventhSection {
+      .section {
+        .tables {
+          gap: 15px;
+
+          .row {
+            display: flex;
+            flex-direction: column;
+            gap: 15px 0;
+          }
+        }
+      }
+    }
+  }
 }
