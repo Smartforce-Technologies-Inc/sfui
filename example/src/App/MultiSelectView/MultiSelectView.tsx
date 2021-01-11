@@ -20,28 +20,28 @@ const getOptions = (): SFMultiSelectOption[] => {
 const SFMultiSelectView = (): JSX.Element => {
   return (
     <div className='fullSize'>
-      <SFMultiSelect label='Bagel' options={getOptions()} defaultValue={[]} />
+      <SFMultiSelect label='Bagel' options={getOptions()} />
       <SFMultiSelect
         label='Bagel'
         options={getOptions()}
-        defaultValue={['Bagel number one']}
+        value={['Bagel number one']}
       />
       <SFMultiSelect
         label='Bagel'
         options={getOptions()}
-        defaultValue={['Bagel number one']}
+        value={['Bagel number one']}
         disabled
       />
       <SFMultiSelect
         label='Bagel'
         options={getOptions()}
-        defaultValue={['Bagel number one']}
+        value={['Bagel number one']}
         error
       />
       <SFMultiSelect
         label='Bagel'
         options={getOptions()}
-        defaultValue={['Bagel number one']}
+        value={['Bagel number one']}
         helperText='Helper Message'
       />
     </div>
