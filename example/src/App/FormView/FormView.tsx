@@ -49,7 +49,9 @@ export const FormView = (): JSX.Element => {
     { value: 'John Cenna', label: 'Cenna' }
   ];
 
-  const handleInputChange = (event: React.ChangeEvent<any>) => {
+  const handleInputChange = (
+    event: React.ChangeEvent<HTMLInputElement | any>
+  ) => {
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
