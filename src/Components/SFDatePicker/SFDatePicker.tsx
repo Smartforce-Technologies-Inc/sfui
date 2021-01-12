@@ -139,11 +139,13 @@ export interface SFDatePickerProps extends KeyboardDatePickerProps {}
 
 export const SFDatePicker = ({
   value = null,
+  label = '',
   ...props
 }: SFDatePickerProps): React.ReactElement<KeyboardDatePickerProps> => {
   const popOverStyle: Record<'paper', string> = usePopOverStyle();
   const arrowStyle: Record<'root', string> = useButtonBackgrounds();
   const containerRef = React.createRef<HTMLDivElement>();
+  const dateLabel = !label ? 'mm/dd/yyyy' : label;
 
   return (
     <FormControl fullWidth>
@@ -153,8 +155,8 @@ export const SFDatePicker = ({
           ref={containerRef}
           disableToolbar
           value={value}
+          label={dateLabel}
           variant='inline'
-          label='mm/dd/yyyy'
           inputVariant='filled'
           format='MM/DD/YYYY'
           PopoverProps={{
