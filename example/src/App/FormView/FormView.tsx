@@ -49,14 +49,20 @@ export const FormView = (): JSX.Element => {
     { value: 'John Cenna', label: 'Cenna' }
   ];
 
-  const handleInputChange = (
-    event: React.ChangeEvent<HTMLInputElement | any>
-  ) => {
-    const target = event.target;
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const target = e.currentTarget;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
 
     setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSelectChange = (
+    e: React.ChangeEvent<{ name?: string | undefined; value: unknown }>
+  ) => {
+    if (e.target.name) {
+      setFormData({ ...formData, [e.target.name]: e.target.value });
+    }
   };
 
   const handleFormResponse = (event: React.FormEvent<HTMLFormElement>) => {
@@ -103,13 +109,13 @@ export const FormView = (): JSX.Element => {
             options={selectOptions}
             label='Number of witnesses'
             name='witnesses'
-            onChange={handleInputChange}
+            onChange={handleSelectChange}
           />
           <SFMultiSelect
             label='Supervisor'
             name='supervisor'
             options={multiSelectOptions}
-            onChange={handleInputChange}
+            onChange={handleSelectChange}
           />
           <SFTextField
             multiline
