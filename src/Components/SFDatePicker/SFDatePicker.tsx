@@ -154,7 +154,6 @@ export const SFDatePicker = ({
           disableToolbar
           value={value}
           variant='inline'
-          label='mm/dd/yyyy'
           inputVariant='filled'
           format='MM/DD/YYYY'
           PopoverProps={{
