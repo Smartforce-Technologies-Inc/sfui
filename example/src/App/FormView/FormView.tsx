@@ -122,7 +122,9 @@ export const FormView = (): JSX.Element => {
       </div>
       <SFPaper className='demoResponse'>
         {Object.keys(response).length === 0 ? null : (
-          <pre>{JSON.stringify(response, null, 2)}</pre>
+          <code>
+            <pre>{JSON.stringify(response, null, 2)}</pre>
+          </code>
         )}
       </SFPaper>
     </div>

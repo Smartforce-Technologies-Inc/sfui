@@ -4,6 +4,7 @@ import { SFButtonsView } from '../ButtonsView/ButtonsView';
 import { SFCheckboxesView } from '../CheckboxesView/CheckboxesView';
 import { SFDatePickerView } from '../DatePickerView/DatePickerView';
 import { SFDialogsView } from '../DialogsView/DialogsView';
+import { SFDrawersView } from '../DrawersView/DrawersView';
 import { SFIconButtonView } from '../IconButtonView/IconButtonView';
 import { SFLinksView } from '../LinksView/LinksView';
 import { SFMultiSelectView } from '../MultiSelectView/MultiSelectView';
@@ -73,8 +74,9 @@ export const ComponentsPage = (): JSX.Element => {
           <SFTextFieldsMultilineView />
         </div>
         <div className='section'>
-          <h4 className='title'>Dialog</h4>
+          <h4 className='title'>Dialog and Drawer</h4>
           <SFDialogsView />
+          <SFDrawersView />
         </div>
       </div>
       <div className='content sixthSection'>
