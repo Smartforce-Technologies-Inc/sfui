@@ -14,7 +14,7 @@ const SFDialogsView = (): JSX.Element => {
           sfColor='blue'
           onClick={() => setAlertTextOpen(!alertTextOpen)}
         >
-          Open Dialog One
+          Open Alert
         </SFButton>
       </div>
       <div className='row' style={{ margin: '10px 0' }}>
@@ -24,7 +24,7 @@ const SFDialogsView = (): JSX.Element => {
             setAlertFormOpen(!alertFormOpen);
           }}
         >
-          Open Dialog Two
+          Open Alert Form
         </SFButton>
       </div>
 
