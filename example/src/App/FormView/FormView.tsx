@@ -81,6 +81,7 @@ export const FormView = (): JSX.Element => {
             onChange={handleInputChange}
           />
           <SFRadioGroup
+            row
             label='Gender'
             name='gender'
             options={radioOptions}

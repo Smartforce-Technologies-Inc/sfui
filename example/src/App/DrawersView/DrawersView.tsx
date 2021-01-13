@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { SFButton, SFDrawer, SFTextField } from 'sfui';
+import { SFButton, SFPanel, SFTextField } from 'sfui';
 
 export const SFDrawersView = (): JSX.Element => {
   const [drawerTextOpen, setDrawerTextOpen] = useState<boolean>(false);
@@ -15,7 +15,7 @@ export const SFDrawersView = (): JSX.Element => {
           sfColor='blue'
           onClick={() => setDrawerTextOpen(!drawerTextOpen)}
         >
-          Open Drawer One
+          Open Panel
         </SFButton>
       </div>
       <div className='row' style={{ margin: '10px 0' }}>
@@ -23,16 +23,24 @@ export const SFDrawersView = (): JSX.Element => {
           sfColor='red'
           onClick={() => setDrawerInputOpen(!drawerInputOpen)}
         >
-          Open Drawer Two
+          Open Custom Drawer
         </SFButton>
       </div>
 
-      <SFDrawer
+      <SFPanel
         open={drawerTextOpen}
         anchor='right'
+        title='Drawer Title'
+        rightAction={{
+          label: 'Medium',
+          buttonProps: { onClick: () => setDrawerTextOpen(!drawerTextOpen) }
+        }}
+        leftAction={{
+          label: 'Medium',
+          buttonProps: { onClick: () => setDrawerTextOpen(!drawerTextOpen) }
+        }}
         onClose={() => setDrawerTextOpen(!drawerTextOpen)}
       >
-        <h4>Drawer Title</h4>
         <p>
           {drawerText}
           <br />
@@ -42,16 +50,27 @@ export const SFDrawersView = (): JSX.Element => {
           <br />
           {drawerText}
         </p>
-      </SFDrawer>
-      <SFDrawer
+      </SFPanel>
+      <SFPanel
         open={drawerInputOpen}
         anchor='right'
+        title='Drawer title'
+        leftAction={{
+          label: 'Medium',
+          buttonProps: { onClick: () => setDrawerInputOpen(!drawerInputOpen) }
+        }}
+        rightAction={{
+          label: 'Medium',
+          buttonProps: { onClick: () => setDrawerInputOpen(!drawerInputOpen) }
+        }}
         onClose={() => setDrawerInputOpen(!drawerInputOpen)}
       >
-        <h4>Drawer Title</h4>
         <p>{drawerText}</p>
-        <SFTextField />
-      </SFDrawer>
+        <SFTextField style={{ marginTop: 24 }} label='Bagel' />
+        <SFTextField style={{ marginTop: 12 }} label='Bagel' />
+        <SFTextField style={{ marginTop: 12 }} label='Bagel' />
+        <SFTextField style={{ marginTop: 12 }} label='Bagel' />
+      </SFPanel>
     </div>
   );
 };
