@@ -19,7 +19,7 @@ export interface SFPanelProps extends SFDrawerProps {
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     title: {
-      padding: '24px',
+      padding: '36px 36px 24px',
       color: `${theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]}`,
       fontSize: 24,
       fontStyle: 'normal',
@@ -28,14 +28,14 @@ const useStyles = makeStyles((theme: Theme) =>
     content: {
       maxWidth: (props: SFPanelProps): number | 'auto' =>
         props.maxWidth || 'auto',
-      padding: '0 24px',
+      padding: '0 36px',
       color: `${theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]}`,
       fontSize: 16,
       fontStyle: 'normal',
       lineHeight: '24px'
     },
     actions: {
-      padding: '24px',
+      padding: '24px 36px 36px',
       flex: '0 0 auto',
       display: 'flex',
       alignItems: 'center',
