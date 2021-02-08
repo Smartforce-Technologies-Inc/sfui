@@ -79,7 +79,7 @@ export const SFMultiSelect = ({
   onChange,
   ...props
 }: SFMultiSelectProps): React.ReactElement<SFMultiSelectProps> => {
-  const valueInit: string[] = value ? value : defaultValue;
+  const valueInit: string[] = value || defaultValue;
   const [selected, setSelected] = React.useState<string[]>(valueInit);
   const customMenuStyles: Record<'paper', string> = useMenuStyles();
 
