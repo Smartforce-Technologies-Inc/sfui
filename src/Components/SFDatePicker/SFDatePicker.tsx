@@ -29,6 +29,7 @@ const useButtonBackgrounds = makeStyles((theme: Theme) =>
 const usePopOverStyle = makeStyles((theme: Theme) =>
   createStyles({
     paper: {
+      marginTop: '3px',
       backgroundColor: `${
         theme.palette.type !== 'light' ? SFGrey[800] : undefined
       }`
@@ -174,7 +175,6 @@ export const SFDatePicker = ({
 }: SFDatePickerProps): React.ReactElement<KeyboardDatePickerProps> => {
   const popOverStyle: Record<'paper', string> = usePopOverStyle();
   const arrowStyle: Record<'root', string> = useButtonBackgrounds();
-  const containerRef = React.createRef<HTMLDivElement>();
   const [openCalendarStyle, setOpenCalendarStyle] = React.useState<boolean>(
     false
   );
@@ -184,7 +184,6 @@ export const SFDatePicker = ({
       <MuiPickersUtilsProvider utils={MomentUtils}>
         <StyledDatePicker
           {...props}
-          ref={containerRef}
           disableToolbar
           className={openCalendarStyle ? 'openCalendarStyle' : undefined}
           value={value}
@@ -195,8 +194,7 @@ export const SFDatePicker = ({
           onClose={() => setOpenCalendarStyle(false)}
           PopoverProps={{
             classes: popOverStyle,
-            container: containerRef.current,
-            anchorOrigin: { vertical: 'top', horizontal: 'left' },
+            anchorOrigin: { vertical: 'bottom', horizontal: 'left' },
             transformOrigin: { vertical: 'top', horizontal: 'left' }
           }}
           InputProps={{ readOnly: true }}
