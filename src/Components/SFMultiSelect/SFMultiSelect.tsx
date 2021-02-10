@@ -129,14 +129,14 @@ export const SFMultiSelect = ({
           onChange: handleChange,
           renderValue: renderSelected,
           IconComponent: (props): React.ReactElement => (
-            <SFIcon icon='Down-2' size='16' {...props} />
+            <SFIcon icon='Down-2' size='32' {...props} />
           )
         }}
       >
         {options.map((option) => (
           <StyledMenuItem key={option.value} value={option.value}>
-            <SFCheckbox checked={isChecked(option, selected)} />
-            <ListItemText primary={option.label} />
+            <SFCheckbox checked={isChecked(option, selected)} iconSize={32} />
+            {option.label}
           </StyledMenuItem>
         ))}
       </StyledSelect>

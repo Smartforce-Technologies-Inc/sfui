@@ -68,11 +68,13 @@ const getIconCheckedColor = (
 
 export interface SFCheckboxProps extends CheckboxProps {
   label?: string;
+  iconSize?: number;
 }
 
 export const SFCheckbox = ({
   disableRipple = true,
   label,
+  iconSize = 42,
   ...props
 }: SFCheckboxProps): React.ReactElement<SFCheckboxProps> => {
   const theme: Theme = useTheme();
@@ -93,14 +95,14 @@ export const SFCheckbox = ({
             icon={
               <SFIcon
                 icon='Checkbox-Unselected'
-                size={42}
+                size={iconSize}
                 color={iconUncheckedColor}
               />
             }
             checkedIcon={
               <SFIcon
                 icon='Checkbox-Selected'
-                size={42}
+                size={iconSize}
                 color={iconCheckedColor}
               />
             }
