@@ -44,8 +44,6 @@ export interface SFButtonProps extends ButtonProps {
 export const SFButton = ({
   variant = 'contained',
   color,
-  disableRipple,
-  disableElevation,
   size = 'medium',
   sfColor = 'blue',
   ...props
@@ -70,8 +68,8 @@ export const SFButton = ({
     <ButtonComponent
       {...props}
       variant={variant}
-      disableElevation={disableElevation}
-      disableRipple={disableRipple}
+      disableElevation
+      disableRipple
       style={ButtonInnerStyle}
     />
   );
