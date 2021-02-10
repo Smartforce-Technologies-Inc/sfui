@@ -96,11 +96,9 @@ const StyledChip = withStyles((theme: Theme) => ({
                   theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]
                 } !important`
               }
-            }
-          },
+            },
 
-          '&:hover, &:active': {
-            '& .MuiChip-deleteIcon': {
+            '&:hover, &:active': {
               backgroundColor:
                 theme.palette.type === 'light'
                   ? hexToRgba(SFGrey[500], 0.2)
@@ -173,11 +171,9 @@ export const SFChip = ({
   sfSize = 'small',
   label,
   disabled,
-  onDelete = undefined,
-  variant = 'default'
+  variant = 'default',
+  ...props
 }: SFChipProps): React.ReactElement<SFChipProps> => {
-  const theme: Theme = useTheme();
-
   return (
     <FormControl>
       <StyledChip
@@ -187,7 +183,6 @@ export const SFChip = ({
         variant={variant}
         disabled={disabled}
         deleteIcon={<SFIconButton sfIcon='Close' sfSize='tiny' />}
-        onDelete={onDelete}
       />
     </FormControl>
   );
