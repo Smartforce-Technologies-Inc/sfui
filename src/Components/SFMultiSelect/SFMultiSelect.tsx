@@ -1,16 +1,10 @@
 import * as React from 'react';
 import { withStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import {
-  FormControl,
-  MenuItem,
-  ListItemText,
-  SelectProps
-} from '@material-ui/core';
+import { FormControl, ListItemText, SelectProps } from '@material-ui/core';
 import { SFTextField } from '../SFTextField/SFTextField';
 import { SFIcon } from '../SFIcon/SFIcon';
 import { SFCheckbox } from '../SFCheckbox/SFCheckbox';
-import { hexToRgba } from '../../helpers';
-import { SFGrey } from '../../SFColors/SFColors';
+import { SFMenuItem } from '../SFMenuItem/SFMenuItem';
 
 export interface SFMultiSelectOption {
   label: string;
@@ -27,35 +21,6 @@ const StyledSelect = withStyles(() => ({
     }
   }
 }))(SFTextField);
-
-const StyledMenuItem = withStyles((theme: Theme) => ({
-  root: {
-    '&:hover': {
-      background:
-        theme.palette.type === 'light'
-          ? hexToRgba(SFGrey[200], 0.3)
-          : hexToRgba(SFGrey[500], 0.3)
-    },
-    '&:active': {
-      background:
-        theme.palette.type === 'light'
-          ? hexToRgba(SFGrey[200], 0.5)
-          : hexToRgba(SFGrey[500], 0.2)
-    },
-    '&.Mui-selected': {
-      background:
-        theme.palette.type === 'light'
-          ? hexToRgba(SFGrey[200], 0.5)
-          : hexToRgba(SFGrey[500], 0.2),
-      '&:hover': {
-        background:
-          theme.palette.type === 'light'
-            ? hexToRgba(SFGrey[200], 0.3)
-            : hexToRgba(SFGrey[500], 0.3)
-      }
-    }
-  }
-}))(MenuItem);
 
 const useMenuStyles = makeStyles({
   paper: {
@@ -134,10 +99,10 @@ export const SFMultiSelect = ({
         }}
       >
         {options.map((option) => (
-          <StyledMenuItem key={option.value} value={option.value}>
+          <SFMenuItem key={option.value} value={option.value}>
             <SFCheckbox checked={isChecked(option, selected)} />
             <ListItemText primary={option.label} />
-          </StyledMenuItem>
+          </SFMenuItem>
         ))}
       </StyledSelect>
     </FormControl>
