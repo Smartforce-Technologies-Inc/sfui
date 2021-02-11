@@ -14,11 +14,9 @@ import { SFMenuItem } from '../SFMenuItem/SFMenuItem';
 
 const useStyles = makeStyles((theme: Theme) => ({
   iconButton: {
-    padding: '0 !important',
-
     '& svg': {
       '& path': {
-        fill: (props: SFSplitButtonProps): string => {
+        fill: (props: Partial<SFSplitButtonProps>): string => {
           const isLight: boolean = theme.palette.type === 'light';
           if (props.sfColor === 'grey') {
             return `${isLight ? SFGrey[900] : SFGrey[50]} !important`;
@@ -34,7 +32,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     '&:hover': {
       '& svg': {
         '& path': {
-          fill: (props: SFSplitButtonProps): string => {
+          fill: (props: Partial<SFSplitButtonProps>): string => {
             const isLight: boolean = theme.palette.type === 'light';
             if (props.variant === 'outlined' && props.sfColor === 'blue') {
               return `${isLight ? SFBlue[700] : SFBlue[300]} !important`;
@@ -47,7 +45,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     '&:active': {
       '& svg': {
         '& path': {
-          fill: (props: SFSplitButtonProps): string => {
+          fill: (props: Partial<SFSplitButtonProps>): string => {
             const isLight: boolean = theme.palette.type === 'light';
             if (props.variant === 'outlined' && props.sfColor === 'blue') {
               return `${isLight ? SFBlue[800] : SFBlue[400]} !important`;
@@ -61,11 +59,13 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 const StyledButtonGroup = withStyles((theme: Theme) => ({
-  contained: {
+  root: {
     boxShadow: 'none'
   },
-  outlined: {
-    boxShadow: 'none'
+  grouped: {
+    '&:last-child': {
+      padding: '0 !important'
+    }
   },
   groupedContainedHorizontal: {
     '&:first-child': {
@@ -75,7 +75,6 @@ const StyledButtonGroup = withStyles((theme: Theme) => ({
 }))(ButtonGroup);
 
 export interface SFSplitButtonOption {
-  key: string;
   label: string;
   disabled?: boolean;
   onClick: () => void;
@@ -94,27 +93,22 @@ export const SFSplitButton = ({
   sfColor = 'blue',
   size = 'medium'
 }: SFSplitButtonProps): React.ReactElement<SFSplitButtonProps> => {
-  const classes = useStyles({
-    options,
-    variant,
-    sfColor,
-    size
-  });
+  const classes = useStyles({ variant, sfColor });
 
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  const refMenu = React.useRef<HTMLDivElement>(null);
   const [selectedItemIndex, setSelectedItemIndex] = React.useState(0);
+  const refMenu = React.useRef<HTMLDivElement>(null);
 
   const onMenuItemClick = (index: number): void => {
     setSelectedItemIndex(index);
     setIsMenuOpen(false);
   };
 
-  const onOpenMenu = (): void => {
+  const onToggleMenu = (): void => {
     setIsMenuOpen((prevOpen) => !prevOpen);
   };
 
-  const handleClose = (event: React.MouseEvent<Document, MouseEvent>): void => {
+  const onClickAway = (event: React.MouseEvent<Document, MouseEvent>): void => {
     if (
       refMenu.current &&
       refMenu.current.contains(event.target as HTMLElement)
@@ -141,7 +135,7 @@ export const SFSplitButton = ({
           aria-controls={isMenuOpen ? 'split-button-menu' : undefined}
           aria-expanded={isMenuOpen ? 'true' : undefined}
           aria-haspopup='menu'
-          onClick={onOpenMenu}
+          onClick={onToggleMenu}
         >
           <SFIcon icon='Down-2' size={13} />
         </SFButton>
@@ -151,15 +145,14 @@ export const SFSplitButton = ({
         open={isMenuOpen}
         anchorEl={refMenu.current}
         placement='top-end'
-        transition
         disablePortal
       >
         <Paper>
-          <ClickAwayListener onClickAway={handleClose}>
+          <ClickAwayListener onClickAway={onClickAway}>
             <MenuList id='split-button-menu'>
               {options.map((option, index) => (
                 <SFMenuItem
-                  key={option.key}
+                  key={option.label}
                   disabled={option.disabled}
                   selected={index === selectedItemIndex}
                   onClick={(): void => onMenuItemClick(index)}
