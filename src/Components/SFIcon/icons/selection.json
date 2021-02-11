@@ -4,29 +4,7 @@
     {
       "icon": {
         "paths": [
-          "M341.333 292.571h341.333c26.931 0 48.762 21.831 48.762 48.762v341.333c0 26.931-21.831 48.762-48.762 48.762h-341.333c-26.931 0-48.762-21.831-48.762-48.762v-341.333c0-26.931 21.831-48.762 48.762-48.762zM665.424 407.228c-6.597-6.529-17.398-6.68-24.12 0.095l-172.427 173.207-86.265-85.521c-6.749-6.722-17.542-6.505-24.11 0.063l-0.022 0.022c-6.68 6.715-6.561 17.552 0.105 24.157l98.355 97.507c3.357 3.34 7.748 4.957 12.022 4.957 4.342 0 8.777-1.682 12.127-5.059l184.422-185.271c6.629-6.663 6.629-17.474-0.063-24.135l-0.024-0.022z"
-        ],
-        "attrs": [{}],
-        "isMulticolor": false,
-        "isMulticolor2": false,
-        "grid": 0,
-        "tags": ["Checkbox-Selected"]
-      },
-      "attrs": [{}],
-      "properties": {
-        "order": 8,
-        "id": 1,
-        "name": "Checkbox-Selected",
-        "prevSize": 32
-      },
-      "setIdx": 0,
-      "setId": 0,
-      "iconIdx": 1
-    },
-    {
-      "icon": {
-        "paths": [
-          "M682.667 341.333v341.333h-341.333v-341.333h341.333zM341.333 292.571c-26.931 0-48.762 21.831-48.762 48.762v341.333c0 26.931 21.831 48.762 48.762 48.762h341.333c26.931 0 48.762-21.831 48.762-48.762v-341.333c0-26.931-21.831-48.762-48.762-48.762h-341.333z"
+          "M910.222 113.778v796.444h-796.444v-796.444h796.444zM113.778 0c-62.838 0-113.778 50.94-113.778 113.778v796.444c0 62.839 50.94 113.778 113.778 113.778h796.444c62.839 0 113.778-50.938 113.778-113.778v-796.444c0-62.838-50.938-113.778-113.778-113.778h-796.444z"
         ],
         "attrs": [{}],
         "isMulticolor": false,
@@ -36,14 +14,36 @@
       },
       "attrs": [{}],
       "properties": {
-        "order": 9,
-        "id": 0,
+        "order": 670,
+        "id": 149,
         "name": "Checkbox-Unselected",
         "prevSize": 32
       },
       "setIdx": 0,
-      "setId": 0,
-      "iconIdx": 2
+      "setId": 1,
+      "iconIdx": 0
+    },
+    {
+      "icon": {
+        "paths": [
+          "M113.778 0h796.444c62.839 0 113.778 50.938 113.778 113.778v796.444c0 62.839-50.938 113.778-113.778 113.778h-796.444c-62.839 0-113.778-50.938-113.778-113.778v-796.444c0-62.839 50.938-113.778 113.778-113.778zM869.99 267.531c-15.394-15.235-40.596-15.588-56.28 0.222l-402.33 404.15-201.284-199.549c-15.747-15.684-40.932-15.178-56.257 0.148l-0.051 0.051c-15.588 15.667-15.309 40.954 0.245 56.366l229.495 227.516c7.834 7.794 18.079 11.566 28.052 11.566 10.132 0 20.48-3.925 28.297-11.804l430.319-432.299c15.468-15.548 15.468-40.772-0.148-56.314l-0.057-0.051z"
+        ],
+        "attrs": [{}],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": ["Checkbox-Selected"]
+      },
+      "attrs": [{}],
+      "properties": {
+        "order": 671,
+        "id": 0,
+        "name": "Checkbox-Selected",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 1,
+      "iconIdx": 1
     },
     {
       "icon": {
@@ -54,22 +54,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Active Protection"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 467,
+        "order": 672,
         "name": "Active-Protection",
         "prevSize": 32,
-        "id": 82
+        "id": 1
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 82
+      "iconIdx": 2
     },
     {
       "icon": {
@@ -81,22 +78,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Add"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 468,
+        "order": 673,
         "name": "Add",
         "prevSize": 32,
-        "id": 83
+        "id": 2
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 83
+      "iconIdx": 3
     },
     {
       "icon": {
@@ -114,22 +108,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Adjustments"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 483,
+        "order": 674,
         "name": "Adjustments",
         "prevSize": 32,
-        "id": 84
+        "id": 3
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 84
+      "iconIdx": 4
     },
     {
       "icon": {
@@ -142,22 +133,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Alarm"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 484,
+        "order": 675,
         "name": "Alarm",
         "prevSize": 32,
-        "id": 85
+        "id": 4
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 85
+      "iconIdx": 5
     },
     {
       "icon": {
@@ -170,22 +158,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Archive File"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 485,
+        "order": 676,
         "name": "Archive-File",
         "prevSize": 32,
-        "id": 86
+        "id": 5
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 86
+      "iconIdx": 6
     },
     {
       "icon": {
@@ -204,22 +189,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Assignment"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 486,
+        "order": 677,
         "name": "Assignment",
         "prevSize": 32,
-        "id": 87
+        "id": 6
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 87
+      "iconIdx": 7
     },
     {
       "icon": {
@@ -231,22 +213,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Bell"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 487,
+        "order": 678,
         "name": "Bell",
         "prevSize": 32,
-        "id": 88
+        "id": 7
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 88
+      "iconIdx": 8
     },
     {
       "icon": {
@@ -263,22 +242,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Brake Link"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 488,
+        "order": 679,
         "name": "Brake-Link",
         "prevSize": 32,
-        "id": 89
+        "id": 8
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 89
+      "iconIdx": 9
     },
     {
       "icon": {
@@ -294,22 +270,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Callendar"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 489,
+        "order": 680,
         "name": "Callendar",
         "prevSize": 32,
-        "id": 90
+        "id": 9
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 90
+      "iconIdx": 10
     },
     {
       "icon": {
@@ -321,22 +294,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Camera 1"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 490,
+        "order": 681,
         "name": "Camera-1",
         "prevSize": 32,
-        "id": 91
+        "id": 10
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 91
+      "iconIdx": 11
     },
     {
       "icon": {
@@ -346,22 +316,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Camera 2"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 491,
+        "order": 682,
         "name": "Camera-2",
         "prevSize": 32,
-        "id": 92
+        "id": 11
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 92
+      "iconIdx": 12
     },
     {
       "icon": {
@@ -372,22 +339,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Check 1"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 492,
+        "order": 683,
         "name": "Check-1",
         "prevSize": 32,
-        "id": 93
+        "id": 12
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 93
+      "iconIdx": 13
     },
     {
       "icon": {
@@ -397,22 +361,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Check 2"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 493,
+        "order": 684,
         "name": "Check-2",
         "prevSize": 32,
-        "id": 94
+        "id": 13
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 94
+      "iconIdx": 14
     },
     {
       "icon": {
@@ -429,22 +390,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Clock"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 494,
+        "order": 685,
         "name": "Clock",
         "prevSize": 32,
-        "id": 95
+        "id": 14
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 95
+      "iconIdx": 15
     },
     {
       "icon": {
@@ -455,22 +413,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Close"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 495,
+        "order": 686,
         "name": "Close",
         "prevSize": 32,
-        "id": 96
+        "id": 15
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 96
+      "iconIdx": 16
     },
     {
       "icon": {
@@ -480,22 +435,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Cloud"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 496,
+        "order": 687,
         "name": "Cloud",
         "prevSize": 32,
-        "id": 97
+        "id": 16
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 97
+      "iconIdx": 17
     },
     {
       "icon": {
@@ -510,22 +462,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Collaboration"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 497,
+        "order": 688,
         "name": "Collaboration",
         "prevSize": 32,
-        "id": 98
+        "id": 17
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 98
+      "iconIdx": 18
     },
     {
       "icon": {
@@ -538,22 +487,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Database"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 498,
+        "order": 689,
         "name": "Database",
         "prevSize": 32,
-        "id": 99
+        "id": 18
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 99
+      "iconIdx": 19
     },
     {
       "icon": {
@@ -565,22 +511,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Download"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 499,
+        "order": 690,
         "name": "Download",
         "prevSize": 32,
-        "id": 100
+        "id": 19
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 100
+      "iconIdx": 20
     },
     {
       "icon": {
@@ -592,22 +535,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Error Mark"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 500,
+        "order": 691,
         "name": "Error-Mark",
         "prevSize": 32,
-        "id": 101
+        "id": 20
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 101
+      "iconIdx": 21
     },
     {
       "icon": {
@@ -619,22 +559,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Error"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 501,
+        "order": 692,
         "name": "Error",
         "prevSize": 32,
-        "id": 102
+        "id": 21
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 102
+      "iconIdx": 22
     },
     {
       "icon": {
@@ -645,22 +582,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Eye"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 469,
+        "order": 693,
         "name": "Eye",
         "prevSize": 32,
-        "id": 103
+        "id": 22
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 103
+      "iconIdx": 23
     },
     {
       "icon": {
@@ -671,22 +605,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["File 1"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 470,
+        "order": 694,
         "name": "File-1",
         "prevSize": 32,
-        "id": 104
+        "id": 23
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 104
+      "iconIdx": 24
     },
     {
       "icon": {
@@ -700,22 +631,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["File 2"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 502,
+        "order": 695,
         "name": "File-2",
         "prevSize": 32,
-        "id": 105
+        "id": 24
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 105
+      "iconIdx": 25
     },
     {
       "icon": {
@@ -726,22 +654,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Folder"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 503,
+        "order": 696,
         "name": "Folder",
         "prevSize": 32,
-        "id": 106
+        "id": 25
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 106
+      "iconIdx": 26
     },
     {
       "icon": {
@@ -751,22 +676,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Home"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 504,
+        "order": 697,
         "name": "Home",
         "prevSize": 32,
-        "id": 107
+        "id": 26
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 107
+      "iconIdx": 27
     },
     {
       "icon": {
@@ -780,22 +702,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Invisible"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 505,
+        "order": 698,
         "name": "Invisible",
         "prevSize": 32,
-        "id": 108
+        "id": 27
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 108
+      "iconIdx": 28
     },
     {
       "icon": {
@@ -808,22 +727,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Lightbulb"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 506,
+        "order": 699,
         "name": "Lightbulb",
         "prevSize": 32,
-        "id": 109
+        "id": 28
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 109
+      "iconIdx": 29
     },
     {
       "icon": {
@@ -835,22 +751,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Link"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 507,
+        "order": 700,
         "name": "Link",
         "prevSize": 32,
-        "id": 110
+        "id": 29
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 110
+      "iconIdx": 30
     },
     {
       "icon": {
@@ -863,22 +776,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Lock Open"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 508,
+        "order": 701,
         "name": "Lock-Open",
         "prevSize": 32,
-        "id": 111
+        "id": 30
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 111
+      "iconIdx": 31
     },
     {
       "icon": {
@@ -891,22 +801,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Lock"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 509,
+        "order": 702,
         "name": "Lock",
         "prevSize": 32,
-        "id": 112
+        "id": 31
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 112
+      "iconIdx": 32
     },
     {
       "icon": {
@@ -917,22 +824,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Loction 1"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 510,
+        "order": 703,
         "name": "Loction-1",
         "prevSize": 32,
-        "id": 113
+        "id": 32
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 113
+      "iconIdx": 33
     },
     {
       "icon": {
@@ -944,22 +848,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Login"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 511,
+        "order": 704,
         "name": "Login",
         "prevSize": 32,
-        "id": 114
+        "id": 33
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 114
+      "iconIdx": 34
     },
     {
       "icon": {
@@ -971,22 +872,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Logout"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 512,
+        "order": 705,
         "name": "Logout",
         "prevSize": 32,
-        "id": 115
+        "id": 34
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 115
+      "iconIdx": 35
     },
     {
       "icon": {
@@ -999,22 +897,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Mail"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 513,
+        "order": 706,
         "name": "Mail",
         "prevSize": 32,
-        "id": 116
+        "id": 35
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 116
+      "iconIdx": 36
     },
     {
       "icon": {
@@ -1028,22 +923,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Mails"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 514,
+        "order": 707,
         "name": "Mails",
         "prevSize": 32,
-        "id": 117
+        "id": 36
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 117
+      "iconIdx": 37
     },
     {
       "icon": {
@@ -1055,22 +947,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Map"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 515,
+        "order": 708,
         "name": "Map",
         "prevSize": 32,
-        "id": 118
+        "id": 37
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 118
+      "iconIdx": 38
     },
     {
       "icon": {
@@ -1082,22 +971,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Menu 1"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 516,
+        "order": 709,
         "name": "Menu-1",
         "prevSize": 32,
-        "id": 119
+        "id": 38
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 119
+      "iconIdx": 39
     },
     {
       "icon": {
@@ -1108,22 +994,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Open Folder"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 517,
+        "order": 710,
         "name": "Open-Folder",
         "prevSize": 32,
-        "id": 120
+        "id": 39
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 120
+      "iconIdx": 40
     },
     {
       "icon": {
@@ -1137,22 +1020,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Open Mail"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 518,
+        "order": 711,
         "name": "Open-Mail",
         "prevSize": 32,
-        "id": 121
+        "id": 40
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 121
+      "iconIdx": 41
     },
     {
       "icon": {
@@ -1164,22 +1044,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Other"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 519,
+        "order": 712,
         "name": "Other",
         "prevSize": 32,
-        "id": 122
+        "id": 41
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 122
+      "iconIdx": 42
     },
     {
       "icon": {
@@ -1189,22 +1066,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Paperclip"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 520,
+        "order": 713,
         "name": "Paperclip",
         "prevSize": 32,
-        "id": 123
+        "id": 42
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 123
+      "iconIdx": 43
     },
     {
       "icon": {
@@ -1217,22 +1091,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Pencil"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 471,
+        "order": 714,
         "name": "Pencil",
         "prevSize": 32,
-        "id": 124
+        "id": 43
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 124
+      "iconIdx": 44
     },
     {
       "icon": {
@@ -1244,22 +1115,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Picture"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 472,
+        "order": 715,
         "name": "Picture",
         "prevSize": 32,
-        "id": 125
+        "id": 44
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 125
+      "iconIdx": 45
     },
     {
       "icon": {
@@ -1270,22 +1138,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Pin 1"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 521,
+        "order": 716,
         "name": "Pin-1",
         "prevSize": 32,
-        "id": 126
+        "id": 45
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 126
+      "iconIdx": 46
     },
     {
       "icon": {
@@ -1296,22 +1161,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Preferences 1"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 522,
+        "order": 717,
         "name": "Preferences-1",
         "prevSize": 32,
-        "id": 127
+        "id": 46
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 127
+      "iconIdx": 47
     },
     {
       "icon": {
@@ -1323,22 +1185,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Question Mark"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 523,
+        "order": 718,
         "name": "Question-Mark",
         "prevSize": 32,
-        "id": 128
+        "id": 47
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 128
+      "iconIdx": 48
     },
     {
       "icon": {
@@ -1351,22 +1210,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Refresh"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 524,
+        "order": 719,
         "name": "Refresh",
         "prevSize": 32,
-        "id": 129
+        "id": 48
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 129
+      "iconIdx": 49
     },
     {
       "icon": {
@@ -1377,22 +1233,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Reload"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 525,
+        "order": 720,
         "name": "Reload",
         "prevSize": 32,
-        "id": 130
+        "id": 49
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 130
+      "iconIdx": 50
     },
     {
       "icon": {
@@ -1403,22 +1256,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Remove"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 526,
+        "order": 721,
         "name": "Remove",
         "prevSize": 32,
-        "id": 131
+        "id": 50
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 131
+      "iconIdx": 51
     },
     {
       "icon": {
@@ -1428,22 +1278,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Reply"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 527,
+        "order": 722,
         "name": "Reply",
         "prevSize": 32,
-        "id": 132
+        "id": 51
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 132
+      "iconIdx": 52
     },
     {
       "icon": {
@@ -1454,22 +1301,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Search"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 528,
+        "order": 723,
         "name": "Search",
         "prevSize": 32,
-        "id": 133
+        "id": 52
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 133
+      "iconIdx": 53
     },
     {
       "icon": {
@@ -1483,22 +1327,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Share"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 529,
+        "order": 724,
         "name": "Share",
         "prevSize": 32,
-        "id": 134
+        "id": 53
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 134
+      "iconIdx": 54
     },
     {
       "icon": {
@@ -1510,22 +1351,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Shopping Basket"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 530,
+        "order": 725,
         "name": "Shopping-Basket",
         "prevSize": 32,
-        "id": 135
+        "id": 54
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 135
+      "iconIdx": 55
     },
     {
       "icon": {
@@ -1538,22 +1376,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Shopping Cart"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 531,
+        "order": 726,
         "name": "Shopping-Cart",
         "prevSize": 32,
-        "id": 136
+        "id": 55
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 136
+      "iconIdx": 56
     },
     {
       "icon": {
@@ -1563,22 +1398,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Speach Bubble"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 532,
+        "order": 727,
         "name": "Speach-Bubble",
         "prevSize": 32,
-        "id": 137
+        "id": 56
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 137
+      "iconIdx": 57
     },
     {
       "icon": {
@@ -1589,22 +1421,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Speach Bubbles"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 533,
+        "order": 728,
         "name": "Speach-Bubbles",
         "prevSize": 32,
-        "id": 138
+        "id": 57
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 138
+      "iconIdx": 58
     },
     {
       "icon": {
@@ -1614,22 +1443,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Star"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 534,
+        "order": 729,
         "name": "Star",
         "prevSize": 32,
-        "id": 139
+        "id": 58
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 139
+      "iconIdx": 59
     },
     {
       "icon": {
@@ -1642,22 +1468,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Syncronizaion"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 535,
+        "order": 730,
         "name": "Syncronizaion",
         "prevSize": 32,
-        "id": 140
+        "id": 59
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 140
+      "iconIdx": 60
     },
     {
       "icon": {
@@ -1668,22 +1491,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Tag"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 536,
+        "order": 731,
         "name": "Tag",
         "prevSize": 32,
-        "id": 141
+        "id": 60
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 141
+      "iconIdx": 61
     },
     {
       "icon": {
@@ -1694,22 +1514,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Time"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 537,
+        "order": 732,
         "name": "Time",
         "prevSize": 32,
-        "id": 142
+        "id": 61
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 142
+      "iconIdx": 62
     },
     {
       "icon": {
@@ -1723,22 +1540,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Trash"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 538,
+        "order": 733,
         "name": "Trash",
         "prevSize": 32,
-        "id": 143
+        "id": 62
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 143
+      "iconIdx": 63
     },
     {
       "icon": {
@@ -1749,22 +1563,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Undo"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 539,
+        "order": 734,
         "name": "Undo",
         "prevSize": 32,
-        "id": 144
+        "id": 63
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 144
+      "iconIdx": 64
     },
     {
       "icon": {
@@ -1776,22 +1587,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Up Arrow"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 473,
+        "order": 735,
         "name": "Up-Arrow",
         "prevSize": 32,
-        "id": 145
+        "id": 64
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 145
+      "iconIdx": 65
     },
     {
       "icon": {
@@ -1803,22 +1611,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Upload"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 474,
+        "order": 736,
         "name": "Upload",
         "prevSize": 32,
-        "id": 146
+        "id": 65
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 146
+      "iconIdx": 66
     },
     {
       "icon": {
@@ -1829,22 +1634,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["User 1"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 540,
+        "order": 737,
         "name": "User-1",
         "prevSize": 32,
-        "id": 147
+        "id": 66
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 147
+      "iconIdx": 67
     },
     {
       "icon": {
@@ -1856,22 +1658,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["User 2"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 541,
+        "order": 738,
         "name": "User-2",
         "prevSize": 32,
-        "id": 148
+        "id": 67
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 148
+      "iconIdx": 68
     },
     {
       "icon": {
@@ -1886,22 +1685,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Users"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 542,
+        "order": 739,
         "name": "Users",
         "prevSize": 32,
-        "id": 149
+        "id": 68
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 149
+      "iconIdx": 69
     },
     {
       "icon": {
@@ -1921,22 +1717,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Video"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 543,
+        "order": 740,
         "name": "Video",
         "prevSize": 32,
-        "id": 150
+        "id": 69
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 150
+      "iconIdx": 70
     },
     {
       "icon": {
@@ -1949,22 +1742,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Zoom In"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 544,
+        "order": 741,
         "name": "Zoom-In",
         "prevSize": 32,
-        "id": 151
+        "id": 70
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 151
+      "iconIdx": 71
     },
     {
       "icon": {
@@ -1976,22 +1766,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Zoom Out"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 545,
+        "order": 742,
         "name": "Zoom-Out",
         "prevSize": 32,
-        "id": 152
+        "id": 71
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 152
+      "iconIdx": 72
     },
     {
       "icon": {
@@ -2001,22 +1788,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Down-2"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 546,
+        "order": 743,
         "name": "Down-2",
         "prevSize": 32,
-        "id": 153
+        "id": 72
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 153
+      "iconIdx": 73
     },
     {
       "icon": {
@@ -2027,22 +1811,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Down-7"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 547,
+        "order": 744,
         "name": "Down-7",
         "prevSize": 32,
-        "id": 154
+        "id": 73
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 154
+      "iconIdx": 74
     },
     {
       "icon": {
@@ -2052,22 +1833,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Left-2"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 548,
+        "order": 745,
         "name": "Left-2",
         "prevSize": 32,
-        "id": 155
+        "id": 74
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 155
+      "iconIdx": 75
     },
     {
       "icon": {
@@ -2078,22 +1856,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Left-7"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 549,
+        "order": 746,
         "name": "Left-7",
         "prevSize": 32,
-        "id": 156
+        "id": 75
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 156
+      "iconIdx": 76
     },
     {
       "icon": {
@@ -2103,22 +1878,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Right-2"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 550,
+        "order": 747,
         "name": "Right-2",
         "prevSize": 32,
-        "id": 157
+        "id": 76
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 157
+      "iconIdx": 77
     },
     {
       "icon": {
@@ -2129,22 +1901,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Right-7"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 551,
+        "order": 748,
         "name": "Right-7",
         "prevSize": 32,
-        "id": 158
+        "id": 77
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 158
+      "iconIdx": 78
     },
     {
       "icon": {
@@ -2154,22 +1923,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Up-2"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 552,
+        "order": 749,
         "name": "Up-2",
         "prevSize": 32,
-        "id": 159
+        "id": 78
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 159
+      "iconIdx": 79
     },
     {
       "icon": {
@@ -2180,22 +1946,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Up-7"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 553,
+        "order": 750,
         "name": "Up-7",
         "prevSize": 32,
-        "id": 160
+        "id": 79
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 160
+      "iconIdx": 80
     },
     {
       "icon": {
@@ -2205,22 +1968,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Bookmark-1"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 554,
+        "order": 751,
         "name": "Bookmark-1",
         "prevSize": 32,
-        "id": 161
+        "id": 80
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 161
+      "iconIdx": 81
     },
     {
       "icon": {
@@ -2231,22 +1991,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Bookmark-3"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 555,
+        "order": 752,
         "name": "Bookmark-3",
         "prevSize": 32,
-        "id": 162
+        "id": 81
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 162
+      "iconIdx": 82
     },
     {
       "icon": {
@@ -2257,22 +2014,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Favorite"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 556,
+        "order": 753,
         "name": "Favorite",
         "prevSize": 32,
-        "id": 163
+        "id": 82
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 163
+      "iconIdx": 83
     },
     {
       "icon": {
@@ -2283,22 +2037,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Tag-1"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 557,
+        "order": 754,
         "name": "Tag-1",
         "prevSize": 32,
-        "id": 164
+        "id": 83
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 164
+      "iconIdx": 84
     },
     {
       "icon": {
@@ -2312,22 +2063,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Block-Chart 1"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 558,
+        "order": 755,
         "name": "Block-Chart-1",
         "prevSize": 32,
-        "id": 165
+        "id": 84
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 165
+      "iconIdx": 85
     },
     {
       "icon": {
@@ -2341,22 +2089,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Block-Chart 4"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 475,
+        "order": 756,
         "name": "Block-Chart-4",
         "prevSize": 32,
-        "id": 166
+        "id": 85
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 166
+      "iconIdx": 86
     },
     {
       "icon": {
@@ -2375,22 +2120,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Dot-Chart 1"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 476,
+        "order": 757,
         "name": "Dot-Chart-1",
         "prevSize": 32,
-        "id": 167
+        "id": 86
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 167
+      "iconIdx": 87
     },
     {
       "icon": {
@@ -2401,22 +2143,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Line-Chart 1"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 559,
+        "order": 758,
         "name": "Line-Chart-1",
         "prevSize": 32,
-        "id": 168
+        "id": 87
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 168
+      "iconIdx": 88
     },
     {
       "icon": {
@@ -2426,22 +2165,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Pie-Chart 1"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 560,
+        "order": 759,
         "name": "Pie-Chart-1",
         "prevSize": 32,
-        "id": 169
+        "id": 88
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 169
+      "iconIdx": 89
     },
     {
       "icon": {
@@ -2451,22 +2187,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Ring-Chart 1"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 561,
+        "order": 760,
         "name": "Ring-Chart-1",
         "prevSize": 32,
-        "id": 170
+        "id": 89
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 170
+      "iconIdx": 90
     },
     {
       "icon": {
@@ -2476,22 +2209,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Table-Chart 1"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 562,
+        "order": 761,
         "name": "Table-Chart-1",
         "prevSize": 32,
-        "id": 171
+        "id": 90
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 171
+      "iconIdx": 91
     },
     {
       "icon": {
@@ -2501,22 +2231,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Add-Book"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 563,
+        "order": 762,
         "name": "Add-Book",
         "prevSize": 32,
-        "id": 172
+        "id": 91
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 172
+      "iconIdx": 92
     },
     {
       "icon": {
@@ -2526,22 +2253,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Book-2"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 564,
+        "order": 763,
         "name": "Book-2",
         "prevSize": 32,
-        "id": 173
+        "id": 92
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 173
+      "iconIdx": 93
     },
     {
       "icon": {
@@ -2551,22 +2275,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Book-Dismiss"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 565,
+        "order": 764,
         "name": "Book-Dismiss",
         "prevSize": 32,
-        "id": 174
+        "id": 93
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 174
+      "iconIdx": 94
     },
     {
       "icon": {
@@ -2576,22 +2297,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Book-Done"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 566,
+        "order": 765,
         "name": "Book-Done",
         "prevSize": 32,
-        "id": 175
+        "id": 94
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 175
+      "iconIdx": 95
     },
     {
       "icon": {
@@ -2601,22 +2319,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Book-Down"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 567,
+        "order": 766,
         "name": "Book-Down",
         "prevSize": 32,
-        "id": 176
+        "id": 95
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 176
+      "iconIdx": 96
     },
     {
       "icon": {
@@ -2626,22 +2341,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Book-Question"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 568,
+        "order": 767,
         "name": "Book-Question",
         "prevSize": 32,
-        "id": 177
+        "id": 96
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 177
+      "iconIdx": 97
     },
     {
       "icon": {
@@ -2651,22 +2363,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Book-Settings"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 569,
+        "order": 768,
         "name": "Book-Settings",
         "prevSize": 32,
-        "id": 178
+        "id": 97
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 178
+      "iconIdx": 98
     },
     {
       "icon": {
@@ -2676,22 +2385,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Book-Up"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 570,
+        "order": 769,
         "name": "Book-Up",
         "prevSize": 32,
-        "id": 179
+        "id": 98
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 179
+      "iconIdx": 99
     },
     {
       "icon": {
@@ -2701,22 +2407,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Book-User"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 571,
+        "order": 770,
         "name": "Book-User",
         "prevSize": 32,
-        "id": 180
+        "id": 99
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 180
+      "iconIdx": 100
     },
     {
       "icon": {
@@ -2726,22 +2429,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Book-Warning"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 572,
+        "order": 771,
         "name": "Book-Warning",
         "prevSize": 32,
-        "id": 181
+        "id": 100
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 181
+      "iconIdx": 101
     },
     {
       "icon": {
@@ -2751,22 +2451,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Delete-Book"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 573,
+        "order": 772,
         "name": "Delete-Book",
         "prevSize": 32,
-        "id": 182
+        "id": 101
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 182
+      "iconIdx": 102
     },
     {
       "icon": {
@@ -2776,22 +2473,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Remove-Book"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 574,
+        "order": 773,
         "name": "Remove-Book",
         "prevSize": 32,
-        "id": 183
+        "id": 102
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 183
+      "iconIdx": 103
     },
     {
       "icon": {
@@ -2801,22 +2495,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Search-Book"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 575,
+        "order": 774,
         "name": "Search-Book",
         "prevSize": 32,
-        "id": 184
+        "id": 103
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 184
+      "iconIdx": 104
     },
     {
       "icon": {
@@ -2828,22 +2519,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Files"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 576,
+        "order": 775,
         "name": "Files",
         "prevSize": 32,
-        "id": 185
+        "id": 104
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 185
+      "iconIdx": 105
     },
     {
       "icon": {
@@ -2857,22 +2545,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Add-File"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 577,
+        "order": 776,
         "name": "Add-File",
         "prevSize": 32,
-        "id": 186
+        "id": 105
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 186
+      "iconIdx": 106
     },
     {
       "icon": {
@@ -2886,22 +2571,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Attach-File"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 477,
+        "order": 777,
         "name": "Attach-File",
         "prevSize": 32,
-        "id": 187
+        "id": 106
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 187
+      "iconIdx": 107
     },
     {
       "icon": {
@@ -2912,22 +2594,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Blank-File"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 478,
+        "order": 778,
         "name": "Blank-File",
         "prevSize": 32,
-        "id": 188
+        "id": 107
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 188
+      "iconIdx": 108
     },
     {
       "icon": {
@@ -2940,22 +2619,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Check-File"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 618,
+        "order": 779,
         "name": "Check-File",
         "prevSize": 32,
-        "id": 189
+        "id": 108
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 189
+      "iconIdx": 109
     },
     {
       "icon": {
@@ -2969,22 +2645,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Clear-File"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 619,
+        "order": 780,
         "name": "Clear-File",
         "prevSize": 32,
-        "id": 190
+        "id": 109
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 190
+      "iconIdx": 110
     },
     {
       "icon": {
@@ -2997,22 +2670,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Dismiss-File"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 620,
+        "order": 781,
         "name": "Dismiss-File",
         "prevSize": 32,
-        "id": 191
+        "id": 110
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 191
+      "iconIdx": 111
     },
     {
       "icon": {
@@ -3026,22 +2696,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Download-File"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 621,
+        "order": 782,
         "name": "Download-File",
         "prevSize": 32,
-        "id": 192
+        "id": 111
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 192
+      "iconIdx": 112
     },
     {
       "icon": {
@@ -3055,22 +2722,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["File-Error"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 622,
+        "order": 783,
         "name": "File-Error",
         "prevSize": 32,
-        "id": 193
+        "id": 112
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 193
+      "iconIdx": 113
     },
     {
       "icon": {
@@ -3083,22 +2747,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["File-Settings"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 623,
+        "order": 784,
         "name": "File-Settings",
         "prevSize": 32,
-        "id": 194
+        "id": 113
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 194
+      "iconIdx": 114
     },
     {
       "icon": {
@@ -3111,22 +2772,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Remouve-File"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 624,
+        "order": 785,
         "name": "Remouve-File",
         "prevSize": 32,
-        "id": 195
+        "id": 114
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 195
+      "iconIdx": 115
     },
     {
       "icon": {
@@ -3139,22 +2797,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Search-File"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 625,
+        "order": 786,
         "name": "Search-File",
         "prevSize": 32,
-        "id": 196
+        "id": 115
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 196
+      "iconIdx": 116
     },
     {
       "icon": {
@@ -3170,22 +2825,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Share-File 2"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 626,
+        "order": 787,
         "name": "Share-File-2",
         "prevSize": 32,
-        "id": 197
+        "id": 116
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 197
+      "iconIdx": 117
     },
     {
       "icon": {
@@ -3199,22 +2851,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Upload-File"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 627,
+        "order": 788,
         "name": "Upload-File",
         "prevSize": 32,
-        "id": 198
+        "id": 117
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 198
+      "iconIdx": 118
     },
     {
       "icon": {
@@ -3228,22 +2877,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Add-Folder"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 628,
+        "order": 789,
         "name": "Add-Folder",
         "prevSize": 32,
-        "id": 199
+        "id": 118
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 199
+      "iconIdx": 119
     },
     {
       "icon": {
@@ -3257,22 +2903,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Clear-Folder"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 629,
+        "order": 790,
         "name": "Clear-Folder",
         "prevSize": 32,
-        "id": 200
+        "id": 119
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 200
+      "iconIdx": 120
     },
     {
       "icon": {
@@ -3285,22 +2928,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Dismiss-Folder"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 630,
+        "order": 791,
         "name": "Dismiss-Folder",
         "prevSize": 32,
-        "id": 201
+        "id": 120
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 201
+      "iconIdx": 121
     },
     {
       "icon": {
@@ -3313,22 +2953,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Done-Folder"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 631,
+        "order": 792,
         "name": "Done-Folder",
         "prevSize": 32,
-        "id": 202
+        "id": 121
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 202
+      "iconIdx": 122
     },
     {
       "icon": {
@@ -3342,22 +2979,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Download-Folder"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 632,
+        "order": 793,
         "name": "Download-Folder",
         "prevSize": 32,
-        "id": 203
+        "id": 122
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 203
+      "iconIdx": 123
     },
     {
       "icon": {
@@ -3371,22 +3005,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Eroor-Folder"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 633,
+        "order": 794,
         "name": "Eroor-Folder",
         "prevSize": 32,
-        "id": 204
+        "id": 123
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 204
+      "iconIdx": 124
     },
     {
       "icon": {
@@ -3397,22 +3028,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Folder-1"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 634,
+        "order": 795,
         "name": "Folder-1",
         "prevSize": 32,
-        "id": 205
+        "id": 124
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 205
+      "iconIdx": 125
     },
     {
       "icon": {
@@ -3423,22 +3051,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Open-Folder"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 635,
+        "order": 796,
         "name": "Open-Folder1",
         "prevSize": 32,
-        "id": 206
+        "id": 125
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 206
+      "iconIdx": 126
     },
     {
       "icon": {
@@ -3451,22 +3076,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Remouve-Folder"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 636,
+        "order": 797,
         "name": "Remouve-Folder",
         "prevSize": 32,
-        "id": 207
+        "id": 126
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 207
+      "iconIdx": 127
     },
     {
       "icon": {
@@ -3479,22 +3101,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Search-Folder"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 599,
+        "order": 798,
         "name": "Search-Folder",
         "prevSize": 32,
-        "id": 208
+        "id": 127
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 208
+      "iconIdx": 128
     },
     {
       "icon": {
@@ -3507,22 +3126,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Settings-Folder"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 480,
+        "order": 799,
         "name": "Settings-Folder",
         "prevSize": 32,
-        "id": 209
+        "id": 128
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 209
+      "iconIdx": 129
     },
     {
       "icon": {
@@ -3539,22 +3155,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Syncronize-Folder 2"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 600,
+        "order": 800,
         "name": "Syncronize-Folder-2",
         "prevSize": 32,
-        "id": 210
+        "id": 129
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 210
+      "iconIdx": 130
     },
     {
       "icon": {
@@ -3568,22 +3181,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Upload-Folder"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 601,
+        "order": 801,
         "name": "Upload-Folder",
         "prevSize": 32,
-        "id": 211
+        "id": 130
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 211
+      "iconIdx": 131
     },
     {
       "icon": {
@@ -3593,22 +3203,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Add-Task"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 602,
+        "order": 802,
         "name": "Add-Task",
         "prevSize": 32,
-        "id": 212
+        "id": 131
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 212
+      "iconIdx": 132
     },
     {
       "icon": {
@@ -3618,22 +3225,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Atention-Task"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 603,
+        "order": 803,
         "name": "Atention-Task",
         "prevSize": 32,
-        "id": 213
+        "id": 132
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 213
+      "iconIdx": 133
     },
     {
       "icon": {
@@ -3643,22 +3247,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Attache-Task"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 604,
+        "order": 804,
         "name": "Attache-Task",
         "prevSize": 32,
-        "id": 214
+        "id": 133
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 214
+      "iconIdx": 134
     },
     {
       "icon": {
@@ -3668,22 +3269,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Clear-Task"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 605,
+        "order": 805,
         "name": "Clear-Task",
         "prevSize": 32,
-        "id": 215
+        "id": 134
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 215
+      "iconIdx": 135
     },
     {
       "icon": {
@@ -3693,22 +3291,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Clipboard"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 606,
+        "order": 806,
         "name": "Clipboard",
         "prevSize": 32,
-        "id": 216
+        "id": 135
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 216
+      "iconIdx": 136
     },
     {
       "icon": {
@@ -3718,22 +3313,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Done-Task"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 607,
+        "order": 807,
         "name": "Done-Task",
         "prevSize": 32,
-        "id": 217
+        "id": 136
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 217
+      "iconIdx": 137
     },
     {
       "icon": {
@@ -3743,22 +3335,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Download-Task"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 608,
+        "order": 808,
         "name": "Download-Task",
         "prevSize": 32,
-        "id": 218
+        "id": 137
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 218
+      "iconIdx": 138
     },
     {
       "icon": {
@@ -3768,22 +3357,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Remouve-Task"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 609,
+        "order": 809,
         "name": "Remouve-Task",
         "prevSize": 32,
-        "id": 219
+        "id": 138
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 219
+      "iconIdx": 139
     },
     {
       "icon": {
@@ -3793,22 +3379,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Search-Task"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 610,
+        "order": 810,
         "name": "Search-Task",
         "prevSize": 32,
-        "id": 220
+        "id": 139
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 220
+      "iconIdx": 140
     },
     {
       "icon": {
@@ -3818,22 +3401,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Share-Task"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 611,
+        "order": 811,
         "name": "Share-Task",
         "prevSize": 32,
-        "id": 221
+        "id": 140
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 221
+      "iconIdx": 141
     },
     {
       "icon": {
@@ -3843,22 +3423,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Sttings-Task"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 612,
+        "order": 812,
         "name": "Sttings-Task",
         "prevSize": 32,
-        "id": 222
+        "id": 141
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 222
+      "iconIdx": 142
     },
     {
       "icon": {
@@ -3868,22 +3445,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Upload-Task"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 613,
+        "order": 813,
         "name": "Upload-Task",
         "prevSize": 32,
-        "id": 223
+        "id": 142
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 223
+      "iconIdx": 143
     },
     {
       "icon": {
@@ -3893,22 +3467,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Award-2"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 614,
+        "order": 814,
         "name": "Award-2",
         "prevSize": 32,
-        "id": 224
+        "id": 143
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 224
+      "iconIdx": 144
     },
     {
       "icon": {
@@ -3918,22 +3489,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Circle-Star"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 615,
+        "order": 815,
         "name": "Circle-Star",
         "prevSize": 32,
-        "id": 225
+        "id": 144
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 225
+      "iconIdx": 145
     },
     {
       "icon": {
@@ -3943,22 +3511,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Cop-Badge"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 616,
+        "order": 816,
         "name": "Cop-Badge",
         "prevSize": 32,
-        "id": 226
+        "id": 145
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 226
+      "iconIdx": 146
     },
     {
       "icon": {
@@ -3968,22 +3533,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Star-Shield 1"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 617,
+        "order": 817,
         "name": "Star-Shield-1",
         "prevSize": 32,
-        "id": 227
+        "id": 146
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 227
+      "iconIdx": 147
     },
     {
       "icon": {
@@ -3993,22 +3555,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["Star-Shield 2"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 638,
+        "order": 818,
         "name": "Star-Shield-2",
         "prevSize": 32,
-        "id": 228
+        "id": 147
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 228
+      "iconIdx": 148
     },
     {
       "icon": {
@@ -4022,22 +3581,19 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "colorPermutations": {
-          "125525525512626261": []
-        },
         "tags": ["New-Tag 2"],
         "grid": 0
       },
       "attrs": [],
       "properties": {
-        "order": 637,
+        "order": 819,
         "name": "New-Tag-2",
-        "id": 229,
+        "id": 148,
         "prevSize": 32
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 229
+      "iconIdx": 149
     }
   ],
   "height": 1024,
@@ -4058,23 +3614,19 @@
     },
     "imagePref": {
       "prefix": "icon-",
-      "png": true,
+      "png": false,
       "useClassSelector": true,
       "color": 0,
       "bgColor": 16777215,
       "name": "icomoon",
       "classSelector": ".icon",
-      "height": 20,
+      "height": 18,
       "columns": 16,
       "margin": 16,
-      "addBgColor": false,
-      "overrideSize": true,
-      "addTitleTags": false,
-      "minifyJs": false,
-      "numPrefix": false
+      "overrideSize": "",
+      "addBgColor": false
     },
     "historySize": 50,
-    "gridSize": 16,
-    "showGrid": false
+    "gridSize": 16
   }
 }
