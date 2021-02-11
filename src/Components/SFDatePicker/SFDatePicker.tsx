@@ -30,6 +30,7 @@ const usePopOverStyle = makeStyles((theme: Theme) =>
   createStyles({
     paper: {
       marginTop: '3px',
+      marginLeft: '-2px',
       backgroundColor: `${
         theme.palette.type !== 'light' ? SFGrey[800] : undefined
       }`
