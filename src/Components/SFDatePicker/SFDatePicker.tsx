@@ -7,7 +7,7 @@ import {
 } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
 import MomentUtils from '@date-io/moment';
-import { SFGrey, SFRed } from '../../SFColors/SFColors';
+import { SFBlue, SFGrey, SFRed } from '../../SFColors/SFColors';
 import { SFIcon } from '../SFIcon/SFIcon';
 import {
   KeyboardDatePicker,
@@ -29,6 +29,8 @@ const useButtonBackgrounds = makeStyles((theme: Theme) =>
 const usePopOverStyle = makeStyles((theme: Theme) =>
   createStyles({
     paper: {
+      marginTop: '3px',
+      marginLeft: '-2px',
       backgroundColor: `${
         theme.palette.type !== 'light' ? SFGrey[800] : undefined
       }`
@@ -40,6 +42,14 @@ const StyledDatePicker = withStyles((theme: Theme) => ({
   root: {
     boxSizing: 'border-box',
 
+    '&.openCalendarStyle': {
+      '& .MuiFilledInput-root': {
+        border: `2px solid ${
+          theme.palette.type === 'light' ? SFBlue[500] : SFBlue[200]
+        }`
+      }
+    },
+
     '& .MuiFilledInput-root': {
       height: '56px',
       backgroundColor: theme.palette.background.paper,
@@ -48,51 +58,67 @@ const StyledDatePicker = withStyles((theme: Theme) => ({
       }`,
       borderRadius: 2,
       boxSizing: 'border-box',
+
       '&:before': {
         content: `none !important`
       },
+
       '&:after': {
         content: `none !important`
       },
+
       '&:hover': {
         borderColor: `${
           theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]
         }`
       },
+
       '&:active': {
+        border: `2px solid ${
+          theme.palette.type === 'light' ? SFBlue[500] : SFBlue[200]
+        }`,
+
         '& .MuiFilledInput-input': {
           padding: '26px 11px 7px'
         }
       },
+
       '&.Mui-focused': {
         '& .MuiFilledInput-input': {
           padding: '26px 11px 7px'
         }
       },
+
       '&.Mui-error': {
         border: `1px solid ${
           theme.palette.type === 'light' ? SFRed[700] : SFRed[200]
         }`,
+
         '& .MuiFilledInput-input': {
           padding: '26px 11px 7px'
         }
       },
+
       '&.Mui-disabled': {
         border: `1px solid ${
           theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
         }`,
+
         '& .MuiFilledInput-input': {
           padding: '26px 11px 7px !important'
         }
       },
+
       '& .MuiFilledInput-input': {
         fontWeight: 400,
         fontSize: '16px',
         padding: '26px 11px 7px',
+
         '&.Mui-disabled': {
           color: `${theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]}`
         }
       },
+
       '& .MuiIconButton-root': {
         '&:hover': {
           backgroundColor: `${
@@ -101,6 +127,7 @@ const StyledDatePicker = withStyles((theme: Theme) => ({
               : hexToRgba(SFGrey[500], 0.3)
           }`
         },
+
         '&:active': {
           backgroundColor: `${
             theme.palette.type === 'light'
@@ -110,24 +137,30 @@ const StyledDatePicker = withStyles((theme: Theme) => ({
         }
       }
     },
+
     '& .MuiInputLabel-filled': {
       fontSize: '16px',
       lineHeight: '24px',
+
       '&.MuiInputLabel-shrink': {
         fontSize: '14px',
         lineHeight: '20px',
         transform: `translate(12px, 6px)`,
         color: `${theme.palette.type === 'light' ? SFGrey[400] : SFGrey[600]}`
       },
+
       '&.Mui-error': {
         color: `${theme.palette.type === 'light' ? SFRed[700] : SFRed[200]}`
       },
+
       '&.Mui-disabled': {
         color: `${theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]}`
       }
     },
+
     '& .MuiFormHelperText-root': {
       backgroundColor: 'transparent',
+
       '&.Mui-error': {
         color: `${theme.palette.type === 'light' ? SFRed[700] : SFRed[200]}`
       }
@@ -143,23 +176,26 @@ export const SFDatePicker = ({
 }: SFDatePickerProps): React.ReactElement<KeyboardDatePickerProps> => {
   const popOverStyle: Record<'paper', string> = usePopOverStyle();
   const arrowStyle: Record<'root', string> = useButtonBackgrounds();
-  const containerRef = React.createRef<HTMLDivElement>();
+  const [openCalendarStyle, setOpenCalendarStyle] = React.useState<boolean>(
+    false
+  );
 
   return (
     <FormControl fullWidth>
       <MuiPickersUtilsProvider utils={MomentUtils}>
         <StyledDatePicker
           {...props}
-          ref={containerRef}
           disableToolbar
+          className={openCalendarStyle ? 'openCalendarStyle' : ''}
           value={value}
           variant='inline'
           inputVariant='filled'
           format='MM/DD/YYYY'
+          onOpen={() => setOpenCalendarStyle(true)}
+          onClose={() => setOpenCalendarStyle(false)}
           PopoverProps={{
             classes: popOverStyle,
-            container: containerRef.current,
-            anchorOrigin: { vertical: 'top', horizontal: 'left' },
+            anchorOrigin: { vertical: 'bottom', horizontal: 'left' },
             transformOrigin: { vertical: 'top', horizontal: 'left' }
           }}
           InputProps={{ readOnly: true }}
