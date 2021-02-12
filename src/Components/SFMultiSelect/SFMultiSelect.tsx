@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
-import { FormControl, ListItemText, SelectProps } from '@material-ui/core';
+import { FormControl, SelectProps } from '@material-ui/core';
 import { SFTextField } from '../SFTextField/SFTextField';
 import { SFIcon } from '../SFIcon/SFIcon';
 import { SFCheckbox } from '../SFCheckbox/SFCheckbox';
@@ -22,10 +22,20 @@ const StyledSelect = withStyles(() => ({
   }
 }))(SFTextField);
 
+const StyledMenuItem = withStyles(() => ({
+  root: {
+    height: 52
+  }
+}))(SFMenuItem);
+
 const useMenuStyles = makeStyles({
   paper: {
     marginLeft: '-2px',
     right: 0
+  },
+  list: {
+    paddingTop: 0,
+    paddingBottom: 0
   }
 });
 
@@ -100,10 +110,10 @@ export const SFMultiSelect = ({
         }}
       >
         {options.map((option) => (
-          <SFMenuItem key={option.value} value={option.value}>
+          <StyledMenuItem key={option.value} value={option.value}>
             <SFCheckbox checked={isChecked(option, selected)} />
             {option.label}
-          </SFMenuItem>
+          </StyledMenuItem>
         ))}
       </StyledSelect>
     </FormControl>
