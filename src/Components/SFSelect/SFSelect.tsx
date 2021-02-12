@@ -18,7 +18,8 @@ const StyledSelect = withStyles(() => ({
 
 const useMenuStyles = makeStyles({
   paper: {
-    borderRadius: '0px 0px 2px 2px'
+    marginLeft: '-2px',
+    right: 0
   }
 });
 

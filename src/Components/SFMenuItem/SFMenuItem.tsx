@@ -6,7 +6,7 @@ import { SFGrey } from '../../SFColors/SFColors';
 export const SFMenuItem = withStyles((theme: Theme) => ({
   root: {
     padding: '6px 24px',
-
+    height: 36,
     '&:hover': {
       background:
         theme.palette.type === 'light'

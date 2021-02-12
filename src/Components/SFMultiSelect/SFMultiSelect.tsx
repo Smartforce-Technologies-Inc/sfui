@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
-import { FormControl, ListItemText, SelectProps } from '@material-ui/core';
+import { FormControl, SelectProps } from '@material-ui/core';
 import { SFTextField } from '../SFTextField/SFTextField';
 import { SFIcon } from '../SFIcon/SFIcon';
 import { SFCheckbox } from '../SFCheckbox/SFCheckbox';
@@ -22,9 +22,20 @@ const StyledSelect = withStyles(() => ({
   }
 }))(SFTextField);
 
+const StyledMenuItem = withStyles(() => ({
+  root: {
+    height: 52
+  }
+}))(SFMenuItem);
+
 const useMenuStyles = makeStyles({
   paper: {
-    borderRadius: '0px 0px 2px 2px'
+    marginLeft: '-2px',
+    right: 0
+  },
+  list: {
+    paddingTop: 0,
+    paddingBottom: 0
   }
 });
 
@@ -46,7 +57,7 @@ export const SFMultiSelect = ({
 }: SFMultiSelectProps): React.ReactElement<SFMultiSelectProps> => {
   const valueInit: string[] = value || defaultValue;
   const [selected, setSelected] = React.useState<string[]>(valueInit);
-  const customMenuStyles: Record<'paper', string> = useMenuStyles();
+  const menuClasses: Record<'paper', string> = useMenuStyles();
 
   const handleChange = (
     event: React.ChangeEvent<{
@@ -89,7 +100,7 @@ export const SFMultiSelect = ({
             variant: 'menu',
             autoFocus: false,
             disableAutoFocusItem: true,
-            classes: customMenuStyles
+            classes: menuClasses
           },
           onChange: handleChange,
           renderValue: renderSelected,
@@ -99,10 +110,10 @@ export const SFMultiSelect = ({
         }}
       >
         {options.map((option) => (
-          <SFMenuItem key={option.value} value={option.value}>
+          <StyledMenuItem key={option.value} value={option.value}>
             <SFCheckbox checked={isChecked(option, selected)} />
-            <ListItemText primary={option.label} />
-          </SFMenuItem>
+            {option.label}
+          </StyledMenuItem>
         ))}
       </StyledSelect>
     </FormControl>
