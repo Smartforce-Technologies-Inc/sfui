@@ -168,7 +168,7 @@ export interface SFChipProps extends ChipProps {
 
 export const SFChip = ({
   sfColor = 'primary',
-  size = 'small',
+  size = 'medium',
   label,
   disabled,
   deleteable,
