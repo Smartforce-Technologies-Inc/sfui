@@ -4,15 +4,18 @@ import {
   ButtonGroup,
   Popper,
   ClickAwayListener,
-  MenuList,
-  Paper
+  MenuList
 } from '@material-ui/core';
 import { SFButton } from '../SFButton/SFButton';
 import { SFIcon } from '../SFIcon/SFIcon';
 import { SFGrey, SFBlue, SFTextWhite } from '../../SFColors/SFColors';
+import { SFPaper } from '../SFPaper/SFPaper';
 import { SFMenuItem } from '../SFMenuItem/SFMenuItem';
 
 const useStyles = makeStyles((theme: Theme) => ({
+  paper: {
+    borderRadius: 2
+  },
   iconButton: {
     '& svg': {
       '& path': {
@@ -147,7 +150,7 @@ export const SFSplitButton = ({
         placement='top-end'
         disablePortal
       >
-        <Paper>
+        <SFPaper className={classes.paper} elevation={8}>
           <ClickAwayListener onClickAway={onClickAway}>
             <MenuList id='split-button-menu'>
               {options.map((option, index) => (
@@ -162,7 +165,7 @@ export const SFSplitButton = ({
               ))}
             </MenuList>
           </ClickAwayListener>
-        </Paper>
+        </SFPaper>
       </Popper>
     </div>
   );
