@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { withStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import { FormControl, MenuItem, SelectProps } from '@material-ui/core';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
+import { FormControl, SelectProps } from '@material-ui/core';
 import { SFTextField } from '../SFTextField/SFTextField';
 import { SFIcon } from '../SFIcon/SFIcon';
-import { SFGrey } from '../../SFColors/SFColors';
-import { hexToRgba } from '../../helpers';
+import { SFMenuItem } from '../SFMenuItem/SFMenuItem';
 
 const StyledSelect = withStyles(() => ({
   root: {
@@ -16,35 +15,6 @@ const StyledSelect = withStyles(() => ({
     }
   }
 }))(SFTextField);
-
-const StyledMenuItem = withStyles((theme: Theme) => ({
-  root: {
-    '&:hover': {
-      background:
-        theme.palette.type === 'light'
-          ? hexToRgba(SFGrey[200], 0.3)
-          : hexToRgba(SFGrey[500], 0.3)
-    },
-    '&:active': {
-      background:
-        theme.palette.type === 'light'
-          ? hexToRgba(SFGrey[200], 0.5)
-          : hexToRgba(SFGrey[500], 0.2)
-    },
-    '&.Mui-selected': {
-      background:
-        theme.palette.type === 'light'
-          ? hexToRgba(SFGrey[200], 0.5)
-          : hexToRgba(SFGrey[500], 0.2),
-      '&:hover': {
-        background:
-          theme.palette.type === 'light'
-            ? hexToRgba(SFGrey[200], 0.3)
-            : hexToRgba(SFGrey[500], 0.3)
-      }
-    }
-  }
-}))(MenuItem);
 
 const useMenuStyles = makeStyles({
   paper: {
@@ -93,9 +63,9 @@ export const SFSelect = ({
         }}
       >
         {options.map((option: SFSelectOption, index: number) => (
-          <StyledMenuItem key={`option-${index}`} value={option.value}>
+          <SFMenuItem key={`option-${index}`} value={option.value}>
             {option.label}
-          </StyledMenuItem>
+          </SFMenuItem>
         ))}
       </StyledSelect>
     </FormControl>
