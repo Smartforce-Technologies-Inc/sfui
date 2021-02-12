@@ -186,7 +186,7 @@ export const SFDatePicker = ({
         <StyledDatePicker
           {...props}
           disableToolbar
-          className={openCalendarStyle ? 'openCalendarStyle' : undefined}
+          className={openCalendarStyle ? 'openCalendarStyle' : ''}
           value={value}
           variant='inline'
           inputVariant='filled'
