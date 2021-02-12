@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { withStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
 import { FormControl, ListItemText, SelectProps } from '@material-ui/core';
 import { SFTextField } from '../SFTextField/SFTextField';
 import { SFIcon } from '../SFIcon/SFIcon';
