@@ -59,7 +59,8 @@ const StyledMenuItem = withStyles((theme: Theme) => ({
 
 const useMenuStyles = makeStyles({
   paper: {
-    borderRadius: '0px 0px 2px 2px'
+    marginLeft: '-2px',
+    right: 0
   }
 });
 
@@ -81,7 +82,7 @@ export const SFMultiSelect = ({
 }: SFMultiSelectProps): React.ReactElement<SFMultiSelectProps> => {
   const valueInit: string[] = value || defaultValue;
   const [selected, setSelected] = React.useState<string[]>(valueInit);
-  const customMenuStyles: Record<'paper', string> = useMenuStyles();
+  const menuClasses: Record<'paper', string> = useMenuStyles();
 
   const handleChange = (
     event: React.ChangeEvent<{
@@ -124,7 +125,7 @@ export const SFMultiSelect = ({
             variant: 'menu',
             autoFocus: false,
             disableAutoFocusItem: true,
-            classes: customMenuStyles
+            classes: menuClasses
           },
           onChange: handleChange,
           renderValue: renderSelected,
@@ -135,7 +136,7 @@ export const SFMultiSelect = ({
       >
         {options.map((option) => (
           <StyledMenuItem key={option.value} value={option.value}>
-            <SFCheckbox checked={isChecked(option, selected)} iconSize={24} />
+            <SFCheckbox checked={isChecked(option, selected)} />
             {option.label}
           </StyledMenuItem>
         ))}
