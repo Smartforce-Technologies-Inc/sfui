@@ -1,6 +1,6 @@
 import React from 'react';
 import FormControl from '@material-ui/core/FormControl';
-import { withStyles, Theme, useTheme } from '@material-ui/core/styles';
+import { withStyles, Theme } from '@material-ui/core/styles';
 import Chip, { ChipProps } from '@material-ui/core/Chip';
 import { SFBlue, SFGrey, SFSurfaceLight } from '../../SFColors/SFColors';
 import { SFIconButton } from '../SFIconButton/SFIconButton';
@@ -163,15 +163,17 @@ const StyledChip = withStyles((theme: Theme) => ({
 
 export interface SFChipProps extends ChipProps {
   sfColor: 'primary' | 'default';
-  sfSize: 'small' | 'medium';
+  deleteable?: boolean;
 }
 
 export const SFChip = ({
   sfColor = 'primary',
-  sfSize = 'small',
+  size = 'small',
   label,
   disabled,
+  deleteable,
   variant = 'default',
+  onDelete,
   ...props
 }: SFChipProps): React.ReactElement<SFChipProps> => {
   return (
@@ -179,10 +181,11 @@ export const SFChip = ({
       <StyledChip
         className={sfColor}
         label={label}
-        size={sfSize}
+        size={size}
         variant={variant}
         disabled={disabled}
         deleteIcon={<SFIconButton sfIcon='Close' sfSize='tiny' />}
+        onDelete={deleteable ? onDelete : undefined}
       />
     </FormControl>
   );

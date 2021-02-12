@@ -10,12 +10,17 @@ export default {
     label: 'Bagel'
   },
   argTypes: {
-    size: {
+    label: {
+      control: {
+        type: 'text'
+      }
+    },
+    avatar: {
       table: {
         disable: true
       }
     },
-    avatar: {
+    clickable: {
       table: {
         disable: true
       }
@@ -79,76 +84,30 @@ export const AllTogether: Story<SFChipProps> = (args) => {
         flexWrap: 'wrap'
       }}
     >
-      <SFChip {...args} onDelete={undefined} />
-      <SFChip {...args} onDelete={undefined} variant='outlined' />
-      <SFChip {...args} onDelete={undefined} sfSize='medium' />
-      <SFChip
-        {...args}
-        onDelete={undefined}
-        sfSize='medium'
-        variant='outlined'
-      />
       <SFChip {...args} />
       <SFChip {...args} variant='outlined' />
-      <SFChip {...args} sfSize='medium' />
-      <SFChip {...args} sfSize='medium' variant='outlined' />
+      <SFChip {...args} size='medium' />
+      <SFChip {...args} size='medium' variant='outlined' />
+      <SFChip {...args} deleteable />
+      <SFChip {...args} deleteable variant='outlined' />
+      <SFChip {...args} deleteable size='medium' />
+      <SFChip {...args} deleteable size='medium' variant='outlined' />
     </div>
   );
 };
 
 AllTogether.argTypes = {
+  deleteable: {
+    table: {
+      disable: true
+    }
+  },
   size: {
     table: {
       disable: true
     }
   },
-  avatar: {
-    table: {
-      disable: true
-    }
-  },
-  children: {
-    table: {
-      disable: true
-    }
-  },
-  color: {
-    table: {
-      disable: true
-    }
-  },
-  deleteIcon: {
-    table: {
-      disable: true
-    }
-  },
-  icon: {
-    table: {
-      disable: true
-    }
-  },
-  ref: {
-    table: {
-      disable: true
-    }
-  },
-  sfSize: {
-    table: {
-      disable: true
-    }
-  },
-  clickable: {
-    table: {
-      disable: true
-    }
-  },
   variant: {
-    table: {
-      disable: true
-    }
-  },
-  onDelete: {
-    action: 'onDelete',
     table: {
       disable: true
     }
