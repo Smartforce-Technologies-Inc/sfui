@@ -89,6 +89,13 @@ const StyledChip = withStyles((theme: Theme) => ({
             color: theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]
           },
 
+          '&:hover, &:active': {
+            backgroundColor:
+              theme.palette.type === 'light'
+                ? hexToRgba(SFGrey[500], 0.2)
+                : hexToRgba(SFGrey[200], 0.3)
+          },
+
           '& .MuiIconButton-label': {
             '& svg': {
               '& path': {
@@ -96,13 +103,6 @@ const StyledChip = withStyles((theme: Theme) => ({
                   theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]
                 } !important`
               }
-            },
-
-            '&:hover, &:active': {
-              backgroundColor:
-                theme.palette.type === 'light'
-                  ? hexToRgba(SFGrey[500], 0.2)
-                  : hexToRgba(SFGrey[200], 0.3)
             }
           },
 
@@ -173,8 +173,7 @@ export const SFChip = ({
   disabled,
   deleteable,
   variant = 'default',
-  onDelete,
-  ...props
+  onDelete
 }: SFChipProps): React.ReactElement<SFChipProps> => {
   return (
     <FormControl>
