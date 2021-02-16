@@ -167,6 +167,40 @@ code {
       }
     }
   }
+
+  .eighthSection {
+    display: flex;
+    gap: 30px;
+
+    .section {
+      .itemsContainer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        .columnGroup {
+          display: flex;
+          gap: 20px;
+
+          .column {
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+
+            .rowGroup {
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
+
+              &.row {
+                flex-direction: row;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 @media only screen and (min-width: 768px) {

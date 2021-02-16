@@ -1,6 +1,7 @@
 export * from './Components/SFAlert/SFAlert';
 export * from './Components/SFButton/SFButton';
 export * from './Components/SFCard/SFCard';
+export * from './Components/SFChip/SFChip';
 export * from './Components/SFCheckbox/SFCheckbox';
 export * from './Components/SFDatePicker/SFDatePicker';
 export * from './Components/SFDialog/SFDialog';
