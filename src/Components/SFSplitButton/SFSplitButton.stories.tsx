@@ -47,6 +47,11 @@ export default {
       table: {
         disable: true
       }
+    },
+    defaultSelected: {
+      table: {
+        disable: true
+      }
     }
   }
 } as Meta;
@@ -60,4 +65,19 @@ export const Default = Template.bind({});
 export const WithDisabledOption = Template.bind({});
 WithDisabledOption.args = {
   options: getOptionsWithDisabled()
+};
+
+export const WithDefaultOption = Template.bind({});
+WithDefaultOption.argTypes = {
+  defaultSelected: {
+    defaultValue: 1,
+    control: {
+      type: 'number',
+      min: 0,
+      max: 2
+    },
+    table: {
+      disable: false
+    }
+  }
 };
