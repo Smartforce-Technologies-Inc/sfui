@@ -173,11 +173,13 @@ export const SFChip = ({
   disabled,
   deleteable,
   variant = 'default',
-  onDelete
+  onDelete,
+  ...props
 }: SFChipProps): React.ReactElement<SFChipProps> => {
   return (
     <FormControl>
       <StyledChip
+        {...props}
         className={sfColor}
         label={label}
         size={size}
