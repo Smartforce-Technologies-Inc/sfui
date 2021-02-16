@@ -139,10 +139,10 @@ export const SFTable = ({
   const selectionProps: CheckboxProps = {
     classes: useSelectionStyles(props),
     checkedIcon: (
-      <SFIcon icon='Checkbox-Selected' size={42} color={iconCheckedColor} />
+      <SFIcon icon='Checkbox-Selected' size={18} color={iconCheckedColor} />
     ),
     icon: (
-      <SFIcon icon='Checkbox-Unselected' size={42} color={iconUncheckedColor} />
+      <SFIcon icon='Checkbox-Unselected' size={18} color={iconUncheckedColor} />
     )
   };
 
