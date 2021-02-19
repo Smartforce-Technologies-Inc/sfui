@@ -34,20 +34,20 @@ const getIconButtonInnerProps = (size?: SFSize): IconButtonInnerProps => {
   const result: IconButtonInnerProps = {};
   switch (size) {
     case 'tiny':
-      result.padding = '4px';
-      result.size = '12';
+      result.padding = '5px';
+      result.size = '10';
       break;
     case 'small':
-      result.padding = '6px';
-      result.size = '20';
+      result.padding = '9px';
+      result.size = '16';
       break;
     case 'large':
-      result.padding = '8px';
-      result.size = '32';
+      result.padding = '14px';
+      result.size = '26';
       break;
     default:
-      result.padding = '6px';
-      result.size = '24';
+      result.padding = '11px';
+      result.size = '20';
       break;
   }
   return result;
