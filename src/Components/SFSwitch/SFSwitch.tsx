@@ -124,11 +124,9 @@ export interface SFSwitchProps extends SwitchProps {
 export const SFSwitch = ({
   sfColor = 'primary',
   label,
-  size,
+  size = 'medium',
   ...props
 }: SFSwitchProps): React.ReactElement<SFSwitchProps> => {
-  const usedSize = size === undefined ? 'medium' : size;
-
   return (
     <FormControl>
       <SFFormControlLabel
@@ -139,7 +137,7 @@ export const SFSwitch = ({
             disableRipple
             disableTouchRipple
             disableFocusRipple
-            size={usedSize}
+            size={size}
           />
         }
         label={label}
