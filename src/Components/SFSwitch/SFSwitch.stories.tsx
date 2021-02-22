@@ -8,7 +8,8 @@ export default {
   title: 'Components/SFSwitch',
   component: SFSwitch,
   args: {
-    label: 'Off / On'
+    label: 'Off / On',
+    size: 'small'
   },
   argTypes: {
     onChange: {
