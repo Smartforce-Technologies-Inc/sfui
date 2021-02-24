@@ -169,7 +169,7 @@ export const SFTable = ({
       borderBottom: `2px solid  ${
         theme.palette.type === 'light' ? SFGrey[100] : SFGrey[700]
       }`,
-      fontWeight: 600,
+      fontWeight: 500,
       color: `${theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400]}`,
       fontSize: 14
     },
