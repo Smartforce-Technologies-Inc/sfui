@@ -169,8 +169,8 @@ export const SFTable = ({
       borderBottom: `2px solid  ${
         theme.palette.type === 'light' ? SFGrey[100] : SFGrey[700]
       }`,
-      fontWeight: 600,
-      color: `${theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]}`,
+      fontWeight: 500,
+      color: `${theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400]}`,
       fontSize: 14
     },
     rowStyle: (rowData: RowData): React.CSSProperties => {
