@@ -71,15 +71,6 @@ const StyledSwitch = withStyles((theme: Theme) => ({
           : `rgba(128, 128, 128, 0.2)`
     },
 
-    '&.Mui-disabled': {
-      color: theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700],
-      '& + $track': {
-        opacity: 1,
-        backgroundColor: 'transparent',
-        borderColor: theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
-      }
-    },
-
     '&.Mui-checked': {
       color: theme.palette.type === 'light' ? SFSurfaceLight : SFSurfaceDark,
 
@@ -101,6 +92,27 @@ const StyledSwitch = withStyles((theme: Theme) => ({
           theme.palette.type === 'light'
             ? `rgba(204, 235, 255, 0.6)`
             : `rgba(128, 198, 255, 0.1)`
+      }
+    },
+
+    '&.Mui-disabled': {
+      color: theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700],
+
+      '& + $track': {
+        opacity: 1,
+        backgroundColor: 'transparent',
+        borderColor: theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
+      },
+
+      '&.Mui-checked': {
+        color: theme.palette.type === 'light' ? SFSurfaceLight : SFSurfaceDark,
+
+        '& + $track': {
+          backgroundColor:
+            theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700],
+          borderColor:
+            theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
+        }
       }
     }
   },
