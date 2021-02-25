@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Theme, withStyles } from '@material-ui/core/styles';
 import Link, { LinkProps } from '@material-ui/core/Link';
 import { SFGrey } from '../../SFColors/SFColors';
+import { CSSProperties } from '@material-ui/core/styles/withStyles';
 
 type SFSize = 'small' | 'medium';
 const StyledLink = withStyles((theme: Theme) => ({
@@ -15,17 +16,19 @@ const StyledLink = withStyles((theme: Theme) => ({
   }
 }))(Link);
 
-const getLinkSize = (size?: SFSize): string => {
-  let fontSize: string;
+const getSizeStyle = (size?: SFSize): CSSProperties => {
   switch (size) {
     case 'small':
-      fontSize = '14px';
-      break;
+      return {
+        fontSize: '14px',
+        lineHeight: '20px'
+      };
     default:
-      fontSize = '16px';
-      break;
+      return {
+        fontSize: '16px',
+        lineHeight: '24px'
+      };
   }
-  return fontSize;
 };
 
 export interface SFLinkProps extends LinkProps {
@@ -38,13 +41,5 @@ export const SFLink = ({
   ...props
 }: SFLinkProps): React.ReactElement<SFLinkProps> => {
   const sfColor = color !== 'primary' ? 'inherit' : 'primary';
-  return (
-    <StyledLink
-      {...props}
-      style={{
-        fontSize: getLinkSize(sfSize)
-      }}
-      color={sfColor}
-    />
-  );
+  return <StyledLink {...props} style={getSizeStyle(sfSize)} color={sfColor} />;
 };

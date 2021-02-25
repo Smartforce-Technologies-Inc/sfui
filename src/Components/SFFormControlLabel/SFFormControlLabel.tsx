@@ -11,6 +11,9 @@ const StyledFromControlLabel = withStyles((theme: Theme) => ({
     '&.Mui-disabled': {
       color: `${theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400]}`
     }
+  },
+  label: {
+    lineHeight: ' 24px'
   }
 }))(FormControlLabel);
 

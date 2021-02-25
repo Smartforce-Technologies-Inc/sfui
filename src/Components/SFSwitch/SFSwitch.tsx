@@ -51,6 +51,10 @@ const StyledSwitch = withStyles((theme: Theme) => ({
 
       '& .MuiSwitch-track': {
         height: '14px'
+      },
+
+      '& + .MuiFormControlLabel-label': {
+        lineHeight: '20px'
       }
     }
   },
