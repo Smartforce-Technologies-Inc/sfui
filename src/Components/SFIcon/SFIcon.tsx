@@ -17,6 +17,7 @@ export const SFIcon = forwardRef(
   ({
     icon = 'Bell',
     size = 24,
+    ref,
     ...props
   }: SFIconProps): React.ReactElement<SFIconProps> => {
     const theme: Theme = useTheme();
@@ -31,7 +32,7 @@ export const SFIcon = forwardRef(
         icon={icon}
         size={size}
         color={color}
-        ref={props.ref}
+        ref={ref}
       />
     );
   }
