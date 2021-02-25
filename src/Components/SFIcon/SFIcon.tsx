@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { forwardRef } from 'react';
 import { useTheme, Theme } from '@material-ui/core/styles';
 import { SFGrey } from '../../SFColors/SFColors';
 import IcomoonReact from 'icomoon-react';
@@ -10,26 +10,29 @@ export interface SFIconProps {
   icon: string;
   className?: string | undefined;
   style?: React.CSSProperties | undefined;
-  ref?: React.Ref<SVGSVGElement>;
+  ref: React.Ref<SVGSVGElement>;
 }
 
-export const SFIcon = ({
-  icon = 'Bell',
-  size = 24,
-  ...props
-}: SFIconProps): React.ReactElement<SFIconProps> => {
-  const theme: Theme = useTheme();
-  const colorDefault: string =
-    theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400];
-  const color: string = props.color ? props.color : colorDefault;
+export const SFIcon = forwardRef(
+  ({
+    icon = 'Bell',
+    size = 24,
+    ...props
+  }: SFIconProps): React.ReactElement<SFIconProps> => {
+    const theme: Theme = useTheme();
+    const colorDefault: string =
+      theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400];
+    const color: string = props.color ? props.color : colorDefault;
 
-  return (
-    <IcomoonReact
-      iconSet={IconSet}
-      icon={icon}
-      size={size}
-      color={color}
-      {...props}
-    />
-  );
-};
+    return (
+      <IcomoonReact
+        {...props}
+        iconSet={IconSet}
+        icon={icon}
+        size={size}
+        color={color}
+        ref={props.ref}
+      />
+    );
+  }
+);
