@@ -10,16 +10,13 @@ export interface SFIconProps {
   icon: string;
   className?: string | undefined;
   style?: React.CSSProperties | undefined;
-  ref: React.Ref<SVGSVGElement>;
 }
 
 export const SFIcon = forwardRef(
-  ({
-    icon = 'Bell',
-    size = 24,
-    ref,
-    ...props
-  }: SFIconProps): React.ReactElement<SFIconProps> => {
+  (
+    { icon = 'Bell', size = 24, ...props }: SFIconProps,
+    ref: React.Ref<SVGSVGElement>
+  ): React.ReactElement<SFIconProps> => {
     const theme: Theme = useTheme();
     const colorDefault: string =
       theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400];
