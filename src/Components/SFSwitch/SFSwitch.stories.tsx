@@ -32,7 +32,7 @@ export default {
     size: {
       defaultValue: 'medium',
       control: {
-        type: 'select',
+        type: 'radio',
         options: ['small', 'medium']
       }
     },

@@ -158,6 +158,12 @@ const StyledChip = withStyles((theme: Theme) => ({
         }
       }
     }
+  },
+  label: {
+    lineHeight: '24px'
+  },
+  labelSmall: {
+    lineHeight: '20px'
   }
 }))(Chip);
 
