@@ -81,31 +81,31 @@ const useSelectionStyles = makeStyles((theme: Theme) =>
 
 const tableIcons: Icons = {
   Export: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
-    <SFIcon icon='Download' {...props} ref={ref} />
+    <SFIcon icon='Download' {...props} {...ref} />
   )),
   Filter: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
-    <SFIcon icon='Adjustments' {...props} ref={ref} />
+    <SFIcon icon='Adjustments' {...props} {...ref} />
   )),
   SortArrow: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
-    <SFIcon icon='Up-7' {...props} ref={ref} />
+    <SFIcon icon='Up-7' {...props} {...ref} />
   )),
   FirstPage: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
-    <SFIcon icon='Left-2' {...props} ref={ref} />
+    <SFIcon icon='Left-2' {...props} {...ref} />
   )),
   LastPage: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
-    <SFIcon icon='Right-2' {...props} ref={ref} />
+    <SFIcon icon='Right-2' {...props} {...ref} />
   )),
   NextPage: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
-    <SFIcon icon='Right-7' {...props} ref={ref} />
+    <SFIcon icon='Right-7' {...props} {...ref} />
   )),
   PreviousPage: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
-    <SFIcon icon='Left-7' {...props} ref={ref} />
+    <SFIcon icon='Left-7' {...props} {...ref} />
   )),
   ResetSearch: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
-    <SFIcon icon='Close' {...props} ref={ref} />
+    <SFIcon icon='Close' {...props} {...ref} />
   )),
   Search: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
-    <SFIcon icon='Search' {...props} ref={ref} />
+    <SFIcon icon='Search' {...props} {...ref} />
   ))
 };
 
