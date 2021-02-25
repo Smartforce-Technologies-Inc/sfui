@@ -29,6 +29,13 @@ export default {
         type: 'boolean'
       }
     },
+    size: {
+      defaultValue: 'medium',
+      control: {
+        type: 'select',
+        options: ['small', 'medium']
+      }
+    },
     ref: {
       table: {
         disable: true
