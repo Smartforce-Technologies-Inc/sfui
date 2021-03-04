@@ -43,11 +43,6 @@ export default {
         disable: true
       }
     },
-    sfSize: {
-      table: {
-        disable: true
-      }
-    },
     defaultSelected: {
       table: {
         disable: true
