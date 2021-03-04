@@ -79,54 +79,56 @@ const useSelectionStyles = makeStyles((theme: Theme) =>
   })
 );
 
+const iconSize = 16;
+
 const tableIcons: Icons = {
   Add: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
-    <SFIcon icon='Add' {...props} {...ref} />
+    <SFIcon icon='Add' {...props} {...ref} size={iconSize} />
   )),
   Check: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
-    <SFIcon icon='Check-2' {...props} {...ref} />
+    <SFIcon icon='Check-2' {...props} {...ref} size={iconSize} />
   )),
   Clear: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
-    <SFIcon icon='Close' {...props} {...ref} />
+    <SFIcon icon='Close' {...props} {...ref} size={iconSize} />
   )),
   Delete: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
-    <SFIcon icon='Trash' {...props} {...ref} />
+    <SFIcon icon='Trash' {...props} {...ref} size={iconSize} />
   )),
   Edit: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
-    <SFIcon icon='Pencil' {...props} {...ref} />
+    <SFIcon icon='Pencil' {...props} {...ref} size={iconSize} />
   )),
   Export: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
-    <SFIcon icon='Download' {...props} {...ref} />
+    <SFIcon icon='Download' {...props} {...ref} size={iconSize} />
   )),
   Filter: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
-    <SFIcon icon='Filter' {...props} {...ref} />
+    <SFIcon icon='Filter' {...props} {...ref} size={iconSize} />
   )),
   FirstPage: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
-    <SFIcon icon='Left-3' {...props} {...ref} />
+    <SFIcon icon='Left-3' {...props} {...ref} size={iconSize} />
   )),
   LastPage: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
-    <SFIcon icon='Right-3' {...props} {...ref} />
+    <SFIcon icon='Right-3' {...props} {...ref} size={iconSize} />
   )),
   NextPage: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
-    <SFIcon icon='Right-2' {...props} {...ref} />
+    <SFIcon icon='Right-2' {...props} {...ref} size={iconSize} />
   )),
   PreviousPage: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
-    <SFIcon icon='Left-2' {...props} {...ref} />
+    <SFIcon icon='Left-2' {...props} {...ref} size={iconSize} />
   )),
   ResetSearch: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
-    <SFIcon icon='Close' {...props} {...ref} />
+    <SFIcon icon='Close' {...props} {...ref} size={iconSize} />
   )),
   Search: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
-    <SFIcon icon='Search' {...props} {...ref} />
+    <SFIcon icon='Search' {...props} {...ref} size={iconSize} />
   )),
   SortArrow: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
-    <SFIcon icon='Up-7' {...props} {...ref} />
+    <SFIcon icon='Up-7' {...props} {...ref} size={iconSize} />
   )),
   ThirdStateCheck: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
-    <SFIcon icon='Remove' {...props} {...ref} />
+    <SFIcon icon='Remove' {...props} {...ref} size={iconSize} />
   )),
   ViewColumn: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
-    <SFIcon icon='Eye' {...props} {...ref} />
+    <SFIcon icon='Eye' {...props} {...ref} size={iconSize} />
   ))
 };
 
