@@ -19,28 +19,24 @@ export const SFSplitButtonView = (): JSX.Element => {
           <div className='rowGroup row'>
             <SFSplitButton
               sfColor='blue'
-              size='medium'
               variant='contained'
               defaultSelected={1}
               options={splitButtonOptions}
             />
             <SFSplitButton
               sfColor='blue'
-              size='medium'
               variant='outlined'
               defaultSelected={1}
               options={splitButtonOptions}
             />
             <SFSplitButton
               sfColor='grey'
-              size='medium'
               variant='contained'
               defaultSelected={1}
               options={splitButtonOptions}
             />
             <SFSplitButton
               sfColor='grey'
-              size='medium'
               variant='outlined'
               defaultSelected={1}
               options={splitButtonOptions}
