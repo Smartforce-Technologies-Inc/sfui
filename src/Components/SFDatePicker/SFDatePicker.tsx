@@ -172,6 +172,7 @@ export interface SFDatePickerProps extends KeyboardDatePickerProps {}
 
 export const SFDatePicker = ({
   value = null,
+  label,
   ...props
 }: SFDatePickerProps): React.ReactElement<KeyboardDatePickerProps> => {
   const popOverStyle: Record<'paper', string> = usePopOverStyle();
@@ -191,6 +192,7 @@ export const SFDatePicker = ({
           variant='inline'
           inputVariant='filled'
           format='MM/DD/YYYY'
+          label={label}
           onOpen={() => setOpenCalendarStyle(true)}
           onClose={() => setOpenCalendarStyle(false)}
           PopoverProps={{
