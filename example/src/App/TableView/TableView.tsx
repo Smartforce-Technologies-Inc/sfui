@@ -68,7 +68,7 @@ const SFTableView = (): JSX.Element => {
   };
 
   return (
-    <div className='tables'>
+    <div className='column content'>
       <div className='row'>
         <SFTable
           options={{

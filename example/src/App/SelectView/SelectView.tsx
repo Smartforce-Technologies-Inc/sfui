@@ -21,27 +21,41 @@ const getOptions = (): SFSelectOption[] => {
 
 const SFSelectView = (): JSX.Element => {
   return (
-    <div className='fullSize'>
-      <SFSelect label='Bagel' options={getOptions()} />
-      <SFSelect label='Bagel' options={getOptions()} value='Bagel number one' />
-      <SFSelect
-        label='Bagel'
-        options={getOptions()}
-        value='Bagel number one'
-        disabled
-      />
-      <SFSelect
-        label='Bagel'
-        options={getOptions()}
-        value='Bagel number one'
-        error
-      />
-      <SFSelect
-        label='Bagel'
-        options={getOptions()}
-        value='Bagel number one'
-        helperText='Helper Message'
-      />
+    <div className='column'>
+      <div className='row'>
+        <SFSelect label='Bagel' options={getOptions()} />
+      </div>
+      <div className='row'>
+        <SFSelect
+          label='Bagel'
+          options={getOptions()}
+          value='Bagel number one'
+        />
+      </div>
+      <div className='row'>
+        <SFSelect
+          label='Bagel'
+          options={getOptions()}
+          value='Bagel number one'
+          disabled
+        />
+      </div>
+      <div className='row'>
+        <SFSelect
+          label='Bagel'
+          options={getOptions()}
+          value='Bagel number one'
+          error
+        />
+      </div>
+      <div className='row'>
+        <SFSelect
+          label='Bagel'
+          options={getOptions()}
+          value='Bagel number one'
+          helperText='Helper Message'
+        />
+      </div>
     </div>
   );
 };

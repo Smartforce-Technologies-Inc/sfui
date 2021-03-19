@@ -4,16 +4,26 @@ import { SFTextField } from 'sfui';
 
 const SFTextFieldsView = (): JSX.Element => {
   return (
-    <div className='fullSize'>
-      <SFTextField label='Bagel' />
-      <SFTextField label='Bagel' value='This is a bagel' />
-      <SFTextField label='Bagel' value='This is a bagel' disabled />
-      <SFTextField label='Bagel' value='This is a bagel' error />
-      <SFTextField
-        label='Bagel'
-        value='This is a bagel'
-        helperText='Helper Message'
-      />
+    <div className='column'>
+      <div className='row'>
+        <SFTextField label='Bagel' />
+      </div>
+      <div className='row'>
+        <SFTextField label='Bagel' value='This is a bagel' />
+      </div>
+      <div className='row'>
+        <SFTextField label='Bagel' value='This is a bagel' disabled />
+      </div>
+      <div className='row'>
+        <SFTextField label='Bagel' value='This is a bagel' error />
+      </div>
+      <div className='row'>
+        <SFTextField
+          label='Bagel'
+          value='This is a bagel'
+          helperText='Helper Message'
+        />
+      </div>
     </div>
   );
 };

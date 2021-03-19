@@ -10,35 +10,45 @@ const SFDatePickerView = (): JSX.Element => {
   const [fifthPickerDate, setFifthPickerDate] = useState(Date.now());
   const dateLabel = 'mm/dd/yyyy';
   return (
-    <div className='fullSize'>
-      <SFDatePicker
-        label={dateLabel}
-        onChange={(value) => setFirstPickerDate(value)}
-        value={firstPickerDate}
-      />
-      <SFDatePicker
-        label={dateLabel}
-        onChange={(value) => setSecondPickerDate(value)}
-        value={secondPickerDate}
-      />
-      <SFDatePicker
-        label={dateLabel}
-        onChange={(value) => setThirdPickerDate(value)}
-        value={thirdPickerDate}
-        disabled
-      />
-      <SFDatePicker
-        label={dateLabel}
-        onChange={(value) => setFourthPickerDate(value)}
-        value={fourthPickerDate}
-        error
-      />
-      <SFDatePicker
-        label={dateLabel}
-        value={fifthPickerDate}
-        onChange={(value) => setFifthPickerDate(value)}
-        helperText='Helper Message'
-      />
+    <div className='column'>
+      <div className='row'>
+        <SFDatePicker
+          label={dateLabel}
+          onChange={(value) => setFirstPickerDate(value)}
+          value={firstPickerDate}
+        />
+      </div>
+      <div className='row'>
+        <SFDatePicker
+          label={dateLabel}
+          onChange={(value) => setSecondPickerDate(value)}
+          value={secondPickerDate}
+        />
+      </div>
+      <div className='row'>
+        <SFDatePicker
+          label={dateLabel}
+          onChange={(value) => setThirdPickerDate(value)}
+          value={thirdPickerDate}
+          disabled
+        />
+      </div>
+      <div className='row'>
+        <SFDatePicker
+          label={dateLabel}
+          onChange={(value) => setFourthPickerDate(value)}
+          value={fourthPickerDate}
+          error
+        />
+      </div>
+      <div className='row'>
+        <SFDatePicker
+          label={dateLabel}
+          value={fifthPickerDate}
+          onChange={(value) => setFifthPickerDate(value)}
+          helperText='Helper Message'
+        />
+      </div>
     </div>
   );
 };

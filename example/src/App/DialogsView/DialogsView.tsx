@@ -17,7 +17,7 @@ const SFDialogsView = (): JSX.Element => {
           Open Alert
         </SFButton>
       </div>
-      <div className='row' style={{ margin: '10px 0' }}>
+      <div className='row'>
         <SFButton
           sfColor='red'
           onClick={() => {
@@ -27,7 +27,6 @@ const SFDialogsView = (): JSX.Element => {
           Open Alert Form
         </SFButton>
       </div>
-
       <SFAlert
         leftAction={{
           label: 'Medium',

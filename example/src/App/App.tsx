@@ -47,7 +47,7 @@ const App = (): JSX.Element => {
                 onChange={toggleSwitch}
               />
             </h1>
-            <div className='pageSelector'>
+            <div className='row'>
               <SFLink sfSize='medium' onClick={() => setShowDemo(false)}>
                 Components
               </SFLink>

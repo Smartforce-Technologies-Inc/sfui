@@ -18,7 +18,7 @@ export const SFDrawersView = (): JSX.Element => {
           Open Panel
         </SFButton>
       </div>
-      <div className='row' style={{ margin: '10px 0' }}>
+      <div className='row'>
         <SFButton
           sfColor='red'
           onClick={() => setDrawerInputOpen(!drawerInputOpen)}

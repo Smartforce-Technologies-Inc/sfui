@@ -19,31 +19,41 @@ const getOptions = (): SFMultiSelectOption[] => {
 
 const SFMultiSelectView = (): JSX.Element => {
   return (
-    <div className='fullSize'>
-      <SFMultiSelect label='Bagel' options={getOptions()} />
-      <SFMultiSelect
-        label='Bagel'
-        options={getOptions()}
-        value={['Bagel number one']}
-      />
-      <SFMultiSelect
-        label='Bagel'
-        options={getOptions()}
-        value={['Bagel number one']}
-        disabled
-      />
-      <SFMultiSelect
-        label='Bagel'
-        options={getOptions()}
-        value={['Bagel number one']}
-        error
-      />
-      <SFMultiSelect
-        label='Bagel'
-        options={getOptions()}
-        value={['Bagel number one']}
-        helperText='Helper Message'
-      />
+    <div className='column'>
+      <div className='row'>
+        <SFMultiSelect label='Bagel' options={getOptions()} />
+      </div>
+      <div className='row'>
+        <SFMultiSelect
+          label='Bagel'
+          options={getOptions()}
+          value={['Bagel number one']}
+        />
+      </div>
+      <div className='row'>
+        <SFMultiSelect
+          label='Bagel'
+          options={getOptions()}
+          value={['Bagel number one']}
+          disabled
+        />
+      </div>
+      <div className='row'>
+        <SFMultiSelect
+          label='Bagel'
+          options={getOptions()}
+          value={['Bagel number one']}
+          error
+        />
+      </div>
+      <div className='row'>
+        <SFMultiSelect
+          label='Bagel'
+          options={getOptions()}
+          value={['Bagel number one']}
+          helperText='Helper Message'
+        />
+      </div>
     </div>
   );
 };

@@ -4,7 +4,7 @@ import { SFButton } from 'sfui';
 
 const SFButtonsView = (): JSX.Element => {
   return (
-    <div className='buttons'>
+    <div className='row content'>
       {renderButtonsColumn('small')}
       {renderButtonsColumn('medium')}
       {renderButtonsColumn('large')}
@@ -16,7 +16,7 @@ const renderButtonsColumn = (
   size: 'small' | 'medium' | 'large' | undefined
 ): JSX.Element => {
   return (
-    <div className='contentItems'>
+    <div className='column'>
       <div className='row'>
         <SFButton sfColor='blue' size={size}>
           <span style={{ textTransform: 'capitalize' }}>{size}</span>
