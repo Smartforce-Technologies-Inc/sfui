@@ -8,7 +8,7 @@ import {
   SFSwitch,
   useSFMediaQuery,
   SFStylesProvider,
-  SFLink
+  SFButton
 } from 'sfui';
 
 import { ComponentsPage } from './Pages/ComponentsPage';
@@ -48,12 +48,20 @@ const App = (): JSX.Element => {
               />
             </h1>
             <div className='row'>
-              <SFLink sfSize='medium' onClick={() => setShowDemo(false)}>
+              <SFButton
+                size='medium'
+                sfColor='red'
+                onClick={() => setShowDemo(false)}
+              >
                 Components
-              </SFLink>
-              <SFLink sfSize='medium' onClick={() => setShowDemo(true)}>
+              </SFButton>
+              <SFButton
+                size='medium'
+                sfColor='red'
+                onClick={() => setShowDemo(true)}
+              >
                 Demos
-              </SFLink>
+              </SFButton>
             </div>
             {showDemo === false ? <ComponentsPage /> : <DemosPage />}
           </div>
