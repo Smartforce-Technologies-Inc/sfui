@@ -36,8 +36,8 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     actions: {
       padding: '24px 36px 36px',
-      flex: '0 0 auto',
       display: 'flex',
+      gap: '17px',
       alignItems: 'center',
       justifyContent: 'flex-end'
     }
