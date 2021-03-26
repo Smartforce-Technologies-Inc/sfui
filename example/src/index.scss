@@ -89,7 +89,7 @@ code {
     @include gridLayout(row, 30px, 100px, 1fr);
 
     .content {
-      @include gridLayout(column, 10px, 150px, 1fr);
+      @include gridLayout(column, 20px, 150px, 1fr);
     }
   }
 }
@@ -99,21 +99,35 @@ code {
   flex-wrap: wrap;
 }
 
+.grid-row {
+  @include gridLayout(column, 0, 10px, 1fr);
+}
+
 .column {
   display: grid;
   gap: 10px;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 768px) {
   .bodyContent {
+    overflow-x: scroll;
+
     .pagesLayout {
       .content {
         grid-template-columns: 1fr;
+        gap: 30px 10px;
       }
     }
   }
+}
 
-  .row {
-    overflow-y: scroll;
+@media screen and (min-width: 768px) and (max-width: 1230px) {
+  .bodyContent {
+    .pagesLayout {
+      .content {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px 10px;
+      }
+    }
   }
 }
