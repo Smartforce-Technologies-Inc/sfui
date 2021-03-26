@@ -47,6 +47,9 @@ const StyledDatePicker = withStyles((theme: Theme) => ({
         border: `2px solid ${
           theme.palette.type === 'light' ? SFBlue[500] : SFBlue[200]
         }`
+      },
+      '& .MuiFilledInput-adornedEnd': {
+        paddingRight: '11px'
       }
     },
 
@@ -79,13 +82,21 @@ const StyledDatePicker = withStyles((theme: Theme) => ({
         }`,
 
         '& .MuiFilledInput-input': {
-          padding: '26px 11px 7px'
+          padding: '26px 10px 7px'
+        },
+
+        '&.MuiFilledInput-adornedEnd': {
+          paddingRight: '11px'
         }
       },
 
       '&.Mui-focused': {
         '& .MuiFilledInput-input': {
-          padding: '26px 11px 7px'
+          padding: '26px 10px 7px'
+        },
+
+        '&.MuiFilledInput-adornedEnd': {
+          paddingRight: '11px'
         }
       },
 
