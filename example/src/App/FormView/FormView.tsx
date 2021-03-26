@@ -5,20 +5,20 @@ import {
   SFTextField,
   SFRadioGroup,
   SFRadioOptionsProps,
-  SFPaper,
   SFCheckbox,
   SFSwitch,
   SFDatePicker,
   SFSelect,
   SFSelectOption,
   SFMultiSelect,
-  SFMultiSelectOption
+  SFMultiSelectOption,
+  SFAlert
 } from 'sfui';
 
 export const FormView = (): JSX.Element => {
   const [response, setResponse] = useState({});
   const [date, setDate] = useState(undefined);
-  const [formData, setFormData] = useState({
+  const initialData = {
     officer: '',
     gender: '',
     nightTime: false,
@@ -27,7 +27,9 @@ export const FormView = (): JSX.Element => {
     supervisor: '',
     witnesses: '',
     description: ''
-  });
+  };
+  const [formData, setFormData] = useState(initialData);
+  const [openResponsePanel, setOpenResponsePanel] = useState(false);
 
   const radioOptions: SFRadioOptionsProps[] = [
     { value: 'male', label: 'Male', disabled: false },
@@ -65,6 +67,10 @@ export const FormView = (): JSX.Element => {
     }
   };
 
+  const cleanOutput = () => {
+    setFormData(initialData);
+  };
+
   const handleFormResponse = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setResponse(formData);
@@ -75,6 +81,18 @@ export const FormView = (): JSX.Element => {
       <h4 className='demoTitle'>Form Demo</h4>
       <div className='demoBody'>
         <form className='demoTest' onSubmit={handleFormResponse}>
+          <div style={{ display: 'flex', gap: '24px' }}>
+            <SFSwitch
+              label='Night Time'
+              name='nightTime'
+              onChange={handleInputChange}
+            />
+            <SFCheckbox
+              label='On Duty'
+              name='onDuty'
+              onChange={handleInputChange}
+            />
+          </div>
           <SFTextField
             label='Officer'
             name='officer'
@@ -85,16 +103,6 @@ export const FormView = (): JSX.Element => {
             label='Gender'
             name='gender'
             options={radioOptions}
-            onChange={handleInputChange}
-          />
-          <SFSwitch
-            label='Night'
-            name='nightTime'
-            onChange={handleInputChange}
-          />
-          <SFCheckbox
-            label='On Duty'
-            name='onDuty'
             onChange={handleInputChange}
           />
           <SFDatePicker
@@ -125,17 +133,35 @@ export const FormView = (): JSX.Element => {
             onChange={handleInputChange}
           />
           <div className='send'>
-            <SFButton type='submit'>Send</SFButton>
+            <SFButton type='submit' onClick={() => setOpenResponsePanel(true)}>
+              Send
+            </SFButton>
           </div>
         </form>
       </div>
-      <SFPaper className='demoResponse'>
-        {Object.keys(response).length === 0 ? null : (
-          <code>
-            <pre>{JSON.stringify(response, null, 2)}</pre>
-          </code>
-        )}
-      </SFPaper>
+      <SFAlert
+        title='Form Output'
+        className='demoResponse'
+        open={openResponsePanel}
+        content=''
+        rightAction={{
+          label: 'Close',
+          buttonProps: {
+            onClick: () => {
+              cleanOutput();
+              setOpenResponsePanel(false);
+            }
+          }
+        }}
+      >
+        <code>
+          <pre>
+            {Object.keys(response).length === 0
+              ? ''
+              : JSON.stringify(response, null, 4)}
+          </pre>
+        </code>
+      </SFAlert>
     </div>
   );
 };

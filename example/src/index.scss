@@ -56,8 +56,8 @@ code {
       grid-template-columns: 2fr 1fr;
       grid-template-rows: 1fr auto;
       grid-template-areas:
-        'title code'
-        'body code';
+        'title title'
+        'body body';
       padding: 10px;
 
       .demoTitle {
@@ -77,7 +77,6 @@ code {
       }
 
       .demoResponse {
-        grid-area: code;
         font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
           monospace;
         padding: 10px;
