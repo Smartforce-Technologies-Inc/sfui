@@ -1,8 +1,9 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import { Meta } from '@storybook/react/types-6-0';
 import { SFDrawer, SFDrawerProps } from './SFDrawer';
 import { SFIconButton } from '../SFIconButton/SFIconButton';
+import { SFGrey } from '../../SFColors/SFColors';
 
 export default {
   title: 'Components/SFDrawer',
@@ -32,36 +33,38 @@ export default {
   }
 } as Meta;
 
-const useStyles = makeStyles({
-  container: {
-    minWidth: 396,
-    font: 'Roboto',
-    color: '#666'
-  },
-  topBar: {
-    margin: '20px 20px 8px 20px',
-    display: 'flex',
-    justifyContent: 'space-between'
-  },
-  btnRight: { alignSelf: 'flex-end' },
-  content: {
-    margin: 24,
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    container: {
+      minWidth: 396,
+      font: 'Roboto',
+      color: `${theme.palette.type === 'light' ? SFGrey[700] : SFGrey[400]}`
+    },
+    topBar: {
+      margin: '20px 20px 8px 20px',
+      display: 'flex',
+      justifyContent: 'space-between'
+    },
+    btnRight: { alignSelf: 'flex-end' },
+    content: {
+      margin: 24,
 
-    '& h2': { marginBottom: 24, padding: 0 },
-    '& ul': {
-      padding: 0,
+      '& h2': { marginBottom: 24, padding: 0 },
+      '& ul': {
+        padding: 0,
 
-      '& li': {
-        listStyle: 'none',
-        marginBottom: 24,
+        '& li': {
+          listStyle: 'none',
+          marginBottom: 24,
 
-        '&:first-child': {
-          fontWeight: 700
+          '&:first-child': {
+            fontWeight: 700
+          }
         }
       }
     }
-  }
-});
+  })
+);
 
 export const Drawer = (args: SFDrawerProps): JSX.Element => {
   const classes = useStyles();
