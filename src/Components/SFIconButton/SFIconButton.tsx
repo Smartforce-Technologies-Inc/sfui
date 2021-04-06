@@ -13,6 +13,8 @@ interface IconButtonInnerProps {
 
 const StyledIconButton = withStyles((theme: Theme) => ({
   root: {
+    margin: 'auto',
+
     '&:hover': {
       backgroundColor: `${
         theme.palette.type === 'light'
