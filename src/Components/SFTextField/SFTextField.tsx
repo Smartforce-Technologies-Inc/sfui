@@ -106,7 +106,6 @@ const StyledTextField = withStyles((theme: Theme) => ({
     '& .MuiFormHelperText-root': {
       margin: '5px 13px 0px',
       zIndex: '10',
-      backgroundColor: theme.palette.background.paper,
 
       '&.Mui-error': {
         color: theme.palette.type === 'light' ? SFRed[700] : SFRed[200]

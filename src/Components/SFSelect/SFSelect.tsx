@@ -17,10 +17,7 @@ const StyledSelect = withStyles(() => ({
 }))(SFTextField);
 
 const useMenuStyles = makeStyles({
-  paper: {
-    marginLeft: '-2px',
-    right: 0
-  }
+  paper: {}
 });
 
 export interface SFSelectOption {
@@ -38,6 +35,8 @@ export const SFSelect = ({
   options,
   helperText,
   label,
+  value,
+  onChange,
   ...props
 }: SFSelectProps): React.ReactElement<SFSelectProps> => {
   const customMenuStyles: Record<'paper', string> = useMenuStyles();
@@ -49,6 +48,7 @@ export const SFSelect = ({
         label={label}
         helperText={helperText}
         error={props.error}
+        value={value}
         disabled={props.disabled}
         SelectProps={{
           ...props,
