@@ -47,14 +47,22 @@ const StyledTextField = withStyles((theme: Theme) => ({
       },
 
       '& .MuiInputBase-inputMultiline': {
-        padding: '29px 13px 3px'
+        padding: '30px 13px 3px'
+      },
+
+      '&.MuiOutlinedInput-root': {
+        '&:after, &:before': {
+          content: 'none !important'
+        }
       },
 
       '&.MuiOutlinedInput-multiline': {
-        padding: '0',
+        padding: '30px 12px 8px',
+        height: 'auto',
 
         '& .MuiInputBase-inputMultiline': {
-          height: '-webkit-fill-available'
+          height: '-webkit-fill-available',
+          padding: '0'
         }
       },
 
@@ -97,6 +105,8 @@ const StyledTextField = withStyles((theme: Theme) => ({
 
     '& .MuiFormHelperText-root': {
       margin: '5px 13px 0px',
+      zIndex: '10',
+      backgroundColor: theme.palette.background.paper,
 
       '&.Mui-error': {
         color: theme.palette.type === 'light' ? SFRed[700] : SFRed[200]
