@@ -4,7 +4,7 @@ import { SFChip } from 'sfui';
 
 export const SFChipsView = (): JSX.Element => {
   return (
-    <div className='row content'>
+    <div className='row spaced'>
       <div className='column'>
         <div className='row'>
           <SFChip label='Small' size='small' sfColor='primary' />

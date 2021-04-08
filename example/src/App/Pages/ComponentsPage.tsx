@@ -73,7 +73,7 @@ export const ComponentsPage = (): JSX.Element => {
       <div className='content'>
         <div className='section'>
           <h4 className='title'>Dialog and Drawer</h4>
-          <div className='row content'>
+          <div className='row'>
             <SFDialogsView />
             <SFDrawersView />
           </div>
@@ -106,7 +106,7 @@ export const ComponentsPage = (): JSX.Element => {
         </div>
       </div>
       <div className='content'>
-        <div className='section'>
+        <div className='section fitContent'>
           <h4>Tables</h4>
           <SFTableView />
         </div>

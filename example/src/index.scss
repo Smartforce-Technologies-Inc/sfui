@@ -95,29 +95,49 @@ code {
 }
 
 .row {
-  @include flexLayout(row, 10px);
+  @include flexLayout(row, 30px 10px);
   flex-wrap: wrap;
-}
 
-.grid-row {
-  @include gridLayout(column, 0, 10px, 1fr);
+  &.spaced {
+    justify-content: space-between;
+  }
 }
 
 .column {
-  display: grid;
-  gap: 10px;
+  @include flexLayout(column, 10px);
+}
+
+.grid-row {
+  @include gridLayout(column, 10px, 10px, 1fr);
+}
+
+.grid-column {
+  @include gridLayout(row, 10px, 10px, 1fr);
+}
+
+.custom-grid {
+  @include gridLayout(column, 10px, 10px, 1fr);
 }
 
 @media screen and (max-width: 768px) {
   .bodyContent {
-    overflow-x: scroll;
-
     .pagesLayout {
       .content {
         grid-template-columns: 1fr;
         gap: 30px 10px;
+
+        .section {
+          &.fitContent {
+            overflow-x: scroll;
+          }
+        }
       }
     }
+  }
+
+  .custom-grid {
+    @include gridLayout(row, 10px, 10px, 1fr);
+    grid-template-columns: 1fr;
   }
 }
 
@@ -125,9 +145,12 @@ code {
   .bodyContent {
     .pagesLayout {
       .content {
-        grid-template-columns: 1fr 1fr;
         gap: 30px 10px;
       }
     }
+  }
+
+  .custom-grid {
+    @include gridLayout(row, 10px, 10px, 1fr);
   }
 }
