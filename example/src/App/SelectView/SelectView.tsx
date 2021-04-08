@@ -20,23 +20,45 @@ const getOptions = (): SFSelectOption[] => {
 };
 
 const SFSelectView = (): JSX.Element => {
+  const [selectValue, setSelectValue] = React.useState<string>('');
+  const [selectValue1, setSelectValue1] = React.useState<string>(
+    'Bagel number one'
+  );
+  const [selectValue2, setSelectValue2] = React.useState<string>(
+    'Bagel number one'
+  );
+  const [selectValue3, setSelectValue3] = React.useState<string>('');
+  const [selectValue4, setSelectValue4] = React.useState<string>('');
+
   return (
     <div className='column'>
-      <div className='row'>
-        <SFSelect label='Bagel' options={getOptions()} />
-      </div>
       <div className='row'>
         <SFSelect
           label='Bagel'
           options={getOptions()}
-          value='Bagel number one'
+          value={selectValue}
+          onChange={(
+            event: React.ChangeEvent<{
+              name?: string | undefined;
+              value: unknown;
+            }>
+          ) => setSelectValue(event.target.value as string)}
         />
       </div>
       <div className='row'>
         <SFSelect
           label='Bagel'
           options={getOptions()}
-          value='Bagel number one'
+          value={selectValue1}
+          onChange={(event) => setSelectValue1(event.target.value as string)}
+        />
+      </div>
+      <div className='row'>
+        <SFSelect
+          label='Bagel'
+          options={getOptions()}
+          value={selectValue2}
+          onChange={(event) => setSelectValue2(event.target.value as string)}
           disabled
         />
       </div>
@@ -44,7 +66,8 @@ const SFSelectView = (): JSX.Element => {
         <SFSelect
           label='Bagel'
           options={getOptions()}
-          value='Bagel number one'
+          value={selectValue3}
+          onChange={(event) => setSelectValue3(event.target.value as string)}
           error
         />
       </div>
@@ -52,7 +75,8 @@ const SFSelectView = (): JSX.Element => {
         <SFSelect
           label='Bagel'
           options={getOptions()}
-          value='Bagel number one'
+          value={selectValue4}
+          onChange={(event) => setSelectValue4(event.target.value as string)}
           helperText='Helper Message'
         />
       </div>
