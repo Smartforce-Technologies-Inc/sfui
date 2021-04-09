@@ -13,7 +13,7 @@ export const SFSplitButtonView = (): JSX.Element => {
   ];
 
   return (
-    <div className='row spaced'>
+    <div className='row'>
       <SFSplitButton
         sfColor='blue'
         variant='contained'

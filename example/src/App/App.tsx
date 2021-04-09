@@ -37,6 +37,7 @@ const App = (): JSX.Element => {
           style={{
             backgroundColor: theme.palette.background.default
           }}
+          className={`${nightMode ? 'night' : 'day'}`}
         >
           <div className='bodyContent'>
             <h1 className='textHeader'>

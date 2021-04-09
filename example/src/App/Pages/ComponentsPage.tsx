@@ -107,7 +107,7 @@ export const ComponentsPage = (): JSX.Element => {
       </div>
       <div className='content'>
         <div className='section fitContent'>
-          <h4>Tables</h4>
+          <h4 className='title'>Tables</h4>
           <SFTableView />
         </div>
       </div>

@@ -16,7 +16,7 @@ const renderButtonsColumn = (
   size: 'small' | 'medium' | 'large' | undefined
 ): JSX.Element => {
   return (
-    <div className='grid-column'>
+    <div className='column'>
       <div className='row'>
         <SFButton sfColor='blue' size={size}>
           <span style={{ textTransform: 'capitalize' }}>{size}</span>
