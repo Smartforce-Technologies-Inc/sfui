@@ -6,6 +6,9 @@ import { SFDatePicker, SFDatePickerProps } from './SFDatePicker';
 export default {
   title: 'Components/SFDatePicker',
   component: SFDatePicker,
+  args: {
+    label: 'mm/dd/yyyy'
+  },
   argTypes: {
     onChange: { action: 'onChange', table: { disable: true } },
     value: {

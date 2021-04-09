@@ -8,7 +8,7 @@ import {
   SFSwitch,
   useSFMediaQuery,
   SFStylesProvider,
-  SFLink
+  SFButton
 } from 'sfui';
 
 import { ComponentsPage } from './Pages/ComponentsPage';
@@ -37,6 +37,7 @@ const App = (): JSX.Element => {
           style={{
             backgroundColor: theme.palette.background.default
           }}
+          className={`${nightMode ? 'night' : 'day'}`}
         >
           <div className='bodyContent'>
             <h1 className='textHeader'>
@@ -47,13 +48,21 @@ const App = (): JSX.Element => {
                 onChange={toggleSwitch}
               />
             </h1>
-            <div className='pageSelector'>
-              <SFLink sfSize='medium' onClick={() => setShowDemo(false)}>
+            <div className='row'>
+              <SFButton
+                size='medium'
+                sfColor='red'
+                onClick={() => setShowDemo(false)}
+              >
                 Components
-              </SFLink>
-              <SFLink sfSize='medium' onClick={() => setShowDemo(true)}>
+              </SFButton>
+              <SFButton
+                size='medium'
+                sfColor='red'
+                onClick={() => setShowDemo(true)}
+              >
                 Demos
-              </SFLink>
+              </SFButton>
             </div>
             {showDemo === false ? <ComponentsPage /> : <DemosPage />}
           </div>

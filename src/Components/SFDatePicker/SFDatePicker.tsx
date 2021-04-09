@@ -46,7 +46,14 @@ const StyledDatePicker = withStyles((theme: Theme) => ({
       '& .MuiFilledInput-root': {
         border: `2px solid ${
           theme.palette.type === 'light' ? SFBlue[500] : SFBlue[200]
-        }`
+        }`,
+
+        '& .MuiFilledInput-input': {
+          padding: '26px 10px 6px'
+        }
+      },
+      '& .MuiFilledInput-adornedEnd': {
+        paddingRight: '11px'
       }
     },
 
@@ -79,7 +86,11 @@ const StyledDatePicker = withStyles((theme: Theme) => ({
         }`,
 
         '& .MuiFilledInput-input': {
-          padding: '26px 11px 7px'
+          padding: '26px 10px 6px'
+        },
+
+        '&.MuiFilledInput-adornedEnd': {
+          paddingRight: '11px'
         }
       },
 
@@ -116,6 +127,10 @@ const StyledDatePicker = withStyles((theme: Theme) => ({
 
         '&.Mui-disabled': {
           color: `${theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]}`
+        },
+
+        '&.MuiFilledInput-adornedEnd': {
+          paddingRight: '12px'
         }
       },
 
@@ -172,6 +187,7 @@ export interface SFDatePickerProps extends KeyboardDatePickerProps {}
 
 export const SFDatePicker = ({
   value = null,
+  label,
   ...props
 }: SFDatePickerProps): React.ReactElement<KeyboardDatePickerProps> => {
   const popOverStyle: Record<'paper', string> = usePopOverStyle();
@@ -191,6 +207,7 @@ export const SFDatePicker = ({
           variant='inline'
           inputVariant='filled'
           format='MM/DD/YYYY'
+          label={label}
           onOpen={() => setOpenCalendarStyle(true)}
           onClose={() => setOpenCalendarStyle(false)}
           PopoverProps={{

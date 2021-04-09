@@ -13,37 +13,31 @@ export const SFSplitButtonView = (): JSX.Element => {
   ];
 
   return (
-    <div className='itemsContainer'>
-      <div className='columnGroup'>
-        <div className='column'>
-          <div className='rowGroup row'>
-            <SFSplitButton
-              sfColor='blue'
-              variant='contained'
-              defaultSelected={1}
-              options={splitButtonOptions}
-            />
-            <SFSplitButton
-              sfColor='blue'
-              variant='outlined'
-              defaultSelected={1}
-              options={splitButtonOptions}
-            />
-            <SFSplitButton
-              sfColor='grey'
-              variant='contained'
-              defaultSelected={1}
-              options={splitButtonOptions}
-            />
-            <SFSplitButton
-              sfColor='grey'
-              variant='outlined'
-              defaultSelected={1}
-              options={splitButtonOptions}
-            />
-          </div>
-        </div>
-      </div>
+    <div className='row'>
+      <SFSplitButton
+        sfColor='blue'
+        variant='contained'
+        defaultSelected={1}
+        options={splitButtonOptions}
+      />
+      <SFSplitButton
+        sfColor='blue'
+        variant='outlined'
+        defaultSelected={1}
+        options={splitButtonOptions}
+      />
+      <SFSplitButton
+        sfColor='grey'
+        variant='contained'
+        defaultSelected={1}
+        options={splitButtonOptions}
+      />
+      <SFSplitButton
+        sfColor='grey'
+        variant='outlined'
+        defaultSelected={1}
+        options={splitButtonOptions}
+      />
     </div>
   );
 };

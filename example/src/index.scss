@@ -1,4 +1,22 @@
 @import '~sfui/dist/styles/SFColors/SFColors.module.scss';
+
+@mixin flexLayout($orientation, $gap) {
+  display: flex;
+  flex-direction: $orientation;
+  gap: $gap;
+}
+
+@mixin gridLayout($orientation, $gap, $minWidth, $maxWidth) {
+  display: grid;
+  gap: $gap;
+
+  @if $orientation == column {
+    grid-template-columns: repeat(auto-fit, minmax($minWidth, $maxWidth));
+  } @else {
+    grid-template-rows: repeat(auto-fit, minmax($minWidth, $maxWidth));
+  }
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -9,54 +27,37 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
 .bodyContent {
-  display: grid;
-  grid-template-rows: repeat(auto, 1fr);
-  gap: 15px 0;
+  @include gridLayout(row, 15px 10px, 60px, 1fr);
   padding: 10px;
 
   .textHeader {
-    font-size: 1.6rem;
+    @include flexLayout(row, 0);
+    font-size: 1rem;
     margin: 0;
-    padding: 10px 0;
-    display: flex;
-    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid $sf-grey-600;
   }
 
-  .pageSelector {
-    a {
-      padding: 10px 20px 10px 0;
-    }
-  }
-
   .demoPage {
-    display: grid;
-
     .demoItem {
       display: grid;
-      grid-template-columns: 2fr 1fr;
-      grid-template-rows: 1fr auto;
-      grid-template-areas:
-        'title code'
-        'body code';
+      grid-template-columns: 1fr;
       padding: 10px;
 
       .demoTitle {
-        grid-area: title;
         padding: 10px 0;
         font-weight: 500;
       }
 
       .demoBody {
-        grid-area: body;
         padding: 0 30px 0 0;
 
         .demoTest {
@@ -66,7 +67,6 @@ code {
       }
 
       .demoResponse {
-        grid-area: code;
         font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
           monospace;
         padding: 10px;
@@ -75,181 +75,94 @@ code {
     }
   }
 
-  .content {
-    .section {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
+  .pagesLayout {
+    @include gridLayout(row, 30px, 100px, 1fr);
 
-      .title {
-        font-weight: 500;
-      }
-    }
-  }
+    .content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px 10px;
 
-  .firstSection {
-    .buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 25px;
-
-      .contentItems {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-
-        .row {
-          display: flex;
-          gap: 0 25px;
-        }
-      }
-    }
-  }
-
-  .secondSection {
-    display: flex;
-    gap: 25px;
-    flex-direction: column;
-
-    .section {
-      .column {
-        .row {
-          display: flex;
-          gap: 10px;
-        }
-      }
-    }
-  }
-
-  .thirdSection {
-    .section {
-      .links {
-        gap: 10px;
-        display: flex;
-        flex-direction: column;
-
-        .row {
-          display: flex;
-          gap: 10px;
-          align-items: flex-end;
-        }
-      }
-    }
-  }
-
-  .fourthSection,
-  .fifthSection,
-  .sixthSection {
-    .section {
-      .fullSize {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: 10px 0;
-      }
-    }
-  }
-
-  .seventhSection {
-    display: grid;
-
-    .section {
-      .tables {
-        display: grid;
-        gap: 10px;
-
-        .row {
-          display: flex;
-          flex-direction: column;
-          gap: 15px;
+      .section {
+        &.fitContent {
           overflow-x: scroll;
         }
+
+        .title {
+          padding-bottom: 20px;
+          border-bottom: 4px solid $sf-grey-100;
+        }
       }
     }
   }
+}
 
-  .eighthSection {
-    display: flex;
-    gap: 30px;
+.row {
+  @include flexLayout(row, 30px 10px);
+  flex-wrap: wrap;
 
-    .section {
-      .itemsContainer {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
+  &.spaced {
+    justify-content: space-between;
+  }
+}
 
-        .columnGroup {
-          display: flex;
-          gap: 20px;
+.grid-row {
+  @include gridLayout(column, 10px, 10px, 1fr);
+}
 
-          .column {
-            display: flex;
-            flex-direction: column;
-            gap: 35px;
+.grid-column {
+  @include gridLayout(row, 10px, 10px, 1fr);
+}
 
-            .rowGroup {
-              display: flex;
-              flex-direction: column;
-              gap: 10px;
+.custom-grid {
+  @include gridLayout(row, 10px, 10px, 1fr);
+  grid-template-columns: 1fr;
+}
 
-              &.row {
-                flex-direction: row;
-              }
-            }
+.column {
+  @include flexLayout(column, 10px);
+}
+
+@media screen and (min-width: 768px) {
+  .bodyContent {
+    .pagesLayout {
+      .content {
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .bodyContent {
+    .pagesLayout {
+      .content {
+        @include gridLayout(column, 20px, 150px, 1fr);
+
+        .section {
+          &.fitContent {
+            overflow-x: auto;
           }
         }
       }
     }
   }
-}
 
-@media only screen and (min-width: 768px) {
-  .bodyContent {
-    padding: 10px 30px;
+  .custom-grid {
+    @include gridLayout(column, 10px, 10px, 1fr);
 
-    .textHeader {
-      font-size: 2.5rem;
-      flex-direction: row;
+    .row {
+      display: grid;
     }
   }
 }
 
-@media only screen and (min-width: 1024px) {
+[class*='night'] {
   .bodyContent {
-    .firstSection {
-      .buttons {
-        flex-direction: row;
-        justify-content: space-between;
-      }
-    }
-
-    .secondSection,
-    .thirdSection {
-      flex-direction: row;
-      justify-content: space-between;
-    }
-
-    .thirdSection {
-      display: flex;
-    }
-
-    .fourthSection,
-    .fifthSection,
-    .sixthSection {
-      display: flex;
-      flex-direction: row;
-      gap: 10px;
-    }
-
-    .seventhSection {
-      .section {
-        .tables {
-          gap: 15px;
-
-          .row {
-            display: flex;
-            flex-direction: column;
-            gap: 15px 0;
+    .pagesLayout {
+      .content {
+        .section {
+          .title {
+            border-bottom: 4px solid $sf-grey-700;
           }
         }
       }

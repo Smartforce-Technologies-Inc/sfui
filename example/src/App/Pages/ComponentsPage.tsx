@@ -21,28 +21,38 @@ import { SFTableView } from '../TableView/TableView';
 
 export const ComponentsPage = (): JSX.Element => {
   return (
-    <div>
-      <div className='content firstSection'>
+    <div className='pagesLayout'>
+      <div className='content'>
         <div className='section'>
           <h4 className='title'>Buttons</h4>
           <SFButtonsView />
         </div>
       </div>
-      <div className='content eighthSection'>
+      <div className='content'>
         <div className='section'>
-          <h4 className='title'>Chips</h4>
-          <SFChipsView />
+          <h4 className='title'>Icon Button</h4>
+          <SFIconButtonView />
         </div>
         <div className='section'>
           <h4 className='title'>Split Button</h4>
           <SFSplitButtonView />
         </div>
-      </div>
-      <div className='content secondSection'>
         <div className='section'>
-          <h4 className='title'>Icon Button</h4>
-          <SFIconButtonView />
+          <h4 className='title'>Links</h4>
+          <SFLinksView />
         </div>
+        <div className='section'>
+          <h4 className='title'>Progress Circular Indeterminate</h4>
+          <SFSpinnerView />
+        </div>
+      </div>
+      <div className='content'>
+        <div className='section'>
+          <h4 className='title'>Chips</h4>
+          <SFChipsView />
+        </div>
+      </div>
+      <div className='content'>
         <div className='section'>
           <h4 className='title'>Checkbox</h4>
           <SFCheckboxesView />
@@ -60,17 +70,16 @@ export const ComponentsPage = (): JSX.Element => {
           <SFSwitchesView />
         </div>
       </div>
-      <div className='content thirdSection'>
+      <div className='content'>
         <div className='section'>
-          <h4 className='title'>Links</h4>
-          <SFLinksView />
-        </div>
-        <div className='section'>
-          <h4 className='title'>Progress Circular Indeterminate</h4>
-          <SFSpinnerView />
+          <h4 className='title'>Dialog and Drawer</h4>
+          <div className='row'>
+            <SFDialogsView />
+            <SFDrawersView />
+          </div>
         </div>
       </div>
-      <div className='content fourthSection'>
+      <div className='content'>
         <div className='section'>
           <h4 className='title'>Text Field</h4>
           <SFTextFieldsView />
@@ -80,18 +89,13 @@ export const ComponentsPage = (): JSX.Element => {
           <SFDatePickerView />
         </div>
       </div>
-      <div className='content fifthSection'>
+      <div className='content'>
         <div className='section'>
           <h4 className='title'>Text Field Multiline</h4>
           <SFTextFieldsMultilineView />
         </div>
-        <div className='section'>
-          <h4 className='title'>Dialog and Drawer</h4>
-          <SFDialogsView />
-          <SFDrawersView />
-        </div>
       </div>
-      <div className='content sixthSection'>
+      <div className='content'>
         <div className='section'>
           <h4 className='title'>Simple Select</h4>
           <SFSelectView />
@@ -101,9 +105,9 @@ export const ComponentsPage = (): JSX.Element => {
           <SFMultiSelectView />
         </div>
       </div>
-      <div className='content seventhSection'>
-        <div className='section'>
-          <h4>Tables</h4>
+      <div className='content'>
+        <div className='section fitContent'>
+          <h4 className='title'>Tables</h4>
           <SFTableView />
         </div>
       </div>
