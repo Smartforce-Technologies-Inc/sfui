@@ -8,14 +8,13 @@
 
 @mixin gridLayout($orientation, $gap, $minWidth, $maxWidth) {
   display: grid;
-  align-items: start;
+  gap: $gap;
 
   @if $orientation == column {
     grid-template-columns: repeat(auto-fit, minmax($minWidth, $maxWidth));
   } @else {
     grid-template-rows: repeat(auto-fit, minmax($minWidth, $maxWidth));
   }
-  gap: $gap;
 }
 
 body {
@@ -28,46 +27,37 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
 .bodyContent {
-  @include gridLayout(row, 15px 0, 60px, 1fr);
+  @include gridLayout(row, 15px 10px, 60px, 1fr);
   padding: 10px;
 
   .textHeader {
     @include flexLayout(row, 0);
-
-    font-size: 1.6rem;
+    font-size: 1rem;
     margin: 0;
-    padding: 10px 0;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid $sf-grey-600;
   }
 
   .demoPage {
-    display: grid;
-
     .demoItem {
       display: grid;
-      grid-template-columns: 2fr 1fr;
-      grid-template-rows: 1fr auto;
-      grid-template-areas:
-        'title title'
-        'body body';
+      grid-template-columns: 1fr;
       padding: 10px;
 
       .demoTitle {
-        grid-area: title;
         padding: 10px 0;
         font-weight: 500;
       }
 
       .demoBody {
-        grid-area: body;
         padding: 0 30px 0 0;
 
         .demoTest {
@@ -89,44 +79,92 @@ code {
     @include gridLayout(row, 30px, 100px, 1fr);
 
     .content {
-      @include gridLayout(column, 20px, 150px, 1fr);
-    }
-  }
-}
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px 10px;
 
-.row {
-  @include flexLayout(row, 10px);
-  flex-wrap: wrap;
-}
+      .section {
+        &.fitContent {
+          overflow-x: scroll;
+        }
 
-.grid-row {
-  @include gridLayout(column, 0, 10px, 1fr);
-}
-
-.column {
-  display: grid;
-  gap: 10px;
-}
-
-@media screen and (max-width: 768px) {
-  .bodyContent {
-    overflow-x: scroll;
-
-    .pagesLayout {
-      .content {
-        grid-template-columns: 1fr;
-        gap: 30px 10px;
+        .title {
+          padding-bottom: 20px;
+          border-bottom: 4px solid $sf-grey-100;
+        }
       }
     }
   }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1230px) {
+.row {
+  @include flexLayout(row, 30px 10px);
+  flex-wrap: wrap;
+
+  &.spaced {
+    justify-content: space-between;
+  }
+}
+
+.grid-row {
+  @include gridLayout(column, 10px, 10px, 1fr);
+}
+
+.grid-column {
+  @include gridLayout(row, 10px, 10px, 1fr);
+}
+
+.custom-grid {
+  @include gridLayout(row, 10px, 10px, 1fr);
+  grid-template-columns: 1fr;
+}
+
+.column {
+  @include flexLayout(column, 10px);
+}
+
+@media screen and (min-width: 768px) {
   .bodyContent {
     .pagesLayout {
       .content {
-        grid-template-columns: 1fr 1fr;
-        gap: 30px 10px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .bodyContent {
+    .pagesLayout {
+      .content {
+        @include gridLayout(column, 20px, 150px, 1fr);
+
+        .section {
+          &.fitContent {
+            overflow-x: auto;
+          }
+        }
+      }
+    }
+  }
+
+  .custom-grid {
+    @include gridLayout(column, 10px, 10px, 1fr);
+
+    .row {
+      display: grid;
+    }
+  }
+}
+
+[class*='night'] {
+  .bodyContent {
+    .pagesLayout {
+      .content {
+        .section {
+          .title {
+            border-bottom: 4px solid $sf-grey-700;
+          }
+        }
       }
     }
   }

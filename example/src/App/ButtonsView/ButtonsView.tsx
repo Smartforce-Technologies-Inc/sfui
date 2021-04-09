@@ -4,7 +4,7 @@ import { SFButton } from 'sfui';
 
 const SFButtonsView = (): JSX.Element => {
   return (
-    <div className='row content'>
+    <div className='row spaced'>
       {renderButtonsColumn('small')}
       {renderButtonsColumn('medium')}
       {renderButtonsColumn('large')}
