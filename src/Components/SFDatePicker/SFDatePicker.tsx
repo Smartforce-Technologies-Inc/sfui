@@ -86,7 +86,7 @@ const StyledDatePicker = withStyles((theme: Theme) => ({
         }`,
 
         '& .MuiFilledInput-input': {
-          padding: '26px 10px 6px'
+          padding: '26px 10px 7px'
         },
 
         '&.MuiFilledInput-adornedEnd': {
@@ -106,7 +106,11 @@ const StyledDatePicker = withStyles((theme: Theme) => ({
         }`,
 
         '& .MuiFilledInput-input': {
-          padding: '26px 11px 7px'
+          padding: '26px 11px 7px !important'
+        },
+
+        '&.MuiFilledInput-adornedEnd': {
+          paddingRight: '12px !important'
         }
       },
 
@@ -117,6 +121,10 @@ const StyledDatePicker = withStyles((theme: Theme) => ({
 
         '& .MuiFilledInput-input': {
           padding: '26px 11px 7px !important'
+        },
+
+        '&.MuiFilledInput-adornedEnd': {
+          paddingRight: '12px !important'
         }
       },
 
