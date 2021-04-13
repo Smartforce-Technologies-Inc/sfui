@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useTheme, Theme, withStyles } from '@material-ui/core/styles';
 import { SFGrey } from '../../SFColors/SFColors';
-import { SFIcon } from '../SFIcon/SFIcon';
+import { SFIcon, SFIconRotation } from '../SFIcon/SFIcon';
 import IconButton, { IconButtonProps } from '@material-ui/core/IconButton';
 
 type SFSize = 'tiny' | 'small' | 'medium' | 'large';
@@ -59,12 +59,14 @@ export interface SFIconButtonProps extends IconButtonProps {
   sfColor?: string | undefined;
   sfSize: SFSize;
   sfIcon: string;
+  rotate?: SFIconRotation;
 }
 
 export const SFIconButton = ({
   sfColor,
   sfSize = 'medium',
   sfIcon = 'Bell',
+  rotate = 'none',
   ...props
 }: SFIconButtonProps): React.ReactElement<SFIconButtonProps> => {
   const theme: Theme = useTheme();
@@ -86,6 +88,7 @@ export const SFIconButton = ({
         icon={sfIcon}
         size={iconButtonInnerProps.size}
         color={props.disabled ? disabledColor : colorPicked}
+        rotate={rotate}
       />
     </StyledIconButton>
   );
