@@ -61,7 +61,6 @@ const StyledTextField = withStyles((theme: Theme) => ({
         height: 'auto',
 
         '& .MuiInputBase-inputMultiline': {
-          height: '-webkit-fill-available',
           padding: '0'
         }
       },

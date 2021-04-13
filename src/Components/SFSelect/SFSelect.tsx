@@ -36,7 +36,6 @@ export const SFSelect = ({
   helperText,
   label,
   value,
-  onChange,
   ...props
 }: SFSelectProps): React.ReactElement<SFSelectProps> => {
   const customMenuStyles: Record<'paper', string> = useMenuStyles();
