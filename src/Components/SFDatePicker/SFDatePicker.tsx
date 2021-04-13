@@ -49,7 +49,7 @@ const StyledDatePicker = withStyles((theme: Theme) => ({
         }`,
 
         '& .MuiFilledInput-input': {
-          padding: '26px 10px 6px'
+          padding: '26px 10px 7px'
         }
       },
       '& .MuiFilledInput-adornedEnd': {
