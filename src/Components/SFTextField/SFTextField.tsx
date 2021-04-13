@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Theme, withStyles } from '@material-ui/core/styles';
 import TextField, { OutlinedTextFieldProps } from '@material-ui/core/TextField';
-import FormControl from '@material-ui/core/FormControl';
 import { SFGrey, SFRed } from '../../SFColors/SFColors';
 
 const StyledTextField = withStyles((theme: Theme) => ({
@@ -12,8 +11,6 @@ const StyledTextField = withStyles((theme: Theme) => ({
       boxSizing: 'border-box',
 
       '&.Mui-focused': {
-        backgroundColor: theme.palette.background.paper,
-
         '& .MuiOutlinedInput-notchedOutline': {
           border: `2px solid ${theme.palette.primary.main}`
         },
@@ -43,7 +40,11 @@ const StyledTextField = withStyles((theme: Theme) => ({
 
       '& .MuiInputBase-input': {
         padding: '27px 13px 5px',
-        color: theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]
+        color: theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50],
+
+        '&:focus': {
+          backgroundColor: 'transparent'
+        }
       },
 
       '& .MuiInputBase-inputMultiline': {
@@ -89,10 +90,6 @@ const StyledTextField = withStyles((theme: Theme) => ({
         transform: `translate(12px, 6px)`
       },
 
-      '&.Mui-focused': {
-        color: theme.palette.primary.main
-      },
-
       '&.Mui-error': {
         color: theme.palette.type === 'light' ? SFRed[700] : SFRed[200]
       },
@@ -123,13 +120,12 @@ export const SFTextField = ({
   ...props
 }: SFTextFieldProps): React.ReactElement<SFTextFieldProps> => {
   return (
-    <FormControl fullWidth>
-      <StyledTextField
-        {...props}
-        color='primary'
-        variant='outlined'
-        rows={rows}
-      />
-    </FormControl>
+    <StyledTextField
+      {...props}
+      color='primary'
+      variant='outlined'
+      rows={rows}
+      fullWidth
+    />
   );
 };
