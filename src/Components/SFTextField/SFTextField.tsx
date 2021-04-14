@@ -122,10 +122,10 @@ export const SFTextField = ({
   return (
     <StyledTextField
       {...props}
+      fullWidth
       color='primary'
       variant='outlined'
-      rows={rows}
-      fullWidth
+      rows={props.multiline ? rows : 1}
     />
   );
 };

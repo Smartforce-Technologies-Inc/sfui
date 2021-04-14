@@ -82,11 +82,11 @@ export const SFMultiSelect = ({
   return (
     <StyledSelect
       select
+      fullWidth
       label={label}
       helperText={helperText}
       error={props.error}
       disabled={props.disabled}
-      fullWidth
       SelectProps={{
         ...props,
         multiple: true,

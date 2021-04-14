@@ -52,12 +52,12 @@ export const SFSelect = ({
   return (
     <StyledSelect
       select
+      fullWidth
       label={label}
       helperText={helperText}
       error={props.error}
       value={value}
       disabled={props.disabled}
-      fullWidth
       SelectProps={{
         ...props,
         IconComponent: (props): React.ReactElement => (

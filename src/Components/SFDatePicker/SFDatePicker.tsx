@@ -5,7 +5,6 @@ import {
   Theme,
   withStyles
 } from '@material-ui/core/styles';
-import FormControl from '@material-ui/core/FormControl';
 import MomentUtils from '@date-io/moment';
 import { SFBlue, SFGrey, SFRed } from '../../SFColors/SFColors';
 import { SFIcon } from '../SFIcon/SFIcon';
@@ -103,7 +102,7 @@ const StyledDatePicker = withStyles((theme: Theme) => ({
       '&.Mui-error': {
         border: `1px solid ${
           theme.palette.type === 'light' ? SFRed[700] : SFRed[200]
-        }`,
+        } !important`,
 
         '& .MuiFilledInput-input': {
           padding: '26px 11px 7px !important'
@@ -205,32 +204,35 @@ export const SFDatePicker = ({
   );
 
   return (
-    <FormControl fullWidth>
-      <MuiPickersUtilsProvider utils={MomentUtils}>
-        <StyledDatePicker
-          {...props}
-          disableToolbar
-          className={openCalendarStyle ? 'openCalendarStyle' : ''}
-          value={value}
-          variant='inline'
-          inputVariant='filled'
-          format='MM/DD/YYYY'
-          label={label}
-          onOpen={() => setOpenCalendarStyle(true)}
-          onClose={() => setOpenCalendarStyle(false)}
-          PopoverProps={{
-            classes: popOverStyle,
-            anchorOrigin: { vertical: 'bottom', horizontal: 'left' },
-            transformOrigin: { vertical: 'top', horizontal: 'left' }
-          }}
-          InputProps={{ readOnly: true }}
-          rightArrowButtonProps={{ classes: arrowStyle }}
-          rightArrowIcon={<SFIcon icon='Right-2' size='10' />}
-          leftArrowButtonProps={{ classes: arrowStyle }}
-          leftArrowIcon={<SFIcon icon='Left-2' size='10' />}
-          keyboardIcon={<SFIcon icon='Callendar' size='24' />}
-        />
-      </MuiPickersUtilsProvider>
-    </FormControl>
+    <MuiPickersUtilsProvider utils={MomentUtils}>
+      <StyledDatePicker
+        {...props}
+        fullWidth
+        disableToolbar
+        className={openCalendarStyle ? 'openCalendarStyle' : ''}
+        value={value}
+        variant='inline'
+        inputVariant='filled'
+        format='MM/DD/YYYY'
+        label={label}
+        onOpen={(): void => {
+          setOpenCalendarStyle(true);
+        }}
+        onClose={(): void => {
+          setOpenCalendarStyle(false);
+        }}
+        PopoverProps={{
+          classes: popOverStyle,
+          anchorOrigin: { vertical: 'bottom', horizontal: 'left' },
+          transformOrigin: { vertical: 'top', horizontal: 'left' }
+        }}
+        InputProps={{ readOnly: true }}
+        rightArrowButtonProps={{ classes: arrowStyle }}
+        rightArrowIcon={<SFIcon icon='Right-2' size='10' />}
+        leftArrowButtonProps={{ classes: arrowStyle }}
+        leftArrowIcon={<SFIcon icon='Left-2' size='10' />}
+        keyboardIcon={<SFIcon icon='Callendar' size='24' />}
+      />
+    </MuiPickersUtilsProvider>
   );
 };
