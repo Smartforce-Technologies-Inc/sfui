@@ -1,107 +1,109 @@
 import * as React from 'react';
 import { Theme, withStyles } from '@material-ui/core/styles';
-import TextField, { FilledTextFieldProps } from '@material-ui/core/TextField';
-import FormControl from '@material-ui/core/FormControl';
+import TextField, { OutlinedTextFieldProps } from '@material-ui/core/TextField';
 import { SFGrey, SFRed } from '../../SFColors/SFColors';
 
 const StyledTextField = withStyles((theme: Theme) => ({
   root: {
     '& .MuiInputBase-root': {
       backgroundColor: theme.palette.background.paper,
-      '&.Mui-focused': {
-        backgroundColor: theme.palette.background.paper
-      }
-    },
-    boxSizing: 'border-box',
-    '& .MuiFilledInput-root': {
-      border: `1px solid ${
-        theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
-      }`,
-      borderRadius: 2,
+      height: '56px',
       boxSizing: 'border-box',
-      '&:before': {
-        content: `none !important`
-      },
-      '&:after': {
-        content: `none !important`
-      },
-      '&:hover': {
-        borderColor: theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]
-      },
-      '&:active': {
-        border: `2px solid ${theme.palette.primary.main}`,
-        '&:not(.Mui-disabled)': {
-          '& .MuiFilledInput-input': {
-            padding: '26px 11px 7px'
+
+      '&.Mui-focused': {
+        '& .MuiOutlinedInput-notchedOutline': {
+          border: `2px solid ${theme.palette.primary.main}`
+        },
+
+        '&.Mui-error': {
+          '& .MuiOutlinedInput-notchedOutline': {
+            border: `1px solid ${
+              theme.palette.type === 'light' ? SFRed[700] : SFRed[200]
+            }`
           }
         }
       },
-      '&.Mui-focused': {
-        border: `2px solid ${theme.palette.primary.main}`,
-        '& .MuiFilledInput-input': {
-          padding: '26px 11px 7px'
-        }
-      },
+
       '&.Mui-error': {
-        border: `2px solid ${
-          theme.palette.type === 'light' ? SFRed[700] : SFRed[200]
-        }`,
-        '& .MuiFilledInput-input': {
-          padding: '26px 11px 7px'
+        '& .MuiOutlinedInput-notchedOutline': {
+          border: `1px solid ${
+            theme.palette.type === 'light' ? SFRed[700] : SFRed[200]
+          }`
         }
       },
+
       '&.Mui-disabled': {
+        '& .MuiInputBase-input': {
+          color: theme.palette.type === 'light' ? SFGrey[400] : SFGrey[600]
+        }
+      },
+
+      '& .MuiInputBase-input': {
+        padding: '27px 13px 5px',
+        color: theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50],
+
+        '&:focus': {
+          backgroundColor: 'transparent'
+        }
+      },
+
+      '& .MuiInputBase-inputMultiline': {
+        padding: '30px 13px 3px'
+      },
+
+      '&.MuiOutlinedInput-root': {
+        '&:after, &:before': {
+          content: 'none !important'
+        }
+      },
+
+      '&.MuiOutlinedInput-multiline': {
+        padding: '30px 12px 8px',
+        height: 'auto',
+
+        '& .MuiInputBase-inputMultiline': {
+          padding: '0'
+        }
+      },
+
+      '& .MuiOutlinedInput-notchedOutline': {
         border: `1px solid ${
           theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
-        }`
-      },
-      '&.MuiFilledInput-multiline': {
-        padding: '27px 12px 8px',
-        '&.Mui-focused': {
-          padding: '26px 11px 7px'
-        },
-        '&:not(.Mui-disabled)': {
-          '&:active, &.Mui-error': {
-            padding: '26px 11px 7px'
-          }
-        },
-        '& textarea.MuiFilledInput-input': {
-          padding: 0
-        },
-        '&:active': {
-          '& textarea.MuiFilledInput-input': {
-            padding: 0
-          }
+        }`,
+        borderRadius: 2,
+
+        '& > legend': {
+          transition: 'none',
+          maxWidth: '0px'
         }
-      },
-      '& .MuiFilledInput-input': {
-        fontWeight: 400,
-        fontSize: '16px',
-        padding: '27px 12px 8px',
-        '&.Mui-disabled': {
-          color: theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
-        }
-      },
-      '& .MuiSelect-select:focus': {
-        backgroundColor: 'transparent'
       }
     },
-    '& .MuiInputLabel-filled': {
+
+    '& .MuiInputLabel-outlined': {
       fontSize: '16px',
       lineHeight: '24px',
+      color: theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400],
+
       '&.MuiInputLabel-shrink': {
         fontSize: '14px',
         lineHeight: '20px',
         transform: `translate(12px, 6px)`
       },
+
       '&.Mui-error': {
         color: theme.palette.type === 'light' ? SFRed[700] : SFRed[200]
       },
+
       '&.Mui-disabled': {
-        color: theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
+        color: theme.palette.type === 'light' ? SFGrey[400] : SFGrey[600]
       }
     },
+
     '& .MuiFormHelperText-root': {
+      margin: '5px 13px 0px',
+      lineHeight: '12px',
+      fontSize: '10px',
+
       '&.Mui-error': {
         color: theme.palette.type === 'light' ? SFRed[700] : SFRed[200]
       }
@@ -109,9 +111,7 @@ const StyledTextField = withStyles((theme: Theme) => ({
   }
 }))(TextField);
 
-export interface SFTextFieldProps extends Partial<FilledTextFieldProps> {
-  variant?: 'filled';
-}
+export interface SFTextFieldProps extends Partial<OutlinedTextFieldProps> {}
 
 export const SFTextField = ({
   variant,
@@ -120,13 +120,12 @@ export const SFTextField = ({
   ...props
 }: SFTextFieldProps): React.ReactElement<SFTextFieldProps> => {
   return (
-    <FormControl fullWidth>
-      <StyledTextField
-        {...props}
-        color='primary'
-        variant='filled'
-        rows={rows}
-      />
-    </FormControl>
+    <StyledTextField
+      {...props}
+      fullWidth
+      color='primary'
+      variant='outlined'
+      rows={props.multiline ? rows : 1}
+    />
   );
 };

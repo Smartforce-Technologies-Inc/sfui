@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
-import { FormControl, SelectProps } from '@material-ui/core';
+import { SelectProps } from '@material-ui/core';
 import { SFTextField } from '../SFTextField/SFTextField';
 import { SFIcon } from '../SFIcon/SFIcon';
 import { SFCheckbox } from '../SFCheckbox/SFCheckbox';
@@ -29,10 +29,6 @@ const StyledMenuItem = withStyles(() => ({
 }))(SFMenuItem);
 
 const useMenuStyles = makeStyles({
-  paper: {
-    marginLeft: '-2px',
-    right: 0
-  },
   list: {
     paddingTop: 0,
     paddingBottom: 0
@@ -57,7 +53,7 @@ export const SFMultiSelect = ({
 }: SFMultiSelectProps): React.ReactElement<SFMultiSelectProps> => {
   const valueInit: string[] = value || defaultValue;
   const [selected, setSelected] = React.useState<string[]>(valueInit);
-  const menuClasses: Record<'paper', string> = useMenuStyles();
+  const menuClasses: Record<'list', string> = useMenuStyles();
 
   const handleChange = (
     event: React.ChangeEvent<{
@@ -84,38 +80,37 @@ export const SFMultiSelect = ({
   };
 
   return (
-    <FormControl fullWidth>
-      <StyledSelect
-        select
-        label={label}
-        helperText={helperText}
-        error={props.error}
-        disabled={props.disabled}
-        SelectProps={{
-          ...props,
-          multiple: true,
-          defaultValue: defaultValue,
-          value: selected,
-          MenuProps: {
-            variant: 'menu',
-            autoFocus: false,
-            disableAutoFocusItem: true,
-            classes: menuClasses
-          },
-          onChange: handleChange,
-          renderValue: renderSelected,
-          IconComponent: (props): React.ReactElement => (
-            <SFIcon icon='Down-2' size='16' {...props} />
-          )
-        }}
-      >
-        {options.map((option) => (
-          <StyledMenuItem key={option.value} value={option.value}>
-            <SFCheckbox checked={isChecked(option, selected)} />
-            {option.label}
-          </StyledMenuItem>
-        ))}
-      </StyledSelect>
-    </FormControl>
+    <StyledSelect
+      select
+      fullWidth
+      label={label}
+      helperText={helperText}
+      error={props.error}
+      disabled={props.disabled}
+      SelectProps={{
+        ...props,
+        multiple: true,
+        defaultValue: defaultValue,
+        value: selected,
+        MenuProps: {
+          variant: 'menu',
+          autoFocus: false,
+          disableAutoFocusItem: true,
+          classes: menuClasses
+        },
+        onChange: handleChange,
+        renderValue: renderSelected,
+        IconComponent: (props): React.ReactElement => (
+          <SFIcon icon='Down-2' size='16' {...props} />
+        )
+      }}
+    >
+      {options.map((option) => (
+        <StyledMenuItem key={option.value} value={option.value}>
+          <SFCheckbox checked={isChecked(option, selected)} />
+          {option.label}
+        </StyledMenuItem>
+      ))}
+    </StyledSelect>
   );
 };
