@@ -9,12 +9,12 @@ type SFSize = 'tiny' | 'small' | 'medium' | 'large';
 interface IconButtonInnerProps {
   padding?: string;
   size?: string;
+  width?: string;
+  height?: string;
 }
 
 const StyledIconButton = withStyles((theme: Theme) => ({
   root: {
-    margin: 'auto',
-
     '&:hover': {
       backgroundColor: `${
         theme.palette.type === 'light'
@@ -38,18 +38,26 @@ const getIconButtonInnerProps = (size?: SFSize): IconButtonInnerProps => {
     case 'tiny':
       result.padding = '5px';
       result.size = '10';
+      result.height = '20px';
+      result.width = '20px';
       break;
     case 'small':
       result.padding = '9px';
       result.size = '16';
+      result.height = '34px';
+      result.width = '34px';
       break;
     case 'large':
       result.padding = '14px';
       result.size = '26';
+      result.height = '54px';
+      result.width = '54px';
       break;
     default:
       result.padding = '11px';
       result.size = '20';
+      result.height = '42px';
+      result.width = '42px';
       break;
   }
   return result;
@@ -82,7 +90,11 @@ export const SFIconButton = ({
     <StyledIconButton
       {...props}
       disableRipple
-      style={{ padding: iconButtonInnerProps.padding }}
+      style={{
+        padding: iconButtonInnerProps.padding,
+        height: iconButtonInnerProps.height,
+        width: iconButtonInnerProps.width
+      }}
     >
       <SFIcon
         icon={sfIcon}

@@ -101,6 +101,10 @@ code {
   @include flexLayout(row, 30px 10px);
   flex-wrap: wrap;
 
+  &.align-center {
+    align-items: center;
+  }
+
   &.spaced {
     justify-content: space-between;
   }
@@ -121,15 +125,6 @@ code {
 
 .column {
   @include flexLayout(column, 10px);
-}
-
-@media screen and (min-width: 768px) {
-  .bodyContent {
-    .pagesLayout {
-      .content {
-      }
-    }
-  }
 }
 
 @media screen and (min-width: 1024px) {
