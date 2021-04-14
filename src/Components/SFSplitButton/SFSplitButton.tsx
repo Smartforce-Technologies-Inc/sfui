@@ -147,9 +147,10 @@ export const SFSplitButton = ({
       </StyledButtonGroup>
 
       <Popper
+        style={{ zIndex: 1 }}
         open={isMenuOpen}
         anchorEl={refMenu.current}
-        placement='top-end'
+        placement='bottom-end'
         disablePortal
       >
         <SFPaper className={classes.paper} elevation={8}>
