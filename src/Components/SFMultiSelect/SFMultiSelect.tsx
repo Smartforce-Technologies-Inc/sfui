@@ -29,9 +29,8 @@ const StyledMenuItem = withStyles(() => ({
 }))(SFMenuItem);
 
 const useMenuStyles = makeStyles({
-  list: {
-    paddingTop: 0,
-    paddingBottom: 0
+  paper: {
+    marginTop: '8px'
   }
 });
 
@@ -53,7 +52,7 @@ export const SFMultiSelect = ({
 }: SFMultiSelectProps): React.ReactElement<SFMultiSelectProps> => {
   const valueInit: string[] = value || defaultValue;
   const [selected, setSelected] = React.useState<string[]>(valueInit);
-  const menuClasses: Record<'list', string> = useMenuStyles();
+  const menuClasses: Record<'paper', string> = useMenuStyles();
 
   const handleChange = (
     event: React.ChangeEvent<{

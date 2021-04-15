@@ -41,25 +41,35 @@ const App = (): JSX.Element => {
         >
           <div className='bodyContent'>
             <h1 className='textHeader'>
-              SmartForce UI Library{' '}
+              <span>
+                SFUI Library{' '}
+                <span
+                  className='textBrand'
+                  style={{ color: theme.palette.primary.main }}
+                >
+                  by Smartforce
+                </span>
+              </span>
               <SFSwitch
                 label={switchLabel}
                 checked={nightMode}
                 onChange={toggleSwitch}
               />
             </h1>
-            <div className='row'>
+            <div className='row topBar'>
               <SFButton
                 size='medium'
-                sfColor='red'
-                onClick={() => setShowDemo(false)}
+                sfColor='blue'
+                variant='text'
+                onClick={(): void => setShowDemo(false)}
               >
                 Components
               </SFButton>
               <SFButton
                 size='medium'
-                sfColor='red'
-                onClick={() => setShowDemo(true)}
+                sfColor='blue'
+                variant='text'
+                onClick={(): void => setShowDemo(true)}
               >
                 Demos
               </SFButton>

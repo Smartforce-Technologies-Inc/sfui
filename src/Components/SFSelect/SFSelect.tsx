@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import { SelectProps } from '@material-ui/core';
 import { SFTextField } from '../SFTextField/SFTextField';
 import { SFIcon } from '../SFIcon/SFIcon';
@@ -15,19 +15,6 @@ const StyledSelect = withStyles(() => ({
     }
   }
 }))(SFTextField);
-
-const StyledMenuItem = withStyles(() => ({
-  root: {
-    height: 52
-  }
-}))(SFMenuItem);
-
-const useMenuStyles = makeStyles({
-  list: {
-    paddingTop: 0,
-    paddingBottom: 0
-  }
-});
 
 export interface SFSelectOption {
   label: string;
@@ -47,8 +34,6 @@ export const SFSelect = ({
   value,
   ...props
 }: SFSelectProps): React.ReactElement<SFSelectProps> => {
-  const customMenuStyles: Record<'list', string> = useMenuStyles();
-
   return (
     <StyledSelect
       select
@@ -66,15 +51,14 @@ export const SFSelect = ({
         MenuProps: {
           variant: 'menu',
           autoFocus: false,
-          disableAutoFocusItem: true,
-          classes: customMenuStyles
+          disableAutoFocusItem: true
         }
       }}
     >
       {options.map((option: SFSelectOption, index: number) => (
-        <StyledMenuItem key={`option-${index}`} value={option.value}>
+        <SFMenuItem key={`option-${index}`} value={option.value}>
           {option.label}
-        </StyledMenuItem>
+        </SFMenuItem>
       ))}
     </StyledSelect>
   );
