@@ -21,7 +21,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Segoe UI', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -34,32 +34,39 @@ code {
 }
 
 .bodyContent {
-  @include gridLayout(row, 15px 10px, 60px, 1fr);
+  @include gridLayout(row, 0px 10px, 60px, 1fr);
   padding: 10px;
 
   .textHeader {
     @include flexLayout(row, 0);
-    font-size: 1rem;
     margin: 0;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid $sf-grey-600;
+
+    .textBrand {
+      font-size: 12px;
+    }
+  }
+
+  .topBar {
+    padding: 10px 0;
+    grid-gap: 0;
+    gap: 0;
   }
 
   .demoPage {
+    padding: 0 10px;
+
     .demoItem {
       display: grid;
       grid-template-columns: 1fr;
-      padding: 10px;
 
       .demoTitle {
-        padding: 10px 0;
-        font-weight: 500;
+        padding-bottom: 20px;
+        border-bottom: 4px solid $sf-grey-100;
       }
 
       .demoBody {
-        padding: 0 30px 0 0;
-
         .demoTest {
           display: grid;
           gap: 10px;
@@ -77,6 +84,7 @@ code {
 
   .pagesLayout {
     @include gridLayout(row, 30px, 100px, 1fr);
+    padding: 0 10px;
 
     .content {
       display: grid;
@@ -103,6 +111,10 @@ code {
 
   &.align-center {
     align-items: center;
+  }
+
+  &.align-baseline {
+    align-items: baseline;
   }
 
   &.spaced {
@@ -153,11 +165,19 @@ code {
 
 [class*='night'] {
   .bodyContent {
+    .demoPage {
+      .demoItem {
+        .demoTitle {
+          border-bottom-color: $sf-grey-700;
+        }
+      }
+    }
+
     .pagesLayout {
       .content {
         .section {
           .title {
-            border-bottom: 4px solid $sf-grey-700;
+            border-bottom-color: $sf-grey-700;
           }
         }
       }
