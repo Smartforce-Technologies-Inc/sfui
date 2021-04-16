@@ -46,26 +46,24 @@ const StyledRadio = withStyles((theme: Theme) => ({
 
 export interface SFRadioProps extends RadioProps {
   label?: string;
+  isGroup?: boolean;
 }
 
 export const SFRadio = ({
   label,
+  isGroup = false,
   ...props
 }: SFRadioProps): React.ReactElement<SFRadioProps> => {
-  if (label) {
-    return (
-      <FormControl>
-        <SFFormControlLabel
-          control={<SFRadio {...props} color='primary' disableRipple />}
-          label={label}
-          disabled={props.disabled}
-        />
-      </FormControl>
-    );
+  if (isGroup) {
+    return <StyledRadio {...props} color='primary' disableRipple />;
   }
   return (
     <FormControl>
-      <StyledRadio {...props} color='primary' disableRipple />
+      <SFFormControlLabel
+        control={<StyledRadio {...props} color='primary' disableRipple />}
+        label={label}
+        disabled={props.disabled}
+      />
     </FormControl>
   );
 };
