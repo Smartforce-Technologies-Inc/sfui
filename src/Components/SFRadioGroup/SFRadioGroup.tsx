@@ -39,7 +39,7 @@ export const SFRadioGroup = ({
             <SFFormControlLabel
               key={`${opt.value}${i}`}
               value={opt.value}
-              control={<SFRadio />}
+              control={<SFRadio isGroup />}
               label={opt.label}
               disabled={opt.disabled}
             />
