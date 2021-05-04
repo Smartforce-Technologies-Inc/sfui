@@ -38,6 +38,22 @@ const StyledTextField = withStyles((theme: Theme) => ({
         }
       },
 
+      '&:hover': {
+        '& .MuiOutlinedInput-notchedOutline': {
+          border: `1px solid ${
+            theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]
+          }`
+        },
+
+        '&.Mui-disabled': {
+          '& .MuiOutlinedInput-notchedOutline': {
+            border: `1px solid ${
+              theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
+            }`
+          }
+        }
+      },
+
       '& .MuiInputBase-input': {
         padding: '27px 13px 5px',
         color: theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50],
