@@ -73,8 +73,11 @@ const SFBackgroundDark = '#121212';
 const SFSurfaceLight = '#FFFFFF';
 const SFSurfaceDark = '#1F1F1F';
 
-const SFTextWhite = '#FFFFFF';
+const SFTextWhite = '#F2F2F2';
 const SFTextBlack = '#1A1A1A';
+
+const SFCommonWhite = '#FFFFFF';
+const SFCommonBlack = '#000000';
 
 export {
   SFBlue,
@@ -91,5 +94,7 @@ export {
   SFSurfaceLight,
   SFSurfaceDark,
   SFTextWhite,
-  SFTextBlack
+  SFTextBlack,
+  SFCommonWhite,
+  SFCommonBlack
 };

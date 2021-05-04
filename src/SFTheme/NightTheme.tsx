@@ -7,11 +7,15 @@ import {
   SFBlueMainDark,
   SFRedMainDark,
   SFBackgroundDark,
-  SFSurfaceDark
+  SFSurfaceDark,
+  SFTextWhite
 } from '../SFColors/SFColors';
 
 CommonThemeOptions.palette = {
   type: 'dark',
+  text: {
+    primary: SFTextWhite
+  },
   primary: {
     main: SFBlueMainDark
   },

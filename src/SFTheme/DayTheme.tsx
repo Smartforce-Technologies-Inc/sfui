@@ -6,11 +6,15 @@ import {
   SFBlueMainLight,
   SFRedMainLight,
   SFBackgroundLight,
-  SFSurfaceLight
+  SFSurfaceLight,
+  SFTextBlack
 } from '../SFColors/SFColors';
 
 CommonThemeOptions.palette = {
   type: 'light',
+  text: {
+    primary: SFTextBlack
+  },
   primary: {
     main: SFBlueMainLight
   },
