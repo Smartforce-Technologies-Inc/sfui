@@ -14,6 +14,7 @@ export * from './Components/SFPanel/SFPanel';
 export * from './Components/SFPaper/SFPaper';
 export * from './Components/SFRadioGroup/SFRadio/SFRadio';
 export * from './Components/SFRadioGroup/SFRadioGroup';
+export * from './Components/SFScrollable/SFScrollable';
 export * from './Components/SFSelect/SFSelect';
 export * from './Components/SFSpinner/SFSpinner';
 export * from './Components/SFSplitButton/SFSplitButton';
