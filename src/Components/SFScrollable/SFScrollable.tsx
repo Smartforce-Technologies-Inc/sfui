@@ -86,12 +86,14 @@ export const SFScrollable = ({
     verticalScrollHeight,
     setVerticalScrollHeight
   ] = React.useState<number>(SCROLL_BOX_MIN_HEIGHT);
+
   const [
     horizontalScrollWidth,
     setHorizontalScrollWidth
   ] = React.useState<number>(SCROLL_BOX_MIN_WIDTH);
 
   const [verticalScrollTop, setVerticalScrollTop] = React.useState<number>(0);
+
   const [
     horizontalScrollLeft,
     setHorizontalScrollLeft
@@ -100,13 +102,16 @@ export const SFScrollable = ({
   const [showVerticalScroll, setShowVerticalScroll] = React.useState<boolean>(
     false
   );
+
   const [
     showHorizontalScroll,
     setShowHorizontalScroll
   ] = React.useState<boolean>(false);
+
   const [isVerticalDragging, setIsVerticalDragging] = React.useState<boolean>(
     false
   );
+
   const [
     isHorizontalDragging,
     setIsHorizontalDragging
@@ -134,6 +139,21 @@ export const SFScrollable = ({
     setVerticalScrollTop(elem.offsetTop);
     setHorizontalScrollLeft(elem.offsetLeft);
   };
+
+  React.useEffect(() => {
+    const elem: HTMLDivElement = scrollHostRef.current as HTMLDivElement;
+
+    const resizeObserver = new ResizeObserver(() => {
+      updateScrollbar(elem);
+    });
+
+    resizeObserver.observe(elem);
+
+    // cleanup
+    return () => {
+      resizeObserver.unobserve(elem);
+    };
+  }, []);
 
   const onDocumentMouseMove = React.useCallback(
     (e: MouseEvent) => {
@@ -224,22 +244,7 @@ export const SFScrollable = ({
       document.removeEventListener('mouseup', onDocumentMouseUp);
       document.removeEventListener('mouseleave', onDocumentMouseUp);
     };
-  }, [onDocumentMouseMove]);
-
-  React.useEffect(() => {
-    const elem: HTMLDivElement = scrollHostRef.current as HTMLDivElement;
-
-    const resizeObserver = new ResizeObserver(() => {
-      updateScrollbar(elem);
-    });
-
-    resizeObserver.observe(elem);
-
-    // cleanup
-    return () => {
-      resizeObserver.unobserve(elem);
-    };
-  }, []);
+  }, [onDocumentMouseMove, onDocumentMouseUp]);
 
   React.useEffect(() => {
     if (scrollHostRef.current) {
