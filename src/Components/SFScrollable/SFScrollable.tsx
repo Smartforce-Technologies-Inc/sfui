@@ -134,9 +134,9 @@ export const SFScrollable = ({
     );
 
     setVerticalScrollHeight(scrollThumbHeight);
-    setHorizontalScrollWidth(scrollThumbWidth);
-
     setVerticalScrollTop(elem.offsetTop);
+
+    setHorizontalScrollWidth(scrollThumbWidth);
     setHorizontalScrollLeft(elem.offsetLeft);
   };
 
@@ -171,10 +171,6 @@ export const SFScrollable = ({
           const percentage = deltaY * (scrollHeight / offsetHeight);
 
           setLastVerticalPos(e.clientY);
-          console.log(
-            verticalScrollTop + deltaY,
-            offsetHeight - verticalScrollHeight
-          );
 
           setVerticalScrollTop(
             Math.min(
