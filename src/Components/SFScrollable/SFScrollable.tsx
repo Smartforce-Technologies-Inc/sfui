@@ -10,7 +10,14 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       height: '100%',
-      width: '100%',
+      position: 'relative'
+    },
+    withHorizontalScroll: {
+      paddingBottom: 12
+    },
+    container: {
+      marginRight: '12px',
+      height: '100%',
       overflow: 'auto',
       scrollbarWidth: 'none',
       msOverflowStyle: 'none',
@@ -18,10 +25,6 @@ const useStyles = makeStyles((theme: Theme) =>
       '&::-webkit-scrollbar': {
         display: 'none'
       }
-    },
-    content: {
-      display: 'grid',
-      height: '100%'
     },
     vScrollBar: {
       height: '100%',
@@ -43,11 +46,11 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     hScrollBar: {
       position: 'absolute',
-      marginTop: '3px',
       width: '100%',
       height: '9px',
       left: 0,
-      right: 0
+      right: 0,
+      bottom: 0
     },
     hScrollThumb: {
       height: '6px',
@@ -69,17 +72,23 @@ const hasScrollHorizontal = (elem: HTMLDivElement): boolean =>
 
 export interface SFScrollableProps {
   className?: string;
+  containerClassName?: string;
   children: React.ReactNode;
 }
 
 export const SFScrollable = ({
   className,
+  containerClassName,
   children
 }: SFScrollableProps): React.ReactElement<SFScrollableProps> => {
   const classes = useStyles();
 
   const scrollHostRef: React.RefObject<HTMLDivElement> = React.useRef<HTMLDivElement>(
     null
+  );
+
+  const [hasHorizontalScroll, setHasHorizontalScroll] = React.useState<boolean>(
+    false
   );
 
   const [
@@ -123,21 +132,28 @@ export const SFScrollable = ({
   const updateScrollbar = (elem: HTMLDivElement) => {
     const { clientHeight, clientWidth, scrollHeight, scrollWidth } = elem;
 
-    const scrollThumbHeight: number = Math.max(
-      (clientHeight / scrollHeight) * clientHeight,
-      SCROLL_BOX_MIN_HEIGHT
-    );
+    if (hasScrollHorizontal(elem)) {
+      const scrollThumbWidth: number = Math.max(
+        (clientWidth / scrollWidth) * clientWidth,
+        SCROLL_BOX_MIN_WIDTH
+      );
 
-    const scrollThumbWidth: number = Math.max(
-      (clientWidth / scrollWidth) * clientWidth,
-      SCROLL_BOX_MIN_WIDTH
-    );
+      setHasHorizontalScroll(true);
+      setHorizontalScrollWidth(scrollThumbWidth);
+      setHorizontalScrollLeft(0);
+    } else {
+      setHasHorizontalScroll(false);
+    }
 
-    setVerticalScrollHeight(scrollThumbHeight);
-    setVerticalScrollTop(elem.offsetTop);
+    if (hasScrollVertical(elem)) {
+      const scrollThumbHeight: number = Math.max(
+        (clientHeight / scrollHeight) * clientHeight,
+        SCROLL_BOX_MIN_HEIGHT
+      );
 
-    setHorizontalScrollWidth(scrollThumbWidth);
-    setHorizontalScrollLeft(elem.offsetLeft);
+      setVerticalScrollHeight(scrollThumbHeight);
+      setVerticalScrollTop(0);
+    }
   };
 
   React.useEffect(() => {
@@ -187,19 +203,15 @@ export const SFScrollable = ({
           e.preventDefault();
           e.stopPropagation();
 
-          const {
-            scrollWidth,
-            offsetWidth,
-            offsetLeft
-          } = scrollHostRef.current;
+          const { scrollWidth, offsetWidth } = scrollHostRef.current;
           const deltaX = e.clientX - lastHorizontalPos;
           const percentage = deltaX * (scrollWidth / offsetWidth);
 
           setLastHorizontalPos(e.clientX);
           setHorizontalScrollLeft(
             Math.min(
-              Math.max(offsetLeft, horizontalScrollLeft + deltaX),
-              offsetWidth - horizontalScrollWidth + offsetLeft
+              Math.max(0, horizontalScrollLeft + deltaX),
+              offsetWidth - horizontalScrollWidth
             )
           );
 
@@ -298,18 +310,14 @@ export const SFScrollable = ({
         scrollLeft,
         scrollWidth,
         offsetHeight,
-        offsetWidth,
-        offsetTop,
-        offsetLeft
+        offsetWidth
       } = scrollHostRef.current;
 
       let newTop = (scrollTop / scrollHeight) * offsetHeight;
-      newTop =
-        offsetTop + Math.min(newTop, offsetHeight - verticalScrollHeight);
+      newTop = Math.min(newTop, offsetHeight - verticalScrollHeight);
 
       let newLeft = (scrollLeft / scrollWidth) * offsetWidth;
-      newLeft =
-        offsetLeft + Math.min(newLeft, offsetWidth - horizontalScrollLeft);
+      newLeft = Math.min(newLeft, offsetWidth - horizontalScrollLeft);
 
       if (newTop !== verticalScrollTop) {
         setVerticalScrollTop(newTop);
@@ -323,15 +331,21 @@ export const SFScrollable = ({
 
   return (
     <div
-      className={`${classes.root} ${className || ''}`}
-      ref={scrollHostRef}
+      className={`${classes.root} ${
+        hasHorizontalScroll ? classes.withHorizontalScroll : ''
+      } ${className || ''}`}
       onMouseOver={onMouseOver}
       onTouchStart={onMouseOver}
       onMouseOut={onMouseOut}
       onTouchEnd={onMouseOut}
-      onScroll={onScroll}
     >
-      <div className={classes.content}>{children}</div>
+      <div
+        className={`${classes.container} ${containerClassName || ''}`}
+        ref={scrollHostRef}
+        onScroll={onScroll}
+      >
+        {children}
+      </div>
 
       <div
         className={classes.vScrollBar}
