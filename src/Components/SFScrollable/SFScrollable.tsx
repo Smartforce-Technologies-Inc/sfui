@@ -15,8 +15,10 @@ const useStyles = makeStyles((theme: Theme) =>
     withHorizontalScroll: {
       paddingBottom: 12
     },
+    withVerticalScroll: {
+      marginRight: 12
+    },
     container: {
-      marginRight: '12px',
       height: '100%',
       overflow: 'auto',
       scrollbarWidth: 'none',
@@ -87,6 +89,10 @@ export const SFScrollable = ({
     null
   );
 
+  const [hasVerticalScroll, setHasVerticalScroll] = React.useState<boolean>(
+    false
+  );
+
   const [hasHorizontalScroll, setHasHorizontalScroll] = React.useState<boolean>(
     false
   );
@@ -151,8 +157,11 @@ export const SFScrollable = ({
         SCROLL_BOX_MIN_HEIGHT
       );
 
+      setHasVerticalScroll(true);
       setVerticalScrollHeight(scrollThumbHeight);
       setVerticalScrollTop(0);
+    } else {
+      setHasVerticalScroll(false);
     }
   };
 
@@ -340,7 +349,9 @@ export const SFScrollable = ({
       onTouchEnd={onMouseOut}
     >
       <div
-        className={`${classes.container} ${containerClassName || ''}`}
+        className={`${classes.container} ${containerClassName || ''} ${
+          hasVerticalScroll ? classes.withVerticalScroll : ''
+        }`}
         ref={scrollHostRef}
         onScroll={onScroll}
       >
