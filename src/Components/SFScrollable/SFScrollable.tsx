@@ -69,16 +69,24 @@ const hasScrollVertical = (elem: HTMLDivElement): boolean =>
 const hasScrollHorizontal = (elem: HTMLDivElement): boolean =>
   elem.scrollWidth > elem.clientWidth;
 
+export interface SFScrollData {
+  host: HTMLDivElement;
+  verticalScroll: number;
+  horizontalScroll: number;
+}
+
 export interface SFScrollableProps {
   className?: string;
   containerClassName?: string;
   children: React.ReactNode;
+  onScroll?: (data: SFScrollData) => void;
 }
 
 export const SFScrollable = ({
   className,
   containerClassName,
-  children
+  children,
+  onScroll
 }: SFScrollableProps): React.ReactElement<SFScrollableProps> => {
   const classes = useStyles();
 
@@ -218,6 +226,14 @@ export const SFScrollable = ({
             scrollHostRef.current.scrollLeft + percentage,
             scrollWidth - offsetWidth
           );
+
+          if (onScroll) {
+            onScroll({
+              verticalScroll: verticalScrollTop,
+              horizontalScroll: horizontalScrollLeft,
+              host: scrollHostRef.current
+            });
+          }
         }
       }
     },
@@ -301,7 +317,7 @@ export const SFScrollable = ({
     setIsHorizontalDragging(true);
   };
 
-  const onScroll = () => {
+  const onHostScroll = () => {
     if (scrollHostRef.current) {
       const {
         scrollTop,
@@ -325,6 +341,14 @@ export const SFScrollable = ({
       if (newLeft !== horizontalScrollLeft) {
         setHorizontalScrollLeft(newLeft);
       }
+
+      if (onScroll) {
+        onScroll({
+          verticalScroll: newTop,
+          horizontalScroll: newLeft,
+          host: scrollHostRef.current
+        });
+      }
     }
   };
 
@@ -341,7 +365,7 @@ export const SFScrollable = ({
       <div
         className={`${classes.container} ${containerClassName || ''}`}
         ref={scrollHostRef}
-        onScroll={onScroll}
+        onScroll={onHostScroll}
       >
         {children}
       </div>
