@@ -75,7 +75,7 @@ export interface SFScrollData {
   horizontalScroll: number;
 }
 
-export interface SFScrollableRefHandle {
+export interface SFScrollableRefHandler {
   scrollToTop: () => void;
 }
 
@@ -89,7 +89,7 @@ export interface SFScrollableProps {
 export const SFScrollable = React.forwardRef(
   (
     { className, containerClassName, children, onScroll }: SFScrollableProps,
-    ref: React.Ref<SFScrollableRefHandle>
+    ref: React.Ref<SFScrollableRefHandler>
   ) => {
     const classes = useStyles();
 
