@@ -73,7 +73,7 @@ export const ScrollToTop = () => {
   return (
     <div>
       <p>
-        It's possible to call a scrollToTop method using a ref. First, we need
+        It's possible to call a scrollToTop method using a ref. First, you need
         to create and pass a <code>ref</code> as a prop
       </p>
 
