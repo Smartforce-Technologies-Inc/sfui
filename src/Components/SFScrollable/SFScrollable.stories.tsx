@@ -68,3 +68,30 @@ Default.parameters = {
     disable: true
   }
 };
+
+export const ScrollToTop = () => {
+  return (
+    <div>
+      <p>
+        It's possible to call a scrollToTop method using a ref. First, you need
+        to create and pass a <code>ref</code> as a prop
+      </p>
+
+      <code>
+        const ref = React.createRef();
+        <br />
+        {`<SFScrollable ref={ref}>
+          {content}
+        </SFScrollable>
+      `}
+      </code>
+
+      <p>
+        Then, you can call the scrollToTop method like this:
+        <br />
+        <br />
+        <code>ref.current.scrollToTop();</code>
+      </p>
+    </div>
+  );
+};

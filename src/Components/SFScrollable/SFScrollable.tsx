@@ -75,6 +75,10 @@ export interface SFScrollData {
   horizontalScroll: number;
 }
 
+export interface SFScrollableRefHandler {
+  scrollToTop: () => void;
+}
+
 export interface SFScrollableProps {
   className?: string;
   containerClassName?: string;
@@ -82,315 +86,327 @@ export interface SFScrollableProps {
   onScroll?: (data: SFScrollData) => void;
 }
 
-export const SFScrollable = ({
-  className,
-  containerClassName,
-  children,
-  onScroll
-}: SFScrollableProps): React.ReactElement<SFScrollableProps> => {
-  const classes = useStyles();
+export const SFScrollable = React.forwardRef(
+  (
+    { className, containerClassName, children, onScroll }: SFScrollableProps,
+    ref: React.Ref<SFScrollableRefHandler>
+  ) => {
+    const classes = useStyles();
 
-  const scrollHostRef: React.RefObject<HTMLDivElement> = React.useRef<HTMLDivElement>(
-    null
-  );
+    const scrollHostRef: React.RefObject<HTMLDivElement> = React.useRef<HTMLDivElement>(
+      null
+    );
 
-  const [hasHorizontalScroll, setHasHorizontalScroll] = React.useState<boolean>(
-    false
-  );
-
-  const [
-    verticalScrollHeight,
-    setVerticalScrollHeight
-  ] = React.useState<number>(SCROLL_BOX_MIN_HEIGHT);
-
-  const [
-    horizontalScrollWidth,
-    setHorizontalScrollWidth
-  ] = React.useState<number>(SCROLL_BOX_MIN_WIDTH);
-
-  const [verticalScrollTop, setVerticalScrollTop] = React.useState<number>(0);
-
-  const [
-    horizontalScrollLeft,
-    setHorizontalScrollLeft
-  ] = React.useState<number>(0);
-
-  const [showVerticalScroll, setShowVerticalScroll] = React.useState<boolean>(
-    false
-  );
-
-  const [
-    showHorizontalScroll,
-    setShowHorizontalScroll
-  ] = React.useState<boolean>(false);
-
-  const [isVerticalDragging, setIsVerticalDragging] = React.useState<boolean>(
-    false
-  );
-
-  const [
-    isHorizontalDragging,
-    setIsHorizontalDragging
-  ] = React.useState<boolean>(false);
-
-  const [lastVerticalPos, setLastVerticalPos] = React.useState<number>(0);
-  const [lastHorizontalPos, setLastHorizontalPos] = React.useState<number>(0);
-
-  const updateScrollbar = (elem: HTMLDivElement) => {
-    const { clientHeight, clientWidth, scrollHeight, scrollWidth } = elem;
-
-    if (hasScrollHorizontal(elem)) {
-      const scrollThumbWidth: number = Math.max(
-        (clientWidth / scrollWidth) * clientWidth,
-        SCROLL_BOX_MIN_WIDTH
-      );
-
-      setHasHorizontalScroll(true);
-      setHorizontalScrollWidth(scrollThumbWidth);
-      setHorizontalScrollLeft(0);
-    } else {
-      setHasHorizontalScroll(false);
-    }
-
-    if (hasScrollVertical(elem)) {
-      const scrollThumbHeight: number = Math.max(
-        (clientHeight / scrollHeight) * clientHeight,
-        SCROLL_BOX_MIN_HEIGHT
-      );
-
-      setVerticalScrollHeight(scrollThumbHeight);
-      setVerticalScrollTop(0);
-    }
-  };
-
-  React.useEffect(() => {
-    const elem: HTMLDivElement = scrollHostRef.current as HTMLDivElement;
-
-    const resizeObserver = new ResizeObserver(() => {
-      updateScrollbar(elem);
-    });
-
-    resizeObserver.observe(elem);
-
-    // cleanup
-    return () => {
-      resizeObserver.unobserve(elem);
-    };
-  }, []);
-
-  const onDocumentMouseMove = React.useCallback(
-    (e: MouseEvent) => {
-      if (scrollHostRef.current) {
-        if (isVerticalDragging) {
-          e.preventDefault();
-          e.stopPropagation();
-
-          const {
-            scrollHeight,
-            offsetHeight,
-            offsetTop
-          } = scrollHostRef.current;
-          const deltaY = e.clientY - lastVerticalPos;
-          const percentage = deltaY * (scrollHeight / offsetHeight);
-
-          setLastVerticalPos(e.clientY);
-
-          setVerticalScrollTop(
-            Math.min(
-              Math.max(offsetTop, verticalScrollTop + deltaY),
-              offsetHeight - verticalScrollHeight + offsetTop
-            )
-          );
-
-          scrollHostRef.current.scrollTop = Math.min(
-            scrollHostRef.current.scrollTop + percentage,
-            scrollHeight - offsetHeight
-          );
-        } else if (isHorizontalDragging) {
-          e.preventDefault();
-          e.stopPropagation();
-
-          const { scrollWidth, offsetWidth } = scrollHostRef.current;
-          const deltaX = e.clientX - lastHorizontalPos;
-          const percentage = deltaX * (scrollWidth / offsetWidth);
-
-          setLastHorizontalPos(e.clientX);
-          setHorizontalScrollLeft(
-            Math.min(
-              Math.max(0, horizontalScrollLeft + deltaX),
-              offsetWidth - horizontalScrollWidth
-            )
-          );
-
-          scrollHostRef.current.scrollLeft = Math.min(
-            scrollHostRef.current.scrollLeft + percentage,
-            scrollWidth - offsetWidth
-          );
-
-          if (onScroll) {
-            onScroll({
-              verticalScroll: verticalScrollTop,
-              horizontalScroll: horizontalScrollLeft,
-              host: scrollHostRef.current
-            });
-          }
+    React.useImperativeHandle(ref, () => ({
+      scrollToTop() {
+        if (scrollHostRef.current) {
+          scrollHostRef.current.scrollTo(0, 0);
         }
       }
-    },
-    [[isHorizontalDragging, isVerticalDragging]]
-  );
+    }));
 
-  const onDocumentMouseUp = React.useCallback(
-    (e: MouseEvent) => {
-      if (isVerticalDragging) {
-        e.preventDefault();
-        setIsVerticalDragging(false);
-        setShowVerticalScroll(false);
-      } else if (isHorizontalDragging) {
-        e.preventDefault();
-        setIsHorizontalDragging(false);
+    const [
+      hasHorizontalScroll,
+      setHasHorizontalScroll
+    ] = React.useState<boolean>(false);
+
+    const [
+      verticalScrollHeight,
+      setVerticalScrollHeight
+    ] = React.useState<number>(SCROLL_BOX_MIN_HEIGHT);
+
+    const [
+      horizontalScrollWidth,
+      setHorizontalScrollWidth
+    ] = React.useState<number>(SCROLL_BOX_MIN_WIDTH);
+
+    const [verticalScrollTop, setVerticalScrollTop] = React.useState<number>(0);
+
+    const [
+      horizontalScrollLeft,
+      setHorizontalScrollLeft
+    ] = React.useState<number>(0);
+
+    const [showVerticalScroll, setShowVerticalScroll] = React.useState<boolean>(
+      false
+    );
+
+    const [
+      showHorizontalScroll,
+      setShowHorizontalScroll
+    ] = React.useState<boolean>(false);
+
+    const [isVerticalDragging, setIsVerticalDragging] = React.useState<boolean>(
+      false
+    );
+
+    const [
+      isHorizontalDragging,
+      setIsHorizontalDragging
+    ] = React.useState<boolean>(false);
+
+    const [lastVerticalPos, setLastVerticalPos] = React.useState<number>(0);
+    const [lastHorizontalPos, setLastHorizontalPos] = React.useState<number>(0);
+
+    const updateScrollbar = (elem: HTMLDivElement) => {
+      const { clientHeight, clientWidth, scrollHeight, scrollWidth } = elem;
+
+      if (hasScrollHorizontal(elem)) {
+        const scrollThumbWidth: number = Math.max(
+          (clientWidth / scrollWidth) * clientWidth,
+          SCROLL_BOX_MIN_WIDTH
+        );
+
+        setHasHorizontalScroll(true);
+        setHorizontalScrollWidth(scrollThumbWidth);
+        setHorizontalScrollLeft(0);
+      } else {
+        setHasHorizontalScroll(false);
+      }
+
+      if (hasScrollVertical(elem)) {
+        const scrollThumbHeight: number = Math.max(
+          (clientHeight / scrollHeight) * clientHeight,
+          SCROLL_BOX_MIN_HEIGHT
+        );
+
+        setVerticalScrollHeight(scrollThumbHeight);
+        setVerticalScrollTop(0);
+      }
+    };
+
+    React.useEffect(() => {
+      const elem: HTMLDivElement = scrollHostRef.current as HTMLDivElement;
+
+      const resizeObserver = new ResizeObserver(() => {
+        updateScrollbar(elem);
+      });
+
+      resizeObserver.observe(elem);
+
+      // cleanup
+      return () => {
+        resizeObserver.unobserve(elem);
+      };
+    }, []);
+
+    const onDocumentMouseMove = React.useCallback(
+      (e: MouseEvent) => {
+        if (scrollHostRef.current) {
+          if (isVerticalDragging) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const {
+              scrollHeight,
+              offsetHeight,
+              offsetTop
+            } = scrollHostRef.current;
+            const deltaY = e.clientY - lastVerticalPos;
+            const percentage = deltaY * (scrollHeight / offsetHeight);
+
+            setLastVerticalPos(e.clientY);
+
+            setVerticalScrollTop(
+              Math.min(
+                Math.max(offsetTop, verticalScrollTop + deltaY),
+                offsetHeight - verticalScrollHeight + offsetTop
+              )
+            );
+
+            scrollHostRef.current.scrollTop = Math.min(
+              scrollHostRef.current.scrollTop + percentage,
+              scrollHeight - offsetHeight
+            );
+          } else if (isHorizontalDragging) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const { scrollWidth, offsetWidth } = scrollHostRef.current;
+            const deltaX = e.clientX - lastHorizontalPos;
+            const percentage = deltaX * (scrollWidth / offsetWidth);
+
+            setLastHorizontalPos(e.clientX);
+            setHorizontalScrollLeft(
+              Math.min(
+                Math.max(0, horizontalScrollLeft + deltaX),
+                offsetWidth - horizontalScrollWidth
+              )
+            );
+
+            scrollHostRef.current.scrollLeft = Math.min(
+              scrollHostRef.current.scrollLeft + percentage,
+              scrollWidth - offsetWidth
+            );
+
+            if (onScroll) {
+              onScroll({
+                verticalScroll: verticalScrollTop,
+                horizontalScroll: horizontalScrollLeft,
+                host: scrollHostRef.current
+              });
+            }
+          }
+        }
+      },
+      [[isHorizontalDragging, isVerticalDragging]]
+    );
+
+    const onDocumentMouseUp = React.useCallback(
+      (e: MouseEvent) => {
+        if (isVerticalDragging) {
+          e.preventDefault();
+          setIsVerticalDragging(false);
+          setShowVerticalScroll(false);
+        } else if (isHorizontalDragging) {
+          e.preventDefault();
+          setIsHorizontalDragging(false);
+          setShowHorizontalScroll(false);
+        }
+      },
+      [[isHorizontalDragging, isVerticalDragging]]
+    );
+
+    React.useEffect(() => {
+      // handle scrollbar dragging
+      document.addEventListener('mousemove', onDocumentMouseMove);
+      document.addEventListener('mouseup', onDocumentMouseUp);
+      document.addEventListener('mouseleave', onDocumentMouseUp);
+
+      // cleanup
+      return () => {
+        document.removeEventListener('mousemove', onDocumentMouseMove);
+        document.removeEventListener('mouseup', onDocumentMouseUp);
+        document.removeEventListener('mouseleave', onDocumentMouseUp);
+      };
+    }, [onDocumentMouseMove, onDocumentMouseUp]);
+
+    React.useEffect(() => {
+      if (scrollHostRef.current) {
+        updateScrollbar(scrollHostRef.current as HTMLDivElement);
+      }
+    }, [children]);
+
+    const onMouseOver = () => {
+      if (scrollHostRef.current) {
+        if (hasScrollVertical(scrollHostRef.current) && !showVerticalScroll) {
+          setShowVerticalScroll(true);
+        }
+
+        if (
+          hasScrollHorizontal(scrollHostRef.current) &&
+          !showHorizontalScroll
+        ) {
+          setShowHorizontalScroll(true);
+        }
+      }
+    };
+
+    const onMouseOut = () => {
+      if (showHorizontalScroll && !isHorizontalDragging) {
         setShowHorizontalScroll(false);
       }
-    },
-    [[isHorizontalDragging, isVerticalDragging]]
-  );
 
-  React.useEffect(() => {
-    // handle scrollbar dragging
-    document.addEventListener('mousemove', onDocumentMouseMove);
-    document.addEventListener('mouseup', onDocumentMouseUp);
-    document.addEventListener('mouseleave', onDocumentMouseUp);
-
-    // cleanup
-    return () => {
-      document.removeEventListener('mousemove', onDocumentMouseMove);
-      document.removeEventListener('mouseup', onDocumentMouseUp);
-      document.removeEventListener('mouseleave', onDocumentMouseUp);
+      if (showVerticalScroll && !isVerticalDragging) {
+        setShowVerticalScroll(false);
+      }
     };
-  }, [onDocumentMouseMove, onDocumentMouseUp]);
 
-  React.useEffect(() => {
-    if (scrollHostRef.current) {
-      updateScrollbar(scrollHostRef.current as HTMLDivElement);
-    }
-  }, [children]);
+    const onVerticalScrollMouseDown: React.MouseEventHandler<HTMLDivElement> = (
+      e
+    ) => {
+      e.preventDefault();
+      e.stopPropagation();
 
-  const onMouseOver = () => {
-    if (scrollHostRef.current) {
-      if (hasScrollVertical(scrollHostRef.current) && !showVerticalScroll) {
-        setShowVerticalScroll(true);
+      setLastVerticalPos(e.clientY);
+      setIsVerticalDragging(true);
+    };
+
+    const onHorizontalScrollMouseDown: React.MouseEventHandler<HTMLDivElement> = (
+      e
+    ) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      setLastHorizontalPos(e.clientX);
+      setIsHorizontalDragging(true);
+    };
+
+    const onHostScroll = () => {
+      if (scrollHostRef.current) {
+        const {
+          scrollTop,
+          scrollHeight,
+          scrollLeft,
+          scrollWidth,
+          offsetHeight,
+          offsetWidth
+        } = scrollHostRef.current;
+
+        let newTop = (scrollTop / scrollHeight) * offsetHeight;
+        newTop = Math.min(newTop, offsetHeight - verticalScrollHeight);
+
+        let newLeft = (scrollLeft / scrollWidth) * offsetWidth;
+        newLeft = Math.min(newLeft, offsetWidth - horizontalScrollLeft);
+
+        if (newTop !== verticalScrollTop) {
+          setVerticalScrollTop(newTop);
+        }
+
+        if (newLeft !== horizontalScrollLeft) {
+          setHorizontalScrollLeft(newLeft);
+        }
+
+        if (onScroll) {
+          onScroll({
+            verticalScroll: newTop,
+            horizontalScroll: newLeft,
+            host: scrollHostRef.current
+          });
+        }
       }
+    };
 
-      if (hasScrollHorizontal(scrollHostRef.current) && !showHorizontalScroll) {
-        setShowHorizontalScroll(true);
-      }
-    }
-  };
-
-  const onMouseOut = () => {
-    if (showHorizontalScroll && !isHorizontalDragging) {
-      setShowHorizontalScroll(false);
-    }
-
-    if (showVerticalScroll && !isVerticalDragging) {
-      setShowVerticalScroll(false);
-    }
-  };
-
-  const onVerticalScrollMouseDown: React.MouseEventHandler<HTMLDivElement> = (
-    e
-  ) => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    setLastVerticalPos(e.clientY);
-    setIsVerticalDragging(true);
-  };
-
-  const onHorizontalScrollMouseDown: React.MouseEventHandler<HTMLDivElement> = (
-    e
-  ) => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    setLastHorizontalPos(e.clientX);
-    setIsHorizontalDragging(true);
-  };
-
-  const onHostScroll = () => {
-    if (scrollHostRef.current) {
-      const {
-        scrollTop,
-        scrollHeight,
-        scrollLeft,
-        scrollWidth,
-        offsetHeight,
-        offsetWidth
-      } = scrollHostRef.current;
-
-      let newTop = (scrollTop / scrollHeight) * offsetHeight;
-      newTop = Math.min(newTop, offsetHeight - verticalScrollHeight);
-
-      let newLeft = (scrollLeft / scrollWidth) * offsetWidth;
-      newLeft = Math.min(newLeft, offsetWidth - horizontalScrollLeft);
-
-      if (newTop !== verticalScrollTop) {
-        setVerticalScrollTop(newTop);
-      }
-
-      if (newLeft !== horizontalScrollLeft) {
-        setHorizontalScrollLeft(newLeft);
-      }
-
-      if (onScroll) {
-        onScroll({
-          verticalScroll: newTop,
-          horizontalScroll: newLeft,
-          host: scrollHostRef.current
-        });
-      }
-    }
-  };
-
-  return (
-    <div
-      className={`${classes.root} ${
-        hasHorizontalScroll ? classes.withHorizontalScroll : ''
-      } ${className || ''}`}
-      onMouseOver={onMouseOver}
-      onTouchStart={onMouseOver}
-      onMouseOut={onMouseOut}
-      onTouchEnd={onMouseOut}
-    >
+    return (
       <div
-        className={`${classes.container} ${containerClassName || ''}`}
-        ref={scrollHostRef}
-        onScroll={onHostScroll}
-      >
-        {children}
-      </div>
-
-      <div
-        className={classes.vScrollBar}
-        style={{ opacity: showVerticalScroll ? 1 : 0 }}
+        className={`${classes.root} ${
+          hasHorizontalScroll ? classes.withHorizontalScroll : ''
+        } ${className || ''}`}
+        onMouseOver={onMouseOver}
+        onTouchStart={onMouseOver}
+        onMouseOut={onMouseOut}
+        onTouchEnd={onMouseOut}
       >
         <div
-          className={classes.vScrollThumb}
-          style={{ height: verticalScrollHeight, top: verticalScrollTop }}
-          onMouseDown={onVerticalScrollMouseDown}
-        />
-      </div>
+          className={`${classes.container} ${containerClassName || ''}`}
+          ref={scrollHostRef}
+          onScroll={onHostScroll}
+        >
+          {children}
+        </div>
 
-      <div
-        className={classes.hScrollBar}
-        style={{ opacity: showHorizontalScroll ? 1 : 0 }}
-      >
         <div
-          className={classes.hScrollThumb}
-          style={{ width: horizontalScrollWidth, left: horizontalScrollLeft }}
-          onMouseDown={onHorizontalScrollMouseDown}
-        />
+          className={classes.vScrollBar}
+          style={{ opacity: showVerticalScroll ? 1 : 0 }}
+        >
+          <div
+            className={classes.vScrollThumb}
+            style={{ height: verticalScrollHeight, top: verticalScrollTop }}
+            onMouseDown={onVerticalScrollMouseDown}
+          />
+        </div>
+
+        <div
+          className={classes.hScrollBar}
+          style={{ opacity: showHorizontalScroll ? 1 : 0 }}
+        >
+          <div
+            className={classes.hScrollThumb}
+            style={{ width: horizontalScrollWidth, left: horizontalScrollLeft }}
+            onMouseDown={onHorizontalScrollMouseDown}
+          />
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+);
