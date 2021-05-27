@@ -24,4 +24,6 @@ export * from './Components/SFTable/SFTable';
 
 export * from './SFTheme/SFTheme';
 export * from './SFColors/SFColors';
+export * from './SFHttpStatusCode/SFHttpStatusCode';
+export * from './SFMedia/SFMedia';
 export * from './SFUtils/SFUtils';
