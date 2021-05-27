@@ -31,7 +31,10 @@ const useStyles = makeStyles((theme: Theme) =>
       position: 'absolute',
       right: 3,
       top: 0,
-      bottom: 0
+      bottom: 0,
+      '@media print': {
+        display: 'none'
+      }
     },
     vScrollThumb: {
       marginLeft: '3px',
@@ -49,7 +52,10 @@ const useStyles = makeStyles((theme: Theme) =>
       height: '9px',
       left: 0,
       right: 0,
-      bottom: 0
+      bottom: 0,
+      '@media print': {
+        display: 'none'
+      }
     },
     hScrollThumb: {
       height: '6px',
