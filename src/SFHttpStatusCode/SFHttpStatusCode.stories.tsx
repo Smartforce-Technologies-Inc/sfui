@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import HttpStatusCode from './SFHttpStatusCode';
+import { HttpStatusCode } from './SFHttpStatusCode';
 import { SFLink } from '../Components/SFLink/SFLink';
 
 export default {

@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 
 import { Story, Meta } from '@storybook/react/types-6-0';
-import SFMedia from './SFMedia';
+import { SFMedia } from './SFMedia';
 
 export default {
   title: 'Theme/SFMedia'
