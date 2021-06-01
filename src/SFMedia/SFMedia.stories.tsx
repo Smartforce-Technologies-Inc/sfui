@@ -28,6 +28,7 @@ export const BreakpointsEnum: Story = () => {
 
       <code>{`import { SFMedia } from 'sfui';`}</code>
       <br />
+      <br />
       <code>const extra_small_width = SFMedia.XS_WIDTH</code>
 
       <div className={classes.container}>
