@@ -3,7 +3,7 @@
  * @see {@link https://datatracker.ietf.org/doc/html/rfc7231#section-6}
  */
 
-enum HttpStatusCode {
+export enum HttpStatusCode {
   /**
    * The server has received the request headers and the client should proceed to send the request body
    * (in the case of a request for which a body needs to be sent; for example, a POST request).
@@ -262,13 +262,6 @@ enum HttpStatusCode {
   EXPECTATION_FAILED = 417,
 
   /**
-   * This code was defined in 1998 as one of the traditional IETF April Fools' jokes, in RFC 2324, Hyper Text Coffee Pot Control Protocol,
-   * and is not expected to be implemented by actual HTTP servers. The RFC specifies this code should be returned by
-   * teapots requested to brew coffee. This HTTP status is used as an Easter egg in some websites, including Google.com.
-   */
-  I_AM_A_TEAPOT = 418,
-
-  /**
    * The request was directed at a server that is not able to produce a response (for example because a connection reuse).
    */
   MISDIRECTED_REQUEST = 421,
@@ -379,5 +372,3 @@ enum HttpStatusCode {
    */
   NETWORK_AUTHENTICATION_REQUIRED = 511
 }
-
-export default HttpStatusCode;
