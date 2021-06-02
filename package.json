@@ -25,7 +25,7 @@
     "deploy": "gh-pages -d example/build",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "copy-styles": "cpx \"src/SFColors/**/*.scss\" dist/styles/SFColors"
+    "copy-styles": "cpx \"src/**/*.scss\" dist/Styles"
   },
   "peerDependencies": {
     "react": "^16.0.0",

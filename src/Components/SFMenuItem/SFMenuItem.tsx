@@ -1,6 +1,6 @@
 import { withStyles, Theme } from '@material-ui/core/styles';
 import { MenuItem } from '@material-ui/core';
-import { hexToRgba } from '../../helpers';
+import { hexToRgba } from '../../Helpers';
 import { SFGrey } from '../../SFColors/SFColors';
 
 export const SFMenuItem = withStyles((theme: Theme) => ({

@@ -16,7 +16,7 @@ import MaterialTable, {
 } from 'material-table';
 import { SFBlue, SFGrey } from '../../SFColors/SFColors';
 import { SFIcon } from '../SFIcon/SFIcon';
-import { hexToRgba } from '../../helpers';
+import { hexToRgba } from '../../Helpers';
 
 const StyledRow = withStyles((theme: Theme) => ({
   root: {
