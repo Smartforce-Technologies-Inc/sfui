@@ -259,7 +259,6 @@ const ColorsConstTemplate: Story = () => {
         <br />
         <code>{'<div style={{color: SFColor}}></div>'}</code>
       </div>
-
       <div className={styles.container}>
         <div>
           <h3>Light Main Colors</h3>
@@ -291,6 +290,8 @@ const ColorsConstTemplate: Story = () => {
             ))}
           </div>
         </div>
+      </div>
+      <div className={styles.container}>
         <div>
           <h3>SFBlue</h3>
           <div className={styles.content}>
@@ -381,10 +382,7 @@ palette.set('SFRed', [
 ]);
 
 palette.set('SFGrey', [
-  { name: '$sf-grey-a100', hex: ' #cccccc' },
-  { name: '$sf-grey-a200', hex: ' #b2b2b2' },
-  { name: '$sf-grey-a400', hex: ' #333333' },
-  { name: '$sf-grey-a700', hex: ' #666666' },
+  { name: '$sf-grey-50', hex: ' #F2F2F2' },
   { name: '$sf-grey-100', hex: ' #e5e5e5' },
   { name: '$sf-grey-200', hex: ' #cccccc' },
   { name: '$sf-grey-300', hex: ' #b2b2b2' },
@@ -393,7 +391,11 @@ palette.set('SFGrey', [
   { name: '$sf-grey-600', hex: ' #666666' },
   { name: '$sf-grey-700', hex: ' #4d4d4d' },
   { name: '$sf-grey-800', hex: ' #333333' },
-  { name: '$sf-grey-900', hex: ' #1a1a1a' }
+  { name: '$sf-grey-900', hex: ' #1a1a1a' },
+  { name: '$sf-grey-a100', hex: ' #cccccc' },
+  { name: '$sf-grey-a200', hex: ' #b2b2b2' },
+  { name: '$sf-grey-a400', hex: ' #333333' },
+  { name: '$sf-grey-a700', hex: ' #666666' }
 ]);
 
 palette.set('LMColors', [
@@ -458,6 +460,8 @@ const SassTemplate: Story = () => {
             ))}
           </div>
         </div>
+      </div>
+      <div className={styles.container}>
         <div>
           <h3>SFBlue</h3>
           <div className={styles.content}>
