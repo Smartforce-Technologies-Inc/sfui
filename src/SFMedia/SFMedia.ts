@@ -1,4 +1,4 @@
-enum SFMedia {
+export enum SFMedia {
   XS_WIDTH = 375,
   XS_HEIGHT = 667,
 
@@ -17,5 +17,3 @@ enum SFMedia {
   XXL_WIDTH = 1920,
   XXL_HEIGHT = 1080
 }
-
-export default SFMedia;

@@ -69,7 +69,7 @@ Default.parameters = {
   }
 };
 
-export const ScrollToTop = () => {
+export const ScrollToTop: Story = () => {
   return (
     <div>
       <p>
