@@ -1,7 +1,7 @@
 import { Drawer, DrawerProps } from '@material-ui/core';
 import { withStyles, Theme } from '@material-ui/core/styles';
 import { SFGrey } from '../../SFColors/SFColors';
-import { hexToRgba } from '../../helpers';
+import { hexToRgba } from '../../Helpers';
 
 export interface SFDrawerProps extends DrawerProps {}
 

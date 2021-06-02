@@ -13,7 +13,7 @@ import {
   MuiPickersUtilsProvider,
   KeyboardDatePickerProps
 } from '@material-ui/pickers';
-import { hexToRgba } from '../../helpers';
+import { hexToRgba } from '../../Helpers';
 
 const useButtonBackgrounds = makeStyles((theme: Theme) =>
   createStyles({
