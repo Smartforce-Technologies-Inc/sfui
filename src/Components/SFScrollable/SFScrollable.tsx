@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import { SFGrey } from '../../SFColors/SFColors';
-import { hexToRgba } from '../../helpers';
+import { hexToRgba } from '../../Helpers';
 
 const SCROLL_BOX_MIN_HEIGHT = 20;
 const SCROLL_BOX_MIN_WIDTH = 20;

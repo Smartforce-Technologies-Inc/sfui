@@ -4,7 +4,7 @@ import { withStyles, Theme } from '@material-ui/core/styles';
 import Chip, { ChipProps } from '@material-ui/core/Chip';
 import { SFBlue, SFGrey, SFSurfaceLight } from '../../SFColors/SFColors';
 import { SFIconButton } from '../SFIconButton/SFIconButton';
-import { hexToRgba } from '../../helpers';
+import { hexToRgba } from '../../Helpers';
 
 const StyledChip = withStyles((theme: Theme) => ({
   root: {
