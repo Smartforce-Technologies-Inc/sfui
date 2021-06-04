@@ -34,7 +34,9 @@ interface MainColor {
 const useStyles = makeStyles({
   container: {
     display: 'flex',
-    gap: '80px'
+    flexWrap: 'wrap',
+    gap: '25px 80px',
+    marginBottom: '25px'
   },
   content: {
     display: 'flex',
