@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { SFSelect, SFSelectOption } from 'sfui';
+import { SFSelect, SFMenuOption } from 'sfui';
 
-const getOptions = (): SFSelectOption[] => {
+const getOptions = (): SFMenuOption[] => {
   return [
     {
       label: 'Bagel number one',

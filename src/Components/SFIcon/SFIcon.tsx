@@ -13,6 +13,7 @@ export interface SFIconProps {
   icon: string;
   className?: string | undefined;
   style?: React.CSSProperties | undefined;
+  onClick?: () => void;
 }
 
 const getRotationDeg = (rotation: SFIconRotation): number => {

@@ -9,7 +9,7 @@ import {
   SFSwitch,
   SFDatePicker,
   SFSelect,
-  SFSelectOption,
+  SFMenuOption,
   SFMultiSelect,
   SFMultiSelectOption,
   SFAlert
@@ -37,7 +37,7 @@ export const FormView = (): JSX.Element => {
     { value: 'others', label: 'Others', disabled: false }
   ];
 
-  const selectOptions: SFSelectOption[] = [
+  const selectOptions: SFMenuOption[] = [
     { value: 'from 0 to 10', label: 'few' },
     { value: 'from 10 to 50', label: 'some' },
     { value: 'more than 50', label: 'many' },
