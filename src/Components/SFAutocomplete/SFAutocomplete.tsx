@@ -140,8 +140,11 @@ export const SFAutocomplete = ({
     }
   };
 
-  const onOpen = () => {
-    setIsOpen(!isOpen);
+  const onOpen = (e: React.ChangeEvent) => {
+    // If reason of open is click on icon button
+    if (e.type === 'click' && e.target.tagName === 'svg') {
+      setIsOpen(!isOpen);
+    }
   };
 
   const onClose = (
@@ -166,12 +169,9 @@ export const SFAutocomplete = ({
       onChange={onChange}
       onInputChange={onInputChange}
       onClose={onClose}
+      onOpen={onOpen}
       renderInput={(params) => <SFTextField {...params} label={label} />}
-      popupIcon={
-        hasPopoupIcon ? (
-          <SFIcon onClick={onOpen} icon='Down-2' size={16} />
-        ) : null
-      }
+      popupIcon={hasPopoupIcon ? <SFIcon icon='Down-2' size={16} /> : null}
       closeIcon={<SFIcon icon='Close' size={16} />}
     />
   );
