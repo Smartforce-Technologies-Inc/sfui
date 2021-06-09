@@ -141,8 +141,8 @@ export const SFAutocomplete = ({
   };
 
   const onOpen = (e: React.ChangeEvent) => {
-    // If reason of open is click on icon button
-    if (e.type === 'click' && e.target.tagName === 'svg') {
+    // If reason of open is click on button
+    if (e.type === 'click') {
       setIsOpen(!isOpen);
     }
   };
