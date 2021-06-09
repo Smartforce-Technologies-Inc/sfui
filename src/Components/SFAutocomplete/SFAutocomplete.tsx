@@ -102,7 +102,7 @@ export const SFAutocomplete = ({
   return (
     <StyledAutocomplete
       {...props}
-      open
+      open={isOpen}
       openOnFocus={false}
       options={options}
       onChange={onChange}
