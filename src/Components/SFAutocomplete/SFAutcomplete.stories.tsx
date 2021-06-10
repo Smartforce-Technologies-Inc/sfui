@@ -34,6 +34,12 @@ export default {
         disable: true
       }
     },
+    onInputChange: {
+      action: 'onInputChange',
+      table: {
+        disable: true
+      }
+    },
     freeSolo: {
       defaultValue: false,
       control: {
