@@ -157,6 +157,12 @@ const StyledChip = withStyles((theme: Theme) => ({
           }
         }
       }
+    },
+
+    '&.fullWidth': {
+      display: 'flex',
+      justifyContent: 'space-between',
+      width: '100%'
     }
   },
   label: {
@@ -170,6 +176,7 @@ const StyledChip = withStyles((theme: Theme) => ({
 export interface SFChipProps extends ChipProps {
   sfColor: 'primary' | 'default';
   deleteable?: boolean;
+  fullWidth?: boolean;
 }
 
 export const SFChip = ({
@@ -179,14 +186,15 @@ export const SFChip = ({
   disabled,
   deleteable,
   variant = 'default',
+  fullWidth,
   onDelete,
   ...props
 }: SFChipProps): React.ReactElement<SFChipProps> => {
   return (
-    <FormControl>
+    <FormControl fullWidth={fullWidth}>
       <StyledChip
         {...props}
-        className={sfColor}
+        className={`${sfColor} ${fullWidth ? 'fullWidth' : ''}`}
         label={label}
         size={size}
         variant={variant}
