@@ -1,6 +1,6 @@
-import { ThemeOptions } from '@material-ui/core/styles';
+import { SFThemeOptions } from './SFTheme';
 
-const CommonThemeOptions: ThemeOptions = {
+const CommonThemeOptions: SFThemeOptions = {
   props: {
     MuiButtonBase: {
       disableRipple: true

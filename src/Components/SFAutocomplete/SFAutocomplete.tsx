@@ -78,7 +78,7 @@ const useStyles = makeStyles({
   root: {
     '& button.MuiAutocomplete-popupIndicator': {
       padding: (props: Partial<SFAutocompleteProps>): string =>
-        props.hasPopoupIcon ? '9px' : '0'
+        props.hasPopupIcon ? '9px' : '0'
     }
   }
 });
@@ -99,16 +99,16 @@ export interface SFAutocompleteProps
   > {
   label: string;
   options: SFMenuOption[];
-  hasPopoupIcon?: boolean;
+  hasPopupIcon?: boolean;
 }
 
 export const SFAutocomplete = ({
   label,
   options,
-  hasPopoupIcon = false,
+  hasPopupIcon = false,
   ...props
 }: SFAutocompleteProps): React.ReactElement<SFAutocompleteProps> => {
-  const classes = useStyles({ hasPopoupIcon });
+  const classes = useStyles({ hasPopupIcon });
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
 
   const onInputChange = (
@@ -168,13 +168,10 @@ export const SFAutocomplete = ({
       onInputChange={onInputChange}
       onClose={onClose}
       onOpen={onOpen}
-      getOptionLabel={(option: SFMenuOption): string => option.label}
-      renderInput={(
-        params: AutocompleteRenderInputParams
-      ): React.ReactElement<AutocompleteRenderInputParams> => (
+      renderInput={(params: AutocompleteRenderInputParams): React.ReactNode => (
         <SFTextField {...params} label={label} />
       )}
-      popupIcon={hasPopoupIcon ? <SFIcon icon='Down-2' size={16} /> : null}
+      popupIcon={hasPopupIcon ? <SFIcon icon='Down-2' size={16} /> : null}
       closeIcon={<SFIcon icon='Close' size={16} />}
     />
   );

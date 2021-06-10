@@ -67,6 +67,7 @@ export interface ButtonMixinProps {
   };
 }
 
+// TODO: Fix this 'any' return type
 export default function ButtonMixin(sfButtonConfig: ButtonMixinProps): any {
   return withStyles((theme: Theme) => ({
     root: {

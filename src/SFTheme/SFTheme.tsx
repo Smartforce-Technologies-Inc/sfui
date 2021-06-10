@@ -1,12 +1,16 @@
 import {
-  Theme as SFTheme,
+  Theme,
+  ThemeOptions,
   ThemeProvider as SFThemeProvider
 } from '@material-ui/core/styles';
 
 import { NightTheme } from './NightTheme';
 import { DayTheme } from './DayTheme';
 
-export { SFThemeProvider, SFTheme };
+interface SFTheme extends Theme {}
+interface SFThemeOptions extends ThemeOptions {}
+
+export { SFThemeProvider, SFTheme, SFThemeOptions };
 
 export type SFThemeType = 'day' | 'night';
 
