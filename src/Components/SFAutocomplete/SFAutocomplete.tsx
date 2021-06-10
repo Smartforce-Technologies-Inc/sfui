@@ -168,6 +168,7 @@ export const SFAutocomplete = ({
       onInputChange={onInputChange}
       onClose={onClose}
       onOpen={onOpen}
+      getOptionLabel={(option: SFMenuOption): string => option.label}
       renderInput={(params: AutocompleteRenderInputParams): React.ReactNode => (
         <SFTextField {...params} label={label} />
       )}
