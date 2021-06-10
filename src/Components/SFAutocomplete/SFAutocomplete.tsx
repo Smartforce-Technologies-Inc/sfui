@@ -3,9 +3,10 @@ import { Theme, withStyles, makeStyles } from '@material-ui/core/styles';
 import {
   Autocomplete,
   AutocompleteProps,
-  AutocompleteInputChangeReason as SFAutocompleteInputChangeReason,
-  AutocompleteChangeReason as SFAutocompleteChangeReason,
-  AutocompleteCloseReason as SFAutocompleteCloseReason
+  AutocompleteInputChangeReason,
+  AutocompleteChangeReason,
+  AutocompleteCloseReason,
+  AutocompleteRenderInputParams
 } from '@material-ui/lab';
 import { SFMenuOption } from '../SFSelect/SFSelect';
 import { SFTextField } from '../SFTextField/SFTextField';
@@ -19,7 +20,7 @@ const StyledAutocomplete = withStyles((theme: Theme) => ({
       paddingTop: '20px',
 
       '& input.MuiAutocomplete-input:first-child': {
-        paddingLeft: '4px'
+        padding: '9.5px 4px'
       },
 
       '& .MuiAutocomplete-endAdornment': {
@@ -44,10 +45,6 @@ const StyledAutocomplete = withStyles((theme: Theme) => ({
             : hexToRgba(SFGrey[500] as string, 0.5)
       }
     }
-  },
-  paper: {
-    marginLeft: '4px',
-    marginRight: '-4px'
   },
   listbox: {
     padding: '13px 0'
@@ -86,18 +83,19 @@ const useStyles = makeStyles({
   }
 });
 
-export {
-  SFAutocompleteInputChangeReason,
-  SFAutocompleteChangeReason,
-  SFAutocompleteCloseReason
-};
+export type SFAutocompleteInputChangeReason = AutocompleteInputChangeReason;
+export type SFAutocompleteChangeReason = AutocompleteChangeReason;
+export type SFAutocompleteCloseReason = AutocompleteCloseReason;
 
 export interface SFAutocompleteProps
-  extends AutocompleteProps<
-    SFMenuOption,
-    boolean | undefined,
-    boolean | undefined,
-    boolean | undefined
+  extends Omit<
+    AutocompleteProps<
+      SFMenuOption,
+      boolean | undefined,
+      boolean | undefined,
+      boolean | undefined
+    >,
+    'renderInput'
   > {
   label: string;
   options: SFMenuOption[];
@@ -117,7 +115,7 @@ export const SFAutocomplete = ({
     event: React.ChangeEvent,
     value: string,
     reason: SFAutocompleteInputChangeReason
-  ) => {
+  ): void => {
     if (!isOpen && value.length > 0) {
       setIsOpen(true);
     } else if (isOpen && value.length === 0) {
@@ -133,14 +131,14 @@ export const SFAutocomplete = ({
     event: React.ChangeEvent,
     value: SFMenuOption,
     reason: SFAutocompleteChangeReason
-  ) => {
+  ): void => {
     setIsOpen(false);
     if (props.onChange) {
       props.onChange(event, value, reason);
     }
   };
 
-  const onOpen = (e: React.ChangeEvent) => {
+  const onOpen = (e: React.ChangeEvent): void => {
     // If reason of open is click on button
     if (e.type === 'click') {
       setIsOpen(!isOpen);
@@ -150,7 +148,7 @@ export const SFAutocomplete = ({
   const onClose = (
     event: React.ChangeEvent,
     reason: SFAutocompleteCloseReason
-  ) => {
+  ): void => {
     if (isOpen) {
       setIsOpen(false);
       if (props.onClose) {
@@ -170,7 +168,12 @@ export const SFAutocomplete = ({
       onInputChange={onInputChange}
       onClose={onClose}
       onOpen={onOpen}
-      renderInput={(params) => <SFTextField {...params} label={label} />}
+      getOptionLabel={(option: SFMenuOption): string => option.label}
+      renderInput={(
+        params: AutocompleteRenderInputParams
+      ): React.ReactElement<AutocompleteRenderInputParams> => (
+        <SFTextField {...params} label={label} />
+      )}
       popupIcon={hasPopoupIcon ? <SFIcon icon='Down-2' size={16} /> : null}
       closeIcon={<SFIcon icon='Close' size={16} />}
     />

@@ -11,7 +11,6 @@ import {
   SFSelect,
   SFMenuOption,
   SFMultiSelect,
-  SFMultiSelectOption,
   SFAlert
 } from 'sfui';
 
@@ -44,7 +43,7 @@ export const FormView = (): JSX.Element => {
     { value: '0', label: 'none' }
   ];
 
-  const multiSelectOptions: SFMultiSelectOption[] = [
+  const multiSelectOptions: SFMenuOption[] = [
     { value: 'Henry McKane', label: 'McKane' },
     { value: 'Donald McDonald', label: 'McDonald' },
     { value: 'Andrew Snippets', label: 'Snippets' },

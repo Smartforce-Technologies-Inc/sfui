@@ -34,6 +34,12 @@ export default {
         disable: true
       }
     },
+    freeSolo: {
+      defaultValue: false,
+      control: {
+        type: 'boolean'
+      }
+    },
     options: {
       table: {
         disable: true
@@ -48,10 +54,7 @@ export default {
 } as Meta;
 
 const Template: Story<SFAutocompleteProps> = (args) => (
-  <SFAutocomplete
-    {...args}
-    getOptionLabel={(option: SFMenuOption) => option.label}
-  />
+  <SFAutocomplete {...args} />
 );
 
 export const Default = Template.bind({});
