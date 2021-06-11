@@ -1,4 +1,5 @@
 export * from './Components/SFAlert/SFAlert';
+export * from './Components/SFAutocomplete/SFAutocomplete';
 export * from './Components/SFButton/SFButton';
 export * from './Components/SFCard/SFCard';
 export * from './Components/SFChip/SFChip';
