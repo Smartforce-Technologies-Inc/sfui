@@ -1,6 +1,6 @@
 import React from 'react';
-import { SFMultiSelect, SFMultiSelectOption } from 'sfui';
-const getOptions = (): SFMultiSelectOption[] => {
+import { SFMultiSelect, SFMenuOption } from 'sfui';
+const getOptions = (): SFMenuOption[] => {
   return [
     {
       label: 'Bagel number one',

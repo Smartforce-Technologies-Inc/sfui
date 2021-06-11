@@ -2,13 +2,10 @@ import React from 'react';
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, Meta } from '@storybook/react/types-6-0';
 
-import {
-  SFMultiSelect,
-  SFMultiSelectProps,
-  SFMultiSelectOption
-} from './SFMultiSelect';
+import { SFMultiSelect, SFMultiSelectProps } from './SFMultiSelect';
+import { SFMenuOption } from '../SFSelect/SFSelect';
 
-const getOptions = (): SFMultiSelectOption[] => {
+const getOptions = (): SFMenuOption[] => {
   return [
     {
       label: 'Bagel number one',
@@ -43,7 +40,7 @@ export default {
       defaultValue: ['Bagel number one'],
       control: {
         type: 'multi-select',
-        options: getOptions().map((o: SFMultiSelectOption) => o.value)
+        options: getOptions().map((o: SFMenuOption) => o.value)
       }
     },
     disabled: {

@@ -16,13 +16,13 @@ const StyledSelect = withStyles(() => ({
   }
 }))(SFTextField);
 
-export interface SFSelectOption {
+export interface SFMenuOption {
   label: string;
   value: string;
 }
 
 export interface SFSelectProps extends SelectProps {
-  options: SFSelectOption[];
+  options: SFMenuOption[];
   value?: string;
   helperText?: React.ReactNode;
 }
@@ -55,7 +55,7 @@ export const SFSelect = ({
         }
       }}
     >
-      {options.map((option: SFSelectOption, index: number) => (
+      {options.map((option: SFMenuOption, index: number) => (
         <SFMenuItem key={`option-${index}`} value={option.value}>
           {option.label}
         </SFMenuItem>

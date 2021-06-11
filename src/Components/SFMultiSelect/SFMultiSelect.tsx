@@ -5,11 +5,7 @@ import { SFTextField } from '../SFTextField/SFTextField';
 import { SFIcon } from '../SFIcon/SFIcon';
 import { SFCheckbox } from '../SFCheckbox/SFCheckbox';
 import { SFMenuItem } from '../SFMenuItem/SFMenuItem';
-
-export interface SFMultiSelectOption {
-  label: string;
-  value: string;
-}
+import { SFMenuOption } from '../SFSelect/SFSelect';
 
 const StyledSelect = withStyles(() => ({
   root: {
@@ -35,7 +31,7 @@ const useMenuStyles = makeStyles({
 });
 
 export interface SFMultiSelectProps extends SelectProps {
-  options: SFMultiSelectOption[];
+  options: SFMenuOption[];
   defaultValue?: string[];
   value?: string[];
   helperText?: React.ReactNode;
@@ -72,7 +68,7 @@ export const SFMultiSelect = ({
   };
 
   const isChecked = (
-    option: SFMultiSelectOption,
+    option: SFMenuOption,
     selectedValues: string[]
   ): boolean => {
     return selectedValues && selectedValues.indexOf(option.value) > -1;

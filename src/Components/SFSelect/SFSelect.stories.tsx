@@ -1,8 +1,9 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { SFSelect, SFSelectProps, SFSelectOption } from './SFSelect';
+import { SFSelect, SFSelectProps } from './SFSelect';
+import { SFMenuOption } from '../SFMenuOption';
 
-const getOptions = (): SFSelectOption[] => {
+const getOptions = (): SFMenuOption[] => {
   return [
     {
       label: 'Bagel number one',
@@ -37,7 +38,7 @@ export default {
       defaultValue: 'Bagel number one',
       control: {
         type: 'select',
-        options: getOptions().map((o: SFSelectOption) => o.value)
+        options: getOptions().map((o: SFMenuOption) => o.value)
       }
     },
     disabled: {
