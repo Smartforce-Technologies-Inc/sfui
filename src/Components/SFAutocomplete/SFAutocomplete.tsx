@@ -95,11 +95,12 @@ export interface SFAutocompleteProps
       boolean | undefined,
       boolean | undefined
     >,
-    'renderInput'
+    'renderInput' | 'onChange' | 'onInputChange'
   > {
   label: string;
   options: SFMenuOption[];
   hasPopupIcon?: boolean;
+  onChange: (value: string) => void;
 }
 
 export const SFAutocomplete = ({
@@ -110,37 +111,51 @@ export const SFAutocomplete = ({
 }: SFAutocompleteProps): React.ReactElement<SFAutocompleteProps> => {
   const classes = useStyles({ hasPopupIcon });
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
+  const [inputValue, setInputValue] = React.useState<string>('');
 
   const onInputChange = (
-    event: React.ChangeEvent,
+    _event: React.ChangeEvent,
     value: string,
-    reason: SFAutocompleteInputChangeReason
+    reason: AutocompleteInputChangeReason
   ): void => {
-    if (!isOpen && value.length > 0) {
-      setIsOpen(true);
-    } else if (isOpen && value.length === 0) {
-      setIsOpen(false);
-    }
+    if (reason === 'reset') {
+      if (!props.freeSolo) {
+        setInputValue(value);
+        props.onChange(value);
+      }
+    } else {
+      setInputValue(value);
 
-    if (props.onInputChange) {
-      props.onInputChange(event, value, reason);
+      if (!isOpen && value.length > 0) {
+        setIsOpen(true);
+      } else if (isOpen && value.length === 0) {
+        setIsOpen(false);
+      }
+
+      if (props.freeSolo) {
+        props.onChange(value);
+      }
     }
   };
 
   const onChange = (
-    event: React.ChangeEvent,
-    value: SFMenuOption,
-    reason: SFAutocompleteChangeReason
+    _event: React.ChangeEvent,
+    option: SFMenuOption,
+    reason: AutocompleteChangeReason
   ): void => {
     setIsOpen(false);
-    if (props.onChange) {
-      props.onChange(event, value, reason);
+
+    if (reason !== 'create-option' && reason !== 'remove-option') {
+      setInputValue(option ? option.value : '');
+      props.onChange(option ? option.value : '');
     }
   };
 
-  const onOpen = (e: React.ChangeEvent): void => {
+  const onOpen = (event: React.ChangeEvent): void => {
+    event.persist();
+
     // If reason of open is click on button
-    if (e.type === 'click') {
+    if (event.type === 'click') {
       setIsOpen(!isOpen);
     }
   };
@@ -149,8 +164,11 @@ export const SFAutocomplete = ({
     event: React.ChangeEvent,
     reason: SFAutocompleteCloseReason
   ): void => {
+    event.persist();
+
     if (isOpen) {
       setIsOpen(false);
+
       if (props.onClose) {
         props.onClose(event, reason);
       }
@@ -168,7 +186,10 @@ export const SFAutocomplete = ({
       onInputChange={onInputChange}
       onClose={onClose}
       onOpen={onOpen}
-      getOptionLabel={(option: SFMenuOption): string => option.label}
+      inputValue={inputValue}
+      getOptionLabel={(option: SFMenuOption): string =>
+        typeof option === 'string' ? option : option.label
+      }
       renderInput={(params: AutocompleteRenderInputParams): React.ReactNode => (
         <SFTextField {...params} label={label} />
       )}
