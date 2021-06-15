@@ -1,26 +1,30 @@
 import React, { Fragment } from 'react';
-import { ValueType } from '../SFChipsListInput';
+import { ChipListValueType } from '../SFChipsListInput';
 import { SFChip } from '../../SFChip/SFChip';
-import { EditChipValue } from '../SFChipListModal/SFChipListModal';
+import { EditChipListValue } from '../SFChipListModal/SFChipListModal';
 
 export interface SFChipListRenderProps {
-  values: ValueType[];
+  values: ChipListValueType[];
+  valuesLabel: string;
   isChipFullWidth: boolean;
   chipSize: 'small' | 'medium';
-  onDelete: (deleteValue: ValueType, index: number) => void;
-  onEdit: (editValue: EditChipValue) => void;
+  disabled: boolean;
+  onDelete: (deleteValue: ChipListValueType, index: number) => void;
+  onEdit: (editValue: EditChipListValue) => void;
 }
 
 export const SFChipListRender = ({
   values,
+  valuesLabel,
   isChipFullWidth,
   chipSize,
+  disabled,
   onDelete,
   onEdit
 }: SFChipListRenderProps): React.ReactElement<SFChipListRenderProps> => {
   return (
     <Fragment>
-      {values.map((input: ValueType, index: number) => (
+      {values.map((input: ChipListValueType, index: number) => (
         <SFChip
           key={index}
           fullWidth={isChipFullWidth}
@@ -30,17 +34,18 @@ export const SFChipListRender = ({
           variant='outlined'
           size={input.isNew ? 'small' : chipSize}
           label={input.value}
+          disabled={disabled}
           onDelete={(): void => onDelete(input, index)}
-          onClick={(): void =>
+          onClick={(): void => {
             onEdit({
-              type: `${input.isNew ? 'Input' : 'Item'} value`,
+              label: `${valuesLabel} value`,
+              index: index,
               input: {
                 value: input.value,
                 isNew: input.isNew ? input.isNew : false
-              },
-              index: index
-            })
-          }
+              }
+            });
+          }}
         />
       ))}
     </Fragment>
