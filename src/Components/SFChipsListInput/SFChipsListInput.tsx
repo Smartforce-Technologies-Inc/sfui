@@ -292,11 +292,11 @@ export const SFChipsListInput = ({
           value: ChipListValueType
         ): boolean => option === value.value}
         open={options.length !== 0 ? isPopperOpen : false}
-        onChange={(event: React.ChangeEvent, value: string): void => {
+        onChange={(event: React.ChangeEvent<HTMLInputElement>): void => {
           setIsPopperOpen(false);
           if (options.length !== 0) {
             addValue({
-              value: value[value.length - 1],
+              value: event.target.value[event.target.value.length - 1],
               isNew: true
             });
           }
