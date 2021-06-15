@@ -4,13 +4,12 @@ import { Autocomplete, AutocompleteRenderInputParams } from '@material-ui/lab';
 import { SFTextField } from '../SFTextField/SFTextField';
 import {
   SFChipListModal,
-  EditChipValue,
-  emptyEditValue
+  EditChipListValue
 } from './SFChipListModal/SFChipListModal';
 import { SFChipListRender } from './SFChipListRender/SFChipListRender';
 import { hexToRgba } from '../../Helpers';
 import { SFGrey } from '../../SFColors/SFColors';
-import { withStyles, Theme } from '@material-ui/core/styles';
+import { withStyles, Theme, makeStyles } from '@material-ui/core/styles';
 
 const StyledAutoComplete = withStyles((theme: Theme) => ({
   root: {
@@ -61,7 +60,20 @@ const StyledTextField = withStyles({
   }
 })(SFTextField);
 
-export type ValueType = {
+const chipsDisplay = makeStyles({
+  chipDisplayInline: {
+    display: 'flex',
+    gap: '8px',
+    marginTop: '14px',
+    flexWrap: 'wrap',
+    flexDirection: 'row'
+  },
+  chipDisplayBlock: {
+    flexDirection: 'column'
+  }
+});
+
+export type ChipListValueType = {
   value: string;
   isNew?: boolean;
   hasChanged?: boolean;
@@ -70,37 +82,46 @@ export type ValueType = {
 export interface SFChipsListInputProps {
   chipSize?: 'small' | 'medium';
   chipDisplay?: 'inline' | 'block';
-  emptyMessage: string;
+  emptyMessage?: string;
   label: string;
   options?: string[];
-  items?: ValueType[];
+  itemsLabel: string;
+  items?: ChipListValueType[];
   freeSolo: boolean;
-  onChange: (newItems: ValueType[]) => void;
+  disabled: boolean;
+  onChange: (newItems: ChipListValueType[]) => void;
 }
 
 export const SFChipsListInput = ({
   chipSize = 'small',
   chipDisplay = 'inline',
-  emptyMessage = 'No items selected',
+  emptyMessage,
   label = 'Bagel',
   options = [],
+  itemsLabel,
   items = [],
   freeSolo = false,
+  disabled = false,
   onChange
 }: SFChipsListInputProps): React.ReactElement<SFChipsListInputProps> => {
-  const [inputValues, setInputValues] = React.useState<ValueType[]>([]);
-  const [displayValues, setDisplayValues] = React.useState<ValueType[]>([]);
+  const [inputValues, setInputValues] = React.useState<ChipListValueType[]>([]);
+  const [displayValues, setDisplayValues] = React.useState<ChipListValueType[]>(
+    []
+  );
   const [isPopperOpen, setIsPopperOpen] = React.useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = React.useState<boolean>(false);
-  const [editedValue, setEditedValue] = React.useState<EditChipValue>(
-    emptyEditValue
-  );
+  const [editedValue, setEditedValue] = React.useState<EditChipListValue>({
+    label: '',
+    input: { value: '' },
+    index: -1
+  });
+  const { chipDisplayInline, chipDisplayBlock } = chipsDisplay();
 
   React.useEffect(() => {
-    let incomingInputValues: ValueType[] = [];
-    let incomingDisplayValues: ValueType[] = [];
+    let incomingInputValues: ChipListValueType[] = [];
+    let incomingDisplayValues: ChipListValueType[] = [];
 
-    items.map((item: ValueType): void => {
+    items.map((item: ChipListValueType): void => {
       if (item.isNew === true) {
         incomingInputValues = [...incomingInputValues, item];
       } else {
@@ -116,34 +137,36 @@ export const SFChipsListInput = ({
     onChange([...displayValues, ...inputValues]);
   }, [inputValues, displayValues]);
 
-  const handleValueAction = (
-    actionType: string,
-    input?: ValueType,
-    index?: number
-  ): void => {
-    let values: ValueType[] =
-      input && !input.isNew ? displayValues : inputValues;
+  const addValue = (input: ChipListValueType): void => {
+    let values: ChipListValueType[] = !input.isNew
+      ? displayValues
+      : inputValues;
+    values = [...values, input];
 
-    switch (actionType) {
-      case 'addValue':
-        values = [...values, input as ValueType];
-        break;
-
-      case 'editValue':
-        values = [
-          ...values.slice(0, index as number),
-          input as ValueType,
-          ...values.slice((index as number) + 1)
-        ];
-        break;
-
-      default:
-        values = [
-          ...values.slice(0, index as number),
-          ...values.slice((index as number) + 1)
-        ];
-        break;
+    if (!input.isNew) {
+      setDisplayValues(values);
+    } else {
+      setInputValues(values);
     }
+  };
+
+  const editValue = (input: ChipListValueType, index: number): void => {
+    let values: ChipListValueType[] = !input.isNew
+      ? displayValues
+      : inputValues;
+    values = [...values.slice(0, index), input, ...values.slice(index + 1)];
+
+    if (!input.isNew) {
+      setDisplayValues(values);
+    } else {
+      setInputValues(values);
+    }
+  };
+
+  const deleteValue = (index: number, input?: ChipListValueType): void => {
+    let values: ChipListValueType[] =
+      input && !input.isNew ? displayValues : inputValues;
+    values = [...values.slice(0, index), ...values.slice(index + 1)];
 
     if (input && !input.isNew) {
       setDisplayValues(values);
@@ -158,17 +181,17 @@ export const SFChipsListInput = ({
       event.preventDefault();
       if ((freeSolo === true && options.length !== 0) || options.length === 0) {
         if (target.value.trim() !== '') {
-          handleValueAction('addValue', { value: target.value, isNew: true });
+          addValue({ value: target.value, isNew: true });
         }
 
         target.value = '';
       }
     } else if (event.key === 'Backspace') {
-      event.preventDefault();
-      if (inputValues.length !== 0) {
-        handleValueAction('', undefined, inputValues.length - 1);
+      if (inputValues.length !== 0 && target.value === '') {
+        event.preventDefault();
+        deleteValue(inputValues.length - 1);
+        target.value = '';
       }
-      target.value = '';
     }
   };
 
@@ -180,32 +203,38 @@ export const SFChipsListInput = ({
     }
   };
 
+  const filterOptions = (options: string[]): string[] => {
+    const values: ChipListValueType[] = [...displayValues, ...inputValues];
+    const filteredOptions = options.filter((option: string) => {
+      return !values.find((item: ChipListValueType) => item.value === option);
+    });
+    return filteredOptions;
+  };
+
   const DisplayValues = (): JSX.Element => {
     return (
       <div
-        style={{
-          display: 'flex',
-          gap: '8px',
-          marginTop: '14px',
-          flexWrap: 'wrap',
-          flexDirection: chipDisplay === 'inline' ? 'row' : 'column'
-        }}
+        className={`${chipDisplayInline} ${
+          chipDisplay === 'block' ? chipDisplayBlock : ''
+        }`}
       >
         {displayValues && (
           <SFChipListRender
             values={displayValues}
+            valuesLabel={itemsLabel}
             isChipFullWidth={chipDisplay === 'block'}
             chipSize={chipSize}
-            onDelete={(deleteValue: ValueType, index: number): void =>
-              handleValueAction('', deleteValue, index)
+            disabled={disabled}
+            onDelete={(value: ChipListValueType, index: number): void =>
+              deleteValue(index, value)
             }
-            onEdit={(value: EditChipValue): void => {
+            onEdit={(value: EditChipListValue): void => {
               setEditedValue(value);
               setIsModalOpen(true);
             }}
           />
         )}
-        {(!displayValues || displayValues.length === 0) && (
+        {emptyMessage && (!displayValues || displayValues.length === 0) && (
           <p>{emptyMessage}</p>
         )}
       </div>
@@ -215,33 +244,31 @@ export const SFChipsListInput = ({
   return (
     <FormControl fullWidth>
       <SFChipListModal
-        editValue={editedValue.input}
-        index={editedValue.index}
-        type={editedValue.type}
+        editValue={editedValue}
         open={isModalOpen}
-        onEdit={(value: ValueType, index: number): void =>
-          handleValueAction('editValue', value, index)
+        onEdit={(value: ChipListValueType, index: number): void =>
+          editValue(value, index)
         }
-        onClose={(): void => {
-          setEditedValue(emptyEditValue);
-          setIsModalOpen(false);
-        }}
+        onClose={(): void => setIsModalOpen(false)}
       />
       <StyledAutoComplete
+        disabled={disabled}
         options={options}
         multiple
         value={inputValues}
         filterSelectedOptions
-        renderTags={(value: ValueType[]): JSX.Element => {
+        renderTags={(value: ChipListValueType[]): JSX.Element => {
           return (
             <SFChipListRender
               isChipFullWidth={false}
               chipSize='small'
               values={value}
-              onDelete={(deleteValue: ValueType, index: number): void =>
-                handleValueAction('', deleteValue, index)
+              valuesLabel={itemsLabel}
+              disabled={disabled}
+              onDelete={(value: ChipListValueType, index: number): void =>
+                deleteValue(index, value)
               }
-              onEdit={(value: EditChipValue): void => {
+              onEdit={(value: EditChipListValue): void => {
                 setEditedValue(value);
                 setIsModalOpen(true);
               }}
@@ -259,21 +286,16 @@ export const SFChipsListInput = ({
             }
           />
         )}
-        filterOptions={(options: string[]): string[] => {
-          const values: ValueType[] = [...displayValues, ...inputValues];
-          const filteredOptions = options.filter((option: string) => {
-            return !values.find((item: ValueType) => item.value === option);
-          });
-          return filteredOptions;
-        }}
-        getOptionSelected={(option: string, value: ValueType): boolean => {
-          return option === value.value;
-        }}
+        filterOptions={(options: string[]): string[] => filterOptions(options)}
+        getOptionSelected={(
+          option: string,
+          value: ChipListValueType
+        ): boolean => option === value.value}
         open={options.length !== 0 ? isPopperOpen : false}
-        onChange={(event, value: string): void => {
+        onChange={(event: React.ChangeEvent, value: string): void => {
           setIsPopperOpen(false);
           if (options.length !== 0) {
-            handleValueAction('addValue', {
+            addValue({
               value: value[value.length - 1],
               isNew: true
             });
