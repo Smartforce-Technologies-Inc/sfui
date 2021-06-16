@@ -226,7 +226,6 @@ export const SFDatePicker = ({
           anchorOrigin: { vertical: 'bottom', horizontal: 'left' },
           transformOrigin: { vertical: 'top', horizontal: 'left' }
         }}
-        InputProps={{ readOnly: true }}
         rightArrowButtonProps={{ classes: arrowStyle }}
         rightArrowIcon={<SFIcon icon='Right-2' size='10' />}
         leftArrowButtonProps={{ classes: arrowStyle }}
