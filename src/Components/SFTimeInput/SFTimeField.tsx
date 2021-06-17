@@ -110,18 +110,18 @@ const StyledTimePicker = withStyles((theme: Theme) => ({
   }
 }))(KeyboardTimePicker);
 
-export interface SFTimeInputProps
+export interface SFTimeFieldProps
   extends Omit<KeyboardTimePickerProps, 'value' | 'onChange'> {
   value: string;
   onChange: (value: string) => void;
 }
 
-export const SFTimeInput = ({
+export const SFTimeField = ({
   value,
   onChange,
   placeholder = '08:00 AM',
   ...props
-}: SFTimeInputProps): React.ReactElement<SFTimeInputProps> => {
+}: SFTimeFieldProps): React.ReactElement<SFTimeFieldProps> => {
   const [date, setDate] = useState<MaterialUiPickersDate | null>(
     getDateFromString(value)
   );

@@ -2,11 +2,11 @@ import React from 'react';
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, Meta } from '@storybook/react/types-6-0';
 
-import { SFTimeInput, SFTimeInputProps } from './SFTimeInput';
+import { SFTimeField, SFTimeFieldProps } from './SFTimeField';
 
 export default {
-  title: 'Components/SFTimeInput',
-  component: SFTimeInput,
+  title: 'Components/SFTimeField',
+  component: SFTimeField,
   args: {
     label: 'Bagel'
   },
@@ -45,7 +45,7 @@ export default {
 } as Meta;
 
 const Template: Story = ({ date, onChange, ...args }) => (
-  <SFTimeInput
+  <SFTimeField
     {...args}
     onChange={onChange}
     value={new Date(date).toISOString()}
