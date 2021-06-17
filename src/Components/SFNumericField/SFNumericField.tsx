@@ -14,6 +14,7 @@ function getNumberFormat(
       <NumberFormat
         {...numberProps}
         {...other}
+        inputMode={allowDecimals ? 'decimal' : 'numeric'}
         decimalScale={!allowDecimals ? 0 : undefined}
         pattern={allowDecimals ? undefined : pattern}
         getInputRef={inputRef}
