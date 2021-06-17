@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Theme, withStyles } from '@material-ui/core/styles';
 import MomentUtils from '@date-io/moment';
+import moment from 'moment';
+
 import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
@@ -9,29 +11,9 @@ import {
 import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date';
 import { SFBlue, SFGrey, SFRed } from '../../SFColors/SFColors';
 
-function isTimeValid(value: string): boolean {
-  return /^((0[1-9])|(1[0-2])):([0-5][0-9]) [A|P]M$/.test(value);
-}
-
-function getDateFromTimeString(value: string): Date | null {
-  if (!isTimeValid(value)) {
-    return null;
-  }
-
-  const type: string = value.substring(6, 8);
-  const hours: number = +value.substring(0, 2);
-  const minutes: number = +value.substring(3, 5);
-
-  const newDate: Date = new Date();
-  newDate.setMinutes(minutes);
-
-  if (type === 'AM' && hours === 12) {
-    newDate.setHours(0);
-  } else if (type === 'PM') {
-    newDate.setHours(hours === 12 ? hours : hours + 12);
-  }
-
-  return newDate;
+function getDateFromString(value: string): MaterialUiPickersDate | null {
+  const date = moment(value);
+  return date.isValid() ? date : null;
 }
 
 const StyledTimePicker = withStyles((theme: Theme) => ({
@@ -140,21 +122,19 @@ export const SFTimeInput = ({
   placeholder = '08:00 AM',
   ...props
 }: SFTimeInputProps): React.ReactElement<SFTimeInputProps> => {
-  const [date, setDate] = useState<Date | null>(getDateFromTimeString(value));
+  const [date, setDate] = useState<MaterialUiPickersDate | null>(
+    getDateFromString(value)
+  );
 
   useEffect(() => {
-    const newValue: Date | null = getDateFromTimeString(value);
-    setDate(newValue);
+    setDate(getDateFromString(value));
   }, [value]);
 
-  const onDateChange = (
-    date: MaterialUiPickersDate,
-    value: string | null | undefined
-  ): void => {
-    setDate(date ? date.toDate() : null);
+  const onDateChange = (date: MaterialUiPickersDate): void => {
+    setDate(date);
 
     if (date && date.isValid()) {
-      onChange(value || '');
+      onChange(date.toISOString());
     }
   };
 
@@ -162,6 +142,7 @@ export const SFTimeInput = ({
     <MuiPickersUtilsProvider utils={MomentUtils}>
       <StyledTimePicker
         {...props}
+        fullWidth
         variant='inline'
         inputVariant='filled'
         disableToolbar

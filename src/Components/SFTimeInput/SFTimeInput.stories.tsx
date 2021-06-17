@@ -8,14 +8,22 @@ export default {
   title: 'Components/SFTimeInput',
   component: SFTimeInput,
   args: {
-    label: 'Bagel',
-    value: '12:00 AM'
+    label: 'Bagel'
   },
   argTypes: {
+    date: {
+      defaultValue: new Date(),
+      control: { type: 'date' }
+    },
     onChange: { action: 'onChange', table: { disable: true } },
     disabled: {
       control: {
         type: 'boolean'
+      }
+    },
+    value: {
+      table: {
+        disable: true
       }
     },
     focused: {
@@ -36,6 +44,12 @@ export default {
   }
 } as Meta;
 
-const Template: Story<SFTimeInputProps> = (args) => <SFTimeInput {...args} />;
+const Template: Story = ({ date, onChange, ...args }) => (
+  <SFTimeInput
+    {...args}
+    onChange={onChange}
+    value={new Date(date).toISOString()}
+  />
+);
 
 export const Default = Template.bind({});
