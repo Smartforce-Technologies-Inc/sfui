@@ -1,6 +1,7 @@
 import React from 'react';
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, Meta } from '@storybook/react/types-6-0';
+import { Theme } from '@material-ui/core/styles';
 import {
   SFBlue,
   SFBlueMainLight,
@@ -31,7 +32,7 @@ interface MainColor {
   textColor: string;
 }
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme: Theme) => ({
   container: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -53,10 +54,12 @@ const useStyles = makeStyles({
   text: { margin: '0' },
   code: {
     padding: '4px 12px',
-    borderLeft: `1px solid ${SFBlueMainLight}`,
+    borderLeft: `1px solid ${
+      theme.palette.type === 'light' ? SFBlueMainLight : SFBlueMainDark
+    }`,
     fontSize: '14px'
   }
-});
+}));
 
 const lightMainColors: MainColor[] = [
   {
@@ -516,7 +519,7 @@ const SassTemplate: Story = () => {
 
 export const SassVariables = SassTemplate.bind({});
 SassVariables.parameters = {
-  conrtols: {
+  controls: {
     disable: true
   }
 };
