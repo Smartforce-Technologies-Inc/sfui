@@ -11,7 +11,7 @@ import {
 import { SFMenuOption } from '../SFSelect/SFSelect';
 import { SFTextField } from '../SFTextField/SFTextField';
 import { SFIcon } from '../SFIcon/SFIcon';
-import { SFGrey } from '../../SFColors/SFColors';
+import { SFGrey, SFSurfaceLight } from '../../SFColors/SFColors';
 import { hexToRgba } from '../../Helpers';
 
 const StyledAutocomplete = withStyles((theme: Theme) => ({
@@ -47,7 +47,9 @@ const StyledAutocomplete = withStyles((theme: Theme) => ({
     }
   },
   listbox: {
-    padding: '13px 0'
+    padding: '13px 0',
+    backgroundColor:
+      theme.palette.type === 'light' ? SFSurfaceLight : SFGrey[800]
   },
   option: {
     padding: '6px 24px',
