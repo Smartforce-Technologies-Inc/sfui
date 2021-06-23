@@ -91,6 +91,10 @@ const StyledTimePicker = withStyles((theme: Theme) => ({
         color: `${theme.palette.type === 'light' ? SFGrey[400] : SFGrey[600]}`
       },
 
+      '&.Mui-focused': {
+        color: theme.palette.type === 'light' ? SFBlue[500] : SFBlue[200]
+      },
+
       '&.Mui-error': {
         color: `${theme.palette.type === 'light' ? SFRed[700] : SFRed[200]}`
       },
