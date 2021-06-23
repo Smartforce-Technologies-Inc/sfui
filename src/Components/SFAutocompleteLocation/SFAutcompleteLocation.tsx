@@ -97,6 +97,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     lineHeight: '24px',
     color: theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]
   },
+  textHighlight: {
+    fontWeight: 700
+  },
   itemSecondaryText: {
     fontSize: '12px',
     lineHeight: '14px',
@@ -123,6 +126,8 @@ export const SFAutcompleteLocation = ({
   const autocompleteService = React.useRef<google.maps.places.AutocompleteService>();
   const geocoderService = React.useRef<google.maps.Geocoder>();
 
+  const [apiLoaded, setApiLoaded] = React.useState<boolean>(false);
+
   const [selectedOption, setSelectedOption] = React.useState<
     Partial<google.maps.places.AutocompletePrediction>
   >({});
@@ -131,7 +136,7 @@ export const SFAutcompleteLocation = ({
     google.maps.places.AutocompletePrediction[]
   >([]);
 
-  const fetchOptions = React.useMemo(
+  const getPredictions = React.useMemo(
     () =>
       throttle((request, callback) => {
         if (autocompleteService.current) {
@@ -141,74 +146,78 @@ export const SFAutcompleteLocation = ({
     []
   );
 
+  const fetchOptions = (): void =>
+    getPredictions(
+      { input: value },
+      (results: google.maps.places.AutocompletePrediction[]) => {
+        setOptions(results || []);
+      }
+    );
+
   React.useEffect(() => {
-    console.log('Creating Autocomplete service...');
-    autocompleteService.current = new window.google.maps.places.AutocompleteService();
-
+    // Check if Google API it's loaded
     if (
-      (!value || value.length === 0) &&
-      currentLocation &&
-      navigator.geolocation
+      window.google &&
+      typeof window.google === 'object' &&
+      typeof window.google.maps === 'object'
     ) {
-      console.log('Creating Geocoder service...');
-      geocoderService.current = new google.maps.Geocoder();
+      setApiLoaded(true);
+      autocompleteService.current = new window.google.maps.places.AutocompleteService();
 
-      const onLocationError = (): void =>
-        console.log("Can't get GeolocationPosition");
+      if (
+        (!value || value.length === 0) &&
+        currentLocation &&
+        navigator.geolocation
+      ) {
+        geocoderService.current = new google.maps.Geocoder();
 
-      const onLocationSuccess = (pos: GeolocationPosition): void => {
-        const latlng = {
-          lat: pos.coords.latitude,
-          lng: pos.coords.longitude
+        const onLocationError = (): void =>
+          console.error("Can't get GeolocationPosition: ");
+
+        const onLocationSuccess = (pos: GeolocationPosition): void => {
+          const latlng = {
+            lat: pos.coords.latitude,
+            lng: pos.coords.longitude
+          };
+
+          if (geocoderService.current) {
+            geocoderService.current.geocode(
+              { location: latlng },
+              (
+                results: google.maps.GeocoderResult[],
+                status: google.maps.GeocoderStatus
+              ) => {
+                if (status === 'OK') {
+                  if (results[0]) {
+                    const address: string = results[0].formatted_address;
+                    setSelectedOption({ description: address });
+                    onChange(address);
+                  } else {
+                    console.error('Geocoder: no results found');
+                  }
+                } else {
+                  console.error('Geocoder: failed due to: ' + status);
+                }
+              }
+            );
+          }
         };
 
-        if (geocoderService.current) {
-          geocoderService.current.geocode(
-            { location: latlng },
-            (
-              results: google.maps.GeocoderResult[],
-              status: google.maps.GeocoderStatus
-            ) => {
-              if (status === 'OK') {
-                if (results[0]) {
-                  const address: string = results[0].formatted_address;
-                  setSelectedOption({ description: address });
-                  onChange(address);
-                } else {
-                  console.error('Geocoder: no results found');
-                }
-              } else {
-                console.error('Geocoder: failed due to: ' + status);
-              }
-            }
-          );
-        }
-      };
-
-      navigator.geolocation.getCurrentPosition(
-        onLocationSuccess,
-        onLocationError
-      );
-    } else if (value.length > 0) {
-      fetchOptions(
-        { input: value },
-        (results: google.maps.places.AutocompletePrediction[]) => {
-          setOptions(results || []);
-        }
-      );
+        navigator.geolocation.getCurrentPosition(
+          onLocationSuccess,
+          onLocationError
+        );
+      } else if (value.length > 0) {
+        fetchOptions();
+      }
+    } else {
+      console.error('Google API is not loaded');
     }
   }, []);
 
   React.useEffect(() => {
     if (value.length > 0) {
-      if (autocompleteService.current) {
-        fetchOptions(
-          { input: value },
-          (results: google.maps.places.AutocompletePrediction[]) => {
-            setOptions(results || []);
-          }
-        );
-      }
+      fetchOptions();
     } else {
       setOptions([]);
     }
@@ -218,7 +227,7 @@ export const SFAutcompleteLocation = ({
     params: AutocompleteRenderInputParams
   ): React.ReactNode => <SFTextField {...params} label={label} />;
 
-  const onValueChange = (
+  const onAutocompleteChange = (
     _event: React.ChangeEvent,
     newValue: google.maps.places.AutocompletePrediction
   ): void => {
@@ -267,7 +276,7 @@ export const SFAutcompleteLocation = ({
           {parts.map((part, index) => (
             <span
               key={index}
-              style={{ fontWeight: part.highlight ? 700 : 400 }}
+              className={part.highlight ? classes.textHighlight : ''}
             >
               {part.text}
             </span>
@@ -287,14 +296,14 @@ export const SFAutcompleteLocation = ({
   return (
     <StyledAutocomplete
       freeSolo
-      disabled={disabled}
+      disabled={disabled || !apiLoaded}
       options={options}
       renderInput={renderInput}
       popupIcon={null}
       closeIcon={<SFIcon icon='Close' size='16' />}
       value={selectedOption}
       inputValue={value}
-      onChange={onValueChange}
+      onChange={onAutocompleteChange}
       onInputChange={onInputChange}
       getOptionLabel={getOptionLabel}
       renderOption={renderOption}
