@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Theme, withStyles } from '@material-ui/core/styles';
 import TextField, { OutlinedTextFieldProps } from '@material-ui/core/TextField';
-import { SFGrey, SFRed } from '../../SFColors/SFColors';
+import { SFGrey, SFRed, SFBlue } from '../../SFColors/SFColors';
 
 const StyledTextField = withStyles((theme: Theme) => ({
   root: {
@@ -104,6 +104,10 @@ const StyledTextField = withStyles((theme: Theme) => ({
         fontSize: '14px',
         lineHeight: '20px',
         transform: `translate(12px, 6px)`
+      },
+
+      '&.Mui-focused': {
+        color: theme.palette.type === 'light' ? SFBlue[500] : SFBlue[200]
       },
 
       '&.Mui-error': {
