@@ -1,5 +1,3 @@
-/* eslint-disable  */
-
 import React from 'react';
 import { Theme, withStyles, makeStyles } from '@material-ui/core/styles';
 import { Autocomplete, AutocompleteRenderInputParams } from '@material-ui/lab';
@@ -17,23 +15,9 @@ interface GeolocationPosition {
   };
 }
 
-function loadScript(
-  src: string,
-  element: HTMLHeadElement | null,
-  id: string
-): Promise<void> {
-  return new Promise((resolve, reject) => {
-    const script = document.createElement('script');
-    script.setAttribute('async', '');
-    script.setAttribute('id', id);
-    script.src = src;
-    script.onload = () => {
-      console.log('Script loaded');
-      resolve();
-    };
-    script.onerror = (e) => reject(e);
-    element?.appendChild(script);
-  });
+interface TextPart {
+  text: string;
+  highlight: boolean;
 }
 
 const StyledAutocomplete = withStyles((theme: Theme) => ({
@@ -124,6 +108,7 @@ export interface SFAutcompleteLocationProps {
   label: string;
   value: string;
   disabled?: boolean;
+  currentLocation?: boolean;
   onChange: (value: string) => void;
 }
 
@@ -131,10 +116,10 @@ export const SFAutcompleteLocation = ({
   label,
   value,
   disabled = false,
+  currentLocation = false,
   onChange
 }: SFAutcompleteLocationProps): React.ReactElement<SFAutcompleteLocationProps> => {
   const classes = useStyles();
-  const loaded = React.useRef<boolean>(false);
   const autocompleteService = React.useRef<google.maps.places.AutocompleteService>();
   const geocoderService = React.useRef<google.maps.Geocoder>();
 
@@ -149,16 +134,22 @@ export const SFAutcompleteLocation = ({
   const fetchOptions = React.useMemo(
     () =>
       throttle((request, callback) => {
-        autocompleteService.current?.getPlacePredictions(request, callback);
+        if (autocompleteService.current) {
+          autocompleteService.current.getPlacePredictions(request, callback);
+        }
       }, 200),
     []
   );
 
-  const createServices = () => {
+  React.useEffect(() => {
     console.log('Creating Autocomplete service...');
     autocompleteService.current = new window.google.maps.places.AutocompleteService();
 
-    if (value.length === 0 && navigator.geolocation) {
+    if (
+      (!value || value.length === 0) &&
+      currentLocation &&
+      navigator.geolocation
+    ) {
       console.log('Creating Geocoder service...');
       geocoderService.current = new google.maps.Geocoder();
 
@@ -171,25 +162,27 @@ export const SFAutcompleteLocation = ({
           lng: pos.coords.longitude
         };
 
-        geocoderService.current?.geocode(
-          { location: latlng },
-          (
-            results: google.maps.GeocoderResult[],
-            status: google.maps.GeocoderStatus
-          ) => {
-            if (status === 'OK') {
-              if (results[0]) {
-                const address: string = results[0].formatted_address;
-                setSelectedOption({ description: address });
-                onChange(address);
+        if (geocoderService.current) {
+          geocoderService.current.geocode(
+            { location: latlng },
+            (
+              results: google.maps.GeocoderResult[],
+              status: google.maps.GeocoderStatus
+            ) => {
+              if (status === 'OK') {
+                if (results[0]) {
+                  const address: string = results[0].formatted_address;
+                  setSelectedOption({ description: address });
+                  onChange(address);
+                } else {
+                  console.error('Geocoder: no results found');
+                }
               } else {
-                console.error('Geocoder: no results found');
+                console.error('Geocoder: failed due to: ' + status);
               }
-            } else {
-              console.error('Geocoder: failed due to: ' + status);
             }
-          }
-        );
+          );
+        }
       };
 
       navigator.geolocation.getCurrentPosition(
@@ -203,23 +196,6 @@ export const SFAutcompleteLocation = ({
           setOptions(results || []);
         }
       );
-    }
-  };
-
-  React.useEffect(() => {
-    if (typeof window !== 'undefined' && !loaded.current) {
-      if (!document.querySelector('#google-maps')) {
-        loadScript(
-          'https://maps.googleapis.com/maps/api/js?key=AIzaSyDET6OJJuN80emEkb8VMTd-K-XaXDrgAjI&libraries=places',
-          document.querySelector('head'),
-          'google-maps'
-        ).then(() => {
-          loaded.current = true;
-          createServices();
-        });
-      } else {
-        createServices();
-      }
     }
   }, []);
 
@@ -270,7 +246,7 @@ export const SFAutcompleteLocation = ({
     option: google.maps.places.AutocompletePrediction
   ): React.ReactNode => {
     let matches = [];
-    let parts: any[] = [];
+    let parts: TextPart[] = [];
 
     if (option.structured_formatting) {
       matches = option.structured_formatting.main_text_matched_substrings;
@@ -285,9 +261,7 @@ export const SFAutcompleteLocation = ({
 
     return (
       <div className={classes.menu}>
-        <div>
-          <SFIcon icon='Loction-1' />
-        </div>
+        <SFIcon icon='Loction-1' />
 
         <div className={classes.itemText}>
           {parts.map((part, index) => (

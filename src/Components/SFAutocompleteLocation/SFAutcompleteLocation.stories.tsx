@@ -9,8 +9,7 @@ export default {
   title: 'Components/SFAutcompleteLocation',
   component: SFAutcompleteLocation,
   args: {
-    label: 'Bagel',
-    value: 'Leloir 949'
+    label: 'Bagel'
   },
   argTypes: {
     onChange: {
@@ -23,6 +22,11 @@ export default {
       control: {
         type: 'boolean'
       }
+    },
+    currentLocation: {
+      table: {
+        disable: true
+      }
     }
   }
 } as Meta;
@@ -32,3 +36,26 @@ const Template: Story<SFAutcompleteLocationProps> = (args) => (
 );
 
 export const Default = Template.bind({});
+Default.args = {
+  value: 'Leloir 949'
+};
+
+export const CurrentLocation: Story<SFAutcompleteLocationProps> = (args) => {
+  const [value, setValue] = React.useState<string>('');
+
+  return (
+    <SFAutcompleteLocation
+      {...args}
+      currentLocation
+      value={value}
+      onChange={(newValue: string): void => setValue(newValue)}
+    />
+  );
+};
+CurrentLocation.argTypes = {
+  value: {
+    table: {
+      disable: true
+    }
+  }
+};
