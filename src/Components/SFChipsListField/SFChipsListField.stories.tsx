@@ -115,7 +115,8 @@ export default {
   args: {
     label: 'Bagel',
     itemsLabel: 'Bagel',
-    items: []
+    items: [],
+    delimiters: ';'
   },
   argTypes: {
     onChange: {
