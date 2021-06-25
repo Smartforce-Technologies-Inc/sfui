@@ -94,6 +94,7 @@ const ChipListOptions = [
   'Amadeus',
   'To Kill a Mockingbird',
   'Toy Story 3',
+  'Toy Story',
   'Logan',
   'Full Metal Jacket',
   'Dangal',
@@ -151,6 +152,10 @@ export const Empty = Template.bind({});
 
 export const WithOptions = Template.bind({});
 
+export const WithItems = Template.bind({});
+
+export const WithOptionsAndItems = Template.bind({});
+
 WithOptions.args = {
   label: 'Movies Selected',
   emptyMessage: 'No movies saved...',
@@ -158,18 +163,31 @@ WithOptions.args = {
   options: ChipListOptions
 };
 
-export const WithItems = Template.bind({});
-
 WithItems.args = {
   label: 'Movies Selected',
   emptyMessage: 'No movies saved...',
   itemsLabel: 'Movies',
   items: [
     { value: 'This War of Mine' },
-    { value: 'Back to The Future' },
+    { value: 'Back to the Future' },
     { value: 'Toy Story', isNew: true, hasChanged: true },
     { value: 'Pulp Fiction' },
     { value: 'WALL·E', isNew: true },
     { value: 'The Godfather', isNew: true }
   ]
+};
+
+WithOptionsAndItems.args = {
+  label: 'Movies Selected',
+  emptyMessage: 'No movies saved...',
+  itemsLabel: 'Movies',
+  items: [
+    { value: 'This War of Mine' },
+    { value: 'Back to the Future' },
+    { value: 'Toy Story', isNew: true, hasChanged: true },
+    { value: 'Pulp Fiction' },
+    { value: 'WALL·E', isNew: true },
+    { value: 'The Godfather', isNew: true }
+  ],
+  options: ChipListOptions
 };
