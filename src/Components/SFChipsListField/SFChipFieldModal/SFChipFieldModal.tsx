@@ -27,7 +27,7 @@ export const SFChipListModal = ({
 
   const onInputChange = (input: React.ChangeEvent<HTMLInputElement>): void => {
     setEditedValue({
-      value: input.target.value.trim(),
+      value: input.target.value,
       isNew: (value as ChipFieldValueType).isNew,
       hasChanged: true
     });
