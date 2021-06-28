@@ -107,12 +107,18 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }));
 
+export interface SFAutcompleteLocationResult {
+  text: string;
+  placeId?: string;
+}
+
 export interface SFAutcompleteLocationProps {
   label: string;
-  value: string;
+  value: SFAutcompleteLocationResult;
   disabled?: boolean;
   currentLocation?: boolean;
-  onChange: (value: string) => void;
+  currentLocationType?: 'street_address' | 'route';
+  onChange: (value: SFAutcompleteLocationResult) => void;
 }
 
 export const SFAutcompleteLocation = ({
@@ -120,6 +126,7 @@ export const SFAutcompleteLocation = ({
   value,
   disabled = false,
   currentLocation = false,
+  currentLocationType = 'route',
   onChange
 }: SFAutcompleteLocationProps): React.ReactElement<SFAutcompleteLocationProps> => {
   const classes = useStyles();
@@ -148,7 +155,7 @@ export const SFAutcompleteLocation = ({
 
   const fetchOptions = (): void =>
     getPredictions(
-      { input: value },
+      { input: value.text },
       (results: google.maps.places.AutocompletePrediction[]) => {
         setOptions(results || []);
       }
@@ -165,7 +172,7 @@ export const SFAutcompleteLocation = ({
       autocompleteService.current = new window.google.maps.places.AutocompleteService();
 
       if (
-        (!value || value.length === 0) &&
+        (!value || !value.text || value.text.length === 0) &&
         currentLocation &&
         navigator.geolocation
       ) {
@@ -188,10 +195,30 @@ export const SFAutcompleteLocation = ({
                 status: google.maps.GeocoderStatus
               ) => {
                 if (status === 'OK') {
-                  if (results[0]) {
-                    const address: string = results[0].formatted_address;
-                    setSelectedOption({ description: address });
-                    onChange(address);
+                  const result:
+                    | google.maps.GeocoderResult
+                    | undefined = results.find(
+                    (result: google.maps.GeocoderResult) => {
+                      console.log(
+                        currentLocationType,
+                        result.types,
+                        result.types.indexOf(currentLocationType) !== -1
+                      );
+                      return result.types.indexOf(currentLocationType) !== -1;
+                    }
+                  );
+
+                  if (result) {
+                    setSelectedOption({
+                      description: result.formatted_address,
+                      // eslint-disable-next-line
+                      place_id: result.place_id
+                    });
+
+                    onChange({
+                      text: result.formatted_address,
+                      placeId: result.place_id
+                    });
                   } else {
                     console.error('Geocoder: no results found');
                   }
@@ -207,7 +234,7 @@ export const SFAutcompleteLocation = ({
           onLocationSuccess,
           onLocationError
         );
-      } else if (value.length > 0) {
+      } else if (value.text && value.text.length > 0) {
         fetchOptions();
       }
     } else {
@@ -216,7 +243,7 @@ export const SFAutcompleteLocation = ({
   }, []);
 
   React.useEffect(() => {
-    if (value.length > 0) {
+    if (value.text && value.text.length > 0) {
       fetchOptions();
     } else {
       setOptions([]);
@@ -233,7 +260,10 @@ export const SFAutcompleteLocation = ({
   ): void => {
     if (newValue) {
       setSelectedOption(newValue);
-      onChange(newValue.description);
+      onChange({
+        text: newValue.description,
+        placeId: newValue.place_id
+      });
     }
   };
 
@@ -243,7 +273,7 @@ export const SFAutcompleteLocation = ({
     reason: string
   ): void => {
     if (reason !== 'reset') {
-      onChange(newValue);
+      onChange({ text: newValue });
     }
   };
 
@@ -302,7 +332,7 @@ export const SFAutcompleteLocation = ({
       popupIcon={null}
       closeIcon={<SFIcon icon='Close' size='16' />}
       value={selectedOption}
-      inputValue={value}
+      inputValue={value.text}
       onChange={onAutocompleteChange}
       onInputChange={onInputChange}
       getOptionLabel={getOptionLabel}

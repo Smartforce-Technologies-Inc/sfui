@@ -2,7 +2,8 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import {
   SFAutcompleteLocation,
-  SFAutcompleteLocationProps
+  SFAutcompleteLocationProps,
+  SFAutcompleteLocationResult
 } from './SFAutcompleteLocation';
 
 export default {
@@ -31,27 +32,55 @@ export default {
   }
 } as Meta;
 
-const Template: Story<SFAutcompleteLocationProps> = (args) => (
-  <SFAutcompleteLocation {...args} />
+const Template: Story = ({ text, ...args }) => (
+  <SFAutcompleteLocation
+    {...(args as SFAutcompleteLocationProps)}
+    value={{
+      text
+    }}
+  />
 );
 
 export const Default = Template.bind({});
-Default.args = {
-  value: 'Leloir 949'
+Default.argTypes = {
+  text: {
+    defaultValue: 'Leloir',
+    control: {
+      type: 'text'
+    }
+  },
+  currentLocationType: {
+    table: {
+      disable: true
+    }
+  },
+  value: {
+    table: {
+      disable: true
+    }
+  }
 };
 
 export const CurrentLocation: Story<SFAutcompleteLocationProps> = (args) => {
-  const [value, setValue] = React.useState<string>('');
+  const [value, setValue] = React.useState<SFAutcompleteLocationResult>({
+    text: ''
+  });
+
+  const onChange = (newValue: SFAutcompleteLocationResult): void => {
+    setValue(newValue);
+    args.onChange(newValue);
+  };
 
   return (
     <SFAutcompleteLocation
       {...args}
       currentLocation
       value={value}
-      onChange={(newValue: string): void => setValue(newValue)}
+      onChange={onChange}
     />
   );
 };
+
 CurrentLocation.argTypes = {
   value: {
     table: {
