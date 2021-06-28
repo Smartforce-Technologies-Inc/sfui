@@ -53,6 +53,11 @@ const StyledDatePicker = withStyles((theme: Theme) => ({
       },
       '& .MuiFilledInput-adornedEnd': {
         paddingRight: '11px'
+      },
+      '& .MuiInputLabel-filled': {
+        '&.MuiInputLabel-shrink': {
+          color: theme.palette.type === 'light' ? SFBlue[500] : SFBlue[200]
+        }
       }
     },
 
@@ -79,7 +84,7 @@ const StyledDatePicker = withStyles((theme: Theme) => ({
         }`
       },
 
-      '&:active': {
+      '&.Mui-focused': {
         border: `2px solid ${
           theme.palette.type === 'light' ? SFBlue[500] : SFBlue[200]
         }`,
@@ -87,15 +92,8 @@ const StyledDatePicker = withStyles((theme: Theme) => ({
         '& .MuiFilledInput-input': {
           padding: '26px 10px 7px'
         },
-
-        '&.MuiFilledInput-adornedEnd': {
-          paddingRight: '11px'
-        }
-      },
-
-      '&.Mui-focused': {
-        '& .MuiFilledInput-input': {
-          padding: '26px 11px 7px'
+        '& .MuiInputAdornment-root': {
+          marginRight: '-1px'
         }
       },
 
@@ -168,7 +166,11 @@ const StyledDatePicker = withStyles((theme: Theme) => ({
         fontSize: '14px',
         lineHeight: '20px',
         transform: `translate(12px, 6px)`,
-        color: `${theme.palette.type === 'light' ? SFGrey[400] : SFGrey[600]}`
+        color: `${theme.palette.type === 'light' ? SFGrey[400] : SFGrey[600]}`,
+
+        '&.Mui-focused': {
+          color: theme.palette.type === 'light' ? SFBlue[500] : SFBlue[200]
+        }
       },
 
       '&.Mui-error': {
@@ -226,7 +228,6 @@ export const SFDatePicker = ({
           anchorOrigin: { vertical: 'bottom', horizontal: 'left' },
           transformOrigin: { vertical: 'top', horizontal: 'left' }
         }}
-        InputProps={{ readOnly: true }}
         rightArrowButtonProps={{ classes: arrowStyle }}
         rightArrowIcon={<SFIcon icon='Right-2' size='10' />}
         leftArrowButtonProps={{ classes: arrowStyle }}
