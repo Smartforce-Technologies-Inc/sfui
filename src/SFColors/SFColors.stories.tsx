@@ -260,7 +260,7 @@ const ColorsConstTemplate: Story = () => {
       </p>
 
       <div className={styles.code}>
-        <code>import {'{SFColor, Another Color}'} from 'sfui';</code>
+        <code>@import {'{SFColor, Another Color}'} from 'sfui';</code>
         <br />
         <code>{'<div style={{color: SFColor}}></div>'}</code>
       </div>
