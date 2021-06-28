@@ -4,7 +4,6 @@ import { SFChip } from '../../SFChip/SFChip';
 
 export interface SFChipListRenderProps {
   values: ChipFieldValueType[];
-  valuesLabel: string;
   isChipFullWidth: boolean;
   chipSize: 'small' | 'medium';
   disabled: boolean;

@@ -86,7 +86,6 @@ export interface SFChipsListFieldProps {
   emptyMessage?: string;
   label: string;
   options?: string[];
-  itemsLabel: string;
   items?: ChipFieldValueType[];
   delimiters: string;
   freeSolo: boolean;
@@ -100,7 +99,6 @@ export const SFChipsListField = ({
   emptyMessage,
   label = '',
   options = [],
-  itemsLabel,
   items = [],
   delimiters = ';',
   freeSolo = false,
@@ -243,7 +241,6 @@ export const SFChipsListField = ({
         {savedValues().length !== 0 && (
           <SFChipListRender
             values={savedValues()}
-            valuesLabel={itemsLabel}
             isChipFullWidth={chipDisplay === 'block'}
             chipSize={chipSize}
             disabled={disabled}
@@ -262,7 +259,6 @@ export const SFChipsListField = ({
     <FormControl fullWidth>
       <SFChipListModal
         value={editedValue}
-        label={itemsLabel}
         open={isModalOpen}
         onEdit={editValue}
         onClose={(): void => setIsModalOpen(false)}
@@ -288,7 +284,6 @@ export const SFChipsListField = ({
             isChipFullWidth={false}
             chipSize='small'
             values={value}
-            valuesLabel={itemsLabel}
             disabled={disabled}
             onDelete={deleteValue}
             onEdit={onEdit}

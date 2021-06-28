@@ -6,7 +6,6 @@ import { ChipFieldValueType } from '../SFChipsListField';
 export interface SFChipListModalProps {
   value: ChipFieldValueType | undefined;
   open: boolean;
-  label?: string;
   onEdit: (
     prevoiusValue: ChipFieldValueType,
     value: ChipFieldValueType
@@ -16,7 +15,6 @@ export interface SFChipListModalProps {
 
 export const SFChipListModal = ({
   value,
-  label,
   open,
   onEdit,
   onClose
@@ -44,7 +42,7 @@ export const SFChipListModal = ({
 
   return (
     <SFAlert
-      title={`Edit ${label}`}
+      title='Edit item'
       rightAction={{
         label: 'Done',
         buttonProps: {
@@ -59,10 +57,10 @@ export const SFChipListModal = ({
         }
       }}
       open={open}
-      content={`To edit this ${label}, please enter the new one here.`}
+      content='To edit this item, please enter the new one here.'
     >
       <SFTextField
-        label={label}
+        label='Item'
         value={editedValue && editedValue.value}
         onChange={(input: React.ChangeEvent<HTMLInputElement>): void =>
           onInputChange(input)
