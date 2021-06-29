@@ -1,7 +1,7 @@
 import React from 'react';
 import { Theme, withStyles, makeStyles } from '@material-ui/core/styles';
 import { Autocomplete, AutocompleteRenderInputParams } from '@material-ui/lab';
-import throttle from 'lodash/throttle';
+import throttle from 'lodash.throttle';
 import parse from 'autosuggest-highlight/parse';
 import { SFIcon } from '../SFIcon/SFIcon';
 import { SFTextField } from '../SFTextField/SFTextField';
