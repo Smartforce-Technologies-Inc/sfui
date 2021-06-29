@@ -88,7 +88,7 @@ export interface SFSplitButtonProps {
   defaultSelected?: number;
   variant: 'outlined' | 'contained';
   sfColor: 'blue' | 'grey';
-  size: 'medium' | 'large';
+  size?: 'medium' | 'large';
 }
 
 export const SFSplitButton = ({
