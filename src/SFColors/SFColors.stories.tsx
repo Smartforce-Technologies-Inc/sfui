@@ -63,48 +63,56 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const lightMainColors: MainColor[] = [
   {
-    name: 'Primary Main',
+    name: 'SFBlueMainLight',
     shade: '500',
     bgColor: SFBlueMainLight,
     textColor: SFTextWhite
   },
   {
-    name: 'Error Main',
+    name: 'SFRedMainLight',
     shade: '700',
     bgColor: SFRedMainLight,
     textColor: SFTextWhite
   },
   {
-    name: 'Neutral Main',
+    name: 'SFGreyMainLight',
     shade: '600',
     bgColor: SFGreyMainLight,
     textColor: SFTextWhite
   },
-  { name: 'Background', bgColor: SFBackgroundLight, textColor: SFTextBlack },
-  { name: 'Surface', bgColor: SFSurfaceLight, textColor: SFTextBlack }
+  {
+    name: 'SFBackgroundLight',
+    bgColor: SFBackgroundLight,
+    textColor: SFTextBlack
+  },
+  { name: 'SFSurfaceLight', bgColor: SFSurfaceLight, textColor: SFTextBlack }
 ];
 
 const darkMainColors: MainColor[] = [
   {
-    name: 'Primary Main',
+    name: 'SFBlueMainDark',
     shade: '200',
     bgColor: SFBlueMainDark,
     textColor: SFTextBlack
   },
   {
-    name: 'Error Main',
+    name: 'SFRedMainDark',
     shade: '200',
     bgColor: SFRedMainDark,
     textColor: SFTextBlack
   },
   {
-    name: 'Neutral Main',
+    name: 'SFGreyMainDark',
     shade: '900',
     bgColor: SFGreyMainDark,
     textColor: SFTextBlack
   },
-  { name: 'Background', bgColor: SFBackgroundDark, textColor: SFTextWhite },
-  { name: 'Surface', bgColor: SFSurfaceDark, textColor: SFTextWhite }
+  {
+    name: 'SFBackgroundDark',
+    bgColor: SFBackgroundDark,
+    textColor: SFTextWhite
+  },
+  { name: 'SFSurfaceDark', bgColor: SFSurfaceDark, textColor: SFTextWhite }
 ];
 
 const Template: Story = () => (
@@ -260,7 +268,7 @@ const ColorsConstTemplate: Story = () => {
       </p>
 
       <div className={styles.code}>
-        <code>import {'{SFColor, Another Color}'} from 'sfui';</code>
+        <code>@import {'{SFColor, Another Color}'} from 'sfui';</code>
         <br />
         <code>{'<div style={{color: SFColor}}></div>'}</code>
       </div>
