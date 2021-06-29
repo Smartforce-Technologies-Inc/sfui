@@ -117,7 +117,7 @@ export interface SFAutcompleteLocationProps {
   value: SFAutcompleteLocationResult;
   disabled?: boolean;
   currentLocation?: boolean;
-  currentLocationType?: 'street_address' | 'route';
+  currentLocationType?: 'address' | 'route';
   onChange: (value: SFAutcompleteLocationResult) => void;
 }
 
@@ -195,16 +195,15 @@ export const SFAutcompleteLocation = ({
                 status: google.maps.GeocoderStatus
               ) => {
                 if (status === 'OK') {
+                  const locationType = `${
+                    currentLocationType === 'address' ? 'street_' : ''
+                  }${currentLocationType}`;
+
                   const result:
                     | google.maps.GeocoderResult
                     | undefined = results.find(
                     (result: google.maps.GeocoderResult) => {
-                      console.log(
-                        currentLocationType,
-                        result.types,
-                        result.types.indexOf(currentLocationType) !== -1
-                      );
-                      return result.types.indexOf(currentLocationType) !== -1;
+                      return result.types.indexOf(locationType) !== -1;
                     }
                   );
 
@@ -284,7 +283,7 @@ export const SFAutcompleteLocation = ({
   const renderOption = (
     option: google.maps.places.AutocompletePrediction
   ): React.ReactNode => {
-    let matches = [];
+    let matches: google.maps.places.PredictionSubstring[] = [];
     let parts: TextPart[] = [];
 
     if (option.structured_formatting) {
