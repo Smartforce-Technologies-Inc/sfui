@@ -114,7 +114,6 @@ export default {
   component: SFChipsListField,
   args: {
     label: 'Bagel',
-    itemsLabel: 'Bagel',
     items: [],
     delimiters: ';'
   },
