@@ -23,7 +23,7 @@ export const SFChipListRender = ({
     <Fragment>
       {values.map((input: ChipFieldValueType, index: number) => (
         <SFChip
-          key={index}
+          key={`${input.value}-${index}`}
           fullWidth={isChipFullWidth}
           deleteable
           clickable
