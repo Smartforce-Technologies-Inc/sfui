@@ -19,25 +19,25 @@ export const SFChipListModal = ({
   onEdit,
   onClose
 }: SFChipListModalProps): React.ReactElement<SFChipListModalProps> => {
-  const [editedValue, setEditedValue] = React.useState<
-    ChipFieldValueType | undefined
-  >(value);
+  const [editedValue, setEditedValue] = React.useState<string>(
+    value?.value || ''
+  );
 
   const onInputChange = (input: React.ChangeEvent<HTMLInputElement>): void => {
-    setEditedValue({
-      value: input.target.value,
-      isNew: (value as ChipFieldValueType).isNew,
-      hasChanged: true
-    });
+    setEditedValue(input.target.value);
   };
 
   const onFinishEdition = (): void => {
-    onEdit(value as ChipFieldValueType, editedValue as ChipFieldValueType);
+    onEdit(value as ChipFieldValueType, {
+      value: editedValue,
+      isNew: value?.isNew,
+      hasChanged: true
+    });
     onClose();
   };
 
   React.useEffect(() => {
-    setEditedValue(value);
+    setEditedValue(value ? value.value : '');
   }, [value]);
 
   return (
@@ -46,7 +46,7 @@ export const SFChipListModal = ({
       rightAction={{
         label: 'Done',
         buttonProps: {
-          disabled: value === editedValue,
+          disabled: value?.value === editedValue,
           onClick: (): void => onFinishEdition()
         }
       }}
@@ -61,7 +61,7 @@ export const SFChipListModal = ({
     >
       <SFTextField
         label='Item'
-        value={editedValue && editedValue.value}
+        value={editedValue}
         onChange={(input: React.ChangeEvent<HTMLInputElement>): void =>
           onInputChange(input)
         }
