@@ -88,13 +88,15 @@ export interface SFSplitButtonProps {
   defaultSelected?: number;
   variant: 'outlined' | 'contained';
   sfColor: 'blue' | 'grey';
+  size?: 'medium' | 'large';
 }
 
 export const SFSplitButton = ({
   options,
   defaultSelected = 0,
   variant = 'contained',
-  sfColor = 'blue'
+  sfColor = 'blue',
+  size = 'medium'
 }: SFSplitButtonProps): React.ReactElement<SFSplitButtonProps> => {
   const classes = useStyles({ variant, sfColor });
 
@@ -129,6 +131,7 @@ export const SFSplitButton = ({
       <StyledButtonGroup ref={refMenu} variant={variant} size='medium'>
         <SFButton
           sfColor={sfColor}
+          size={size}
           onClick={options[selectedItemIndex].onClick}
         >
           {options[selectedItemIndex].label}
@@ -137,6 +140,7 @@ export const SFSplitButton = ({
         <SFButton
           sfColor={sfColor}
           className={classes.iconButton}
+          size={size}
           aria-controls={isMenuOpen ? 'split-button-menu' : undefined}
           aria-expanded={isMenuOpen ? 'true' : undefined}
           aria-haspopup='menu'

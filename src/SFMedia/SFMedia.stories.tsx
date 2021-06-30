@@ -1,18 +1,26 @@
 import React from 'react';
-import { makeStyles, createStyles } from '@material-ui/core/styles';
+import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 
 import { Story, Meta } from '@storybook/react/types-6-0';
+import { SFBlueMainLight, SFBlueMainDark } from '../SFColors/SFColors';
 import { SFMedia } from './SFMedia';
 
 export default {
   title: 'Theme/SFMedia'
 } as Meta;
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme: Theme) => ({
   container: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 30 },
   media: { display: 'grid', gridTemplateColumns: '1fr 1fr' },
-  value: { textAlign: 'right' }
-});
+  value: { textAlign: 'right' },
+  code: {
+    padding: '4px 12px',
+    borderLeft: `1px solid ${
+      theme.palette.type === 'light' ? SFBlueMainLight : SFBlueMainDark
+    }`,
+    fontSize: '14px'
+  }
+}));
 
 export const BreakpointsEnum: Story = () => {
   const classes = useStyles();
@@ -26,11 +34,11 @@ export const BreakpointsEnum: Story = () => {
         imported from the library.
       </p>
 
-      <code>{`import { SFMedia } from 'sfui';`}</code>
-      <br />
-      <br />
-      <code>const extra_small_width = SFMedia.XS_WIDTH</code>
-
+      <div className={classes.code}>
+        <code>{`@import { SFMedia } from 'sfui';`}</code>
+        <br />
+        <code>const extra_small_width = SFMedia.XS_WIDTH</code>
+      </div>
       <div className={classes.container}>
         <div>
           <h3>Extra Small</h3>
@@ -108,10 +116,11 @@ export const SassVariables: Story = () => {
         imported from the library into a sass module.
       </p>
 
-      <code>@import '~sfui/dist/styles/SFMedia/SFMedia.module.scss';</code>
-      <br />
-      <br />
-      <code>{'@media screen and (min-width: $sf-media-xs-width) {  }'}</code>
+      <div className={classes.code}>
+        <code>@import '~sfui/dist/styles/SFMedia/SFMedia.module.scss';</code>
+        <br />
+        <code>{'@media screen and (min-width: $sf-media-xs-width) {  }'}</code>
+      </div>
 
       <div className={classes.container}>
         <div>
