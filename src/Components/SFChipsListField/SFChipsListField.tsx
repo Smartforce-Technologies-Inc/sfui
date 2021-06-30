@@ -70,6 +70,10 @@ const chipsDisplay = makeStyles({
     flexDirection: 'row'
   },
   chipDisplayBlock: {
+    display: 'flex',
+    gap: '8px',
+    marginTop: '14px',
+    flexWrap: 'wrap',
     flexDirection: 'column'
   }
 });
@@ -111,11 +115,13 @@ export const SFChipsListField = ({
   const [inputValue, setInputValue] = React.useState<string>('');
   const { chipDisplayInline, chipDisplayBlock } = chipsDisplay();
 
-  const savedValues = (): ChipFieldValueType[] =>
-    items.filter((item: ChipFieldValueType) => item.isNew !== true);
+  const savedValues: ChipFieldValueType[] = items.filter(
+    (item: ChipFieldValueType) => item.isNew !== true
+  );
 
-  const inputValues = (): ChipFieldValueType[] =>
-    items.filter((item: ChipFieldValueType) => item.isNew === true);
+  const inputValues: ChipFieldValueType[] = items.filter(
+    (item: ChipFieldValueType) => item.isNew === true
+  );
 
   const addValue = (input: ChipFieldValueType[]): void => {
     const values: ChipFieldValueType[] = [...items, ...input];
@@ -154,12 +160,10 @@ export const SFChipsListField = ({
   };
 
   const filteredOptions = (options: string[]): string[] => {
-    if (savedValues().length !== 0) {
+    if (savedValues.length !== 0) {
       return options.filter(
         (option: string) =>
-          !savedValues().find(
-            (item: ChipFieldValueType) => item.value === option
-          )
+          !savedValues.find((item: ChipFieldValueType) => item.value === option)
       );
     } else {
       return options;
@@ -178,7 +182,7 @@ export const SFChipsListField = ({
         setIsPopperOpen(false);
       }
     } else {
-      setInputValue(value.replace(/\n/g, ''));
+      setInputValue(value);
       setIsPopperOpen(true);
       if ((event as InputEvent).inputType === 'insertLineBreak') {
         (event as InputEvent).preventDefault();
@@ -199,7 +203,7 @@ export const SFChipsListField = ({
                 options
                   .filter(
                     (option: string) =>
-                      !savedValues().find(
+                      !savedValues.find(
                         (item: ChipFieldValueType) => item.value === option
                       )
                   )
@@ -225,7 +229,7 @@ export const SFChipsListField = ({
     reason: AutocompleteChangeReason
   ): void => {
     if (reason === 'select-option' || reason === 'create-option') {
-      addValue([{ value: value[value.length - 1], isNew: true }]);
+      addValue([{ value: value[value.length - 1].trim(), isNew: true }]);
       setIsPopperOpen(false);
       setInputValue('');
     }
@@ -234,13 +238,13 @@ export const SFChipsListField = ({
   const DisplayValues = (): JSX.Element => {
     return (
       <div
-        className={`${chipDisplayInline} ${
-          chipDisplay === 'block' ? chipDisplayBlock : ''
+        className={` ${
+          chipDisplay === 'block' ? chipDisplayBlock : chipDisplayInline
         }`}
       >
-        {savedValues().length !== 0 && (
+        {savedValues.length !== 0 && (
           <SFChipListRender
-            values={savedValues()}
+            values={savedValues}
             isChipFullWidth={chipDisplay === 'block'}
             chipSize={chipSize}
             disabled={disabled}
@@ -248,7 +252,7 @@ export const SFChipsListField = ({
             onEdit={onEdit}
           />
         )}
-        {emptyMessage && (!savedValues || savedValues().length === 0) && (
+        {emptyMessage && (!savedValues || savedValues.length === 0) && (
           <p>{emptyMessage}</p>
         )}
       </div>
@@ -267,7 +271,7 @@ export const SFChipsListField = ({
         disabled={disabled}
         options={filteredOptions(options)}
         multiple
-        value={inputValues()}
+        value={inputValues}
         inputValue={inputValue}
         onChange={onAutoCompleteChange}
         onInputChange={onInputChange}
