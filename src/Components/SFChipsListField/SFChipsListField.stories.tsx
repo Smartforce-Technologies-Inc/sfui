@@ -115,7 +115,7 @@ export default {
   args: {
     label: 'Bagel',
     items: [],
-    delimiters: ';'
+    delimiter: ','
   },
   argTypes: {
     onChange: {
@@ -157,16 +157,14 @@ export const WithItems = Template.bind({});
 export const WithOptionsAndItems = Template.bind({});
 
 WithOptions.args = {
-  label: 'Movies Selected',
+  label: 'Movies',
   emptyMessage: 'No movies saved...',
-  itemsLabel: 'Movies',
   options: ChipListOptions
 };
 
 WithItems.args = {
-  label: 'Movies Selected',
+  label: 'Movies',
   emptyMessage: 'No movies saved...',
-  itemsLabel: 'Movies',
   items: [
     { value: 'This War of Mine' },
     { value: 'Back to the Future' },
@@ -178,9 +176,8 @@ WithItems.args = {
 };
 
 WithOptionsAndItems.args = {
-  label: 'Movies Selected',
+  label: 'Movies',
   emptyMessage: 'No movies saved...',
-  itemsLabel: 'Movies',
   items: [
     { value: 'This War of Mine' },
     { value: 'Back to the Future' },

@@ -91,7 +91,7 @@ export interface SFChipsListFieldProps {
   label: string;
   options?: string[];
   items?: ChipFieldValueType[];
-  delimiters: string;
+  delimiter: string;
   freeSolo: boolean;
   disabled: boolean;
   onChange: (newItems: ChipFieldValueType[]) => void;
@@ -104,7 +104,7 @@ export const SFChipsListField = ({
   label = '',
   options = [],
   items = [],
-  delimiters = ';',
+  delimiter = ',',
   freeSolo = false,
   disabled = false,
   onChange
@@ -188,15 +188,14 @@ export const SFChipsListField = ({
         (event as InputEvent).preventDefault();
         const insertedValues: string[] = value
           .replace(/\n/g, '')
-          .trim()
-          .split(`/[${delimiters}]+/`);
+          .split(`${delimiter}`);
         let valuesToAdd: ChipFieldValueType[] = [];
         insertedValues.forEach((insertedValue: string) => {
           if (insertedValue !== '') {
             if (options.length === 0) {
               valuesToAdd = [
                 ...valuesToAdd,
-                { value: insertedValue, isNew: true }
+                { value: insertedValue.trim(), isNew: true }
               ];
             } else {
               if (
@@ -207,11 +206,11 @@ export const SFChipsListField = ({
                         (item: ChipFieldValueType) => item.value === option
                       )
                   )
-                  .find((option) => option === insertedValue)
+                  .find((option) => option === insertedValue.trim())
               ) {
                 valuesToAdd = [
                   ...valuesToAdd,
-                  { value: insertedValue, isNew: true }
+                  { value: insertedValue.trim(), isNew: true }
                 ];
               }
             }
@@ -229,7 +228,17 @@ export const SFChipsListField = ({
     reason: AutocompleteChangeReason
   ): void => {
     if (reason === 'select-option' || reason === 'create-option') {
-      addValue([{ value: value[value.length - 1].trim(), isNew: true }]);
+      const values: string[] = value[value.length - 1].split(`${delimiter}`);
+      let currentValues: ChipFieldValueType[] = [];
+      values.forEach((value: string) => {
+        if (value.trim() !== '') {
+          currentValues = [
+            ...currentValues,
+            { value: value.trim(), isNew: true }
+          ];
+        }
+      });
+      addValue(currentValues);
       setIsPopperOpen(false);
       setInputValue('');
     }
