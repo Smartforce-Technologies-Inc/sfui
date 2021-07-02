@@ -123,6 +123,15 @@ export const SFChipsListField = ({
     (item: ChipFieldValueType) => item.isNew === true
   );
 
+  const isValueInOptions = (value: string): string | undefined => {
+    return options
+      .filter(
+        (option: string) =>
+          !savedValues.find((item: ChipFieldValueType) => item.value === option)
+      )
+      .find((option) => option === value);
+  };
+
   const addValue = (input: ChipFieldValueType[]): void => {
     const values: ChipFieldValueType[] = [...items, ...input];
     onChange(values);
@@ -191,23 +200,14 @@ export const SFChipsListField = ({
           .split(`${delimiter}`);
         let valuesToAdd: ChipFieldValueType[] = [];
         insertedValues.forEach((insertedValue: string) => {
-          if (insertedValue !== '') {
+          if (insertedValue.trim() !== '') {
             if (options.length === 0) {
               valuesToAdd = [
                 ...valuesToAdd,
                 { value: insertedValue.trim(), isNew: true }
               ];
             } else {
-              if (
-                options
-                  .filter(
-                    (option: string) =>
-                      !savedValues.find(
-                        (item: ChipFieldValueType) => item.value === option
-                      )
-                  )
-                  .find((option) => option === insertedValue.trim())
-              ) {
+              if (isValueInOptions(insertedValue.trim())) {
                 valuesToAdd = [
                   ...valuesToAdd,
                   { value: insertedValue.trim(), isNew: true }
