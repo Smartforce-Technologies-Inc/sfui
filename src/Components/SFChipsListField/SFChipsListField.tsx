@@ -228,17 +228,32 @@ export const SFChipsListField = ({
     reason: AutocompleteChangeReason
   ): void => {
     if (reason === 'select-option' || reason === 'create-option') {
-      const values: string[] = value[value.length - 1].split(`${delimiter}`);
-      let currentValues: ChipFieldValueType[] = [];
-      values.forEach((value: string) => {
-        if (value.trim() !== '') {
-          currentValues = [
-            ...currentValues,
-            { value: value.trim(), isNew: true }
-          ];
-        }
-      });
-      addValue(currentValues);
+      if (typeof value[value.length - 1] === 'string') {
+        const currentValue: string = value[value.length - 1];
+        const values: string[] = currentValue.split(`${delimiter}`);
+        let currentValues: ChipFieldValueType[] = [];
+        values.forEach((value: string) => {
+          if (value.trim() !== '') {
+            const matchValue: string | undefined = options.find(
+              (option) => option.toLowerCase() === value.trim().toLowerCase()
+            );
+            if (matchValue) {
+              if (items.findIndex((item) => item.value === matchValue) === -1) {
+                currentValues = [
+                  ...currentValues,
+                  { value: matchValue, isNew: true }
+                ];
+              }
+            } else {
+              currentValues = [
+                ...currentValues,
+                { value: value.trim(), isNew: true }
+              ];
+            }
+          }
+        });
+        addValue(currentValues);
+      }
       setIsPopperOpen(false);
       setInputValue('');
     }
