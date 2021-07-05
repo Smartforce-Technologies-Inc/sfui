@@ -127,9 +127,9 @@ export const SFChipsListField = ({
     return options
       .filter(
         (option: string) =>
-          !savedValues.find((item: ChipFieldValueType) => item.value === option)
+          !items.find((item: ChipFieldValueType) => item.value === option)
       )
-      .find((option) => option === value);
+      .find((option) => option.toLowerCase() === value.toLowerCase());
   };
 
   const addValue = (input: ChipFieldValueType[]): void => {
@@ -207,10 +207,11 @@ export const SFChipsListField = ({
                 { value: insertedValue.trim(), isNew: true }
               ];
             } else {
-              if (isValueInOptions(insertedValue.trim())) {
+              const valueOption = isValueInOptions(insertedValue.trim());
+              if (valueOption) {
                 valuesToAdd = [
                   ...valuesToAdd,
-                  { value: insertedValue.trim(), isNew: true }
+                  { value: valueOption, isNew: true }
                 ];
               }
             }
