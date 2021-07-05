@@ -195,9 +195,13 @@ export const SFChipsListField = ({
       setIsPopperOpen(true);
       if ((event as InputEvent).inputType === 'insertLineBreak') {
         (event as InputEvent).preventDefault();
-        const insertedValues: string[] = value
-          .replace(/\n/g, '')
-          .split(`${delimiter}`);
+        let insertedValues: string[] = [];
+        if (delimiter) {
+          insertedValues = value.replace(/\n/g, '').split(`${delimiter}`);
+        } else {
+          insertedValues = [value.replace(/\n/g, '')];
+        }
+
         let valuesToAdd: ChipFieldValueType[] = [];
         insertedValues.forEach((insertedValue: string) => {
           if (insertedValue.trim() !== '') {
@@ -231,7 +235,9 @@ export const SFChipsListField = ({
     if (reason === 'select-option' || reason === 'create-option') {
       if (typeof value[value.length - 1] === 'string') {
         const currentValue: string = value[value.length - 1];
-        const values: string[] = currentValue.split(`${delimiter}`);
+        const values: string[] = delimiter
+          ? currentValue.split(`${delimiter}`)
+          : [currentValue];
         let currentValues: ChipFieldValueType[] = [];
         values.forEach((value: string) => {
           if (value.trim() !== '') {
