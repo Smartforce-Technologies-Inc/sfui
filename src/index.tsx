@@ -3,6 +3,7 @@ export * from './Components/SFAutocomplete/SFAutocomplete';
 export * from './Components/SFButton/SFButton';
 export * from './Components/SFCard/SFCard';
 export * from './Components/SFChip/SFChip';
+export * from './Components/SFChipsListField/SFChipsListField';
 export * from './Components/SFCheckbox/SFCheckbox';
 export * from './Components/SFDatePicker/SFDatePicker';
 export * from './Components/SFDialog/SFDialog';
