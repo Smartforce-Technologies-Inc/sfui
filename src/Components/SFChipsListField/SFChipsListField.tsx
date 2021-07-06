@@ -91,9 +91,9 @@ export interface SFChipsListFieldProps {
   label: string;
   options?: string[];
   items?: ChipFieldValueType[];
-  delimiter: ',' | ';' | undefined;
-  freeSolo: boolean;
-  disabled: boolean;
+  delimiter?: ',' | ';';
+  freeSolo?: boolean;
+  disabled?: boolean;
   onChange: (newItems: ChipFieldValueType[]) => void;
 }
 
@@ -101,7 +101,7 @@ export const SFChipsListField = ({
   chipSize = 'small',
   chipDisplay = 'inline',
   emptyMessage,
-  label = '',
+  label,
   options = [],
   items = [],
   delimiter = undefined,
