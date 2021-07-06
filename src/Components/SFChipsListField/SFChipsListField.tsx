@@ -193,8 +193,8 @@ export const SFChipsListField = ({
     } else {
       setInputValue(value);
       setIsPopperOpen(true);
-      if ((event as InputEvent).inputType === 'insertLineBreak') {
-        (event as InputEvent).preventDefault();
+      if ((_event.nativeEvent as InputEvent).inputType === 'insertLineBreak') {
+        _event.preventDefault();
         let insertedValues: string[] = [];
         if (delimiter) {
           insertedValues = value.replace(/\n/g, '').split(`${delimiter}`);
