@@ -1,8 +1,12 @@
 import React from 'react';
 
+import { SFAutocompleteView } from '../AutocompleteView/AutocompleteView';
+import { SFAutoCompleteLocationView } from '../AutocompleteLocationView/AutocompleteLocationView';
+import { SFAutocompleteChipsView } from '../AutocompleteChipsView/AutocompleteChipsView';
 import { SFButtonsView } from '../ButtonsView/ButtonsView';
 import { SFCheckboxesView } from '../CheckboxesView/CheckboxesView';
 import { SFChipsView } from '../ChipView/ChipView';
+import { SFChipsFieldView } from '../ChipsFieldView/ChipsFieldView';
 import { SFDatePickerView } from '../DatePickerView/DatePickerView';
 import { SFDialogsView } from '../DialogsView/DialogsView';
 import { SFDrawersView } from '../DrawersView/DrawersView';
@@ -14,6 +18,7 @@ import { SFRadioGroupView } from '../RadioGroupView/RadioGroupView';
 import { SFSpinnerView } from '../SpinnerView/SpinnerView';
 import { SFSplitButtonView } from '../SplitButtonView/SplitButtonView';
 import { SFSelectView } from '../SelectView/SelectView';
+import { SFTimeFieldView } from '../TimeInputView/TimeInputView';
 import { SFSwitchesView } from '../SwitchesView/SwitchesView';
 import { SFTextFieldsView } from '../TextFieldsView/TextFieldsView';
 import { SFTextFieldsMultilineView } from '../TextFieldsMultilineView/TextFieldsMultilineView';
@@ -81,8 +86,8 @@ export const ComponentsPage = (): JSX.Element => {
       </div>
       <div className='content'>
         <div className='section'>
-          <h4 className='title'>Text Field</h4>
-          <SFTextFieldsView />
+          <h4 className='title'>Time Picker</h4>
+          <SFTimeFieldView />
         </div>
         <div className='section'>
           <h4 className='title'>Date Picker</h4>
@@ -91,8 +96,32 @@ export const ComponentsPage = (): JSX.Element => {
       </div>
       <div className='content'>
         <div className='section'>
+          <h4 className='title'>Text Field</h4>
+          <SFTextFieldsView />
+        </div>
+        <div className='section'>
           <h4 className='title'>Text Field Multiline</h4>
           <SFTextFieldsMultilineView />
+        </div>
+      </div>
+      <div className='content'>
+        <div className='section'>
+          <h4 className='title'>Chips Field</h4>
+          <SFChipsFieldView />
+        </div>
+        <div className='section'>
+          <h4 className='title'>Autocomplete Chips</h4>
+          <SFAutocompleteChipsView />
+        </div>
+      </div>
+      <div className='content'>
+        <div className='section'>
+          <h4 className='title'>Autocomplete Text</h4>
+          <SFAutocompleteView />
+        </div>
+        <div className='section'>
+          <h4 className='title'>Autocomplete Location</h4>
+          <SFAutoCompleteLocationView />
         </div>
       </div>
       <div className='content'>
