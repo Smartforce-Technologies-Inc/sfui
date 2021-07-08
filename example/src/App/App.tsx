@@ -4,6 +4,7 @@ import {
   SFThemeProvider,
   createSFTheme,
   SFTheme,
+  SFThemeType,
   SFPaper,
   SFSwitch,
   useSFMediaQuery,
@@ -13,6 +14,16 @@ import {
 
 import { ComponentsPage } from './Pages/ComponentsPage';
 import { DemosPage } from './Pages/DemosPage';
+
+const setThemeType = (theme: SFThemeType): void => {
+  localStorage.setItem('Smartforce.SFuiExample.ThemeType', theme);
+};
+
+const getThemeType = (): SFThemeType | undefined => {
+  return localStorage.getItem('Smartforce.SFuiExample.ThemeType') as
+    | SFThemeType
+    | undefined;
+};
 
 const App = (): JSX.Element => {
   const prefersDarkMode: boolean = useSFMediaQuery(
@@ -29,6 +40,16 @@ const App = (): JSX.Element => {
   const toggleSwitch = (): void => {
     setNightMode((value) => !value);
   };
+
+  React.useEffect(() => {
+    const getLocalStorageThemeType: SFThemeType | undefined = getThemeType();
+    if (getLocalStorageThemeType) {
+      setNightMode(getLocalStorageThemeType === 'night');
+    } else {
+      setThemeType(prefersDarkMode ? 'night' : 'day');
+      setNightMode(prefersDarkMode);
+    }
+  }, []);
 
   return (
     <SFThemeProvider theme={theme}>
