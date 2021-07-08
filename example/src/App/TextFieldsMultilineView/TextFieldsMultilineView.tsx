@@ -18,7 +18,13 @@ const SFTextFieldsMultilineView = (): JSX.Element => {
         <SFTextField multiline label='Bagel' value={innerText} disabled />
       </div>
       <div className='row'>
-        <SFTextField multiline label='Bagel' value={innerText} error />
+        <SFTextField
+          multiline
+          label='Bagel'
+          value={innerText}
+          error
+          helperText='Error message'
+        />
       </div>
       <div className='row'>
         <SFTextField

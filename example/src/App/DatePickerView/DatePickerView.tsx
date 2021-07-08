@@ -37,6 +37,7 @@ const SFDatePickerView = (): JSX.Element => {
         <SFDatePicker
           label={dateLabel}
           onChange={(value) => setFourthPickerDate(value)}
+          helperText='Error message'
           value={fourthPickerDate}
           error
         />
@@ -46,7 +47,7 @@ const SFDatePickerView = (): JSX.Element => {
           label={dateLabel}
           value={fifthPickerDate}
           onChange={(value) => setFifthPickerDate(value)}
-          helperText='Helper Message'
+          helperText='Helper message'
         />
       </div>
     </div>

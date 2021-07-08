@@ -21,12 +21,10 @@ const getOptions = (): SFMenuOption[] => {
 
 const SFSelectView = (): JSX.Element => {
   const [selectValue, setSelectValue] = React.useState<string>('');
-  const [selectValue1, setSelectValue1] = React.useState<string>(
-    'Bagel number one'
-  );
-  const [selectValue2, setSelectValue2] = React.useState<string>(
-    'Bagel number one'
-  );
+  const [selectValue1, setSelectValue1] =
+    React.useState<string>('Bagel number one');
+  const [selectValue2, setSelectValue2] =
+    React.useState<string>('Bagel number one');
   const [selectValue3, setSelectValue3] = React.useState<string>('');
   const [selectValue4, setSelectValue4] = React.useState<string>('');
 
@@ -69,6 +67,7 @@ const SFSelectView = (): JSX.Element => {
           value={selectValue3}
           onChange={(event) => setSelectValue3(event.target.value as string)}
           error
+          helperText='Error message'
         />
       </div>
       <div className='row'>
@@ -77,7 +76,7 @@ const SFSelectView = (): JSX.Element => {
           options={getOptions()}
           value={selectValue4}
           onChange={(event) => setSelectValue4(event.target.value as string)}
-          helperText='Helper Message'
+          helperText='Helper message'
         />
       </div>
     </div>

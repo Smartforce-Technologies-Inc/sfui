@@ -44,6 +44,7 @@ const SFMultiSelectView = (): JSX.Element => {
           options={getOptions()}
           value={['Bagel number one']}
           error
+          helperText='Error message'
         />
       </div>
       <div className='row'>
@@ -51,7 +52,7 @@ const SFMultiSelectView = (): JSX.Element => {
           label='Bagel'
           options={getOptions()}
           value={['Bagel number one']}
-          helperText='Helper Message'
+          helperText='Helper message'
         />
       </div>
     </div>
