@@ -27,8 +27,72 @@ export default {
   }
 } as Meta;
 
-export const Default: Story<SFSkeletonProps> = (args) => {
-  return <SFSkeleton {...args} />;
+export const Text: Story<SFSkeletonProps> = (args) => {
+  return <SFSkeleton {...args} variant='text' />;
+};
+
+Text.argTypes = {
+  animation: {
+    defaultValue: 'pulse',
+    control: {
+      type: 'radio',
+      options: ['false', 'pulse', 'wave']
+    }
+  },
+  variant: {
+    table: {
+      disable: true
+    }
+  }
+};
+
+export const Circle: Story<SFSkeletonProps> = (args) => {
+  return <SFSkeleton {...args} variant='circle' width={args.height} />;
+};
+
+Circle.argTypes = {
+  animation: {
+    defaultValue: 'pulse',
+    control: {
+      type: 'radio',
+      options: ['false', 'pulse', 'wave']
+    }
+  },
+  variant: {
+    table: {
+      disable: true
+    }
+  },
+  height: {
+    defaultValue: 50
+  },
+  width: {
+    table: {
+      disable: true
+    }
+  }
+};
+
+export const Rect: Story<SFSkeletonProps> = (args) => {
+  return <SFSkeleton {...args} variant='rect' />;
+};
+
+Rect.argTypes = {
+  animation: {
+    defaultValue: 'pulse',
+    control: {
+      type: 'radio',
+      options: ['false', 'pulse', 'wave']
+    }
+  },
+  variant: {
+    table: {
+      disable: true
+    }
+  },
+  height: {
+    defaultValue: 50
+  }
 };
 
 export const AllTogether: Story = ({ animation }) => {
