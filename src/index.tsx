@@ -1,5 +1,6 @@
 export * from './Components/SFAlert/SFAlert';
 export * from './Components/SFAutocomplete/SFAutocomplete';
+export * from './Components/SFAutocompleteLocation/SFAutocompleteLocation';
 export * from './Components/SFButton/SFButton';
 export * from './Components/SFCard/SFCard';
 export * from './Components/SFChip/SFChip';
@@ -12,6 +13,7 @@ export * from './Components/SFIcon/SFIcon';
 export * from './Components/SFIconButton/SFIconButton';
 export * from './Components/SFLink/SFLink';
 export * from './Components/SFMultiSelect/SFMultiSelect';
+export * from './Components/SFNumericField/SFNumericField';
 export * from './Components/SFPanel/SFPanel';
 export * from './Components/SFPaper/SFPaper';
 export * from './Components/SFRadioGroup/SFRadio/SFRadio';
@@ -23,6 +25,7 @@ export * from './Components/SFSplitButton/SFSplitButton';
 export * from './Components/SFSwitch/SFSwitch';
 export * from './Components/SFTextField/SFTextField';
 export * from './Components/SFTable/SFTable';
+export * from './Components/SFTimeInput/SFTimeField';
 
 export * from './SFTheme/SFTheme';
 export * from './SFColors/SFColors';
