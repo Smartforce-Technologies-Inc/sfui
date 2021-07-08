@@ -1,14 +1,14 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import {
-  SFAutcompleteLocation,
-  SFAutcompleteLocationProps,
-  SFAutcompleteLocationResult
-} from './SFAutcompleteLocation';
+  SFAutocompleteLocation,
+  SFAutocompleteLocationProps,
+  SFAutocompleteLocationResult
+} from './SFAutocompleteLocation';
 
 export default {
   title: 'Components/SFAutcompleteLocation',
-  component: SFAutcompleteLocation,
+  component: SFAutocompleteLocation,
   args: {
     label: 'Bagel'
   },
@@ -33,8 +33,8 @@ export default {
 } as Meta;
 
 const Template: Story = ({ text, ...args }) => (
-  <SFAutcompleteLocation
-    {...(args as SFAutcompleteLocationProps)}
+  <SFAutocompleteLocation
+    {...(args as SFAutocompleteLocationProps)}
     value={{
       text
     }}
@@ -61,18 +61,18 @@ Default.argTypes = {
   }
 };
 
-export const CurrentLocation: Story<SFAutcompleteLocationProps> = (args) => {
-  const [value, setValue] = React.useState<SFAutcompleteLocationResult>({
+export const CurrentLocation: Story<SFAutocompleteLocationProps> = (args) => {
+  const [value, setValue] = React.useState<SFAutocompleteLocationResult>({
     text: ''
   });
 
-  const onChange = (newValue: SFAutcompleteLocationResult): void => {
+  const onChange = (newValue: SFAutocompleteLocationResult): void => {
     setValue(newValue);
     args.onChange(newValue);
   };
 
   return (
-    <SFAutcompleteLocation
+    <SFAutocompleteLocation
       {...args}
       currentLocation
       value={value}

@@ -107,30 +107,31 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }));
 
-export interface SFAutcompleteLocationResult {
+export interface SFAutocompleteLocationResult {
   text: string;
   placeId?: string;
 }
 
-export interface SFAutcompleteLocationProps {
+export interface SFAutocompleteLocationProps {
   label: string;
-  value: SFAutcompleteLocationResult;
+  value: SFAutocompleteLocationResult;
   disabled?: boolean;
   currentLocation?: boolean;
   currentLocationType?: 'address' | 'route';
-  onChange: (value: SFAutcompleteLocationResult) => void;
+  onChange: (value: SFAutocompleteLocationResult) => void;
 }
 
-export const SFAutcompleteLocation = ({
+export const SFAutocompleteLocation = ({
   label,
   value,
   disabled = false,
   currentLocation = false,
   currentLocationType = 'route',
   onChange
-}: SFAutcompleteLocationProps): React.ReactElement<SFAutcompleteLocationProps> => {
+}: SFAutocompleteLocationProps): React.ReactElement<SFAutocompleteLocationResult> => {
   const classes = useStyles();
-  const autocompleteService = React.useRef<google.maps.places.AutocompleteService>();
+  const autocompleteService =
+    React.useRef<google.maps.places.AutocompleteService>();
   const geocoderService = React.useRef<google.maps.Geocoder>();
 
   const [apiLoaded, setApiLoaded] = React.useState<boolean>(false);
@@ -169,7 +170,8 @@ export const SFAutcompleteLocation = ({
       typeof window.google.maps === 'object'
     ) {
       setApiLoaded(true);
-      autocompleteService.current = new window.google.maps.places.AutocompleteService();
+      autocompleteService.current =
+        new window.google.maps.places.AutocompleteService();
 
       if (
         (!value || !value.text || value.text.length === 0) &&
@@ -199,13 +201,10 @@ export const SFAutcompleteLocation = ({
                     currentLocationType === 'address' ? 'street_' : ''
                   }${currentLocationType}`;
 
-                  const result:
-                    | google.maps.GeocoderResult
-                    | undefined = results.find(
-                    (result: google.maps.GeocoderResult) => {
+                  const result: google.maps.GeocoderResult | undefined =
+                    results.find((result: google.maps.GeocoderResult) => {
                       return result.types.indexOf(locationType) !== -1;
-                    }
-                  );
+                    });
 
                   if (result) {
                     setSelectedOption({
