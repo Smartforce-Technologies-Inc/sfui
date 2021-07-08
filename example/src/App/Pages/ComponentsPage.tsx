@@ -18,6 +18,7 @@ import { SFRadioGroupView } from '../RadioGroupView/RadioGroupView';
 import { SFSpinnerView } from '../SpinnerView/SpinnerView';
 import { SFSplitButtonView } from '../SplitButtonView/SplitButtonView';
 import { SFSelectView } from '../SelectView/SelectView';
+import { SFSkeletonView } from '../SkeletonView/SkeletonView';
 import { SFTimeFieldView } from '../TimeInputView/TimeInputView';
 import { SFSwitchesView } from '../SwitchesView/SwitchesView';
 import { SFTextFieldsView } from '../TextFieldsView/TextFieldsView';
@@ -82,6 +83,10 @@ export const ComponentsPage = (): JSX.Element => {
             <SFDialogsView />
             <SFDrawersView />
           </div>
+        </div>
+        <div className='section'>
+          <h4 className='title'>Skeleton</h4>
+          <SFSkeletonView />
         </div>
       </div>
       <div className='content'>
