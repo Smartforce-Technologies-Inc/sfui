@@ -3,8 +3,9 @@ import React from 'react';
 import { SFChipsListField, ChipFieldValueType } from 'sfui';
 
 export const SFChipsFieldView = (): JSX.Element => {
-  const [chipFieldValue, setChipFieldValue] =
-    React.useState<ChipFieldValueType[]>();
+  const [chipFieldValue, setChipFieldValue] = React.useState<
+    ChipFieldValueType[]
+  >();
   const [chipFieldValue1, setChipFieldValue1] = React.useState<
     ChipFieldValueType[]
   >([{ value: 'Bagel1', isNew: true }]);

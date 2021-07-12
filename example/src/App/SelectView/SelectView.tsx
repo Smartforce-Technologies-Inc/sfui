@@ -21,10 +21,12 @@ const getOptions = (): SFMenuOption[] => {
 
 const SFSelectView = (): JSX.Element => {
   const [selectValue, setSelectValue] = React.useState<string>('');
-  const [selectValue1, setSelectValue1] =
-    React.useState<string>('Bagel number one');
-  const [selectValue2, setSelectValue2] =
-    React.useState<string>('Bagel number one');
+  const [selectValue1, setSelectValue1] = React.useState<string>(
+    'Bagel number one'
+  );
+  const [selectValue2, setSelectValue2] = React.useState<string>(
+    'Bagel number one'
+  );
   const [selectValue3, setSelectValue3] = React.useState<string>('');
   const [selectValue4, setSelectValue4] = React.useState<string>('');
 

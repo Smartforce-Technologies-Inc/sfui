@@ -3,18 +3,26 @@ import React from 'react';
 import { SFAutocompleteLocation, SFAutocompleteLocationResult } from 'sfui';
 
 export const SFAutoCompleteLocationView = (): JSX.Element => {
-  const [autcompleteValue, setAutocompleteValue] =
-    React.useState<SFAutocompleteLocationResult>({
-      text: ''
-    });
-  const [autcompleteValue1, setAutocompleteValue1] =
-    React.useState<SFAutocompleteLocationResult>({
-      text: '6400 S. Fiddlers Green Circle, Suite 250, Greenwood Village, CO 80111'
-    });
-  const [autcompleteValue2, setAutocompleteValue2] =
-    React.useState<SFAutocompleteLocationResult>({
-      text: '6400 S. Fiddlers Green Circle, Suite 250, Greenwood Village, CO 80111'
-    });
+  const [
+    autcompleteValue,
+    setAutocompleteValue
+  ] = React.useState<SFAutocompleteLocationResult>({
+    text: ''
+  });
+  const [
+    autcompleteValue1,
+    setAutocompleteValue1
+  ] = React.useState<SFAutocompleteLocationResult>({
+    text:
+      '6400 S. Fiddlers Green Circle, Suite 250, Greenwood Village, CO 80111'
+  });
+  const [
+    autcompleteValue2,
+    setAutocompleteValue2
+  ] = React.useState<SFAutocompleteLocationResult>({
+    text:
+      '6400 S. Fiddlers Green Circle, Suite 250, Greenwood Village, CO 80111'
+  });
   return (
     <div className='column'>
       <SFAutocompleteLocation
