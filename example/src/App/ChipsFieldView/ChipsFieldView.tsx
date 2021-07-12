@@ -34,23 +34,31 @@ export const SFChipsFieldView = (): JSX.Element => {
       <SFChipsListField
         items={chipFieldValue}
         label='Bagel'
-        onChange={(value: ChipFieldValueType[]) => setChipFieldValue(value)}
+        onChange={(value: ChipFieldValueType[]): void =>
+          setChipFieldValue(value)
+        }
       />
       <SFChipsListField
         items={chipFieldValue1}
         label='Bagel'
-        onChange={(value: ChipFieldValueType[]) => setChipFieldValue1(value)}
+        onChange={(value: ChipFieldValueType[]): void =>
+          setChipFieldValue1(value)
+        }
       />
       <SFChipsListField
         items={chipFieldValue2}
         label='Bagel'
         disabled
-        onChange={(value: ChipFieldValueType[]) => setChipFieldValue2(value)}
+        onChange={(value: ChipFieldValueType[]): void =>
+          setChipFieldValue2(value)
+        }
       />
       <SFChipsListField
         items={chipFieldValue3}
         label='Bagel'
-        onChange={(value: ChipFieldValueType[]) => setChipFieldValue3(value)}
+        onChange={(value: ChipFieldValueType[]): void =>
+          setChipFieldValue3(value)
+        }
       />
     </div>
   );

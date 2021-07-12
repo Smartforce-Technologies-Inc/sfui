@@ -80,7 +80,7 @@ export const SFChipsView = (): JSX.Element => {
             size='small'
             sfColor='primary'
             deleteable
-            onDelete={() => console.log('Deleted!')}
+            onDelete={(): void => console.log('Deleted!')}
           />
           <SFChip
             label='Small'
@@ -88,7 +88,7 @@ export const SFChipsView = (): JSX.Element => {
             sfColor='primary'
             variant='outlined'
             deleteable
-            onDelete={() => console.log('Deleted!')}
+            onDelete={(): void => console.log('Deleted!')}
           />
         </div>
         <div className='row'>
@@ -98,7 +98,7 @@ export const SFChipsView = (): JSX.Element => {
             sfColor='primary'
             disabled
             deleteable
-            onDelete={() => console.log('Deleted!')}
+            onDelete={(): void => console.log('Deleted!')}
           />
           <SFChip
             label='Small'
@@ -107,7 +107,7 @@ export const SFChipsView = (): JSX.Element => {
             disabled
             variant='outlined'
             deleteable
-            onDelete={() => console.log('Deleted!')}
+            onDelete={(): void => console.log('Deleted!')}
           />
         </div>
         <div className='row'>
@@ -116,7 +116,7 @@ export const SFChipsView = (): JSX.Element => {
             size='small'
             sfColor='default'
             deleteable
-            onDelete={() => console.log('Deleted!')}
+            onDelete={(): void => console.log('Deleted!')}
           />
           <SFChip
             label='Small'
@@ -124,7 +124,7 @@ export const SFChipsView = (): JSX.Element => {
             sfColor='default'
             variant='outlined'
             deleteable
-            onDelete={() => console.log('Deleted!')}
+            onDelete={(): void => console.log('Deleted!')}
           />
         </div>
         <div className='row'>
@@ -134,7 +134,7 @@ export const SFChipsView = (): JSX.Element => {
             sfColor='default'
             disabled
             deleteable
-            onDelete={() => console.log('Deleted!')}
+            onDelete={(): void => console.log('Deleted!')}
           />
           <SFChip
             label='Small'
@@ -143,7 +143,7 @@ export const SFChipsView = (): JSX.Element => {
             disabled
             variant='outlined'
             deleteable
-            onDelete={() => console.log('Deleted!')}
+            onDelete={(): void => console.log('Deleted!')}
           />
         </div>
       </div>
@@ -153,14 +153,14 @@ export const SFChipsView = (): JSX.Element => {
             label='Medium'
             sfColor='primary'
             deleteable
-            onDelete={() => console.log('Deleted!')}
+            onDelete={(): void => console.log('Deleted!')}
           />
           <SFChip
             label='Medium'
             sfColor='primary'
             variant='outlined'
             deleteable
-            onDelete={() => console.log('Deleted!')}
+            onDelete={(): void => console.log('Deleted!')}
           />
         </div>
         <div className='row'>
@@ -169,7 +169,7 @@ export const SFChipsView = (): JSX.Element => {
             sfColor='primary'
             disabled
             deleteable
-            onDelete={() => console.log('Deleted!')}
+            onDelete={(): void => console.log('Deleted!')}
           />
           <SFChip
             label='Medium'
@@ -177,7 +177,7 @@ export const SFChipsView = (): JSX.Element => {
             disabled
             variant='outlined'
             deleteable
-            onDelete={() => console.log('Deleted!')}
+            onDelete={(): void => console.log('Deleted!')}
           />
         </div>
         <div className='row'>
@@ -186,14 +186,14 @@ export const SFChipsView = (): JSX.Element => {
             label='Medium'
             sfColor='default'
             deleteable
-            onDelete={() => console.log('Deleted!')}
+            onDelete={(): void => console.log('Deleted!')}
           />
           <SFChip
             label='Medium'
             sfColor='default'
             variant='outlined'
             deleteable
-            onDelete={() => console.log('Deleted!')}
+            onDelete={(): void => console.log('Deleted!')}
           />
         </div>
         <div className='row'>
@@ -202,7 +202,7 @@ export const SFChipsView = (): JSX.Element => {
             sfColor='default'
             disabled
             deleteable
-            onDelete={() => console.log('Deleted!')}
+            onDelete={(): void => console.log('Deleted!')}
           />
           <SFChip
             label='Medium'
@@ -210,7 +210,7 @@ export const SFChipsView = (): JSX.Element => {
             disabled
             variant='outlined'
             deleteable
-            onDelete={() => console.log('Deleted!')}
+            onDelete={(): void => console.log('Deleted!')}
           />
         </div>
       </div>

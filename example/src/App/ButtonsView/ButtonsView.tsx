@@ -2,16 +2,6 @@ import React from 'react';
 
 import { SFButton } from 'sfui';
 
-const SFButtonsView = (): JSX.Element => {
-  return (
-    <div className='row spaced'>
-      {renderButtonsColumn('small')}
-      {renderButtonsColumn('medium')}
-      {renderButtonsColumn('large')}
-    </div>
-  );
-};
-
 const renderButtonsColumn = (
   size: 'small' | 'medium' | 'large' | undefined
 ): JSX.Element => {
@@ -62,6 +52,16 @@ const renderButtonsColumn = (
           <span style={{ textTransform: 'capitalize' }}>{size}</span>
         </SFButton>
       </div>
+    </div>
+  );
+};
+
+const SFButtonsView = (): JSX.Element => {
+  return (
+    <div className='row spaced'>
+      {renderButtonsColumn('small')}
+      {renderButtonsColumn('medium')}
+      {renderButtonsColumn('large')}
     </div>
   );
 };

@@ -34,20 +34,20 @@ export const SFAutocompleteView = (): JSX.Element => {
         label='Bagel'
         options={getOptions()}
         value={autocompleteValue}
-        onChange={(value: string) => setAutocompleteValue(value)}
+        onChange={(value: string): void => setAutocompleteValue(value)}
       />
       <SFAutocomplete
         label='Bagel'
         value={autocompleteValue1}
         options={getOptions()}
-        onChange={(value: string) => setAutocompleteValue1(value)}
+        onChange={(value: string): void => setAutocompleteValue1(value)}
       />
       <SFAutocomplete
         label='Bagel'
         disabled
         value={autocompleteValue2}
         options={getOptions()}
-        onChange={(value: string) => setAutocompleteValue2(value)}
+        onChange={(value: string): void => setAutocompleteValue2(value)}
       />
     </div>
   );

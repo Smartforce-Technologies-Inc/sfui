@@ -130,8 +130,7 @@ export const SFAutocompleteLocation = ({
   onChange
 }: SFAutocompleteLocationProps): React.ReactElement<SFAutocompleteLocationResult> => {
   const classes = useStyles();
-  const autocompleteService =
-    React.useRef<google.maps.places.AutocompleteService>();
+  const autocompleteService = React.useRef<google.maps.places.AutocompleteService>();
   const geocoderService = React.useRef<google.maps.Geocoder>();
 
   const [apiLoaded, setApiLoaded] = React.useState<boolean>(false);
@@ -170,8 +169,7 @@ export const SFAutocompleteLocation = ({
       typeof window.google.maps === 'object'
     ) {
       setApiLoaded(true);
-      autocompleteService.current =
-        new window.google.maps.places.AutocompleteService();
+      autocompleteService.current = new window.google.maps.places.AutocompleteService();
 
       if (
         (!value || !value.text || value.text.length === 0) &&
@@ -201,10 +199,13 @@ export const SFAutocompleteLocation = ({
                     currentLocationType === 'address' ? 'street_' : ''
                   }${currentLocationType}`;
 
-                  const result: google.maps.GeocoderResult | undefined =
-                    results.find((result: google.maps.GeocoderResult) => {
+                  const result:
+                    | google.maps.GeocoderResult
+                    | undefined = results.find(
+                    (result: google.maps.GeocoderResult) => {
                       return result.types.indexOf(locationType) !== -1;
-                    });
+                    }
+                  );
 
                   if (result) {
                     setSelectedOption({

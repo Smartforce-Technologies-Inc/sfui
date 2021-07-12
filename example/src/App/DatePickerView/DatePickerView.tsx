@@ -14,21 +14,21 @@ const SFDatePickerView = (): JSX.Element => {
       <div className='row'>
         <SFDatePicker
           label={dateLabel}
-          onChange={(value) => setFirstPickerDate(value)}
+          onChange={(value): void => setFirstPickerDate(value)}
           value={firstPickerDate}
         />
       </div>
       <div className='row'>
         <SFDatePicker
           label={dateLabel}
-          onChange={(value) => setSecondPickerDate(value)}
+          onChange={(value): void => setSecondPickerDate(value)}
           value={secondPickerDate}
         />
       </div>
       <div className='row'>
         <SFDatePicker
           label={dateLabel}
-          onChange={(value) => setThirdPickerDate(value)}
+          onChange={(value): void => setThirdPickerDate(value)}
           value={thirdPickerDate}
           disabled
         />
@@ -36,7 +36,7 @@ const SFDatePickerView = (): JSX.Element => {
       <div className='row'>
         <SFDatePicker
           label={dateLabel}
-          onChange={(value) => setFourthPickerDate(value)}
+          onChange={(value): void => setFourthPickerDate(value)}
           helperText='Error message'
           value={fourthPickerDate}
           error
@@ -46,7 +46,7 @@ const SFDatePickerView = (): JSX.Element => {
         <SFDatePicker
           label={dateLabel}
           value={fifthPickerDate}
-          onChange={(value) => setFifthPickerDate(value)}
+          onChange={(value): void => setFifthPickerDate(value)}
           helperText='Helper message'
         />
       </div>

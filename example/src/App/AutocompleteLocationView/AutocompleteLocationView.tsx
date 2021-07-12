@@ -28,14 +28,14 @@ export const SFAutoCompleteLocationView = (): JSX.Element => {
       <SFAutocompleteLocation
         label='Bagel'
         value={autcompleteValue}
-        onChange={(value: SFAutocompleteLocationResult) =>
+        onChange={(value: SFAutocompleteLocationResult): void =>
           setAutocompleteValue(value)
         }
       />
       <SFAutocompleteLocation
         label='Bagel'
         value={autcompleteValue1}
-        onChange={(value: SFAutocompleteLocationResult) =>
+        onChange={(value: SFAutocompleteLocationResult): void =>
           setAutocompleteValue1(value)
         }
       />
@@ -43,7 +43,7 @@ export const SFAutoCompleteLocationView = (): JSX.Element => {
         label='Bagel'
         value={autcompleteValue2}
         disabled
-        onChange={(value: SFAutocompleteLocationResult) =>
+        onChange={(value: SFAutocompleteLocationResult): void =>
           setAutocompleteValue2(value)
         }
       />

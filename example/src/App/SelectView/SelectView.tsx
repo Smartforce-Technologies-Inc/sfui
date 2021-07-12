@@ -50,7 +50,9 @@ const SFSelectView = (): JSX.Element => {
           label='Bagel'
           options={getOptions()}
           value={selectValue1}
-          onChange={(event) => setSelectValue1(event.target.value as string)}
+          onChange={(event): void =>
+            setSelectValue1(event.target.value as string)
+          }
         />
       </div>
       <div className='row'>
@@ -58,7 +60,9 @@ const SFSelectView = (): JSX.Element => {
           label='Bagel'
           options={getOptions()}
           value={selectValue2}
-          onChange={(event) => setSelectValue2(event.target.value as string)}
+          onChange={(event): void =>
+            setSelectValue2(event.target.value as string)
+          }
           disabled
         />
       </div>
@@ -67,7 +71,9 @@ const SFSelectView = (): JSX.Element => {
           label='Bagel'
           options={getOptions()}
           value={selectValue3}
-          onChange={(event) => setSelectValue3(event.target.value as string)}
+          onChange={(event): void =>
+            setSelectValue3(event.target.value as string)
+          }
           error
           helperText='Error message'
         />
@@ -77,7 +83,9 @@ const SFSelectView = (): JSX.Element => {
           label='Bagel'
           options={getOptions()}
           value={selectValue4}
-          onChange={(event) => setSelectValue4(event.target.value as string)}
+          onChange={(event): void =>
+            setSelectValue4(event.target.value as string)
+          }
           helperText='Helper message'
         />
       </div>

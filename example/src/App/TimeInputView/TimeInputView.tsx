@@ -5,30 +5,34 @@ import { SFTimeField } from 'sfui';
 export const SFTimeFieldView = (): JSX.Element => {
   return (
     <div className='column'>
-      <SFTimeField label='Bagel' value='' onChange={() => console.log('asd')} />
+      <SFTimeField
+        label='Bagel'
+        value=''
+        onChange={(): void => console.log('Time Selected')}
+      />
       <SFTimeField
         label='Bagel'
         value={new Date().toISOString()}
-        onChange={() => console.log('asd')}
+        onChange={(): void => console.log('Time Selected')}
       />
       <SFTimeField
         label='Bagel'
         value={new Date().toISOString()}
         disabled
-        onChange={() => console.log('asd')}
+        onChange={(): void => console.log('Time Selected')}
       />
       <SFTimeField
         label='Bagel'
         value={new Date().toISOString()}
         error
         helperText='Error message'
-        onChange={() => console.log('asd')}
+        onChange={(): void => console.log('Time Selected')}
       />
       <SFTimeField
         label='Bagel'
         value={new Date().toISOString()}
         helperText='Helper message'
-        onChange={() => console.log('asd')}
+        onChange={(): void => console.log('Time Selected')}
       />
     </div>
   );

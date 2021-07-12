@@ -4,12 +4,18 @@ import { SFSplitButton, SFSplitButtonOption } from 'sfui';
 
 export const SFSplitButtonView = (): JSX.Element => {
   const splitButtonOptions: SFSplitButtonOption[] = [
-    { onClick: () => console.log('Clicked Small option!'), label: 'Small' },
     {
-      onClick: () => console.log('Clicked Medium option!'),
+      onClick: (): void => console.log('Clicked Small option!'),
+      label: 'Small'
+    },
+    {
+      onClick: (): void => console.log('Clicked Medium option!'),
       label: 'Medium'
     },
-    { onClick: () => console.log('Clicked Large option!'), label: 'Large' }
+    {
+      onClick: (): void => console.log('Clicked Large option!'),
+      label: 'Large'
+    }
   ];
 
   return (

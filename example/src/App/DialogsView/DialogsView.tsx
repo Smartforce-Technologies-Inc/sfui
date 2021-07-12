@@ -12,7 +12,7 @@ const SFDialogsView = (): JSX.Element => {
       <div className='row'>
         <SFButton
           sfColor='blue'
-          onClick={() => setAlertTextOpen(!alertTextOpen)}
+          onClick={(): void => setAlertTextOpen(!alertTextOpen)}
         >
           Open Alert
         </SFButton>
@@ -20,7 +20,7 @@ const SFDialogsView = (): JSX.Element => {
       <div className='row'>
         <SFButton
           sfColor='red'
-          onClick={() => {
+          onClick={(): void => {
             setAlertFormOpen(!alertFormOpen);
           }}
         >
@@ -30,11 +30,11 @@ const SFDialogsView = (): JSX.Element => {
       <SFAlert
         leftAction={{
           label: 'Medium',
-          buttonProps: { onClick: () => setAlertTextOpen(!alertTextOpen) }
+          buttonProps: { onClick: (): void => setAlertTextOpen(!alertTextOpen) }
         }}
         rightAction={{
           label: 'Medium',
-          buttonProps: { onClick: () => setAlertTextOpen(!alertTextOpen) }
+          buttonProps: { onClick: (): void => setAlertTextOpen(!alertTextOpen) }
         }}
         title='Alert dialog title'
         content={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
@@ -48,7 +48,7 @@ const SFDialogsView = (): JSX.Element => {
         title='Form dialog title'
         leftAction={{
           label: 'Medium',
-          buttonProps: { onClick: () => setAlertFormOpen(!alertFormOpen) }
+          buttonProps: { onClick: (): void => setAlertFormOpen(!alertFormOpen) }
         }}
         rightAction={{ label: 'Medium', buttonProps: { disabled } }}
       >
