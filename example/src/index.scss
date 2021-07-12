@@ -106,7 +106,7 @@ code {
 }
 
 .row {
-  @include flexLayout(row, 30px 10px);
+  @include flexLayout(row, 20px 10px);
   flex-wrap: wrap;
 
   &.align-center {
@@ -119,6 +119,14 @@ code {
 
   &.spaced {
     justify-content: space-between;
+  }
+
+  &.no-space {
+    gap: 10px;
+  }
+
+  &.extra-space {
+    gap: 40px;
   }
 }
 
