@@ -36,8 +36,8 @@ const App = (): JSX.Element => {
   const switchLabel = nightMode === true ? 'Day Mode' : 'Night Mode';
 
   const theme: SFTheme = createSFTheme(nightMode ? 'night' : 'day');
-
   const toggleSwitch = (): void => {
+    setThemeType(nightMode ? 'day' : 'night');
     setNightMode((value) => !value);
   };
 
