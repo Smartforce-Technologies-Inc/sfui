@@ -50,7 +50,7 @@ export const FormView = (): JSX.Element => {
     { value: 'John Cenna', label: 'Cenna' }
   ];
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const target = e.currentTarget;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
@@ -60,17 +60,19 @@ export const FormView = (): JSX.Element => {
 
   const handleSelectChange = (
     e: React.ChangeEvent<{ name?: string | undefined; value: unknown }>
-  ) => {
+  ): void => {
     if (e.target.name) {
       setFormData({ ...formData, [e.target.name]: e.target.value });
     }
   };
 
-  const cleanOutput = () => {
+  const cleanOutput = (): void => {
     setFormData(initialData);
   };
 
-  const handleFormResponse = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleFormResponse = (
+    event: React.FormEvent<HTMLFormElement>
+  ): void => {
     event.preventDefault();
     setResponse(formData);
   };
@@ -80,7 +82,7 @@ export const FormView = (): JSX.Element => {
       <h4 className='demoTitle'>Form Demo</h4>
       <div className='demoBody'>
         <form className='demoTest' onSubmit={handleFormResponse}>
-          <div style={{ display: 'flex', gap: '24px' }}>
+          <div className='row'>
             <SFSwitch
               label='Night Time'
               name='nightTime'
@@ -107,7 +109,7 @@ export const FormView = (): JSX.Element => {
           <SFDatePicker
             label='Ocurrence Date'
             name='date'
-            onChange={(event) => {
+            onChange={(event): void => {
               setDate(event);
               setFormData({ ...formData, date: event });
             }}
@@ -132,7 +134,10 @@ export const FormView = (): JSX.Element => {
             onChange={handleInputChange}
           />
           <div className='send'>
-            <SFButton type='submit' onClick={() => setOpenResponsePanel(true)}>
+            <SFButton
+              type='submit'
+              onClick={(): void => setOpenResponsePanel(true)}
+            >
               Send
             </SFButton>
           </div>
@@ -146,7 +151,7 @@ export const FormView = (): JSX.Element => {
         rightAction={{
           label: 'Close',
           buttonProps: {
-            onClick: () => {
+            onClick: (): void => {
               cleanOutput();
               setOpenResponsePanel(false);
             }

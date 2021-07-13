@@ -1,5 +1,6 @@
 export * from './Components/SFAlert/SFAlert';
 export * from './Components/SFAutocomplete/SFAutocomplete';
+export * from './Components/SFAutocompleteLocation/SFAutocompleteLocation';
 export * from './Components/SFButton/SFButton';
 export * from './Components/SFCard/SFCard';
 export * from './Components/SFChip/SFChip';
@@ -14,6 +15,7 @@ export * from './Components/SFLink/SFLink';
 export * from './Components/SFMenu/SFMenu';
 export * from './Components/SFMenuItem/SFMenuItem';
 export * from './Components/SFMultiSelect/SFMultiSelect';
+export * from './Components/SFNumericField/SFNumericField';
 export * from './Components/SFPanel/SFPanel';
 export * from './Components/SFPaper/SFPaper';
 export * from './Components/SFRadioGroup/SFRadio/SFRadio';

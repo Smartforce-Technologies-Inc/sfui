@@ -13,7 +13,7 @@ export const SFDrawersView = (): JSX.Element => {
       <div className='row'>
         <SFButton
           sfColor='blue'
-          onClick={() => setDrawerTextOpen(!drawerTextOpen)}
+          onClick={(): void => setDrawerTextOpen(!drawerTextOpen)}
         >
           Open Panel
         </SFButton>
@@ -21,7 +21,7 @@ export const SFDrawersView = (): JSX.Element => {
       <div className='row'>
         <SFButton
           sfColor='red'
-          onClick={() => setDrawerInputOpen(!drawerInputOpen)}
+          onClick={(): void => setDrawerInputOpen(!drawerInputOpen)}
         >
           Open Custom Drawer
         </SFButton>
@@ -33,13 +33,17 @@ export const SFDrawersView = (): JSX.Element => {
         title='Drawer Title'
         rightAction={{
           label: 'Medium',
-          buttonProps: { onClick: () => setDrawerTextOpen(!drawerTextOpen) }
+          buttonProps: {
+            onClick: (): void => setDrawerTextOpen(!drawerTextOpen)
+          }
         }}
         leftAction={{
           label: 'Medium',
-          buttonProps: { onClick: () => setDrawerTextOpen(!drawerTextOpen) }
+          buttonProps: {
+            onClick: (): void => setDrawerTextOpen(!drawerTextOpen)
+          }
         }}
-        onClose={() => setDrawerTextOpen(!drawerTextOpen)}
+        onClose={(): void => setDrawerTextOpen(!drawerTextOpen)}
       >
         <p>
           {drawerText}
@@ -57,13 +61,17 @@ export const SFDrawersView = (): JSX.Element => {
         title='Drawer title'
         leftAction={{
           label: 'Medium',
-          buttonProps: { onClick: () => setDrawerInputOpen(!drawerInputOpen) }
+          buttonProps: {
+            onClick: (): void => setDrawerInputOpen(!drawerInputOpen)
+          }
         }}
         rightAction={{
           label: 'Medium',
-          buttonProps: { onClick: () => setDrawerInputOpen(!drawerInputOpen) }
+          buttonProps: {
+            onClick: (): void => setDrawerInputOpen(!drawerInputOpen)
+          }
         }}
-        onClose={() => setDrawerInputOpen(!drawerInputOpen)}
+        onClose={(): void => setDrawerInputOpen(!drawerInputOpen)}
       >
         <p>{drawerText}</p>
         <SFTextField style={{ marginTop: 24 }} label='Bagel' />

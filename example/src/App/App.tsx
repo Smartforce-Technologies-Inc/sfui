@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import './App.scss';
 
 import {
   SFThemeProvider,
   createSFTheme,
   SFTheme,
+  SFThemeType,
   SFPaper,
   SFSwitch,
   useSFMediaQuery,
@@ -14,6 +16,16 @@ import {
 import { ComponentsPage } from './Pages/ComponentsPage';
 import { DemosPage } from './Pages/DemosPage';
 
+const setThemeType = (theme: SFThemeType): void => {
+  localStorage.setItem('Smartforce.SFuiExample.ThemeType', theme);
+};
+
+const getThemeType = (): SFThemeType | undefined => {
+  return localStorage.getItem('Smartforce.SFuiExample.ThemeType') as
+    | SFThemeType
+    | undefined;
+};
+
 const App = (): JSX.Element => {
   const prefersDarkMode: boolean = useSFMediaQuery(
     '(prefers-color-scheme: dark)'
@@ -22,13 +34,23 @@ const App = (): JSX.Element => {
   const [nightMode, setNightMode] = useState(prefersDarkMode);
   const [showDemo, setShowDemo] = useState(false);
 
-  const switchLabel = nightMode === true ? 'Day Mode' : 'Night Mode';
+  const switchLabel = nightMode === true ? 'Night' : 'Day';
 
   const theme: SFTheme = createSFTheme(nightMode ? 'night' : 'day');
-
   const toggleSwitch = (): void => {
+    setThemeType(nightMode ? 'day' : 'night');
     setNightMode((value) => !value);
   };
+
+  React.useEffect(() => {
+    const getLocalStorageThemeType: SFThemeType | undefined = getThemeType();
+    if (getLocalStorageThemeType) {
+      setNightMode(getLocalStorageThemeType === 'night');
+    } else {
+      setThemeType(prefersDarkMode ? 'night' : 'day');
+      setNightMode(prefersDarkMode);
+    }
+  }, []);
 
   return (
     <SFThemeProvider theme={theme}>
@@ -42,7 +64,7 @@ const App = (): JSX.Element => {
           <div className='bodyContent'>
             <h1 className='textHeader'>
               <span>
-                SFUI Library{' '}
+                SFUI <span className='libText'>Library </span>
                 <span
                   className='textBrand'
                   style={{ color: theme.palette.primary.main }}

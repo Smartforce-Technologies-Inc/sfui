@@ -15,7 +15,12 @@ const SFTextFieldsView = (): JSX.Element => {
         <SFTextField label='Bagel' value='This is a bagel' disabled />
       </div>
       <div className='row'>
-        <SFTextField label='Bagel' value='This is a bagel' error />
+        <SFTextField
+          label='Bagel'
+          value='This is a bagel'
+          error
+          helperText='Error message'
+        />
       </div>
       <div className='row'>
         <SFTextField

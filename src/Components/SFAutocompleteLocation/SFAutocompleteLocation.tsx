@@ -107,28 +107,28 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }));
 
-export interface SFAutcompleteLocationResult {
+export interface SFAutocompleteLocationResult {
   text: string;
   placeId?: string;
 }
 
-export interface SFAutcompleteLocationProps {
+export interface SFAutocompleteLocationProps {
   label: string;
-  value: SFAutcompleteLocationResult;
+  value: SFAutocompleteLocationResult;
   disabled?: boolean;
   currentLocation?: boolean;
   currentLocationType?: 'address' | 'route';
-  onChange: (value: SFAutcompleteLocationResult) => void;
+  onChange: (value: SFAutocompleteLocationResult) => void;
 }
 
-export const SFAutcompleteLocation = ({
+export const SFAutocompleteLocation = ({
   label,
   value,
   disabled = false,
   currentLocation = false,
   currentLocationType = 'route',
   onChange
-}: SFAutcompleteLocationProps): React.ReactElement<SFAutcompleteLocationProps> => {
+}: SFAutocompleteLocationProps): React.ReactElement<SFAutocompleteLocationResult> => {
   const classes = useStyles();
   const autocompleteService = React.useRef<google.maps.places.AutocompleteService>();
   const geocoderService = React.useRef<google.maps.Geocoder>();
