@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './App.scss';
 
 import {
   SFThemeProvider,
@@ -33,7 +34,7 @@ const App = (): JSX.Element => {
   const [nightMode, setNightMode] = useState(prefersDarkMode);
   const [showDemo, setShowDemo] = useState(false);
 
-  const switchLabel = nightMode === true ? 'Day Mode' : 'Night Mode';
+  const switchLabel = nightMode === true ? 'Night' : 'Day';
 
   const theme: SFTheme = createSFTheme(nightMode ? 'night' : 'day');
   const toggleSwitch = (): void => {
@@ -63,7 +64,7 @@ const App = (): JSX.Element => {
           <div className='bodyContent'>
             <h1 className='textHeader'>
               <span>
-                SFUI Library{' '}
+                SFUI <span className='libText'>Library </span>
                 <span
                   className='textBrand'
                   style={{ color: theme.palette.primary.main }}
