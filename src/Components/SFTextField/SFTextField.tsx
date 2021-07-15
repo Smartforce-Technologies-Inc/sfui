@@ -135,6 +135,7 @@ export interface SFTextFieldProps extends Partial<OutlinedTextFieldProps> {}
 
 export const SFTextField = ({
   variant,
+  autoComplete = 'off',
   rows = 4,
   color,
   ...props
@@ -146,6 +147,7 @@ export const SFTextField = ({
       color='primary'
       variant='outlined'
       rows={props.multiline ? rows : 1}
+      autoComplete={autoComplete}
     />
   );
 };
