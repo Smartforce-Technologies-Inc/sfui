@@ -62,7 +62,7 @@ export const FormView = (): JSX.Element => {
   const [formData, setFormData] = useState({ ...initialData });
   const [openResponsePanel, setOpenResponsePanel] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [isSent, setIsSent] = useState(true);
+  const [isSent, setIsSent] = useState(false);
 
   const cleanOutput = (): void => {
     console.log(formData);
@@ -70,9 +70,10 @@ export const FormView = (): JSX.Element => {
   };
 
   const handleFormResponse = (): void => {
+    setIsSent(true);
     setTimeout(() => {
       setIsSent(false);
-    }, 600);
+    }, 1000);
     setResponse(formData);
   };
 
@@ -124,10 +125,6 @@ export const FormView = (): JSX.Element => {
       setIsLoading(false);
     }, 2000);
   }, []);
-
-  useEffect(() => {
-    console.log(formData);
-  }, [formData]);
 
   return (
     <div className='demoItem'>
@@ -343,6 +340,11 @@ export const FormView = (): JSX.Element => {
           SmartForce Technologies, Inc.
         </SFLink>
       </footer>
+      {isSent && (
+        <div className='loadingScreen'>
+          <SFSpinner size='60px' />
+        </div>
+      )}
       <SFAlert
         title='Form Output'
         className='demoResponse'
@@ -351,14 +353,10 @@ export const FormView = (): JSX.Element => {
         rightAction={{
           label: 'Close',
           buttonProps: {
-            onClick: (): void => {
-              setOpenResponsePanel(false);
-              setIsSent(true);
-            }
+            onClick: (): void => setOpenResponsePanel(false)
           }
         }}
       >
-        {isSent && <SFSpinner />}
         {!isSent && (
           <code>
             <pre>
