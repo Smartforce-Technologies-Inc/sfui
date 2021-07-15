@@ -189,6 +189,9 @@ export const SFAutocomplete = ({
       onClose={onClose}
       onOpen={onOpen}
       inputValue={inputValue}
+      getOptionSelected={(option: SFMenuOption, value: string): boolean =>
+        option.value === value
+      }
       getOptionLabel={(option: SFMenuOption): string =>
         typeof option === 'string' ? option : option.label
       }
