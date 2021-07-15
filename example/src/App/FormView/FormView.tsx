@@ -265,7 +265,7 @@ export const FormView = (): JSX.Element => {
               onChange={(event): void =>
                 setFormData({
                   ...formData,
-                  incidentTests: [event.target.value as string]
+                  incidentTests: event.target.value as string[]
                 })
               }
             />
