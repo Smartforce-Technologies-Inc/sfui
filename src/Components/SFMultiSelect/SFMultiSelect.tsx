@@ -41,14 +41,18 @@ export const SFMultiSelect = ({
   options,
   helperText,
   label,
-  defaultValue = [],
+  defaultValue,
   value,
   onChange,
   ...props
 }: SFMultiSelectProps): React.ReactElement<SFMultiSelectProps> => {
-  const valueInit: string[] = value || defaultValue;
-  const [selected, setSelected] = React.useState<string[]>(valueInit);
+  const [selected, setSelected] = React.useState<string[]>([]);
   const menuClasses: Record<'paper', string> = useMenuStyles();
+
+  React.useEffect(() => {
+    const selectedValue = value || defaultValue;
+    setSelected(selectedValue || []);
+  }, [value, defaultValue]);
 
   const handleChange = (
     event: React.ChangeEvent<{
@@ -57,14 +61,17 @@ export const SFMultiSelect = ({
     }>,
     child: React.ReactNode
   ): void => {
-    setSelected(event.target.value as string[]);
+    if (!value) {
+      setSelected(event.target.value as string[]);
+    }
+
     if (onChange) {
       onChange(event, child);
     }
   };
 
   const renderSelected = (selectedValues: string[]): string => {
-    return selectedValues ? selectedValues.join(',') : '';
+    return selectedValues ? selectedValues.join(', ') : '';
   };
 
   const isChecked = (
@@ -84,8 +91,8 @@ export const SFMultiSelect = ({
       disabled={props.disabled}
       SelectProps={{
         ...props,
+        defaultValue,
         multiple: true,
-        defaultValue: defaultValue,
         value: selected,
         MenuProps: {
           variant: 'menu',
