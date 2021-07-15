@@ -93,9 +93,16 @@ export const AllTogether = (args: SFMultiSelectProps): JSX.Element => (
     <SFMultiSelect {...args} />
     <SFMultiSelect {...args} error helperText='Incorrect value' />
     <SFMultiSelect {...args} disabled />
-    <SFMultiSelect {...args} value={[]} />
+    <SFMultiSelect {...args} defaultValue={undefined} />
   </div>
 );
+AllTogether.args = {
+  label: 'Bagel',
+  options: getOptions(),
+  value: undefined,
+  defaultValue: ['Bagel number one']
+};
+
 AllTogether.parameters = {
   controls: {
     disable: true
