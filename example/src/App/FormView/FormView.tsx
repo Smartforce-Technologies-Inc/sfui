@@ -21,7 +21,8 @@ import {
   ChipFieldValueType,
   SFAutocomplete,
   SFMultiSelect,
-  SFButton
+  SFButton,
+  SFScrollable
 } from 'sfui';
 
 export const FormView = (): JSX.Element => {
@@ -37,12 +38,11 @@ export const FormView = (): JSX.Element => {
     supervisor: string;
     officers: ChipFieldValueType[];
     incidentEvents: ChipFieldValueType[];
-    placeOfOcurrence: string;
+    placeOfOcurrence: string | undefined;
     incidentTests: string[] | undefined;
     policeDepartment: string;
   };
 
-  const [response, setResponse] = useState({});
   const initialData: formInformation = {
     date: undefined,
     streetAdress: { text: '' },
@@ -55,10 +55,12 @@ export const FormView = (): JSX.Element => {
     supervisor: '',
     officers: [],
     incidentEvents: [],
-    placeOfOcurrence: '',
+    placeOfOcurrence: undefined,
     incidentTests: [],
     policeDepartment: ''
   };
+
+  const [response, setResponse] = useState<formInformation>({ ...initialData });
   const [formData, setFormData] = useState({ ...initialData });
   const [openResponsePanel, setOpenResponsePanel] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -78,17 +80,17 @@ export const FormView = (): JSX.Element => {
   };
 
   const radioGroupOptions: SFRadioOptionsProps[] = [
-    { value: 'none', label: 'None', disabled: false },
-    { value: 'around 10', label: 'Few', disabled: false },
-    { value: 'around 25 ', label: 'Some', disabled: false },
-    { value: 'more than 30', label: 'Many', disabled: false }
+    { value: 'None', label: 'None', disabled: false },
+    { value: 'Around 10', label: 'Few', disabled: false },
+    { value: 'Around 25 ', label: 'Some', disabled: false },
+    { value: 'More Than 30', label: 'Many', disabled: false }
   ];
 
   const selectOptions: SFMenuOption[] = [
-    { value: 'Henry McKane', label: 'McKane' },
-    { value: 'Donald McDonald', label: 'McDonald' },
-    { value: 'Andrew Snippets', label: 'Snippets' },
-    { value: 'John Cenna', label: 'Cenna' }
+    { value: 'Henry McKane', label: 'Henry McKane' },
+    { value: 'Donald McDonald', label: 'Donald McDonald' },
+    { value: 'Andrew Snippets', label: 'Andrew Snippets' },
+    { value: 'John Cenna', label: 'John Cenna' }
   ];
 
   const ChipsListOptions: string[] = [
@@ -103,21 +105,21 @@ export const FormView = (): JSX.Element => {
   ];
 
   const autoCompleteOptions: SFMenuOption[] = [
-    { label: 'School', value: 'school' },
-    { label: 'Gym', value: 'gym' },
-    { label: 'Hospital', value: 'hospital' },
-    { label: 'Store', value: 'store' },
-    { label: 'Parking Lot', value: 'parking lot' },
-    { label: 'Playground', value: 'playground' },
-    { label: 'Street', value: 'street' },
-    { label: 'House', value: 'house' },
-    { label: 'Train Station', value: 'train station' }
+    { label: 'School', value: 'School' },
+    { label: 'Gym', value: 'Gym' },
+    { label: 'Hospital', value: 'Hospital' },
+    { label: 'Store', value: 'Store' },
+    { label: 'Parking Lot', value: 'Parking Lot' },
+    { label: 'Playground', value: 'Playground' },
+    { label: 'Street', value: 'Street' },
+    { label: 'House', value: 'House' },
+    { label: 'Train Station', value: 'Train Station' }
   ];
 
   const multiSelectOptions: SFMenuOption[] = [
-    { label: 'Alcohol Test', value: 'alcohol test' },
-    { label: 'Drugs Test', value: 'drugs test' },
-    { label: 'First Aid', value: 'first aid' }
+    { label: 'Alcohol Test', value: 'Alcohol Test' },
+    { label: 'Drugs Test', value: 'Drugs Test' },
+    { label: 'First Aid', value: 'First Aid' }
   ];
 
   useEffect(() => {
@@ -131,7 +133,7 @@ export const FormView = (): JSX.Element => {
       <h4 className='demoTitle'>Form Demo</h4>
       <div className='demoBody'>
         {isLoading && (
-          <div className='column'>
+          <div className='grid-column skeleton'>
             <div className='row'>
               <SFSkeleton variant='circle' width={60} height={60} />
               <SFSkeleton variant='rect' width='94%' height={60} />
@@ -173,8 +175,7 @@ export const FormView = (): JSX.Element => {
                       setFormData({
                         ...formData,
                         streetAdress: {
-                          text: value.text,
-                          placeId: value.placeId ? value.placeId : ''
+                          text: value.text
                         }
                       })
                     }
@@ -347,7 +348,9 @@ export const FormView = (): JSX.Element => {
       )}
       <SFAlert
         title='Form Output'
-        className='demoResponse'
+        PaperProps={{ className: 'demoResponse' }}
+        maxWidth='sm'
+        fullWidth
         open={openResponsePanel}
         content=''
         rightAction={{
@@ -358,13 +361,15 @@ export const FormView = (): JSX.Element => {
         }}
       >
         {!isSent && (
-          <code>
-            <pre>
-              {Object.keys(response).length === 0
-                ? ''
-                : JSON.stringify(response, null, 4)}
-            </pre>
-          </code>
+          <SFScrollable>
+            <code>
+              <pre>
+                {response && Object.keys(response).length === 0
+                  ? ''
+                  : JSON.stringify(response, null, 4)}
+              </pre>
+            </code>
+          </SFScrollable>
         )}
       </SFAlert>
     </div>
