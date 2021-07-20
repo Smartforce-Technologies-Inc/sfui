@@ -83,12 +83,12 @@ const StyledTimePicker = withStyles((theme: Theme) => ({
     '& .MuiInputLabel-filled': {
       fontSize: '16px',
       lineHeight: '24px',
+      color: `${theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400]}`,
 
       '&.MuiInputLabel-shrink': {
         fontSize: '14px',
         lineHeight: '20px',
-        transform: `translate(12px, 6px)`,
-        color: `${theme.palette.type === 'light' ? SFGrey[400] : SFGrey[600]}`
+        transform: `translate(12px, 6px)`
       },
 
       '&.Mui-focused': {
