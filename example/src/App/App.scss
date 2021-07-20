@@ -1,5 +1,6 @@
 @import '~sfui/dist/Styles/SFColors/SFColors.module.scss';
 @import '~sfui/dist/Styles/SFMedia/SFMedia.module.scss';
+@import '~sfui/dist/Styles/SFTypography/SFTypography.module.scss';
 
 @mixin flexLayout($orientation, $gap) {
   display: flex;
