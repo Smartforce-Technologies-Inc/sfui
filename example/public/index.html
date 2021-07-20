@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="height: 100vh" lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
@@ -32,6 +32,20 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+    <style>
+      html {
+        height: 100vh;
+      }
+
+      body {
+        height: 100%;
+        display: grid;
+      }
+
+      #root {
+        height: 100%;
+      }
+    </style>
     <script
       async
       defer
@@ -40,10 +54,10 @@
     <title>sfui</title>
   </head>
 
-  <body style="height: 100%; display: grid">
+  <body>
     <noscript> You need to enable JavaScript to run this app. </noscript>
 
-    <div style="height: 100%" id="root"></div>
+    <div id="root"></div>
 
     <!--
       This HTML file is a template.
