@@ -46,7 +46,7 @@
 
   .demoPage {
     padding: 0 10px;
-    height: 82vh;
+    height: 80vh;
 
     .demoItem {
       padding: 30px;
@@ -99,7 +99,7 @@
   }
 
   .componentsPage {
-    height: 82vh;
+    height: 80vh;
     .pagesLayout {
       @include gridLayout(row, 30px, 100px, 1fr);
       padding: 0 10px;
@@ -221,14 +221,6 @@
 
     .row {
       display: grid;
-    }
-  }
-}
-
-@media screen and (min-width: $sf-media-lg-width) {
-  .bodyContent {
-    .componentsPage {
-      height: 84vh;
     }
   }
 }
