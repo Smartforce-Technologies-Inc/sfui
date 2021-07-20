@@ -361,15 +361,17 @@ export const FormView = (): JSX.Element => {
         }}
       >
         {!isSent && (
-          <SFScrollable>
-            <code>
-              <pre>
-                {response && Object.keys(response).length === 0
-                  ? ''
-                  : JSON.stringify(response, null, 4)}
-              </pre>
-            </code>
-          </SFScrollable>
+          <div className='response'>
+            <SFScrollable>
+              <code>
+                <pre>
+                  {response && Object.keys(response).length === 0
+                    ? ''
+                    : JSON.stringify(response, null, 2)}
+                </pre>
+              </code>
+            </SFScrollable>
+          </div>
         )}
       </SFAlert>
     </div>

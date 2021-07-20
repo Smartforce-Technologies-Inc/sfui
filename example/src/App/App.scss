@@ -1,4 +1,5 @@
 @import '~sfui/dist/Styles/SFColors/SFColors.module.scss';
+@import '~sfui/dist/Styles/SFMedia/SFMedia.module.scss';
 
 @mixin flexLayout($orientation, $gap) {
   display: flex;
@@ -39,15 +40,16 @@
   .topBar {
     padding: 10px 0;
     grid-gap: 0;
-    gap: 0;
+    gap: 10px;
   }
 
   .demoPage {
     padding: 0 10px;
-    display: grid;
-    min-height: 84vh;
+    height: 82vh;
 
     .demoItem {
+      padding: 30px;
+
       .demoTitle {
         padding-bottom: 20px;
         border-bottom: 4px solid $sf-grey-100;
@@ -95,23 +97,26 @@
     }
   }
 
-  .pagesLayout {
-    @include gridLayout(row, 30px, 100px, 1fr);
-    padding: 0 10px;
+  .componentsPage {
+    height: 82vh;
+    .pagesLayout {
+      @include gridLayout(row, 30px, 100px, 1fr);
+      padding: 0 10px;
 
-    .content {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 30px 10px;
+      .content {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 30px 10px;
 
-      .section {
-        &.fitContent {
-          overflow-x: scroll;
-        }
+        .section {
+          &.fitContent {
+            overflow-x: scroll;
+          }
 
-        .title {
-          padding-bottom: 20px;
-          border-bottom: 4px solid $sf-grey-100;
+          .title {
+            padding-bottom: 20px;
+            border-bottom: 4px solid $sf-grey-100;
+          }
         }
       }
     }
@@ -124,6 +129,15 @@
   display: flex;
   align-content: center;
   margin: 40px;
+  padding: 10px;
+
+  .response {
+    height: 40vh;
+  }
+
+  .MuiDialogContent-root {
+    overflow-y: unset;
+  }
 }
 
 .row {
@@ -168,25 +182,33 @@
   @include flexLayout(column, 10px);
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: $sf-media-sm-width) {
   .bodyContent {
     .textHeader {
       .libText {
         display: inline;
       }
     }
+
+    .componentsPage {
+      .pagesLayout {
+        padding: 0 30px 0 10px;
+      }
+    }
   }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: $sf-media-md-width) {
   .bodyContent {
-    .pagesLayout {
-      .content {
-        @include gridLayout(column, 20px, 150px, 1fr);
+    .componentsPage {
+      .pagesLayout {
+        .content {
+          @include gridLayout(column, 20px, 150px, 1fr);
 
-        .section {
-          &.fitContent {
-            overflow-x: auto;
+          .section {
+            &.fitContent {
+              overflow-x: auto;
+            }
           }
         }
       }
@@ -202,6 +224,14 @@
   }
 }
 
+@media screen and (min-width: $sf-media-lg-width) {
+  .bodyContent {
+    .componentsPage {
+      height: 84vh;
+    }
+  }
+}
+
 [class*='night'] {
   .bodyContent {
     .demoPage {
@@ -212,11 +242,13 @@
       }
     }
 
-    .pagesLayout {
-      .content {
-        .section {
-          .title {
-            border-bottom-color: $sf-grey-700;
+    .componentsPage {
+      .pagesLayout {
+        .content {
+          .section {
+            .title {
+              border-bottom-color: $sf-grey-700;
+            }
           }
         }
       }
