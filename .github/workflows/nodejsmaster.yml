@@ -31,6 +31,6 @@ jobs:
         env:
           CI: true
       - name: Deploy example webpage to github pages
-        run: npm run deploy
         with:
           token: '${{ secrets.GITHUB_TOKEN }}'
+        run: npm run deploy
