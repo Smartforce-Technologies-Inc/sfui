@@ -31,4 +31,7 @@ jobs:
         env:
           CI: true
       - name: Deploy example webpage to github pages
+        uses: pdcastano/gha-git-credentials@v2-latest
+        with:
+          token: '${{ secrets.GITHUB_TOKEN }}'
         run: npm run deploy
