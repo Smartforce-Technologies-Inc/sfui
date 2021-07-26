@@ -6,55 +6,110 @@ import { SFTextField, SFTextFieldProps } from './SFTextField';
 
 export default {
   title: 'Components/SFTextField',
-  component: SFTextField
+  component: SFTextField,
+  args: {
+    label: 'Bagel'
+  },
+  argTypes: {
+    onChange: {
+      action: 'onChange',
+      table: {
+        disable: true
+      }
+    },
+    disabled: {
+      control: {
+        type: 'boolean'
+      }
+    },
+    error: {
+      control: {
+        type: 'boolean'
+      }
+    },
+    helperText: {
+      control: {
+        type: 'text'
+      }
+    },
+    multiline: {
+      control: {
+        type: 'boolean'
+      }
+    },
+    defaultValue: {
+      table: {
+        disable: true
+      }
+    },
+    variant: {
+      table: {
+        disable: true
+      }
+    },
+    ref: {
+      table: {
+        disable: true
+      }
+    }
+  }
 } as Meta;
 
 const Template: Story<SFTextFieldProps> = (args) => <SFTextField {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {
-  label: 'Bagel',
-  defaultValue: 'Text Value'
+Default.argTypes = {
+  value: {
+    defaultValue: 'Some text',
+    control: {
+      type: 'text'
+    }
+  },
+  type: {
+    defaultValue: 'text',
+    control: {
+      type: 'select',
+      options: ['text', 'password']
+    }
+  }
 };
 
-export const Error = Template.bind({});
-Error.args = {
-  label: 'Bagel',
-  error: true,
-  defaultValue: 'Wrong Value',
-  helperText: 'Incorrect value'
+export const Number = Template.bind({});
+Number.args = {
+  type: 'number'
 };
-
-export const Password = Template.bind({});
-Password.args = {
-  label: 'Bagel',
-  defaultValue: 'Text Value',
-  type: 'password'
-};
-
-export const Disabled = Template.bind({});
-Disabled.args = {
-  label: 'Bagel',
-  defaultValue: 'Text Value',
-  disabled: true
+Number.argTypes = {
+  value: {
+    defaultValue: 20,
+    control: {
+      type: 'number'
+    }
+  },
+  type: {
+    table: {
+      disable: true
+    }
+  }
 };
 
 const AllTemplate: Story<SFTextFieldProps> = (args) => (
-  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
-    <div>
-      <SFTextField {...args} />
-    </div>
-    <div>
-      <SFTextField error helperText='Incorrect value' {...args} />
-    </div>
-    <div>
-      <SFTextField disabled {...args} />
-    </div>
+  <div
+    style={{
+      display: 'grid',
+      gridTemplateColumns: '1fr 1fr 1fr 1fr',
+      columnGap: '16px'
+    }}
+  >
+    <SFTextField {...args} />
+    <SFTextField {...args} error helperText='Incorrect value' />
+    <SFTextField {...args} disabled />
+    <SFTextField {...args} value='' helperText='Helper message' />
   </div>
 );
 
 export const AllTogether = AllTemplate.bind({});
-AllTogether.args = {
-  label: 'Bagel',
-  defaultValue: 'Text Value'
+AllTogether.parameters = {
+  controls: {
+    disable: true
+  }
 };

@@ -1,0 +1,250 @@
+@import '~sfui/dist/Styles/SFColors/SFColors.module.scss';
+@import '~sfui/dist/Styles/SFMedia/SFMedia.module.scss';
+@import '~sfui/dist/Styles/SFTypography/SFTypography.module.scss';
+
+@mixin flexLayout($orientation, $gap) {
+  display: flex;
+  flex-direction: $orientation;
+  gap: $gap;
+}
+
+@mixin gridLayout($orientation, $gap, $minWidth, $maxWidth) {
+  display: grid;
+  gap: $gap;
+
+  @if $orientation == column {
+    grid-template-columns: repeat(auto-fit, minmax($minWidth, $maxWidth));
+  } @else {
+    grid-template-rows: repeat(auto-fit, minmax($minWidth, $maxWidth));
+  }
+}
+
+.bodyContent {
+  @include gridLayout(row, 0px 10px, 60px, 1fr);
+  padding: 10px;
+
+  .textHeader {
+    @include flexLayout(row, 0);
+    margin: 0;
+    justify-content: space-between;
+    align-items: center;
+
+    .textBrand {
+      font-size: 12px;
+    }
+
+    .libText {
+      display: none;
+    }
+  }
+
+  .topBar {
+    padding: 10px 0;
+    grid-gap: 0;
+    gap: 10px;
+  }
+
+  .demoPage {
+    padding: 0 10px;
+    height: 80vh;
+
+    .demoItem {
+      padding: 30px;
+
+      .demoTitle {
+        padding-bottom: 20px;
+        border-bottom: 4px solid $sf-grey-100;
+      }
+
+      .demoBody {
+        display: flex;
+        flex-direction: column;
+
+        .demoTest {
+          display: grid;
+          gap: 10px;
+
+          .send {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+          }
+        }
+      }
+
+      .brand {
+        padding: 18px 24px 16px 24px;
+        color: $sf-grey-400;
+        font-size: 10px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 12px;
+        letter-spacing: 0.02em;
+        text-align: left;
+      }
+
+      .loadingScreen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 10000;
+      }
+    }
+  }
+
+  .componentsPage {
+    height: 80vh;
+    .pagesLayout {
+      @include gridLayout(row, 30px, 100px, 1fr);
+      padding: 0 10px;
+
+      .content {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 30px 10px;
+
+        .section {
+          &.fitContent {
+            overflow-x: scroll;
+          }
+
+          .title {
+            padding-bottom: 20px;
+            border-bottom: 4px solid $sf-grey-100;
+          }
+        }
+      }
+    }
+  }
+}
+
+.demoResponse {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+  display: flex;
+  align-content: center;
+  margin: 40px;
+  padding: 10px;
+
+  .response {
+    height: 40vh;
+  }
+
+  .MuiDialogContent-root {
+    overflow-y: unset;
+  }
+}
+
+.row {
+  @include flexLayout(row, 20px 10px);
+  flex-wrap: wrap;
+
+  &.align-center {
+    align-items: center;
+  }
+
+  &.align-baseline {
+    align-items: baseline;
+  }
+
+  &.spaced {
+    justify-content: space-between;
+  }
+
+  &.no-space {
+    gap: 10px;
+  }
+
+  &.extra-space {
+    gap: 40px;
+  }
+}
+
+.grid-row {
+  @include gridLayout(column, 10px, 10px, 1fr);
+}
+
+.grid-column {
+  @include gridLayout(row, 10px, 10px, 1fr);
+}
+
+.custom-grid {
+  @include gridLayout(row, 10px, 10px, 1fr);
+  grid-template-columns: 1fr;
+}
+
+.column {
+  @include flexLayout(column, 10px);
+}
+
+@media screen and (min-width: $sf-media-sm-width) {
+  .bodyContent {
+    .textHeader {
+      .libText {
+        display: inline;
+      }
+    }
+
+    .componentsPage {
+      .pagesLayout {
+        padding: 0 30px 0 10px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $sf-media-md-width) {
+  .bodyContent {
+    .componentsPage {
+      .pagesLayout {
+        .content {
+          @include gridLayout(column, 20px, 150px, 1fr);
+
+          .section {
+            &.fitContent {
+              overflow-x: auto;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .custom-grid {
+    @include gridLayout(column, 10px, 10px, 1fr);
+
+    .row {
+      display: grid;
+    }
+  }
+}
+
+[class*='night'] {
+  .bodyContent {
+    .demoPage {
+      .demoItem {
+        .demoTitle {
+          border-bottom-color: $sf-grey-700;
+        }
+      }
+    }
+
+    .componentsPage {
+      .pagesLayout {
+        .content {
+          .section {
+            .title {
+              border-bottom-color: $sf-grey-700;
+            }
+          }
+        }
+      }
+    }
+  }
+}

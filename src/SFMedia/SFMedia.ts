@@ -1,0 +1,19 @@
+export enum SFMedia {
+  XS_WIDTH = 375,
+  XS_HEIGHT = 667,
+
+  SM_WIDTH = 768,
+  SM_HEIGHT = 1024,
+
+  MD_WIDTH = 1024,
+  MD_HEIGHT = 768,
+
+  LG_WIDTH = 1280,
+  LG_HEIGHT = 720,
+
+  XL_WIDTH = 1600,
+  XL_HEIGHT = 900,
+
+  XXL_WIDTH = 1920,
+  XXL_HEIGHT = 1080
+}

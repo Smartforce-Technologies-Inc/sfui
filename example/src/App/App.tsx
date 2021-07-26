@@ -1,86 +1,102 @@
 import React, { useState } from 'react';
+import './App.scss';
 
 import {
   SFThemeProvider,
   createSFTheme,
   SFTheme,
+  SFThemeType,
   SFPaper,
   SFSwitch,
   useSFMediaQuery,
-  SFStylesProvider
+  SFStylesProvider,
+  SFButton
 } from 'sfui';
 
-import { MUIButtonsView, SFButtonsView } from './ButtonsView/ButtonsView';
-import { SFSwitchesView } from './SwitchesView/SwitchesView';
-import { SFCheckboxesView } from './CheckboxesView/CheckboxesView';
-import { SFRadioGroupView } from './RadioGroupView/RadioGroupView';
-import { SFTextFieldsView } from './TextFieldsView/TextFieldsView';
+import { ComponentsPage } from './Pages/ComponentsPage';
+import { DemosPage } from './Pages/DemosPage';
 
-const App = () => {
-  const [nightMode, setNightMode] = useState(false);
+const setThemeType = (theme: SFThemeType): void => {
+  localStorage.setItem('Smartforce.SFuiExample.ThemeType', theme);
+};
+
+const getThemeType = (): SFThemeType | undefined => {
+  return localStorage.getItem('Smartforce.SFuiExample.ThemeType') as
+    | SFThemeType
+    | undefined;
+};
+
+const App = (): JSX.Element => {
   const prefersDarkMode: boolean = useSFMediaQuery(
     '(prefers-color-scheme: dark)'
   );
 
-  let theme: SFTheme = createSFTheme(
-    prefersDarkMode || nightMode ? 'night' : 'day'
-  );
+  const [nightMode, setNightMode] = useState(prefersDarkMode);
+  const [showDemo, setShowDemo] = useState(false);
 
-  const toggleSwitch = () => {
+  const switchLabel = nightMode === true ? 'Night' : 'Day';
+
+  const theme: SFTheme = createSFTheme(nightMode ? 'night' : 'day');
+  const toggleSwitch = (): void => {
+    setThemeType(nightMode ? 'day' : 'night');
     setNightMode((value) => !value);
   };
+
+  React.useEffect(() => {
+    const getLocalStorageThemeType: SFThemeType | undefined = getThemeType();
+    if (getLocalStorageThemeType) {
+      setNightMode(getLocalStorageThemeType === 'night');
+    } else {
+      setThemeType(prefersDarkMode ? 'night' : 'day');
+      setNightMode(prefersDarkMode);
+    }
+  }, []);
 
   return (
     <SFThemeProvider theme={theme}>
       <SFStylesProvider injectFirst>
-        <SFPaper>
-          <div className='appWrapper'>
-            <h1>
-              SmartForce UI Library{' '}
-              <span style={{ float: 'right' }}>
-                <SFSwitch
-                  label='Night Mode'
-                  checked={nightMode}
-                  onChange={toggleSwitch}
-                />
+        <SFPaper
+          style={{
+            backgroundColor: theme.palette.background.default
+          }}
+          className={`${nightMode ? 'night' : 'day'}`}
+        >
+          <div className='bodyContent'>
+            <h1 className='textHeader'>
+              <span>
+                SFUI <span className='libText'>Library </span>
+                <span
+                  className='textBrand'
+                  style={{ color: theme.palette.primary.main }}
+                >
+                  by Smartforce
+                </span>
               </span>
+              <SFSwitch
+                label={switchLabel}
+                checked={nightMode}
+                onChange={toggleSwitch}
+              />
             </h1>
-            <br />
-
-            <h3>Buttons</h3>
-            <hr />
-            <div className='appGrid'>
-              <div>
-                <MUIButtonsView />
-              </div>
-              <div>
-                <SFButtonsView />
-              </div>
+            <div className='row topBar'>
+              <SFButton
+                size='medium'
+                sfColor='blue'
+                variant='text'
+                onClick={(): void => setShowDemo(false)}
+              >
+                Components
+              </SFButton>
+              <SFButton
+                size='medium'
+                sfColor='blue'
+                variant='text'
+                onClick={(): void => setShowDemo(true)}
+              >
+                Demos
+              </SFButton>
             </div>
-
-            <h3>TextFields</h3>
-            <hr />
-            <div className='appGrid'>
-              <SFTextFieldsView />
-            </div>
-
-            <h3>Switches</h3>
-            <hr />
-            <div className='appGrid'>
-              <SFSwitchesView />
-            </div>
-
-            <h3>Checkboxes</h3>
-            <hr />
-            <div className='appGrid'>
-              <SFCheckboxesView />
-            </div>
-
-            <h3>Radio Group</h3>
-            <hr />
-            <div className='appGrid'>
-              <SFRadioGroupView />
-            </div>
+            {showDemo === false ? <ComponentsPage /> : <DemosPage />}
           </div>
         </SFPaper>
       </SFStylesProvider>

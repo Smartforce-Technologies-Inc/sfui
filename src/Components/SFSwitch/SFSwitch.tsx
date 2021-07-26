@@ -7,62 +7,111 @@ import { SFFormControlLabel } from '../SFFormControlLabel/SFFormControlLabel';
 
 const StyledSwitch = withStyles((theme: Theme) => ({
   root: {
-    width: 64,
+    display: 'flex',
+    width: 60,
     height: 42,
-    padding: 13,
-    display: 'flex'
+    padding: 11,
+
+    '& .MuiButtonBase-root': {
+      '& .MuiIconButton-label': {
+        '& .MuiSwitch-thumb': {
+          width: 12,
+          height: 12,
+          margin: '6px'
+        }
+      },
+
+      '&.Mui-checked': {
+        transform: 'translateX(17px)'
+      }
+    },
+
+    '& .MuiSwitch-track': {
+      height: '16px'
+    },
+
+    '&.MuiSwitch-sizeSmall': {
+      width: 49,
+      height: 34,
+      padding: 8,
+
+      '& .MuiButtonBase-root': {
+        '&.Mui-checked': {
+          transform: 'translateX(14px)'
+        },
+
+        '& .MuiIconButton-label': {
+          '& .MuiSwitch-thumb': {
+            width: 10,
+            height: 10,
+            margin: '8px'
+          }
+        }
+      },
+
+      '& .MuiSwitch-track': {
+        height: '14px'
+      },
+
+      '& + .MuiFormControlLabel-label': {
+        lineHeight: '20px'
+      }
+    }
   },
   switchBase: {
-    left: 3,
-    padding: 15,
     color: theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400],
-    '& + $track': {
-      marginTop: -2
-    },
+
     '&:hover': {
       backgroundColor:
         theme.palette.type === 'light'
           ? `rgba(204, 204, 204, 0.3)`
           : `rgba(128, 128, 128, 0.3)`
     },
+
     '&:active': {
       backgroundColor:
         theme.palette.type === 'light'
           ? `rgba(204, 204, 204, 0.5)`
           : `rgba(128, 128, 128, 0.2)`
     },
-    '&.Mui-disabled': {
-      color: theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700],
-      '& + $track': {
-        opacity: 1,
-        backgroundColor: 'transparent',
-        borderColor: theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
-      }
-    },
+
     '&.Mui-checked': {
-      transform: 'translateX(17px)',
       color: theme.palette.type === 'light' ? SFSurfaceLight : SFSurfaceDark,
+
       '& + $track': {
         opacity: 1,
         backgroundColor: theme.palette.primary.main,
         borderColor: theme.palette.primary.main
       },
+
       '&:hover': {
         backgroundColor:
           theme.palette.type === 'light'
             ? `rgba(204, 235, 255, 0.4)`
             : `rgba(128, 198, 255, 0.2)`
       },
+
       '&:active': {
         backgroundColor:
           theme.palette.type === 'light'
             ? `rgba(204, 235, 255, 0.6)`
             : `rgba(128, 198, 255, 0.1)`
+      }
+    },
+
+    '&.Mui-disabled': {
+      color: theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700],
+
+      '& + $track': {
+        opacity: 1,
+        backgroundColor: 'transparent',
+        borderColor: theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
       },
-      '&.Mui-disabled': {
+
+      '&.Mui-checked': {
         color: theme.palette.type === 'light' ? SFSurfaceLight : SFSurfaceDark,
+
         '& + $track': {
-          opacity: 1,
           backgroundColor:
             theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700],
           borderColor:
@@ -72,8 +121,6 @@ const StyledSwitch = withStyles((theme: Theme) => ({
     }
   },
   thumb: {
-    width: 12,
-    height: 12,
     boxShadow: 'none'
   },
   track: {
@@ -87,23 +134,26 @@ const StyledSwitch = withStyles((theme: Theme) => ({
 
 export interface SFSwitchProps extends SwitchProps {
   label?: string;
+  sfColor?: 'primary' | 'default';
 }
 
 export const SFSwitch = ({
-  disableRipple = true,
-  color,
+  sfColor = 'primary',
   label,
+  size = 'medium',
   ...props
 }: SFSwitchProps): React.ReactElement<SFSwitchProps> => {
-  color = 'primary';
   return (
     <FormControl>
       <SFFormControlLabel
         control={
           <StyledSwitch
-            color={color}
-            disableRipple={disableRipple}
             {...props}
+            color={sfColor}
+            disableRipple
+            disableTouchRipple
+            disableFocusRipple
+            size={size}
           />
         }
         label={label}

@@ -1,0 +1,239 @@
+import * as React from 'react';
+import {
+  createStyles,
+  makeStyles,
+  Theme,
+  withStyles
+} from '@material-ui/core/styles';
+import MomentUtils from '@date-io/moment';
+import { SFBlue, SFGrey, SFRed } from '../../SFColors/SFColors';
+import { SFIcon } from '../SFIcon/SFIcon';
+import {
+  KeyboardDatePicker,
+  MuiPickersUtilsProvider,
+  KeyboardDatePickerProps
+} from '@material-ui/pickers';
+import { hexToRgba } from '../../Helpers';
+
+const useButtonBackgrounds = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      backgroundColor: `${
+        theme.palette.type !== 'light' ? SFGrey[800] : undefined
+      }`
+    }
+  })
+);
+
+const usePopOverStyle = makeStyles((theme: Theme) =>
+  createStyles({
+    paper: {
+      marginTop: '3px',
+      marginLeft: '-2px',
+      backgroundColor: `${
+        theme.palette.type !== 'light' ? SFGrey[800] : undefined
+      }`
+    }
+  })
+);
+
+const StyledDatePicker = withStyles((theme: Theme) => ({
+  root: {
+    boxSizing: 'border-box',
+
+    '&.openCalendarStyle': {
+      '& .MuiFilledInput-root': {
+        border: `2px solid ${
+          theme.palette.type === 'light' ? SFBlue[500] : SFBlue[200]
+        }`,
+
+        '& .MuiFilledInput-input': {
+          padding: '26px 10px 7px'
+        }
+      },
+      '& .MuiFilledInput-adornedEnd': {
+        paddingRight: '11px'
+      },
+      '& .MuiInputLabel-filled': {
+        '&.MuiInputLabel-shrink': {
+          color: theme.palette.type === 'light' ? SFBlue[500] : SFBlue[200]
+        }
+      }
+    },
+
+    '& .MuiFilledInput-root': {
+      height: '56px',
+      backgroundColor: theme.palette.background.paper,
+      border: `1px solid ${
+        theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
+      }`,
+      borderRadius: 2,
+      boxSizing: 'border-box',
+
+      '&:before': {
+        content: `none !important`
+      },
+
+      '&:after': {
+        content: `none !important`
+      },
+
+      '&:hover': {
+        borderColor: `${
+          theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]
+        }`
+      },
+
+      '&.Mui-focused': {
+        border: `2px solid ${
+          theme.palette.type === 'light' ? SFBlue[500] : SFBlue[200]
+        }`,
+
+        '& .MuiFilledInput-input': {
+          padding: '26px 10px 7px'
+        },
+        '& .MuiInputAdornment-root': {
+          marginRight: '-1px'
+        }
+      },
+
+      '&.Mui-error': {
+        border: `1px solid ${
+          theme.palette.type === 'light' ? SFRed[700] : SFRed[200]
+        } !important`,
+
+        '& .MuiFilledInput-input': {
+          padding: '26px 11px 7px !important'
+        },
+
+        '&.MuiFilledInput-adornedEnd': {
+          paddingRight: '12px !important'
+        }
+      },
+
+      '&.Mui-disabled': {
+        border: `1px solid ${
+          theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
+        }`,
+
+        '& .MuiFilledInput-input': {
+          padding: '26px 11px 7px !important'
+        },
+
+        '&.MuiFilledInput-adornedEnd': {
+          paddingRight: '12px !important'
+        }
+      },
+
+      '& .MuiFilledInput-input': {
+        fontWeight: 400,
+        fontSize: '16px',
+        padding: '26px 11px 7px',
+
+        '&.Mui-disabled': {
+          color: `${theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]}`
+        },
+
+        '&.MuiFilledInput-adornedEnd': {
+          paddingRight: '12px'
+        }
+      },
+
+      '& .MuiIconButton-root': {
+        '&:hover': {
+          backgroundColor: `${
+            theme.palette.type === 'light'
+              ? hexToRgba(SFGrey[200], 0.3)
+              : hexToRgba(SFGrey[500], 0.3)
+          }`
+        },
+
+        '&:active': {
+          backgroundColor: `${
+            theme.palette.type === 'light'
+              ? hexToRgba(SFGrey[200], 0.5)
+              : hexToRgba(SFGrey[500], 0.2)
+          }`
+        }
+      }
+    },
+
+    '& .MuiInputLabel-filled': {
+      fontSize: '16px',
+      lineHeight: '24px',
+      color: `${theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400]}`,
+
+      '&.MuiInputLabel-shrink': {
+        fontSize: '14px',
+        lineHeight: '20px',
+        transform: `translate(12px, 6px)`,
+
+        '&.Mui-focused': {
+          color: theme.palette.type === 'light' ? SFBlue[500] : SFBlue[200]
+        }
+      },
+
+      '&.Mui-error': {
+        color: `${theme.palette.type === 'light' ? SFRed[700] : SFRed[200]}`
+      },
+
+      '&.Mui-disabled': {
+        color: `${theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]}`
+      }
+    },
+
+    '& .MuiFormHelperText-root': {
+      backgroundColor: 'transparent',
+
+      '&.Mui-error': {
+        color: `${theme.palette.type === 'light' ? SFRed[700] : SFRed[200]}`
+      }
+    }
+  }
+}))(KeyboardDatePicker);
+
+export interface SFDatePickerProps extends KeyboardDatePickerProps {}
+
+export const SFDatePicker = ({
+  value = null,
+  label,
+  ...props
+}: SFDatePickerProps): React.ReactElement<KeyboardDatePickerProps> => {
+  const popOverStyle: Record<'paper', string> = usePopOverStyle();
+  const arrowStyle: Record<'root', string> = useButtonBackgrounds();
+  const [openCalendarStyle, setOpenCalendarStyle] = React.useState<boolean>(
+    false
+  );
+
+  return (
+    <MuiPickersUtilsProvider utils={MomentUtils}>
+      <StyledDatePicker
+        {...props}
+        fullWidth
+        disableToolbar
+        className={openCalendarStyle ? 'openCalendarStyle' : ''}
+        value={value}
+        variant='inline'
+        inputVariant='filled'
+        format='MM/DD/YYYY'
+        label={label}
+        onOpen={(): void => {
+          setOpenCalendarStyle(true);
+        }}
+        onClose={(): void => {
+          setOpenCalendarStyle(false);
+        }}
+        PopoverProps={{
+          classes: popOverStyle,
+          anchorOrigin: { vertical: 'bottom', horizontal: 'left' },
+          transformOrigin: { vertical: 'top', horizontal: 'left' }
+        }}
+        rightArrowButtonProps={{ classes: arrowStyle }}
+        rightArrowIcon={<SFIcon icon='Right-2' size='10' />}
+        leftArrowButtonProps={{ classes: arrowStyle }}
+        leftArrowIcon={<SFIcon icon='Left-2' size='10' />}
+        keyboardIcon={<SFIcon icon='Callendar' size='24' />}
+      />
+    </MuiPickersUtilsProvider>
+  );
+};

@@ -21,7 +21,7 @@ const SFBlue: SFColorProps = {
   200: '#80C6FF',
   300: '#5CADFF',
   400: '#338FFF',
-  500: '#0066FF', // main
+  500: '#0066FF',
   600: '#0050E6',
   700: '#003DCC',
   800: '#002699',
@@ -36,7 +36,7 @@ const SFRed: SFColorProps = {
   400: '#E7747C',
   500: '#DB343E',
   600: '#C7232E',
-  700: '#AD1F29', // main
+  700: '#AD1F29',
   800: '#821724',
   900: '#5F111E'
 };
@@ -52,7 +52,7 @@ const SFGrey: SFColorProps = {
   300: '#B2B2B2',
   400: '#999999',
   500: '#808080',
-  600: '#666666', // main
+  600: '#666666',
   700: '#4D4D4D',
   800: '#333333',
   900: '#1A1A1A'
@@ -73,8 +73,11 @@ const SFBackgroundDark = '#121212';
 const SFSurfaceLight = '#FFFFFF';
 const SFSurfaceDark = '#1F1F1F';
 
-const SFTextWhite = '#FFFFFF';
+const SFTextWhite = '#F2F2F2';
 const SFTextBlack = '#1A1A1A';
+
+const SFCommonWhite = '#FFFFFF';
+const SFCommonBlack = '#000000';
 
 export {
   SFBlue,
@@ -91,5 +94,7 @@ export {
   SFSurfaceLight,
   SFSurfaceDark,
   SFTextWhite,
-  SFTextBlack
+  SFTextBlack,
+  SFCommonWhite,
+  SFCommonBlack
 };

@@ -2,90 +2,68 @@ import React from 'react';
 
 import { SFButton } from 'sfui';
 
-const MUIButtonsView = () => {
+const renderButtonsColumn = (
+  size: 'small' | 'medium' | 'large' | undefined
+): JSX.Element => {
   return (
-    <div>
-      <h4>MUI Buttons</h4>
-      <div className='appRow'>
-        <SFButton>Button Text</SFButton>
-        <SFButton variant='outlined'>Button Text</SFButton>
-        <SFButton variant='text'>Button Text</SFButton>
-      </div>
-      <div className='appRow'>
-        <SFButton color='secondary'>Button Text</SFButton>
-        <SFButton color='secondary' variant='outlined'>
-          Button Text
+    <div className='column'>
+      <div className='row'>
+        <SFButton sfColor='blue' size={size}>
+          <span style={{ textTransform: 'capitalize' }}>{size}</span>
         </SFButton>
-        <SFButton color='secondary' variant='text'>
-          Button Text
+        <SFButton sfColor='blue' variant='outlined' size={size}>
+          <span style={{ textTransform: 'capitalize' }}>{size}</span>
+        </SFButton>
+        <SFButton sfColor='blue' variant='text' size={size}>
+          <span style={{ textTransform: 'capitalize' }}>{size}</span>
         </SFButton>
       </div>
-      <div className='appRow'>
-        <SFButton color='default'>Button Text</SFButton>
-        <SFButton color='default' variant='outlined'>
-          Button Text
+
+      <div className='row'>
+        <SFButton sfColor='grey' size={size}>
+          <span style={{ textTransform: 'capitalize' }}>{size}</span>
         </SFButton>
-        <SFButton color='default' variant='text'>
-          Button Text
+        <SFButton sfColor='grey' variant='outlined' size={size}>
+          <span style={{ textTransform: 'capitalize' }}>{size}</span>
+        </SFButton>
+        <SFButton sfColor='grey' variant='text' size={size}>
+          <span style={{ textTransform: 'capitalize' }}>{size}</span>
         </SFButton>
       </div>
-      <div className='appRow'>
-        <SFButton disabled={true}>Button Text</SFButton>
-        <SFButton variant='outlined' disabled={true}>
-          Button Text
+      <div className='row'>
+        <SFButton sfColor='red' size={size}>
+          <span style={{ textTransform: 'capitalize' }}>{size}</span>
         </SFButton>
-        <SFButton variant='text' disabled={true}>
-          Button Text
+        <SFButton sfColor='red' variant='outlined' size={size}>
+          <span style={{ textTransform: 'capitalize' }}>{size}</span>
+        </SFButton>
+        <SFButton sfColor='red' variant='text' size={size}>
+          <span style={{ textTransform: 'capitalize' }}>{size}</span>
+        </SFButton>
+      </div>
+      <div className='row'>
+        <SFButton sfColor='blue' disabled size={size}>
+          <span style={{ textTransform: 'capitalize' }}>{size}</span>
+        </SFButton>
+        <SFButton sfColor='blue' variant='outlined' disabled size={size}>
+          <span style={{ textTransform: 'capitalize' }}>{size}</span>
+        </SFButton>
+        <SFButton sfColor='blue' variant='text' disabled size={size}>
+          <span style={{ textTransform: 'capitalize' }}>{size}</span>
         </SFButton>
       </div>
     </div>
   );
 };
 
-const SFButtonsView = () => {
+const SFButtonsView = (): JSX.Element => {
   return (
-    <div>
-      <h4>SmartForce Buttons</h4>
-      <div className='appRow'>
-        <SFButton sfColor='blue'>Button Text</SFButton>
-        <SFButton sfColor='blue' variant='outlined'>
-          Button Text
-        </SFButton>
-        <SFButton sfColor='blue' variant='text'>
-          Button Text
-        </SFButton>
-      </div>
-      <div className='appRow'>
-        <SFButton sfColor='red'>Button Text</SFButton>
-        <SFButton sfColor='red' variant='outlined'>
-          Button Text
-        </SFButton>
-        <SFButton sfColor='red' variant='text'>
-          Button Text
-        </SFButton>
-      </div>
-      <div className='appRow'>
-        <SFButton sfColor='grey'>Button Text</SFButton>
-        <SFButton sfColor='grey' variant='outlined'>
-          Button Text
-        </SFButton>
-        <SFButton sfColor='grey' variant='text'>
-          Button Text
-        </SFButton>
-      </div>
-      <div className='appRow'>
-        <SFButton sfColor='blue' disabled={true}>
-          Button Text
-        </SFButton>
-        <SFButton sfColor='blue' variant='outlined' disabled={true}>
-          Button Text
-        </SFButton>
-        <SFButton sfColor='blue' variant='text' disabled={true}>
-          Button Text
-        </SFButton>
-      </div>
+    <div className='row spaced'>
+      {renderButtonsColumn('small')}
+      {renderButtonsColumn('medium')}
+      {renderButtonsColumn('large')}
     </div>
   );
 };
 
-export { MUIButtonsView, SFButtonsView };
+export { SFButtonsView };

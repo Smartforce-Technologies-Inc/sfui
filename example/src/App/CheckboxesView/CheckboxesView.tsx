@@ -1,13 +1,25 @@
 import React from 'react';
-
 import { SFCheckbox } from 'sfui';
 
-const SFCheckboxesView = () => {
+const SFCheckboxesView = (): JSX.Element => {
   return (
-    <div className='appRow'>
-      <SFCheckbox label='Bagel' />
-      <SFCheckbox color='secondary' label='Bagel' />
-      <SFCheckbox color='default' label='Bagel' />
+    <div className='column'>
+      <div className='row'>
+        <SFCheckbox />
+        <SFCheckbox label='Bagel' />
+      </div>
+      <div className='row'>
+        <SFCheckbox disabled />
+        <SFCheckbox label='Bagel' disabled />
+      </div>
+      <div className='row'>
+        <SFCheckbox checked />
+        <SFCheckbox label='Bagel' checked />
+      </div>
+      <div className='row'>
+        <SFCheckbox checked disabled />
+        <SFCheckbox label='Bagel' checked disabled />
+      </div>
     </div>
   );
 };
