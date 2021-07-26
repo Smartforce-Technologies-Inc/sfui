@@ -33,4 +33,4 @@ jobs:
       - name: Deploy example webpage to github pages
         with:
           token: '${{ secrets.GITHUB_TOKEN }}'
-        run: npm run deploy
+      - run: npm run deploy
