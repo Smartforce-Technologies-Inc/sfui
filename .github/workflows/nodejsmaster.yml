@@ -30,9 +30,7 @@ jobs:
         run: npm run build --if-present
         env:
           CI: true
-      - name: Set github user
-        uses: pdcastano/gha-git-credentials@v2-latest
-        with:
-          token: '${{ secrets.GITHUB_TOKEN }}'
       - name: Deploy example webpage to github pages
         run: npm run deploy
+        with:
+          token: '${{ secrets.GITHUB_TOKEN }}'
