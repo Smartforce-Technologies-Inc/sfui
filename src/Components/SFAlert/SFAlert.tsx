@@ -2,7 +2,7 @@ import React from 'react';
 import { Alert, AlertTitle, AlertProps } from '@material-ui/lab';
 import { SFIcon } from '../SFIcon/SFIcon';
 import { SFIconButton } from '../SFIconButton/SFIconButton';
-import { Theme, withStyles, makeStyles } from '@material-ui/core/styles';
+import { Theme, withStyles } from '@material-ui/core/styles';
 import { SFRed } from '../../SFColors/SFColors';
 import { hexToRgba } from '../../Helpers';
 
