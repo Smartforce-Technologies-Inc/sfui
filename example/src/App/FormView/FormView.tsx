@@ -260,7 +260,7 @@ export const FormView = (): JSX.Element => {
               label='Incident Tests'
               value={formData.incidentTests}
               options={multiSelectOptions}
-              onChange={(event: any): void =>
+              onChange={(event): void =>
                 setFormData({
                   ...formData,
                   incidentTests: event.target.value as string[]
@@ -296,7 +296,7 @@ export const FormView = (): JSX.Element => {
                   name='supervisor'
                   options={selectOptions}
                   value={formData.supervisor}
-                  onChange={(event: any): void =>
+                  onChange={(event): void =>
                     setFormData({
                       ...formData,
                       supervisor: event.target.value
