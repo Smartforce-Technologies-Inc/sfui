@@ -52,12 +52,14 @@ export const ComponentsPage = (): JSX.Element => {
               <SFLinksView />
             </div>
             <div className='section'>
-              <h4 className='title'>Alert</h4>
-              <SFAlertView />
-            </div>
-            <div className='section'>
               <h4 className='title'>Progress Circular Indeterminate</h4>
               <SFSpinnerView />
+            </div>
+          </div>
+          <div className='content'>
+            <div className='section'>
+              <h4 className='title'>Alert</h4>
+              <SFAlertView />
             </div>
           </div>
           <div className='content'>
