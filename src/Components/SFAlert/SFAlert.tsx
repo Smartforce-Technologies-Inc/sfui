@@ -94,7 +94,7 @@ export const SFAlert = ({
     <StyledAlert
       icon={icons?.icon}
       severity={type}
-      action={icons?.closeIcon}
+      action={onClose ? icons?.closeIcon : undefined}
       onClose={onClose}
     >
       <AlertTitle>{title}</AlertTitle>
