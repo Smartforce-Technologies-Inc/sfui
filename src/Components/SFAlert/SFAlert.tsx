@@ -6,30 +6,6 @@ import { Theme, withStyles } from '@material-ui/core/styles';
 import { SFRed } from '../../SFColors/SFColors';
 import { hexToRgba } from '../../Helpers';
 
-const StyledIconButton = withStyles((theme: Theme) => ({
-  root: {
-    '& .MuiIconButton-label': {
-      '& svg': {
-        fill: theme.palette.type === 'light' ? SFRed[900] : SFRed[50]
-      }
-    },
-
-    '&:hover': {
-      backgroundColor:
-        theme.palette.type === 'light'
-          ? hexToRgba(SFRed[100], 0.4)
-          : hexToRgba(SFRed[200], 0.2)
-    },
-
-    '&:active': {
-      backgroundColor:
-        theme.palette.type === 'light'
-          ? hexToRgba(SFRed[100], 0.7)
-          : hexToRgba(SFRed[200], 0.1)
-    }
-  }
-}))(SFIconButton);
-
 const StyledAlert = withStyles((theme: Theme) => ({
   root: {
     padding: '16px',
@@ -56,6 +32,30 @@ const StyledAlert = withStyles((theme: Theme) => ({
         '& svg': {
           fill: theme.palette.type === 'light' ? SFRed[700] : SFRed[200]
         }
+      },
+
+      '& .MuiAlert-action': {
+        '& .MuiIconButton-root': {
+          '& .MuiIconButton-label': {
+            '& svg': {
+              fill: theme.palette.type === 'light' ? SFRed[900] : SFRed[50]
+            }
+          },
+
+          '&:hover': {
+            backgroundColor:
+              theme.palette.type === 'light'
+                ? hexToRgba(SFRed[100], 0.4)
+                : hexToRgba(SFRed[200], 0.2)
+          },
+
+          '&:active': {
+            backgroundColor:
+              theme.palette.type === 'light'
+                ? hexToRgba(SFRed[100], 0.7)
+                : hexToRgba(SFRed[200], 0.1)
+          }
+        }
       }
     }
   }
@@ -64,18 +64,12 @@ const StyledAlert = withStyles((theme: Theme) => ({
 export interface SFAlertProps extends AlertProps {
   title: string;
   type: 'error' | 'warning' | 'info' | 'success';
-  onClose?: () => void;
 }
 
-const getIcons = (
-  type: string
-): { icon: JSX.Element; closeIcon?: JSX.Element } | undefined => {
+const getIcons = (type: string): JSX.Element | undefined => {
   switch (type) {
     case 'error':
-      return {
-        icon: <SFIcon icon='Error-Mark' />,
-        closeIcon: <StyledIconButton sfIcon='Close' sfSize='medium' />
-      };
+      return <SFIcon icon='Error-Mark' />;
 
     default:
       return undefined;
@@ -88,13 +82,17 @@ export const SFAlert = ({
   children,
   onClose
 }: SFAlertProps): React.ReactElement<SFAlertProps> => {
-  const icons = getIcons(type);
+  const icon = getIcons(type);
 
   return (
     <StyledAlert
-      icon={icons?.icon}
+      icon={icon}
       severity={type}
-      action={onClose ? icons?.closeIcon : undefined}
+      action={
+        onClose ? (
+          <SFIconButton sfIcon='Close' sfSize='medium' onClick={onClose} />
+        ) : undefined
+      }
       onClose={onClose}
     >
       <AlertTitle>{title}</AlertTitle>
