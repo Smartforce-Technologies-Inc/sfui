@@ -66,7 +66,7 @@ export interface SFAlertProps extends AlertProps {
   type: 'error' | 'warning' | 'info' | 'success';
 }
 
-const getIcons = (type: string): JSX.Element | undefined => {
+const getIcon = (type: string): JSX.Element | undefined => {
   switch (type) {
     case 'error':
       return <SFIcon icon='Error-Mark' />;
@@ -82,7 +82,7 @@ export const SFAlert = ({
   children,
   onClose
 }: SFAlertProps): React.ReactElement<SFAlertProps> => {
-  const icon = getIcons(type);
+  const icon: JSX.Element | undefined = getIcon(type);
 
   return (
     <StyledAlert

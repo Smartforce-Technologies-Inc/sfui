@@ -25,7 +25,7 @@ export default {
         disable: true
       }
     },
-    showOnClose: {
+    showCloseButton: {
       defaultValue: false,
       control: {
         type: 'boolean'
@@ -35,7 +35,7 @@ export default {
 } as Meta;
 
 export const Alert = ({
-  showOnClose,
+  showCloseButton,
   title,
   type,
   onClose,
@@ -45,7 +45,7 @@ export const Alert = ({
     {...args}
     title={title}
     type={type}
-    onClose={showOnClose ? (): void => onClose() : undefined}
+    onClose={showCloseButton ? (): void => onClose() : undefined}
   >
     <p style={{ padding: '0px', margin: '0px' }}>
       Lorem ipsum dolor sit amet, consect adipiscing elit.
