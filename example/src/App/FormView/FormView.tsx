@@ -9,7 +9,7 @@ import {
   SFDatePicker,
   SFSelect,
   SFMenuOption,
-  SFAlert,
+  SFAlertDialog,
   SFNumericField,
   SFAutocompleteLocation,
   SFAutocompleteLocationResult,
@@ -151,7 +151,7 @@ export const FormView = (): JSX.Element => {
                 label='Place of Ocurrence'
                 options={autoCompleteOptions}
                 value={formData.placeOfOcurrence}
-                onChange={(value): void =>
+                onChange={(value: string): void =>
                   setFormData({ ...formData, placeOfOcurrence: value })
                 }
               />
@@ -161,7 +161,7 @@ export const FormView = (): JSX.Element => {
                     label='Incident Date'
                     name='date'
                     value={formData.date}
-                    onChange={(value): void =>
+                    onChange={(value: string): void =>
                       setFormData({
                         ...formData,
                         date: value
@@ -207,7 +207,7 @@ export const FormView = (): JSX.Element => {
                 label='Incident description'
                 name='description'
                 value={formData.description}
-                onChange={(event): void =>
+                onChange={(event: ChangeEvent<HTMLInputElement>): void =>
                   setFormData({ ...formData, description: event.target.value })
                 }
               />
@@ -221,7 +221,7 @@ export const FormView = (): JSX.Element => {
                   label='Property Damage'
                   name='propertyDamage'
                   checked={formData.propertyDamage}
-                  onChange={(event): void =>
+                  onChange={(event: ChangeEvent<HTMLInputElement>): void =>
                     setFormData({
                       ...formData,
                       propertyDamage: event.target.checked
@@ -232,7 +232,7 @@ export const FormView = (): JSX.Element => {
                   label='Officer Injured'
                   name='injured'
                   checked={formData.injured}
-                  onChange={(event): void =>
+                  onChange={(event: ChangeEvent<HTMLInputElement>): void =>
                     setFormData({ ...formData, injured: event.target.checked })
                   }
                 />
@@ -243,7 +243,7 @@ export const FormView = (): JSX.Element => {
                 name='witnessess'
                 value={formData.witnessess}
                 options={radioGroupOptions}
-                onChange={(event): void =>
+                onChange={(event: ChangeEvent<HTMLInputElement>): void =>
                   setFormData({ ...formData, witnessess: event.target.value })
                 }
               />
@@ -252,7 +252,7 @@ export const FormView = (): JSX.Element => {
               label='Incident Events'
               options={ChipsListOptions}
               items={formData.incidentEvents}
-              onChange={(value): void =>
+              onChange={(value: ChipFieldValueType[]): void =>
                 setFormData({ ...formData, incidentEvents: value })
               }
             />
@@ -274,7 +274,7 @@ export const FormView = (): JSX.Element => {
                 name='police department'
                 autoComplete='off'
                 value={formData.policeDepartment}
-                onChange={(event): void =>
+                onChange={(event: ChangeEvent<HTMLInputElement>): void =>
                   setFormData({
                     ...formData,
                     policeDepartment: event.target.value
@@ -286,7 +286,7 @@ export const FormView = (): JSX.Element => {
                   label='Officers Involved'
                   items={formData.officers}
                   delimiter=','
-                  onChange={(value): void =>
+                  onChange={(value: ChipFieldValueType[]): void =>
                     setFormData({ ...formData, officers: value })
                   }
                 />
@@ -346,7 +346,7 @@ export const FormView = (): JSX.Element => {
           <SFSpinner size='60px' />
         </div>
       )}
-      <SFAlert
+      <SFAlertDialog
         title='Form Output'
         PaperProps={{ className: 'demoResponse' }}
         maxWidth='sm'
@@ -373,7 +373,7 @@ export const FormView = (): JSX.Element => {
             </SFScrollable>
           </div>
         )}
-      </SFAlert>
+      </SFAlertDialog>
     </div>
   );
 };

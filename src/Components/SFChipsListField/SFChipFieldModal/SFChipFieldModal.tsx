@@ -1,5 +1,5 @@
 import React from 'react';
-import { SFAlert } from '../../SFAlert/SFAlert';
+import { SFAlertDialog } from '../../SFAlertDialog/SFAlertDialog';
 import { SFTextField } from '../../SFTextField/SFTextField';
 import { ChipFieldValueType } from '../SFChipsListField';
 
@@ -41,7 +41,7 @@ export const SFChipListModal = ({
   }, [value]);
 
   return (
-    <SFAlert
+    <SFAlertDialog
       title='Edit item'
       rightAction={{
         label: 'Done',
@@ -66,6 +66,6 @@ export const SFChipListModal = ({
           onInputChange(input)
         }
       />
-    </SFAlert>
+    </SFAlertDialog>
   );
 };

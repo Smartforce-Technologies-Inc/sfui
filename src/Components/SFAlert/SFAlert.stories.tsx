@@ -1,27 +1,21 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { SFAlert, SFAlertProps } from './SFAlert';
-import { SFTextField } from '../SFTextField/SFTextField';
 
 export default {
   title: 'Components/SFAlert',
   component: SFAlert,
   args: {
-    title: 'Alert dialog title',
-    content:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' +
-      ' Mauris lobortis a erat eu mattis.',
-    open: true
+    title: 'Lorem ipsum dolor sit amet.'
   },
   argTypes: {
     onClose: {
+      action: 'onClose',
       table: {
         disable: true
-      },
-      action: 'onClose'
+      }
     },
-    onClick: {
-      action: 'onClick',
+    children: {
       table: {
         disable: true
       }
@@ -31,42 +25,30 @@ export default {
         disable: true
       }
     },
-    leftAction: {
-      table: {
-        disable: true
-      }
-    },
-    rightAction: {
-      table: {
-        disable: true
+    showCloseButton: {
+      defaultValue: false,
+      control: {
+        type: 'boolean'
       }
     }
   }
 } as Meta;
 
-export const AlertDialog = (args: SFAlertProps): JSX.Element => (
+export const Alert = ({
+  showCloseButton,
+  title,
+  type,
+  onClose,
+  ...args
+}): JSX.Element => (
   <SFAlert
-    leftAction={{ label: 'Medium' }}
-    rightAction={{ label: 'Medium' }}
     {...args}
-  />
+    title={title}
+    type={type}
+    onClose={showCloseButton ? (): void => onClose() : undefined}
+  >
+    <p style={{ padding: '0px', margin: '0px' }}>
+      Lorem ipsum dolor sit amet, consect adipiscing elit.
+    </p>
+  </SFAlert>
 );
-
-export const FormDialog = (args: SFAlertProps): JSX.Element => {
-  const [disabled, setDisabled] = React.useState<boolean>(true);
-
-  return (
-    <SFAlert
-      {...args}
-      title='Form dialog title'
-      rightAction={{ label: 'Medium', buttonProps: { disabled } }}
-    >
-      <SFTextField
-        style={{ marginTop: 20 }}
-        label='Bagel'
-        placeholder='Please write something to enable button'
-        onChange={(event): void => setDisabled(event.target.value.length === 0)}
-      />
-    </SFAlert>
-  );
-};

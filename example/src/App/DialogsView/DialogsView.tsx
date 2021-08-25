@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { SFAlert, SFTextField, SFButton } from 'sfui';
+import { SFAlertDialog, SFTextField, SFButton } from 'sfui';
 
 const SFDialogsView = (): JSX.Element => {
   const [disabled, setDisabled] = React.useState<boolean>(true);
@@ -27,7 +27,7 @@ const SFDialogsView = (): JSX.Element => {
           Open Alert Form
         </SFButton>
       </div>
-      <SFAlert
+      <SFAlertDialog
         leftAction={{
           label: 'Medium',
           buttonProps: { onClick: (): void => setAlertTextOpen(!alertTextOpen) }
@@ -41,7 +41,7 @@ const SFDialogsView = (): JSX.Element => {
       Mauris lobortis a erat eu mattis.`}
         open={alertTextOpen}
       />
-      <SFAlert
+      <SFAlertDialog
         content={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
     Mauris lobortis a erat eu mattis.`}
         open={alertFormOpen}
@@ -56,11 +56,11 @@ const SFDialogsView = (): JSX.Element => {
           style={{ marginTop: 20 }}
           label='Bagel'
           placeholder='Please write something to enable button'
-          onChange={(event): void =>
+          onChange={(event: React.ChangeEvent<HTMLInputElement>): void =>
             setDisabled(event.target.value.length === 0)
           }
         />
-      </SFAlert>
+      </SFAlertDialog>
     </div>
   );
 };

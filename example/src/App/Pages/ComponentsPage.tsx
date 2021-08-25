@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { SFAlertView } from '../AlertView/AlertView';
 import { SFAutocompleteView } from '../AutocompleteView/AutocompleteView';
 import { SFAutoCompleteLocationView } from '../AutocompleteLocationView/AutocompleteLocationView';
 import { SFAutocompleteChipsView } from '../AutocompleteChipsView/AutocompleteChipsView';
@@ -53,6 +54,12 @@ export const ComponentsPage = (): JSX.Element => {
             <div className='section'>
               <h4 className='title'>Progress Circular Indeterminate</h4>
               <SFSpinnerView />
+            </div>
+          </div>
+          <div className='content'>
+            <div className='section'>
+              <h4 className='title'>Alert</h4>
+              <SFAlertView />
             </div>
           </div>
           <div className='content'>
