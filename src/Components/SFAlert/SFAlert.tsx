@@ -33,26 +33,29 @@ const StyledIconButton = withStyles((theme: Theme) => ({
 const StyledAlert = withStyles((theme: Theme) => ({
   root: {
     padding: '16px',
-    backgroundColor: theme.palette.type === 'light' ? SFRed[50] : SFRed[900],
 
-    '& .MuiAlert-message': {
-      color: theme.palette.type === 'light' ? SFRed[900] : SFRed[50],
-      padding: '0px 24px 0px 16px',
-      fontWeight: 400,
-      fontSize: '16px',
-      lineHeight: '24px',
+    '&.MuiAlert-standardError': {
+      backgroundColor: theme.palette.type === 'light' ? SFRed[50] : SFRed[900],
 
-      '& .MuiAlertTitle-root': {
-        fontWeight: 700
-      }
-    },
+      '& .MuiAlert-message': {
+        color: theme.palette.type === 'light' ? SFRed[900] : SFRed[50],
+        padding: '0px 24px 0px 16px',
+        fontWeight: 400,
+        fontSize: '16px',
+        lineHeight: '24px',
 
-    '& .MuiAlert-icon': {
-      padding: '0px',
-      margin: '0px',
+        '& .MuiAlertTitle-root': {
+          fontWeight: 700
+        }
+      },
 
-      '& svg': {
-        fill: theme.palette.type === 'light' ? SFRed[700] : SFRed[200]
+      '& .MuiAlert-icon': {
+        padding: '0px',
+        margin: '0px',
+
+        '& svg': {
+          fill: theme.palette.type === 'light' ? SFRed[700] : SFRed[200]
+        }
       }
     }
   }
@@ -60,24 +63,42 @@ const StyledAlert = withStyles((theme: Theme) => ({
 
 export interface SFAlertProps extends AlertProps {
   title: string;
-  text?: string;
+  type: 'error' | 'warning' | 'info' | 'success';
   onClose?: () => void;
 }
 
+const getIcons = (
+  type: string
+): { icon: JSX.Element; closeIcon?: JSX.Element } | undefined => {
+  switch (type) {
+    case 'error':
+      return {
+        icon: <SFIcon icon='Error-Mark' />,
+        closeIcon: <StyledIconButton sfIcon='Close' sfSize='medium' />
+      };
+
+    default:
+      return undefined;
+  }
+};
+
 export const SFAlert = ({
   title,
-  text,
+  type = 'error',
+  children,
   onClose
 }: SFAlertProps): React.ReactElement<SFAlertProps> => {
+  const icons = getIcons(type);
+
   return (
     <StyledAlert
-      icon={<SFIcon icon='Error-Mark' />}
-      severity='error'
-      action={<StyledIconButton sfIcon='Close' sfSize='medium' />}
+      icon={icons?.icon}
+      severity={type}
+      action={icons?.closeIcon}
       onClose={onClose}
     >
       <AlertTitle>{title}</AlertTitle>
-      {text}
+      {children}
     </StyledAlert>
   );
 };

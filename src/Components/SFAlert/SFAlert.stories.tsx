@@ -7,7 +7,11 @@ export default {
   component: SFAlert,
   args: {
     title: 'Lorem ipsum dolor sit amet.',
-    text: 'Lorem ipsum dolor sit amet, consect adipiscing elit.'
+    children: (
+      <p style={{ padding: '0px', margin: '0px' }}>
+        Lorem ipsum dolor sit amet, consect adipiscing elit.
+      </p>
+    )
   }
 } as Meta;
 
