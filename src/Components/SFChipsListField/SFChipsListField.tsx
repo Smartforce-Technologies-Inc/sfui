@@ -89,6 +89,7 @@ export interface SFChipsListFieldProps {
   chipDisplay?: 'inline' | 'block';
   emptyMessage?: string;
   label: string;
+  helperText?: string;
   options?: string[];
   items?: ChipFieldValueType[];
   delimiter?: ',' | ';';
@@ -102,6 +103,7 @@ export const SFChipsListField = ({
   chipDisplay = 'inline',
   emptyMessage,
   label,
+  helperText,
   options = [],
   items = [],
   delimiter = undefined,
@@ -325,7 +327,13 @@ export const SFChipsListField = ({
           />
         )}
         renderInput={(params: AutocompleteRenderInputParams): JSX.Element => (
-          <StyledTextField {...params} multiline rows={1} label={label} />
+          <StyledTextField
+            {...params}
+            multiline
+            rows={1}
+            label={label}
+            helperText={helperText}
+          />
         )}
       />
       <DisplayValues />
