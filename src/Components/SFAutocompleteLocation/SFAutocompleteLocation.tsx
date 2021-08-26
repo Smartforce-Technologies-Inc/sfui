@@ -116,6 +116,7 @@ export interface SFAutocompleteLocationProps {
   label: string;
   value: SFAutocompleteLocationResult;
   disabled?: boolean;
+  required?: boolean;
   currentLocation?: boolean;
   currentLocationType?: 'address' | 'route';
   onChange: (value: SFAutocompleteLocationResult) => void;
@@ -125,6 +126,7 @@ export const SFAutocompleteLocation = ({
   label,
   value,
   disabled = false,
+  required = false,
   currentLocation = false,
   currentLocationType = 'route',
   onChange
@@ -251,7 +253,9 @@ export const SFAutocompleteLocation = ({
 
   const renderInput = (
     params: AutocompleteRenderInputParams
-  ): React.ReactNode => <SFTextField {...params} label={label} />;
+  ): React.ReactNode => (
+    <SFTextField {...params} required={required} label={label} />
+  );
 
   const onAutocompleteChange = (
     _event: React.ChangeEvent,

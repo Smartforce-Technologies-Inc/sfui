@@ -139,6 +139,8 @@ export const SFTimeField = ({
 
     if (date && date.isValid()) {
       onChange(date.toISOString());
+    } else if (date === null) {
+      onChange('');
     }
   };
 
