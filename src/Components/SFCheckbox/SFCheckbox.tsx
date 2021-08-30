@@ -47,18 +47,6 @@ const StyledCheckbox = withStyles((theme: Theme) => ({
   }
 }))(Checkbox);
 
-const StyledFormControlLabel = withStyles({
-  root: {
-    gap: '12px',
-    margin: '0px',
-    alignItems: 'flex-start',
-
-    '& .MuiTypography-root': {
-      paddingTop: '10px'
-    }
-  }
-})(SFFormControlLabel);
-
 const getIconUncheckedColor = (
   theme: Theme,
   disabled: boolean | undefined
@@ -97,7 +85,7 @@ export const SFCheckbox = ({
 
   return (
     <FormControl>
-      <StyledFormControlLabel
+      <SFFormControlLabel
         control={
           <StyledCheckbox
             {...props}
