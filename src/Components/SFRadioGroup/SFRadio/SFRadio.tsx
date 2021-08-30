@@ -2,7 +2,7 @@ import * as React from 'react';
 import { withStyles, Theme } from '@material-ui/core/styles';
 import Radio, { RadioProps } from '@material-ui/core/Radio';
 import FormControl from '@material-ui/core/FormControl';
-import { SFFormControlLabel } from '../../SFFormControlLabel/SFFormControlLabel';
+import { SFFormControlLabelBoolean } from '../../SFFormControlLabelBoolean/SFFormControlLabelBoolean';
 import { SFGrey } from '../../../SFColors/SFColors';
 
 const StyledRadio = withStyles((theme: Theme) => ({
@@ -59,7 +59,7 @@ export const SFRadio = ({
   }
   return (
     <FormControl>
-      <SFFormControlLabel
+      <SFFormControlLabelBoolean
         control={<StyledRadio {...props} color='primary' disableRipple />}
         label={label}
         disabled={props.disabled}
