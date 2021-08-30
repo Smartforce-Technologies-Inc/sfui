@@ -9,7 +9,8 @@ import { SFIcon } from '../SFIcon/SFIcon';
 const StyledCheckbox = withStyles((theme: Theme) => ({
   root: {
     padding: '12px',
-    color: `${theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400]}`
+    color: `${theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400]}`,
+    alignItems: 'flex-start'
   },
   colorPrimary: {
     '&:hover': {
@@ -46,6 +47,18 @@ const StyledCheckbox = withStyles((theme: Theme) => ({
   }
 }))(Checkbox);
 
+const StyledFormControlLabel = withStyles({
+  root: {
+    gap: '12px',
+    margin: '0px',
+    alignItems: 'flex-start',
+
+    '& .MuiTypography-root': {
+      paddingTop: '10px'
+    }
+  }
+})(SFFormControlLabel);
+
 const getIconUncheckedColor = (
   theme: Theme,
   disabled: boolean | undefined
@@ -67,7 +80,7 @@ const getIconCheckedColor = (
 };
 
 export interface SFCheckboxProps extends CheckboxProps {
-  label?: string;
+  label?: React.ReactNode | undefined;
 }
 
 export const SFCheckbox = ({
@@ -84,7 +97,7 @@ export const SFCheckbox = ({
 
   return (
     <FormControl>
-      <SFFormControlLabel
+      <StyledFormControlLabel
         control={
           <StyledCheckbox
             {...props}
