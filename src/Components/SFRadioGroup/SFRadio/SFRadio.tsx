@@ -45,7 +45,7 @@ const StyledRadio = withStyles((theme: Theme) => ({
 }))(Radio);
 
 export interface SFRadioProps extends RadioProps {
-  label?: string;
+  label?: React.ReactNode;
   isGroup?: boolean;
 }
 

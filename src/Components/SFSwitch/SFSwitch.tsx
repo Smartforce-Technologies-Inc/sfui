@@ -133,7 +133,7 @@ const StyledSwitch = withStyles((theme: Theme) => ({
 }))(Switch);
 
 export interface SFSwitchProps extends SwitchProps {
-  label?: string;
+  label?: React.ReactNode;
   sfColor?: 'primary' | 'default';
 }
 

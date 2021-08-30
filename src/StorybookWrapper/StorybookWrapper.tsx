@@ -13,17 +13,15 @@ export interface StorybookWrapperProps {
 const StorybookWrapper = ({
   children
 }: StorybookWrapperProps): React.ReactElement<StorybookWrapperProps> => {
-  const [nightMode, setNightMode] = useState(false);
   const prefersDarkMode: boolean = useSFMediaQuery(
     '(prefers-color-scheme: dark)'
   );
+  const [nightMode, setNightMode] = useState(prefersDarkMode);
 
-  const theme: SFTheme = createSFTheme(
-    prefersDarkMode || nightMode ? 'night' : 'day'
-  );
+  const theme: SFTheme = createSFTheme(nightMode ? 'night' : 'day');
 
   const toggleSwitch = (): void => {
-    setNightMode((value) => !value);
+    setNightMode(!nightMode);
   };
 
   return (
