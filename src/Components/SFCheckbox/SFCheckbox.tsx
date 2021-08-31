@@ -3,13 +3,14 @@ import { withStyles, Theme, useTheme } from '@material-ui/core/styles';
 import Checkbox, { CheckboxProps } from '@material-ui/core/Checkbox';
 import FormControl from '@material-ui/core/FormControl';
 import { SFGrey } from '../../SFColors/SFColors';
-import { SFFormControlLabel } from '../SFFormControlLabel/SFFormControlLabel';
+import { SFFormControlBooleanLabel } from '../SFFormControlBooleanLabel/SFFormControlBooleanLabel';
 import { SFIcon } from '../SFIcon/SFIcon';
 
 const StyledCheckbox = withStyles((theme: Theme) => ({
   root: {
     padding: '12px',
-    color: `${theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400]}`
+    color: `${theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400]}`,
+    alignItems: 'flex-start'
   },
   colorPrimary: {
     '&:hover': {
@@ -67,7 +68,7 @@ const getIconCheckedColor = (
 };
 
 export interface SFCheckboxProps extends CheckboxProps {
-  label?: string;
+  label?: React.ReactNode | undefined;
 }
 
 export const SFCheckbox = ({
@@ -84,7 +85,7 @@ export const SFCheckbox = ({
 
   return (
     <FormControl>
-      <SFFormControlLabel
+      <SFFormControlBooleanLabel
         control={
           <StyledCheckbox
             {...props}

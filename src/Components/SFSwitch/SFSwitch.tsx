@@ -3,7 +3,7 @@ import { withStyles, Theme } from '@material-ui/core/styles';
 import Switch, { SwitchProps } from '@material-ui/core/Switch';
 import FormControl from '@material-ui/core/FormControl';
 import { SFSurfaceLight, SFSurfaceDark, SFGrey } from '../../SFColors/SFColors';
-import { SFFormControlLabel } from '../SFFormControlLabel/SFFormControlLabel';
+import { SFFormControlBooleanLabel } from '../SFFormControlBooleanLabel/SFFormControlBooleanLabel';
 
 const StyledSwitch = withStyles((theme: Theme) => ({
   root: {
@@ -133,7 +133,7 @@ const StyledSwitch = withStyles((theme: Theme) => ({
 }))(Switch);
 
 export interface SFSwitchProps extends SwitchProps {
-  label?: string;
+  label?: React.ReactNode;
   sfColor?: 'primary' | 'default';
 }
 
@@ -145,7 +145,7 @@ export const SFSwitch = ({
 }: SFSwitchProps): React.ReactElement<SFSwitchProps> => {
   return (
     <FormControl>
-      <SFFormControlLabel
+      <SFFormControlBooleanLabel
         control={
           <StyledSwitch
             {...props}
