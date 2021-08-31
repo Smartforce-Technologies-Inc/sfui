@@ -27,7 +27,7 @@ const StyledFromControlLabel = withStyles((theme: Theme) => ({
 
 export interface SFFormControlLabelProps extends FormControlLabelProps {}
 
-export const SFFormControlLabelBoolean = (
+export const SFFormControlBooleanLabel = (
   props: SFFormControlLabelProps
 ): React.ReactElement<SFFormControlLabelProps> => {
   return <StyledFromControlLabel {...props} />;
