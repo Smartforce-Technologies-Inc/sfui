@@ -210,7 +210,6 @@ export const SFChipsListField = ({
         } else {
           insertedValues = [value.replace(/\n/g, '')];
         }
-
         let valuesToAdd: ChipFieldValueType[] = [];
         insertedValues.forEach((insertedValue: string) => {
           if (insertedValue.trim() !== '') {
@@ -250,21 +249,29 @@ export const SFChipsListField = ({
         let currentValues: ChipFieldValueType[] = [];
         values.forEach((value: string) => {
           if (value.trim() !== '') {
-            const matchValue: string | undefined = options.find(
-              (option) => option.toLowerCase() === value.trim().toLowerCase()
+            const matchValueOption: string | undefined = options.find(
+              (option) => option.toLowerCase() === value.toLowerCase()
             );
-            if (matchValue) {
-              if (items.findIndex((item) => item.value === matchValue) === -1) {
+            const matchValueItem: ChipFieldValueType | undefined = items.find(
+              (item) => item.value.toLowerCase() === value.toLowerCase()
+            );
+            if (matchValueOption) {
+              if (
+                items.findIndex((item) => item.value === matchValueOption) ===
+                -1
+              ) {
                 currentValues = [
                   ...currentValues,
-                  { value: matchValue, isNew: true }
+                  { value: matchValueOption, isNew: true }
                 ];
               }
             } else {
-              currentValues = [
-                ...currentValues,
-                { value: value.trim(), isNew: true }
-              ];
+              if (!matchValueItem) {
+                currentValues = [
+                  ...currentValues,
+                  { value: value.trim(), isNew: true }
+                ];
+              }
             }
           }
         });
