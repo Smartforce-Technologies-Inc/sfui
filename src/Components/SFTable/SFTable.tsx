@@ -164,7 +164,7 @@ export const SFTable = ({
   className = '',
   elevation = 2,
   columns,
-  options,
+  options = defaultOptions,
   ...props
 }: SFTableProps): React.ReactElement<SFTableProps> => {
   const theme = useTheme();
@@ -201,7 +201,7 @@ export const SFTable = ({
   );
 
   const customOptions: SFTableOptions = {
-    ...(options || defaultOptions),
+    ...options,
     headerStyle: {
       borderBottom: `2px solid  ${
         theme.palette.type === 'light' ? SFGrey[100] : SFGrey[700]
