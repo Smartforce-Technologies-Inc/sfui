@@ -56,7 +56,14 @@ const StyledTextField = withStyles({
     '& .MuiInputBase-root': {
       height: 'inherit',
       minHeight: '56px',
-      gap: '6px'
+      gap: '6px',
+      padding: '28px 9px 9px !important',
+      '& .MuiAutocomplete-input': {
+        padding: '0'
+      },
+      '& .MuiFormControl-root .MuiChip-outlined': {
+        margin: '3px auto 2px'
+      }
     }
   }
 })(SFTextField);
@@ -329,7 +336,6 @@ export const SFChipsListField = ({
         renderInput={(params: AutocompleteRenderInputParams): JSX.Element => (
           <StyledTextField
             {...params}
-            multiline
             rows={1}
             label={label}
             helperText={helperText}
