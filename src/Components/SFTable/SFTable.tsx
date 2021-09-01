@@ -137,6 +137,16 @@ interface RowTableData {
   checked: boolean;
 }
 
+const defaultOptions = {
+  sorting: false,
+  search: false,
+  toolbar: false,
+  showTitle: false,
+  paging: false,
+  draggable: false,
+  selection: false
+};
+
 export type RowData = {
   [key: string]: number | string | boolean | undefined;
 } & { tableData?: RowTableData };
@@ -144,11 +154,15 @@ export type RowData = {
 export interface SFTableColumn extends Column<RowData> {}
 export interface SFTableOptions extends Options<RowData> {}
 export interface SFTableProps extends MaterialTableProps<RowData> {
+  className?: string;
+  elevation?: number;
   columns: SFTableColumn[];
-  options: SFTableOptions;
+  options?: SFTableOptions;
 }
 
 export const SFTable = ({
+  className = '',
+  elevation = 2,
   columns,
   options,
   ...props
@@ -187,7 +201,7 @@ export const SFTable = ({
   );
 
   const customOptions: SFTableOptions = {
-    ...options,
+    ...(options || defaultOptions),
     headerStyle: {
       borderBottom: `2px solid  ${
         theme.palette.type === 'light' ? SFGrey[100] : SFGrey[700]
@@ -225,7 +239,11 @@ export const SFTable = ({
       components={{
         // eslint-disable-next-line
         Container: (props: any): JSX.Element => (
-          <StyledContainer {...props} elevation={2} />
+          <StyledContainer
+            {...props}
+            className={className}
+            elevation={elevation}
+          />
         ),
         // eslint-disable-next-line
         Row: (props: any): JSX.Element => <StyledRow {...props} />

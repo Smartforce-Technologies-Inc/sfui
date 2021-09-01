@@ -1,7 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { SFTable, SFTableProps, SFTableColumn, RowData } from './SFTable';
-import { SFIcon } from '../SFIcon/SFIcon';
 
 const getColumns = (): SFTableColumn[] => {
   return [
@@ -83,6 +82,11 @@ export default {
       table: {
         disable: true
       }
+    },
+    className: {
+      table: {
+        disable: true
+      }
     }
   }
 } as Meta;
@@ -102,7 +106,9 @@ interface StoryWithKnobs {
   title: string;
   maxBodyHeight: number | string;
   columns: SFTableColumn[];
+  elevation: number;
 }
+
 export const Default: Story<StoryWithKnobs> = ({
   sorting = false,
   search = false,
@@ -113,7 +119,8 @@ export const Default: Story<StoryWithKnobs> = ({
   showTitle = false,
   title = '',
   maxBodyHeight,
-  columns
+  columns,
+  elevation
 }): JSX.Element => {
   return (
     <SFTable
@@ -130,6 +137,7 @@ export const Default: Story<StoryWithKnobs> = ({
       }}
       data={getRows()}
       columns={columns}
+      elevation={elevation}
     />
   );
 };
