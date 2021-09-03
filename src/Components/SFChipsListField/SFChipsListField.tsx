@@ -249,29 +249,21 @@ export const SFChipsListField = ({
         let currentValues: ChipFieldValueType[] = [];
         values.forEach((value: string) => {
           if (value.trim() !== '') {
-            const matchValueOption: string | undefined = options.find(
-              (option) => option.toLowerCase() === value.toLowerCase()
-            );
             const matchValueItem: ChipFieldValueType | undefined = items.find(
               (item) => item.value.toLowerCase() === value.toLowerCase()
             );
-            if (matchValueOption) {
-              if (
-                items.findIndex((item) => item.value === matchValueOption) ===
-                -1
-              ) {
-                currentValues = [
-                  ...currentValues,
-                  { value: matchValueOption, isNew: true }
-                ];
-              }
-            } else {
-              if (!matchValueItem) {
-                currentValues = [
-                  ...currentValues,
-                  { value: value.trim(), isNew: true }
-                ];
-              }
+            if (!matchValueItem) {
+              const matchValueOption: string | undefined = options.find(
+                (option) => option.toLowerCase() === value.toLowerCase()
+              );
+
+              currentValues = [
+                ...currentValues,
+                {
+                  value: matchValueOption || value.trim(),
+                  isNew: true
+                }
+              ];
             }
           }
         });
