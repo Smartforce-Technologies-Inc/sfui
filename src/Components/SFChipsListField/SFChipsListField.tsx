@@ -56,7 +56,14 @@ const StyledTextField = withStyles({
     '& .MuiInputBase-root': {
       height: 'inherit',
       minHeight: '56px',
-      gap: '6px'
+      gap: '6px',
+      padding: '28px 9px 9px !important',
+      '& .MuiAutocomplete-input': {
+        padding: '0'
+      },
+      '& .MuiFormControl-root .MuiChip-outlined': {
+        margin: '3px auto 2px'
+      }
     }
   }
 })(SFTextField);
@@ -203,7 +210,6 @@ export const SFChipsListField = ({
         } else {
           insertedValues = [value.replace(/\n/g, '')];
         }
-
         let valuesToAdd: ChipFieldValueType[] = [];
         insertedValues.forEach((insertedValue: string) => {
           if (insertedValue.trim() !== '') {
@@ -243,20 +249,20 @@ export const SFChipsListField = ({
         let currentValues: ChipFieldValueType[] = [];
         values.forEach((value: string) => {
           if (value.trim() !== '') {
-            const matchValue: string | undefined = options.find(
-              (option) => option.toLowerCase() === value.trim().toLowerCase()
+            const matchValueItem: ChipFieldValueType | undefined = items.find(
+              (item) => item.value.toLowerCase() === value.toLowerCase()
             );
-            if (matchValue) {
-              if (items.findIndex((item) => item.value === matchValue) === -1) {
-                currentValues = [
-                  ...currentValues,
-                  { value: matchValue, isNew: true }
-                ];
-              }
-            } else {
+            if (!matchValueItem) {
+              const matchValueOption: string | undefined = options.find(
+                (option) => option.toLowerCase() === value.toLowerCase()
+              );
+
               currentValues = [
                 ...currentValues,
-                { value: value.trim(), isNew: true }
+                {
+                  value: matchValueOption || value.trim(),
+                  isNew: true
+                }
               ];
             }
           }
@@ -329,7 +335,6 @@ export const SFChipsListField = ({
         renderInput={(params: AutocompleteRenderInputParams): JSX.Element => (
           <StyledTextField
             {...params}
-            multiline
             rows={1}
             label={label}
             helperText={helperText}
