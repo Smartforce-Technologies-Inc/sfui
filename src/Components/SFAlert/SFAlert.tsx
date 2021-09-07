@@ -10,25 +10,30 @@ const StyledAlert = withStyles((theme: Theme) => ({
   root: {
     padding: '16px',
 
+    '& .MuiAlert-message': {
+      padding: '0px 24px 0px 16px',
+      fontWeight: 400,
+      fontSize: '16px',
+      lineHeight: '24px',
+
+      '& .MuiAlertTitle-root': {
+        fontWeight: 700
+      }
+    },
+
+    '& .MuiAlert-icon': {
+      padding: '0px',
+      margin: '0px'
+    },
+
     '&.MuiAlert-standardError': {
       backgroundColor: theme.palette.type === 'light' ? SFRed[50] : SFRed[900],
 
       '& .MuiAlert-message': {
-        color: theme.palette.type === 'light' ? SFRed[900] : SFRed[50],
-        padding: '0px 24px 0px 16px',
-        fontWeight: 400,
-        fontSize: '16px',
-        lineHeight: '24px',
-
-        '& .MuiAlertTitle-root': {
-          fontWeight: 700
-        }
+        color: theme.palette.type === 'light' ? SFRed[900] : SFRed[50]
       },
 
       '& .MuiAlert-icon': {
-        padding: '0px',
-        margin: '0px',
-
         '& svg': {
           fill: theme.palette.type === 'light' ? SFRed[700] : SFRed[200]
         }

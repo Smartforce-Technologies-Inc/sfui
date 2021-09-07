@@ -11,10 +11,6 @@ export default {
     label: 'Bagel'
   },
   argTypes: {
-    date: {
-      defaultValue: new Date(),
-      control: { type: 'date' }
-    },
     onChange: { action: 'onChange', table: { disable: true } },
     disabled: {
       control: {
@@ -44,12 +40,6 @@ export default {
   }
 } as Meta;
 
-const Template: Story = ({ date, onChange, ...args }) => (
-  <SFTimeField
-    {...args}
-    onChange={onChange}
-    value={new Date(date).toISOString()}
-  />
-);
+const Template: Story<SFTimeFieldProps> = (args) => <SFTimeField {...args} />;
 
 export const Default = Template.bind({});

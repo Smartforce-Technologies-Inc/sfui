@@ -174,7 +174,9 @@ const StyledDatePicker = withStyles((theme: Theme) => ({
       },
 
       '&.Mui-error': {
-        color: `${theme.palette.type === 'light' ? SFRed[700] : SFRed[200]}`
+        color: `${
+          theme.palette.type === 'light' ? SFRed[700] : SFRed[200]
+        } !important`
       },
 
       '&.Mui-disabled': {
