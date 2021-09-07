@@ -92,7 +92,7 @@ export interface SFChipsListFieldProps {
   helperText?: string;
   options?: string[];
   items?: ChipFieldValueType[];
-  delimiter?: ',' | ';';
+  delimiters?: string[]; // [',' , ';'];
   freeSolo?: boolean;
   disabled?: boolean;
   onChange: (newItems: ChipFieldValueType[]) => void;
@@ -106,7 +106,7 @@ export const SFChipsListField = ({
   helperText,
   options = [],
   items = [],
-  delimiter = undefined,
+  delimiters = [',', ';'],
   freeSolo = false,
   disabled = false,
   onChange
@@ -181,6 +181,12 @@ export const SFChipsListField = ({
     }
   };
 
+  const getValuesFromInputField = (value: string): string[] => {
+    const separatorRegExp = new RegExp(delimiters.join('|'), 'gi');
+
+    return value.split(separatorRegExp);
+  };
+
   const onInputChange = (
     _event: ChangeEvent,
     value: string,
@@ -197,12 +203,7 @@ export const SFChipsListField = ({
       setIsPopperOpen(true);
       if ((_event.nativeEvent as InputEvent).inputType === 'insertLineBreak') {
         _event.preventDefault();
-        let insertedValues: string[] = [];
-        if (delimiter) {
-          insertedValues = value.replace(/\n/g, '').split(`${delimiter}`);
-        } else {
-          insertedValues = [value.replace(/\n/g, '')];
-        }
+        const insertedValues: string[] = getValuesFromInputField(value);
 
         let valuesToAdd: ChipFieldValueType[] = [];
         insertedValues.forEach((insertedValue: string) => {
@@ -237,9 +238,7 @@ export const SFChipsListField = ({
     if (reason === 'select-option' || reason === 'create-option') {
       if (typeof value[value.length - 1] === 'string') {
         const currentValue: string = value[value.length - 1];
-        const values: string[] = delimiter
-          ? currentValue.split(`${delimiter}`)
-          : [currentValue];
+        const values: string[] = getValuesFromInputField(currentValue);
         let currentValues: ChipFieldValueType[] = [];
         values.forEach((value: string) => {
           if (value.trim() !== '') {
