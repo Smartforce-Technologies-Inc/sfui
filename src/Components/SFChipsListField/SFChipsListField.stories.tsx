@@ -148,11 +148,18 @@ const Template: Story<SFChipsListFieldProps> = (args) => {
 
 export const Empty = Template.bind({});
 
+export const WithValidation = Template.bind({});
+
 export const WithOptions = Template.bind({});
 
 export const WithItems = Template.bind({});
 
 export const WithOptionsAndItems = Template.bind({});
+
+WithValidation.args = {
+  isValid: (value: string): boolean => value.length > 5,
+  helperText: 'Value lenght should be > 5 chars'
+};
 
 WithOptions.args = {
   label: 'Movies',
