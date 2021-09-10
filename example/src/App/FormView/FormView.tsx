@@ -1,3 +1,4 @@
+import { ParsableDate } from '@material-ui/pickers/constants/prop-types';
 import React, { ChangeEvent, useEffect, useState } from 'react';
 
 import {
@@ -30,7 +31,7 @@ export const FormView = (): JSX.Element => {
     date: string | undefined;
     streetAdress: SFAutocompleteLocationResult;
     incidentNumber: string;
-    incidentTime: string;
+    incidentTime: ParsableDate;
     description: string;
     injured: boolean;
     propertyDamage: boolean;
@@ -47,7 +48,7 @@ export const FormView = (): JSX.Element => {
     date: undefined,
     streetAdress: { text: '' },
     incidentNumber: '',
-    incidentTime: '',
+    incidentTime: undefined,
     description: '',
     injured: false,
     propertyDamage: false,
@@ -195,6 +196,7 @@ export const FormView = (): JSX.Element => {
                   <SFTimeField
                     label='Time of Incident'
                     name='incidentTime'
+                    placeholder='08:00 AM'
                     value={formData.incidentTime}
                     onChange={(value: string): void =>
                       setFormData({ ...formData, incidentTime: value })
@@ -285,7 +287,6 @@ export const FormView = (): JSX.Element => {
                 <SFChipsListField
                   label='Officers Involved'
                   items={formData.officers}
-                  delimiter=','
                   onChange={(value: ChipFieldValueType[]): void =>
                     setFormData({ ...formData, officers: value })
                   }

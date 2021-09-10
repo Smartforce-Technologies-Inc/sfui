@@ -2,7 +2,7 @@ import React from 'react';
 import FormControl from '@material-ui/core/FormControl';
 import { withStyles, Theme } from '@material-ui/core/styles';
 import Chip, { ChipProps } from '@material-ui/core/Chip';
-import { SFBlue, SFGrey, SFSurfaceLight } from '../../SFColors/SFColors';
+import { SFBlue, SFGrey, SFRed, SFSurfaceLight } from '../../SFColors/SFColors';
 import { SFIconButton } from '../SFIconButton/SFIconButton';
 import { hexToRgba } from '../../Helpers';
 
@@ -10,9 +10,10 @@ const StyledChip = withStyles((theme: Theme) => ({
   root: {
     fontWeight: 400,
     fontSize: '13px',
+    maxWidth: '100%',
 
     '&:not(.Mui-disabled)': {
-      '&.primary': {
+      '&.primary:not(.hasError)': {
         backgroundColor:
           theme.palette.type === 'light' ? SFBlue[500] : SFBlue[200],
         color: theme.palette.type === 'light' ? SFSurfaceLight : SFGrey[900],
@@ -79,7 +80,7 @@ const StyledChip = withStyles((theme: Theme) => ({
         }
       },
 
-      '&.default': {
+      '&.default:not(.hasError)': {
         backgroundColor:
           theme.palette.type === 'light' ? SFGrey[100] : SFGrey[500],
         color: theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50],
@@ -106,6 +107,11 @@ const StyledChip = withStyles((theme: Theme) => ({
             }
           },
 
+          '&:hover': {
+            backgroundColor:
+              theme.palette.type === 'light' ? SFGrey[100] : SFGrey[500]
+          },
+
           '&:active': {
             backgroundColor:
               theme.palette.type === 'light' ? SFGrey[200] : SFGrey[600]
@@ -119,11 +125,90 @@ const StyledChip = withStyles((theme: Theme) => ({
           }`,
 
           '&.MuiChip-deletable': {
+            '&:hover': {
+              backgroundColor: 'transparent !important'
+            },
             '&:active': {
               backgroundColor:
                 theme.palette.type === 'light'
                   ? hexToRgba(SFGrey[200], 0.3)
                   : hexToRgba(SFGrey[500], 0.3)
+            }
+          }
+        }
+      },
+
+      '&.hasError': {
+        backgroundColor:
+          theme.palette.type === 'light' ? SFRed[700] : SFRed[200],
+        color: theme.palette.type === 'light' ? SFSurfaceLight : SFGrey[900],
+
+        '&.MuiChip-deletable': {
+          '& .MuiChip-deleteIcon': {
+            color: `${
+              theme.palette.type === 'light' ? SFRed[700] : SFRed[200]
+            } !important`,
+
+            '& .MuiIconButton-label': {
+              '& svg': {
+                '& path': {
+                  fill: `${
+                    theme.palette.type === 'light'
+                      ? SFSurfaceLight
+                      : SFGrey[900]
+                  } !important`
+                }
+              }
+            },
+
+            '&:hover, &:active': {
+              backgroundColor: `${
+                theme.palette.type === 'light'
+                  ? hexToRgba(SFGrey[200], 0.3)
+                  : hexToRgba(SFGrey[500], 0.3)
+              } !important`
+            }
+          },
+
+          '&:active': {
+            backgroundColor: `${
+              theme.palette.type === 'light' ? SFRed[800] : SFRed[300]
+            } !important`
+          }
+        },
+
+        '&.MuiChip-outlined': {
+          backgroundColor: 'transparent',
+          border: `1px solid ${
+            theme.palette.type === 'light' ? SFRed[700] : SFRed[200]
+          } !important`,
+          color: `${
+            theme.palette.type === 'light' ? SFRed[700] : SFRed[200]
+          } !important`,
+
+          '&.MuiChip-deletable': {
+            '& .MuiChip-deleteIcon': {
+              color: `${
+                theme.palette.type === 'light' ? SFRed[700] : SFRed[200]
+              } !important`,
+
+              '& .MuiIconButton-label': {
+                '& svg': {
+                  '& path': {
+                    fill: `${
+                      theme.palette.type === 'light' ? SFRed[700] : SFRed[200]
+                    } !important`
+                  }
+                }
+              }
+            },
+
+            '&:active': {
+              backgroundColor: `${
+                theme.palette.type === 'light'
+                  ? hexToRgba(SFRed[100], 0.4)
+                  : hexToRgba(SFRed[200], 0.2)
+              } !important`
             }
           }
         }
@@ -139,7 +224,7 @@ const StyledChip = withStyles((theme: Theme) => ({
       '&.MuiChip-outlined': {
         border: `1px solid ${
           theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
-        } `,
+        }  !important`,
         color: `${theme.palette.type === 'light' ? SFGrey[400] : SFGrey[600]} `,
         backgroundColor: 'transparent'
       },
@@ -176,6 +261,7 @@ const StyledChip = withStyles((theme: Theme) => ({
 export interface SFChipProps extends ChipProps {
   sfColor: 'primary' | 'default';
   deleteable?: boolean;
+  hasError?: boolean;
   fullWidth?: boolean;
 }
 
@@ -187,6 +273,7 @@ export const SFChip = ({
   deleteable,
   variant = 'default',
   fullWidth,
+  hasError,
   onDelete,
   ...props
 }: SFChipProps): React.ReactElement<SFChipProps> => {
@@ -194,7 +281,9 @@ export const SFChip = ({
     <FormControl fullWidth={fullWidth}>
       <StyledChip
         {...props}
-        className={`${sfColor} ${fullWidth ? 'fullWidth' : ''}`}
+        className={`${sfColor} ${fullWidth ? 'fullWidth' : ''} ${
+          hasError ? 'hasError' : ''
+        }`}
         label={label}
         size={size}
         variant={variant}
