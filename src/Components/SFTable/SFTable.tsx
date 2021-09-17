@@ -20,11 +20,12 @@ import { hexToRgba } from '../../Helpers';
 
 const StyledRow = withStyles((theme: Theme) => ({
   root: {
-    '&:hover': {
-      backgroundColor:
+    '&.MuiTableRow-hover:hover, &:hover': {
+      backgroundColor: `${
         theme.palette.type === 'light'
           ? hexToRgba(SFGrey[200], 0.3)
           : hexToRgba(SFGrey[500], 0.3)
+      } !important`
     }
   }
 }))(MTableBodyRow);
@@ -164,11 +165,11 @@ export const SFTable = ({
   className = '',
   elevation = 2,
   columns,
-  options = defaultOptions,
+  options,
   ...props
 }: SFTableProps): React.ReactElement<SFTableProps> => {
+  options = { ...defaultOptions, ...options };
   const theme = useTheme();
-
   const iconCheckedColor: string = theme.palette.primary.main;
   const iconUncheckedColor: string =
     theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400];

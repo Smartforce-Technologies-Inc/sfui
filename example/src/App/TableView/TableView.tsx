@@ -70,27 +70,11 @@ const SFTableView = (): JSX.Element => {
   return (
     <div className='custom-grid'>
       <div className='row'>
-        <SFTable
-          options={{
-            toolbar: false,
-            paging: false,
-            sorting: false,
-            search: false,
-            draggable: false,
-            selection: false
-          }}
-          columns={getColumns()}
-          data={getRows()}
-        />
+        <SFTable columns={getColumns()} data={getRows()} />
         <SFTable
           options={{
             search: true,
-            toolbar: true,
-            showTitle: false,
-            paging: false,
-            sorting: false,
-            draggable: false,
-            selection: false
+            toolbar: true
           }}
           columns={getColumns()}
           data={getRows()}
@@ -98,26 +82,12 @@ const SFTableView = (): JSX.Element => {
       </div>
       <div className='row'>
         <SFTable
-          options={{
-            toolbar: false,
-            paging: false,
-            sorting: false,
-            search: false,
-            draggable: false,
-            selection: true
-          }}
+          options={{ selection: true }}
           columns={getColumns()}
           data={getRows()}
         />
         <SFTable
-          options={{
-            toolbar: false,
-            paging: true,
-            sorting: false,
-            search: false,
-            draggable: false,
-            selection: false
-          }}
+          options={{ paging: true }}
           columns={getColumns()}
           data={getRows()}
         />
