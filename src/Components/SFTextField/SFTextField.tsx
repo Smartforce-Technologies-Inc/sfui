@@ -99,6 +99,7 @@ const StyledTextField = withStyles((theme: Theme) => ({
       fontSize: '16px',
       lineHeight: '24px',
       color: theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400],
+      transform: 'translate(14px, 16px) scale(1)',
 
       '&.MuiInputLabel-shrink': {
         fontSize: '14px',
