@@ -100,6 +100,7 @@ export interface SFAutocompleteProps
     'renderInput' | 'onChange' | 'onInputChange'
   > {
   label: string;
+  required?: boolean;
   options: SFMenuOption[];
   hasPopupIcon?: boolean;
   onChange: (value: string) => void;
@@ -108,6 +109,7 @@ export interface SFAutocompleteProps
 export const SFAutocomplete = ({
   label,
   options,
+  required = false,
   hasPopupIcon = false,
   ...props
 }: SFAutocompleteProps): React.ReactElement<SFAutocompleteProps> => {
@@ -196,7 +198,7 @@ export const SFAutocomplete = ({
         typeof option === 'string' ? option : option.label
       }
       renderInput={(params: AutocompleteRenderInputParams): React.ReactNode => (
-        <SFTextField {...params} label={label} />
+        <SFTextField {...params} label={label} required={required} />
       )}
       popupIcon={hasPopupIcon ? <SFIcon icon='Down-2' size={16} /> : null}
       closeIcon={<SFIcon icon='Close' size={16} />}

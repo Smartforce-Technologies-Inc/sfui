@@ -103,7 +103,9 @@ export interface SFChipsListFieldProps {
   delimiters?: string[];
   freeSolo?: boolean;
   disabled?: boolean;
+  required?: boolean;
   isEditable?: boolean;
+  inputType?: string;
   isValid?: (value: string) => boolean;
   onChange: (newItems: ChipFieldValueType[]) => void;
 }
@@ -120,6 +122,7 @@ export const SFChipsListField = ({
   freeSolo = false,
   disabled = false,
   isEditable = false,
+  inputType = 'text',
   isValid,
   onChange
 }: SFChipsListFieldProps): React.ReactElement<SFChipsListFieldProps> => {
@@ -360,6 +363,7 @@ export const SFChipsListField = ({
         renderInput={(params: AutocompleteRenderInputParams): JSX.Element => (
           <StyledTextField
             {...params}
+            type={inputType}
             rows={1}
             label={label}
             helperText={helperText}
