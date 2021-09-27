@@ -34,16 +34,20 @@ const StyledAlert = withStyles((theme: Theme) => ({
       },
 
       '& .MuiAlert-icon': {
-        '& svg': {
-          fill: theme.palette.type === 'light' ? SFRed[700] : SFRed[200]
+        '& svg path': {
+          fill: `${
+            theme.palette.type === 'light' ? SFRed[700] : SFRed[200]
+          } !important`
         }
       },
 
       '& .MuiAlert-action': {
         '& .MuiIconButton-root': {
           '& .MuiIconButton-label': {
-            '& svg': {
-              fill: theme.palette.type === 'light' ? SFRed[900] : SFRed[50]
+            '& svg path': {
+              fill: `${
+                theme.palette.type === 'light' ? SFRed[900] : SFRed[50]
+              } !important`
             }
           },
 
