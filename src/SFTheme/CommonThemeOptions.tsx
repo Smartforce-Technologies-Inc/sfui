@@ -30,6 +30,9 @@ const CommonThemeOptions: SFThemeOptions = {
     },
     MuiButton: {
       root: {
+        // Needed for color transitions between enabled and disabled
+        transition: 'color .01s',
+        '&.Mui-disabled span': { transition: '.01s' },
         padding: '4px 10px',
         height: '30px',
         boxSizing: 'border-box'
