@@ -55,6 +55,11 @@ export default {
       table: {
         disable: true
       }
+    },
+    allowEmpty: {
+      table: {
+        disable: true
+      }
     }
   }
 } as Meta;
