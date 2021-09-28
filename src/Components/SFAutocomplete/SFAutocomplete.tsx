@@ -79,6 +79,8 @@ const StyledAutocomplete = withStyles((theme: Theme) => ({
 const useStyles = makeStyles({
   root: {
     '& button.MuiAutocomplete-popupIndicator': {
+      display: (props: Partial<SFAutocompleteProps>): string =>
+        props.hasPopupIcon ? 'inline-flex' : 'none',
       padding: (props: Partial<SFAutocompleteProps>): string =>
         props.hasPopupIcon ? '9px' : '0'
     }
@@ -103,14 +105,16 @@ export interface SFAutocompleteProps
   required?: boolean;
   options: SFMenuOption[];
   hasPopupIcon?: boolean;
+  allowEmpty?: boolean;
+  value?: string;
   onChange: (value: string) => void;
 }
 
 export const SFAutocomplete = ({
   label,
-  options,
   required = false,
   hasPopupIcon = false,
+  allowEmpty = false,
   ...props
 }: SFAutocompleteProps): React.ReactElement<SFAutocompleteProps> => {
   const classes = useStyles({ hasPopupIcon });
@@ -122,12 +126,7 @@ export const SFAutocomplete = ({
     value: string,
     reason: AutocompleteInputChangeReason
   ): void => {
-    if (reason === 'reset') {
-      if (!props.freeSolo) {
-        setInputValue(value);
-        props.onChange(value);
-      }
-    } else {
+    if (reason !== 'reset') {
       setInputValue(value);
 
       if (!isOpen && value.length > 0) {
@@ -179,6 +178,12 @@ export const SFAutocomplete = ({
     }
   };
 
+  let options: SFMenuOption[] = [...props.options];
+
+  if (allowEmpty) {
+    options = [...options, { label: '', value: '' }];
+  }
+
   return (
     <StyledAutocomplete
       className={`${classes.root} ${props.className || ''}`}
@@ -191,16 +196,21 @@ export const SFAutocomplete = ({
       onClose={onClose}
       onOpen={onOpen}
       inputValue={inputValue}
-      getOptionSelected={(option: SFMenuOption, value: string): boolean =>
-        option.value === value
-      }
+      getOptionSelected={(
+        option: SFMenuOption,
+        value: SFMenuOption | string
+      ): boolean => {
+        return typeof value === 'string'
+          ? value === option.value
+          : value.value === option.value;
+      }}
       getOptionLabel={(option: SFMenuOption): string =>
         typeof option === 'string' ? option : option.label
       }
       renderInput={(params: AutocompleteRenderInputParams): React.ReactNode => (
         <SFTextField {...params} label={label} required={required} />
       )}
-      popupIcon={hasPopupIcon ? <SFIcon icon='Down-2' size={16} /> : null}
+      popupIcon={<SFIcon icon='Down-2' size={16} />}
       closeIcon={<SFIcon icon='Close' size={16} />}
     />
   );
