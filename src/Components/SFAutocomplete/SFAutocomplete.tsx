@@ -14,6 +14,14 @@ import { SFIcon } from '../SFIcon/SFIcon';
 import { SFGrey, SFSurfaceLight } from '../../SFColors/SFColors';
 import { hexToRgba } from '../../Helpers';
 
+const isOption = (value: string, options: SFMenuOption[]): boolean => {
+  if (options.find((option: SFMenuOption) => value === option.value)) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
 const StyledAutocomplete = withStyles((theme: Theme) => ({
   inputRoot: {
     '&[class*="MuiOutlinedInput-root"]': {
@@ -120,7 +128,13 @@ export const SFAutocomplete = ({
 }: SFAutocompleteProps): React.ReactElement<SFAutocompleteProps> => {
   const classes = useStyles({ hasPopupIcon });
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
-  const [inputValue, setInputValue] = React.useState<string>(value || '');
+
+  let initInputValue = '';
+  if (value && isOption(value, props.options)) {
+    initInputValue = value;
+  }
+
+  const [inputValue, setInputValue] = React.useState<string>(initInputValue);
 
   const onInputChange = (
     _event: React.ChangeEvent,
