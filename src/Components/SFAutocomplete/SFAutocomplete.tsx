@@ -115,11 +115,12 @@ export const SFAutocomplete = ({
   required = false,
   hasPopupIcon = false,
   allowEmpty = false,
+  value,
   ...props
 }: SFAutocompleteProps): React.ReactElement<SFAutocompleteProps> => {
   const classes = useStyles({ hasPopupIcon });
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
-  const [inputValue, setInputValue] = React.useState<string>('');
+  const [inputValue, setInputValue] = React.useState<string>(value || '');
 
   const onInputChange = (
     _event: React.ChangeEvent,
@@ -188,6 +189,7 @@ export const SFAutocomplete = ({
     <StyledAutocomplete
       className={`${classes.root} ${props.className || ''}`}
       {...props}
+      value={value}
       open={isOpen}
       openOnFocus={false}
       options={options}
