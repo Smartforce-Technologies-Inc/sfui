@@ -2,7 +2,6 @@ import React from 'react';
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, Meta } from '@storybook/react/types-6-0';
 
-import { SFFormControlLabel } from '../SFFormControlLabel/SFFormControlLabel';
 import { SFIcon, SFIconProps } from './SFIcon';
 import SFIconSet from './icons/selection.json';
 
@@ -49,23 +48,22 @@ export const AllTogether: Story<SFIconProps> = (args) => (
     style={{
       display: 'grid',
       gridTemplateColumns: '1fr 1fr 1fr',
-      rowGap: '15px'
+      gap: '15px'
     }}
   >
     {SFIconSet.icons.map((icon) => (
-      <SFFormControlLabel
-        style={{ marginLeft: 0 }}
+      <div
         key={icon.properties.name}
-        value={icon.properties.name}
-        control={
-          <SFIcon
-            {...args}
-            icon={icon.properties.name}
-            style={{ marginRight: '5px' }}
-          />
-        }
-        label={icon.properties.name}
-      />
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          gap: '15px',
+          alignItems: 'center'
+        }}
+      >
+        <SFIcon {...args} icon={icon.properties.name} />
+        <p style={{ margin: '0px' }}>{icon.properties.name}</p>
+      </div>
     ))}
   </div>
 );

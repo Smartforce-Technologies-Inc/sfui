@@ -8,6 +8,14 @@ import { SFGrey } from '../../SFColors/SFColors';
 const StyledFromControlLabel = withStyles((theme: Theme) => ({
   root: {
     color: `${theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]}`,
+    gap: '12px',
+    margin: '0px',
+    alignItems: 'flex-start',
+
+    '& .MuiTypography-root': {
+      paddingTop: '9px'
+    },
+
     '&.Mui-disabled': {
       color: `${theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400]}`
     }
@@ -19,7 +27,7 @@ const StyledFromControlLabel = withStyles((theme: Theme) => ({
 
 export interface SFFormControlLabelProps extends FormControlLabelProps {}
 
-export const SFFormControlLabel = (
+export const SFFormControlBooleanLabel = (
   props: SFFormControlLabelProps
 ): React.ReactElement<SFFormControlLabelProps> => {
   return <StyledFromControlLabel {...props} />;

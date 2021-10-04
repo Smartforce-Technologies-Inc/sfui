@@ -1,20 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Theme, withStyles } from '@material-ui/core/styles';
 import MomentUtils from '@date-io/moment';
-import moment from 'moment';
 
 import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
   KeyboardTimePickerProps
 } from '@material-ui/pickers';
-import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date';
-import { SFBlue, SFGrey, SFRed } from '../../SFColors/SFColors';
 
-function getDateFromString(value: string): MaterialUiPickersDate | null {
-  const date = moment(value);
-  return date.isValid() ? date : null;
-}
+import { SFBlue, SFGrey, SFRed } from '../../SFColors/SFColors';
 
 const StyledTimePicker = withStyles((theme: Theme) => ({
   root: {
@@ -114,34 +108,12 @@ const StyledTimePicker = withStyles((theme: Theme) => ({
   }
 }))(KeyboardTimePicker);
 
-export interface SFTimeFieldProps
-  extends Omit<KeyboardTimePickerProps, 'value' | 'onChange'> {
-  value: string;
-  onChange: (value: string) => void;
-}
+export interface SFTimeFieldProps extends KeyboardTimePickerProps {}
 
 export const SFTimeField = ({
-  value,
-  onChange,
   placeholder = '08:00 AM',
   ...props
 }: SFTimeFieldProps): React.ReactElement<SFTimeFieldProps> => {
-  const [date, setDate] = useState<MaterialUiPickersDate | null>(
-    getDateFromString(value)
-  );
-
-  useEffect(() => {
-    setDate(getDateFromString(value));
-  }, [value]);
-
-  const onDateChange = (date: MaterialUiPickersDate): void => {
-    setDate(date);
-
-    if (date && date.isValid()) {
-      onChange(date.toISOString());
-    }
-  };
-
   return (
     <MuiPickersUtilsProvider utils={MomentUtils}>
       <StyledTimePicker
@@ -151,8 +123,6 @@ export const SFTimeField = ({
         inputVariant='filled'
         disableToolbar
         mask='__:__ _M'
-        value={date}
-        onChange={onDateChange}
         keyboardIcon={null}
       />
     </MuiPickersUtilsProvider>

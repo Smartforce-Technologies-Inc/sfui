@@ -2,7 +2,7 @@ import * as React from 'react';
 import RadioGroup, { RadioGroupProps } from '@material-ui/core/RadioGroup';
 import { withStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
-import { SFFormControlLabel } from '../SFFormControlLabel/SFFormControlLabel';
+import { SFFormControlBooleanLabel } from '../SFFormControlBooleanLabel/SFFormControlBooleanLabel';
 import { SFRadio } from './SFRadio/SFRadio';
 
 export interface SFRadioOptionsProps {
@@ -36,7 +36,7 @@ export const SFRadioGroup = ({
       <StyledRadioGroup {...props} color='primary'>
         {options.map((opt, i) => {
           return (
-            <SFFormControlLabel
+            <SFFormControlBooleanLabel
               key={`${opt.value}${i}`}
               value={opt.value}
               control={<SFRadio isGroup />}

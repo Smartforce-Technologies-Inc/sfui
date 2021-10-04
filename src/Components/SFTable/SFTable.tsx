@@ -20,11 +20,12 @@ import { hexToRgba } from '../../Helpers';
 
 const StyledRow = withStyles((theme: Theme) => ({
   root: {
-    '&:hover': {
-      backgroundColor:
+    '&.MuiTableRow-hover:hover, &:hover': {
+      backgroundColor: `${
         theme.palette.type === 'light'
           ? hexToRgba(SFGrey[200], 0.3)
           : hexToRgba(SFGrey[500], 0.3)
+      } !important`
     }
   }
 }))(MTableBodyRow);
@@ -137,6 +138,16 @@ interface RowTableData {
   checked: boolean;
 }
 
+const defaultOptions = {
+  sorting: false,
+  search: false,
+  toolbar: false,
+  showTitle: false,
+  paging: false,
+  draggable: false,
+  selection: false
+};
+
 export type RowData = {
   [key: string]: number | string | boolean | undefined;
 } & { tableData?: RowTableData };
@@ -144,17 +155,21 @@ export type RowData = {
 export interface SFTableColumn extends Column<RowData> {}
 export interface SFTableOptions extends Options<RowData> {}
 export interface SFTableProps extends MaterialTableProps<RowData> {
+  className?: string;
+  elevation?: number;
   columns: SFTableColumn[];
-  options: SFTableOptions;
+  options?: SFTableOptions;
 }
 
 export const SFTable = ({
+  className = '',
+  elevation = 2,
   columns,
   options,
   ...props
 }: SFTableProps): React.ReactElement<SFTableProps> => {
+  options = { ...defaultOptions, ...options };
   const theme = useTheme();
-
   const iconCheckedColor: string = theme.palette.primary.main;
   const iconUncheckedColor: string =
     theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400];
@@ -225,7 +240,11 @@ export const SFTable = ({
       components={{
         // eslint-disable-next-line
         Container: (props: any): JSX.Element => (
-          <StyledContainer {...props} elevation={2} />
+          <StyledContainer
+            {...props}
+            className={className}
+            elevation={elevation}
+          />
         ),
         // eslint-disable-next-line
         Row: (props: any): JSX.Element => <StyledRow {...props} />

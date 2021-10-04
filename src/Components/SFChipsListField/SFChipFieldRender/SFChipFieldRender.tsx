@@ -7,8 +7,9 @@ export interface SFChipListRenderProps {
   isChipFullWidth: boolean;
   chipSize: 'small' | 'medium';
   disabled: boolean;
+  isValid?: (value: string) => boolean;
   onDelete: (input: ChipFieldValueType) => void;
-  onEdit: (value: ChipFieldValueType) => void;
+  onEdit?: (value: ChipFieldValueType) => void;
 }
 
 export const SFChipListRender = ({
@@ -16,6 +17,7 @@ export const SFChipListRender = ({
   isChipFullWidth,
   chipSize,
   disabled,
+  isValid,
   onDelete,
   onEdit
 }: SFChipListRenderProps): React.ReactElement<SFChipListRenderProps> => {
@@ -32,12 +34,16 @@ export const SFChipListRender = ({
           size={input.isNew ? 'small' : chipSize}
           label={input.value}
           disabled={disabled}
+          hasError={input.isValid !== undefined && !input.isValid}
           onDelete={(): void => onDelete(input)}
           onClick={(): void => {
-            onEdit({
-              value: input.value,
-              isNew: input.isNew ? input.isNew : false
-            });
+            if (onEdit) {
+              onEdit({
+                value: input.value,
+                isNew: input.isNew ? input.isNew : false,
+                isValid: isValid ? isValid(input.value) : true
+              });
+            }
           }}
         />
       ))}

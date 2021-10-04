@@ -56,7 +56,14 @@ const StyledTextField = withStyles({
     '& .MuiInputBase-root': {
       height: 'inherit',
       minHeight: '56px',
-      gap: '6px'
+      gap: '6px',
+      padding: '28px 9px 9px !important',
+      '& .MuiAutocomplete-input': {
+        padding: '0'
+      },
+      '& .MuiFormControl-root .MuiChip-outlined': {
+        margin: '3px auto 2px'
+      }
     }
   }
 })(SFTextField);
@@ -82,6 +89,7 @@ export type ChipFieldValueType = {
   value: string;
   isNew?: boolean;
   hasChanged?: boolean;
+  isValid?: boolean;
 };
 
 export interface SFChipsListFieldProps {
@@ -89,11 +97,16 @@ export interface SFChipsListFieldProps {
   chipDisplay?: 'inline' | 'block';
   emptyMessage?: string;
   label: string;
+  helperText?: string;
   options?: string[];
   items?: ChipFieldValueType[];
-  delimiter?: ',' | ';';
+  delimiters?: string[];
   freeSolo?: boolean;
   disabled?: boolean;
+  required?: boolean;
+  isEditable?: boolean;
+  inputType?: string;
+  isValid?: (value: string) => boolean;
   onChange: (newItems: ChipFieldValueType[]) => void;
 }
 
@@ -102,11 +115,15 @@ export const SFChipsListField = ({
   chipDisplay = 'inline',
   emptyMessage,
   label,
+  helperText,
   options = [],
   items = [],
-  delimiter = undefined,
+  delimiters = [','],
   freeSolo = false,
   disabled = false,
+  isEditable = false,
+  inputType = 'text',
+  isValid,
   onChange
 }: SFChipsListFieldProps): React.ReactElement<SFChipsListFieldProps> => {
   const [isPopperOpen, setIsPopperOpen] = React.useState<boolean>(false);
@@ -114,6 +131,10 @@ export const SFChipsListField = ({
   const [editedValue, setEditedValue] = React.useState<ChipFieldValueType>();
   const [inputValue, setInputValue] = React.useState<string>('');
   const { chipDisplayInline, chipDisplayBlock } = chipsDisplay();
+
+  const isFreeSolo = (): boolean => {
+    return freeSolo || options.length === 0;
+  };
 
   const savedValues: ChipFieldValueType[] = items.filter(
     (item: ChipFieldValueType) => item.isNew !== true
@@ -123,13 +144,12 @@ export const SFChipsListField = ({
     (item: ChipFieldValueType) => item.isNew === true
   );
 
-  const isValueInOptions = (value: string): string | undefined => {
-    return options
-      .filter(
-        (option: string) =>
-          !items.find((item: ChipFieldValueType) => item.value === option)
-      )
-      .find((option) => option.toLowerCase() === value.toLowerCase());
+  const createNewValue = (value: string): ChipFieldValueType => {
+    return {
+      value: value,
+      isNew: true,
+      isValid: isValid ? isValid(value) : true
+    };
   };
 
   const addValue = (input: ChipFieldValueType[]): void => {
@@ -162,7 +182,7 @@ export const SFChipsListField = ({
   };
 
   const onEdit = (value: ChipFieldValueType): void => {
-    if (options.length === 0 || freeSolo === true) {
+    if (isFreeSolo()) {
       setEditedValue(value);
       setIsModalOpen(true);
     }
@@ -179,6 +199,27 @@ export const SFChipsListField = ({
     }
   };
 
+  const getValuesFromInputField = (value: string): string[] => {
+    const separatorRegExp = new RegExp(delimiters.join('|'), 'gi');
+    const inputValues: string[] = value.split(separatorRegExp);
+
+    return Array.from(new Set(inputValues));
+  };
+
+  const getValueFromOptions = (value: string): string | undefined => {
+    return options.find(
+      (option) => option.toLowerCase() === value.toLowerCase()
+    );
+  };
+
+  const isValueAlreadyAdded = (value: string): boolean => {
+    const matchValueItem: ChipFieldValueType | undefined = items.find(
+      (item) => item.value.toLowerCase() === value.toLowerCase()
+    );
+
+    return matchValueItem !== undefined;
+  };
+
   const onInputChange = (
     _event: ChangeEvent,
     value: string,
@@ -192,71 +233,63 @@ export const SFChipsListField = ({
       }
     } else {
       setInputValue(value);
-      setIsPopperOpen(true);
-      if ((_event.nativeEvent as InputEvent).inputType === 'insertLineBreak') {
+      const nativeEvent: InputEvent = _event.nativeEvent as InputEvent;
+
+      if (nativeEvent.data && delimiters.includes(nativeEvent.data)) {
         _event.preventDefault();
-        let insertedValues: string[] = [];
-        if (delimiter) {
-          insertedValues = value.replace(/\n/g, '').split(`${delimiter}`);
-        } else {
-          insertedValues = [value.replace(/\n/g, '')];
-        }
+        setIsPopperOpen(false);
+        const insertedValues: string[] = getValuesFromInputField(value);
 
         let valuesToAdd: ChipFieldValueType[] = [];
         insertedValues.forEach((insertedValue: string) => {
-          if (insertedValue.trim() !== '') {
-            if (options.length === 0) {
-              valuesToAdd = [
-                ...valuesToAdd,
-                { value: insertedValue.trim(), isNew: true }
-              ];
+          const valueTrim: string = insertedValue.trim();
+
+          if (valueTrim !== '' && !isValueAlreadyAdded(valueTrim)) {
+            const valueOption: string | undefined = getValueFromOptions(
+              valueTrim
+            );
+
+            if (valueOption) {
+              valuesToAdd = [...valuesToAdd, createNewValue(valueOption)];
             } else {
-              const valueOption = isValueInOptions(insertedValue.trim());
-              if (valueOption) {
-                valuesToAdd = [
-                  ...valuesToAdd,
-                  { value: valueOption, isNew: true }
-                ];
+              if (isFreeSolo()) {
+                valuesToAdd = [...valuesToAdd, createNewValue(valueTrim)];
               }
             }
           }
         });
         addValue(valuesToAdd);
         setInputValue('');
+      } else {
+        setIsPopperOpen(true);
       }
     }
   };
 
   const onAutoCompleteChange = (
     _event: ChangeEvent,
-    value: string,
+    value: (ChipFieldValueType | string)[],
     reason: AutocompleteChangeReason
   ): void => {
     if (reason === 'select-option' || reason === 'create-option') {
-      if (typeof value[value.length - 1] === 'string') {
-        const currentValue: string = value[value.length - 1];
-        const values: string[] = delimiter
-          ? currentValue.split(`${delimiter}`)
-          : [currentValue];
+      const lastItem = value[value.length - 1];
+
+      if (typeof lastItem === 'string') {
+        const values: string[] = getValuesFromInputField(lastItem as string);
         let currentValues: ChipFieldValueType[] = [];
+
         values.forEach((value: string) => {
-          if (value.trim() !== '') {
-            const matchValue: string | undefined = options.find(
-              (option) => option.toLowerCase() === value.trim().toLowerCase()
+          const valueTrim: string = value.trim();
+
+          if (valueTrim !== '' && !isValueAlreadyAdded(valueTrim)) {
+            const matchValueOption: string | undefined = getValueFromOptions(
+              valueTrim
             );
-            if (matchValue) {
-              if (items.findIndex((item) => item.value === matchValue) === -1) {
-                currentValues = [
-                  ...currentValues,
-                  { value: matchValue, isNew: true }
-                ];
-              }
-            } else {
-              currentValues = [
-                ...currentValues,
-                { value: value.trim(), isNew: true }
-              ];
-            }
+
+            currentValues = [
+              ...currentValues,
+              createNewValue(matchValueOption || valueTrim)
+            ];
           }
         });
         addValue(currentValues);
@@ -280,7 +313,8 @@ export const SFChipsListField = ({
             chipSize={chipSize}
             disabled={disabled}
             onDelete={deleteValue}
-            onEdit={onEdit}
+            onEdit={isEditable ? onEdit : undefined}
+            isValid={isValid}
           />
         )}
         {emptyMessage && (!savedValues || savedValues.length === 0) && (
@@ -295,6 +329,7 @@ export const SFChipsListField = ({
       <SFChipListModal
         value={editedValue}
         open={isModalOpen}
+        isValid={isValid}
         onEdit={editValue}
         onClose={(): void => setIsModalOpen(false)}
       />
@@ -306,10 +341,10 @@ export const SFChipsListField = ({
         inputValue={inputValue}
         onChange={onAutoCompleteChange}
         onInputChange={onInputChange}
-        open={options.length !== 0 ? isPopperOpen : false}
+        open={options.length > 0 ? isPopperOpen : false}
         onClose={(): void => setIsPopperOpen(false)}
         filterSelectedOptions
-        freeSolo={freeSolo}
+        freeSolo={isFreeSolo()}
         getOptionSelected={(
           option: string,
           value: ChipFieldValueType
@@ -321,11 +356,18 @@ export const SFChipsListField = ({
             values={value}
             disabled={disabled}
             onDelete={deleteValue}
-            onEdit={onEdit}
+            onEdit={isEditable ? onEdit : undefined}
+            isValid={isValid}
           />
         )}
         renderInput={(params: AutocompleteRenderInputParams): JSX.Element => (
-          <StyledTextField {...params} multiline rows={1} label={label} />
+          <StyledTextField
+            {...params}
+            type={inputType}
+            rows={1}
+            label={label}
+            helperText={helperText}
+          />
         )}
       />
       <DisplayValues />

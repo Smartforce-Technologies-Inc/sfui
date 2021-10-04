@@ -11,7 +11,8 @@ const StyledLink = withStyles((theme: Theme) => ({
       color: `${theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]}`
     },
     '&.MuiLink-root': {
-      cursor: 'pointer'
+      cursor: 'pointer',
+      fontWeight: 500
     }
   }
 }))(Link);
