@@ -90,7 +90,7 @@
     "@types/resize-observer-browser": "^0.1.5",
     "autosuggest-highlight": "^3.1.1",
     "lodash.throttle": "^4.1.1",
-    "material-table": "^1.69.2",
+    "material-table": "1.69.1",
     "moment": "^2.29.1",
     "react-number-format": "^4.6.3"
   }
