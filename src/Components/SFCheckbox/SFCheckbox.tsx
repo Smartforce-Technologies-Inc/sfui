@@ -72,6 +72,7 @@ export interface SFCheckboxProps extends CheckboxProps {
 }
 
 export const SFCheckbox = ({
+  className = '',
   disableRipple = true,
   label,
   ...props
@@ -84,7 +85,7 @@ export const SFCheckbox = ({
   );
 
   return (
-    <FormControl>
+    <FormControl className={className}>
       <SFFormControlBooleanLabel
         control={
           <StyledCheckbox
