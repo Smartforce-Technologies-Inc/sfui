@@ -13,6 +13,7 @@ import {
 import { withStyles, Theme } from '@material-ui/core/styles';
 import { SFGrey } from '../../SFColors/SFColors';
 import { hexToRgba } from '../../Helpers';
+import React from 'react';
 
 export interface SFDialogTitleProps extends DialogTitleProps {}
 export interface SFDialogContentProps extends DialogContentProps {}
@@ -57,7 +58,7 @@ export const SFDialogActions = withStyles(() => ({
   }
 }))(DialogActions);
 
-export const SFDialog = withStyles((theme: Theme) => ({
+const StyledDialog = withStyles((theme: Theme) => ({
   root: {
     backgroundColor: `${
       theme.palette.type === 'light'
@@ -66,3 +67,35 @@ export const SFDialog = withStyles((theme: Theme) => ({
     }`
   }
 }))(Dialog);
+
+export interface SFDialogProps extends DialogProps {
+  isBackdropClickDisabled: boolean;
+  onClose: () => void;
+}
+
+export const SFDialog = ({
+  isBackdropClickDisabled,
+  children,
+  onClose,
+  ...props
+}: SFDialogProps): React.ReactElement<SFDialogProps> => {
+  const checkCloseReason = (
+    e: Record<string, unknown>,
+    reason: 'backdropClick' | 'escapeKeyDown'
+  ): void => {
+    if (reason !== 'backdropClick') {
+      onClose();
+    }
+  };
+
+  return (
+    <StyledDialog
+      {...props}
+      onClose={(e, reason) =>
+        isBackdropClickDisabled ? checkCloseReason(e, reason) : onClose
+      }
+    >
+      {children}
+    </StyledDialog>
+  );
+};
