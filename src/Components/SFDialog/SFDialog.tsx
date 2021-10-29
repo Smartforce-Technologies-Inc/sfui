@@ -79,7 +79,7 @@ export const SFDialog = ({
   onClose,
   ...props
 }: SFDialogProps): React.ReactElement<SFDialogProps> => {
-  const checkCloseReason = (reason: string): void => {
+  const checkCloseReason = (e: {}, reason: string): void => {
     if (reason !== ('backdropClick' || 'escapeKeyDown')) {
       onClose();
     }
@@ -89,7 +89,7 @@ export const SFDialog = ({
     <StyledDialog
       {...props}
       onClose={(e, reason) =>
-        disableBackdropClick ? checkCloseReason(reason) : onClose
+        disableBackdropClick ? checkCloseReason(e, reason) : onClose
       }
     >
       {children}
