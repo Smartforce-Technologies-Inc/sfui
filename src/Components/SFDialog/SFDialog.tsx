@@ -70,7 +70,6 @@ const StyledDialog = withStyles((theme: Theme) => ({
 
 export interface SFDialogProps extends DialogProps {
   disableBackdropClick?: boolean;
-  onClose?: () => void;
 }
 
 export const SFDialog = ({
@@ -79,19 +78,21 @@ export const SFDialog = ({
   onClose,
   ...props
 }: SFDialogProps): React.ReactElement<SFDialogProps> => {
-  const checkCloseReason = (reason: string): void => {
-    if (reason !== ('backdropClick' || 'escapeKeyDown')) {
-      onClose && onClose();
+  const checkCloseReason = (
+    e: Record<string, unknown>,
+    reason: 'backdropClick' | 'escapeKeyDown'
+  ): void => {
+    if (disableBackdropClick) {
+      if (reason !== ('backdropClick' || 'escapeKeyDown')) {
+        onClose && onClose(e, reason);
+      }
+    } else {
+      onClose && onClose(e, reason);
     }
   };
 
   return (
-    <StyledDialog
-      {...props}
-      onClose={(_e, reason) =>
-        disableBackdropClick ? checkCloseReason(reason) : onClose
-      }
-    >
+    <StyledDialog {...props} onClose={checkCloseReason}>
       {children}
     </StyledDialog>
   );
