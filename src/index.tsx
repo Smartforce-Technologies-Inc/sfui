@@ -31,6 +31,7 @@ export * from './Components/SFSwitch/SFSwitch';
 export * from './Components/SFTable/SFTable';
 export * from './Components/SFTextField/SFTextField';
 export * from './Components/SFTimeField/SFTimeField';
+export * from './Components/SFTootltip/SFTooltip';
 
 export * from './SFTheme/SFTheme';
 export * from './SFColors/SFColors';
