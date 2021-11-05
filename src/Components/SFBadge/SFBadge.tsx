@@ -5,48 +5,60 @@ import { withStyles, Theme } from '@material-ui/core/styles';
 import {
   SFCommonBlack,
   SFCommonWhite,
-  SFIcon,
   SFRedMainDark,
   SFRedMainLight
 } from '../..';
 
 const StyledBadge = withStyles((theme: Theme) => ({
+  root: {
+    '&.small': {
+      '& .MuiBadge-badge': {
+        width: '17px',
+        height: '17px'
+      }
+    },
+
+    '&.medium': {
+      '& .MuiBadge-badge': {
+        width: '21px',
+        height: '21px'
+      }
+    }
+  },
   badge: {
     backgroundColor:
       theme.palette.type === 'light' ? SFRedMainLight : SFRedMainDark,
     padding: 0,
     transform: 'scale(1) translate(-55%, -55%)',
+    fontWeight: 900,
+    fontSize: '12px',
+    lineHeight: '14px',
+    color: theme.palette.type === 'light' ? SFCommonWhite : SFCommonBlack,
 
-    '& .badgeContent': {
-      fontWeight: '900',
-      fontSize: '12px',
-      lineHeight: '14px',
-      display: 'flex',
-      justifyContent: 'center',
-      color: theme.palette.type === 'light' ? SFCommonWhite : SFCommonBlack,
-
-      '& .badgeDot': {
-        fill: theme.palette.type === 'light' ? SFCommonWhite : SFCommonBlack
-      }
+    '& .badgeDot': {
+      fill: theme.palette.type === 'light' ? SFCommonWhite : SFCommonBlack
     }
   }
 }))(Badge);
 
 export interface SFBadgeProps extends BadgeProps {
-  icon: string;
-  count: number;
+  value: number;
+  type?: 'numeric';
+  size?: 'small' | 'medium';
 }
 
 export const SFBadge = ({
-  icon,
-  count,
+  value,
+  size = 'small',
+  type = 'numeric',
+  children,
   ...props
 }: SFBadgeProps): React.ReactElement<SFBadgeProps> => {
-  const BadgeContent = (): JSX.Element => {
-    return (
-      <p className='badgeContent'>
-        {count <= 99 ? (
-          count
+  const BadgeContent = (): React.ReactNode => {
+    if (type === 'numeric') {
+      return value > 0 ? (
+        value <= 99 ? (
+          value
         ) : (
           <svg
             xmlns='http://www.w3.org/2000/svg'
@@ -63,21 +75,20 @@ export const SFBadge = ({
               fill='white'
             />
           </svg>
-        )}
-      </p>
-    );
+        )
+      ) : undefined;
+    }
   };
 
   return (
     <StyledBadge
       {...props}
       anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
+      className={`${size}`}
       overlap='circle'
-      color='error'
-      variant='standard'
-      badgeContent={count > 0 ? BadgeContent() : undefined}
+      badgeContent={BadgeContent()}
     >
-      <SFIcon icon={icon} />
+      {children}
     </StyledBadge>
   );
 };

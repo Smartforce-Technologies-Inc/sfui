@@ -1,16 +1,20 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { SFBadge } from './SFBadge';
+import { SFIcon } from '../..';
 
 export default {
   title: 'Components/SFBadge',
   component: SFBadge,
-  args: {
-    icon: 'Bell'
-  },
   argTypes: {
-    count: {
+    value: {
       defaultValue: 0
+    },
+    size: {
+      defaultValue: 'small'
+    },
+    type: {
+      defaultValue: 'numeric'
     },
     anchorOrigin: {
       table: {
@@ -52,12 +56,12 @@ export default {
         disable: true
       }
     },
-    children: {
+    badgeContent: {
       table: {
         disable: true
       }
     },
-    badgeContent: {
+    children: {
       table: {
         disable: true
       }
@@ -65,4 +69,14 @@ export default {
   }
 } as Meta;
 
-export const Badge = (args): JSX.Element => <SFBadge {...args} />;
+export const Badge = (args): JSX.Element => (
+  <div style={{ display: 'flex', gap: '30px', alignItems: 'center' }}>
+    <SFBadge {...args}>
+      <SFIcon icon='Bell' />
+    </SFBadge>
+    <SFBadge {...args}>
+      <p style={{ margin: 0, padding: 0 }}>Text</p>
+    </SFBadge>
+    <SFBadge {...args}>Some text</SFBadge>
+  </div>
+);
