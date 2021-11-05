@@ -77,7 +77,7 @@ export const SFBadge = ({
           </svg>
         )
       ) : undefined;
-    }
+    } else return undefined;
   };
 
   return (
