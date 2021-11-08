@@ -13,6 +13,7 @@ const StyledBadge = withStyles((theme: Theme) => ({
   root: {
     '&.small': {
       '& .MuiBadge-badge': {
+        minWidth: 'unset',
         width: '17px',
         height: '17px'
       }
@@ -51,6 +52,8 @@ export const SFBadge = ({
   value,
   size = 'small',
   type = 'numeric',
+  overlap = 'circle',
+  anchorOrigin = { vertical: 'top', horizontal: 'left' },
   children,
   ...props
 }: SFBadgeProps): React.ReactElement<SFBadgeProps> => {
@@ -81,13 +84,7 @@ export const SFBadge = ({
   };
 
   return (
-    <StyledBadge
-      {...props}
-      anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
-      className={`${size}`}
-      overlap='circle'
-      badgeContent={BadgeContent()}
-    >
+    <StyledBadge {...props} className={size} badgeContent={BadgeContent()}>
       {children}
     </StyledBadge>
   );
