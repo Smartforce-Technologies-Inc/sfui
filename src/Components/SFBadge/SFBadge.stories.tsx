@@ -16,15 +16,8 @@ export default {
     type: {
       defaultValue: 'numeric'
     },
-    anchorOrigin: {
-      table: {
-        disable: true
-      }
-    },
     overlap: {
-      table: {
-        disable: true
-      }
+      defaultValue: 'circle'
     },
     invisible: {
       table: {

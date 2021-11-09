@@ -53,6 +53,7 @@ export const SFBadge = ({
   size = 'small',
   type = 'numeric',
   overlap = 'circle',
+  className,
   anchorOrigin = { vertical: 'top', horizontal: 'left' },
   children,
   ...props
@@ -84,7 +85,13 @@ export const SFBadge = ({
   };
 
   return (
-    <StyledBadge {...props} className={size} badgeContent={BadgeContent()}>
+    <StyledBadge
+      {...props}
+      className={`${!className ? '' : className} ${size}`}
+      badgeContent={BadgeContent()}
+      anchorOrigin={anchorOrigin}
+      overlap={overlap}
+    >
       {children}
     </StyledBadge>
   );
