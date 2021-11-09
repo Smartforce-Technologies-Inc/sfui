@@ -30,7 +30,6 @@ const StyledBadge = withStyles((theme: Theme) => ({
     backgroundColor:
       theme.palette.type === 'light' ? SFRedMainLight : SFRedMainDark,
     padding: 0,
-    transform: 'scale(1) translate(-55%, -55%)',
     fontWeight: 900,
     fontSize: '12px',
     lineHeight: '14px',
@@ -39,6 +38,9 @@ const StyledBadge = withStyles((theme: Theme) => ({
     '& .badgeDot': {
       fill: theme.palette.type === 'light' ? SFCommonWhite : SFCommonBlack
     }
+  },
+  anchorOriginTopLeftCircle: {
+    transform: 'scale(1) translate(-55%, -55%)'
   }
 }))(Badge);
 
@@ -53,7 +55,7 @@ export const SFBadge = ({
   size = 'small',
   type = 'numeric',
   overlap = 'circle',
-  className,
+  className = '',
   anchorOrigin = { vertical: 'top', horizontal: 'left' },
   children,
   ...props
@@ -87,7 +89,7 @@ export const SFBadge = ({
   return (
     <StyledBadge
       {...props}
-      className={`${!className ? '' : className} ${size}`}
+      className={`${className} ${size}`}
       badgeContent={BadgeContent()}
       anchorOrigin={anchorOrigin}
       overlap={overlap}

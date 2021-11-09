@@ -1,7 +1,14 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { SFBadge } from './SFBadge';
-import { SFIcon } from '../..';
+import { SFIcon, SFIconButton, SFLink } from '../..';
+
+const AnchorOrigins = {
+  topLeft: { vertical: 'top', horizontal: 'left' },
+  topRight: { vertical: 'top', horizontal: 'right' },
+  bottomLeft: { vertical: 'bottom', horizontal: 'left' },
+  bottomRight: { vertical: 'bottom', horizontal: 'right' }
+};
 
 export default {
   title: 'Components/SFBadge',
@@ -17,7 +24,9 @@ export default {
       defaultValue: 'numeric'
     },
     overlap: {
-      defaultValue: 'circle'
+      table: {
+        disable: true
+      }
     },
     invisible: {
       table: {
@@ -58,18 +67,51 @@ export default {
       table: {
         disable: true
       }
+    },
+    anchorOrigin: {
+      options: Object.keys(AnchorOrigins),
+      mapping: AnchorOrigins,
+      control: {
+        type: 'select',
+        labels: {
+          topLeft: 'Top Left',
+          topRight: 'Top Right',
+          botttmLeft: 'Bottom Left',
+          bottomRight: 'Bottom Right'
+        }
+      }
     }
   }
 } as Meta;
 
-export const Badge = (args): JSX.Element => (
+export const BadgeCircular = (args): JSX.Element => (
   <div style={{ display: 'flex', gap: '30px', alignItems: 'center' }}>
     <SFBadge {...args}>
       <SFIcon icon='Bell' />
     </SFBadge>
     <SFBadge {...args}>
-      <p style={{ margin: 0, padding: 0 }}>Text</p>
+      <SFIconButton sfSize='medium' sfIcon='Bell' />
     </SFBadge>
-    <SFBadge {...args}>Some text</SFBadge>
   </div>
 );
+
+export const BadgeRectangular = (args): JSX.Element => (
+  <div style={{ display: 'flex', gap: '30px', alignItems: 'center' }}>
+    <SFBadge {...args}>
+      <p style={{ margin: 0, padding: 0 }}>Text</p>
+    </SFBadge>
+    <SFBadge {...args}>
+      <SFLink sfSize='medium'>Some Link</SFLink>
+    </SFBadge>
+  </div>
+);
+
+BadgeCircular.args = {
+  ...BadgeCircular.args,
+  overlap: 'circle'
+};
+
+BadgeRectangular.args = {
+  ...BadgeRectangular.args,
+  overlap: 'rectangle'
+};
