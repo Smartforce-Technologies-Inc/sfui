@@ -118,6 +118,8 @@ const getIcon = (type: string): JSX.Element | undefined => {
   switch (type) {
     case 'error':
       return <SFIcon icon='Error-Mark' />;
+    case 'info':
+      return <SFIcon icon='Information' />;
     default:
       return undefined;
   }
