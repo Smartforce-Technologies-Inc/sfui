@@ -34,13 +34,12 @@ const StyledBadge = withStyles((theme: Theme) => ({
     fontSize: '12px',
     lineHeight: '14px',
     color: theme.palette.type === 'light' ? SFCommonWhite : SFCommonBlack,
+    boxShadow:
+      '0px 2px 1px -1px rgba(0, 0, 0, 0.02), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12)',
 
     '& .badgeDot': {
       fill: theme.palette.type === 'light' ? SFCommonWhite : SFCommonBlack
     }
-  },
-  anchorOriginTopLeftCircle: {
-    transform: 'scale(1) translate(-55%, -55%)'
   }
 }))(Badge);
 
