@@ -3,68 +3,110 @@ import { Alert, AlertTitle, AlertProps } from '@material-ui/lab';
 import { SFIcon } from '../SFIcon/SFIcon';
 import { SFIconButton } from '../SFIconButton/SFIconButton';
 import { Theme, withStyles } from '@material-ui/core/styles';
-import { SFRed } from '../../SFColors/SFColors';
+import { SFRed, SFBlue } from '../../SFColors/SFColors';
 import { hexToRgba } from '../../Helpers';
 
 const StyledAlert = withStyles((theme: Theme) => ({
   root: {
-    padding: '16px',
+    padding: '16px'
+  },
+  action: {
+    margin: '0 11px',
+    padding: '0'
+  },
+  message: {
+    padding: '0 0 0 16px',
+    fontWeight: 400,
+    fontSize: '16px',
+    lineHeight: '24px',
+    flexGrow: 1,
 
-    '& .MuiAlert-message': {
-      padding: '0px 24px 0px 16px',
-      fontWeight: 400,
+    '& .MuiAlertTitle-root': {
+      fontWeight: 700,
       fontSize: '16px',
       lineHeight: '24px',
+      marginTop: '0'
+    }
+  },
+  icon: {
+    padding: '0px',
+    margin: '0px'
+  },
+  standardError: {
+    backgroundColor: theme.palette.type === 'light' ? SFRed[50] : SFRed[900],
 
-      '& .MuiAlertTitle-root': {
-        fontWeight: 700
+    '& .MuiAlert-icon': {
+      '& svg path': {
+        fill: `${
+          theme.palette.type === 'light' ? SFRed[700] : SFRed[200]
+        } !important`
       }
     },
 
-    '& .MuiAlert-icon': {
-      padding: '0px',
-      margin: '0px'
+    '& .MuiAlert-message': {
+      color: theme.palette.type === 'light' ? SFRed[900] : SFRed[50]
     },
 
-    '&.MuiAlert-standardError': {
-      backgroundColor: theme.palette.type === 'light' ? SFRed[50] : SFRed[900],
-
-      '& .MuiAlert-message': {
-        color: theme.palette.type === 'light' ? SFRed[900] : SFRed[50]
-      },
-
-      '& .MuiAlert-icon': {
+    '& .MuiIconButton-root': {
+      '& .MuiIconButton-label': {
         '& svg path': {
           fill: `${
-            theme.palette.type === 'light' ? SFRed[700] : SFRed[200]
+            theme.palette.type === 'light' ? SFRed[900] : SFRed[50]
           } !important`
         }
       },
 
-      '& .MuiAlert-action': {
-        '& .MuiIconButton-root': {
-          '& .MuiIconButton-label': {
-            '& svg path': {
-              fill: `${
-                theme.palette.type === 'light' ? SFRed[900] : SFRed[50]
-              } !important`
-            }
-          },
+      '&:hover': {
+        backgroundColor:
+          theme.palette.type === 'light'
+            ? hexToRgba(SFRed[100], 0.4)
+            : hexToRgba(SFRed[200], 0.2)
+      },
 
-          '&:hover': {
-            backgroundColor:
-              theme.palette.type === 'light'
-                ? hexToRgba(SFRed[100], 0.4)
-                : hexToRgba(SFRed[200], 0.2)
-          },
+      '&:active': {
+        backgroundColor:
+          theme.palette.type === 'light'
+            ? hexToRgba(SFRed[100], 0.7)
+            : hexToRgba(SFRed[200], 0.1)
+      }
+    }
+  },
+  standardInfo: {
+    backgroundColor: theme.palette.type === 'light' ? SFBlue[50] : SFBlue[900],
 
-          '&:active': {
-            backgroundColor:
-              theme.palette.type === 'light'
-                ? hexToRgba(SFRed[100], 0.7)
-                : hexToRgba(SFRed[200], 0.1)
-          }
+    '& .MuiAlert-icon': {
+      '& svg path': {
+        fill: `${
+          theme.palette.type === 'light' ? SFBlue[500] : SFBlue[200]
+        } !important`
+      }
+    },
+
+    '& .MuiAlert-message': {
+      color: theme.palette.type === 'light' ? SFBlue[900] : SFBlue[50]
+    },
+
+    '& .MuiIconButton-root': {
+      '& .MuiIconButton-label': {
+        '& svg path': {
+          fill: `${
+            theme.palette.type === 'light' ? SFBlue[900] : SFBlue[50]
+          } !important`
         }
+      },
+
+      '&:hover': {
+        backgroundColor:
+          theme.palette.type === 'light'
+            ? hexToRgba(SFBlue[100], 0.4)
+            : hexToRgba(SFBlue[200], 0.2)
+      },
+
+      '&:active': {
+        backgroundColor:
+          theme.palette.type === 'light'
+            ? hexToRgba(SFBlue[100], 0.7)
+            : hexToRgba(SFBlue[200], 0.1)
       }
     }
   }
@@ -78,8 +120,9 @@ export interface SFAlertProps extends AlertProps {
 const getIcon = (type: string): JSX.Element | undefined => {
   switch (type) {
     case 'error':
-      return <SFIcon icon='Error-Mark' />;
-
+      return <SFIcon size={22} icon='Error-Mark' />;
+    case 'info':
+      return <SFIcon size={22} icon='Information' />;
     default:
       return undefined;
   }
