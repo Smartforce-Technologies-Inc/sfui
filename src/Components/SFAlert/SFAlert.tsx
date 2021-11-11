@@ -15,14 +15,17 @@ const StyledAlert = withStyles((theme: Theme) => ({
     padding: '0'
   },
   message: {
-    padding: '0px 16px',
+    padding: '0 0 0 16px',
     fontWeight: 400,
     fontSize: '16px',
     lineHeight: '24px',
     flexGrow: 1,
 
     '& .MuiAlertTitle-root': {
-      fontWeight: 700
+      fontWeight: 700,
+      fontSize: '16px',
+      lineHeight: '24px',
+      marginTop: '0'
     }
   },
   icon: {
@@ -117,9 +120,9 @@ export interface SFAlertProps extends AlertProps {
 const getIcon = (type: string): JSX.Element | undefined => {
   switch (type) {
     case 'error':
-      return <SFIcon icon='Error-Mark' />;
+      return <SFIcon size={22} icon='Error-Mark' />;
     case 'info':
-      return <SFIcon icon='Information' />;
+      return <SFIcon size={22} icon='Information' />;
     default:
       return undefined;
   }
