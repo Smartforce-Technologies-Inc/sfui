@@ -84,6 +84,11 @@ export const SFTooltip = ({
   );
 
   return (
-    <Tooltip classes={classes} arrow={arrow} title={tooltipTitle} {...props} />
+    <Tooltip
+      classes={{ tooltip: classes.tooltip, arrow: classes.arrow }}
+      arrow={arrow}
+      title={tooltipTitle}
+      {...props}
+    />
   );
 };
