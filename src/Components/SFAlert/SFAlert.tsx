@@ -132,12 +132,14 @@ export const SFAlert = ({
   title,
   type = 'error',
   children,
-  onClose
+  onClose,
+  ...props
 }: SFAlertProps): React.ReactElement<SFAlertProps> => {
   const icon: JSX.Element | undefined = getIcon(type);
 
   return (
     <StyledAlert
+      {...props}
       icon={icon}
       severity={type}
       action={
