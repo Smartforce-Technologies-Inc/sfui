@@ -139,6 +139,10 @@ export default function ButtonMixin(sfButtonConfig: ButtonMixinProps): any {
         backgroundColor: 'transparent',
         borderColor: 'none'
       }
+    },
+    label: {
+      display: 'flex',
+      gap: '6px'
     }
   }))(Button);
 }

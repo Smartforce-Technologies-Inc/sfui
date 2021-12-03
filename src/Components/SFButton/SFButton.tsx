@@ -4,6 +4,7 @@ import { ButtonProps } from '@material-ui/core/Button';
 import BlueButton from './CustomButtons/BlueButton';
 import RedButton from './CustomButtons/RedButton';
 import GreyButton from './CustomButtons/GreyButton';
+import { SFSpinner } from '../SFSpinner/SFSpinner';
 
 interface ButtonInnerProps {
   padding?: string;
@@ -11,6 +12,12 @@ interface ButtonInnerProps {
   lineHeight?: string;
   height?: string;
 }
+
+const spinnerSizes = {
+  small: 22,
+  medium: 24,
+  large: 26
+};
 
 const getButtonInnerProps = (size?: string): ButtonInnerProps => {
   const result: ButtonInnerProps = {};
@@ -39,6 +46,7 @@ const getButtonInnerProps = (size?: string): ButtonInnerProps => {
 
 export interface SFButtonProps extends ButtonProps {
   sfColor?: 'blue' | 'red' | 'grey';
+  isLoading?: boolean;
 }
 
 export const SFButton = ({
@@ -46,6 +54,8 @@ export const SFButton = ({
   color,
   size = 'medium',
   sfColor = 'blue',
+  isLoading = false,
+  children,
   ...props
 }: SFButtonProps): React.ReactElement<SFButtonProps> => {
   const ButtonInnerProps: ButtonInnerProps = getButtonInnerProps(size);
@@ -71,6 +81,9 @@ export const SFButton = ({
       disableElevation
       disableRipple
       style={ButtonInnerStyle}
-    />
+    >
+      {isLoading && <SFSpinner size={spinnerSizes[size]} />}
+      {children}
+    </ButtonComponent>
   );
 };
