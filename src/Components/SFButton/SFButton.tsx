@@ -4,7 +4,7 @@ import { ButtonProps } from '@material-ui/core/Button';
 import BlueButton from './CustomButtons/BlueButton';
 import RedButton from './CustomButtons/RedButton';
 import GreyButton from './CustomButtons/GreyButton';
-import { SFSpinner } from '../SFSpinner/SFSpinner';
+import { CircularProgress } from '@material-ui/core';
 
 interface ButtonInnerProps {
   padding?: string;
@@ -82,7 +82,9 @@ export const SFButton = ({
       disableRipple
       style={ButtonInnerStyle}
     >
-      {isLoading && <SFSpinner size={spinnerSizes[size]} />}
+      {isLoading && (
+        <CircularProgress size={spinnerSizes[size]} variant='indeterminate' />
+      )}
       {children}
     </ButtonComponent>
   );
