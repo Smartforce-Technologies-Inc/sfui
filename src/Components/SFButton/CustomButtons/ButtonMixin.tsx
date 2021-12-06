@@ -91,14 +91,6 @@ export default function ButtonMixin(sfButtonConfig: ButtonMixinProps): any {
         color: sfButtonConfig.contained[theme.palette.type].color
       }
     },
-    disabled: {
-      color: theme.palette.type === 'light' ? SFGrey[400] : SFGrey[600],
-      backgroundColor:
-        theme.palette.type === 'light' ? SFGrey[100] : SFGrey[800],
-      '& .MuiCircularProgress-circle': {
-        color: theme.palette.type === 'light' ? SFGrey[400] : SFGrey[600]
-      }
-    },
     outlined: {
       color: sfButtonConfig.outlined[theme.palette.type].color,
       borderColor: sfButtonConfig.outlined[theme.palette.type].borderColor,
@@ -150,6 +142,14 @@ export default function ButtonMixin(sfButtonConfig: ButtonMixinProps): any {
       },
       '& .MuiCircularProgress-circle': {
         color: sfButtonConfig.text[theme.palette.type].color
+      }
+    },
+    disabled: {
+      color: theme.palette.type === 'light' ? SFGrey[400] : SFGrey[600],
+      backgroundColor:
+        theme.palette.type === 'light' ? SFGrey[100] : SFGrey[800],
+      '& .MuiCircularProgress-circle': {
+        color: theme.palette.type === 'light' ? SFGrey[400] : SFGrey[600]
       }
     },
     label: {
