@@ -55,6 +55,7 @@ export const SFButton = ({
   size = 'medium',
   sfColor = 'blue',
   isLoading = false,
+  onClick,
   children,
   ...props
 }: SFButtonProps): React.ReactElement<SFButtonProps> => {
@@ -81,6 +82,7 @@ export const SFButton = ({
       disableElevation
       disableRipple
       style={ButtonInnerStyle}
+      onClick={!isLoading ? onClick : undefined}
     >
       {isLoading && (
         <CircularProgress size={spinnerSizes[size]} variant='indeterminate' />
