@@ -76,6 +76,7 @@ export const SFDialog = ({
   disableBackdropClick = true,
   children,
   onClose,
+  transitionDuration = 360,
   ...props
 }: SFDialogProps): React.ReactElement<SFDialogProps> => {
   const checkCloseReason = (
@@ -92,7 +93,11 @@ export const SFDialog = ({
   };
 
   return (
-    <StyledDialog {...props} onClose={checkCloseReason}>
+    <StyledDialog
+      {...props}
+      transitionDuration={transitionDuration}
+      onClose={checkCloseReason}
+    >
       {children}
     </StyledDialog>
   );
