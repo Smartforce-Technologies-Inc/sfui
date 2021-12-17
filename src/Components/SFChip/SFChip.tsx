@@ -35,10 +35,12 @@ const StyledChip = withStyles((theme: Theme) => ({
             },
 
             '&:hover, &:active': {
-              backgroundColor:
-                theme.palette.type === 'light'
-                  ? hexToRgba(SFGrey[200], 0.3)
-                  : hexToRgba(SFGrey[500], 0.3)
+              '@media (hover: hover)': {
+                backgroundColor:
+                  theme.palette.type === 'light'
+                    ? hexToRgba(SFGrey[200], 0.3)
+                    : hexToRgba(SFGrey[500], 0.3)
+              }
             }
           },
 
@@ -126,7 +128,7 @@ const StyledChip = withStyles((theme: Theme) => ({
 
           '&.MuiChip-deletable': {
             '&:hover': {
-              backgroundColor: 'transparent !important'
+              backgroundColor: 'transparent'
             },
             '&:active': {
               backgroundColor:
@@ -162,11 +164,13 @@ const StyledChip = withStyles((theme: Theme) => ({
             },
 
             '&:hover, &:active': {
-              backgroundColor: `${
-                theme.palette.type === 'light'
-                  ? hexToRgba(SFGrey[200], 0.3)
-                  : hexToRgba(SFGrey[500], 0.3)
-              } !important`
+              '@media (hover: hover)': {
+                backgroundColor: `${
+                  theme.palette.type === 'light'
+                    ? hexToRgba(SFGrey[200], 0.3)
+                    : hexToRgba(SFGrey[500], 0.3)
+                } !important`
+              }
             }
           },
 

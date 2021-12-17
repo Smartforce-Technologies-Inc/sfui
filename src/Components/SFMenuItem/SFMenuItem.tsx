@@ -8,10 +8,12 @@ export const SFMenuItem = withStyles((theme: Theme) => ({
     padding: '6px 24px',
     height: 36,
     '&:hover': {
-      background:
-        theme.palette.type === 'light'
-          ? hexToRgba(SFGrey[200], 0.3)
-          : hexToRgba(SFGrey[500], 0.3)
+      '@media (hover: hover)': {
+        background:
+          theme.palette.type === 'light'
+            ? hexToRgba(SFGrey[200], 0.3)
+            : hexToRgba(SFGrey[500], 0.3)
+      }
     },
     '&:active': {
       background:
@@ -25,10 +27,12 @@ export const SFMenuItem = withStyles((theme: Theme) => ({
           ? hexToRgba(SFGrey[200], 0.5)
           : hexToRgba(SFGrey[500], 0.2),
       '&:hover': {
-        background:
-          theme.palette.type === 'light'
-            ? hexToRgba(SFGrey[200], 0.3)
-            : hexToRgba(SFGrey[500], 0.3)
+        '@media (hover: hover)': {
+          background:
+            theme.palette.type === 'light'
+              ? hexToRgba(SFGrey[200], 0.3)
+              : hexToRgba(SFGrey[500], 0.3)
+        }
       }
     }
   }
