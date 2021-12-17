@@ -11,11 +11,13 @@ const StyledRadio = withStyles((theme: Theme) => ({
   },
   colorPrimary: {
     '&:hover': {
-      backgroundColor: `${
-        theme.palette.type === 'light'
-          ? 'rgba(204, 204, 204, 0.3)'
-          : 'rgba(128, 128, 128, 0.3)'
-      }`
+      '@media (hover: hover)': {
+        backgroundColor: `${
+          theme.palette.type === 'light'
+            ? 'rgba(204, 204, 204, 0.3)'
+            : 'rgba(128, 128, 128, 0.3)'
+        }`
+      }
     },
     '&:active': {
       backgroundColor: `${
@@ -25,11 +27,13 @@ const StyledRadio = withStyles((theme: Theme) => ({
       }`
     },
     '&.Mui-checked:hover': {
-      backgroundColor: `${
-        theme.palette.type === 'light'
-          ? 'rgba(204, 235, 255, 0.4)'
-          : 'rgba(128, 198, 255, 0.2)'
-      }`
+      '@media (hover: hover)': {
+        backgroundColor: `${
+          theme.palette.type === 'light'
+            ? 'rgba(204, 235, 255, 0.4)'
+            : 'rgba(128, 198, 255, 0.2)'
+        }`
+      }
     },
     '&.Mui-checked:active': {
       backgroundColor: `${

@@ -74,13 +74,26 @@ export default function ButtonMixin(sfButtonConfig: ButtonMixinProps): any {
       color: sfButtonConfig.contained[theme.palette.type].color,
       backgroundColor:
         sfButtonConfig.contained[theme.palette.type].backgroundColor,
-      '&:hover': {
-        backgroundColor:
-          sfButtonConfig.contained[theme.palette.type].backgroundColorHover
+      '@media (hover: hover)': {
+        '&:hover': {
+          backgroundColor:
+            sfButtonConfig.contained[theme.palette.type].backgroundColorHover
+        },
+        '&:active': {
+          backgroundColor:
+            sfButtonConfig.contained[theme.palette.type].backgroundColorActive
+        }
       },
-      '&:active': {
-        backgroundColor:
-          sfButtonConfig.contained[theme.palette.type].backgroundColorActive
+      '@media (hover: none)': {
+        '&:hover': {
+          color: sfButtonConfig.contained[theme.palette.type].color,
+          backgroundColor:
+            sfButtonConfig.contained[theme.palette.type].backgroundColor
+        },
+        '&:active': {
+          backgroundColor:
+            sfButtonConfig.contained[theme.palette.type].backgroundColorActive
+        }
       },
       '&$disabled': {
         color: theme.palette.type === 'light' ? SFGrey[400] : SFGrey[600],
@@ -96,19 +109,36 @@ export default function ButtonMixin(sfButtonConfig: ButtonMixinProps): any {
       borderColor: sfButtonConfig.outlined[theme.palette.type].borderColor,
       backgroundColor:
         sfButtonConfig.outlined[theme.palette.type].backgroundColor,
-      '&:hover': {
-        color: sfButtonConfig.outlined[theme.palette.type].colorHover,
-        borderColor:
-          sfButtonConfig.outlined[theme.palette.type].borderColorHover,
-        backgroundColor:
-          sfButtonConfig.outlined[theme.palette.type].backgroundColorHover
+      '@media (hover: hover)': {
+        '&:hover': {
+          color: sfButtonConfig.outlined[theme.palette.type].colorHover,
+          borderColor:
+            sfButtonConfig.outlined[theme.palette.type].borderColorHover,
+          backgroundColor:
+            sfButtonConfig.outlined[theme.palette.type].backgroundColorHover
+        },
+        '&:active': {
+          color: sfButtonConfig.outlined[theme.palette.type].colorActive,
+          borderColor:
+            sfButtonConfig.outlined[theme.palette.type].borderColorActive,
+          backgroundColor:
+            sfButtonConfig.outlined[theme.palette.type].backgroundColorActive
+        }
       },
-      '&:active': {
-        color: sfButtonConfig.outlined[theme.palette.type].colorActive,
-        borderColor:
-          sfButtonConfig.outlined[theme.palette.type].borderColorActive,
-        backgroundColor:
-          sfButtonConfig.outlined[theme.palette.type].backgroundColorActive
+      '@media (hover: none)': {
+        '&:hover': {
+          color: sfButtonConfig.outlined[theme.palette.type].color,
+          borderColor: sfButtonConfig.outlined[theme.palette.type].borderColor,
+          backgroundColor:
+            sfButtonConfig.outlined[theme.palette.type].backgroundColor
+        },
+        '&:active': {
+          color: sfButtonConfig.outlined[theme.palette.type].colorActive,
+          borderColor:
+            sfButtonConfig.outlined[theme.palette.type].borderColorActive,
+          backgroundColor:
+            sfButtonConfig.outlined[theme.palette.type].backgroundColorActive
+        }
       },
       '&$disabled': {
         color: theme.palette.type === 'light' ? SFGrey[400] : SFGrey[600],
@@ -123,17 +153,33 @@ export default function ButtonMixin(sfButtonConfig: ButtonMixinProps): any {
       color: sfButtonConfig.text[theme.palette.type].color,
       backgroundColor: sfButtonConfig.text[theme.palette.type].backgroundColor,
       border: 'none',
-      '&:hover': {
-        color: sfButtonConfig.text[theme.palette.type].colorHover,
-        backgroundColor:
-          sfButtonConfig.text[theme.palette.type].backgroundColorHover,
-        border: 'none'
+      '@media (hover: hover)': {
+        '&:hover': {
+          color: sfButtonConfig.text[theme.palette.type].colorHover,
+          backgroundColor:
+            sfButtonConfig.text[theme.palette.type].backgroundColorHover,
+          border: 'none'
+        },
+        '&:active': {
+          color: sfButtonConfig.text[theme.palette.type].colorActive,
+          backgroundColor:
+            sfButtonConfig.text[theme.palette.type].backgroundColorActive,
+          border: 'none'
+        }
       },
-      '&:active': {
-        color: sfButtonConfig.text[theme.palette.type].colorActive,
-        backgroundColor:
-          sfButtonConfig.text[theme.palette.type].backgroundColorActive,
-        border: 'none'
+      '@media (hover: none)': {
+        '&:hover': {
+          color: sfButtonConfig.text[theme.palette.type].color,
+          backgroundColor:
+            sfButtonConfig.text[theme.palette.type].backgroundColor,
+          border: 'none'
+        },
+        '&:active': {
+          color: sfButtonConfig.text[theme.palette.type].colorActive,
+          backgroundColor:
+            sfButtonConfig.text[theme.palette.type].backgroundColorActive,
+          border: 'none'
+        }
       },
       '&$disabled': {
         color: theme.palette.type === 'light' ? SFGrey[400] : SFGrey[600],

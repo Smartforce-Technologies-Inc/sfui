@@ -57,10 +57,12 @@ const StyledAlert = withStyles((theme: Theme) => ({
       },
 
       '&:hover': {
-        backgroundColor:
-          theme.palette.type === 'light'
-            ? hexToRgba(SFRed[100], 0.4)
-            : hexToRgba(SFRed[200], 0.2)
+        '@media (hover: hover)': {
+          backgroundColor:
+            theme.palette.type === 'light'
+              ? hexToRgba(SFRed[100], 0.4)
+              : hexToRgba(SFRed[200], 0.2)
+        }
       },
 
       '&:active': {
@@ -96,10 +98,12 @@ const StyledAlert = withStyles((theme: Theme) => ({
       },
 
       '&:hover': {
-        backgroundColor:
-          theme.palette.type === 'light'
-            ? hexToRgba(SFBlue[100], 0.4)
-            : hexToRgba(SFBlue[200], 0.2)
+        '@media (hover: hover)': {
+          backgroundColor:
+            theme.palette.type === 'light'
+              ? hexToRgba(SFBlue[100], 0.4)
+              : hexToRgba(SFBlue[200], 0.2)
+        }
       },
 
       '&:active': {

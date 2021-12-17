@@ -32,9 +32,11 @@ const StyledTimePicker = withStyles((theme: Theme) => ({
       },
 
       '&:hover': {
-        borderColor: `${
-          theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]
-        }`
+        '@media (hover: hover)': {
+          borderColor: `${
+            theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]
+          }`
+        }
       },
 
       '&.Mui-focused': {

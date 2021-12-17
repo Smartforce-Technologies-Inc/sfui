@@ -79,9 +79,11 @@ const StyledDatePicker = withStyles((theme: Theme) => ({
       },
 
       '&:hover': {
-        borderColor: `${
-          theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]
-        }`
+        '@media (hover: hover)': {
+          borderColor: `${
+            theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]
+          }`
+        }
       },
 
       '&.Mui-focused': {
@@ -140,12 +142,14 @@ const StyledDatePicker = withStyles((theme: Theme) => ({
       },
 
       '& .MuiIconButton-root': {
-        '&:hover': {
-          backgroundColor: `${
-            theme.palette.type === 'light'
-              ? hexToRgba(SFGrey[200], 0.3)
-              : hexToRgba(SFGrey[500], 0.3)
-          }`
+        '@media (hover: hover)': {
+          '&:hover': {
+            backgroundColor: `${
+              theme.palette.type === 'light'
+                ? hexToRgba(SFGrey[200], 0.3)
+                : hexToRgba(SFGrey[500], 0.3)
+            }`
+          }
         },
 
         '&:active': {
