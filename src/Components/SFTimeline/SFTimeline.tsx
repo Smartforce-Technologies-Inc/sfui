@@ -63,6 +63,7 @@ export interface SFTimelineItem {
 }
 
 export interface SFTimelineProps {
+  className?: string;
   items: SFTimelineItem[];
   size?: 'medium' | 'large';
   selectedIndex?: number;
@@ -91,6 +92,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 export const SFTimeline = ({
+  className = '',
   items,
   selectedIndex = 0,
   size = 'medium',
@@ -100,7 +102,7 @@ export const SFTimeline = ({
   const itemsLength: number = items.length;
 
   return (
-    <Timeline align='left'>
+    <Timeline align='left' className={className}>
       {items.map((item: SFTimelineItem, index: number) => {
         const hasConnector: boolean =
           (index > 0 && index < itemsLength - 1) ||
