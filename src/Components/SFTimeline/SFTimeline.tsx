@@ -106,7 +106,7 @@ export const SFTimeline = ({
       {items.map((item: SFTimelineItem, index: number) => {
         const hasConnector: boolean =
           (index > 0 && index < itemsLength - 1) ||
-          (index === 0 && itemsLength > 0);
+          (index === 0 && itemsLength > 1);
 
         return (
           <div
