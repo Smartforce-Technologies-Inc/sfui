@@ -41,6 +41,10 @@ const StyledTimelineItem = withStyles(() => ({
   root: {
     gap: '3px',
 
+    '&:hover': {
+      cursor: 'pointer'
+    },
+
     '&::before': {
       content: 'none'
     }
