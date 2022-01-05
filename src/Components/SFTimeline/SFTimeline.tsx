@@ -61,6 +61,13 @@ const StyledTimelineConnector = withStyles((theme: Theme) => ({
   }
 }))(TimelineConnector);
 
+const StyledTimeline = withStyles(() => ({
+  root: {
+    marginTop: '16px',
+    padding: 0
+  }
+}))(Timeline);
+
 export interface SFTimelineItem {
   title: string;
   subtitle: string;
@@ -92,6 +99,9 @@ const useStyles = makeStyles((theme: Theme) => ({
       theme.palette.type === 'light'
         ? hexToRgba(SFBlue[100], 0.6)
         : hexToRgba(SFBlue[200], 0.1)
+  },
+  lastItem: {
+    marginBottom: '0px'
   }
 }));
 
@@ -106,7 +116,7 @@ export const SFTimeline = ({
   const itemsLength: number = items.length;
 
   return (
-    <Timeline align='left' className={className}>
+    <StyledTimeline align='left' className={className}>
       {items.map((item: SFTimelineItem, index: number) => {
         const hasConnector: boolean =
           (index > 0 && index < itemsLength - 1) ||
@@ -125,7 +135,7 @@ export const SFTimeline = ({
               <StyledTimelineContent
                 className={`${classes.text} ${
                   selectedIndex === index ? classes.isSelected : ''
-                }`}
+                } ${index === itemsLength - 1 ? classes.lastItem : ''}`}
               >
                 <span className={classes.title}>{item.title}</span>
                 <br />
@@ -135,6 +145,6 @@ export const SFTimeline = ({
           </div>
         );
       })}
-    </Timeline>
+    </StyledTimeline>
   );
 };
