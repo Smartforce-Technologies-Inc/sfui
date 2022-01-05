@@ -63,7 +63,7 @@ const StyledTimelineConnector = withStyles((theme: Theme) => ({
 
 const StyledTimeline = withStyles(() => ({
   root: {
-    marginTop: '16px',
+    margin: '16px 0 0',
     padding: 0
   }
 }))(Timeline);
