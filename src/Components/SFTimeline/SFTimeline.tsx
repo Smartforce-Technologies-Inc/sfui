@@ -29,10 +29,12 @@ const StyledTimelineContent = withStyles((theme: Theme) => ({
     marginBottom: '16px',
 
     '&:hover': {
-      backgroundColor:
-        theme.palette.type === 'light'
-          ? hexToRgba(SFBlue[100], 0.4)
-          : hexToRgba(SFBlue[200], 0.2)
+      '@media (hover: hover)': {
+        backgroundColor:
+          theme.palette.type === 'light'
+            ? hexToRgba(SFBlue[100], 0.4)
+            : hexToRgba(SFBlue[200], 0.2)
+      }
     }
   }
 }))(TimelineContent);
@@ -42,7 +44,9 @@ const StyledTimelineItem = withStyles(() => ({
     gap: '3px',
 
     '&:hover': {
-      cursor: 'pointer'
+      '@media (hover: hover)': {
+        cursor: 'pointer'
+      }
     },
 
     '&::before': {
@@ -60,6 +64,13 @@ const StyledTimelineConnector = withStyles((theme: Theme) => ({
     }`
   }
 }))(TimelineConnector);
+
+const StyledTimeline = withStyles(() => ({
+  root: {
+    margin: '16px 0 0',
+    padding: 0
+  }
+}))(Timeline);
 
 export interface SFTimelineItem {
   title: string;
@@ -92,6 +103,9 @@ const useStyles = makeStyles((theme: Theme) => ({
       theme.palette.type === 'light'
         ? hexToRgba(SFBlue[100], 0.6)
         : hexToRgba(SFBlue[200], 0.1)
+  },
+  lastItem: {
+    marginBottom: '0px'
   }
 }));
 
@@ -106,7 +120,7 @@ export const SFTimeline = ({
   const itemsLength: number = items.length;
 
   return (
-    <Timeline align='left' className={className}>
+    <StyledTimeline align='left' className={className}>
       {items.map((item: SFTimelineItem, index: number) => {
         const hasConnector: boolean =
           (index > 0 && index < itemsLength - 1) ||
@@ -125,7 +139,7 @@ export const SFTimeline = ({
               <StyledTimelineContent
                 className={`${classes.text} ${
                   selectedIndex === index ? classes.isSelected : ''
-                }`}
+                } ${index === itemsLength - 1 ? classes.lastItem : ''}`}
               >
                 <span className={classes.title}>{item.title}</span>
                 <br />
@@ -135,6 +149,6 @@ export const SFTimeline = ({
           </div>
         );
       })}
-    </Timeline>
+    </StyledTimeline>
   );
 };
