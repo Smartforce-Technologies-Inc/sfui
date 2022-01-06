@@ -29,10 +29,12 @@ const StyledTimelineContent = withStyles((theme: Theme) => ({
     marginBottom: '16px',
 
     '&:hover': {
-      backgroundColor:
-        theme.palette.type === 'light'
-          ? hexToRgba(SFBlue[100], 0.4)
-          : hexToRgba(SFBlue[200], 0.2)
+      '@media (hover: hover)': {
+        backgroundColor:
+          theme.palette.type === 'light'
+            ? hexToRgba(SFBlue[100], 0.4)
+            : hexToRgba(SFBlue[200], 0.2)
+      }
     }
   }
 }))(TimelineContent);
@@ -42,7 +44,9 @@ const StyledTimelineItem = withStyles(() => ({
     gap: '3px',
 
     '&:hover': {
-      cursor: 'pointer'
+      '@media (hover: hover)': {
+        cursor: 'pointer'
+      }
     },
 
     '&::before': {
