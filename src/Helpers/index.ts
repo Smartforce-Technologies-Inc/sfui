@@ -8,3 +8,12 @@ export function hexToRgba(hex: string, opacity: number): string | undefined {
       )}, ${opacity})`
     : undefined;
 }
+
+export function getColorRgb(color: string): string {
+  const el = document.createElement('div');
+  el.style.color = color;
+  document.body.appendChild(el);
+  const rgb = window.getComputedStyle(el).getPropertyValue('color');
+  document.body.removeChild(el);
+  return rgb;
+}
