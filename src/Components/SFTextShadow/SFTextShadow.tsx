@@ -2,34 +2,36 @@ import React from 'react';
 import { getColorRgb } from '../../Helpers';
 
 interface CommonProps {
+  type: 'default' | 'repeated' | 'gradient';
   text: string;
   color: string;
   size: number;
   opacity?: number;
   blur?: number;
   angle?: number;
-  type: 'default' | 'repeated' | 'gradient';
 }
 
-type DefaultProps = CommonProps & {
+interface DefaultProps extends CommonProps {
   type: 'default';
-};
+}
 
-type RepeatProps = CommonProps & {
+interface RepeatProps extends CommonProps {
   type: 'repeated';
   repeatTimes: number;
   repeatBgColor: string;
-};
+}
 
-type GradientProps = CommonProps & {
+interface GradientProps extends CommonProps {
   type: 'gradient';
   gradientEndColor: string;
-};
+}
 
 export type SFTextShadowProps = DefaultProps | RepeatProps | GradientProps;
 
 export const SFTextShadow = ({
+  opacity = 0,
   blur = 0,
+  angle = 45,
   ...props
 }: SFTextShadowProps): React.ReactElement<SFTextShadowProps> => {
   const defaultRender = <span>{props.text}</span>;
@@ -53,14 +55,9 @@ export const SFTextShadow = ({
   }
 
   // Calculate angles
-  let anglex = 1;
-  let angley = 1;
-
-  if (props.angle !== undefined) {
-    const radians = props.angle * (Math.PI / 180);
-    anglex = Math.cos(radians);
-    angley = Math.sin(radians);
-  }
+  const radians = angle * (Math.PI / 180);
+  const anglex = Math.cos(radians);
+  const angley = Math.sin(radians);
 
   let textShadow = '';
 
@@ -120,7 +117,7 @@ export const SFTextShadow = ({
 
   textShadow = textShadow.slice(0, -2);
 
-  if (props.opacity) {
+  if (opacity) {
     return (
       <span style={{ position: 'relative', display: 'inline-block' }}>
         <span style={{ visibility: 'hidden' }}>{props.text}</span>
@@ -133,7 +130,7 @@ export const SFTextShadow = ({
             top: 0,
             left: 0,
             textShadow,
-            opacity: props.opacity
+            opacity
           }}
         >
           {props.text}

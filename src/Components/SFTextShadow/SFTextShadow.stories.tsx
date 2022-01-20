@@ -15,6 +15,9 @@ export default {
       table: {
         disable: true
       }
+    },
+    color: {
+      control: 'color'
     }
   }
 } as Meta;
@@ -68,6 +71,9 @@ Repeated.argTypes = {
     table: {
       disable: true
     }
+  },
+  repeatBgColor: {
+    control: 'color'
   }
 };
 
@@ -87,5 +93,8 @@ Gradient.argTypes = {
     table: {
       disable: true
     }
+  },
+  gradientEndColor: {
+    control: 'color'
   }
 };
