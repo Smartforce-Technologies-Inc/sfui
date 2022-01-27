@@ -58,6 +58,19 @@ const SFGrey: SFColorProps = {
   900: '#1A1A1A'
 };
 
+const SFGreen: SFColorProps = {
+  50: '#E0F5E7',
+  100: '#C1EBCF',
+  200: '#54C97B',
+  300: '#33B760',
+  400: '#239F4C',
+  500: '#17823B',
+  600: '#0F6C2E',
+  700: '#085421',
+  800: '#043A16',
+  900: '#01230C'
+};
+
 const SFBlueMainLight = SFBlue[500];
 const SFBlueMainDark = SFBlue[200];
 
@@ -66,6 +79,9 @@ const SFRedMainDark = SFRed[200];
 
 const SFGreyMainLight = SFGrey[600];
 const SFGreyMainDark = SFGrey[400];
+
+const SFGreenMainLight = SFGreen[500];
+const SFGreenMainDark = SFGreen[200];
 
 const SFBackgroundLight = '#FAFAFA';
 const SFBackgroundDark = '#121212';
@@ -89,6 +105,9 @@ export {
   SFGrey,
   SFGreyMainLight,
   SFGreyMainDark,
+  SFGreen,
+  SFGreenMainLight,
+  SFGreenMainDark,
   SFBackgroundLight,
   SFBackgroundDark,
   SFSurfaceLight,
