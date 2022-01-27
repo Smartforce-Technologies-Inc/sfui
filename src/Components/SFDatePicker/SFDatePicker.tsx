@@ -32,7 +32,24 @@ const usePopOverStyle = makeStyles((theme: Theme) =>
       marginLeft: '-2px',
       backgroundColor: `${
         theme.palette.type !== 'light' ? SFGrey[800] : undefined
-      }`
+      }`,
+      '& .MuiPickersDay-current': {
+        border: `1px solid ${
+          theme.palette.type === 'light' ? SFBlue[500] : SFBlue[200]
+        }`
+      },
+      '& .MuiIconButton-root:hover': {
+        backgroundColor: `${
+          theme.palette.type === 'light'
+            ? hexToRgba(SFGrey[200], 0.3)
+            : hexToRgba(SFGrey[500], 0.3)
+        }`
+      },
+      '& .MuiPickersDay-daySelected:hover': {
+        backgroundColor: `${
+          theme.palette.type === 'light' ? SFBlue[500] : SFBlue[200]
+        }`
+      }
     }
   })
 );
