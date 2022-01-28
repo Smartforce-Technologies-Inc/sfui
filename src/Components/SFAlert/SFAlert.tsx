@@ -3,7 +3,7 @@ import { Alert, AlertTitle, AlertProps } from '@material-ui/lab';
 import { SFIcon } from '../SFIcon/SFIcon';
 import { SFIconButton } from '../SFIconButton/SFIconButton';
 import { Theme, withStyles } from '@material-ui/core/styles';
-import { SFRed, SFBlue } from '../../SFColors/SFColors';
+import { SFRed, SFBlue, SFGreen, SFGrey } from '../../SFColors/SFColors';
 import { hexToRgba } from '../../Helpers';
 
 const StyledAlert = withStyles((theme: Theme) => ({
@@ -66,10 +66,11 @@ const StyledAlert = withStyles((theme: Theme) => ({
       },
 
       '&:active': {
-        backgroundColor:
+        backgroundColor: `${
           theme.palette.type === 'light'
             ? hexToRgba(SFRed[100], 0.7)
             : hexToRgba(SFRed[200], 0.1)
+        } !important`
       }
     }
   },
@@ -107,10 +108,97 @@ const StyledAlert = withStyles((theme: Theme) => ({
       },
 
       '&:active': {
-        backgroundColor:
+        backgroundColor: `${
           theme.palette.type === 'light'
-            ? hexToRgba(SFBlue[100], 0.7)
+            ? hexToRgba(SFBlue[100], 0.6)
             : hexToRgba(SFBlue[200], 0.1)
+        } !important`
+      }
+    }
+  },
+  standardSuccess: {
+    backgroundColor:
+      theme.palette.type === 'light' ? SFGreen[50] : SFGreen[900],
+
+    '& .MuiAlert-icon': {
+      '& svg path': {
+        fill: `${
+          theme.palette.type === 'light' ? SFGreen[400] : SFGreen[200]
+        } !important`
+      }
+    },
+
+    '& .MuiAlert-message': {
+      color: theme.palette.type === 'light' ? SFGreen[900] : SFGreen[50]
+    },
+
+    '& .MuiIconButton-root': {
+      '& .MuiIconButton-label': {
+        '& svg path': {
+          fill: `${
+            theme.palette.type === 'light' ? SFGreen[900] : SFGreen[50]
+          } !important`
+        }
+      },
+
+      '&:hover': {
+        '@media (hover: hover)': {
+          backgroundColor:
+            theme.palette.type === 'light'
+              ? hexToRgba(SFGreen[100], 0.4)
+              : hexToRgba(SFGreen[200], 0.2)
+        }
+      },
+
+      '&:active': {
+        backgroundColor: `${
+          theme.palette.type === 'light'
+            ? hexToRgba(SFGreen[100], 0.6)
+            : hexToRgba(SFGreen[200], 0.1)
+        } !important`
+      }
+    }
+  },
+  // TODO: We need a Yellow Color palette.
+  standardWarning: {
+    backgroundColor: theme.palette.type === 'light' ? SFGrey[50] : SFGrey[900],
+
+    '& .MuiAlert-icon': {
+      '& svg path': {
+        fill: `${
+          theme.palette.type === 'light' ? SFGrey[400] : SFGrey[200]
+        } !important`
+      }
+    },
+
+    '& .MuiAlert-message': {
+      color: theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]
+    },
+
+    '& .MuiIconButton-root': {
+      '& .MuiIconButton-label': {
+        '& svg path': {
+          fill: `${
+            theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]
+          } !important`
+        }
+      },
+
+      '&:hover': {
+        '@media (hover: hover)': {
+          backgroundColor:
+            theme.palette.type === 'light'
+              ? hexToRgba(SFGrey[100], 0.4)
+              : hexToRgba(SFGrey[200], 0.2)
+        }
+      },
+
+      '&:active': {
+        backgroundColor: `${
+          theme.palette.type === 'light'
+            ? hexToRgba(SFGrey[100], 0.6)
+            : hexToRgba(SFGrey[200], 0.1)
+        } !important`
       }
     }
   }
@@ -124,9 +212,12 @@ export interface SFAlertProps extends AlertProps {
 const getIcon = (type: string): JSX.Element | undefined => {
   switch (type) {
     case 'error':
+    case 'warning':
       return <SFIcon size={22} icon='Error-Mark' />;
     case 'info':
       return <SFIcon size={22} icon='Information' />;
+    case 'success':
+      return <SFIcon size={22} icon='Check-1' />;
     default:
       return undefined;
   }
