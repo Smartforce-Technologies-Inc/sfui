@@ -12,6 +12,9 @@ import {
   SFGrey,
   SFGreyMainLight,
   SFGreyMainDark,
+  SFGreen,
+  SFGreenMainLight,
+  SFGreenMainDark,
   SFBackgroundLight,
   SFBackgroundDark,
   SFSurfaceLight,
@@ -81,6 +84,12 @@ const lightMainColors: MainColor[] = [
     textColor: SFTextWhite
   },
   {
+    name: 'SFGreenMainLight',
+    shade: '500',
+    bgColor: SFGreenMainLight,
+    textColor: SFTextWhite
+  },
+  {
     name: 'SFBackgroundLight',
     bgColor: SFBackgroundLight,
     textColor: SFTextBlack
@@ -105,6 +114,12 @@ const darkMainColors: MainColor[] = [
     name: 'SFGreyMainDark',
     shade: '900',
     bgColor: SFGreyMainDark,
+    textColor: SFTextBlack
+  },
+  {
+    name: 'SFGreenMainDark',
+    shade: '200',
+    bgColor: SFGreenMainDark,
     textColor: SFTextBlack
   },
   {
@@ -170,6 +185,31 @@ const Template: Story = () => (
             </div>
           ))}
         </div>
+        <br />
+        <h3>Neutral Colors</h3>
+        <div>
+          {Object.keys(SFGrey)
+            .reverse()
+            .map((value, index) => (
+              <div
+                key={`${value}${index}`}
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  color:
+                    index < 9 && value !== 'A100' && value !== 'A200'
+                      ? SFTextWhite
+                      : SFTextBlack,
+                  background: SFGrey[value],
+                  padding: '10px 10px',
+                  height: '20px'
+                }}
+              >
+                <span>{value}</span>
+                <span>{SFGrey[value]}</span>
+              </div>
+            ))}
+        </div>
       </div>
       {/* Right column */}
       <div>
@@ -220,9 +260,9 @@ const Template: Story = () => (
         </div>
         <br />
         <div>
-          <h3>Neutral Colors</h3>
+          <h3>Green Colors</h3>
           <div>
-            {Object.keys(SFGrey)
+            {Object.keys(SFGreen)
               .reverse()
               .map((value, index) => (
                 <div
@@ -231,16 +271,16 @@ const Template: Story = () => (
                     display: 'flex',
                     justifyContent: 'space-between',
                     color:
-                      index < 9 && value !== 'A100' && value !== 'A200'
+                      index < 8 && value !== 'A100' && value !== 'A200'
                         ? SFTextWhite
                         : SFTextBlack,
-                    background: SFGrey[value],
+                    background: SFGreen[value],
                     padding: '10px 10px',
                     height: '20px'
                   }}
                 >
                   <span>{value}</span>
-                  <span>{SFGrey[value]}</span>
+                  <span>{SFGreen[value]}</span>
                 </div>
               ))}
           </div>
@@ -350,6 +390,21 @@ const ColorsConstTemplate: Story = () => {
             ))}
           </div>
         </div>
+        <div>
+          <h3>SFGreen</h3>
+          <div className={styles.content}>
+            {Object.keys(SFGreen).map((value, index) => (
+              <div className={styles.item} key={index}>
+                <div
+                  className={styles.color}
+                  style={{ backgroundColor: SFGreen[value] }}
+                />
+                <p className={styles.text}>{`${SFGreen[value]}`}</p>
+                <p className={styles.text}>SFGreen[{value}]</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -357,7 +412,7 @@ const ColorsConstTemplate: Story = () => {
 
 export const ColorsConst = ColorsConstTemplate.bind({});
 ColorsConst.parameters = {
-  conrtols: {
+  controls: {
     disable: true
   }
 };
@@ -411,10 +466,24 @@ palette.set('SFGrey', [
   { name: '$sf-grey-a700', hex: ' #666666' }
 ]);
 
+palette.set('SFGreen', [
+  { name: '$sf-green-50', hex: ' #E0F5E7' },
+  { name: '$sf-green-100', hex: ' #C1EBCF' },
+  { name: '$sf-green-200', hex: ' #54C97B' },
+  { name: '$sf-green-300', hex: ' #33B760' },
+  { name: '$sf-green-400', hex: ' #239F4C' },
+  { name: '$sf-green-500', hex: ' #17823B' },
+  { name: '$sf-green-600', hex: ' #0F6C2E' },
+  { name: '$sf-green-700', hex: ' #085421' },
+  { name: '$sf-green-800', hex: ' #043A16' },
+  { name: '$sf-green-900', hex: ' #01230C' }
+]);
+
 palette.set('LMColors', [
   { name: '$sf-blue-main-light', hex: ' #0066ff' },
   { name: '$sf-red-main-light', hex: ' #ad1f29' },
   { name: '$sf-grey-main-light', hex: ' #666666' },
+  { name: '$sf-green-main-light', hex: ' #17823B' },
   { name: '$sf-background-light', hex: ' #fafafa' },
   { name: '$sf-surface-light', hex: ' #ffffff' }
 ]);
@@ -423,6 +492,7 @@ palette.set('NMColors', [
   { name: '$sf-blue-main-dark', hex: ' #80c6ff' },
   { name: '$sf-red-main-dark', hex: ' #f0a8ad' },
   { name: '$sf-grey-main-dark', hex: ' #999999' },
+  { name: '$sf-green-main-dark', hex: ' #54C97B' },
   { name: '$sf-background-dark', hex: ' #121212' },
   { name: '$sf-surface-dark', hex: ' #1f1f1f' }
 ]);
@@ -434,6 +504,7 @@ const SassTemplate: Story = () => {
   const SFBluePalette = palette.get('SFBlue');
   const SFRedPalette = palette.get('SFRed');
   const SFGreyPalette = palette.get('SFGrey');
+  const SFGreenPalette = palette.get('SFGreen');
 
   return (
     <div>
@@ -509,6 +580,21 @@ const SassTemplate: Story = () => {
           <h3>SFGrey</h3>
           <div className={styles.content}>
             {SFGreyPalette.map((color, index) => (
+              <div className={styles.item} key={index}>
+                <div
+                  className={styles.color}
+                  style={{ backgroundColor: color.hex }}
+                />
+                <p className={styles.text}>{`${color.hex.toUpperCase()}`}</p>
+                <p className={styles.text}>{`${color.name}`}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div>
+          <h3>SFGreen</h3>
+          <div className={styles.content}>
+            {SFGreenPalette.map((color, index) => (
               <div className={styles.item} key={index}>
                 <div
                   className={styles.color}

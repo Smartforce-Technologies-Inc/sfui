@@ -104,7 +104,7 @@ export const SFScrollable = React.forwardRef(
     );
 
     React.useImperativeHandle(ref, () => ({
-      scrollToTop() {
+      scrollToTop(): void {
         if (scrollHostRef.current) {
           scrollHostRef.current.scrollTo(0, 0);
         }
@@ -154,7 +154,7 @@ export const SFScrollable = React.forwardRef(
     const [lastVerticalPos, setLastVerticalPos] = React.useState<number>(0);
     const [lastHorizontalPos, setLastHorizontalPos] = React.useState<number>(0);
 
-    const updateScrollbar = (elem: HTMLDivElement) => {
+    const updateScrollbar = (elem: HTMLDivElement): void => {
       const { clientHeight, clientWidth, scrollHeight, scrollWidth } = elem;
 
       if (hasScrollHorizontal(elem)) {
@@ -163,10 +163,14 @@ export const SFScrollable = React.forwardRef(
           SCROLL_BOX_MIN_WIDTH
         );
 
-        setHasHorizontalScroll(true);
-        setHorizontalScrollWidth(scrollThumbWidth);
-        setHorizontalScrollLeft(0);
-      } else {
+        if (scrollThumbWidth !== horizontalScrollWidth) {
+          setHorizontalScrollWidth(scrollThumbWidth);
+        }
+
+        if (!hasHorizontalScroll) {
+          setHasHorizontalScroll(true);
+        }
+      } else if (hasHorizontalScroll) {
         setHasHorizontalScroll(false);
       }
 
@@ -176,8 +180,9 @@ export const SFScrollable = React.forwardRef(
           SCROLL_BOX_MIN_HEIGHT
         );
 
-        setVerticalScrollHeight(scrollThumbHeight);
-        setVerticalScrollTop(0);
+        if (verticalScrollHeight !== scrollThumbHeight) {
+          setVerticalScrollHeight(scrollThumbHeight);
+        }
       }
     };
 
@@ -191,7 +196,7 @@ export const SFScrollable = React.forwardRef(
       resizeObserver.observe(elem);
 
       // cleanup
-      return () => {
+      return (): void => {
         resizeObserver.unobserve(elem);
       };
     }, []);
@@ -280,7 +285,7 @@ export const SFScrollable = React.forwardRef(
       document.addEventListener('mouseleave', onDocumentMouseUp);
 
       // cleanup
-      return () => {
+      return (): void => {
         document.removeEventListener('mousemove', onDocumentMouseMove);
         document.removeEventListener('mouseup', onDocumentMouseUp);
         document.removeEventListener('mouseleave', onDocumentMouseUp);
@@ -293,7 +298,7 @@ export const SFScrollable = React.forwardRef(
       }
     }, [children]);
 
-    const onMouseOver = () => {
+    const onMouseOver = (): void => {
       if (scrollHostRef.current) {
         if (hasScrollVertical(scrollHostRef.current) && !showVerticalScroll) {
           setShowVerticalScroll(true);
@@ -308,7 +313,7 @@ export const SFScrollable = React.forwardRef(
       }
     };
 
-    const onMouseOut = () => {
+    const onMouseOut = (): void => {
       if (showHorizontalScroll && !isHorizontalDragging) {
         setShowHorizontalScroll(false);
       }
@@ -338,7 +343,7 @@ export const SFScrollable = React.forwardRef(
       setIsHorizontalDragging(true);
     };
 
-    const onHostScroll = () => {
+    const onHostScroll = (): void => {
       if (scrollHostRef.current) {
         const {
           scrollTop,

@@ -8,7 +8,7 @@ import { SFGrey } from '../../SFColors/SFColors';
 const StyledFromControlLabel = withStyles((theme: Theme) => ({
   root: {
     color: `${theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]}`,
-    gap: '12px',
+    gap: '3px',
     margin: '0px',
     alignItems: 'flex-start',
 

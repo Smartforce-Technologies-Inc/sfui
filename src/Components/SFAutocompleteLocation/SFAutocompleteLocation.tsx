@@ -43,10 +43,12 @@ const StyledAutocomplete = withStyles((theme: Theme) => ({
   clearIndicator: {
     padding: '9px',
     '&:hover': {
-      backgroundColor:
-        theme.palette.type === 'light'
-          ? hexToRgba(SFGrey.A100 as string, 0.3)
-          : hexToRgba(SFGrey[500] as string, 0.3)
+      '@media (hover: hover)': {
+        backgroundColor:
+          theme.palette.type === 'light'
+            ? hexToRgba(SFGrey.A100 as string, 0.3)
+            : hexToRgba(SFGrey[500] as string, 0.3)
+      }
     },
     '&:active': {
       backgroundColor:

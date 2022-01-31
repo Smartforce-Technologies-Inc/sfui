@@ -16,11 +16,13 @@ interface IconButtonInnerProps {
 const StyledIconButton = withStyles((theme: Theme) => ({
   root: {
     '&:hover': {
-      backgroundColor: `${
-        theme.palette.type === 'light'
-          ? 'rgba(204, 204, 204, 0.3)'
-          : 'rgba(128, 128, 128, 0.3)'
-      }`
+      '@media (hover: hover)': {
+        backgroundColor: `${
+          theme.palette.type === 'light'
+            ? 'rgba(204, 204, 204, 0.3)'
+            : 'rgba(128, 128, 128, 0.3)'
+        }`
+      }
     },
     '&:active': {
       backgroundColor: `${

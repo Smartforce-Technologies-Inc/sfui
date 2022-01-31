@@ -1,14 +1,20 @@
 import React from 'react';
-import { Meta } from '@storybook/react/types-6-0';
-import { SFAlert } from './SFAlert';
+import { Story, Meta } from '@storybook/react/types-6-0';
+import { SFAlertCollapse } from './SFAlertCollapse';
 
 export default {
-  title: 'Components/SFAlert',
-  component: SFAlert,
+  title: 'Components/SFAlertCollapse',
+  component: SFAlertCollapse,
   args: {
     title: 'Lorem ipsum dolor sit amet.'
   },
   argTypes: {
+    isOpen: {
+      defaultValue: false,
+      control: {
+        type: 'boolean'
+      }
+    },
     onClose: {
       action: 'onClose',
       table: {
@@ -26,29 +32,30 @@ export default {
       }
     },
     showCloseButton: {
-      defaultValue: false,
-      control: {
-        type: 'boolean'
+      defaultValue: true,
+      table: {
+        disable: true
       }
     }
   }
 } as Meta;
 
-export const Alert = ({
-  showCloseButton,
+export const AlertCollpase = ({
+  isOpen,
   title,
   type,
   onClose,
   ...args
 }): JSX.Element => (
-  <SFAlert
+  <SFAlertCollapse
     {...args}
+    isOpen={isOpen}
     title={title}
     type={type}
-    onClose={showCloseButton ? (): void => onClose() : undefined}
+    onClose={(): void => onClose()}
   >
     <p style={{ padding: '0px', margin: '0px' }}>
       Lorem ipsum dolor sit amet, consect adipiscing elit.
     </p>
-  </SFAlert>
+  </SFAlertCollapse>
 );

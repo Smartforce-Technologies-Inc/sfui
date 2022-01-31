@@ -21,11 +21,13 @@ import { hexToRgba } from '../../Helpers';
 const StyledRow = withStyles((theme: Theme) => ({
   root: {
     '&.MuiTableRow-hover:hover, &:hover': {
-      backgroundColor: `${
-        theme.palette.type === 'light'
-          ? hexToRgba(SFGrey[200], 0.3)
-          : hexToRgba(SFGrey[500], 0.3)
-      } !important`
+      '@media (hover: hover)': {
+        backgroundColor: `${
+          theme.palette.type === 'light'
+            ? hexToRgba(SFGrey[200], 0.3)
+            : hexToRgba(SFGrey[500], 0.3)
+        } !important`
+      }
     }
   }
 }))(MTableBodyRow);
@@ -50,10 +52,12 @@ const useSelectionStyles = makeStyles((theme: Theme) =>
         color: `${theme.palette.type === 'light' ? SFBlue[500] : SFBlue[200]}`
       },
       '&:hover': {
-        backgroundColor:
-          theme.palette.type === 'light'
-            ? hexToRgba(SFGrey[200], 0.3)
-            : hexToRgba(SFGrey[500], 0.3)
+        '@media (hover: hover)': {
+          backgroundColor:
+            theme.palette.type === 'light'
+              ? hexToRgba(SFGrey[200], 0.3)
+              : hexToRgba(SFGrey[500], 0.3)
+        }
       },
       '&:active': {
         backgroundColor:
@@ -62,10 +66,12 @@ const useSelectionStyles = makeStyles((theme: Theme) =>
             : hexToRgba(SFGrey[500], 0.2)
       },
       '&.Mui-checked:hover': {
-        backgroundColor:
-          theme.palette.type === 'light'
-            ? hexToRgba(SFBlue[100], 0.4)
-            : hexToRgba(SFBlue[200], 0.2)
+        '@media (hover: hover)': {
+          backgroundColor:
+            theme.palette.type === 'light'
+              ? hexToRgba(SFBlue[100], 0.4)
+              : hexToRgba(SFBlue[200], 0.2)
+        }
       },
       '&.Mui-checked:active': {
         backgroundColor:

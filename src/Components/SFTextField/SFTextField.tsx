@@ -39,17 +39,19 @@ const StyledTextField = withStyles((theme: Theme) => ({
       },
 
       '&:hover': {
-        '& .MuiOutlinedInput-notchedOutline': {
-          border: `1px solid ${
-            theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]
-          }`
-        },
-
-        '&.Mui-disabled': {
+        '@media (hover: hover)': {
           '& .MuiOutlinedInput-notchedOutline': {
             border: `1px solid ${
-              theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
+              theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]
             }`
+          },
+
+          '&.Mui-disabled': {
+            '& .MuiOutlinedInput-notchedOutline': {
+              border: `1px solid ${
+                theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
+              }`
+            }
           }
         }
       },
