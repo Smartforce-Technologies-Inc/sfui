@@ -42,6 +42,7 @@ const StyledTimelineContent = withStyles((theme: Theme) => ({
 const StyledTimelineItem = withStyles(() => ({
   root: {
     gap: '3px',
+    minHeight: 'auto',
 
     '&:hover': {
       '@media (hover: hover)': {
