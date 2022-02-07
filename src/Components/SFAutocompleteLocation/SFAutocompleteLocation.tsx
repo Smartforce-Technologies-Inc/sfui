@@ -282,7 +282,7 @@ export const SFAutocompleteLocation = ({
           onLocationSuccess,
           onLocationError
         );
-      } else if (value.text && value.text.length) {
+      } else if (value.text && value.text.length > 0) {
         fetchOptions();
       }
     } else {
