@@ -9,8 +9,6 @@ import { SFTextField } from '../SFTextField/SFTextField';
 import { SFGrey, SFSurfaceLight } from '../../SFColors/SFColors';
 import { hexToRgba } from '../../Helpers';
 
-const SEARCH_CHAR_MIN = 3;
-
 type PlacePredictionsFn = (
   text: string,
   service: google.maps.places.AutocompleteService
@@ -163,6 +161,7 @@ export interface SFAutocompleteLocationProps {
   required?: boolean;
   currentLocation?: boolean;
   currentLocationType?: 'address' | 'route';
+  minChar?: number;
   onChange: (value: SFAutocompleteLocationResult) => void;
 }
 
@@ -173,6 +172,7 @@ export const SFAutocompleteLocation = ({
   required = false,
   currentLocation = false,
   currentLocationType = 'route',
+  minChar = 3,
   onChange
 }: SFAutocompleteLocationProps): React.ReactElement<SFAutocompleteLocationResult> => {
   const classes = useStyles();
@@ -282,7 +282,7 @@ export const SFAutocompleteLocation = ({
           onLocationSuccess,
           onLocationError
         );
-      } else if (value.text && value.text.length > SEARCH_CHAR_MIN) {
+      } else if (value.text && value.text.length) {
         fetchOptions();
       }
     } else {
@@ -291,7 +291,7 @@ export const SFAutocompleteLocation = ({
   }, []);
 
   React.useEffect(() => {
-    if (value.text && value.text.length > SEARCH_CHAR_MIN) {
+    if (value.text && value.text.length > minChar) {
       fetchOptions();
     } else {
       setOptions([]);
