@@ -1,12 +1,54 @@
 import React from 'react';
 import { Theme, withStyles, makeStyles } from '@material-ui/core/styles';
 import { Autocomplete, AutocompleteRenderInputParams } from '@material-ui/lab';
-import throttle from 'lodash.throttle';
+import debounce from 'lodash.debounce';
+import { DebouncedFunc } from 'lodash';
 import parse from 'autosuggest-highlight/parse';
 import { SFIcon } from '../SFIcon/SFIcon';
 import { SFTextField } from '../SFTextField/SFTextField';
 import { SFGrey, SFSurfaceLight } from '../../SFColors/SFColors';
 import { hexToRgba } from '../../Helpers';
+
+const SEARCH_CHAR_MIN = 3;
+
+type PlacePredictionsFn = (
+  text: string,
+  service: google.maps.places.AutocompleteService
+) => Promise<google.maps.places.AutocompletePrediction[]>;
+
+const memoizePredictionsFn = (fn: PlacePredictionsFn): PlacePredictionsFn => {
+  const cache = {};
+  return async (
+    text: string,
+    service: google.maps.places.AutocompleteService
+  ): Promise<google.maps.places.AutocompletePrediction[]> => {
+    if (text in cache) {
+      return cache[text];
+    } else {
+      const result = await fn(text, service);
+      cache[text] = result;
+      return result;
+    }
+  };
+};
+
+const getPlacePredictions = async (
+  text: string,
+  service: google.maps.places.AutocompleteService
+): Promise<google.maps.places.AutocompletePrediction[]> => {
+  return new Promise((resolve, reject) => {
+    try {
+      service.getPlacePredictions(
+        { input: text },
+        (results: google.maps.places.AutocompletePrediction[]) => {
+          resolve(results);
+        }
+      );
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
 
 interface GeolocationPosition {
   coords: {
@@ -147,23 +189,26 @@ export const SFAutocompleteLocation = ({
     google.maps.places.AutocompletePrediction[]
   >([]);
 
-  const getPredictions = React.useMemo(
-    () =>
-      throttle((request, callback) => {
-        if (autocompleteService.current) {
-          autocompleteService.current.getPlacePredictions(request, callback);
-        }
-      }, 200),
-    []
-  );
+  const refGetPlacePredictions = React.useRef<
+    DebouncedFunc<PlacePredictionsFn>
+  >();
 
-  const fetchOptions = (): void =>
-    getPredictions(
-      { input: value.text },
-      (results: google.maps.places.AutocompletePrediction[]) => {
-        setOptions(results || []);
-      }
+  React.useEffect(() => {
+    refGetPlacePredictions.current = debounce(
+      memoizePredictionsFn(getPlacePredictions),
+      150
     );
+  }, []);
+
+  const fetchOptions = async (): Promise<void> => {
+    if (refGetPlacePredictions.current && autocompleteService.current) {
+      const options = await refGetPlacePredictions.current(
+        value.text,
+        autocompleteService.current
+      );
+      setOptions(options || []);
+    }
+  };
 
   React.useEffect(() => {
     // Check if Google API it's loaded
@@ -237,7 +282,7 @@ export const SFAutocompleteLocation = ({
           onLocationSuccess,
           onLocationError
         );
-      } else if (value.text && value.text.length > 0) {
+      } else if (value.text && value.text.length > SEARCH_CHAR_MIN) {
         fetchOptions();
       }
     } else {
@@ -246,7 +291,7 @@ export const SFAutocompleteLocation = ({
   }, []);
 
   React.useEffect(() => {
-    if (value.text && value.text.length > 0) {
+    if (value.text && value.text.length > SEARCH_CHAR_MIN) {
       fetchOptions();
     } else {
       setOptions([]);
