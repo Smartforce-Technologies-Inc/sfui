@@ -46,6 +46,18 @@ const useStyles = makeStyles((theme: Theme) => ({
     color: (props: Partial<SFTooltipProps>): string =>
       getBackgroundColor(props, theme.palette.type === 'light')
   },
+  tooltipPlacementTop: {
+    margin: '0 0 5px 0'
+  },
+  tooltipPlacementLeft: {
+    margin: '0 5px 0 0'
+  },
+  tooltipPlacementRight: {
+    margin: '0 0 0 5px'
+  },
+  tooltipPlacementBottom: {
+    margin: '5px 0 0 0'
+  },
   title: {
     fontWeight: 500,
     fontSize: '13px',
@@ -74,21 +86,18 @@ export const SFTooltip = ({
   arrow = true,
   ...props
 }: SFTooltipProps): React.ReactElement<SFTooltipProps> => {
-  const classes = useStyles({ sfColor });
+  const { title: classTitle, content: classContent, ...classes } = useStyles({
+    sfColor
+  });
 
   const tooltipTitle: React.ReactNode = (
     <React.Fragment>
-      <span className={classes.title}>{title}</span>
-      {content && <div className={classes.content}>{content}</div>}
+      <span className={classTitle}>{title}</span>
+      {content && <div className={classContent}>{content}</div>}
     </React.Fragment>
   );
 
   return (
-    <Tooltip
-      classes={{ tooltip: classes.tooltip, arrow: classes.arrow }}
-      arrow={arrow}
-      title={tooltipTitle}
-      {...props}
-    />
+    <Tooltip classes={classes} arrow={arrow} title={tooltipTitle} {...props} />
   );
 };
