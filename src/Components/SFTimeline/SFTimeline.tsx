@@ -83,7 +83,7 @@ export interface SFTimelineProps {
   items: SFTimelineItem[];
   size?: 'medium' | 'large';
   selectedIndex?: number;
-  onItemClick?: (item: SFTimelineItem) => void;
+  onItemClick?: (item: SFTimelineItem, index: number) => void;
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -130,7 +130,7 @@ export const SFTimeline = ({
         return (
           <div
             key={`timeline-item-${index}`}
-            onClick={(): void => onItemClick && onItemClick(item)}
+            onClick={(): void => onItemClick && onItemClick(item, index)}
           >
             <StyledTimelineItem>
               <TimelineSeparator>
