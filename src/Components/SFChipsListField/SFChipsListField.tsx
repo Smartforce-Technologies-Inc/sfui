@@ -95,6 +95,7 @@ export type ChipFieldValueType = {
 export interface SFChipsListFieldProps {
   chipSize?: 'small' | 'medium';
   chipDisplay?: 'inline' | 'block';
+  isFullWidth?: boolean;
   emptyMessage?: string;
   label: string;
   helperText?: string;
@@ -113,6 +114,7 @@ export interface SFChipsListFieldProps {
 export const SFChipsListField = ({
   chipSize = 'small',
   chipDisplay = 'inline',
+  isFullWidth = false,
   emptyMessage,
   label,
   helperText,
@@ -351,7 +353,7 @@ export const SFChipsListField = ({
         ): boolean => option === value.value}
         renderTags={(value: ChipFieldValueType[]): JSX.Element => (
           <SFChipListRender
-            isChipFullWidth={false}
+            isChipFullWidth={isFullWidth}
             chipSize='small'
             values={value}
             disabled={disabled}
