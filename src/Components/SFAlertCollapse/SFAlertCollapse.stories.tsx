@@ -53,6 +53,22 @@ export const AlertCollpase = ({
     title={title}
     type={type}
     onClose={(): void => onClose()}
+  />
+);
+
+export const WithContent = ({
+  isOpen,
+  title,
+  type,
+  onClose,
+  ...args
+}): JSX.Element => (
+  <SFAlertCollapse
+    {...args}
+    isOpen={isOpen}
+    title={title}
+    type={type}
+    onClose={(): void => onClose()}
   >
     <p style={{ padding: '0px', margin: '0px' }}>
       Lorem ipsum dolor sit amet, consect adipiscing elit.

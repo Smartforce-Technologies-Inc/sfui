@@ -2,7 +2,7 @@ import React from 'react';
 import { Alert, AlertTitle, AlertProps } from '@material-ui/lab';
 import { SFIcon } from '../SFIcon/SFIcon';
 import { SFIconButton } from '../SFIconButton/SFIconButton';
-import { Theme, withStyles } from '@material-ui/core/styles';
+import { makeStyles, Theme, withStyles } from '@material-ui/core/styles';
 import { SFRed, SFBlue, SFGreen, SFGrey } from '../../SFColors/SFColors';
 import { hexToRgba } from '../../Helpers';
 
@@ -223,6 +223,19 @@ const getIcon = (type: string): JSX.Element | undefined => {
   }
 };
 
+const useStyles = makeStyles({
+  root: {
+    alignItems: (props: Partial<SFAlertProps>): string =>
+      props.children ? 'unset' : 'center'
+  },
+  message: {
+    '& .MuiTypography-gutterBottom': {
+      marginBottom: (props: Partial<SFAlertProps>): string =>
+        props.children ? '' : '0'
+    }
+  }
+});
+
 export const SFAlert = ({
   title,
   type = 'error',
@@ -230,11 +243,13 @@ export const SFAlert = ({
   onClose,
   ...props
 }: SFAlertProps): React.ReactElement<SFAlertProps> => {
+  const classes = useStyles({ children });
   const icon: JSX.Element | undefined = getIcon(type);
 
   return (
     <StyledAlert
       {...props}
+      classes={classes}
       icon={icon}
       severity={type}
       action={
