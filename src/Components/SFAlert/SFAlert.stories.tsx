@@ -46,6 +46,21 @@ export const Alert = ({
     title={title}
     type={type}
     onClose={showCloseButton ? (): void => onClose() : undefined}
+  />
+);
+
+export const WithContent = ({
+  showCloseButton,
+  title,
+  type,
+  onClose,
+  ...args
+}): JSX.Element => (
+  <SFAlert
+    {...args}
+    title={title}
+    type={type}
+    onClose={showCloseButton ? (): void => onClose() : undefined}
   >
     <p style={{ padding: '0px', margin: '0px' }}>
       Lorem ipsum dolor sit amet, consect adipiscing elit.
