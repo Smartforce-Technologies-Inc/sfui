@@ -50,7 +50,7 @@ export const SFAutocompleteChipsView = (): JSX.Element => {
         items={chipFieldValue}
         label='Bagel'
         options={ChipsListOptions}
-        chipDisplay='block'
+        itemChipDisplay='block'
         onChange={(value: ChipFieldValueType[]): void =>
           setChipFieldValue(value)
         }
@@ -59,7 +59,7 @@ export const SFAutocompleteChipsView = (): JSX.Element => {
         items={chipFieldValue1}
         label='Bagel'
         options={ChipsListOptions}
-        chipDisplay='block'
+        itemChipDisplay='block'
         onChange={(value: ChipFieldValueType[]): void =>
           setChipFieldValue1(value)
         }
@@ -69,7 +69,7 @@ export const SFAutocompleteChipsView = (): JSX.Element => {
         label='Bagel'
         disabled
         options={ChipsListOptions}
-        chipDisplay='block'
+        itemChipDisplay='block'
         onChange={(value: ChipFieldValueType[]): void =>
           setChipFieldValue2(value)
         }
@@ -78,7 +78,7 @@ export const SFAutocompleteChipsView = (): JSX.Element => {
         items={chipFieldValue3}
         label='Bagel'
         options={ChipsListOptions}
-        chipDisplay='block'
+        itemChipDisplay='block'
         onChange={(value: ChipFieldValueType[]): void =>
           setChipFieldValue3(value)
         }
