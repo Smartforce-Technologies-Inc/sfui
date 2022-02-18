@@ -12,6 +12,7 @@ import { SFChipListRender } from './SFChipFieldRender/SFChipFieldRender';
 import { hexToRgba } from '../../Helpers';
 import { SFGrey } from '../../SFColors/SFColors';
 import { withStyles, Theme, makeStyles } from '@material-ui/core/styles';
+import { isNumber } from 'lodash';
 
 const StyledAutoComplete = withStyles((theme: Theme) => ({
   root: {
@@ -51,10 +52,10 @@ const StyledAutoComplete = withStyles((theme: Theme) => ({
   }
 }))(Autocomplete);
 
-type minWidthStyle = number | 'auto' | '100%';
+type minWidthStyle = number | 'auto' | 'full-width';
 
 interface TextFieldStylesProps {
-  minWidth: minWidthStyle;
+  minWidth: string;
 }
 
 const useTextFieldStyles = makeStyles({
@@ -66,8 +67,7 @@ const useTextFieldStyles = makeStyles({
       padding: '28px 9px 9px !important',
       '& .MuiAutocomplete-input': {
         padding: '0',
-        minWidth: (props: TextFieldStylesProps): string | number =>
-          props.minWidth
+        minWidth: (props: TextFieldStylesProps): string => props.minWidth
       },
       '& .MuiFormControl-root .MuiChip-outlined': {
         margin: '3px auto 2px'
@@ -113,7 +113,6 @@ export interface SFChipsListFieldProps {
   itemChipSize?: 'small' | 'medium';
   itemChipDisplay?: 'inline' | 'block';
   items?: ChipFieldValueType[];
-  isInputFullWidth?: boolean;
   inputMinWidth?: minWidthStyle;
   emptyMessage?: string;
   label: string;
@@ -132,7 +131,6 @@ export interface SFChipsListFieldProps {
 export const SFChipsListField = ({
   itemChipSize = 'small',
   itemChipDisplay = 'inline',
-  isInputFullWidth = false,
   inputMinWidth = 30,
   emptyMessage,
   label,
@@ -345,6 +343,8 @@ export const SFChipsListField = ({
     );
   };
 
+  console.log(inputMinWidth);
+
   return (
     <FormControl fullWidth>
       <SFChipListModal
@@ -372,7 +372,7 @@ export const SFChipsListField = ({
         ): boolean => option === value.value}
         renderTags={(value: ChipFieldValueType[]): JSX.Element => (
           <SFChipListRender
-            isChipFullWidth={isInputFullWidth}
+            isChipFullWidth={false}
             chipSize='small'
             values={value}
             disabled={disabled}
@@ -388,7 +388,13 @@ export const SFChipsListField = ({
             rows={1}
             label={label}
             helperText={helperText}
-            minWidth={inputMinWidth}
+            minWidth={
+              isNumber(inputMinWidth)
+                ? `${inputMinWidth}px`
+                : inputMinWidth === 'full-width'
+                ? '100%'
+                : 'auto'
+            }
           />
         )}
       />
