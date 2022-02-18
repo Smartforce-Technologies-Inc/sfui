@@ -51,7 +51,7 @@ const StyledAutoComplete = withStyles((theme: Theme) => ({
   }
 }))(Autocomplete);
 
-type minWidthStyle = number | 'auto' | 'full-width';
+type minWidthStyleType = number | 'auto' | 'full-width';
 
 interface TextFieldStylesProps extends SFTextFieldProps {
   minWidth: string;
@@ -109,7 +109,7 @@ export interface SFChipsListFieldProps {
   itemChipSize?: 'small' | 'medium';
   itemChipDisplay?: 'inline' | 'block';
   items?: ChipFieldValueType[];
-  inputMinWidth?: minWidthStyle;
+  inputMinWidth?: minWidthStyleType;
   emptyMessage?: string;
   label: string;
   helperText?: string;
