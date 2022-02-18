@@ -12,7 +12,6 @@ import { SFChipListRender } from './SFChipFieldRender/SFChipFieldRender';
 import { hexToRgba } from '../../Helpers';
 import { SFGrey } from '../../SFColors/SFColors';
 import { withStyles, Theme, makeStyles } from '@material-ui/core/styles';
-import { isNumber } from 'lodash';
 
 const StyledAutoComplete = withStyles((theme: Theme) => ({
   root: {
@@ -389,11 +388,11 @@ export const SFChipsListField = ({
             label={label}
             helperText={helperText}
             minWidth={
-              isNumber(inputMinWidth)
-                ? `${inputMinWidth}px`
-                : inputMinWidth === 'full-width'
+              inputMinWidth === 'full-width'
                 ? '100%'
-                : 'auto'
+                : inputMinWidth === 'auto'
+                ? 'auto'
+                : `${inputMinWidth}px`
             }
           />
         )}
