@@ -179,8 +179,6 @@ export const SFAutocompleteLocation = ({
   const autocompleteService = React.useRef<google.maps.places.AutocompleteService>();
   const geocoderService = React.useRef<google.maps.Geocoder>();
 
-  const [apiLoaded, setApiLoaded] = React.useState<boolean>(false);
-
   const [selectedOption, setSelectedOption] = React.useState<
     Partial<google.maps.places.AutocompletePrediction>
   >({});
@@ -217,7 +215,6 @@ export const SFAutocompleteLocation = ({
       typeof window.google === 'object' &&
       typeof window.google.maps === 'object'
     ) {
-      setApiLoaded(true);
       autocompleteService.current = new window.google.maps.places.AutocompleteService();
 
       if (
@@ -376,7 +373,7 @@ export const SFAutocompleteLocation = ({
   return (
     <StyledAutocomplete
       freeSolo
-      disabled={disabled || !apiLoaded}
+      disabled={disabled}
       options={options}
       renderInput={renderInput}
       popupIcon={null}
