@@ -53,7 +53,7 @@ const StyledAutoComplete = withStyles((theme: Theme) => ({
 
 type minWidthStyle = number | 'auto' | 'full-width';
 
-interface TextFieldStylesProps {
+interface TextFieldStylesProps extends SFTextFieldProps {
   minWidth: string;
 }
 
@@ -92,10 +92,7 @@ const chipsDisplay = makeStyles({
   }
 });
 
-function StyledTextField(
-  props: TextFieldStylesProps &
-    Omit<SFTextFieldProps, keyof TextFieldStylesProps>
-): React.ReactElement {
+function StyledTextField(props: TextFieldStylesProps): React.ReactElement {
   const { minWidth, ...other } = props;
   const classes = useTextFieldStyles(props);
   return <SFTextField className={classes.root} {...other} />;
@@ -341,8 +338,6 @@ export const SFChipsListField = ({
       </div>
     );
   };
-
-  console.log(inputMinWidth);
 
   return (
     <FormControl fullWidth>
