@@ -7,7 +7,7 @@ import {
   SFCommonWhite,
   SFRedMainDark,
   SFRedMainLight
-} from '../..';
+} from '../../SFColors/SFColors';
 
 const StyledBadge = withStyles((theme: Theme) => ({
   root: {
