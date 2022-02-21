@@ -1,5 +1,5 @@
 import React from 'react';
-import { SFAlert, SFAlertProps } from '../..';
+import { SFAlert, SFAlertProps } from '../SFAlert/SFAlert';
 import { Collapse } from '@material-ui/core';
 import { TransitionProps } from '@material-ui/core/transitions';
 
