@@ -140,21 +140,23 @@ export const SFAutocomplete = ({
 
   const onInputChange = (
     _event: React.ChangeEvent,
-    value: string,
+    newValue: string,
     reason: AutocompleteInputChangeReason
   ): void => {
     if (reason !== 'reset') {
-      setInputValue(value);
+      setInputValue(newValue);
 
-      if (!isOpen && value.length > 0) {
+      if (!isOpen && newValue.length > 0) {
         setIsOpen(true);
-      } else if (isOpen && value.length === 0) {
+      } else if (isOpen && newValue.length === 0) {
         setIsOpen(false);
       }
 
       if (props.freeSolo) {
-        props.onChange(value);
+        props.onChange(newValue);
       }
+    } else if (props.clearOnBlur) {
+      setInputValue(value && value.length > 0 ? value : '');
     }
   };
 
