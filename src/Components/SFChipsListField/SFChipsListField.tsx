@@ -6,7 +6,7 @@ import {
   AutocompleteInputChangeReason,
   AutocompleteChangeReason
 } from '@material-ui/lab';
-import { SFTextField } from '../SFTextField/SFTextField';
+import { SFTextField, SFTextFieldProps } from '../SFTextField/SFTextField';
 import { SFChipListModal } from './SFChipFieldModal/SFChipFieldModal';
 import { SFChipListRender } from './SFChipFieldRender/SFChipFieldRender';
 import { hexToRgba } from '../../Helpers';
@@ -51,7 +51,13 @@ const StyledAutoComplete = withStyles((theme: Theme) => ({
   }
 }))(Autocomplete);
 
-const StyledTextField = withStyles({
+export type minWidthInputSize = number | 'auto' | 'full-width';
+
+interface TextFieldStylesProps extends SFTextFieldProps {
+  minWidth: string;
+}
+
+const useTextFieldStyles = makeStyles({
   root: {
     '& .MuiInputBase-root': {
       height: 'inherit',
@@ -59,14 +65,15 @@ const StyledTextField = withStyles({
       gap: '6px',
       padding: '28px 9px 9px !important',
       '& .MuiAutocomplete-input': {
-        padding: '0'
+        padding: '0',
+        minWidth: (props: TextFieldStylesProps): string => props.minWidth
       },
       '& .MuiFormControl-root .MuiChip-outlined': {
         margin: '3px auto 2px'
       }
     }
   }
-})(SFTextField);
+});
 
 const chipsDisplay = makeStyles({
   chipDisplayInline: {
@@ -85,6 +92,12 @@ const chipsDisplay = makeStyles({
   }
 });
 
+function StyledTextField(props: TextFieldStylesProps): React.ReactElement {
+  const { minWidth, ...other } = props;
+  const classes = useTextFieldStyles(props);
+  return <SFTextField className={classes.root} {...other} />;
+}
+
 export type ChipFieldValueType = {
   value: string;
   isNew?: boolean;
@@ -93,13 +106,14 @@ export type ChipFieldValueType = {
 };
 
 export interface SFChipsListFieldProps {
-  chipSize?: 'small' | 'medium';
-  chipDisplay?: 'inline' | 'block';
+  itemChipSize?: 'small' | 'medium';
+  itemChipDisplay?: 'inline' | 'block';
+  items?: ChipFieldValueType[];
+  inputMinWidth?: minWidthInputSize;
   emptyMessage?: string;
   label: string;
   helperText?: string;
   options?: string[];
-  items?: ChipFieldValueType[];
   delimiters?: string[];
   freeSolo?: boolean;
   disabled?: boolean;
@@ -111,8 +125,9 @@ export interface SFChipsListFieldProps {
 }
 
 export const SFChipsListField = ({
-  chipSize = 'small',
-  chipDisplay = 'inline',
+  itemChipSize = 'small',
+  itemChipDisplay = 'inline',
+  inputMinWidth = 30,
   emptyMessage,
   label,
   helperText,
@@ -303,14 +318,14 @@ export const SFChipsListField = ({
     return (
       <div
         className={` ${
-          chipDisplay === 'block' ? chipDisplayBlock : chipDisplayInline
+          itemChipDisplay === 'block' ? chipDisplayBlock : chipDisplayInline
         }`}
       >
         {savedValues.length !== 0 && (
           <SFChipListRender
             values={savedValues}
-            isChipFullWidth={chipDisplay === 'block'}
-            chipSize={chipSize}
+            isChipFullWidth={itemChipDisplay === 'block'}
+            chipSize={itemChipSize}
             disabled={disabled}
             onDelete={deleteValue}
             onEdit={isEditable ? onEdit : undefined}
@@ -367,6 +382,13 @@ export const SFChipsListField = ({
             rows={1}
             label={label}
             helperText={helperText}
+            minWidth={
+              inputMinWidth === 'full-width'
+                ? '100%'
+                : inputMinWidth === 'auto'
+                ? 'auto'
+                : `${inputMinWidth}px`
+            }
           />
         )}
       />
