@@ -92,3 +92,31 @@ Disabled.argTypes = {
     }
   }
 };
+
+export const ClearOnBlur: Story<SFAutocompleteProps> = (args) => {
+  const [value, setValue] = React.useState<string>('');
+
+  return (
+    <SFAutocomplete
+      {...args}
+      clearOnBlur
+      options={getOptions()}
+      label='Bagel'
+      value={value}
+      onChange={(value): void => setValue(value)}
+    />
+  );
+};
+
+ClearOnBlur.argTypes = {
+  freeSolo: {
+    table: {
+      disable: true
+    }
+  },
+  value: {
+    table: {
+      disable: true
+    }
+  }
+};
