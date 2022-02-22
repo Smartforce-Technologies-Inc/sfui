@@ -95,3 +95,8 @@ export const ScrollToTop: Story = () => {
     </div>
   );
 };
+ScrollToTop.parameters = {
+  controls: {
+    disable: true
+  }
+};
