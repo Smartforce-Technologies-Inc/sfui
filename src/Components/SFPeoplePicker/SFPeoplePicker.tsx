@@ -41,6 +41,19 @@ const getPeopleOptions = async (url: string): Promise<unknown[]> => {
   }
 };
 
+const memoizePeopleFn = (fn: PeopleOptionsFn): PeopleOptionsFn => {
+  const cache = {};
+  return async (url: string): Promise<unknown[]> => {
+    if (url in cache) {
+      return cache[url];
+    } else {
+      const result = await fn(url);
+      cache[url] = result;
+      return result;
+    }
+  };
+};
+
 const useStyles = makeStyles((theme: Theme) => ({
   menu: {
     display: 'grid',
@@ -71,6 +84,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 export interface SFPeopleOption {
   name: string;
   avatarUrl?: string;
+  asyncObject?: unknown;
 }
 
 interface SFPeoplePickerBaseProps {
@@ -116,14 +130,23 @@ export const SFPeoplePicker = ({
   const refGetOptions = React.useRef<DebouncedFunc<PeopleOptionsFn>>();
 
   React.useEffect(() => {
-    refGetOptions.current = debounce(getPeopleOptions, 250);
+    refGetOptions.current = debounce(memoizePeopleFn(getPeopleOptions), 250, {
+      leading: true,
+      trailing: false
+    });
   }, []);
 
   const fetchOptions = async (url: string): Promise<SFPeopleOption[]> => {
     if (props.isAsync && refGetOptions.current) {
       const options = await refGetOptions.current(url);
       return options
-        ? options.map((option: unknown) => props.formatOption(option))
+        ? options.map((option: unknown) => {
+            const newObj: SFPeopleOption = props.formatOption(option);
+            if (!newObj.asyncObject) {
+              newObj.asyncObject = option;
+            }
+            return newObj;
+          })
         : [];
     } else {
       return [];
