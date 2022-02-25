@@ -75,8 +75,15 @@ const usePopOverStyle = makeStyles((theme: Theme) =>
           '&:hover': {
             backgroundColor: `${
               theme.palette.type === 'light'
-                ? hexToRgba(SFGrey[200], 0.3)
-                : hexToRgba(SFGrey[500], 0.3)
+                ? hexToRgba(SFBlue[100], 0.4)
+                : hexToRgba(SFBlue[200], 0.2)
+            }`
+          },
+          '&:active': {
+            backgroundColor: `${
+              theme.palette.type === 'light'
+                ? hexToRgba(SFBlue[100], 0.6)
+                : hexToRgba(SFBlue[200], 0.1)
             }`
           }
         },
@@ -95,7 +102,7 @@ const usePopOverStyle = makeStyles((theme: Theme) =>
         gap: 4,
         padding: '0px 24px',
         marginTop: 0,
-        marginBottom: 20,
+        marginBottom: 22,
         '& .MuiPickersCalendarHeader-transitionContainer': {
           display: 'none'
         }
@@ -106,7 +113,7 @@ const usePopOverStyle = makeStyles((theme: Theme) =>
         minWidth: 312,
         '& .MuiPickersYearSelection-container': {
           padding: '0 24px 0',
-          marginTop: 48,
+          marginTop: 58,
           '& .MuiPickersYear-root': {
             display: 'inline-flex',
             height: 36,
