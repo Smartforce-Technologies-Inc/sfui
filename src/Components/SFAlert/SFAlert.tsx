@@ -16,7 +16,7 @@ const StyledAlert = withStyles((theme: Theme) => ({
     padding: '0'
   },
   message: {
-    padding: '10px 0 0 16px',
+    padding: '10px 0 10px 16px',
     fontWeight: 400,
     fontSize: '16px',
     lineHeight: '24px',
@@ -31,7 +31,7 @@ const StyledAlert = withStyles((theme: Theme) => ({
   },
   icon: {
     padding: '0px',
-    margin: '8px 0 0 0'
+    margin: '8px 0'
   },
   standardError: {
     backgroundColor: theme.palette.type === 'light' ? SFRed[50] : SFRed[900],
