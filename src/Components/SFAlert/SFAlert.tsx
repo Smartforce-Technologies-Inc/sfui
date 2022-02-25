@@ -205,7 +205,7 @@ const StyledAlert = withStyles((theme: Theme) => ({
 }))(Alert);
 
 export interface SFAlertProps extends AlertProps {
-  title: string;
+  title?: string;
   type: 'error' | 'warning' | 'info' | 'success';
 }
 
@@ -259,7 +259,7 @@ export const SFAlert = ({
       }
       onClose={onClose}
     >
-      <AlertTitle>{title}</AlertTitle>
+      {title && <AlertTitle>{title}</AlertTitle>}
       {children}
     </StyledAlert>
   );
