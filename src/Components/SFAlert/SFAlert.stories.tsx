@@ -6,7 +6,8 @@ export default {
   title: 'Components/SFAlert',
   component: SFAlert,
   args: {
-    title: 'Lorem ipsum dolor sit amet.'
+    title: 'Lorem ipsum dolor sit amet.',
+    type: 'error'
   },
   argTypes: {
     onClose: {
@@ -63,7 +64,7 @@ export const WithContent = ({
     onClose={showCloseButton ? (): void => onClose() : undefined}
   >
     <p style={{ padding: '0px', margin: '0px' }}>
-      Lorem ipsum dolor sit amet, consect adipiscing elit.
+      <strong>Lorem ipsum dolor sit amet</strong>, consect adipiscing elit.
     </p>
   </SFAlert>
 );
