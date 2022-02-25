@@ -8,7 +8,8 @@ import { hexToRgba } from '../../Helpers';
 
 const StyledAlert = withStyles((theme: Theme) => ({
   root: {
-    padding: '16px'
+    padding: '16px',
+    alignItems: 'center'
   },
   action: {
     margin: '0 11px',
@@ -224,10 +225,6 @@ const getIcon = (type: string): JSX.Element | undefined => {
 };
 
 const useStyles = makeStyles({
-  root: {
-    alignItems: (props: Partial<SFAlertProps>): string =>
-      props.children ? 'unset' : 'center'
-  },
   message: {
     '& .MuiTypography-gutterBottom': {
       marginBottom: (props: Partial<SFAlertProps>): string =>
