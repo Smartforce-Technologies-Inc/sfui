@@ -9,14 +9,14 @@ import { hexToRgba } from '../../Helpers';
 const StyledAlert = withStyles((theme: Theme) => ({
   root: {
     padding: '16px',
-    alignItems: 'center'
+    alignItems: 'flex-start'
   },
   action: {
     margin: '0 11px',
     padding: '0'
   },
   message: {
-    padding: '0 0 0 16px',
+    padding: '10px 0 0 16px',
     fontWeight: 400,
     fontSize: '16px',
     lineHeight: '24px',
@@ -31,7 +31,10 @@ const StyledAlert = withStyles((theme: Theme) => ({
   },
   icon: {
     padding: '0px',
-    margin: '0px'
+    margin: '0px',
+    height: '42px',
+    display: 'flex',
+    alignItems: 'center'
   },
   standardError: {
     backgroundColor: theme.palette.type === 'light' ? SFRed[50] : SFRed[900],
