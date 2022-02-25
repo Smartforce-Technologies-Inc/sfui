@@ -31,10 +31,7 @@ const StyledAlert = withStyles((theme: Theme) => ({
   },
   icon: {
     padding: '0px',
-    margin: '0px',
-    height: '42px',
-    display: 'flex',
-    alignItems: 'center'
+    margin: '8px 0 0 0'
   },
   standardError: {
     backgroundColor: theme.palette.type === 'light' ? SFRed[50] : SFRed[900],
