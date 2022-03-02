@@ -93,7 +93,7 @@ const StorybookWrapper = ({
   };
 
   useEffect(() => {
-    const stories: Element = document
+    const docTable: Element = document
       .getElementsByClassName('docblock-argstable')
       .item(0);
     let apiLinkWrapper: HTMLElement = document.getElementById(
@@ -103,12 +103,12 @@ const StorybookWrapper = ({
       context &&
       context.component &&
       context.component.displayName &&
-      stories &&
+      docTable &&
       !apiLinkWrapper
     ) {
       apiLinkWrapper = document.createElement('div');
       apiLinkWrapper.setAttribute('id', 'mui-api-link-wrapper');
-      stories.parentNode.append(apiLinkWrapper);
+      docTable.parentNode.append(apiLinkWrapper);
       ReactDOM.render(
         getMUILinkTemplate(context.component.displayName as string),
         apiLinkWrapper
