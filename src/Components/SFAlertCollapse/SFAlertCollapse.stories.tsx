@@ -5,15 +5,34 @@ import { SFAlertCollapse } from './SFAlertCollapse';
 export default {
   title: 'Components/SFAlertCollapse',
   component: SFAlertCollapse,
-  args: {
-    title: 'Lorem ipsum dolor sit amet.'
-  },
   argTypes: {
+    title: {
+      description: 'The title of the alert to display.',
+      defaultValue: 'Lorem ipsum dolor sit amet.'
+    },
     isOpen: {
+      description: 'If true, the component is shown.',
       defaultValue: false,
+      table: {
+        defaultValue: {
+          summary: 'false'
+        }
+      },
       control: {
         type: 'boolean'
       }
+    },
+    mountOnEnter: {
+      description:
+        'By default the child component is mounted immediately along with the parent Transition component. If you want to "lazy mount" the component on the first you can set mountOnEnter. After the first enter transition the component will stay mounted, even on "exited", unless you also specify unmountOnExit.'
+    },
+    unmountOnExit: {
+      description:
+        'Specifies if the transition should be displayed on item unmount.'
+    },
+    timeout: {
+      description: `The duration for the transition, in milliseconds. You may specify a single timeout for all transitions, or individually with an object.
+      Set to 'auto' to automatically calculate transition time based on height.`
     },
     onClose: {
       action: 'onClose',

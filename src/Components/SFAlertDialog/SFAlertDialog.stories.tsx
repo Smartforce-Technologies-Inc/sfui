@@ -10,10 +10,40 @@ export default {
     title: 'Alert dialog title',
     content:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' +
-      ' Mauris lobortis a erat eu mattis.',
-    open: true
+      ' Mauris lobortis a erat eu mattis.'
   },
   argTypes: {
+    title: {
+      description: 'The title of the alert to display.'
+    },
+    content: {
+      description: 'The content to display.'
+    },
+    leftAction: {
+      table: {
+        disable: true
+      }
+    },
+    rightAction: {
+      table: {
+        disable: true
+      }
+    },
+    open: {
+      description: 'If true, the component is shown.',
+      defaultValue: false,
+      control: {
+        type: 'boolean'
+      },
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: {
+          summary: 'false'
+        }
+      }
+    },
     onClose: {
       table: {
         disable: true
@@ -26,17 +56,14 @@ export default {
         disable: true
       }
     },
+    disableBackdropClick: {
+      table: {
+        defaultValue: {
+          summary: 'false'
+        }
+      }
+    },
     ref: {
-      table: {
-        disable: true
-      }
-    },
-    leftAction: {
-      table: {
-        disable: true
-      }
-    },
-    rightAction: {
       table: {
         disable: true
       }
@@ -46,7 +73,9 @@ export default {
 
 export const AlertDialog = (args: SFAlertDialogProps): JSX.Element => (
   <SFAlertDialog
-    leftAction={{ label: 'Medium' }}
+    leftAction={{
+      label: 'Medium'
+    }}
     rightAction={{ label: 'Medium' }}
     {...args}
   />
@@ -59,7 +88,10 @@ export const FormDialog = (args: SFAlertDialogProps): JSX.Element => {
     <SFAlertDialog
       {...args}
       title='Form dialog title'
-      rightAction={{ label: 'Medium', buttonProps: { disabled } }}
+      rightAction={{
+        label: 'Medium',
+        buttonProps: { disabled }
+      }}
     >
       <SFTextField
         style={{ marginTop: 20 }}
