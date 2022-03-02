@@ -15,5 +15,7 @@ export const parameters = {
 };
 
 export const decorators = [
-  (Story) => <StorybookWrapper children={<Story />} />
+  (Story, Context) => {
+    return <StorybookWrapper children={<Story />} context={Context} />;
+  }
 ];
