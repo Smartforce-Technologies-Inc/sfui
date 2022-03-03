@@ -44,13 +44,7 @@ export default {
   }
 } as Meta;
 
-const AlertStory = ({
-  showCloseButton,
-  title,
-  type,
-  onClose,
-  ...args
-}): JSX.Element => (
+const AlertStory = ({ title, type, onClose, ...args }): JSX.Element => (
   <SFAlert
     {...args}
     title={title}
