@@ -6,7 +6,9 @@ export default {
   title: 'Components/SFAlertCollapse',
   component: SFAlertCollapse,
   args: {
-    title: 'Lorem ipsum dolor sit amet.'
+    title: 'Lorem ipsum dolor sit amet.',
+    isOpen: false,
+    showCloseButton: true
   },
   argTypes: {
     title: {
@@ -14,7 +16,6 @@ export default {
     },
     isOpen: {
       description: 'If true, the component is shown.',
-      defaultValue: false,
       table: {
         defaultValue: {
           summary: 'false'
@@ -53,7 +54,6 @@ export default {
       }
     },
     showCloseButton: {
-      defaultValue: true,
       table: {
         disable: true
       }

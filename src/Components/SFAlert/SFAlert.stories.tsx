@@ -7,7 +7,8 @@ export default {
   component: SFAlert,
   args: {
     title: 'Lorem ipsum dolor sit amet.',
-    type: 'error'
+    type: 'error',
+    onClose: false
   },
   argTypes: {
     title: {
@@ -27,8 +28,7 @@ export default {
         }
       },
       control: {
-        type: 'boolean',
-        defaultValue: false
+        type: 'boolean'
       }
     },
     children: {
@@ -51,7 +51,12 @@ const AlertStory = ({
   onClose,
   ...args
 }): JSX.Element => (
-  <SFAlert {...args} title={title} type={type} onClose={onClose} />
+  <SFAlert
+    {...args}
+    title={title}
+    type={type}
+    onClose={onClose ? () => console.log('onClose') : undefined}
+  />
 );
 
 export const Alert = AlertStory.bind({});

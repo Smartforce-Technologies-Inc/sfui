@@ -10,7 +10,8 @@ export default {
     title: 'Alert dialog title',
     content:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' +
-      ' Mauris lobortis a erat eu mattis.'
+      ' Mauris lobortis a erat eu mattis.',
+    open: false
   },
   argTypes: {
     title: {
@@ -31,7 +32,6 @@ export default {
     },
     open: {
       description: 'If true, the component is shown.',
-      defaultValue: false,
       control: {
         type: 'boolean'
       },
