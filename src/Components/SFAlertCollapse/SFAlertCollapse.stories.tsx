@@ -5,10 +5,12 @@ import { SFAlertCollapse } from './SFAlertCollapse';
 export default {
   title: 'Components/SFAlertCollapse',
   component: SFAlertCollapse,
+  args: {
+    title: 'Lorem ipsum dolor sit amet.'
+  },
   argTypes: {
     title: {
-      description: 'The title of the alert to display.',
-      defaultValue: 'Lorem ipsum dolor sit amet.'
+      description: 'The title of the alert to display.'
     },
     isOpen: {
       description: 'If true, the component is shown.',

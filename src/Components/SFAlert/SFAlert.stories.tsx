@@ -19,7 +19,7 @@ export default {
     },
     onClose: {
       description:
-        '	Callback fired when the component requests to be closed. When provided a close icon button is displayed that triggers the callback when clicked.',
+        'Callback fired when the component requests to be closed. When provided a close icon button is displayed that triggers the callback when clicked.',
       action: 'onClose',
       table: {
         type: {

@@ -73,9 +73,7 @@ export default {
 
 export const AlertDialog = (args: SFAlertDialogProps): JSX.Element => (
   <SFAlertDialog
-    leftAction={{
-      label: 'Medium'
-    }}
+    leftAction={{ label: 'Medium' }}
     rightAction={{ label: 'Medium' }}
     {...args}
   />
@@ -88,10 +86,7 @@ export const FormDialog = (args: SFAlertDialogProps): JSX.Element => {
     <SFAlertDialog
       {...args}
       title='Form dialog title'
-      rightAction={{
-        label: 'Medium',
-        buttonProps: { disabled }
-      }}
+      rightAction={{ label: 'Medium', buttonProps: { disabled } }}
     >
       <SFTextField
         style={{ marginTop: 20 }}
