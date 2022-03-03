@@ -14,20 +14,14 @@ export default {
     open: false
   },
   argTypes: {
-    title: {
-      description: 'The title of the alert to display.'
-    },
     content: {
       description: 'The content to display.'
     },
-    leftAction: {
+    disableBackdropClick: {
       table: {
-        disable: true
-      }
-    },
-    rightAction: {
-      table: {
-        disable: true
+        defaultValue: {
+          summary: 'false'
+        }
       }
     },
     open: {
@@ -44,6 +38,19 @@ export default {
         }
       }
     },
+    title: {
+      description: 'The title of the alert to display.'
+    },
+    leftAction: {
+      table: {
+        disable: true
+      }
+    },
+    rightAction: {
+      table: {
+        disable: true
+      }
+    },
     onClose: {
       table: {
         disable: true
@@ -54,13 +61,6 @@ export default {
       action: 'onClick',
       table: {
         disable: true
-      }
-    },
-    disableBackdropClick: {
-      table: {
-        defaultValue: {
-          summary: 'false'
-        }
       }
     },
     ref: {

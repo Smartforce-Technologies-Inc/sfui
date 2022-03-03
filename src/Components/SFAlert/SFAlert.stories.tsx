@@ -49,7 +49,7 @@ const AlertStory = ({ title, type, onClose, ...args }): JSX.Element => (
     {...args}
     title={title}
     type={type}
-    onClose={onClose ? () => console.log('onClose') : undefined}
+    onClose={onClose ? (): void => console.log('onClose') : undefined}
   />
 );
 
