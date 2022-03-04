@@ -6,9 +6,13 @@ export default {
   title: 'Components/SFAlertCollapse',
   component: SFAlertCollapse,
   args: {
-    title: 'Lorem ipsum dolor sit amet.',
     isOpen: false,
-    onClose: false
+    mountOnEnter: true,
+    onClose: false,
+    timeout: 'auto',
+    title: 'Lorem ipsum dolor sit amet.',
+    type: 'error',
+    unmountOnExit: true
   },
   argTypes: {
     children: {

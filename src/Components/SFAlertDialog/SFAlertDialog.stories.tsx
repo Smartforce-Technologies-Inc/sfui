@@ -7,11 +7,14 @@ export default {
   title: 'Components/SFAlertDialog',
   component: SFAlertDialog,
   args: {
-    title: 'Alert dialog title',
     content:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' +
       ' Mauris lobortis a erat eu mattis.',
-    open: false
+    disableBackdropClick: true,
+    open: false,
+    title: 'Alert dialog title',
+    leftAction: undefined,
+    rightAction: undefined
   },
   argTypes: {
     content: {
