@@ -6,17 +6,15 @@ export default {
   title: 'Components/SFAlert',
   component: SFAlert,
   args: {
+    onClose: false,
     title: 'Lorem ipsum dolor sit amet.',
-    type: 'error',
-    onClose: false
+    type: 'error'
   },
   argTypes: {
-    title: {
-      description: 'The title of the alert to display.'
-    },
-    type: {
-      description:
-        'The type of the alert. This defines the color and icon used.'
+    children: {
+      table: {
+        disable: true
+      }
     },
     onClose: {
       description:
@@ -31,15 +29,17 @@ export default {
         type: 'boolean'
       }
     },
-    children: {
-      table: {
-        disable: true
-      }
-    },
     ref: {
       table: {
         disable: true
       }
+    },
+    title: {
+      description: 'The title of the alert to display.'
+    },
+    type: {
+      description:
+        'The type of the alert. This defines the color and icon used.'
     }
   }
 } as Meta;

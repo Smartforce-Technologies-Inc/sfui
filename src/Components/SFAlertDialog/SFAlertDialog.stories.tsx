@@ -42,14 +42,8 @@ export default {
       description: 'The title of the alert to display.'
     },
     leftAction: {
-      table: {
-        disable: true
-      }
-    },
-    rightAction: {
-      table: {
-        disable: true
-      }
+      description: `Adds a button on the bottom right of the dialog with props to handle it's change. When paired with the right
+        action button, this button aligns to the left of the other button.`
     },
     onClose: {
       table: {
@@ -62,6 +56,10 @@ export default {
       table: {
         disable: true
       }
+    },
+    rightAction: {
+      description: `Adds a button on the bottom right of the dialog with props to handle it's change.  
+       When paired with the left action button, this button aligns to the right of the other button.`
     },
     ref: {
       table: {
