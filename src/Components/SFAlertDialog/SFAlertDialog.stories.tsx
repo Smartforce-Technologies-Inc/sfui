@@ -47,7 +47,10 @@ export default {
     },
     leftAction: {
       description: `Adds a button on the bottom right of the dialog with props to handle it's change. When paired with the right
-        action button, this button aligns to the left of the other button.`
+        action button, this button aligns to the left of the other button.`,
+      table: {
+        disable: true
+      }
     },
     onClose: {
       table: {
@@ -63,7 +66,10 @@ export default {
     },
     rightAction: {
       description: `Adds a button on the bottom right of the dialog with props to handle it's change.  
-       When paired with the left action button, this button aligns to the right of the other button.`
+       When paired with the left action button, this button aligns to the right of the other button.`,
+      table: {
+        disable: true
+      }
     },
     ref: {
       table: {

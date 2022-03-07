@@ -66,3 +66,10 @@ WithContent.args = {
 WithoutCloseButton.args = {
   onClose: null
 };
+WithoutCloseButton.argTypes = {
+  onClose: {
+    table: {
+      disable: true
+    }
+  }
+};
