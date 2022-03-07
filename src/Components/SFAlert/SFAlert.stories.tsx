@@ -5,8 +5,8 @@ import { SFAlert } from './SFAlert';
 export default {
   title: 'Components/SFAlert',
   component: SFAlert,
+  parameters: { controls: { sort: 'alpha' } },
   args: {
-    onClose: false,
     title: 'Lorem ipsum dolor sit amet.',
     type: 'error'
   },
@@ -20,13 +20,13 @@ export default {
       description:
         'Callback fired when the component requests to be closed. When provided a close icon button is displayed that triggers the callback when clicked.',
       action: 'onClose',
+      control: {
+        disabled: true
+      },
       table: {
         type: {
           summary: 'func'
         }
-      },
-      control: {
-        type: 'boolean'
       }
     },
     ref: {
@@ -44,18 +44,15 @@ export default {
   }
 } as Meta;
 
-const AlertStory = ({ title, type, onClose, ...args }): JSX.Element => (
-  <SFAlert
-    {...args}
-    title={title}
-    type={type}
-    onClose={onClose ? (): void => console.log('onClose') : undefined}
-  />
+const AlertStory = ({ title, type, ...args }): JSX.Element => (
+  <SFAlert {...args} title={title} type={type} />
 );
 
 export const Alert = AlertStory.bind({});
 
 export const WithContent = AlertStory.bind({});
+
+export const WithoutCloseButton = AlertStory.bind({});
 
 WithContent.args = {
   title: undefined,
@@ -64,4 +61,8 @@ WithContent.args = {
       <strong>Lorem ipsum dolor sit amet</strong>, consect adipiscing elit.
     </p>
   )
+};
+
+WithoutCloseButton.args = {
+  onClose: null
 };

@@ -5,10 +5,10 @@ import { SFAlertCollapse } from './SFAlertCollapse';
 export default {
   title: 'Components/SFAlertCollapse',
   component: SFAlertCollapse,
+  parameters: { controls: { sort: 'alpha' } },
   args: {
     isOpen: false,
     mountOnEnter: true,
-    onClose: false,
     timeout: 'auto',
     title: 'Lorem ipsum dolor sit amet.',
     type: 'error',
@@ -39,13 +39,13 @@ export default {
       description:
         'Callback fired when the component requests to be closed. When provided a close icon button is displayed that triggers the callback when clicked.',
       action: 'onClose',
+      control: {
+        disabled: true
+      },
       table: {
         type: {
           summary: 'func'
         }
-      },
-      control: {
-        type: 'boolean'
       }
     },
     ref: {
@@ -68,19 +68,15 @@ export default {
   }
 } as Meta;
 
-const AlertStory = ({ isOpen, title, type, onClose, ...args }): JSX.Element => (
-  <SFAlertCollapse
-    {...args}
-    isOpen={isOpen}
-    title={title}
-    type={type}
-    onClose={onClose ? (): void => console.log('onClose') : undefined}
-  />
+const AlertCollapseStory = ({ isOpen, title, type, ...args }): JSX.Element => (
+  <SFAlertCollapse {...args} isOpen={isOpen} title={title} type={type} />
 );
 
-export const AlertCollpase = AlertStory.bind({});
+export const AlertCollpase = AlertCollapseStory.bind({});
 
-export const WithContent = AlertStory.bind({});
+export const WithContent = AlertCollapseStory.bind({});
+
+export const WithoutCloseButton = AlertCollapseStory.bind({});
 
 WithContent.args = {
   children: (
@@ -88,4 +84,8 @@ WithContent.args = {
       Lorem ipsum dolor sit amet, consect adipiscing elit.
     </p>
   )
+};
+
+WithoutCloseButton.args = {
+  onClose: null
 };

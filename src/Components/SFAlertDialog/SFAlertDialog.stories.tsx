@@ -6,6 +6,7 @@ import { SFTextField } from '../SFTextField/SFTextField';
 export default {
   title: 'Components/SFAlertDialog',
   component: SFAlertDialog,
+  parameters: { controls: { sort: 'alpha' } },
   args: {
     content:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' +
