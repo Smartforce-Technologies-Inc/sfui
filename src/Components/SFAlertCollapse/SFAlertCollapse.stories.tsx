@@ -76,16 +76,10 @@ export const AlertCollpase = AlertCollapseStory.bind({});
 
 export const WithContent = AlertCollapseStory.bind({});
 
-export const WithoutCloseButton = AlertCollapseStory.bind({});
-
 WithContent.args = {
   children: (
     <p style={{ padding: '0px', margin: '0px' }}>
       Lorem ipsum dolor sit amet, consect adipiscing elit.
     </p>
   )
-};
-
-WithoutCloseButton.args = {
-  onClose: null
 };
