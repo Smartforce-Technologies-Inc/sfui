@@ -105,7 +105,7 @@ export default {
   }
   argTypes: {
     onClose: {
-      description: 'Callback fired when close action is fired',
+      description: 'Callback function when close action is triggered',
       table: {
         disable: true
       }
