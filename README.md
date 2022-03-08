@@ -30,11 +30,15 @@ class Example extends Component {
 
 ### Story creation format
 
-As a convention, when writing the stories, they have to meet the following conditions:
+Every time you add a new story, you should add the url of the base component's [MUI API](https://v4.mui.com/) to the StorybookWrapper component.
 
-- It must have alphabetical order in all props displayed on the docs in storybook:
+Each story must describe the component's functionality with all the controls needed to do so, if necessary, you can create more than one story to make the component's functionality as clear as possible.
 
-  This is added with the "parameters: { controls: { sort: 'alpha' } }" line of code.
+As a convention, when writing the stories, You have to take into account the following conditions:
+
+- All controls props must be ordered alphabetically on the docs in the storybook:
+
+  To do this You must add the props "parameters: { controls: { sort: 'alpha' } }" into the story config.
 
   Example:
 
@@ -48,9 +52,9 @@ As a convention, when writing the stories, they have to meet the following condi
   };
   ```
 
-- By default, all components in the story should have the object properties disabled on the table in order to avoid stories having errors for bad property usage:
+- By default, all controls of type object into the story should be disabled on the table in order to avoid stories having errors for bad property usage:
 
-  This is done by adding 'disable' prop to 'true' on argTypes table prop.
+  To do this You must add the props "table: { disable: true}" on argTypes prop into the story config.
 
   Example:
 
@@ -64,7 +68,7 @@ As a convention, when writing the stories, they have to meet the following condi
   }
   ```
 
-- Functions and/or callbacks fired by the component should be disabled for interaction on the table and add the action corresponding to it's prop definition:
+- Functions/callbacks triggered by the component actions should be disabled on the table and add the action corresponding to its prop definition:
 
   This could be done by following storybook [action's guideline](https://storybook.js.org/docs/react/essentials/actions#action-args).
 
@@ -74,6 +78,14 @@ As a convention, when writing the stories, they have to meet the following condi
     control: {
       disabled: true
     },
+  ```
+
+- If a property added to a component or the extended properties from the component lack of description, you must add it to the story:
+
+  ```tsx
+  prop: {
+    description: 'Some text describing the prop functionality';
+  }
   ```
 
 All needed information on how to create a story and other related matters, please follow [Storybook's Page](https://storybook.js.org/)
