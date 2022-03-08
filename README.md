@@ -70,12 +70,14 @@ As a convention, when writing the stories, You have to take into account the fol
 
   This could be done by following storybook [action's guideline](https://storybook.js.org/docs/react/essentials/actions#action-args).
 
-  In addition to the guideline, to avoid stories from stop working due to bad property assignment, you should add this:
+  In addition to the guideline, to avoid stories from stop working due to bad property assignment, you should add this to the prop:
 
   ```tsx
+  prop: {
     control: {
-      disabled: true
-    },
+      disabled: true;
+    }
+  }
   ```
 
 - If a component property lack description, you must add it to the story:
@@ -85,6 +87,42 @@ As a convention, when writing the stories, You have to take into account the fol
     description: 'Some text describing the prop functionality';
   }
   ```
+
+### Full Story Example
+
+```tsx
+import React from 'react';
+import { Story, Meta } from '@storybook/react/types-6-0';
+
+import { Component } from './Component';
+
+export default {
+  title: 'Components/ComponentName',
+  component: Component,
+  parameters: { controls: { sort: 'alpha' } },
+  args: { // Added arguments that need assignment for the purpose of the story,
+    title: 'Example Title'
+  }
+  argTypes: {
+    onClose: {
+      description: 'Callback fired when close action is fired',
+      table: {
+        disable: true
+      }
+    },
+    actionButton : {
+      description: 'Some action button',
+      control: {
+        disabled: true
+      }
+    }
+  }
+} as Meta;
+
+export const DefaultStory: Story =({title, ...args}) => {
+  return <Component {...args} title={title}  />
+}
+```
 
 Every time you add a new story, you should add the url of the base component's [MUI API](https://v4.mui.com/) to the StorybookWrapper component.
 
