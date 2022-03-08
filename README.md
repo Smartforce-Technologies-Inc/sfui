@@ -30,15 +30,13 @@ class Example extends Component {
 
 ### Story creation format
 
-Every time you add a new story, you should add the url of the base component's [MUI API](https://v4.mui.com/) to the StorybookWrapper component.
-
-Each story must describe the component's functionality with all the controls needed to do so, if necessary, you can create more than one story to make the component's functionality as clear as possible.
+Each story must describe the component's functionality with all the controls needed to do so, if it is necessary, you can create more than one story to make the component's functionality as clear as possible.
 
 As a convention, when writing the stories, You have to take into account the following conditions:
 
 - All controls props must be ordered alphabetically on the docs in the storybook:
 
-  To do this You must add the props "parameters: { controls: { sort: 'alpha' } }" into the story config.
+  To do this You must add the props `parameters: { controls: { sort: 'alpha' } }` into the story config.
 
   Example:
 
@@ -54,7 +52,7 @@ As a convention, when writing the stories, You have to take into account the fol
 
 - By default, all controls of type object into the story should be disabled on the table in order to avoid stories having errors for bad property usage:
 
-  To do this You must add the props "table: { disable: true}" on argTypes prop into the story config.
+  To do this You must add the props `table: { disable: true}` on argTypes prop into the story config.
 
   Example:
 
@@ -80,13 +78,15 @@ As a convention, when writing the stories, You have to take into account the fol
     },
   ```
 
-- If a property added to a component or the extended properties from the component lack of description, you must add it to the story:
+- If a component property lack description, you must add it to the story:
 
   ```tsx
   prop: {
     description: 'Some text describing the prop functionality';
   }
   ```
+
+Every time you add a new story, you should add the url of the base component's [MUI API](https://v4.mui.com/) to the StorybookWrapper component.
 
 All needed information on how to create a story and other related matters, please follow [Storybook's Page](https://storybook.js.org/)
 
