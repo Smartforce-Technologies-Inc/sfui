@@ -28,6 +28,56 @@ class Example extends Component {
 }
 ```
 
+### Story creation format
+
+As a convention, when writing the stories, they have to meet the following conditions:
+
+- It must have alphabetical order in all props displayed on the docs in storybook:
+
+  This is added with the "parameters: { controls: { sort: 'alpha' } }" line of code.
+
+  Example:
+
+  ```tsx
+  export default {
+    title: 'Components/SFAlert',
+    component: SFAlert,
+    parameters: { controls: { sort: 'alpha' } },
+    args: {},
+    argTypes: {}
+  };
+  ```
+
+- By default, all components in the story should have the object properties disabled on the table in order to avoid stories having errors for bad property usage:
+
+  This is done by adding 'disable' prop to 'true' on argTypes table prop.
+
+  Example:
+
+  ```tsx
+  argTypes: {
+    children: {
+      table: {
+        disable: true;
+      }
+    }
+  }
+  ```
+
+- Functions and/or callbacks fired by the component should be disabled for interaction on the table and add the action corresponding to it's prop definition:
+
+  This could be done by following storybook [action's guideline](https://storybook.js.org/docs/react/essentials/actions#action-args).
+
+  In addition to the guideline, to avoid stories from stop working due to bad property assignment, you should add this:
+
+  ```tsx
+    control: {
+      disabled: true
+    },
+  ```
+
+All needed information on how to create a story and other related matters, please follow [Storybook's Page](https://storybook.js.org/)
+
 ## Example app
 
 You can try a demo app deployed into github pages [here](https://adventoscorp.github.io/sfui/).
