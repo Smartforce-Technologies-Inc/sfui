@@ -8,6 +8,21 @@ import {
   SFDialogTitle
 } from '../SFDialog/SFDialog';
 import { SFButton, SFButtonProps } from '../SFButton/SFButton';
+import { withStyles } from '@material-ui/core';
+
+const SFAlertDialogActions = withStyles(() => ({
+  root: {
+    // if first child it's also last child (only one button)
+    '& button:first-child:nth-last-child(1)': {
+      width: '100%'
+    },
+    '@media screen and (min-width: 768px)': {
+      '& button:first-child:nth-last-child(1)': {
+        width: 'auto'
+      }
+    }
+  }
+}))(SFDialogActions);
 
 export interface SFAlertDialogProps extends SFDialogProps {
   title: string;
@@ -40,7 +55,7 @@ export const SFAlertDialog = ({
           {children}
         </SFDialogContent>
 
-        <SFDialogActions>
+        <SFAlertDialogActions>
           {leftAction && (
             <SFButton sfColor='grey' variant='text' {...leftAction.buttonProps}>
               {leftAction.label}
@@ -52,7 +67,7 @@ export const SFAlertDialog = ({
               {rightAction.label}
             </SFButton>
           )}
-        </SFDialogActions>
+        </SFAlertDialogActions>
       </SFDialog>
     </div>
   );

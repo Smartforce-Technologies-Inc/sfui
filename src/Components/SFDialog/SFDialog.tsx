@@ -53,8 +53,7 @@ export const SFDialogContentText = withStyles((theme: Theme) => ({
 export const SFDialogActions = withStyles(() => ({
   root: {
     padding: '24px 36px 36px',
-    display: 'flex',
-    gap: '17px'
+    display: 'flex'
   }
 }))(DialogActions);
 
