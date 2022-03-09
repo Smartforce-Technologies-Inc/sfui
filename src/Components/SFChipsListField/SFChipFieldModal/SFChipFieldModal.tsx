@@ -60,7 +60,7 @@ export const SFChipListModal = ({
         }
       }}
       open={open}
-      content='To edit this item, please enter the new one here.'
+      contentText='To edit this item, please enter the new one here.'
     >
       <SFTextField
         label='Item'
