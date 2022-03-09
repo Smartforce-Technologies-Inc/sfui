@@ -23,7 +23,7 @@ export interface SFDialogProps extends DialogProps {}
 
 export const SFDialogTitle = withStyles((theme: Theme) => ({
   root: {
-    padding: '36px 36px 24px',
+    padding: 0,
     '& h2': {
       color: `${theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]}`,
       fontSize: 24,
@@ -36,12 +36,13 @@ export const SFDialogTitle = withStyles((theme: Theme) => ({
 
 export const SFDialogContent = withStyles(() => ({
   root: {
-    padding: '0 36px'
+    padding: 0
   }
 }))(DialogContent);
 
 export const SFDialogContentText = withStyles((theme: Theme) => ({
   root: {
+    margin: 0,
     color: `${theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]}`,
     fontSize: 16,
     fontStyle: 'normal',
@@ -52,7 +53,7 @@ export const SFDialogContentText = withStyles((theme: Theme) => ({
 
 export const SFDialogActions = withStyles(() => ({
   root: {
-    padding: '24px 36px 36px',
+    padding: 0,
     display: 'flex'
   }
 }))(DialogActions);
