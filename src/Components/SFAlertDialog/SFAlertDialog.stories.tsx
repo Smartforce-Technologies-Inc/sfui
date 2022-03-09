@@ -8,17 +8,17 @@ export default {
   component: SFAlertDialog,
   parameters: { controls: { sort: 'alpha' } },
   args: {
-    content:
+    title: 'Alert dialog title',
+    contentText:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' +
       ' Mauris lobortis a erat eu mattis.',
     disableBackdropClick: true,
     open: false,
-    title: 'Alert dialog title',
     leftAction: undefined,
     rightAction: undefined
   },
   argTypes: {
-    content: {
+    contentText: {
       description: 'The content to display.'
     },
     disableBackdropClick: {
