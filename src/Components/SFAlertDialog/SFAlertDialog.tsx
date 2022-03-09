@@ -59,7 +59,7 @@ const SFAlertDialogActions = withStyles(() => ({
 
 export interface SFAlertDialogProps extends SFDialogProps {
   title: string;
-  content: string;
+  contentText?: string;
   leftAction?: SFAlertDialogAction;
   rightAction?: SFAlertDialogAction;
 }
@@ -71,7 +71,7 @@ export interface SFAlertDialogAction {
 
 export const SFAlertDialog = ({
   title,
-  content,
+  contentText,
   leftAction,
   rightAction,
   children,
@@ -83,7 +83,9 @@ export const SFAlertDialog = ({
         <SFDialogTitle>{title}</SFDialogTitle>
 
         <SFDialogContent>
-          <SFDialogContentText>{content}</SFDialogContentText>
+          {contentText && (
+            <SFDialogContentText>{contentText}</SFDialogContentText>
+          )}
 
           {children}
         </SFDialogContent>
