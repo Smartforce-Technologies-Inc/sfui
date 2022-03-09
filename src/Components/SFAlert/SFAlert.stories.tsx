@@ -5,20 +5,28 @@ import { SFAlert } from './SFAlert';
 export default {
   title: 'Components/SFAlert',
   component: SFAlert,
+  parameters: { controls: { sort: 'alpha' } },
   args: {
     title: 'Lorem ipsum dolor sit amet.',
     type: 'error'
   },
   argTypes: {
-    onClose: {
-      action: 'onClose',
+    children: {
       table: {
         disable: true
       }
     },
-    children: {
+    onClose: {
+      description:
+        'Callback fired when the component requests to be closed. When provided a close icon button is displayed that triggers the callback when clicked.',
+      action: 'onClose',
+      control: {
+        disabled: true
+      },
       table: {
-        disable: true
+        type: {
+          summary: 'func'
+        }
       }
     },
     ref: {
@@ -26,45 +34,42 @@ export default {
         disable: true
       }
     },
-    showCloseButton: {
-      defaultValue: false,
-      control: {
-        type: 'boolean'
-      }
+    title: {
+      description: 'The title of the alert to display.'
+    },
+    type: {
+      description:
+        'The type of the alert. This defines the color and icon used.'
     }
   }
 } as Meta;
 
-export const Alert = ({
-  showCloseButton,
-  title,
-  type,
-  onClose,
-  ...args
-}): JSX.Element => (
-  <SFAlert
-    {...args}
-    title={title}
-    type={type}
-    onClose={showCloseButton ? (): void => onClose() : undefined}
-  />
+const AlertStory = ({ title, type, ...args }): JSX.Element => (
+  <SFAlert {...args} title={title} type={type} />
 );
 
-export const WithContent = ({
-  showCloseButton,
-  title,
-  type,
-  onClose,
-  ...args
-}): JSX.Element => (
-  <SFAlert
-    {...args}
-    title={title}
-    type={type}
-    onClose={showCloseButton ? (): void => onClose() : undefined}
-  >
+export const Alert = AlertStory.bind({});
+
+export const WithContent = AlertStory.bind({});
+
+export const WithoutCloseButton = AlertStory.bind({});
+
+WithContent.args = {
+  title: undefined,
+  children: (
     <p style={{ padding: '0px', margin: '0px' }}>
       <strong>Lorem ipsum dolor sit amet</strong>, consect adipiscing elit.
     </p>
-  </SFAlert>
-);
+  )
+};
+
+WithoutCloseButton.args = {
+  onClose: null
+};
+WithoutCloseButton.argTypes = {
+  onClose: {
+    table: {
+      disable: true
+    }
+  }
+};

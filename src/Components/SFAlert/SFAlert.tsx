@@ -205,7 +205,8 @@ const StyledAlert = withStyles((theme: Theme) => ({
   }
 }))(Alert);
 
-export interface SFAlertProps extends AlertProps {
+export interface SFAlertProps
+  extends Omit<AlertProps, 'severity' | 'icon' | 'action'> {
   title?: string;
   type: 'error' | 'warning' | 'info' | 'success';
 }
@@ -254,7 +255,6 @@ export const SFAlert = ({
           <SFIconButton sfIcon='Close' sfSize='medium' onClick={onClose} />
         ) : undefined
       }
-      onClose={onClose}
     >
       {title && <AlertTitle>{title}</AlertTitle>}
       {children}
