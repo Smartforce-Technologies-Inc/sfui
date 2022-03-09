@@ -8,7 +8,7 @@ export default {
   component: SFAlertDialog,
   args: {
     title: 'Alert dialog title',
-    content:
+    contentText:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' +
       ' Mauris lobortis a erat eu mattis.',
     open: true
