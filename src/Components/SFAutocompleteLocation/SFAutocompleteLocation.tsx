@@ -303,9 +303,10 @@ export const SFAutocompleteLocation = ({
 
   const onAutocompleteChange = (
     _event: React.ChangeEvent,
-    newValue: google.maps.places.AutocompletePrediction
+    newValue: google.maps.places.AutocompletePrediction,
+    reason: string
   ): void => {
-    if (newValue) {
+    if (reason !== 'create-option' && newValue) {
       setSelectedOption(newValue);
       onChange({
         text: newValue.description,
