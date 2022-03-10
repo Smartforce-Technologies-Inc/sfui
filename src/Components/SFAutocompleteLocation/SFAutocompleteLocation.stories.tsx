@@ -9,22 +9,37 @@ import {
 export default {
   title: 'Components/SFAutcompleteLocation',
   component: SFAutocompleteLocation,
+  parameters: { controls: { sort: 'alpha' } },
   args: {
     label: 'Bagel'
   },
   argTypes: {
+    currentLocation: {
+      description: `If true, the component gets the device's current location coordinates.`
+    },
+    disabled: {
+      description: 'If true, the component is disabled.',
+      control: {
+        type: 'boolean'
+      }
+    },
+    label: {
+      description: 'The label asociated to the input value meaning.'
+    },
+    minChar: {
+      description:
+        'The minimun number of characters required for the input value to do the search.'
+    },
     onChange: {
       action: 'onChange',
       table: {
         disable: true
       }
     },
-    disabled: {
-      control: {
-        type: 'boolean'
-      }
+    required: {
+      table: { disable: true }
     },
-    currentLocation: {
+    value: {
       table: {
         disable: true
       }
@@ -32,36 +47,9 @@ export default {
   }
 } as Meta;
 
-const Template: Story = ({ text, ...args }) => (
-  <SFAutocompleteLocation
-    {...(args as SFAutocompleteLocationProps)}
-    value={{
-      text
-    }}
-  />
-);
-
-export const Default = Template.bind({});
-Default.argTypes = {
-  text: {
-    defaultValue: 'Leloir',
-    control: {
-      type: 'text'
-    }
-  },
-  currentLocationType: {
-    table: {
-      disable: true
-    }
-  },
-  value: {
-    table: {
-      disable: true
-    }
-  }
-};
-
-export const CurrentLocation: Story<SFAutocompleteLocationProps> = (args) => {
+const AutocompleteLocationTemplate: Story<SFAutocompleteLocationProps> = (
+  args
+) => {
   const [value, setValue] = React.useState<SFAutocompleteLocationResult>({
     text: ''
   });
@@ -71,20 +59,25 @@ export const CurrentLocation: Story<SFAutocompleteLocationProps> = (args) => {
     args.onChange(newValue);
   };
 
-  return (
-    <SFAutocompleteLocation
-      {...args}
-      currentLocation
-      value={value}
-      onChange={onChange}
-    />
-  );
+  return <SFAutocompleteLocation {...args} value={value} onChange={onChange} />;
 };
 
-CurrentLocation.argTypes = {
-  value: {
+export const Default = AutocompleteLocationTemplate.bind({});
+Default.argTypes = {
+  currentLocation: {
+    table: {
+      disable: true
+    }
+  },
+  currentLocationType: {
     table: {
       disable: true
     }
   }
+};
+
+export const CurrentLocation = AutocompleteLocationTemplate.bind({});
+CurrentLocation.args = {
+  currentLocation: true,
+  currentLocationType: 'address'
 };
