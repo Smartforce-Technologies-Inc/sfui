@@ -6,7 +6,19 @@ import { SFCard, SFCardProps, sfElevations } from './SFCard';
 export default {
   title: 'Components/SFCard',
   component: SFCard,
+  parameters: { controls: { sort: 'alpha' } },
   argTypes: {
+    isLoading: {
+      description: 'If true, displays a spinner inside the card.'
+    },
+    loadingAtTop: {
+      description:
+        'If true, displays the loading spinner at the top of the card.'
+    },
+    sfElevation: {
+      description:
+        'Shadow depth, corresponds to dp in the spec. It accepts values between 0 and 24 inclusive.'
+    },
     className: {
       table: {
         disable: true
