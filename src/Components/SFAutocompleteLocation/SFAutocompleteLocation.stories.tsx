@@ -15,8 +15,7 @@ export default {
   },
   argTypes: {
     currentLocation: {
-      description:
-        'If true, the component gets the current location coordinates.'
+      description: `If true, the component gets the device's current location coordinates.`
     },
     disabled: {
       description: 'If true, the component is disabled.',
@@ -29,7 +28,7 @@ export default {
     },
     minChar: {
       description:
-        'The minimun number of characters required for the input value to be valid.'
+        'The minimun number of characters required for the input value to do the search.'
     },
     onChange: {
       action: 'onChange',

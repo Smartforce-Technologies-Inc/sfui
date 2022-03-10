@@ -28,7 +28,7 @@ export default {
       control: { type: 'text' }
     },
     isLoading: {
-      description: 'Tells whether the component finished loading.'
+      description: 'If true, displays a spinner inside the button.'
     },
     fullWidth: {
       table: {
