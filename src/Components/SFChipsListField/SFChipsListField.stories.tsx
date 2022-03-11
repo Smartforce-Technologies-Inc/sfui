@@ -112,10 +112,60 @@ const ChipListOptions = [
 export default {
   title: 'Components/SFChipListField',
   component: SFChipsListField,
+  parameters: { controls: { sort: 'alpha' } },
   args: {
     label: 'Bagel'
   },
   argTypes: {
+    delimiters: {
+      description: 'The delimiter used to separate the values provided.',
+      control: false
+    },
+    disabled: {
+      description: 'If true, the chip should be displayed in a disabled state.'
+    },
+    emptyMessage: {
+      description: 'Message displayed when the input is empty.'
+    },
+    freeSolo: {
+      description:
+        'If true, the component is free solo, meaning that the user input is not bound to provided options.'
+    },
+    helperText: {
+      description: 'Text to help understand input values.'
+    },
+    inputMinWidth: {
+      description: 'Minimum width for the inner input field.'
+    },
+    inputType: {
+      description: 'The type of the inner input component field.'
+    },
+    isEditable: {
+      description: 'If true, the content of the chip is able to be edited.'
+    },
+    itemChipDisplay: {
+      description: 'How the loaded chip items should be displayed.'
+    },
+    itemChipSize: {
+      description: 'The size of the loaded chip items.'
+    },
+    items: {
+      description: 'List of chip items loaded.',
+      control: false
+    },
+    label: {
+      description: 'The content of the label.'
+    },
+    options: {
+      description: 'List of options.',
+      control: false
+    },
+    isValid: {
+      table: { disable: true }
+    },
+    required: {
+      table: { disable: true }
+    },
     onChange: {
       action: 'onChange',
       table: {
