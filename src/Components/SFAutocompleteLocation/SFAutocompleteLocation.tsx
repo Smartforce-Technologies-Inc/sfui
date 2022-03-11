@@ -9,6 +9,43 @@ import { SFTextField } from '../SFTextField/SFTextField';
 import { SFGrey, SFSurfaceLight } from '../../SFColors/SFColors';
 import { hexToRgba } from '../../Helpers';
 
+/*
+  This component uses three Google Maps API's: Places API, Places Autocomplete API and Geocoder API.
+
+  The Geocoder API it's used when the user has the geolocation enabled in the browser and looks for
+  a place based on the user coordinates to pre populate the input.
+
+  https://developers.google.com/maps/documentation/javascript/reference/geocoder
+
+  The Places Autocomplete API it's used to fetch options based on the current value of the input.
+
+  https://developers.google.com/maps/documentation/javascript/reference/places-autocomplete-service
+
+  This two API's returns objects that have a property named "place_id". In case that the value of the
+  component it's obtained by one of this two services (it's not a simple text) and has this place_id property, 
+  the component use the Places API to get the place details and adds it to the value of the component
+  if nothing fails.
+
+  https://developers.google.com/maps/documentation/javascript/reference/places-service
+
+  The method for getting the place details is "getDetails" and it's call with an argument of type "PlaceDetailsRequest".
+
+  This request is configured to get only two types of data (for billing reasons): "address_components" and "geometry".
+
+  https://developers.google.com/maps/documentation/javascript/reference/places-service#PlacesService.getDetails
+
+  "address_component" has the information of the different components that makes and address: street number, route, city, etc.
+
+  https://developers.google.com/maps/documentation/javascript/reference/geocoder#GeocoderAddressComponent
+
+  https://developers.google.com/maps/documentation/javascript/geocoding#GeocodingAddressTypes
+
+  "geometry" has the information about the coordinates of the place
+
+  https://developers.google.com/maps/documentation/javascript/reference/places-service#PlaceGeometry
+  
+*/
+
 type PlacePredictionsFn = (
   text: string,
   service: google.maps.places.AutocompleteService
@@ -41,6 +78,25 @@ const getPlacePredictions = async (
         (results: google.maps.places.AutocompletePrediction[]) => {
           resolve(results);
         }
+      );
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
+const getPlaceDetails = async (
+  service: google.maps.places.PlacesService,
+  placeId: string
+): Promise<google.maps.places.PlaceResult> => {
+  return new Promise((resolve, reject) => {
+    try {
+      service.getDetails(
+        {
+          placeId,
+          fields: ['address_components', 'geometry']
+        },
+        (placeDetails: google.maps.places.PlaceResult) => resolve(placeDetails)
       );
     } catch (e) {
       reject(e);
@@ -149,9 +205,20 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }));
 
+export interface SFGeocoderAddressComponent
+  extends google.maps.GeocoderAddressComponent {}
+
+export interface SFPlaceGeometry extends google.maps.places.PlaceGeometry {}
+
+export interface SFAutocompleteLocationPlaceDetails {
+  placeId: string;
+  addressComponents?: SFGeocoderAddressComponent[];
+  geometry?: SFPlaceGeometry;
+}
+
 export interface SFAutocompleteLocationResult {
   text: string;
-  placeId?: string;
+  placeDetails?: SFAutocompleteLocationPlaceDetails;
 }
 
 export interface SFAutocompleteLocationProps {
@@ -177,6 +244,7 @@ export const SFAutocompleteLocation = ({
 }: SFAutocompleteLocationProps): React.ReactElement<SFAutocompleteLocationResult> => {
   const classes = useStyles();
   const autocompleteService = React.useRef<google.maps.places.AutocompleteService>();
+  const placesService = React.useRef<google.maps.places.PlacesService>();
   const geocoderService = React.useRef<google.maps.Geocoder>();
 
   const [selectedOption, setSelectedOption] = React.useState<
@@ -194,7 +262,11 @@ export const SFAutocompleteLocation = ({
   React.useEffect(() => {
     refGetPlacePredictions.current = debounce(
       memoizePredictionsFn(getPlacePredictions),
-      150
+      250,
+      {
+        leading: true,
+        trailing: false
+      }
     );
   }, []);
 
@@ -216,6 +288,11 @@ export const SFAutocompleteLocation = ({
       typeof window.google.maps === 'object'
     ) {
       autocompleteService.current = new window.google.maps.places.AutocompleteService();
+
+      // The service needs an html div or a map as an argument
+      placesService.current = new window.google.maps.places.PlacesService(
+        document.createElement('div')
+      );
 
       if (
         (!value || !value.text || value.text.length === 0) &&
@@ -260,10 +337,34 @@ export const SFAutocompleteLocation = ({
                       place_id: result.place_id
                     });
 
-                    onChange({
-                      text: result.formatted_address,
-                      placeId: result.place_id
-                    });
+                    if (placesService.current) {
+                      getPlaceDetails(placesService.current, result.place_id)
+                        .then(
+                          (
+                            placeDetailsResult: google.maps.places.PlaceResult
+                          ) => {
+                            onChange({
+                              text: result.formatted_address,
+                              placeDetails: {
+                                placeId: result.place_id,
+                                addressComponents:
+                                  placeDetailsResult.address_components,
+                                geometry: placeDetailsResult.geometry
+                              }
+                            });
+                          }
+                        )
+                        .catch((e) =>
+                          console.error('PlacesService::getPlaceDetails', e)
+                        );
+                    } else {
+                      onChange({
+                        text: result.formatted_address,
+                        placeDetails: {
+                          placeId: result.place_id
+                        }
+                      });
+                    }
                   } else {
                     console.error('Geocoder: no results found');
                   }
@@ -301,17 +402,45 @@ export const SFAutocompleteLocation = ({
     <SFTextField {...params} required={required} label={label} />
   );
 
-  const onAutocompleteChange = (
+  const onAutocompleteChange = async (
     _event: React.ChangeEvent,
     newValue: google.maps.places.AutocompletePrediction,
     reason: string
-  ): void => {
+  ): Promise<void> => {
     if (reason !== 'create-option' && newValue) {
-      setSelectedOption(newValue);
-      onChange({
-        text: newValue.description,
-        placeId: newValue.place_id
-      });
+      if (newValue.place_id) {
+        let placeDetails: SFAutocompleteLocationPlaceDetails = {
+          placeId: newValue.place_id
+        };
+
+        try {
+          if (placesService.current) {
+            const placeDetailsResult = await getPlaceDetails(
+              placesService.current,
+              newValue.place_id
+            );
+
+            if (placeDetailsResult) {
+              placeDetails = {
+                ...placeDetails,
+                addressComponents: placeDetailsResult.address_components,
+                geometry: placeDetailsResult.geometry
+              };
+            }
+          }
+        } catch (e) {
+          console.error('PlacesService::getDetails', e);
+        } finally {
+          setSelectedOption(newValue);
+          onChange({
+            text: newValue.description,
+            placeDetails
+          });
+        }
+      } else {
+        setSelectedOption(newValue);
+        onChange({ text: newValue.description });
+      }
     }
   };
 
