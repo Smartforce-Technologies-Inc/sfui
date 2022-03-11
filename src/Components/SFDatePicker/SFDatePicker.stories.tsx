@@ -54,7 +54,7 @@ export default {
       }
     },
     helperText: {
-      description: '	The helper text content.',
+      description: 'The helper text content.',
       table: {
         type: {
           summary: 'string'
