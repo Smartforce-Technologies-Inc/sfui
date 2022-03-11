@@ -25,7 +25,7 @@ export default {
         'If true, the component will take up the full width of its container.'
     },
     hasError: {
-      description: '	If true, the chip should be displayed in a error state.'
+      description: 'If true, the chip should be displayed in a error state.'
     },
     variant: {
       table: { disable: true }

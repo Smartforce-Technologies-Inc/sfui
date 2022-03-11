@@ -129,35 +129,35 @@ export default {
     },
     freeSolo: {
       description:
-        'If true, the chiplistfield is free solo, meaning that the user input is not bound to provided options.'
+        'If true, the component is free solo, meaning that the user input is not bound to provided options.'
     },
     helperText: {
       description: 'Text to help understand input values.'
     },
     inputMinWidth: {
-      description: 'Minimmum with used by the input.'
+      description: 'Minimum width for the inner input field.'
     },
     inputType: {
-      description: 'Type of value the input can receive.'
+      description: 'The type of the inner input component field.'
     },
     isEditable: {
       description: 'If true, the content of the chip is able to be edited.'
     },
     itemChipDisplay: {
-      description: 'How the saved chip items should be displayed.'
+      description: 'How the loaded chip items should be displayed.'
     },
     itemChipSize: {
-      description: 'The size of the saved chip items.'
+      description: 'The size of the loaded chip items.'
     },
     items: {
-      description: 'List of chip items saved.',
+      description: 'List of chip items loaded.',
       control: false
     },
     label: {
       description: 'The content of the label.'
     },
     options: {
-      description: 'Array of options.',
+      description: 'List of options.',
       control: false
     },
     isValid: {
