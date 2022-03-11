@@ -8,8 +8,10 @@ import { SFGrey } from '../../SFColors/SFColors';
 export default {
   title: 'Components/SFDrawer',
   component: SFDrawer,
+  parameters: { controls: { sort: 'alpha' } },
   args: {
-    open: true
+    open: false,
+    anchor: 'left'
   },
   argTypes: {
     onClose: {
@@ -18,11 +20,36 @@ export default {
         disable: true
       }
     },
+    open: {
+      description: 'If true, the drawer is open.',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: {
+          summary: 'false'
+        }
+      }
+    },
     anchor: {
-      defaultValue: 'left',
+      description: 'Side from which the drawer will appear.',
+      table: {
+        type: {
+          summary: `'bottom' | 'left' | 'right' | 'top'`
+        },
+        defaultValue: {
+          summary: 'left'
+        }
+      },
+      options: ['left', 'right', 'bottom', 'top'],
       control: {
         type: 'radio',
-        options: ['left', 'right', 'bottom', 'top']
+        labels: {
+          left: 'Left',
+          right: 'Right',
+          bottom: 'Bottom',
+          top: 'Top'
+        }
       }
     },
     ref: {
