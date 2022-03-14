@@ -43,6 +43,7 @@ export const SFSelect = ({
       error={props.error}
       value={value}
       disabled={props.disabled}
+      required={props.required}
       SelectProps={{
         ...props,
         IconComponent: (props): React.ReactElement => (

@@ -20,7 +20,11 @@ const StyledSelect = withStyles(() => ({
 
 const StyledMenuItem = withStyles(() => ({
   root: {
-    height: 52
+    height: 52,
+
+    '& .MuiFormControl-root': {
+      minWidth: 'auto'
+    }
   }
 }))(SFMenuItem);
 
@@ -89,6 +93,7 @@ export const SFMultiSelect = ({
       helperText={helperText}
       error={props.error}
       disabled={props.disabled}
+      required={props.required}
       SelectProps={{
         ...props,
         defaultValue,
@@ -110,7 +115,7 @@ export const SFMultiSelect = ({
       {options.map((option) => (
         <StyledMenuItem key={option.value} value={option.value}>
           <SFCheckbox checked={isChecked(option, selected)} />
-          {option.label}
+          <span style={{ overflow: 'hidden' }}>{option.label}</span>
         </StyledMenuItem>
       ))}
     </StyledSelect>
