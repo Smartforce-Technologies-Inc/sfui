@@ -11,34 +11,36 @@ import { SFButton, SFButtonProps } from '../SFButton/SFButton';
 import { withStyles } from '@material-ui/core';
 
 const StyledSFDialog = withStyles(() => ({
-  paper: {
-    width: '270px',
-    margin: '0px',
-    padding: '36px',
-    maxWidth: 'unset',
-    overflowY: 'unset',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 24,
+  root: {
+    '& .MuiDialog-paper': {
+      width: '270px',
+      margin: '0px',
+      padding: '36px',
+      maxWidth: 'unset',
+      overflowY: 'unset',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 24,
 
-    '@media screen and (min-width: 768px)': {
-      width: '462px'
-    },
+      '@media screen and (min-width: 768px)': {
+        width: '462px'
+      },
 
-    '@media screen and (min-width: 1024px)': {
-      width: '404px'
-    },
+      '@media screen and (min-width: 1024px)': {
+        width: '404px'
+      },
 
-    '@media screen and (min-width: 1280px)': {
-      width: '532px'
-    },
+      '@media screen and (min-width: 1280px)': {
+        width: '532px'
+      },
 
-    '@media screen and (min-width: 1600px)': {
-      width: '430px'
-    },
+      '@media screen and (min-width: 1600px)': {
+        width: '430px'
+      },
 
-    '@media screen and (min-width: 1920px)': {
-      width: '536px'
+      '@media screen and (min-width: 1920px)': {
+        width: '536px'
+      }
     }
   }
 }))(SFDialog);
