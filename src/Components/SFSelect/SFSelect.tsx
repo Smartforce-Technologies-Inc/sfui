@@ -46,6 +46,7 @@ export const SFSelect = ({
       required={props.required}
       SelectProps={{
         ...props,
+        autoWidth: false,
         IconComponent: (props): React.ReactElement => (
           <SFIcon icon='Down-2' size='16' {...props} />
         ),

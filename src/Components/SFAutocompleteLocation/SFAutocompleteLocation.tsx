@@ -262,7 +262,7 @@ export const SFAutocompleteLocation = ({
   React.useEffect(() => {
     refGetPlacePredictions.current = debounce(
       memoizePredictionsFn(getPlacePredictions),
-      250,
+      100,
       {
         leading: true,
         trailing: false
