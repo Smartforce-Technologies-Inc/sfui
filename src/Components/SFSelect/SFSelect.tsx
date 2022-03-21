@@ -5,7 +5,7 @@ import { SFTextField } from '../SFTextField/SFTextField';
 import { SFIcon } from '../SFIcon/SFIcon';
 import { SFMenuItem } from '../SFMenuItem/SFMenuItem';
 
-const StyledSelect = withStyles(() => ({
+export const StyledSelect = withStyles(() => ({
   root: {
     '& svg': {
       position: 'absolute',
@@ -15,6 +15,15 @@ const StyledSelect = withStyles(() => ({
     }
   }
 }))(SFTextField);
+
+const StyledMenuItem = withStyles(() => ({
+  root: {
+    whiteSpace: 'unset',
+    wordBreak: 'break-word',
+    minHeight: '36px',
+    height: 'auto'
+  }
+}))(SFMenuItem);
 
 export interface SFMenuOption {
   label: string;
@@ -53,14 +62,15 @@ export const SFSelect = ({
         MenuProps: {
           variant: 'menu',
           autoFocus: false,
-          disableAutoFocusItem: true
+          disableAutoFocusItem: true,
+          style: { width: '1px' }
         }
       }}
     >
       {options.map((option: SFMenuOption, index: number) => (
-        <SFMenuItem key={`option-${index}`} value={option.value}>
+        <StyledMenuItem key={`option-${index}`} value={option.value}>
           {option.label}
-        </SFMenuItem>
+        </StyledMenuItem>
       ))}
     </StyledSelect>
   );
