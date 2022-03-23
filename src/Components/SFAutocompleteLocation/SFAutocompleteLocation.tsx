@@ -271,7 +271,11 @@ export const SFAutocompleteLocation = ({
   }, []);
 
   const fetchOptions = async (): Promise<void> => {
-    if (refGetPlacePredictions.current && autocompleteService.current) {
+    if (
+      navigator.onLine &&
+      refGetPlacePredictions.current &&
+      autocompleteService.current
+    ) {
       const options = await refGetPlacePredictions.current(
         value.text,
         autocompleteService.current
