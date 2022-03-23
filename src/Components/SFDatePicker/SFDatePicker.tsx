@@ -47,7 +47,6 @@ const usePopOverStyle = makeStyles((theme: Theme) =>
       },
       // Toolbar
       '& .MuiPickersDatePickerRoot-toolbar': {
-        // position: 'absolute',
         flexDirection: 'row-reverse',
         alignItems: 'center',
         justifyContent: 'start',
@@ -98,14 +97,10 @@ const usePopOverStyle = makeStyles((theme: Theme) =>
       },
       // Calendar Header
       '& .MuiPickersCalendarHeader-switchHeader': {
-        // justifyContent: 'end',
         gap: 4,
         padding: '0px 24px',
         marginTop: 0,
-        marginBottom: 18,
-        '& .MuiPickersCalendarHeader-transitionContainer': {
-          // display: 'none'
-        }
+        marginBottom: 18
       },
       // Day/Year Picker
       '& .MuiPickersBasePicker-pickerView': {
@@ -113,7 +108,7 @@ const usePopOverStyle = makeStyles((theme: Theme) =>
         minWidth: 312,
         '& .MuiPickersYearSelection-container': {
           padding: '0 24px 0',
-          marginTop: 0, // 58,
+          marginTop: 0,
           '& .MuiPickersYear-root': {
             display: 'inline-flex',
             height: 36,
