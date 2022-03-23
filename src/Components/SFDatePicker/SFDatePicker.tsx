@@ -100,12 +100,18 @@ const usePopOverStyle = makeStyles((theme: Theme) =>
         gap: 4,
         padding: '0px 24px',
         marginTop: 0,
-        marginBottom: 18
+        marginBottom: 18,
+        '& .MuiPickersCalendarHeader-transitionContainer p': {
+          fontSize: 16,
+          lineHeight: '24px',
+          fontWeight: 400
+        }
       },
       // Day/Year Picker
       '& .MuiPickersBasePicker-pickerView': {
         maxWidth: 312,
         minWidth: 312,
+        marginTop: 10,
         '& .MuiPickersYearSelection-container': {
           padding: '0 24px 0',
           marginTop: 0,
