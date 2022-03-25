@@ -115,7 +115,7 @@ export const SFMultiSelect = ({
       {options.map((option) => (
         <StyledMenuItem key={option.value} value={option.value}>
           <SFCheckbox checked={isChecked(option, selected)} />
-          <span className={menuClasses.label}>{option.label}</span>
+          <span>{option.label}</span>
         </StyledMenuItem>
       ))}
     </StyledSelect>
