@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { SFBadge } from './SFBadge';
-import { SFIcon, SFIconButton, SFLink } from '../..';
+import { SFBadgeProps, SFIcon, SFIconButton, SFLink } from '../..';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 
 const AnchorOrigins = {
@@ -80,20 +80,21 @@ const useRectangleStyles = makeStyles((theme: Theme) => ({
 export default {
   title: 'Components/SFBadge',
   component: SFBadge,
+  parameters: { controls: { sort: 'alpha' } },
+  args: {
+    value: 0,
+    size: 'small',
+    type: 'numeric'
+  },
   argTypes: {
     value: {
-      defaultValue: 0
+      description: 'The value of the badge.'
     },
     size: {
-      defaultValue: 'small'
+      description: 'The size of the value.'
     },
     type: {
-      defaultValue: 'numeric'
-    },
-    overlap: {
-      table: {
-        disable: true
-      }
+      description: 'Value representation type.'
     },
     invisible: {
       table: {
@@ -151,8 +152,9 @@ export default {
   }
 } as Meta;
 
-export const BadgeCircular = (args): JSX.Element => {
-  const style = useCircleStyles();
+const BadgeTemplate: Story<SFBadgeProps> = ({ overlap, ...args }) => {
+  const style =
+    overlap && overlap === 'circle' ? useCircleStyles() : useRectangleStyles();
 
   return (
     <Fragment>
@@ -179,33 +181,9 @@ export const BadgeCircular = (args): JSX.Element => {
   );
 };
 
-export const BadgeRectangular = (args): JSX.Element => {
-  const style = useRectangleStyles();
+export const BadgeCircular = BadgeTemplate.bind({});
 
-  return (
-    <Fragment>
-      {headerNote()}
-      <h4>Default config</h4>
-      <div style={{ display: 'flex', gap: '30px', alignItems: 'center' }}>
-        <SFBadge {...args}>
-          <p style={{ margin: 0, padding: 0 }}>Text</p>
-        </SFBadge>
-        <SFBadge {...args}>
-          <SFLink sfSize='medium'>Some Link</SFLink>
-        </SFBadge>
-      </div>
-      <h4>Position adjusted</h4>
-      <div style={{ display: 'flex', gap: '30px', alignItems: 'center' }}>
-        <SFBadge className={style.custom} {...args}>
-          <p style={{ margin: 0, padding: 0 }}>Text</p>
-        </SFBadge>
-        <SFBadge {...args}>
-          <SFLink sfSize='medium'>Some Link</SFLink>
-        </SFBadge>
-      </div>
-    </Fragment>
-  );
-};
+export const BadgeRectangular = BadgeTemplate.bind({});
 
 BadgeCircular.args = {
   ...BadgeCircular.args,

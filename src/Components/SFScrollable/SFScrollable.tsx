@@ -90,11 +90,18 @@ export interface SFScrollableProps {
   containerClassName?: string;
   children: React.ReactNode;
   onScroll?: (data: SFScrollData) => void;
+  onScrollBottom?: () => void;
 }
 
 export const SFScrollable = React.forwardRef(
   (
-    { className, containerClassName, children, onScroll }: SFScrollableProps,
+    {
+      className,
+      containerClassName,
+      children,
+      onScroll,
+      onScrollBottom
+    }: SFScrollableProps,
     ref: React.Ref<SFScrollableRefHandler>
   ) => {
     const classes = useStyles();
@@ -351,7 +358,8 @@ export const SFScrollable = React.forwardRef(
           scrollLeft,
           scrollWidth,
           offsetHeight,
-          offsetWidth
+          offsetWidth,
+          clientHeight
         } = scrollHostRef.current;
 
         let newTop = (scrollTop / scrollHeight) * offsetHeight;
@@ -366,6 +374,10 @@ export const SFScrollable = React.forwardRef(
 
         if (newLeft !== horizontalScrollLeft) {
           setHorizontalScrollLeft(newLeft);
+        }
+
+        if (scrollHeight - scrollTop - clientHeight < 0.5 && onScrollBottom) {
+          onScrollBottom();
         }
 
         if (onScroll) {

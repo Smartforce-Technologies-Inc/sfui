@@ -6,27 +6,60 @@ import { SFDatePicker, SFDatePickerProps } from './SFDatePicker';
 export default {
   title: 'Components/SFDatePicker',
   component: SFDatePicker,
+  parameters: { controls: { sort: 'alpha' } },
   args: {
     label: 'mm/dd/yyyy'
   },
   argTypes: {
     onChange: { action: 'onChange', table: { disable: true } },
     value: {
+      description: 'Datepicker value.',
+      table: {
+        type: {
+          summary: 'ParsableDate'
+        }
+      },
       control: {
         type: 'date'
       }
     },
+    label: {
+      description: 'The label content.',
+      table: {
+        type: {
+          summary: 'string'
+        }
+      }
+    },
     disabled: {
+      description: 'Disable picker and text field.',
+      table: {
+        type: {
+          summary: 'boolean'
+        }
+      },
       control: {
         type: 'boolean'
       }
     },
     error: {
+      description: 'Displays the error state.',
+      table: {
+        type: {
+          summary: 'boolean'
+        }
+      },
       control: {
         type: 'boolean'
       }
     },
     helperText: {
+      description: 'The helper text content.',
+      table: {
+        type: {
+          summary: 'string'
+        }
+      },
       control: {
         type: 'text'
       }

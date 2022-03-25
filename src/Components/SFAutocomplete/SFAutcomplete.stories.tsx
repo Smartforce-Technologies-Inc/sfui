@@ -23,11 +23,53 @@ const getOptions = (): SFMenuOption[] => {
 export default {
   title: 'Components/SFAutocomplete',
   component: SFAutocomplete,
+  parameters: { controls: { sort: 'alpha' } },
   args: {
     label: 'Bagel',
     options: getOptions()
   },
   argTypes: {
+    allowEmpty: {
+      description: 'Determinates if the input could be empty.'
+    },
+    disabled: {
+      control: {
+        type: 'boolean'
+      }
+    },
+    freeSolo: {
+      description:
+        'If true, the Autocomplete is free solo, meaning that the user input is not bound to provided options.',
+      control: {
+        type: 'boolean'
+      },
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: {
+          summary: 'false'
+        }
+      }
+    },
+    hasPopupIcon: {
+      description: 'Enables the dropdown icon.'
+    },
+    inputValue: {
+      description: 'The value of the autocomplete input.',
+      control: {
+        type: 'text'
+      },
+      table: {
+        type: {
+          summary: 'string'
+        }
+      }
+    },
+    label: {
+      description: 'The label asociated to the input value meaning.'
+    },
+    options: {},
     onChange: {
       action: 'onChange',
       table: {
@@ -40,27 +82,15 @@ export default {
         disable: true
       }
     },
-    freeSolo: {
-      defaultValue: false,
-      control: {
-        type: 'boolean'
-      }
-    },
-    options: {
-      table: {
-        disable: true
-      }
+    required: {
+      description: 'Indicates whether the input is required or not.'
     },
     ref: {
       table: {
         disable: true
       }
     },
-    allowEmpty: {
-      table: {
-        disable: true
-      }
-    }
+    value: {}
   }
 } as Meta;
 
@@ -78,17 +108,35 @@ Default.argTypes = {
 };
 
 export const Disabled = Template.bind({});
-Disabled.argTypes = {
-  inputValue: {
-    defaultValue: 'Bagel number one',
-    control: {
-      type: 'text'
+Disabled.args = {
+  inputValue: 'Bagel number one',
+  disabled: true
+};
+
+export const ClearOnBlur: Story<SFAutocompleteProps> = (args) => {
+  const [value, setValue] = React.useState<string>('');
+
+  return (
+    <SFAutocomplete
+      {...args}
+      clearOnBlur
+      options={getOptions()}
+      label='Bagel'
+      value={value}
+      onChange={(value): void => setValue(value)}
+    />
+  );
+};
+
+ClearOnBlur.argTypes = {
+  freeSolo: {
+    table: {
+      disable: true
     }
   },
-  disabled: {
-    defaultValue: true,
-    control: {
-      type: 'boolean'
+  value: {
+    table: {
+      disable: true
     }
   }
 };

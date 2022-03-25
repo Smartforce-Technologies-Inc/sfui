@@ -6,7 +6,16 @@ import {
   withStyles
 } from '@material-ui/core/styles';
 import MomentUtils from '@date-io/moment';
-import { SFBlue, SFGrey, SFRed } from '../../SFColors/SFColors';
+import {
+  SFBlue,
+  SFBlueMainDark,
+  SFBlueMainLight,
+  SFGrey,
+  SFRed,
+  SFSurfaceLight,
+  SFTextBlack,
+  SFTextWhite
+} from '../../SFColors/SFColors';
 import { SFIcon } from '../SFIcon/SFIcon';
 import {
   KeyboardDatePicker,
@@ -33,6 +42,114 @@ const usePopOverStyle = makeStyles((theme: Theme) =>
       backgroundColor: `${
         theme.palette.type !== 'light' ? SFGrey[800] : undefined
       }`,
+      '& .MuiPickersBasePicker-container': {
+        paddingTop: 20
+      },
+      // Toolbar
+      '& .MuiPickersDatePickerRoot-toolbar': {
+        flexDirection: 'row-reverse',
+        alignItems: 'center',
+        justifyContent: 'start',
+        gap: 2,
+        height: 40,
+        minHeight: 40,
+        paddingLeft: 0,
+        paddingRight: 0,
+        backgroundColor: `${
+          theme.palette.type !== 'light' ? SFGrey[800] : SFSurfaceLight
+        }`,
+        width: '100%',
+        // Toolbar buttons
+        '& .MuiPickersToolbarButton-toolbarBtn': {
+          marginLeft: 24,
+          padding: '0 12px',
+          height: 34,
+          borderRadius: 34,
+          border: `1px solid ${
+            theme.palette.type !== 'light' ? SFBlueMainDark : SFBlueMainLight
+          }`,
+          '&:first-child': {
+            marginLeft: 0
+          },
+          '&:hover': {
+            backgroundColor: `${
+              theme.palette.type === 'light'
+                ? hexToRgba(SFBlue[100], 0.4)
+                : hexToRgba(SFBlue[200], 0.2)
+            }`
+          },
+          '&:active': {
+            backgroundColor: `${
+              theme.palette.type === 'light'
+                ? hexToRgba(SFBlue[100], 0.6)
+                : hexToRgba(SFBlue[200], 0.1)
+            }`
+          }
+        },
+        '& .MuiPickersToolbarText-toolbarBtnSelected, & .MuiPickersToolbarText-toolbarTxt': {
+          fontSize: 16,
+          lineHeight: '24px',
+          fontWeight: 400,
+          color: `${
+            theme.palette.type !== 'light' ? SFBlueMainDark : SFBlueMainLight
+          }`
+        }
+      },
+      // Calendar Header
+      '& .MuiPickersCalendarHeader-switchHeader': {
+        gap: 4,
+        padding: '0px 24px',
+        marginTop: 0,
+        marginBottom: 18,
+        '& .MuiPickersCalendarHeader-transitionContainer p': {
+          fontSize: 16,
+          lineHeight: '24px',
+          fontWeight: 400
+        }
+      },
+      // Day/Year Picker
+      '& .MuiPickersBasePicker-pickerView': {
+        maxWidth: 312,
+        minWidth: 312,
+        marginTop: 10,
+        '& .MuiPickersYearSelection-container': {
+          padding: '0 24px 0',
+          marginTop: 0,
+          '& .MuiPickersYear-root': {
+            display: 'inline-flex',
+            height: 36,
+            width: 62,
+            margin: 0,
+            fontSize: 14,
+            lineHeight: '20px',
+            borderRadius: 36,
+            '&:hover, &:active': {
+              color: `${
+                theme.palette.type !== 'light' ? SFTextWhite : SFTextBlack
+              }`,
+              backgroundColor: `${
+                theme.palette.type === 'light'
+                  ? hexToRgba(SFGrey[200], 0.3)
+                  : hexToRgba(SFGrey[500], 0.3)
+              }`
+            }
+          },
+          '& .MuiPickersYear-yearSelected': {
+            margin: 0,
+            color: `${
+              theme.palette.type !== 'light' ? SFTextBlack : SFTextWhite
+            }`,
+            backgroundColor: `${
+              theme.palette.type !== 'light' ? SFBlueMainDark : SFBlueMainLight
+            }`,
+            '&:hover': {
+              backgroundColor: `${
+                theme.palette.type === 'light' ? SFBlue[500] : SFBlue[200]
+              } !important`
+            }
+          }
+        }
+      },
       '& .MuiPickersDay-current': {
         border: `1px solid ${
           theme.palette.type === 'light' ? SFBlue[500] : SFBlue[200]
@@ -233,7 +350,6 @@ export const SFDatePicker = ({
       <StyledDatePicker
         {...props}
         fullWidth
-        disableToolbar
         className={openCalendarStyle ? 'openCalendarStyle' : ''}
         value={value}
         variant='inline'
