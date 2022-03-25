@@ -25,10 +25,12 @@ const useMenuStyles = makeStyles({
     width: '1px',
     marginTop: '8px'
   },
-  label: {
-    paddingTop: '9px',
-    fontSize: '16px',
-    lineHeight: '24px'
+  list: {
+    '& li > span': {
+      paddingTop: '9px',
+      fontSize: '16px',
+      lineHeight: '24px'
+    }
   }
 });
 
@@ -49,7 +51,7 @@ export const SFMultiSelect = ({
   ...props
 }: SFMultiSelectProps): React.ReactElement<SFMultiSelectProps> => {
   const [selected, setSelected] = React.useState<string[]>([]);
-  const menuClasses: Record<'paper' | 'label', string> = useMenuStyles();
+  const menuClasses: Record<'paper' | 'list', string> = useMenuStyles();
 
   React.useEffect(() => {
     const selectedValue = value || defaultValue;
