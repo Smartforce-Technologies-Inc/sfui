@@ -33,7 +33,7 @@ export default {
       description: 'The size of the component.'
     },
     sfIcon: {
-      description: 'The icon to be used.',
+      description: 'The icon name to be used.',
       control: {
         type: 'select',
         options: SFIconSet.icons.map((icon) => icon.properties.name)
