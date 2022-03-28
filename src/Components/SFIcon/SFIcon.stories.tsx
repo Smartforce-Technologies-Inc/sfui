@@ -16,15 +16,21 @@ export default {
   },
   argTypes: {
     icon: {
+      description: 'The icon to be used.',
       control: {
         type: 'select',
         options: SFIconSet.icons.map((icon) => icon.properties.name)
       }
     },
     color: {
-      control: 'color'
+      control: 'color',
+      description: 'The color of the icon.'
+    },
+    rotate: {
+      description: 'The rotation of the icon.'
     },
     size: {
+      description: 'The size of the icon.',
       control: {
         type: 'number'
       }

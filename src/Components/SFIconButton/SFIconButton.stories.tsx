@@ -18,16 +18,29 @@ export default {
   argTypes: {
     onClick: { action: 'onClick', table: { disable: true } },
     sfColor: {
+      description: 'The color of the component.',
+      table: {
+        defaultValue: {
+          summary: `"grey"`
+        }
+      },
       control: {
         type: 'radio',
         options: ['blue', 'red', 'grey']
       }
     },
+    sfSize: {
+      description: 'The size of the component.'
+    },
     sfIcon: {
+      description: 'The icon to be used.',
       control: {
         type: 'select',
         options: SFIconSet.icons.map((icon) => icon.properties.name)
       }
+    },
+    rotate: {
+      description: 'The rotation of the icon.'
     },
     disabled: {
       control: {
