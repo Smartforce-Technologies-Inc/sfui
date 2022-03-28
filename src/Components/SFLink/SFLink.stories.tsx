@@ -6,6 +6,12 @@ import { SFLink, SFLinkProps } from './SFLink';
 export default {
   title: 'Components/SFLink',
   component: SFLink,
+  parameters: { controls: { sort: 'alpha' } },
+  args: {
+    text: 'I am a link example',
+    color: 'inherited',
+    sfSize: 'medium'
+  },
   argTypes: {
     onClick: {
       action: 'onClick',
@@ -14,16 +20,54 @@ export default {
       }
     },
     text: {
-      defaultValue: 'I am a link example',
+      description: 'The text to display.',
       control: {
         type: 'text'
       }
     },
     color: {
-      defaultValue: 'inherited',
+      description: 'The color of the link.',
       control: {
         type: 'radio',
         options: ['inherited', 'primary']
+      }
+    },
+    sfSize: {
+      description: 'The size of the link.'
+    },
+    variant: {
+      table: {
+        disable: true
+      }
+    },
+    noWrap: {
+      table: {
+        disable: true
+      }
+    },
+    gutterBottom: {
+      table: {
+        disable: true
+      }
+    },
+    paragraph: {
+      table: {
+        disable: true
+      }
+    },
+    align: {
+      table: {
+        disable: true
+      }
+    },
+    display: {
+      table: {
+        disable: true
+      }
+    },
+    underline: {
+      table: {
+        disable: true
       }
     },
     ref: {
