@@ -15,7 +15,7 @@ export default {
   },
   argTypes: {
     transitionDuration: {
-      description: `The length of the transition in ms, or 'auto'.`,
+      description: `The duration of the transition in ms, or 'auto'.`,
       table: {
         defaultValue: {
           summary: 'auto'
