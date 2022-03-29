@@ -16,7 +16,7 @@ export default {
   },
   argTypes: {
     icon: {
-      description: 'The icon to be used.',
+      description: 'The icon name to be used.',
       control: {
         type: 'select',
         options: SFIconSet.icons.map((icon) => icon.properties.name)
