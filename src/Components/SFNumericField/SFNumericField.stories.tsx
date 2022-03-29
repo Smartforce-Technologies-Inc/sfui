@@ -7,22 +7,41 @@ import { SFNumericField } from './SFNumericField';
 export default {
   title: 'Components/SFNumericField',
   component: SFNumericField,
+  parameters: { controls: { sort: 'alpha' } },
   args: {
-    label: 'Bagel'
+    label: 'Bagel',
+    decimalScale: 2
   },
   argTypes: {
     label: {
+      description: 'The label asociated to the input value meaning.',
+      table: {
+        type: {
+          summary: 'string'
+        }
+      },
       control: {
         type: 'text'
       }
     },
     thousandSeparator: {
+      description: 'If true, separates de number in thousands.',
+      table: {
+        type: {
+          summary: 'string'
+        }
+      },
       control: {
         type: 'boolean'
       }
     },
     decimalScale: {
-      defaultValue: 2,
+      description: 'If defined it limits to given decimal scale.',
+      table: {
+        type: {
+          summary: 'number'
+        }
+      },
       control: {
         min: 0,
         max: 10,
@@ -31,33 +50,67 @@ export default {
       }
     },
     fixedDecimalScale: {
+      description: 'If true, fixes the decimal scale of the number shown.',
+      table: {
+        type: {
+          summary: 'boolean'
+        }
+      },
       control: {
         type: 'boolean'
       }
     },
     allowNegative: {
+      description: 'If true, negative numbers are allowed.',
+      table: {
+        type: {
+          summary: 'boolean'
+        }
+      },
       control: {
         type: 'boolean'
       }
     },
+    allowDecimals: {
+      description: 'If true, decimals are allowed.'
+    },
     prefix: {
+      description: 'Add a prefix before the number.',
+      table: {
+        type: {
+          summary: 'string'
+        }
+      },
       control: {
         type: 'text'
       }
     },
     suffix: {
+      description: 'Add a suffix after the number.',
+      table: {
+        type: {
+          summary: 'string'
+        }
+      },
       control: {
         type: 'text'
       }
     },
     format: {
+      description:
+        'If format given as hash string allow number input inplace of hash. If format given as function, component calls the function with unformatted number and expects formatted number.',
+      table: {
+        type: {
+          summary: 'string | func'
+        }
+      },
       control: {
         type: 'text'
       }
     },
     mask: {
-      control: {
-        type: 'text'
+      table: {
+        disable: true
       }
     },
     onChange: {
