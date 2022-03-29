@@ -28,7 +28,7 @@ export default {
       description: 'If true, separates de number in thousands.',
       table: {
         type: {
-          summary: 'string'
+          summary: 'boolean'
         }
       },
       control: {
@@ -97,8 +97,7 @@ export default {
       }
     },
     format: {
-      description:
-        'If format given as hash string allow number input inplace of hash. If format given as function, component calls the function with unformatted number and expects formatted number.',
+      description: 'If provided, formats the input value.',
       table: {
         type: {
           summary: 'string | func'
