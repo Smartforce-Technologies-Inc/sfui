@@ -5,7 +5,7 @@ import { SFTextField } from '../SFTextField/SFTextField';
 import { SFIcon } from '../SFIcon/SFIcon';
 import { SFMenuItem } from '../SFMenuItem/SFMenuItem';
 
-const StyledSelect = withStyles(() => ({
+export const StyledSelect = withStyles(() => ({
   root: {
     '& svg': {
       position: 'absolute',
@@ -15,6 +15,15 @@ const StyledSelect = withStyles(() => ({
     }
   }
 }))(SFTextField);
+
+const StyledMenuItem = withStyles(() => ({
+  root: {
+    whiteSpace: 'unset',
+    wordBreak: 'break-word',
+    minHeight: '36px',
+    height: 'auto'
+  }
+}))(SFMenuItem);
 
 export interface SFMenuOption {
   label: string;
@@ -43,22 +52,25 @@ export const SFSelect = ({
       error={props.error}
       value={value}
       disabled={props.disabled}
+      required={props.required}
       SelectProps={{
         ...props,
+        autoWidth: false,
         IconComponent: (props): React.ReactElement => (
           <SFIcon icon='Down-2' size='16' {...props} />
         ),
         MenuProps: {
           variant: 'menu',
           autoFocus: false,
-          disableAutoFocusItem: true
+          disableAutoFocusItem: true,
+          style: { width: '1px' }
         }
       }}
     >
       {options.map((option: SFMenuOption, index: number) => (
-        <SFMenuItem key={`option-${index}`} value={option.value}>
+        <StyledMenuItem key={`option-${index}`} value={option.value}>
           {option.label}
-        </SFMenuItem>
+        </StyledMenuItem>
       ))}
     </StyledSelect>
   );

@@ -58,6 +58,11 @@ export default {
         type: 'text'
       }
     },
+    required: {
+      control: {
+        type: 'boolean'
+      }
+    },
     options: {
       table: {
         disable: true

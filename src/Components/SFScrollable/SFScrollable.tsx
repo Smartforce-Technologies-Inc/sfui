@@ -376,7 +376,7 @@ export const SFScrollable = React.forwardRef(
           setHorizontalScrollLeft(newLeft);
         }
 
-        if (scrollHeight - scrollTop + 0.5 === clientHeight && onScrollBottom) {
+        if (scrollHeight - scrollTop - clientHeight < 0.5 && onScrollBottom) {
           onScrollBottom();
         }
 
