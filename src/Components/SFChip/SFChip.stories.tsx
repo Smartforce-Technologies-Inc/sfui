@@ -12,6 +12,7 @@ export default {
   },
   argTypes: {
     label: {
+      description: 'The label asociated to the input value meaning.',
       control: {
         type: 'text'
       }

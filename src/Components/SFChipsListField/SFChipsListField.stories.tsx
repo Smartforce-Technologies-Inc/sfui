@@ -154,7 +154,7 @@ export default {
       control: false
     },
     label: {
-      description: 'The content of the label.'
+      description: 'The label asociated to the input value meaning.'
     },
     options: {
       description: 'List of options.',
