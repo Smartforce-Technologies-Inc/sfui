@@ -6,7 +6,14 @@ import { SFPaper, SFPaperProps } from './SFPaper';
 
 export default {
   title: 'Components/SFPaper',
-  component: SFPaper
+  component: SFPaper,
+  argTypes: {
+    ref: {
+      table: {
+        disable: true
+      }
+    }
+  }
 } as Meta;
 
 const Template: Story<SFPaperProps> = (args) => (
