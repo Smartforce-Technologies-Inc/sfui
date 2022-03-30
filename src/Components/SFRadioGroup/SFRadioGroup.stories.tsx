@@ -18,11 +18,15 @@ const options: SFRadioOptionsProps[] = [
 export default {
   title: 'Components/SFRadioGroup',
   component: SFRadioGroup,
+  parameters: { controls: { sort: 'alpha' } },
   args: {
     options,
     label: 'Bagel'
   },
   argTypes: {
+    label: {
+      description: 'The label asociated to the input value meaning.'
+    },
     color: {
       table: {
         disable: true
