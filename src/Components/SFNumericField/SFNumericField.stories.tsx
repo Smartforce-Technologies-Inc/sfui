@@ -36,7 +36,7 @@ export default {
       }
     },
     decimalScale: {
-      description: 'If defined it limits to given decimal scale.',
+      description: 'If defined, it limits to given decimal scale.',
       table: {
         type: {
           summary: 'number'
