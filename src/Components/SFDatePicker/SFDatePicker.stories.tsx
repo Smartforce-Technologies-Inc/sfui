@@ -121,6 +121,6 @@ const AllTemplate: Story<SFDatePickerProps> = (args) => (
 export const AllTogether = AllTemplate.bind({});
 AllTogether.parameters = {
   controls: {
-    disabled: true
+    disable: true
   }
 };
