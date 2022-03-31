@@ -6,17 +6,34 @@ import { SFTextShadow, SFTextShadowProps } from './SFTextShadow';
 export default {
   title: 'Components/SFTextShadow',
   component: SFTextShadow,
+  parameters: { controls: { sort: 'alpha' } },
   args: {
     text: 'Bagel',
     size: 20
   },
   argTypes: {
+    angle: {
+      description: 'The angle of the text shadow in degrees.'
+    },
+    blur: {
+      description: 'The blur of the text shadow.'
+    },
+    opacity: {
+      description: 'The opacity of the text shadow, rangeing from 0 to 1.'
+    },
+    text: {
+      description: 'The text to apply the shadow on.'
+    },
+    size: {
+      description: 'The size of the text shadow.'
+    },
     type: {
       table: {
         disable: true
       }
     },
     color: {
+      description: 'The color used in the text shadow.',
       control: 'color'
     }
   }
