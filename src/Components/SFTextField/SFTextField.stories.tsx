@@ -9,7 +9,9 @@ export default {
   component: SFTextField,
   parameters: { controls: { sort: 'alpha' } },
   args: {
-    label: 'Bagel'
+    label: 'Bagel',
+    value: 'Some text',
+    type: 'text'
   },
   argTypes: {
     onChange: {
@@ -137,9 +139,9 @@ Default.argTypes = {
     }
   },
   type: {
+    options: ['text', 'password'],
     control: {
-      type: 'select',
-      options: ['text', 'password']
+      type: 'select'
     }
   }
 };

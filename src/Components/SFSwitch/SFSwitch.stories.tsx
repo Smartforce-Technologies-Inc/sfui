@@ -58,9 +58,9 @@ export default {
           summary: 'medium'
         }
       },
+      options: ['small', 'medium'],
       control: {
-        type: 'radio',
-        options: ['small', 'medium']
+        type: 'radio'
       }
     },
     label: {

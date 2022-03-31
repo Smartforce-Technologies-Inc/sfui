@@ -36,9 +36,9 @@ export default {
       }
     },
     value: {
+      options: getOptions().map((o: SFMenuOption) => o.value),
       control: {
-        type: 'select',
-        options: getOptions().map((o: SFMenuOption) => o.value)
+        type: 'select'
       }
     },
     disabled: {

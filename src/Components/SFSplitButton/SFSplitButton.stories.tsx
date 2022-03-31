@@ -73,6 +73,9 @@ WithDisabledOption.args = {
 };
 
 export const WithDefaultOption = Template.bind({});
+WithDefaultOption.args = {
+  defaultSelected: 1
+};
 WithDefaultOption.argTypes = {
   defaultSelected: {
     control: {

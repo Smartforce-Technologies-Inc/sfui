@@ -71,7 +71,9 @@ export default {
   component: SFTable,
   parameters: { controls: { sort: 'alpha' } },
   args: {
-    columns: getColumns()
+    columns: getColumns(),
+    showTitle: false,
+    title: ''
   },
   argTypes: {
     showTitle: {

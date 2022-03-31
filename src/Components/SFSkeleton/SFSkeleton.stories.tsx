@@ -47,9 +47,9 @@ export const Text: Story<SFSkeletonProps> = (args) => {
 
 Text.argTypes = {
   animation: {
+    options: ['false', 'pulse', 'wave'],
     control: {
-      type: 'radio',
-      options: ['false', 'pulse', 'wave']
+      type: 'radio'
     }
   },
   variant: {
@@ -63,11 +63,14 @@ export const Circle: Story<SFSkeletonProps> = (args) => {
   return <SFSkeleton {...args} variant='circle' width={args.height} />;
 };
 
+Circle.args = {
+  height: 50
+};
 Circle.argTypes = {
   animation: {
+    options: ['false', 'pulse', 'wave'],
     control: {
-      type: 'radio',
-      options: ['false', 'pulse', 'wave']
+      type: 'radio'
     }
   },
   variant: {
@@ -90,11 +93,14 @@ export const Rect: Story<SFSkeletonProps> = (args) => {
   return <SFSkeleton {...args} variant='rect' />;
 };
 
+Rect.args = {
+  height: 50
+};
 Rect.argTypes = {
   animation: {
+    options: ['false', 'pulse', 'wave'],
     control: {
-      type: 'radio',
-      options: ['false', 'pulse', 'wave']
+      type: 'radio'
     }
   },
   variant: {
@@ -137,9 +143,9 @@ export const AllTogether: Story = ({ animation }) => {
 
 AllTogether.argTypes = {
   animation: {
+    options: ['false', 'pulse', 'wave'],
     control: {
-      type: 'radio',
-      options: ['false', 'pulse', 'wave']
+      type: 'radio'
     }
   },
   variant: {
