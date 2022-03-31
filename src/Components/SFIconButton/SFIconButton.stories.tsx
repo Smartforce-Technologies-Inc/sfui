@@ -24,9 +24,9 @@ export default {
           summary: `"grey"`
         }
       },
+      options: ['blue', 'red', 'grey'],
       control: {
-        type: 'radio',
-        options: ['blue', 'red', 'grey']
+        type: 'radio'
       }
     },
     sfSize: {
@@ -34,9 +34,10 @@ export default {
     },
     sfIcon: {
       description: 'The icon name to be used.',
+
+      options: SFIconSet.icons.map((icon) => icon.properties.name),
       control: {
-        type: 'select',
-        options: SFIconSet.icons.map((icon) => icon.properties.name)
+        type: 'select'
       }
     },
     rotate: {
@@ -153,6 +154,6 @@ export const AllSizes: Story<SFIconButtonProps> = (args) => (
 );
 AllSizes.parameters = {
   controls: {
-    disabled: true
+    disable: true
   }
 };

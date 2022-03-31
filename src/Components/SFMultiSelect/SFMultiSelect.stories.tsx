@@ -47,9 +47,9 @@ export default {
       }
     },
     value: {
+      options: getOptions().map((o: SFMenuOption) => o.value),
       control: {
-        type: 'multi-select',
-        options: getOptions().map((o: SFMenuOption) => o.value)
+        type: 'multi-select'
       }
     },
     disabled: {

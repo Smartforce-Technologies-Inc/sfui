@@ -31,9 +31,9 @@ export default {
           summary: `'left' | 'right' | 'bottom' | 'top'`
         }
       },
+      options: ['left', 'right', 'bottom', 'top'],
       control: {
-        type: 'radio',
-        options: ['left', 'right', 'bottom', 'top']
+        type: 'radio'
       }
     },
     elevation: {

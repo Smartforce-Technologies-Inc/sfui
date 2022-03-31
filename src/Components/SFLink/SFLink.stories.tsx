@@ -27,9 +27,9 @@ export default {
     },
     color: {
       description: 'The color of the link.',
+      options: ['inherited', 'primary'],
       control: {
-        type: 'radio',
-        options: ['inherited', 'primary']
+        type: 'radio'
       }
     },
     sfSize: {

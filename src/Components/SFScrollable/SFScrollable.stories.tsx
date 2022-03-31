@@ -6,8 +6,23 @@ import { SFScrollable, SFScrollableProps } from './SFScrollable';
 
 export default {
   title: 'Components/SFScrollable',
-  component: SFScrollable
+  component: SFScrollable,
+  parameters: { controls: { sort: 'alpha' } },
+  argTypes: {
+    className: {
+      table: {
+        disable: true
+      }
+    },
+    onScroll: {
+      table: {
+        disable: true
+      }
+    }
+  }
 } as Meta;
+
+// TODO same inconvenient as SFPaper, argtypes not functioning
 
 const Template: Story<SFScrollableProps> = () => {
   return (

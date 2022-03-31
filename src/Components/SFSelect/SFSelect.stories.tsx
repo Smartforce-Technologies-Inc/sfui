@@ -1,7 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { SFSelect, SFSelectProps } from './SFSelect';
-import { SFMenuOption } from '../SFSelect/SFSelect';
+import { SFSelect, SFSelectProps, SFMenuOption } from './SFSelect';
 
 const getOptions = (): SFMenuOption[] => {
   return [
@@ -23,6 +22,7 @@ const getOptions = (): SFMenuOption[] => {
 export default {
   title: 'Components/SFSelect',
   component: SFSelect,
+  parameters: { controls: { sort: 'alpha' } },
   args: {
     label: 'Bagel',
     options: getOptions(),
@@ -36,24 +36,50 @@ export default {
       }
     },
     value: {
+      options: getOptions().map((o: SFMenuOption) => o.value),
       control: {
-        type: 'select',
-        options: getOptions().map((o: SFMenuOption) => o.value)
+        type: 'select'
       }
     },
     disabled: {
+      description: 'If true, the component is disabled.',
+      table: {
+        type: {
+          summary: 'boolean'
+        }
+      },
       control: {
         type: 'boolean'
       }
     },
     error: {
+      description: 'If true, the component is in error state.',
+      table: {
+        type: {
+          summary: 'boolean'
+        }
+      },
       control: {
         type: 'boolean'
       }
     },
     helperText: {
+      description: 'Text to help understand input values.',
+      table: {
+        type: {
+          summary: 'string'
+        }
+      },
       control: {
         type: 'text'
+      }
+    },
+    label: {
+      description: 'The label asociated to the input value meaning.',
+      table: {
+        type: {
+          summary: 'string'
+        }
       }
     },
     options: {

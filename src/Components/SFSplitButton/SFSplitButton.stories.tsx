@@ -34,10 +34,20 @@ const getOptionsWithDisabled = (): SFSplitButtonOption[] => {
 export default {
   title: 'Components/SFSplitButton',
   component: SFSplitButton,
+  parameters: { controls: { sort: 'alpha' } },
   args: {
     options: getOptions()
   },
   argTypes: {
+    sfColor: {
+      description: 'The color of the button.'
+    },
+    size: {
+      description: 'The size of the button.'
+    },
+    variant: {
+      description: 'The variant to use.'
+    },
     options: {
       table: {
         disable: true
@@ -77,4 +87,8 @@ WithDefaultOption.argTypes = {
       disable: false
     }
   }
+};
+
+WithDefaultOption.args = {
+  defaultSelected: 1
 };

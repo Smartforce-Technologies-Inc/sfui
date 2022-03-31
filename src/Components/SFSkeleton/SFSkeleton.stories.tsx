@@ -6,18 +6,29 @@ import { SFSkeleton, SFSkeletonProps } from './SFSkeleton';
 export default {
   title: 'Components/SFSkeleton',
   component: SFSkeleton,
+  parameters: { controls: { sort: 'alpha' } },
   args: {
     height: 20,
     width: 300,
     animation: 'pulse'
   },
   argTypes: {
+    animation: {
+      description: 'The animation. If false the animation effect is disabled.',
+      table: {
+        defaultValue: {
+          summary: 'pulse'
+        }
+      }
+    },
     height: {
+      description: `Height of the skeleton. Useful when you don't want to adapt the skeleton to a text element but for instance a card.`,
       control: {
         type: 'number'
       }
     },
     width: {
+      description: `Width of the skeleton. Useful when the skeleton is inside an inline element with no width of its own.`,
       control: {
         type: 'number'
       }
@@ -36,9 +47,9 @@ export const Text: Story<SFSkeletonProps> = (args) => {
 
 Text.argTypes = {
   animation: {
+    options: ['false', 'pulse', 'wave'],
     control: {
-      type: 'radio',
-      options: ['false', 'pulse', 'wave']
+      type: 'radio'
     }
   },
   variant: {
@@ -57,9 +68,9 @@ Circle.args = {
 };
 Circle.argTypes = {
   animation: {
+    options: ['false', 'pulse', 'wave'],
     control: {
-      type: 'radio',
-      options: ['false', 'pulse', 'wave']
+      type: 'radio'
     }
   },
   variant: {
@@ -74,6 +85,10 @@ Circle.argTypes = {
   }
 };
 
+Circle.args = {
+  height: 30
+};
+
 export const Rect: Story<SFSkeletonProps> = (args) => {
   return <SFSkeleton {...args} variant='rect' />;
 };
@@ -83,9 +98,9 @@ Rect.args = {
 };
 Rect.argTypes = {
   animation: {
+    options: ['false', 'pulse', 'wave'],
     control: {
-      type: 'radio',
-      options: ['false', 'pulse', 'wave']
+      type: 'radio'
     }
   },
   variant: {
@@ -93,6 +108,10 @@ Rect.argTypes = {
       disable: true
     }
   }
+};
+
+Rect.args = {
+  height: 50
 };
 
 export const AllTogether: Story = ({ animation }) => {
@@ -124,9 +143,9 @@ export const AllTogether: Story = ({ animation }) => {
 
 AllTogether.argTypes = {
   animation: {
+    options: ['false', 'pulse', 'wave'],
     control: {
-      type: 'radio',
-      options: ['false', 'pulse', 'wave']
+      type: 'radio'
     }
   },
   variant: {

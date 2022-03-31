@@ -17,9 +17,9 @@ export default {
   argTypes: {
     icon: {
       description: 'The icon name to be used.',
+      options: SFIconSet.icons.map((icon) => icon.properties.name),
       control: {
-        type: 'select',
-        options: SFIconSet.icons.map((icon) => icon.properties.name)
+        type: 'select'
       }
     },
     color: {
@@ -81,6 +81,6 @@ export const AllTogether: Story<SFIconProps> = (args) => (
 );
 AllTogether.parameters = {
   controls: {
-    disabled: true
+    disable: true
   }
 };
