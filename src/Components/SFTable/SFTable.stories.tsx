@@ -69,10 +69,109 @@ const getRows = (): RowData[] => {
 export default {
   title: 'Components/SFTable',
   component: SFTable,
+  parameters: { controls: { sort: 'alpha' } },
   args: {
     columns: getColumns()
   },
   argTypes: {
+    showTitle: {
+      description:
+        'If true, the title of the table is shown. This will be shown if toolbar is enabled.',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: {
+          summary: 'false'
+        }
+      }
+    },
+    elevation: {
+      description: 'The elevation of the table.'
+    },
+    draggable: {
+      description: 'If true, the table can be dragged.',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: {
+          summary: 'false'
+        }
+      }
+    },
+    paging: {
+      description: 'If true, the table content is paginated.',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: {
+          summary: 'false'
+        }
+      }
+    },
+    search: {
+      description:
+        'If true, the table searchbar is enabled. This will be shown if toolbar is enabled.',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: {
+          summary: 'false'
+        }
+      }
+    },
+    selection: {
+      description: 'If true, the table rows can be selected.',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: {
+          summary: 'false'
+        }
+      }
+    },
+    sorting: {
+      description: 'If true, the table columns can sort the content.',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: {
+          summary: 'false'
+        }
+      }
+    },
+    toolbar: {
+      description: 'If true, the toolbar is shown.',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: {
+          summary: 'false'
+        }
+      }
+    },
+    maxBodyHeight: {
+      description: 'The maximum height of the body of the table.',
+      table: {
+        type: {
+          summary: 'number | string'
+        }
+      }
+    },
+    title: {
+      description: 'The title of the table to display.',
+      table: {
+        type: {
+          summary: 'string'
+        }
+      }
+    },
     columns: {
       table: {
         disable: true
@@ -174,13 +273,11 @@ Default.argTypes = {
     }
   },
   showTitle: {
-    defaultValue: false,
     control: {
       type: 'boolean'
     }
   },
   title: {
-    defaultValue: '',
     control: {
       type: 'text'
     }
@@ -192,4 +289,9 @@ Default.argTypes = {
       step: 50
     }
   }
+};
+
+Default.args = {
+  showTitle: false,
+  title: ''
 };
