@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { SFSelect, SFSelectProps } from './SFSelect';
-import { SFMenuOption } from '../SFMenuOption';
+import { SFMenuOption } from '../SFSelect/SFSelect';
 
 const getOptions = (): SFMenuOption[] => {
   return [
@@ -25,7 +25,8 @@ export default {
   component: SFSelect,
   args: {
     label: 'Bagel',
-    options: getOptions()
+    options: getOptions(),
+    value: 'Bagel number one'
   },
   argTypes: {
     onChange: {
@@ -35,7 +36,6 @@ export default {
       }
     },
     value: {
-      defaultValue: 'Bagel number one',
       control: {
         type: 'select',
         options: getOptions().map((o: SFMenuOption) => o.value)

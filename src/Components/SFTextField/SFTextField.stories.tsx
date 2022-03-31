@@ -8,7 +8,9 @@ export default {
   title: 'Components/SFTextField',
   component: SFTextField,
   args: {
-    label: 'Bagel'
+    label: 'Bagel',
+    value: 'Some text',
+    type: 'text'
   },
   argTypes: {
     onChange: {
@@ -60,13 +62,11 @@ const Template: Story<SFTextFieldProps> = (args) => <SFTextField {...args} />;
 export const Default = Template.bind({});
 Default.argTypes = {
   value: {
-    defaultValue: 'Some text',
     control: {
       type: 'text'
     }
   },
   type: {
-    defaultValue: 'text',
     control: {
       type: 'select',
       options: ['text', 'password']
@@ -76,11 +76,11 @@ Default.argTypes = {
 
 export const Number = Template.bind({});
 Number.args = {
-  type: 'number'
+  type: 'number',
+  value: 20
 };
 Number.argTypes = {
   value: {
-    defaultValue: 20,
     control: {
       type: 'number'
     }

@@ -8,7 +8,10 @@ export default {
   title: 'Components/SFSwitch',
   component: SFSwitch,
   args: {
-    label: 'Off / On'
+    label: 'Off / On',
+    checked: false,
+    disabled: false,
+    size: 'medium'
   },
   argTypes: {
     onChange: {
@@ -18,19 +21,16 @@ export default {
       }
     },
     checked: {
-      defaultValue: false,
       control: {
         type: 'boolean'
       }
     },
     disabled: {
-      defaultValue: false,
       control: {
         type: 'boolean'
       }
     },
     size: {
-      defaultValue: 'medium',
       control: {
         type: 'radio',
         options: ['small', 'medium']

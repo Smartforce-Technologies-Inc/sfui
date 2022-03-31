@@ -70,7 +70,9 @@ export default {
   title: 'Components/SFTable',
   component: SFTable,
   args: {
-    columns: getColumns()
+    columns: getColumns(),
+    showTitle: false,
+    title: ''
   },
   argTypes: {
     columns: {
@@ -174,13 +176,11 @@ Default.argTypes = {
     }
   },
   showTitle: {
-    defaultValue: false,
     control: {
       type: 'boolean'
     }
   },
   title: {
-    defaultValue: '',
     control: {
       type: 'text'
     }

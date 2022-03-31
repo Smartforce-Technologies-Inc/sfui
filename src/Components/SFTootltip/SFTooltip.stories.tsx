@@ -9,11 +9,11 @@ export default {
   args: {
     title: 'Title',
     open: true,
-    arrow: true
+    arrow: true,
+    placement: 'bottom-end'
   },
   argTypes: {
     placement: {
-      defaultValue: 'bottom-end',
       control: {
         type: 'select',
         options: [

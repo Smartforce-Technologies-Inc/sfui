@@ -5,9 +5,11 @@ import { SFSpinner, SFSpinnerProps } from './SFSpinner';
 export default {
   title: 'Components/SFSpinner',
   component: SFSpinner,
+  args: {
+    size: 40
+  },
   argTypes: {
     size: {
-      defaultValue: 40,
       control: {
         type: 'number'
       }

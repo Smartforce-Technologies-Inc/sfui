@@ -6,15 +6,18 @@ import { SFSkeleton, SFSkeletonProps } from './SFSkeleton';
 export default {
   title: 'Components/SFSkeleton',
   component: SFSkeleton,
+  args: {
+    height: 20,
+    width: 300,
+    animation: 'pulse'
+  },
   argTypes: {
     height: {
-      defaultValue: 20,
       control: {
         type: 'number'
       }
     },
     width: {
-      defaultValue: 300,
       control: {
         type: 'number'
       }
@@ -33,7 +36,6 @@ export const Text: Story<SFSkeletonProps> = (args) => {
 
 Text.argTypes = {
   animation: {
-    defaultValue: 'pulse',
     control: {
       type: 'radio',
       options: ['false', 'pulse', 'wave']
@@ -50,9 +52,11 @@ export const Circle: Story<SFSkeletonProps> = (args) => {
   return <SFSkeleton {...args} variant='circle' width={args.height} />;
 };
 
+Circle.args = {
+  height: 50
+};
 Circle.argTypes = {
   animation: {
-    defaultValue: 'pulse',
     control: {
       type: 'radio',
       options: ['false', 'pulse', 'wave']
@@ -62,9 +66,6 @@ Circle.argTypes = {
     table: {
       disable: true
     }
-  },
-  height: {
-    defaultValue: 50
   },
   width: {
     table: {
@@ -77,9 +78,11 @@ export const Rect: Story<SFSkeletonProps> = (args) => {
   return <SFSkeleton {...args} variant='rect' />;
 };
 
+Rect.args = {
+  height: 50
+};
 Rect.argTypes = {
   animation: {
-    defaultValue: 'pulse',
     control: {
       type: 'radio',
       options: ['false', 'pulse', 'wave']
@@ -89,9 +92,6 @@ Rect.argTypes = {
     table: {
       disable: true
     }
-  },
-  height: {
-    defaultValue: 50
   }
 };
 
@@ -124,7 +124,6 @@ export const AllTogether: Story = ({ animation }) => {
 
 AllTogether.argTypes = {
   animation: {
-    defaultValue: 'pulse',
     control: {
       type: 'radio',
       options: ['false', 'pulse', 'wave']
