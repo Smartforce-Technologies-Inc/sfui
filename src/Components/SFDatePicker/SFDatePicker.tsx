@@ -49,7 +49,7 @@ const usePopOverStyle = makeStyles((theme: Theme) =>
       '& .MuiPickersDatePickerRoot-toolbar': {
         flexDirection: 'row-reverse',
         alignItems: 'center',
-        justifyContent: 'start',
+        justifyContent: 'flex-end',
         gap: 2,
         height: 40,
         minHeight: 40,
