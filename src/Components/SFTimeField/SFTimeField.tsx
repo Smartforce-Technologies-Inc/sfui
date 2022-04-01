@@ -71,7 +71,12 @@ const StyledTimePicker = withStyles((theme: Theme) => ({
         padding: '26px 11px 7px',
 
         '&.Mui-disabled': {
-          color: `${theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]}`
+          color: `${
+            theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
+          }`,
+          WebkitTextFillColor: `${
+            theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
+          }`
         }
       }
     },

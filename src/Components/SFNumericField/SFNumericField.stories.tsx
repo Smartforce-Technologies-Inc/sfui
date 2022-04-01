@@ -10,7 +10,8 @@ export default {
   parameters: { controls: { sort: 'alpha' } },
   args: {
     label: 'Bagel',
-    decimalScale: 2
+    decimalScale: 2,
+    disabled: false
   },
   argTypes: {
     label: {
