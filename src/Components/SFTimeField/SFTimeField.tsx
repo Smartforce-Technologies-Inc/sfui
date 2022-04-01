@@ -46,6 +46,14 @@ const StyledTimePicker = withStyles((theme: Theme) => ({
 
         '& .MuiFilledInput-input': {
           padding: '26px 10px 7px'
+        },
+
+        '&:hover': {
+          '@media (hover: hover)': {
+            borderColor: `${
+              theme.palette.type === 'light' ? SFBlue[500] : SFBlue[200]
+            }`
+          }
         }
       },
 
