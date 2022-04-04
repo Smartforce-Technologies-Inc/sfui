@@ -70,7 +70,7 @@ const StyledTimePicker = withStyles((theme: Theme) => ({
       '&.Mui-disabled': {
         border: `1px solid ${
           theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
-        }`
+        } !important`
       },
 
       '& .MuiFilledInput-input': {
