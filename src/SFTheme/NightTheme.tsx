@@ -1,4 +1,4 @@
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createTheme } from '@material-ui/core/styles';
 import { CommonThemeOptions } from './CommonThemeOptions';
 
 import {
@@ -43,6 +43,6 @@ CommonThemeOptions.palette = {
   }
 };
 
-const NightTheme = createMuiTheme(CommonThemeOptions);
+const NightTheme = createTheme(CommonThemeOptions);
 
 export { NightTheme };
