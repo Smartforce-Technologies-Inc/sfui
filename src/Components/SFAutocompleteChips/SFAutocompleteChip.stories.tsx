@@ -64,37 +64,10 @@ const Template: Story<SFAutocompleteChipProps> = (args) => {
 
   return <SFAutocompleteChip {...args} value={values} onChange={setValues} />;
 };
+export const Default = Template.bind({});
 
-export const Empty = Template.bind({});
-
-export const WithValidation = Template.bind({});
-
-export const WithOptions = Template.bind({});
-
-export const WithItems = Template.bind({});
-
-export const WithOptionsAndItems = Template.bind({});
-
-WithValidation.args = {
-  isValid: (value: string): boolean => value.length > 5,
-  helperText: 'Value lenght should be > 5 chars'
-};
-
-WithOptions.args = {
+Default.args = {
   label: 'Movies',
   emptyMessage: 'No movies saved...',
-  options: ChipListOptions
-};
-
-WithItems.args = {
-  label: 'Movies',
-  emptyMessage: 'No movies saved...',
-  items: AutocompleteChipItems
-};
-
-WithOptionsAndItems.args = {
-  label: 'Movies',
-  emptyMessage: 'No movies saved...',
-  items: AutocompleteChipItems,
   options: ChipListOptions
 };
