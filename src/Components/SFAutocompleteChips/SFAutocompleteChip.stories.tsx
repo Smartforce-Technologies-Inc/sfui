@@ -12,7 +12,7 @@ export default {
   parameters: { controls: { sort: 'alpha' } },
   args: {
     label: 'Bagel',
-    items: []
+    value: []
   },
   argTypes: {
     disabled: {
@@ -27,8 +27,8 @@ export default {
     inputMinWidth: {
       description: 'Minimum width for the inner input field.'
     },
-    items: {
-      description: 'List of chip items loaded.',
+    value: {
+      description: 'List of chip values loaded.',
       control: false
     },
     label: {
