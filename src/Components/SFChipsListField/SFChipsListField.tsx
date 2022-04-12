@@ -1,79 +1,18 @@
 import React, { ChangeEvent } from 'react';
 import FormControl from '@material-ui/core/FormControl';
 import {
-  Autocomplete,
   AutocompleteRenderInputParams,
   AutocompleteInputChangeReason,
   AutocompleteChangeReason
 } from '@material-ui/lab';
-import { SFTextField, SFTextFieldProps } from '../SFTextField/SFTextField';
 import { SFChipListModal } from './SFChipFieldModal/SFChipFieldModal';
 import { SFChipListRender } from './SFChipFieldRender/SFChipFieldRender';
-import { hexToRgba } from '../../Helpers';
-import { SFGrey } from '../../SFColors/SFColors';
-import { withStyles, Theme, makeStyles } from '@material-ui/core/styles';
-
-const StyledAutoComplete = withStyles((theme: Theme) => ({
-  root: {
-    '& .MuiAutocomplete-endAdornment': {
-      display: 'none'
-    }
-  },
-  listbox: {
-    padding: '13px 0'
-  },
-  paper: {
-    marginLeft: '4px',
-    marginRight: '-4px'
-  },
-  option: {
-    padding: '6px 24px',
-
-    '&[data-focus="true"]': {
-      backgroundColor:
-        theme.palette.type === 'light'
-          ? hexToRgba(SFGrey.A100 as string, 0.3)
-          : hexToRgba(SFGrey[500] as string, 0.3),
-      '&:active': {
-        backgroundColor:
-          theme.palette.type === 'light'
-            ? hexToRgba(SFGrey.A100 as string, 0.5)
-            : hexToRgba(SFGrey[500] as string, 0.5)
-      }
-    },
-
-    '&[aria-selected="true"]': {
-      backgroundColor:
-        theme.palette.type === 'light'
-          ? hexToRgba(SFGrey.A100 as string, 0.5)
-          : hexToRgba(SFGrey[500] as string, 0.5)
-    }
-  }
-}))(Autocomplete);
-
-export type minWidthInputSize = number | 'auto' | 'full-width';
-
-interface TextFieldStylesProps extends SFTextFieldProps {
-  minWidth: string;
-}
-
-const useTextFieldStyles = makeStyles({
-  root: {
-    '& .MuiInputBase-root': {
-      height: 'inherit',
-      minHeight: '56px',
-      gap: '6px',
-      padding: '28px 9px 9px !important',
-      '& .MuiAutocomplete-input': {
-        padding: '0',
-        minWidth: (props: TextFieldStylesProps): string => props.minWidth
-      },
-      '& .MuiFormControl-root .MuiChip-outlined': {
-        margin: '3px auto 2px'
-      }
-    }
-  }
-});
+import { makeStyles } from '@material-ui/core/styles';
+import { StyledAutoComplete } from '../SFAutocompleteChips/SFAutocompleteChip';
+import {
+  minWidthInputSize,
+  SFAutocompleteInput
+} from '../SFAutocompleteChips/SFAutocompleteInput/SFAutocompleteInput';
 
 const chipsDisplay = makeStyles({
   chipDisplayInline: {
@@ -91,12 +30,6 @@ const chipsDisplay = makeStyles({
     flexDirection: 'column'
   }
 });
-
-function StyledTextField(props: TextFieldStylesProps): React.ReactElement {
-  const { minWidth, ...other } = props;
-  const classes = useTextFieldStyles(props);
-  return <SFTextField className={classes.root} {...other} />;
-}
 
 export type ChipFieldValueType = {
   value: string;
@@ -376,7 +309,7 @@ export const SFChipsListField = ({
           />
         )}
         renderInput={(params: AutocompleteRenderInputParams): JSX.Element => (
-          <StyledTextField
+          <SFAutocompleteInput
             {...params}
             type={inputType}
             rows={1}

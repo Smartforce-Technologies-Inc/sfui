@@ -6,14 +6,16 @@ import {
   AutocompleteInputChangeReason,
   AutocompleteChangeReason
 } from '@material-ui/lab';
-import { SFTextField, SFTextFieldProps } from '../SFTextField/SFTextField';
 import { hexToRgba } from '../../Helpers';
 import { SFGrey } from '../../SFColors/SFColors';
-import { withStyles, Theme, makeStyles } from '@material-ui/core/styles';
-import { SFAutocompleteChipModal } from './SFAutocompleteChipModal/SFAutocompleteChipModal';
+import { withStyles, Theme } from '@material-ui/core/styles';
 import { SFAutocompleteChipRender } from './SFAutocompleteChipRender/SFAutocompleteChipRender';
+import {
+  minWidthInputSize,
+  SFAutocompleteInput
+} from './SFAutocompleteInput/SFAutocompleteInput';
 
-const StyledAutoComplete = withStyles((theme: Theme) => ({
+export const StyledAutoComplete = withStyles((theme: Theme) => ({
   root: {
     '& .MuiAutocomplete-endAdornment': {
       display: 'none'
@@ -51,50 +53,15 @@ const StyledAutoComplete = withStyles((theme: Theme) => ({
   }
 }))(Autocomplete);
 
-export type minWidthInputSize = number | 'auto' | 'full-width';
-
-interface TextFieldStylesProps extends SFTextFieldProps {
-  minWidth: string;
-}
-
-const useTextFieldStyles = makeStyles({
-  root: {
-    '& .MuiInputBase-root': {
-      height: 'inherit',
-      minHeight: '56px',
-      gap: '6px',
-      padding: '28px 9px 9px !important',
-      '& .MuiAutocomplete-input': {
-        padding: '0',
-        minWidth: (props: TextFieldStylesProps): string => props.minWidth
-      },
-      '& .MuiFormControl-root .MuiChip-outlined': {
-        margin: '3px auto 2px'
-      }
-    }
-  }
-});
-
-function StyledTextField(props: TextFieldStylesProps): React.ReactElement {
-  const { minWidth, ...other } = props;
-  const classes = useTextFieldStyles(props);
-  return <SFTextField className={classes.root} {...other} />;
-}
-
 export interface SFAutocompleteChipProps {
-  items?: string[];
+  value?: string[];
   inputMinWidth?: minWidthInputSize;
   label: string;
   helperText?: string;
   options?: string[];
-  delimiters?: string[];
-  freeSolo?: boolean;
   disabled?: boolean;
   required?: boolean;
-  isEditable?: boolean;
-  inputType?: string;
-  isValid?: (value: string) => boolean;
-  onChange: (newItems: string[]) => void;
+  onChange: (newValue: string[]) => void;
 }
 
 export const SFAutocompleteChip = ({
@@ -102,74 +69,27 @@ export const SFAutocompleteChip = ({
   label,
   helperText,
   options = [],
-  items = [],
-  delimiters = [','],
-  freeSolo = false,
+  value = [],
   disabled = false,
-  isEditable = false,
-  inputType = 'text',
-  isValid,
   onChange
 }: SFAutocompleteChipProps): React.ReactElement<SFAutocompleteChipProps> => {
-  const [isPopperOpen, setIsPopperOpen] = React.useState<boolean>(false);
-  const [isModalOpen, setIsModalOpen] = React.useState<boolean>(false);
-  const [editedValue, setEditedValue] = React.useState<string>();
   const [inputValue, setInputValue] = React.useState<string>('');
 
-  const isFreeSolo = (): boolean => {
-    return freeSolo || options.length === 0;
-  };
-
-  const createNewValue = (value: string): string => {
-    return value;
-  };
-
-  const addValue = (input: string[]): void => {
-    const values: string[] = [...items, ...input];
-    onChange(values);
-  };
-
-  const editValue = (input: string): void => {
-    const index: number = items.findIndex((item) => input === item);
-    const values: string[] = [
-      ...items.slice(0, index),
-      input,
-      ...items.slice(index + 1)
-    ];
-    onChange(values);
-  };
-
   const deleteValue = (input: string): void => {
-    const index: number = items.indexOf(input);
+    const index: number = value.indexOf(input);
     const values: string[] = [
-      ...items.slice(0, index),
-      ...items.slice(index + 1)
+      ...value.slice(0, index),
+      ...value.slice(index + 1)
     ];
     onChange(values);
   };
 
-  const onEdit = (value: string): void => {
-    if (isFreeSolo()) {
-      setEditedValue(value);
-      setIsModalOpen(true);
-    }
-  };
+  const isValueAlreadyAdded = (input: string): boolean => {
+    const matchValueItem: string | undefined = value.find(
+      (item) => item.toLowerCase() === input.toLowerCase()
+    );
 
-  const filteredOptions = (options: string[]): string[] => {
-    if (items.length !== 0) {
-      return options.filter(
-        (option: string) => !items.find((item: string) => item === option)
-      );
-    } else {
-      return options;
-    }
-  };
-
-  const getValuesFromInputField = (value: string): string[] => {
-    const separatorRegExp = new RegExp(delimiters.join('|'), 'gi');
-    const inputValues: string[] = value.split(separatorRegExp);
-
-    return Array.from(new Set(inputValues));
+    return matchValueItem !== undefined;
   };
 
   const getValueFromOptions = (value: string): string | undefined => {
@@ -178,56 +98,31 @@ export const SFAutocompleteChip = ({
     );
   };
 
-  const isValueAlreadyAdded = (value: string): boolean => {
-    const matchValueItem: string | undefined = items.find(
-      (item) => item.toLowerCase() === value.toLowerCase()
-    );
-
-    return matchValueItem !== undefined;
-  };
-
   const onInputChange = (
     _event: ChangeEvent,
-    value: string,
+    input: string,
     reason: AutocompleteInputChangeReason
   ): void => {
     if (reason === 'reset') {
       if (inputValue !== '') {
-        setInputValue(inputValue);
-      } else {
-        setIsPopperOpen(false);
+        setInputValue('');
       }
     } else {
-      setInputValue(value);
+      setInputValue(input);
       const nativeEvent: InputEvent = _event.nativeEvent as InputEvent;
 
-      if (nativeEvent.data && delimiters.includes(nativeEvent.data)) {
+      if (nativeEvent.data) {
         _event.preventDefault();
-        setIsPopperOpen(false);
-        const insertedValues: string[] = getValuesFromInputField(value);
+        const valueTrim: string = input[input.length - 1].trim();
 
-        let valuesToAdd: string[] = [];
-        insertedValues.forEach((insertedValue: string) => {
-          const valueTrim: string = insertedValue.trim();
-
-          if (valueTrim !== '' && !isValueAlreadyAdded(valueTrim)) {
-            const valueOption: string | undefined = getValueFromOptions(
-              valueTrim
-            );
-
-            if (valueOption) {
-              valuesToAdd = [...valuesToAdd, valueOption];
-            } else {
-              if (isFreeSolo()) {
-                valuesToAdd = [...valuesToAdd, valueTrim];
-              }
-            }
-          }
-        });
-        addValue(valuesToAdd);
-        setInputValue('');
-      } else {
-        setIsPopperOpen(true);
+        if (
+          valueTrim !== '' &&
+          !isValueAlreadyAdded(valueTrim) &&
+          getValueFromOptions(valueTrim)
+        ) {
+          setInputValue('');
+          onChange([...value, input]);
+        }
       }
     }
   };
@@ -238,53 +133,23 @@ export const SFAutocompleteChip = ({
     reason: AutocompleteChangeReason
   ): void => {
     if (reason === 'select-option' || reason === 'create-option') {
-      const lastItem = value[value.length - 1];
-
-      if (typeof lastItem === 'string') {
-        const values: string[] = getValuesFromInputField(lastItem as string);
-        let currentValues: string[] = [];
-
-        values.forEach((value: string) => {
-          const valueTrim: string = value.trim();
-
-          if (valueTrim !== '' && !isValueAlreadyAdded(valueTrim)) {
-            const matchValueOption: string | undefined = getValueFromOptions(
-              valueTrim
-            );
-
-            currentValues = [
-              ...currentValues,
-              createNewValue(matchValueOption || valueTrim)
-            ];
-          }
-        });
-        addValue(currentValues);
-      }
-      setIsPopperOpen(false);
       setInputValue('');
+      onChange(value);
     }
   };
 
   return (
     <FormControl fullWidth>
-      <SFAutocompleteChipModal
-        value={editedValue}
-        open={isModalOpen}
-        onEdit={editValue}
-        onClose={(): void => setIsModalOpen(false)}
-      />
       <StyledAutoComplete
         disabled={disabled}
-        options={filteredOptions(options)}
+        clearOnBlur
+        options={options}
         multiple
-        value={items}
+        value={value}
         inputValue={inputValue}
-        onChange={onAutoCompleteChange}
         onInputChange={onInputChange}
-        open={options.length > 0 ? isPopperOpen : false}
-        onClose={(): void => setIsPopperOpen(false)}
+        onChange={onAutoCompleteChange}
         filterSelectedOptions
-        freeSolo={isFreeSolo()}
         getOptionSelected={(option: string, value: string): boolean =>
           option === value
         }
@@ -293,14 +158,11 @@ export const SFAutocompleteChip = ({
             values={value}
             disabled={disabled}
             onDelete={deleteValue}
-            onEdit={isEditable ? onEdit : undefined}
-            isValid={isValid}
           />
         )}
         renderInput={(params: AutocompleteRenderInputParams): JSX.Element => (
-          <StyledTextField
+          <SFAutocompleteInput
             {...params}
-            type={inputType}
             rows={1}
             label={label}
             helperText={helperText}
