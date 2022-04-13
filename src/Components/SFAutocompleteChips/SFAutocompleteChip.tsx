@@ -71,6 +71,7 @@ export const SFAutocompleteChip = ({
   options = [],
   value = [],
   disabled = false,
+  required = false,
   onChange
 }: SFAutocompleteChipProps): React.ReactElement<SFAutocompleteChipProps> => {
   const [inputValue, setInputValue] = React.useState<string>('');
@@ -162,6 +163,7 @@ export const SFAutocompleteChip = ({
             rows={1}
             label={label}
             helperText={helperText}
+            required={required}
             minWidth={
               inputMinWidth === 'full-width'
                 ? '100%'
