@@ -54,11 +54,11 @@ export const StyledAutoComplete = withStyles((theme: Theme) => ({
 }))(Autocomplete);
 
 export interface SFAutocompleteChipProps {
-  value?: string[];
+  value: string[];
   inputMinWidth?: minWidthInputSize;
   label: string;
   helperText?: string;
-  options?: string[];
+  options: string[];
   disabled?: boolean;
   required?: boolean;
   onChange: (newValue: string[]) => void;
@@ -76,27 +76,13 @@ export const SFAutocompleteChip = ({
 }: SFAutocompleteChipProps): React.ReactElement<SFAutocompleteChipProps> => {
   const [inputValue, setInputValue] = React.useState<string>('');
 
-  const deleteValue = (input: string): void => {
+  const onDelete = (input: string): void => {
     const index: number = value.indexOf(input);
     const values: string[] = [
       ...value.slice(0, index),
       ...value.slice(index + 1)
     ];
     onChange(values);
-  };
-
-  const isValueAlreadyAdded = (input: string): boolean => {
-    const matchValueItem: string | undefined = value.find(
-      (item) => item.toLowerCase() === input.toLowerCase()
-    );
-
-    return matchValueItem !== undefined;
-  };
-
-  const getValueFromOptions = (value: string): string | undefined => {
-    return options.find(
-      (option) => option.toLowerCase() === value.toLowerCase()
-    );
   };
 
   const onInputChange = (
@@ -110,21 +96,6 @@ export const SFAutocompleteChip = ({
       }
     } else {
       setInputValue(input);
-      const nativeEvent: InputEvent = _event.nativeEvent as InputEvent;
-
-      if (nativeEvent.data) {
-        _event.preventDefault();
-        const valueTrim: string = input[input.length - 1].trim();
-
-        if (
-          valueTrim !== '' &&
-          !isValueAlreadyAdded(valueTrim) &&
-          getValueFromOptions(valueTrim)
-        ) {
-          setInputValue('');
-          onChange([...value, input]);
-        }
-      }
     }
   };
 
@@ -155,7 +126,7 @@ export const SFAutocompleteChip = ({
           option === value
         }
         renderTags={(value: string[]): JSX.Element => (
-          <SFAutocompleteChipRender values={value} onDelete={deleteValue} />
+          <SFAutocompleteChipRender values={value} onDelete={onDelete} />
         )}
         renderInput={(params: AutocompleteRenderInputParams): JSX.Element => (
           <SFAutocompleteInput

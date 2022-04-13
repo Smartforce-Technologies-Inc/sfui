@@ -16,12 +16,8 @@ export default {
   },
   argTypes: {
     disabled: {
-      description: 'If true, the chip should be displayed in a disabled state.'
-    },
-    emptyMessage: {
-      table: {
-        disable: true
-      }
+      description:
+        'If true, the component should be displayed in a disabled state.'
     },
     required: {
       description: 'If true, the field is required.'
@@ -52,15 +48,6 @@ export default {
   }
 } as Meta;
 
-const AutocompleteChipItems = [
-  'This War of Mine',
-  'Back to the Future',
-  'Toy Story',
-  'Pulp Fiction',
-  'WALL·E',
-  'The Godfather'
-];
-
 const Template: Story<SFAutocompleteChipProps> = (args) => {
   const [values, setValues] = React.useState<string[]>(args.value);
 
@@ -70,6 +57,5 @@ export const Default = Template.bind({});
 
 Default.args = {
   label: 'Movies',
-  emptyMessage: 'No movies saved...',
   options: ChipListOptions
 };
