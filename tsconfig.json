@@ -24,7 +24,7 @@
     "dist",
     "example",
     ".storybook",
-    "src/StorybookWrapper",
+    "src/Storybook/StorybookWrapper",
     "src/**/*.stories.tsx",
     "src/**/*.test.tsx"
   ]

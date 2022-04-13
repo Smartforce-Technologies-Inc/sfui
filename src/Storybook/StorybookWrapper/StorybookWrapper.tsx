@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
-import { SFThemeProvider, createSFTheme, SFTheme } from '../SFTheme/SFTheme';
+import { SFThemeProvider, createSFTheme, SFTheme } from '../../SFTheme/SFTheme';
 
-import { SFPaper } from '../Components/SFPaper/SFPaper';
-import { SFSwitch } from '../Components/SFSwitch/SFSwitch';
-import { SFLink } from '../Components/SFLink/SFLink';
-import { useSFMediaQuery, SFStylesProvider } from '../SFUtils/SFUtils';
+import { SFPaper } from '../../Components/SFPaper/SFPaper';
+import { SFSwitch } from '../../Components/SFSwitch/SFSwitch';
+import { SFLink } from '../../Components/SFLink/SFLink';
+import { useSFMediaQuery, SFStylesProvider } from '../../SFUtils/SFUtils';
 import ReactDOM from 'react-dom';
 
 export interface StorybookWrapperProps {
