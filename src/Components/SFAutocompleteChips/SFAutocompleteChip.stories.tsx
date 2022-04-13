@@ -19,7 +19,9 @@ export default {
       description: 'If true, the chip should be displayed in a disabled state.'
     },
     emptyMessage: {
-      description: 'Message displayed when the input is empty.'
+      table: {
+        disable: true
+      }
     },
     helperText: {
       description: 'Text to help understand input values.'
