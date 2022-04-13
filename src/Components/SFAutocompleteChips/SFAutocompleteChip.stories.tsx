@@ -23,6 +23,9 @@ export default {
         disable: true
       }
     },
+    required: {
+      description: 'If true, the field is required.'
+    },
     helperText: {
       description: 'Text to help understand input values.'
     },
@@ -39,9 +42,6 @@ export default {
     options: {
       description: 'List of options.',
       control: false
-    },
-    required: {
-      table: { disable: true }
     },
     onChange: {
       action: 'onChange',
