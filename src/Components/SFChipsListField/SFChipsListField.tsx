@@ -8,13 +8,13 @@ import {
 import { SFChipListModal } from './SFChipFieldModal/SFChipFieldModal';
 import { SFChipListRender } from './SFChipFieldRender/SFChipFieldRender';
 import { makeStyles } from '@material-ui/core/styles';
-import { StyledAutoComplete } from '../SFAutocompleteChips/SFAutocompleteChip';
+import { StyledAutoComplete } from '../SFAutocompleteChip/SFAutocompleteChip';
 import {
   minWidthInputSize,
   SFAutocompleteInput
-} from '../SFAutocompleteChips/SFAutocompleteInput/SFAutocompleteInput';
+} from '../SFAutocompleteChip/SFAutocompleteInput/SFAutocompleteInput';
 
-const chipsDisplay = makeStyles({
+const chipsDisplayClasses = makeStyles({
   chipDisplayInline: {
     display: 'flex',
     gap: '8px',
@@ -78,7 +78,7 @@ export const SFChipsListField = ({
   const [isModalOpen, setIsModalOpen] = React.useState<boolean>(false);
   const [editedValue, setEditedValue] = React.useState<ChipFieldValueType>();
   const [inputValue, setInputValue] = React.useState<string>('');
-  const { chipDisplayInline, chipDisplayBlock } = chipsDisplay();
+  const { chipDisplayInline, chipDisplayBlock } = chipsDisplayClasses();
 
   const isFreeSolo = (): boolean => {
     return freeSolo || options.length === 0;
