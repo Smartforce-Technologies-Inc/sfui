@@ -4,7 +4,7 @@ import {
   SFAutocompleteChip,
   SFAutocompleteChipProps
 } from './SFAutocompleteChip';
-import { ChipListOptions } from '../../storybook/constants';
+import { ChipListOptions } from '../../Storybook/constants';
 
 export default {
   title: 'Components/SFAutocompleteChip',

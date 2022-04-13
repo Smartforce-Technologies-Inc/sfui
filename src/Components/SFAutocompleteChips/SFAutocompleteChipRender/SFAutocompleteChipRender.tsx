@@ -15,6 +15,7 @@ export const SFAutocompleteChipRender = ({
       {values.map((input: string, index: number) => (
         <SFChip
           key={`${input}-${index}`}
+          deleteable
           sfColor='default'
           variant='outlined'
           size='small'
