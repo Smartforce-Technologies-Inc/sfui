@@ -91,9 +91,7 @@ export const SFAutocompleteChip = ({
     reason: AutocompleteInputChangeReason
   ): void => {
     if (reason === 'reset') {
-      if (inputValue !== '') {
-        setInputValue('');
-      }
+      setInputValue('');
     } else {
       setInputValue(input);
     }
@@ -104,8 +102,7 @@ export const SFAutocompleteChip = ({
     value: string[],
     reason: AutocompleteChangeReason
   ): void => {
-    if (reason === 'select-option' || reason === 'create-option') {
-      setInputValue('');
+    if (reason === 'select-option') {
       onChange(value);
     }
   };
