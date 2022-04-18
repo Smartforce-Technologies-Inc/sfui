@@ -1,4 +1,4 @@
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createTheme } from '@material-ui/core/styles';
 import { CommonThemeOptions } from './CommonThemeOptions';
 import {
   SFGrey,
@@ -42,6 +42,6 @@ CommonThemeOptions.palette = {
   }
 };
 
-const DayTheme = createMuiTheme(CommonThemeOptions);
+const DayTheme = createTheme(CommonThemeOptions);
 
 export { DayTheme };

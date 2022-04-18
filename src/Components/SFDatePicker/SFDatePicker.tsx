@@ -230,6 +230,14 @@ const StyledDatePicker = withStyles((theme: Theme) => ({
         },
         '& .MuiInputAdornment-root': {
           marginRight: '-1px'
+        },
+
+        '&:hover': {
+          '@media (hover: hover)': {
+            borderColor: `${
+              theme.palette.type === 'light' ? SFBlue[500] : SFBlue[200]
+            }`
+          }
         }
       },
 
@@ -250,7 +258,7 @@ const StyledDatePicker = withStyles((theme: Theme) => ({
       '&.Mui-disabled': {
         border: `1px solid ${
           theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
-        }`,
+        } !important`,
 
         '& .MuiFilledInput-input': {
           padding: '26px 11px 7px !important'
@@ -292,6 +300,16 @@ const StyledDatePicker = withStyles((theme: Theme) => ({
               ? hexToRgba(SFGrey[200], 0.5)
               : hexToRgba(SFGrey[500], 0.2)
           }`
+        },
+
+        '&.Mui-disabled': {
+          '& .MuiIconButton-label': {
+            '& svg path': {
+              fill: `${
+                theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
+              } !important`
+            }
+          }
         }
       }
     },
