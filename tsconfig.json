@@ -22,7 +22,6 @@
   "exclude": [
     "node_modules",
     "dist",
-    "example",
     ".storybook",
     "src/Storybook/StorybookWrapper",
     "src/**/*.stories.tsx",
