@@ -123,7 +123,11 @@ export const SFAutocompleteChip = ({
           option === value
         }
         renderTags={(value: string[]): JSX.Element => (
-          <SFAutocompleteChipRender values={value} onDelete={onDelete} />
+          <SFAutocompleteChipRender
+            disabled={disabled}
+            values={value}
+            onDelete={onDelete}
+          />
         )}
         renderInput={(params: AutocompleteRenderInputParams): JSX.Element => (
           <SFAutocompleteInput

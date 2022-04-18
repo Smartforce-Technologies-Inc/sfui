@@ -3,11 +3,13 @@ import { SFChip } from '../../SFChip/SFChip';
 
 export interface SFAutocompleteChipRenderProps {
   values: string[];
+  disabled: boolean;
   onDelete: (input: string) => void;
 }
 
 export const SFAutocompleteChipRender = ({
   values,
+  disabled,
   onDelete
 }: SFAutocompleteChipRenderProps): React.ReactElement<SFAutocompleteChipRenderProps> => {
   return (
@@ -20,6 +22,7 @@ export const SFAutocompleteChipRender = ({
           variant='outlined'
           size='small'
           label={input}
+          disabled={disabled}
           onDelete={(): void => onDelete(input)}
         />
       ))}
