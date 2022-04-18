@@ -7,6 +7,9 @@ import { SFMenuItem } from '../SFMenuItem/SFMenuItem';
 
 export const StyledSelect = withStyles(() => ({
   root: {
+    '& .MuiSelect-nativeInput': {
+      boxSizing: 'border-box'
+    },
     '& svg': {
       position: 'absolute',
       right: 18,

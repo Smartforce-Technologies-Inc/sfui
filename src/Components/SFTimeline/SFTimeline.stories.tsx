@@ -22,12 +22,19 @@ const items: SFTimelineItem[] = [
 export default {
   title: 'Components/SFTimeline',
   component: SFTimeline,
+  parameters: { controls: { sort: 'alpha' } },
   args: {
     items,
     size: 'medium',
     selectedIndex: 0
   },
   argTypes: {
+    size: {
+      description: 'The size of the timeline.'
+    },
+    selectedIndex: {
+      description: 'The item index in the timeline to be selected.'
+    },
     onItemClick: {
       table: {
         disable: true

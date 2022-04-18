@@ -34,7 +34,9 @@ const StyledTextField = withStyles((theme: Theme) => ({
 
       '&.Mui-disabled': {
         '& .MuiInputBase-input': {
-          color: theme.palette.type === 'light' ? SFGrey[400] : SFGrey[600]
+          color: theme.palette.type === 'light' ? SFGrey[400] : SFGrey[600],
+          WebkitTextFillColor:
+            theme.palette.type === 'light' ? SFGrey[400] : SFGrey[600]
         }
       },
 
@@ -149,7 +151,7 @@ export const SFTextField = ({
       fullWidth
       color='primary'
       variant='outlined'
-      rows={props.multiline ? rows : 1}
+      minRows={props.multiline ? rows : 1}
       autoComplete={autoComplete}
     />
   );

@@ -21,7 +21,7 @@ export default {
       }
     },
     label: {
-      description: 'The text to be used in an enclosing label element.'
+      description: 'The label asociated to the input value meaning.'
     },
     checked: {
       description: 'If true, the component is checked.',

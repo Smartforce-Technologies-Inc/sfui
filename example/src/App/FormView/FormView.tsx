@@ -353,7 +353,7 @@ export const FormView = (): JSX.Element => {
         maxWidth='sm'
         fullWidth
         open={openResponsePanel}
-        content=''
+        contentText=''
         rightAction={{
           label: 'Close',
           buttonProps: {

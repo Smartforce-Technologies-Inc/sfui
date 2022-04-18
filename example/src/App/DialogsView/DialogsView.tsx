@@ -37,12 +37,12 @@ const SFDialogsView = (): JSX.Element => {
           buttonProps: { onClick: (): void => setAlertTextOpen(!alertTextOpen) }
         }}
         title='Alert dialog title'
-        content={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+        contentText={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
       Mauris lobortis a erat eu mattis.`}
         open={alertTextOpen}
       />
       <SFAlertDialog
-        content={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+        contentText={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
     Mauris lobortis a erat eu mattis.`}
         open={alertFormOpen}
         title='Form dialog title'

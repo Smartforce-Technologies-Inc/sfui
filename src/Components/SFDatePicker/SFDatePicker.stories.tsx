@@ -24,7 +24,7 @@ export default {
       }
     },
     label: {
-      description: 'The label content.',
+      description: 'The label asociated to the input value meaning.',
       table: {
         type: {
           summary: 'string'
@@ -54,7 +54,7 @@ export default {
       }
     },
     helperText: {
-      description: 'The helper text content.',
+      description: 'Text to help understand input values.',
       table: {
         type: {
           summary: 'string'
@@ -121,6 +121,6 @@ const AllTemplate: Story<SFDatePickerProps> = (args) => (
 export const AllTogether = AllTemplate.bind({});
 AllTogether.parameters = {
   controls: {
-    disabled: true
+    disable: true
   }
 };

@@ -8,17 +8,29 @@ import SFIconSet from './icons/selection.json';
 export default {
   title: 'Components/SFIcon',
   component: SFIcon,
+  parameters: { controls: { sort: 'alpha' } },
+  args: {
+    size: 24,
+    rotate: 'none',
+    icon: 'Bell'
+  },
   argTypes: {
     icon: {
+      description: 'The icon name to be used.',
+      options: SFIconSet.icons.map((icon) => icon.properties.name),
       control: {
-        type: 'select',
-        options: SFIconSet.icons.map((icon) => icon.properties.name)
+        type: 'select'
       }
     },
     color: {
-      control: 'color'
+      control: 'color',
+      description: 'The color of the icon.'
+    },
+    rotate: {
+      description: 'The rotation of the icon.'
     },
     size: {
+      description: 'The size of the icon.',
       control: {
         type: 'number'
       }
@@ -69,6 +81,6 @@ export const AllTogether: Story<SFIconProps> = (args) => (
 );
 AllTogether.parameters = {
   controls: {
-    disabled: true
+    disable: true
   }
 };

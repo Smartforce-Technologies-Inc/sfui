@@ -8,20 +8,40 @@ import SFIconSet from '../SFIcon/icons/selection.json';
 export default {
   title: 'Components/SFIconButton',
   component: SFIconButton,
+  parameters: { controls: { sort: 'alpha' } },
+  args: {
+    sfColor: 'grey',
+    sfIcon: 'Bell',
+    sfSize: 'medium',
+    rotate: 'none'
+  },
   argTypes: {
     onClick: { action: 'onClick', table: { disable: true } },
     sfColor: {
-      defaultValue: 'grey',
+      description: 'The color of the component.',
+      table: {
+        defaultValue: {
+          summary: `"grey"`
+        }
+      },
+      options: ['blue', 'red', 'grey'],
       control: {
-        type: 'radio',
-        options: ['blue', 'red', 'grey']
+        type: 'radio'
       }
     },
+    sfSize: {
+      description: 'The size of the component.'
+    },
     sfIcon: {
+      description: 'The icon name to be used.',
+
+      options: SFIconSet.icons.map((icon) => icon.properties.name),
       control: {
-        type: 'select',
-        options: SFIconSet.icons.map((icon) => icon.properties.name)
+        type: 'select'
       }
+    },
+    rotate: {
+      description: 'The rotation of the icon.'
     },
     disabled: {
       control: {
@@ -43,6 +63,11 @@ export default {
         disable: true
       }
     },
+    edge: {
+      table: {
+        disable: true
+      }
+    },
     focusVisibleClassName: {
       table: {
         disable: true
@@ -59,6 +84,36 @@ export default {
       }
     },
     TouchRippleProps: {
+      table: {
+        disable: true
+      }
+    },
+    disableFocusRipple: {
+      table: {
+        disable: true
+      }
+    },
+    disableRipple: {
+      table: {
+        disable: true
+      }
+    },
+    focusRipple: {
+      table: {
+        disable: true
+      }
+    },
+    disableTouchRipple: {
+      table: {
+        disable: true
+      }
+    },
+    centerRipple: {
+      table: {
+        disable: true
+      }
+    },
+    children: {
       table: {
         disable: true
       }
@@ -99,6 +154,6 @@ export const AllSizes: Story<SFIconButtonProps> = (args) => (
 );
 AllSizes.parameters = {
   controls: {
-    disabled: true
+    disable: true
   }
 };
