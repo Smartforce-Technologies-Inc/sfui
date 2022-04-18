@@ -168,13 +168,6 @@ npm run storybook
 npm run deploy
 ```
 
-### Into the example/ folder
-
-```bash
-# runs the example app locally.
-npm run start
-```
-
 ## License
 
 MIT © [SmartForce Technologies, Inc.](https://github.com/AdventosCorp)
