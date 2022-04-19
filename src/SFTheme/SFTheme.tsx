@@ -1,8 +1,8 @@
 import {
-  Theme,
   ThemeOptions,
+  Theme,
   ThemeProvider as SFThemeProvider
-} from '@material-ui/core/styles';
+} from '@mui/material/styles';
 
 import { NightTheme } from './NightTheme';
 import { DayTheme } from './DayTheme';

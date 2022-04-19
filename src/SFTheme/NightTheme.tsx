@@ -1,4 +1,4 @@
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createTheme } from '@mui/material/styles';
 import { CommonThemeOptions } from './CommonThemeOptions';
 
 import {
@@ -11,8 +11,10 @@ import {
   SFTextWhite
 } from '../SFColors/SFColors';
 
-CommonThemeOptions.palette = {
-  type: 'dark',
+const NightThemeOptions = { ...CommonThemeOptions };
+
+NightThemeOptions.palette = {
+  mode: 'dark',
   text: {
     primary: SFTextWhite
   },
@@ -43,6 +45,6 @@ CommonThemeOptions.palette = {
   }
 };
 
-const NightTheme = createMuiTheme(CommonThemeOptions);
+const NightTheme = createTheme(NightThemeOptions);
 
 export { NightTheme };

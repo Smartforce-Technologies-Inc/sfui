@@ -1,4 +1,4 @@
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createTheme } from '@mui/material/styles';
 import { CommonThemeOptions } from './CommonThemeOptions';
 import {
   SFGrey,
@@ -10,8 +10,10 @@ import {
   SFTextBlack
 } from '../SFColors/SFColors';
 
-CommonThemeOptions.palette = {
-  type: 'light',
+const DayThemeOptions = { ...CommonThemeOptions };
+
+DayThemeOptions.palette = {
+  mode: 'light',
   text: {
     primary: SFTextBlack
   },
@@ -42,6 +44,6 @@ CommonThemeOptions.palette = {
   }
 };
 
-const DayTheme = createMuiTheme(CommonThemeOptions);
+const DayTheme = createTheme(DayThemeOptions);
 
 export { DayTheme };
