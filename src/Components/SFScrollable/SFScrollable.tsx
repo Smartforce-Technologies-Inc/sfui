@@ -1,73 +1,10 @@
 import React from 'react';
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+import { styled } from '@mui/material';
 import { SFGrey } from '../../SFColors/SFColors';
 import { hexToRgba } from '../../Helpers';
 
 const SCROLL_BOX_MIN_HEIGHT = 20;
 const SCROLL_BOX_MIN_WIDTH = 20;
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      height: '100%',
-      position: 'relative'
-    },
-    withHorizontalScroll: {
-      paddingBottom: 12
-    },
-    container: {
-      height: '100%',
-      overflow: 'auto',
-      scrollbarWidth: 'none',
-      msOverflowStyle: 'none',
-
-      '&::-webkit-scrollbar': {
-        display: 'none'
-      }
-    },
-    vScrollBar: {
-      height: '100%',
-      width: '9px',
-      position: 'absolute',
-      right: 3,
-      top: 0,
-      bottom: 0,
-      '@media print': {
-        display: 'none'
-      }
-    },
-    vScrollThumb: {
-      marginLeft: '3px',
-      width: '6px',
-      position: 'absolute',
-      borderRadius: '3px',
-      backgroundColor:
-        theme.palette.type === 'light'
-          ? hexToRgba(SFGrey.A100 as string, 0.3)
-          : hexToRgba(SFGrey[500], 0.3)
-    },
-    hScrollBar: {
-      position: 'absolute',
-      width: '100%',
-      height: '9px',
-      left: 0,
-      right: 0,
-      bottom: 0,
-      '@media print': {
-        display: 'none'
-      }
-    },
-    hScrollThumb: {
-      height: '6px',
-      position: 'absolute',
-      borderRadius: '3px',
-      backgroundColor:
-        theme.palette.type === 'light'
-          ? hexToRgba(SFGrey.A100 as string, 0.3)
-          : hexToRgba(SFGrey[500], 0.3)
-    }
-  })
-);
 
 const hasScrollVertical = (elem: HTMLDivElement): boolean =>
   elem.scrollHeight > elem.clientHeight;
@@ -93,7 +30,7 @@ export interface SFScrollableProps {
   onScrollBottom?: () => void;
 }
 
-export const SFScrollable = React.forwardRef(
+export const SFScrollableBase = React.forwardRef(
   (
     {
       className,
@@ -104,8 +41,6 @@ export const SFScrollable = React.forwardRef(
     }: SFScrollableProps,
     ref: React.Ref<SFScrollableRefHandler>
   ) => {
-    const classes = useStyles();
-
     const scrollHostRef: React.RefObject<HTMLDivElement> = React.useRef<HTMLDivElement>(
       null
     );
@@ -392,8 +327,8 @@ export const SFScrollable = React.forwardRef(
 
     return (
       <div
-        className={`${classes.root} ${
-          hasHorizontalScroll ? classes.withHorizontalScroll : ''
+        className={`SFScrollable-root ${
+          hasHorizontalScroll ? 'SFScrollable-withHorizontalScroll' : ''
         } ${className || ''}`}
         onMouseOver={onMouseOver}
         onTouchStart={onMouseOver}
@@ -401,7 +336,7 @@ export const SFScrollable = React.forwardRef(
         onTouchEnd={onMouseOut}
       >
         <div
-          className={`${classes.container} ${containerClassName || ''}`}
+          className={`SFScrollable-container ${containerClassName || ''}`}
           ref={scrollHostRef}
           onScroll={onHostScroll}
         >
@@ -409,22 +344,22 @@ export const SFScrollable = React.forwardRef(
         </div>
 
         <div
-          className={classes.vScrollBar}
+          className='SFScrollable-vScrollBar'
           style={{ opacity: showVerticalScroll ? 1 : 0 }}
         >
           <div
-            className={classes.vScrollThumb}
+            className='SFScrollable-vScrollThumb'
             style={{ height: verticalScrollHeight, top: verticalScrollTop }}
             onMouseDown={onVerticalScrollMouseDown}
           />
         </div>
 
         <div
-          className={classes.hScrollBar}
+          className='SFScrollable-hScrollBar'
           style={{ opacity: showHorizontalScroll ? 1 : 0 }}
         >
           <div
-            className={classes.hScrollThumb}
+            className='SFScrollable-hScrollThumb'
             style={{ width: horizontalScrollWidth, left: horizontalScrollLeft }}
             onMouseDown={onHorizontalScrollMouseDown}
           />
@@ -433,3 +368,70 @@ export const SFScrollable = React.forwardRef(
     );
   }
 );
+
+export const SFScrollable = styled(SFScrollableBase)(({ theme }) => ({
+  '&.SFScrollable-root': {
+    height: '100%',
+    position: 'relative',
+
+    '&.SFScrollable-withHorizontalScroll': {
+      paddingBottom: 12
+    },
+
+    '& .SFScrollable-container': {
+      height: '100%',
+      overflow: 'auto',
+      scrollbarWidth: 'none',
+      msOverflowStyle: 'none',
+
+      '&::-webkit-scrollbar': {
+        display: 'none'
+      }
+    },
+
+    '& .SFScrollable-vScrollBar': {
+      height: '100%',
+      width: '9px',
+      position: 'absolute',
+      right: 3,
+      top: 0,
+      bottom: 0,
+      '@media print': {
+        display: 'none'
+      }
+    },
+
+    '& .SFScrollable-vScrollThumb': {
+      marginLeft: '3px',
+      width: '6px',
+      position: 'absolute',
+      borderRadius: '3px',
+      backgroundColor:
+        theme.palette.mode === 'light'
+          ? hexToRgba(SFGrey.A100 as string, 0.3)
+          : hexToRgba(SFGrey[500], 0.3)
+    },
+
+    '& .SFScrollable-hScrollBar': {
+      position: 'absolute',
+      width: '100%',
+      height: '9px',
+      left: 0,
+      right: 0,
+      bottom: 0,
+      '@media print': {
+        display: 'none'
+      }
+    },
+
+    '& .SFScrollable-hScrollThumb': {
+      height: '6px',
+      position: 'absolute',
+      borderRadius: '3px',
+      backgroundColor:
+        theme.palette.mode === 'light'
+          ? hexToRgba(SFGrey.A100 as string, 0.3)
+          : hexToRgba(SFGrey[500], 0.3)
+    }
+  }
+}));
