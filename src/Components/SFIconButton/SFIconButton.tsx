@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { useTheme, Theme, withStyles } from '@material-ui/core/styles';
+import { styled, Theme, useTheme } from '@mui/material/styles';
+import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 import { SFGrey } from '../../SFColors/SFColors';
 import { SFIcon, SFIconRotation } from '../SFIcon/SFIcon';
-import IconButton, { IconButtonProps } from '@material-ui/core/IconButton';
 
 type SFSize = 'tiny' | 'small' | 'medium' | 'large';
 
@@ -13,12 +13,12 @@ interface IconButtonInnerProps {
   height?: string;
 }
 
-const StyledIconButton = withStyles((theme: Theme) => ({
-  root: {
+const StyledIconButton = styled(IconButton)(({ theme }) => ({
+  '&.MuiIconButton-root': {
     '&:hover': {
       '@media (hover: hover)': {
         backgroundColor: `${
-          theme.palette.type === 'light'
+          theme.palette.mode === 'light'
             ? 'rgba(204, 204, 204, 0.3)'
             : 'rgba(128, 128, 128, 0.3)'
         }`
@@ -26,13 +26,13 @@ const StyledIconButton = withStyles((theme: Theme) => ({
     },
     '&:active': {
       backgroundColor: `${
-        theme.palette.type === 'light'
+        theme.palette.mode === 'light'
           ? 'rgba(204, 204, 204, 0.5)'
           : 'rgba(128, 128, 128, 0.2)'
       }`
     }
   }
-}))(IconButton);
+}));
 
 const getIconButtonInnerProps = (size?: SFSize): IconButtonInnerProps => {
   const result: IconButtonInnerProps = {};
@@ -80,7 +80,7 @@ export const SFIconButton = ({
   ...props
 }: SFIconButtonProps): React.ReactElement<SFIconButtonProps> => {
   const theme: Theme = useTheme();
-  const isThemeLight: boolean = theme.palette.type === 'light';
+  const isThemeLight: boolean = theme.palette.mode === 'light';
   const iconDefaultColor: string = isThemeLight ? SFGrey[600] : SFGrey[400];
   const disabledColor: string = isThemeLight ? SFGrey[200] : SFGrey[700];
   const colorPicked: string = sfColor || iconDefaultColor;
