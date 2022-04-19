@@ -1,3 +1,5 @@
+import React from 'react';
+import { styled } from '@mui/material/styles';
 import {
   Dialog,
   DialogProps,
@@ -9,11 +11,10 @@ import {
   DialogContentTextProps,
   DialogActions,
   DialogActionsProps
-} from '@material-ui/core';
-import { withStyles, Theme } from '@material-ui/core/styles';
+} from '@mui/material';
+
 import { SFGrey } from '../../SFColors/SFColors';
 import { hexToRgba } from '../../Helpers';
-import React from 'react';
 
 export interface SFDialogTitleProps extends DialogTitleProps {}
 export interface SFDialogContentProps extends DialogContentProps {}
@@ -21,52 +22,53 @@ export interface SFDialogContentTextProps extends DialogContentTextProps {}
 export interface SFDialogActionsProps extends DialogActionsProps {}
 export interface SFDialogProps extends DialogProps {}
 
-export const SFDialogTitle = withStyles((theme: Theme) => ({
-  root: {
+export const SFDialogTitle = styled(DialogTitle)(({ theme }) => ({
+  '&.MuiDialogTitle-root': {
     padding: 0,
+
     '& h2': {
-      color: `${theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]}`,
+      color: `${theme.palette.mode === 'light' ? SFGrey[900] : SFGrey[50]}`,
       fontSize: 24,
       fontStyle: 'normal',
       fontWeight: 500,
       lineHeight: '28px'
     }
   }
-}))(DialogTitle);
+}));
 
-export const SFDialogContent = withStyles(() => ({
-  root: {
+export const SFDialogContent = styled(DialogContent)({
+  '&.MuiDialogContent-root': {
     padding: 0
   }
-}))(DialogContent);
+});
 
-export const SFDialogContentText = withStyles((theme: Theme) => ({
-  root: {
+export const SFDialogContentText = styled(DialogContentText)(({ theme }) => ({
+  '&.MuiDialogContentText-root': {
     margin: 0,
-    color: `${theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]}`,
+    color: `${theme.palette.mode === 'light' ? SFGrey[900] : SFGrey[50]}`,
     fontSize: 16,
     fontStyle: 'normal',
     fontWeight: 400,
     lineHeight: '24px'
   }
-}))(DialogContentText);
+}));
 
-export const SFDialogActions = withStyles(() => ({
-  root: {
+export const SFDialogActions = styled(DialogActions)({
+  '&.MuiDialogActions-root': {
     padding: 0,
     display: 'flex'
   }
-}))(DialogActions);
+});
 
-const StyledDialog = withStyles((theme: Theme) => ({
-  root: {
+const StyledDialog = styled(Dialog)(({ theme }) => ({
+  '&.MuiDialog-root': {
     backgroundColor: `${
-      theme.palette.type === 'light'
+      theme.palette.mode === 'light'
         ? 'rgba(0, 0, 0, 0.3)'
         : hexToRgba(SFGrey.A400 as string, 0.8)
     }`
   }
-}))(Dialog);
+}));
 
 export interface SFDialogProps extends DialogProps {
   disableBackdropClick?: boolean;
