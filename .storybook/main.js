@@ -4,5 +4,6 @@ module.exports = {
     '@storybook/preset-create-react-app',
     '@storybook/addon-links',
     '@storybook/addon-essentials'
-  ]
+  ],
+  features: { emotionAlias: false }
 };
