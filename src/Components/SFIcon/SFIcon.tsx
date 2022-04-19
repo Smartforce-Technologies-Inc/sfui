@@ -1,8 +1,8 @@
 import React, { forwardRef } from 'react';
-import { useTheme, Theme } from '@material-ui/core/styles';
 import { SFGrey } from '../../SFColors/SFColors';
 import IcomoonReact from 'icomoon-react';
 import IconSet from './icons/selection.json';
+import { Theme, useTheme } from '@mui/material/styles';
 
 export type SFIconRotation = 'left' | 'right' | 'invert' | 'none';
 
@@ -36,7 +36,7 @@ export const SFIcon = forwardRef(
   ): React.ReactElement<SFIconProps> => {
     const theme: Theme = useTheme();
     const colorDefault: string =
-      theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400];
+      theme.palette.mode === 'light' ? SFGrey[600] : SFGrey[400];
     const color: string = props.color ? props.color : colorDefault;
     const customStyle: React.CSSProperties = {
       transform: `rotate(${getRotationDeg(rotate)}deg)`
