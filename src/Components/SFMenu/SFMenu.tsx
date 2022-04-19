@@ -1,13 +1,14 @@
 import React from 'react';
-import { Menu, MenuProps, withStyles } from '@material-ui/core';
+import { styled } from '@mui/material/styles';
+import Menu, { MenuProps } from '@mui/material/Menu';
 
-const StyledMenu = withStyles(() => ({
-  paper: {
+const StyledMenu = styled(Menu)({
+  '&.MuiMenu-paper': {
     '& *:focus': {
       'outline-style': 'none'
     }
   }
-}))(Menu);
+});
 
 export interface SFMenuProps extends MenuProps {}
 

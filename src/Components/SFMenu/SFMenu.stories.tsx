@@ -8,7 +8,9 @@ import { SFMenuItem } from '../SFMenuItem/SFMenuItem';
 export default {
   title: 'Components/SFMenu',
   component: SFMenu,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: {
+    controls: { sort: 'alpha', include: ['open', 'transitionDuration'] }
+  },
   args: {
     transitionDuration: 'auto',
     open: false
@@ -38,12 +40,7 @@ export default {
         }
       }
     },
-    onClose: { action: 'onClose', table: { disable: true } },
-    ref: {
-      table: {
-        disable: true
-      }
-    }
+    onClose: { action: 'onClose' }
   }
 } as Meta;
 
@@ -62,4 +59,5 @@ const Template: Story<SFMenuProps> = (args) => {
     </div>
   );
 };
+
 export const Default = Template.bind({});
