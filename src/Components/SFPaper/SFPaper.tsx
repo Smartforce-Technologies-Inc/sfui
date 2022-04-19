@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import Paper, { PaperProps } from '@material-ui/core/Paper';
+import { styled } from '@mui/material/styles';
+import Paper, { PaperProps } from '@mui/material/Paper';
 
-const StyledPaper = withStyles({
-  root: {
+const StyledPaper = styled(Paper)({
+  '& .MuiPaper-root': {
     borderRadius: 0,
     height: '100%'
   }
-})(Paper);
+});
 
 export interface SFPaperProps extends PaperProps {}
 
