@@ -1,23 +1,21 @@
 import * as React from 'react';
-import { Theme, withStyles } from '@material-ui/core/styles';
-import Link, { LinkProps } from '@material-ui/core/Link';
+import { styled } from '@mui/material/styles';
+import Link, { LinkProps } from '@mui/material/Link';
 import { SFGrey } from '../../SFColors/SFColors';
-import { CSSProperties } from '@material-ui/core/styles/withStyles';
 
 type SFSize = 'small' | 'medium';
-const StyledLink = withStyles((theme: Theme) => ({
-  root: {
+const StyledLink = styled(Link)(({ theme }) => ({
+  '&.MuiLink-root': {
+    cursor: 'pointer',
+    fontWeight: 500,
+
     '&.MuiTypography-colorInherit': {
-      color: `${theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]}`
-    },
-    '&.MuiLink-root': {
-      cursor: 'pointer',
-      fontWeight: 500
+      color: `${theme.palette.mode === 'light' ? SFGrey[900] : SFGrey[50]}`
     }
   }
-}))(Link);
+}));
 
-const getSizeStyle = (size?: SFSize): CSSProperties => {
+const getSizeStyle = (size?: SFSize): React.CSSProperties => {
   switch (size) {
     case 'small':
       return {
@@ -32,15 +30,24 @@ const getSizeStyle = (size?: SFSize): CSSProperties => {
   }
 };
 
+export type SFLinkColor = 'inherit' | 'primary';
+
 export interface SFLinkProps extends LinkProps {
   sfSize: SFSize;
+  color: SFLinkColor;
 }
 
 export const SFLink = ({
   sfSize = 'medium',
-  color,
+  color = 'inherit',
   ...props
 }: SFLinkProps): React.ReactElement<SFLinkProps> => {
-  const sfColor = color !== 'primary' ? 'inherit' : 'primary';
-  return <StyledLink {...props} style={getSizeStyle(sfSize)} color={sfColor} />;
+  return (
+    <StyledLink
+      {...props}
+      style={getSizeStyle(sfSize)}
+      color={color}
+      underline='none'
+    />
+  );
 };

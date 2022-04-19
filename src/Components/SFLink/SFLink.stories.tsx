@@ -6,7 +6,9 @@ import { SFLink, SFLinkProps } from './SFLink';
 export default {
   title: 'Components/SFLink',
   component: SFLink,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: {
+    controls: { sort: 'alpha', include: ['color', 'sfSize', 'text'] }
+  },
   args: {
     text: 'I am a link example',
     color: 'inherited',
@@ -34,56 +36,6 @@ export default {
     },
     sfSize: {
       description: 'The size of the link.'
-    },
-    variant: {
-      table: {
-        disable: true
-      }
-    },
-    noWrap: {
-      table: {
-        disable: true
-      }
-    },
-    gutterBottom: {
-      table: {
-        disable: true
-      }
-    },
-    paragraph: {
-      table: {
-        disable: true
-      }
-    },
-    align: {
-      table: {
-        disable: true
-      }
-    },
-    display: {
-      table: {
-        disable: true
-      }
-    },
-    underline: {
-      table: {
-        disable: true
-      }
-    },
-    ref: {
-      table: {
-        disable: true
-      }
-    },
-    variantMapping: {
-      table: {
-        disable: true
-      }
-    },
-    TypographyClasses: {
-      table: {
-        disable: true
-      }
     }
   }
 } as Meta;
