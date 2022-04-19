@@ -5,7 +5,7 @@ import { SFThemeProvider, createSFTheme, SFTheme } from '../SFTheme/SFTheme';
 import { SFPaper } from '../Components/SFPaper/SFPaper';
 import { SFSwitch } from '../Components/SFSwitch/SFSwitch';
 import { SFLink } from '../Components/SFLink/SFLink';
-import { useSFMediaQuery, SFStylesProvider } from '../SFUtils/SFUtils';
+import { useSFMediaQuery } from '../SFUtils/SFUtils';
 import ReactDOM from 'react-dom';
 
 export interface StorybookWrapperProps {
@@ -118,46 +118,44 @@ const StorybookWrapper = ({
 
   return (
     <SFThemeProvider theme={theme}>
-      <SFStylesProvider injectFirst>
+      <div
+        id='sf-topbar'
+        style={{
+          backgroundColor: theme.palette.background.default
+        }}
+      >
         <div
-          id='sf-topbar'
           style={{
-            backgroundColor: theme.palette.background.default
+            display: 'flex',
+            justifyContent: 'space-between',
+            padding: '5px 1rem',
+            borderBottom: `2px solid ${theme.palette.primary.main}`
           }}
         >
-          <div
+          <h2
             style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              padding: '5px 1rem',
-              borderBottom: `2px solid ${theme.palette.primary.main}`
+              display: 'inline-block',
+              margin: '7px 0',
+              color: theme.palette.text.primary
             }}
           >
-            <h2
-              style={{
-                display: 'inline-block',
-                margin: '7px 0',
-                color: theme.palette.text.primary
-              }}
-            >
-              SFUI Library
-            </h2>
-            <SFSwitch checked={nightMode} onChange={toggleSwitch} />
-          </div>
-          <br />
+            SFUI Library
+          </h2>
+          <SFSwitch checked={nightMode} onChange={toggleSwitch} />
         </div>
-        <SFPaper
-          id='sf-story-wrapper'
-          style={{
-            height: '100%',
-            minHeight: 'calc(100vh - 106px)',
-            padding: '1rem',
-            backgroundColor: theme.palette.background.default
-          }}
-        >
-          {children}
-        </SFPaper>
-      </SFStylesProvider>
+        <br />
+      </div>
+      <SFPaper
+        id='sf-story-wrapper'
+        style={{
+          height: '100%',
+          minHeight: 'calc(100vh - 106px)',
+          padding: '1rem',
+          backgroundColor: theme.palette.background.default
+        }}
+      >
+        {children}
+      </SFPaper>
     </SFThemeProvider>
   );
 };
