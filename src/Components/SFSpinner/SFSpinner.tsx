@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { CircularProgress, CircularProgressProps } from '@material-ui/core';
+import CircularProgress, {
+  CircularProgressProps
+} from '@mui/material/CircularProgress';
 
 export interface SFSpinnerProps extends CircularProgressProps {}
 
