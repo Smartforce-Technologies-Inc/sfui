@@ -59,14 +59,14 @@ Text.argTypes = {
   }
 };
 
-export const Circle: Story<SFSkeletonProps> = (args) => {
-  return <SFSkeleton {...args} variant='circle' width={args.height} />;
+export const Circular: Story<SFSkeletonProps> = (args) => {
+  return <SFSkeleton {...args} variant='circular' width={args.height} />;
 };
 
-Circle.args = {
+Circular.args = {
   height: 50
 };
-Circle.argTypes = {
+Circular.argTypes = {
   animation: {
     options: ['false', 'pulse', 'wave'],
     control: {
@@ -85,18 +85,18 @@ Circle.argTypes = {
   }
 };
 
-Circle.args = {
+Circular.args = {
   height: 30
 };
 
-export const Rect: Story<SFSkeletonProps> = (args) => {
-  return <SFSkeleton {...args} variant='rect' />;
+export const Rectangular: Story<SFSkeletonProps> = (args) => {
+  return <SFSkeleton {...args} variant='rectangular' />;
 };
 
-Rect.args = {
+Rectangular.args = {
   height: 50
 };
-Rect.argTypes = {
+Rectangular.argTypes = {
   animation: {
     options: ['false', 'pulse', 'wave'],
     control: {
@@ -110,7 +110,7 @@ Rect.argTypes = {
   }
 };
 
-Rect.args = {
+Rectangular.args = {
   height: 50
 };
 
@@ -130,8 +130,8 @@ export const AllTogether: Story = ({ animation }) => {
           gap: 10
         }}
       >
-        <SFSkeleton variant='circle' height={50} animation={animation} />
-        <SFSkeleton variant='rect' height={50} animation={animation} />
+        <SFSkeleton variant='circular' height={50} animation={animation} />
+        <SFSkeleton variant='rectangular' height={50} animation={animation} />
       </div>
 
       <SFSkeleton variant='text' animation={animation} />
