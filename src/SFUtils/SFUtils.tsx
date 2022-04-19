@@ -1,3 +1,3 @@
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 export { useMediaQuery as useSFMediaQuery };
