@@ -1,81 +1,63 @@
 import * as React from 'react';
-import { makeStyles, withStyles, Theme } from '@material-ui/core/styles';
+import { styled } from '@mui/material/styles';
 import {
   ButtonGroup,
   Popper,
   ClickAwayListener,
-  MenuList
-} from '@material-ui/core';
+  MenuList,
+  Theme
+} from '@mui/material';
 import { SFButton } from '../SFButton/SFButton';
 import { SFIcon } from '../SFIcon/SFIcon';
 import { SFGrey, SFBlue, SFTextWhite } from '../../SFColors/SFColors';
 import { SFPaper } from '../SFPaper/SFPaper';
 import { SFMenuItem } from '../SFMenuItem/SFMenuItem';
 
-const useStyles = makeStyles((theme: Theme) => ({
-  paper: {
-    borderRadius: 2
-  },
-  iconButton: {
-    '& svg': {
-      '& path': {
-        fill: (props: Partial<SFSplitButtonProps>): string => {
-          const isLight: boolean = theme.palette.type === 'light';
-          if (props.sfColor === 'grey') {
-            return `${isLight ? SFGrey[900] : SFGrey[50]} !important`;
-          } else {
-            if (props.variant === 'outlined') {
-              return `${isLight ? SFBlue[500] : SFBlue[200]} !important`;
-            }
-            return `${isLight ? SFTextWhite : SFGrey[900]} !important`;
-          }
-        }
+const getFill = (
+  theme: Theme,
+  sfColor: string,
+  variant: string,
+  status?: string
+): string => {
+  const isLight: boolean = theme.palette.mode === 'light';
+
+  if (status === 'hover') {
+    if (variant === 'outlined' && sfColor === 'blue') {
+      return `${isLight ? SFBlue[700] : SFBlue[300]} !important`;
+    }
+    return 'auto';
+  } else if (status === 'active') {
+    if (variant === 'outlined' && sfColor === 'blue') {
+      return `${isLight ? SFBlue[800] : SFBlue[400]} !important`;
+    }
+    return 'auto';
+  } else {
+    if (sfColor === 'grey') {
+      return `${isLight ? SFGrey[900] : SFGrey[50]} !important`;
+    } else {
+      if (variant === 'outlined') {
+        return `${isLight ? SFBlue[500] : SFBlue[200]} !important`;
       }
-    },
-    '&:hover': {
-      '& svg': {
-        '& path': {
-          fill: (props: Partial<SFSplitButtonProps>): string => {
-            const isLight: boolean = theme.palette.type === 'light';
-            if (props.variant === 'outlined' && props.sfColor === 'blue') {
-              return `${isLight ? SFBlue[700] : SFBlue[300]} !important`;
-            }
-            return 'auto';
-          }
-        }
-      }
-    },
-    '&:active': {
-      '& svg': {
-        '& path': {
-          fill: (props: Partial<SFSplitButtonProps>): string => {
-            const isLight: boolean = theme.palette.type === 'light';
-            if (props.variant === 'outlined' && props.sfColor === 'blue') {
-              return `${isLight ? SFBlue[800] : SFBlue[400]} !important`;
-            }
-            return 'auto';
-          }
-        }
-      }
+      return `${isLight ? SFTextWhite : SFGrey[900]} !important`;
     }
   }
-}));
+};
 
-const StyledButtonGroup = withStyles((theme: Theme) => ({
-  root: {
-    boxShadow: 'none'
-  },
-  grouped: {
+const StyledButtonGroup = styled(ButtonGroup)(({ theme }) => ({
+  boxShadow: 'none',
+
+  '& .MuiButtonGroup-grouped': {
     '&:last-child': {
       padding: '0 !important'
     }
   },
-  groupedContainedHorizontal: {
+
+  '& .MuiButtonGroup-groupedContainedHorizontal': {
     '&:first-child': {
       borderRight: `1px solid ${theme.palette.background.default}`
     }
   }
-}))(ButtonGroup);
+}));
 
 export interface SFSplitButtonOption {
   label: string;
@@ -84,6 +66,7 @@ export interface SFSplitButtonOption {
 }
 
 export interface SFSplitButtonProps {
+  className?: string;
   options: SFSplitButtonOption[];
   defaultSelected?: number;
   variant: 'outlined' | 'contained';
@@ -91,15 +74,14 @@ export interface SFSplitButtonProps {
   size?: 'medium' | 'large';
 }
 
-export const SFSplitButton = ({
+const SFSplitButtonBase = ({
+  className = '',
   options,
   defaultSelected = 0,
   variant = 'contained',
   sfColor = 'blue',
   size = 'medium'
 }: SFSplitButtonProps): React.ReactElement<SFSplitButtonProps> => {
-  const classes = useStyles({ variant, sfColor });
-
   const [isMenuOpen, setIsMenuOpen] = React.useState<boolean>(false);
   const [selectedItemIndex, setSelectedItemIndex] = React.useState<number>(
     defaultSelected
@@ -115,7 +97,7 @@ export const SFSplitButton = ({
     setIsMenuOpen((prevOpen) => !prevOpen);
   };
 
-  const onClickAway = (event: React.MouseEvent<Document, MouseEvent>): void => {
+  const onClickAway = (event: MouseEvent | TouchEvent): void => {
     if (
       refMenu.current &&
       refMenu.current.contains(event.target as HTMLElement)
@@ -127,19 +109,21 @@ export const SFSplitButton = ({
   };
 
   return (
-    <div>
+    <div className={className}>
       <StyledButtonGroup ref={refMenu} variant={variant} size='medium'>
         <SFButton
           sfColor={sfColor}
           size={size}
+          variant={variant}
           onClick={options[selectedItemIndex].onClick}
         >
           {options[selectedItemIndex].label}
         </SFButton>
 
         <SFButton
+          className='SFSplitButton-iconButton'
           sfColor={sfColor}
-          className={classes.iconButton}
+          variant={variant}
           size={size}
           aria-controls={isMenuOpen ? 'split-button-menu' : undefined}
           aria-expanded={isMenuOpen ? 'true' : undefined}
@@ -157,7 +141,7 @@ export const SFSplitButton = ({
         placement='bottom-end'
         disablePortal
       >
-        <SFPaper className={classes.paper} elevation={8}>
+        <SFPaper className='SFSplitButton-paper' elevation={8}>
           <ClickAwayListener onClickAway={onClickAway}>
             <MenuList id='split-button-menu'>
               {options.map((option, index) => (
@@ -177,3 +161,32 @@ export const SFSplitButton = ({
     </div>
   );
 };
+
+export const SFSplitButton = styled(SFSplitButtonBase)(
+  ({ theme, sfColor, variant }) => ({
+    '& .SFSplitButton-paper': {
+      borderRadius: 2
+    },
+    '& .SFSplitButton-iconButton': {
+      '& svg': {
+        '& path': {
+          fill: getFill(theme, sfColor, variant)
+        }
+      },
+      '&:hover': {
+        '& svg': {
+          '& path': {
+            fill: getFill(theme, sfColor, variant, 'hover')
+          }
+        }
+      },
+      '&:active': {
+        '& svg': {
+          '& path': {
+            fill: getFill(theme, sfColor, variant, 'active')
+          }
+        }
+      }
+    }
+  })
+);
