@@ -1,20 +1,22 @@
 import React from 'react';
-import { Drawer, DrawerProps } from '@material-ui/core';
-import { withStyles, Theme } from '@material-ui/core/styles';
+import { styled } from '@mui/material/styles';
+import Drawer, { DrawerProps } from '@mui/material/Drawer';
 import { SFGrey } from '../../SFColors/SFColors';
 import { hexToRgba } from '../../Helpers';
 
 export interface SFDrawerProps extends DrawerProps {}
 
-export const StyledDrawer = withStyles((theme: Theme) => ({
-  root: {
-    backgroundColor: `${
-      theme.palette.type === 'light'
-        ? 'rgba(0, 0, 0, 0.3)'
-        : hexToRgba(SFGrey.A400 as string, 0.8)
-    }`
+export const StyledDrawer = styled(Drawer)(({ theme }) => ({
+  backgroundColor: `${
+    theme.palette.mode === 'light'
+      ? 'rgba(0, 0, 0, 0.3)'
+      : hexToRgba(SFGrey.A400 as string, 0.8)
+  }`,
+
+  '& .MuiPaper-root': {
+    backgroundImage: 'unset'
   }
-}))(Drawer);
+}));
 
 export const SFDrawer = ({
   transitionDuration = 360,

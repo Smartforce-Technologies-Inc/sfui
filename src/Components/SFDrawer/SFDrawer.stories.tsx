@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+import { styled } from '@mui/material/styles';
 import { Meta } from '@storybook/react/types-6-0';
 import { SFDrawer, SFDrawerProps } from './SFDrawer';
 import { SFIconButton } from '../SFIconButton/SFIconButton';
@@ -8,17 +8,14 @@ import { SFGrey } from '../../SFColors/SFColors';
 export default {
   title: 'Components/SFDrawer',
   component: SFDrawer,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: { controls: { sort: 'alpha', include: ['anchor', 'open'] } },
   args: {
     open: false,
     anchor: 'left'
   },
   argTypes: {
     onClose: {
-      action: 'onClose',
-      table: {
-        disable: true
-      }
+      action: 'onClose'
     },
     open: {
       description: 'If true, the drawer is open.',
@@ -51,72 +48,66 @@ export default {
           top: 'Top'
         }
       }
-    },
-    ref: {
-      table: {
-        disable: true
-      }
     }
   }
 } as Meta;
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    container: {
-      minWidth: 396,
-      font: 'Roboto',
-      color: `${theme.palette.type === 'light' ? SFGrey[700] : SFGrey[400]}`
-    },
-    topBar: {
-      margin: '20px 20px 8px 20px',
-      display: 'flex',
-      justifyContent: 'space-between'
-    },
-    btnRight: { alignSelf: 'flex-end' },
-    content: {
-      margin: 24,
+interface DrawerContentProps {
+  className?: string;
+}
 
-      '& h2': { marginBottom: 24, padding: 0 },
-      '& ul': {
-        padding: 0,
+const DrawerContent = ({ className }: DrawerContentProps): JSX.Element => (
+  <div className={className}>
+    <div className='topBar'>
+      <SFIconButton sfSize='medium' sfIcon='Left-7' />
+      <SFIconButton className='btnRight' sfSize='medium' sfIcon='Close' />
+    </div>
 
-        '& li': {
-          listStyle: 'none',
-          marginBottom: 24,
+    <div className='content'>
+      <h2>Title</h2>
+      <ul>
+        <li>Lorem ipsum dolor</li>
+        <li>Lorem ipsum dolor</li>
+        <li>Lorem ipsum dolor</li>
+      </ul>
+    </div>
+  </div>
+);
 
-          '&:first-child': {
-            fontWeight: 700
-          }
+const StyledDrawerContent = styled(DrawerContent)(({ theme }) => ({
+  minWidth: 396,
+  font: 'Roboto',
+  color: `${theme.palette.mode === 'light' ? SFGrey[700] : SFGrey[400]}`,
+
+  '.topBar': {
+    margin: '20px 20px 8px 20px',
+    display: 'flex',
+    justifyContent: 'space-between'
+  },
+  '.btnRight': { alignSelf: 'flex-end' },
+  '.content': {
+    margin: 24,
+
+    '& h2': { marginBottom: 24, padding: 0 },
+    '& ul': {
+      padding: 0,
+
+      '& li': {
+        listStyle: 'none',
+        marginBottom: 24,
+
+        '&:first-child': {
+          fontWeight: 700
         }
       }
     }
-  })
-);
+  }
+}));
 
 export const Drawer = (args: SFDrawerProps): JSX.Element => {
-  const classes = useStyles();
-
   return (
     <SFDrawer {...args}>
-      <div className={classes.container}>
-        <div className={classes.topBar}>
-          <SFIconButton sfSize='medium' sfIcon='Left-7' />
-          <SFIconButton
-            className={classes.btnRight}
-            sfSize='medium'
-            sfIcon='Close'
-          />
-        </div>
-
-        <div className={classes.content}>
-          <h2>Title</h2>
-          <ul>
-            <li>Lorem ipsum dolor</li>
-            <li>Lorem ipsum dolor</li>
-            <li>Lorem ipsum dolor</li>
-          </ul>
-        </div>
-      </div>
+      <StyledDrawerContent />
     </SFDrawer>
   );
 };
