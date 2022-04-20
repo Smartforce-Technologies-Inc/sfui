@@ -6,7 +6,12 @@ import { SFTextField } from '../SFTextField/SFTextField';
 export default {
   title: 'Components/SFPanel',
   component: SFPanel,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: {
+    controls: {
+      sort: 'alpha',
+      include: ['anchor', 'elevation', 'maxWitdh', 'open', 'title']
+    }
+  },
   args: {
     title: 'Drawer title',
     open: false,
@@ -16,10 +21,7 @@ export default {
   },
   argTypes: {
     onClose: {
-      action: 'onClose',
-      table: {
-        disable: true
-      }
+      action: 'onClose'
     },
     anchor: {
       description: 'Side from which the panel will appear.',
@@ -74,21 +76,6 @@ export default {
       },
       control: {
         type: 'number'
-      }
-    },
-    ref: {
-      table: {
-        disable: true
-      }
-    },
-    leftAction: {
-      table: {
-        disable: true
-      }
-    },
-    rightAction: {
-      table: {
-        disable: true
       }
     }
   }
