@@ -7,7 +7,9 @@ import { SFCheckbox, SFCheckboxProps } from './SFCheckbox';
 export default {
   title: 'Components/SFCheckbox',
   component: SFCheckbox,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: {
+    controls: { sort: 'alpha', include: ['checked', 'disabled', 'label'] }
+  },
   args: {
     label: 'Bagel',
     checked: true,
@@ -15,10 +17,7 @@ export default {
   },
   argTypes: {
     onChange: {
-      action: 'onChange',
-      table: {
-        disable: true
-      }
+      action: 'onChange'
     },
     label: {
       description: 'The label asociated to the input value meaning.'
@@ -43,49 +42,6 @@ export default {
       },
       control: {
         type: 'boolean'
-      }
-    },
-    disableRipple: {
-      table: { disable: true }
-    },
-    disableFocusRipple: {
-      table: { disable: true }
-    },
-    disableTouchRipple: {
-      table: { disable: true }
-    },
-    centerRipple: {
-      table: { disable: true }
-    },
-    edge: {
-      table: { disable: true }
-    },
-    focusRipple: {
-      table: { disable: true }
-    },
-    ref: {
-      table: {
-        disable: true
-      }
-    },
-    action: {
-      table: {
-        disable: true
-      }
-    },
-    focusVisibleClassName: {
-      table: {
-        disable: true
-      }
-    },
-    onFocusVisible: {
-      table: {
-        disable: true
-      }
-    },
-    TouchRippleProps: {
-      table: {
-        disable: true
       }
     }
   }

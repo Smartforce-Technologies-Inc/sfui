@@ -1,22 +1,20 @@
 import * as React from 'react';
-import { withStyles, Theme, useTheme } from '@material-ui/core/styles';
-import Checkbox, { CheckboxProps } from '@material-ui/core/Checkbox';
-import FormControl from '@material-ui/core/FormControl';
+import { styled, useTheme, Theme } from '@mui/material/styles';
+import { FormControl, Checkbox, CheckboxProps } from '@mui/material';
 import { SFGrey } from '../../SFColors/SFColors';
 import { SFFormControlBooleanLabel } from '../SFFormControlBooleanLabel/SFFormControlBooleanLabel';
 import { SFIcon } from '../SFIcon/SFIcon';
 
-const StyledCheckbox = withStyles((theme: Theme) => ({
-  root: {
-    padding: '12px',
-    color: `${theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400]}`,
-    alignItems: 'flex-start'
-  },
-  colorPrimary: {
+const StyledCheckbox = styled(Checkbox)(({ theme }) => ({
+  padding: '12px',
+  color: `${theme.palette.mode === 'light' ? SFGrey[600] : SFGrey[400]}`,
+  alignItems: 'flex-start',
+
+  '&.MuiCheckbox-colorPrimary': {
     '&:hover': {
       '@media (hover: hover)': {
         backgroundColor: `${
-          theme.palette.type === 'light'
+          theme.palette.mode === 'light'
             ? 'rgba(204, 204, 204, 0.3)'
             : 'rgba(128, 128, 128, 0.3)'
         }`
@@ -24,7 +22,7 @@ const StyledCheckbox = withStyles((theme: Theme) => ({
     },
     '&:active': {
       backgroundColor: `${
-        theme.palette.type === 'light'
+        theme.palette.mode === 'light'
           ? 'rgba(204, 204, 204, 0.5)'
           : 'rgba(128, 128, 128, 0.2)'
       }`
@@ -32,7 +30,7 @@ const StyledCheckbox = withStyles((theme: Theme) => ({
     '&.Mui-checked:hover': {
       '@media (hover: hover)': {
         backgroundColor: `${
-          theme.palette.type === 'light'
+          theme.palette.mode === 'light'
             ? 'rgba(204, 235, 255, 0.4)'
             : 'rgba(128, 198, 255, 0.2)'
         }`
@@ -40,25 +38,25 @@ const StyledCheckbox = withStyles((theme: Theme) => ({
     },
     '&.Mui-checked:active': {
       backgroundColor: `${
-        theme.palette.type === 'light'
+        theme.palette.mode === 'light'
           ? 'rgba(204, 235, 255, 0.6)'
           : 'rgba(128, 198, 255, 0.1)'
       }`
     },
     '&.Mui-disabled': {
-      color: `${theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]}`
+      color: `${theme.palette.mode === 'light' ? SFGrey[200] : SFGrey[700]}`
     }
   }
-}))(Checkbox);
+}));
 
 const getIconUncheckedColor = (
   theme: Theme,
   disabled: boolean | undefined
 ): string => {
   if (disabled) {
-    return theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700];
+    return theme.palette.mode === 'light' ? SFGrey[200] : SFGrey[700];
   }
-  return theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400];
+  return theme.palette.mode === 'light' ? SFGrey[600] : SFGrey[400];
 };
 
 const getIconCheckedColor = (
@@ -66,7 +64,7 @@ const getIconCheckedColor = (
   disabled: boolean | undefined
 ): string => {
   if (disabled) {
-    return theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700];
+    return theme.palette.mode === 'light' ? SFGrey[200] : SFGrey[700];
   }
   return theme.palette.primary.main;
 };
