@@ -71,6 +71,7 @@ export interface ButtonMixinProps {
 export default function ButtonMixin(sfButtonConfig: ButtonMixinProps): any {
   return styled(Button)(({ theme }) => ({
     textTransform: 'unset',
+    borderRadius: '2px',
 
     '&.MuiButton-contained': {
       color: sfButtonConfig.contained[theme.palette.mode].color,
