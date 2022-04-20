@@ -7,7 +7,20 @@ import { SFButton } from './SFButton';
 export default {
   title: 'Components/SFButton',
   component: SFButton,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: {
+    controls: {
+      sort: 'alpha',
+      include: [
+        'disabled',
+        'fullWidth',
+        'isLoading',
+        'sfColor',
+        'size',
+        'text',
+        'variant'
+      ]
+    }
+  },
   args: {
     variant: 'outlined',
     sfColor: 'blue',
@@ -44,64 +57,8 @@ export default {
         }
       }
     },
-    color: {
-      table: { disable: true }
-    },
-    children: {
-      table: { disable: true }
-    },
-    endIcon: {
-      table: { disable: true }
-    },
-    startIcon: {
-      table: { disable: true }
-    },
-    href: {
-      table: { disable: true }
-    },
-    tabIndex: {
-      table: { disable: true }
-    },
-    TouchRippleProps: {
-      table: { disable: true }
-    },
-    ref: {
-      table: { disable: true }
-    },
-    focusVisibleClassName: {
-      table: { disable: true }
-    },
-    centerRipple: {
-      table: { disable: true }
-    },
-    action: {
-      table: { disable: true }
-    },
-    disableElevation: {
-      table: { disable: true }
-    },
-    disableRipple: {
-      table: { disable: true }
-    },
-    disableFocusRipple: {
-      table: { disable: true }
-    },
-    disableTouchRipple: {
-      table: { disable: true }
-    },
-    focusRipple: {
-      table: { disable: true }
-    },
     onClick: {
-      action: 'onClick',
-      table: {
-        disable: true
-      }
-    },
-    onFocusVisible: {
-      table: {
-        disable: true
-      }
+      action: 'onClick'
     }
   }
 } as Meta;

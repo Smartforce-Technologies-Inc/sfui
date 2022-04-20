@@ -1,10 +1,8 @@
 import * as React from 'react';
-import { ButtonProps } from '@material-ui/core/Button';
-
+import { CircularProgress, ButtonProps } from '@mui/material';
 import BlueButton from './CustomButtons/BlueButton';
 import RedButton from './CustomButtons/RedButton';
 import GreyButton from './CustomButtons/GreyButton';
-import { CircularProgress } from '@material-ui/core';
 
 interface ButtonInnerProps {
   padding?: string;
@@ -84,10 +82,17 @@ export const SFButton = ({
       style={ButtonInnerStyle}
       onClick={!isLoading ? onClick : undefined}
     >
-      {isLoading && (
-        <CircularProgress size={spinnerSizes[size]} variant='indeterminate' />
-      )}
-      {children}
+      <span
+        style={{
+          display: 'flex',
+          gap: '6px'
+        }}
+      >
+        {isLoading && (
+          <CircularProgress size={spinnerSizes[size]} variant='indeterminate' />
+        )}
+        {children}
+      </span>
     </ButtonComponent>
   );
 };
