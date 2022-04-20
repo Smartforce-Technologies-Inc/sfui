@@ -23,51 +23,41 @@ export interface SFDialogActionsProps extends DialogActionsProps {}
 export interface SFDialogProps extends DialogProps {}
 
 export const SFDialogTitle = styled(DialogTitle)(({ theme }) => ({
-  '&.MuiDialogTitle-root': {
-    padding: 0,
+  padding: 0,
 
-    '& h2': {
-      color: `${theme.palette.mode === 'light' ? SFGrey[900] : SFGrey[50]}`,
-      fontSize: 24,
-      fontStyle: 'normal',
-      fontWeight: 500,
-      lineHeight: '28px'
-    }
+  '& h2': {
+    color: `${theme.palette.mode === 'light' ? SFGrey[900] : SFGrey[50]}`,
+    fontSize: 24,
+    fontStyle: 'normal',
+    fontWeight: 500,
+    lineHeight: '28px'
   }
 }));
 
 export const SFDialogContent = styled(DialogContent)({
-  '&.MuiDialogContent-root': {
-    padding: 0
-  }
+  padding: 0
 });
 
 export const SFDialogContentText = styled(DialogContentText)(({ theme }) => ({
-  '&.MuiDialogContentText-root': {
-    margin: 0,
-    color: `${theme.palette.mode === 'light' ? SFGrey[900] : SFGrey[50]}`,
-    fontSize: 16,
-    fontStyle: 'normal',
-    fontWeight: 400,
-    lineHeight: '24px'
-  }
+  margin: 0,
+  color: `${theme.palette.mode === 'light' ? SFGrey[900] : SFGrey[50]}`,
+  fontSize: 16,
+  fontStyle: 'normal',
+  fontWeight: 400,
+  lineHeight: '24px'
 }));
 
 export const SFDialogActions = styled(DialogActions)({
-  '&.MuiDialogActions-root': {
-    padding: 0,
-    display: 'flex'
-  }
+  padding: 0,
+  display: 'flex'
 });
 
 const StyledDialog = styled(Dialog)(({ theme }) => ({
-  '&.MuiDialog-root': {
-    backgroundColor: `${
-      theme.palette.mode === 'light'
-        ? 'rgba(0, 0, 0, 0.3)'
-        : hexToRgba(SFGrey.A400 as string, 0.8)
-    }`
-  }
+  backgroundColor: `${
+    theme.palette.mode === 'light'
+      ? 'rgba(0, 0, 0, 0.3)'
+      : hexToRgba(SFGrey.A400 as string, 0.8)
+  }`
 }));
 
 export interface SFDialogProps extends DialogProps {

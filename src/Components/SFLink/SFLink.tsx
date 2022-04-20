@@ -4,14 +4,13 @@ import Link, { LinkProps } from '@mui/material/Link';
 import { SFGrey } from '../../SFColors/SFColors';
 
 type SFSize = 'small' | 'medium';
-const StyledLink = styled(Link)(({ theme }) => ({
-  '&.MuiLink-root': {
-    cursor: 'pointer',
-    fontWeight: 500,
 
-    '&.MuiTypography-colorInherit': {
-      color: `${theme.palette.mode === 'light' ? SFGrey[900] : SFGrey[50]}`
-    }
+const StyledLink = styled(Link)(({ theme }) => ({
+  cursor: 'pointer',
+  fontWeight: 500,
+
+  '&.MuiTypography-colorInherit': {
+    color: `${theme.palette.mode === 'light' ? SFGrey[900] : SFGrey[50]}`
   }
 }));
 

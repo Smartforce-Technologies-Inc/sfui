@@ -3,10 +3,8 @@ import { styled } from '@mui/material/styles';
 import Paper, { PaperProps } from '@mui/material/Paper';
 
 const StyledPaper = styled(Paper)({
-  '& .MuiPaper-root': {
-    borderRadius: 0,
-    height: '100%'
-  }
+  borderRadius: 0,
+  height: '100%'
 });
 
 export interface SFPaperProps extends PaperProps {}

@@ -16,10 +16,7 @@ export default {
   },
   argTypes: {
     onClick: {
-      action: 'onClick',
-      table: {
-        disable: true
-      }
+      action: 'onClick'
     },
     text: {
       description: 'The text to display.',
