@@ -24,10 +24,6 @@ export const StyledAutoComplete = withStyles((theme: Theme) => ({
   listbox: {
     padding: '13px 0'
   },
-  paper: {
-    marginLeft: '4px',
-    marginRight: '-4px'
-  },
   option: {
     padding: '6px 24px',
 
