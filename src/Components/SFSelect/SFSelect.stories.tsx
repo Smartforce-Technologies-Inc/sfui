@@ -22,7 +22,7 @@ const getOptions = (): SFMenuOption[] => {
 export default {
   title: 'Components/SFSelect',
   component: SFSelect,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: { controls: { sort: 'alpha', exclude: ['options', 'ref'] } },
   args: {
     label: 'Bagel',
     options: getOptions(),
@@ -80,21 +80,6 @@ export default {
         type: {
           summary: 'string'
         }
-      }
-    },
-    options: {
-      table: {
-        disable: true
-      }
-    },
-    defaultValue: {
-      table: {
-        disable: true
-      }
-    },
-    ref: {
-      table: {
-        disable: true
       }
     }
   }

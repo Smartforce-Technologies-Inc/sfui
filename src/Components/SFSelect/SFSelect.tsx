@@ -1,29 +1,24 @@
 import * as React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import { SelectProps } from '@material-ui/core';
+import { styled, SelectProps } from '@mui/material';
 import { SFTextField } from '../SFTextField/SFTextField';
 import { SFIcon } from '../SFIcon/SFIcon';
 import { SFMenuItem } from '../SFMenuItem/SFMenuItem';
 
-export const StyledSelect = withStyles(() => ({
-  root: {
-    '& svg': {
-      position: 'absolute',
-      right: 18,
-      pointerEvents: 'none',
-      top: 'auto'
-    }
+export const StyledSelect = styled(SFTextField)({
+  '& svg': {
+    position: 'absolute',
+    right: 18,
+    pointerEvents: 'none',
+    top: 'auto'
   }
-}))(SFTextField);
+});
 
-const StyledMenuItem = withStyles(() => ({
-  root: {
-    whiteSpace: 'unset',
-    wordBreak: 'break-word',
-    minHeight: '36px',
-    height: 'auto'
-  }
-}))(SFMenuItem);
+const StyledMenuItem = styled(SFMenuItem)({
+  whiteSpace: 'unset',
+  wordBreak: 'break-word',
+  minHeight: '36px',
+  height: 'auto'
+});
 
 export interface SFMenuOption {
   label: string;
