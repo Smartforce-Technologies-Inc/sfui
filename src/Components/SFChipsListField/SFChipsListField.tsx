@@ -1,5 +1,4 @@
-import React, { ChangeEvent } from 'react';
-import FormControl from '@material-ui/core/FormControl';
+import React, { ChangeEvent, Fragment } from 'react';
 import {
   AutocompleteRenderInputParams,
   AutocompleteInputChangeReason,
@@ -18,14 +17,12 @@ const chipsDisplayClasses = makeStyles({
   chipDisplayInline: {
     display: 'flex',
     gap: '8px',
-    marginTop: '14px',
     flexWrap: 'wrap',
     flexDirection: 'row'
   },
   chipDisplayBlock: {
     display: 'flex',
     gap: '8px',
-    marginTop: '14px',
     flexWrap: 'wrap',
     flexDirection: 'column'
   }
@@ -273,7 +270,7 @@ export const SFChipsListField = ({
   };
 
   return (
-    <FormControl fullWidth>
+    <Fragment>
       <SFChipListModal
         value={editedValue}
         open={isModalOpen}
@@ -285,6 +282,7 @@ export const SFChipsListField = ({
         disabled={disabled}
         options={filteredOptions(options)}
         multiple
+        fullWidth
         value={inputValues}
         inputValue={inputValue}
         onChange={onAutoCompleteChange}
@@ -326,6 +324,6 @@ export const SFChipsListField = ({
         )}
       />
       <DisplayValues />
-    </FormControl>
+    </Fragment>
   );
 };
