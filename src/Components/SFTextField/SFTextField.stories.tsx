@@ -7,7 +7,7 @@ import { SFTextField, SFTextFieldProps } from './SFTextField';
 export default {
   title: 'Components/SFTextField',
   component: SFTextField,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: { controls: { sort: 'alpha', exclude: ['margin'] } },
   args: {
     label: 'Bagel',
     value: 'Some text',
