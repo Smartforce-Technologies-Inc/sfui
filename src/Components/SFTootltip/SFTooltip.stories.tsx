@@ -6,7 +6,7 @@ import { SFTooltip, SFTooltipProps } from './SFTooltip';
 export default {
   title: 'Components/SFTooltip',
   component: SFTooltip,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: { controls: { sort: 'alpha', exclude: ['content', 'ref'] } },
   args: {
     title: 'Title',
     open: true,
@@ -76,16 +76,6 @@ export default {
         defaultValue: {
           summary: true
         }
-      }
-    },
-    content: {
-      table: {
-        disable: true
-      }
-    },
-    ref: {
-      table: {
-        disable: true
       }
     }
   }
