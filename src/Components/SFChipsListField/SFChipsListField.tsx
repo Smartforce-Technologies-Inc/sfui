@@ -17,14 +17,12 @@ const chipsDisplayClasses = makeStyles({
   chipDisplayInline: {
     display: 'flex',
     gap: '8px',
-    marginTop: '14px',
     flexWrap: 'wrap',
     flexDirection: 'row'
   },
   chipDisplayBlock: {
     display: 'flex',
     gap: '8px',
-    marginTop: '14px',
     flexWrap: 'wrap',
     flexDirection: 'column'
   }
