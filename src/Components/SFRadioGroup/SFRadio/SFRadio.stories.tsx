@@ -7,7 +7,12 @@ import { SFRadio, SFRadioProps } from './SFRadio';
 export default {
   title: 'Components/SFRadio',
   component: SFRadio,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: {
+    controls: {
+      sort: 'alpha',
+      include: ['checked', 'disabled', 'isGroup', 'label']
+    }
+  },
   args: {
     label: 'Bagel'
   },
@@ -49,56 +54,6 @@ export default {
       },
       control: {
         type: 'boolean'
-      }
-    },
-    ref: {
-      table: {
-        disable: true
-      }
-    },
-    action: {
-      table: {
-        disable: true
-      }
-    },
-    centerRipple: {
-      table: {
-        disable: true
-      }
-    },
-    disableFocusRipple: {
-      table: {
-        disable: true
-      }
-    },
-    disableTouchRipple: {
-      table: {
-        disable: true
-      }
-    },
-    focusRipple: {
-      table: {
-        disable: true
-      }
-    },
-    edge: {
-      table: {
-        disable: true
-      }
-    },
-    focusVisibleClassName: {
-      table: {
-        disable: true
-      }
-    },
-    onFocusVisible: {
-      table: {
-        disable: true
-      }
-    },
-    TouchRippleProps: {
-      table: {
-        disable: true
       }
     }
   }

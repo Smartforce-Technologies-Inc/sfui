@@ -1,6 +1,5 @@
 import * as React from 'react';
-import RadioGroup, { RadioGroupProps } from '@material-ui/core/RadioGroup';
-import { withStyles } from '@material-ui/core/styles';
+import { styled, RadioGroup, RadioGroupProps } from '@mui/material';
 import FormControl from '@material-ui/core/FormControl';
 import { SFFormControlBooleanLabel } from '../SFFormControlBooleanLabel/SFFormControlBooleanLabel';
 import { SFRadio } from './SFRadio/SFRadio';
@@ -17,13 +16,11 @@ export interface SFRadioGroupProps extends RadioGroupProps {
   options: SFRadioOptionsProps[];
 }
 
-const StyledRadioGroup = withStyles({
-  root: {
-    '&.MuiFormGroup-row': {
-      gap: '20px'
-    }
+const StyledRadioGroup = styled(RadioGroup)({
+  '&.MuiFormGroup-row': {
+    gap: '20px'
   }
-})(RadioGroup);
+});
 
 export const SFRadioGroup = ({
   label,

@@ -18,7 +18,7 @@ const options: SFRadioOptionsProps[] = [
 export default {
   title: 'Components/SFRadioGroup',
   component: SFRadioGroup,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: { controls: { sort: 'alpha', include: ['label'] } },
   args: {
     options,
     label: 'Bagel'
@@ -26,21 +26,6 @@ export default {
   argTypes: {
     label: {
       description: 'The label asociated to the input value meaning.'
-    },
-    color: {
-      table: {
-        disable: true
-      }
-    },
-    options: {
-      table: {
-        disable: true
-      }
-    },
-    ref: {
-      table: {
-        disable: true
-      }
     }
   }
 } as Meta;
