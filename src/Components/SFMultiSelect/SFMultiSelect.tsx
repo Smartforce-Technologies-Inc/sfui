@@ -1,40 +1,30 @@
 import * as React from 'react';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
-import { SelectProps } from '@material-ui/core';
+import { styled, SelectProps, SelectChangeEvent } from '@mui/material';
 import { SFIcon } from '../SFIcon/SFIcon';
 import { SFCheckbox } from '../SFCheckbox/SFCheckbox';
 import { SFMenuItem } from '../SFMenuItem/SFMenuItem';
 import { SFMenuOption, StyledSelect } from '../SFSelect/SFSelect';
 
-const StyledMenuItem = withStyles(() => ({
-  root: {
-    whiteSpace: 'unset',
-    wordBreak: 'break-word',
-    minHeight: '52px',
-    height: 'auto',
-    alignItems: 'flex-start',
+const StyledMenuItem = styled(SFMenuItem)({
+  whiteSpace: 'unset',
+  wordBreak: 'break-word',
+  minHeight: '52px',
+  height: 'auto',
+  alignItems: 'flex-start',
 
-    '& .MuiFormControl-root': {
-      minWidth: 'auto'
-    }
-  }
-}))(SFMenuItem);
-
-const useMenuStyles = makeStyles({
-  paper: {
-    width: '1px',
-    marginTop: '8px'
+  '& .MuiFormControl-root': {
+    minWidth: 'auto'
   },
-  list: {
-    '& li > span': {
-      paddingTop: '9px',
-      fontSize: '16px',
-      lineHeight: '24px'
-    }
+  '& > span': {
+    paddingTop: '9px',
+    fontSize: '16px',
+    lineHeight: '24px'
   }
 });
 
 export interface SFMultiSelectProps extends SelectProps {
+  className?: string;
+  menuClassName?: string;
   options: SFMenuOption[];
   defaultValue?: string[];
   value?: string[];
@@ -42,6 +32,8 @@ export interface SFMultiSelectProps extends SelectProps {
 }
 
 export const SFMultiSelect = ({
+  className = '',
+  menuClassName = '',
   options,
   helperText,
   label,
@@ -51,7 +43,6 @@ export const SFMultiSelect = ({
   ...props
 }: SFMultiSelectProps): React.ReactElement<SFMultiSelectProps> => {
   const [selected, setSelected] = React.useState<string[]>([]);
-  const menuClasses: Record<'paper' | 'list', string> = useMenuStyles();
 
   React.useEffect(() => {
     const selectedValue = value || defaultValue;
@@ -59,10 +50,7 @@ export const SFMultiSelect = ({
   }, [value, defaultValue]);
 
   const handleChange = (
-    event: React.ChangeEvent<{
-      name?: string | undefined;
-      value: unknown;
-    }>,
+    event: SelectChangeEvent<unknown>,
     child: React.ReactNode
   ): void => {
     if (!value) {
@@ -103,7 +91,7 @@ export const SFMultiSelect = ({
           variant: 'menu',
           autoFocus: false,
           disableAutoFocusItem: true,
-          classes: menuClasses
+          classes: { root: menuClassName }
         },
         onChange: handleChange,
         renderValue: renderSelected,
