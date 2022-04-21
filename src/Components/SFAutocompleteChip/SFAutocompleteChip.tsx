@@ -108,6 +108,7 @@ export const SFAutocompleteChip = ({
       clearOnBlur
       options={options}
       multiple
+      fullWidth
       value={value}
       inputValue={inputValue}
       onInputChange={onInputChange}
