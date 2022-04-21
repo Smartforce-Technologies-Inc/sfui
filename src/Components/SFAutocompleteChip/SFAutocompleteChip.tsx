@@ -1,5 +1,4 @@
 import React, { ChangeEvent } from 'react';
-import FormControl from '@material-ui/core/FormControl';
 import {
   Autocomplete,
   AutocompleteRenderInputParams,
@@ -23,10 +22,6 @@ export const StyledAutoComplete = withStyles((theme: Theme) => ({
   },
   listbox: {
     padding: '13px 0'
-  },
-  paper: {
-    marginLeft: '4px',
-    marginRight: '-4px'
   },
   option: {
     padding: '6px 24px',
@@ -108,44 +103,42 @@ export const SFAutocompleteChip = ({
   };
 
   return (
-    <FormControl fullWidth>
-      <StyledAutoComplete
-        disabled={disabled}
-        clearOnBlur
-        options={options}
-        multiple
-        value={value}
-        inputValue={inputValue}
-        onInputChange={onInputChange}
-        onChange={onAutoCompleteChange}
-        filterSelectedOptions
-        getOptionSelected={(option: string, value: string): boolean =>
-          option === value
-        }
-        renderTags={(value: string[]): JSX.Element => (
-          <SFAutocompleteChipRender
-            disabled={disabled}
-            values={value}
-            onDelete={onDelete}
-          />
-        )}
-        renderInput={(params: AutocompleteRenderInputParams): JSX.Element => (
-          <SFAutocompleteInput
-            {...params}
-            rows={1}
-            label={label}
-            helperText={helperText}
-            required={required}
-            minWidth={
-              inputMinWidth === 'full-width'
-                ? '100%'
-                : inputMinWidth === 'auto'
-                ? 'auto'
-                : `${inputMinWidth}px`
-            }
-          />
-        )}
-      />
-    </FormControl>
+    <StyledAutoComplete
+      disabled={disabled}
+      clearOnBlur
+      options={options}
+      multiple
+      value={value}
+      inputValue={inputValue}
+      onInputChange={onInputChange}
+      onChange={onAutoCompleteChange}
+      filterSelectedOptions
+      getOptionSelected={(option: string, value: string): boolean =>
+        option === value
+      }
+      renderTags={(value: string[]): JSX.Element => (
+        <SFAutocompleteChipRender
+          disabled={disabled}
+          values={value}
+          onDelete={onDelete}
+        />
+      )}
+      renderInput={(params: AutocompleteRenderInputParams): JSX.Element => (
+        <SFAutocompleteInput
+          {...params}
+          rows={1}
+          label={label}
+          helperText={helperText}
+          required={required}
+          minWidth={
+            inputMinWidth === 'full-width'
+              ? '100%'
+              : inputMinWidth === 'auto'
+              ? 'auto'
+              : `${inputMinWidth}px`
+          }
+        />
+      )}
+    />
   );
 };
