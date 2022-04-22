@@ -6,7 +6,7 @@ import { SFTextField } from '../SFTextField/SFTextField';
 export default {
   title: 'Components/SFAlertDialog',
   component: SFAlertDialog,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: { controls: { sort: 'alpha', include: ['open'] } },
   args: {
     title: 'Alert dialog title',
     contentText:
@@ -51,37 +51,28 @@ export default {
       control: false
     },
     onClose: {
-      table: {
-        disable: true
-      },
       action: 'onClose'
     },
     onClick: {
-      action: 'onClick',
-      table: {
-        disable: true
-      }
+      action: 'onClick'
     },
     rightAction: {
       description: `Adds a button on the bottom right of the dialog with props to handle it's change.  
        When paired with the left action button, this button aligns to the right of the other button.`,
       control: false
-    },
-    ref: {
-      table: {
-        disable: true
-      }
     }
   }
 } as Meta;
 
-export const AlertDialog = (args: SFAlertDialogProps): JSX.Element => (
-  <SFAlertDialog
-    leftAction={{ label: 'Medium' }}
-    rightAction={{ label: 'Medium' }}
-    {...args}
-  />
+const Template: Story<SFAlertDialogProps> = (args) => (
+  <SFAlertDialog {...args} />
 );
+
+export const AlertDialog = Template.bind({});
+AlertDialog.args = {
+  leftAction: { label: 'Medium' },
+  rightAction: { label: 'Medium' }
+};
 
 export const FormDialog = (args: SFAlertDialogProps): JSX.Element => {
   const [disabled, setDisabled] = React.useState<boolean>(true);
