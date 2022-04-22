@@ -7,7 +7,12 @@ import { SFSwitch, SFSwitchProps } from './SFSwitch';
 export default {
   title: 'Components/SFSwitch',
   component: SFSwitch,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: {
+    controls: {
+      sort: 'alpha',
+      include: ['checked', 'disabled', 'edge', 'label', 'sfColor', 'size']
+    }
+  },
   args: {
     label: 'Off / On',
     checked: false,
@@ -18,10 +23,7 @@ export default {
   },
   argTypes: {
     onChange: {
-      action: 'onChange',
-      table: {
-        disable: true
-      }
+      action: 'onChange'
     },
     checked: {
       description: 'If true, the component is checked.',
@@ -75,55 +77,14 @@ export default {
       description: 'The color of the switch.'
     },
     edge: {
+      options: [false, 'start', 'end'],
+      control: {
+        type: 'radio'
+      },
       table: {
         defaultValue: {
           summary: 'false'
         }
-      }
-    },
-    centerRipple: {
-      table: {
-        disable: true
-      }
-    },
-    disableFocusRipple: {
-      table: {
-        disable: true
-      }
-    },
-    disableTouchRipple: {
-      table: {
-        disable: true
-      }
-    },
-    focusRipple: {
-      table: {
-        disable: true
-      }
-    },
-    ref: {
-      table: {
-        disable: true
-      }
-    },
-    action: {
-      table: {
-        disable: true
-      }
-    },
-    focusVisibleClassName: {
-      table: {
-        disable: true
-      }
-    },
-    onFocusVisible: {
-      table: {
-        disable: true
-      }
-    },
-    TouchRippleProps: {
-      table: {
-        disable: true
       }
     }
   }
