@@ -5,7 +5,9 @@ import { SFAlertCollapse } from './SFAlertCollapse';
 export default {
   title: 'Components/SFAlertCollapse',
   component: SFAlertCollapse,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: {
+    controls: { sort: 'alpha', include: ['isOpen', 'title', 'type'] }
+  },
   args: {
     isOpen: false,
     mountOnEnter: true,

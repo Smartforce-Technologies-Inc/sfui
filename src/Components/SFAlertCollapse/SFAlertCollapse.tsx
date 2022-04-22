@@ -1,7 +1,7 @@
 import React from 'react';
 import { SFAlert, SFAlertProps } from '../SFAlert/SFAlert';
-import { Collapse } from '@material-ui/core';
-import { TransitionProps } from '@material-ui/core/transitions';
+import { Collapse } from '@mui/material';
+import { TransitionProps } from '@mui/material/transitions';
 
 export interface SFAlertCollapseProps extends SFAlertProps {
   isOpen: boolean;
