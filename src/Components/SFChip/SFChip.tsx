@@ -1,174 +1,189 @@
 import React from 'react';
-import FormControl from '@material-ui/core/FormControl';
-import { withStyles, Theme } from '@material-ui/core/styles';
-import Chip, { ChipProps } from '@material-ui/core/Chip';
+import { styled, FormControl, Chip, ChipProps } from '@mui/material';
 import { SFBlue, SFGrey, SFRed, SFSurfaceLight } from '../../SFColors/SFColors';
 import { SFIconButton } from '../SFIconButton/SFIconButton';
 import { hexToRgba } from '../../Helpers';
 
-const StyledChip = withStyles((theme: Theme) => ({
-  root: {
-    fontWeight: 400,
-    fontSize: '13px',
-    maxWidth: '100%',
+const StyledChip = styled(Chip)(({ theme }) => ({
+  fontWeight: 400,
+  fontSize: '13px',
+  maxWidth: '100%',
 
-    '&:not(.Mui-disabled)': {
-      '&.primary:not(.hasError)': {
-        backgroundColor:
-          theme.palette.type === 'light' ? SFBlue[500] : SFBlue[200],
-        color: theme.palette.type === 'light' ? SFSurfaceLight : SFGrey[900],
+  '&:not(.Mui-disabled)': {
+    '&.primary:not(.hasError)': {
+      backgroundColor:
+        theme.palette.mode === 'light' ? SFBlue[500] : SFBlue[200],
+      color: theme.palette.mode === 'light' ? SFSurfaceLight : SFGrey[900],
 
-        '&.MuiChip-deletable': {
-          '& .MuiChip-deleteIcon': {
-            color: theme.palette.type === 'light' ? SFBlue[500] : SFBlue[200],
+      '&.MuiChip-deletable': {
+        '& .MuiChip-deleteIcon': {
+          color: theme.palette.mode === 'light' ? SFBlue[500] : SFBlue[200],
 
-            '& .MuiIconButton-label': {
-              '& svg': {
-                '& path': {
-                  fill: `${
-                    theme.palette.type === 'light'
-                      ? SFSurfaceLight
-                      : SFGrey[900]
-                  } !important`
-                }
-              }
-            },
-
-            '&:hover, &:active': {
-              '@media (hover: hover)': {
-                backgroundColor:
-                  theme.palette.type === 'light'
-                    ? hexToRgba(SFGrey[200], 0.3)
-                    : hexToRgba(SFGrey[500], 0.3)
-              }
+          '& svg': {
+            '& path': {
+              fill: `${
+                theme.palette.mode === 'light' ? SFSurfaceLight : SFGrey[900]
+              } !important`
             }
-          },
-
-          '&:active': {
-            backgroundColor:
-              theme.palette.type === 'light' ? SFBlue[700] : SFBlue[300]
-          }
-        },
-
-        '&.MuiChip-outlined': {
-          backgroundColor: 'transparent',
-          border: `1px solid ${
-            theme.palette.type === 'light' ? SFBlue[500] : SFBlue[200]
-          }`,
-          color: theme.palette.type === 'light' ? SFBlue[500] : SFBlue[200],
-
-          '&.MuiChip-deletable': {
-            '& .MuiChip-deleteIcon': {
-              color: theme.palette.type === 'light' ? SFBlue[500] : SFBlue[200],
-
-              '& .MuiIconButton-label': {
-                '& svg': {
-                  '& path': {
-                    fill: `${
-                      theme.palette.type === 'light' ? SFBlue[500] : SFBlue[200]
-                    } !important`
-                  }
-                }
-              }
-            },
-
-            '&:active': {
-              backgroundColor:
-                theme.palette.type === 'light'
-                  ? hexToRgba(SFBlue[100], 0.4)
-                  : hexToRgba(SFBlue[200], 0.2)
-            }
-          }
-        }
-      },
-
-      '&.default:not(.hasError)': {
-        backgroundColor:
-          theme.palette.type === 'light' ? SFGrey[100] : SFGrey[500],
-        color: theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50],
-
-        '&.MuiChip-deletable': {
-          '& .MuiChip-deleteIcon': {
-            color: theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]
           },
 
           '&:hover, &:active': {
-            backgroundColor:
-              theme.palette.type === 'light'
-                ? hexToRgba(SFGrey[500], 0.2)
-                : hexToRgba(SFGrey[200], 0.3)
-          },
+            '@media (hover: hover)': {
+              backgroundColor:
+                theme.palette.mode === 'light'
+                  ? hexToRgba(SFGrey[200], 0.3)
+                  : hexToRgba(SFGrey[500], 0.3)
+            }
+          }
+        },
 
-          '& .MuiIconButton-label': {
+        '&:active': {
+          backgroundColor:
+            theme.palette.mode === 'light' ? SFBlue[700] : SFBlue[300]
+        }
+      },
+
+      '&.MuiChip-outlined': {
+        backgroundColor: 'transparent',
+        border: `1px solid ${
+          theme.palette.mode === 'light' ? SFBlue[500] : SFBlue[200]
+        }`,
+        color: theme.palette.mode === 'light' ? SFBlue[500] : SFBlue[200],
+
+        '&.MuiChip-deletable': {
+          '& .MuiChip-deleteIcon': {
+            color: theme.palette.mode === 'light' ? SFBlue[500] : SFBlue[200],
+
             '& svg': {
               '& path': {
                 fill: `${
-                  theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]
+                  theme.palette.mode === 'light' ? SFBlue[500] : SFBlue[200]
                 } !important`
               }
             }
           },
 
-          '&:hover': {
-            backgroundColor:
-              theme.palette.type === 'light' ? SFGrey[100] : SFGrey[500]
-          },
-
           '&:active': {
             backgroundColor:
-              theme.palette.type === 'light' ? SFGrey[200] : SFGrey[600]
+              theme.palette.mode === 'light'
+                ? hexToRgba(SFBlue[100], 0.4)
+                : hexToRgba(SFBlue[200], 0.2)
+          }
+        }
+      }
+    },
+
+    '&.default:not(.hasError)': {
+      backgroundColor:
+        theme.palette.mode === 'light' ? SFGrey[100] : SFGrey[500],
+      color: theme.palette.mode === 'light' ? SFGrey[900] : SFGrey[50],
+
+      '&.MuiChip-deletable': {
+        '& .MuiChip-deleteIcon': {
+          color: theme.palette.mode === 'light' ? SFGrey[900] : SFGrey[50]
+        },
+
+        '&:hover, &:active': {
+          backgroundColor:
+            theme.palette.mode === 'light'
+              ? hexToRgba(SFGrey[500], 0.2)
+              : hexToRgba(SFGrey[200], 0.3)
+        },
+
+        '& svg': {
+          '& path': {
+            fill: `${
+              theme.palette.mode === 'light' ? SFGrey[900] : SFGrey[50]
+            } !important`
           }
         },
 
-        '&.MuiChip-outlined': {
-          backgroundColor: 'transparent',
-          border: `1px solid ${
-            theme.palette.type === 'light' ? SFGrey[400] : SFGrey[500]
-          }`,
+        '&:hover': {
+          backgroundColor:
+            theme.palette.mode === 'light' ? SFGrey[100] : SFGrey[500]
+        },
 
-          '&.MuiChip-deletable': {
-            '&:hover': {
-              backgroundColor: 'transparent'
-            },
-            '&:active': {
-              backgroundColor:
-                theme.palette.type === 'light'
-                  ? hexToRgba(SFGrey[200], 0.3)
-                  : hexToRgba(SFGrey[500], 0.3)
-            }
-          }
+        '&:active': {
+          backgroundColor:
+            theme.palette.mode === 'light' ? SFGrey[200] : SFGrey[600]
         }
       },
 
-      '&.hasError': {
-        backgroundColor:
-          theme.palette.type === 'light' ? SFRed[700] : SFRed[200],
-        color: theme.palette.type === 'light' ? SFSurfaceLight : SFGrey[900],
+      '&.MuiChip-outlined': {
+        backgroundColor: 'transparent',
+        border: `1px solid ${
+          theme.palette.mode === 'light' ? SFGrey[400] : SFGrey[500]
+        }`,
+
+        '&.MuiChip-deletable': {
+          '&:hover': {
+            backgroundColor: 'transparent'
+          },
+          '&:active': {
+            backgroundColor:
+              theme.palette.mode === 'light'
+                ? hexToRgba(SFGrey[200], 0.3)
+                : hexToRgba(SFGrey[500], 0.3)
+          }
+        }
+      }
+    },
+
+    '&.hasError': {
+      backgroundColor: theme.palette.mode === 'light' ? SFRed[700] : SFRed[200],
+      color: theme.palette.mode === 'light' ? SFSurfaceLight : SFGrey[900],
+
+      '&.MuiChip-deletable': {
+        '& .MuiChip-deleteIcon': {
+          color: `${
+            theme.palette.mode === 'light' ? SFRed[700] : SFRed[200]
+          } !important`,
+
+          '& svg': {
+            '& path': {
+              fill: `${
+                theme.palette.mode === 'light' ? SFSurfaceLight : SFGrey[900]
+              } !important`
+            }
+          },
+
+          '&:hover, &:active': {
+            '@media (hover: hover)': {
+              backgroundColor: `${
+                theme.palette.mode === 'light'
+                  ? hexToRgba(SFGrey[200], 0.3)
+                  : hexToRgba(SFGrey[500], 0.3)
+              } !important`
+            }
+          }
+        },
+
+        '&:active': {
+          backgroundColor: `${
+            theme.palette.mode === 'light' ? SFRed[800] : SFRed[300]
+          } !important`
+        }
+      },
+
+      '&.MuiChip-outlined': {
+        backgroundColor: 'transparent',
+        border: `1px solid ${
+          theme.palette.mode === 'light' ? SFRed[700] : SFRed[200]
+        } !important`,
+        color: `${
+          theme.palette.mode === 'light' ? SFRed[700] : SFRed[200]
+        } !important`,
 
         '&.MuiChip-deletable': {
           '& .MuiChip-deleteIcon': {
             color: `${
-              theme.palette.type === 'light' ? SFRed[700] : SFRed[200]
+              theme.palette.mode === 'light' ? SFRed[700] : SFRed[200]
             } !important`,
 
-            '& .MuiIconButton-label': {
-              '& svg': {
-                '& path': {
-                  fill: `${
-                    theme.palette.type === 'light'
-                      ? SFSurfaceLight
-                      : SFGrey[900]
-                  } !important`
-                }
-              }
-            },
-
-            '&:hover, &:active': {
-              '@media (hover: hover)': {
-                backgroundColor: `${
-                  theme.palette.type === 'light'
-                    ? hexToRgba(SFGrey[200], 0.3)
-                    : hexToRgba(SFGrey[500], 0.3)
+            '& svg': {
+              '& path': {
+                fill: `${
+                  theme.palette.mode === 'light' ? SFRed[700] : SFRed[200]
                 } !important`
               }
             }
@@ -176,91 +191,56 @@ const StyledChip = withStyles((theme: Theme) => ({
 
           '&:active': {
             backgroundColor: `${
-              theme.palette.type === 'light' ? SFRed[800] : SFRed[300]
+              theme.palette.mode === 'light'
+                ? hexToRgba(SFRed[100], 0.4)
+                : hexToRgba(SFRed[200], 0.2)
             } !important`
           }
-        },
-
-        '&.MuiChip-outlined': {
-          backgroundColor: 'transparent',
-          border: `1px solid ${
-            theme.palette.type === 'light' ? SFRed[700] : SFRed[200]
-          } !important`,
-          color: `${
-            theme.palette.type === 'light' ? SFRed[700] : SFRed[200]
-          } !important`,
-
-          '&.MuiChip-deletable': {
-            '& .MuiChip-deleteIcon': {
-              color: `${
-                theme.palette.type === 'light' ? SFRed[700] : SFRed[200]
-              } !important`,
-
-              '& .MuiIconButton-label': {
-                '& svg': {
-                  '& path': {
-                    fill: `${
-                      theme.palette.type === 'light' ? SFRed[700] : SFRed[200]
-                    } !important`
-                  }
-                }
-              }
-            },
-
-            '&:active': {
-              backgroundColor: `${
-                theme.palette.type === 'light'
-                  ? hexToRgba(SFRed[100], 0.4)
-                  : hexToRgba(SFRed[200], 0.2)
-              } !important`
-            }
-          }
         }
       }
-    },
-
-    '&.Mui-disabled': {
-      backgroundColor:
-        theme.palette.type === 'light' ? SFGrey[100] : SFGrey[800],
-      color: theme.palette.type === 'light' ? SFGrey[400] : SFGrey[600],
-      opacity: 1,
-
-      '&.MuiChip-outlined': {
-        border: `1px solid ${
-          theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
-        }  !important`,
-        color: `${theme.palette.type === 'light' ? SFGrey[400] : SFGrey[600]} `,
-        backgroundColor: 'transparent'
-      },
-
-      '&.MuiChip-deletable': {
-        '& .MuiChip-deleteIcon': {
-          '& .MuiIconButton-label': {
-            '& svg': {
-              '& path': {
-                fill: `${
-                  theme.palette.type === 'light' ? SFGrey[400] : SFGrey[600]
-                } !important`
-              }
-            }
-          }
-        }
-      }
-    },
-
-    '&.fullWidth': {
-      display: 'flex',
-      justifyContent: 'space-between',
-      width: '100%'
     }
   },
-  label: {
+
+  '&.Mui-disabled': {
+    backgroundColor: theme.palette.mode === 'light' ? SFGrey[100] : SFGrey[800],
+    color: theme.palette.mode === 'light' ? SFGrey[400] : SFGrey[600],
+    opacity: 1,
+
+    '&.MuiChip-outlined': {
+      border: `1px solid ${
+        theme.palette.mode === 'light' ? SFGrey[200] : SFGrey[700]
+      }  !important`,
+      color: `${theme.palette.mode === 'light' ? SFGrey[400] : SFGrey[600]} `,
+      backgroundColor: 'transparent'
+    },
+
+    '&.MuiChip-deletable': {
+      '& .MuiChip-deleteIcon': {
+        '& svg': {
+          '& path': {
+            fill: `${
+              theme.palette.mode === 'light' ? SFGrey[400] : SFGrey[600]
+            } !important`
+          }
+        }
+      }
+    }
+  },
+
+  '&.fullWidth': {
+    display: 'flex',
+    justifyContent: 'space-between',
+    width: '100%'
+  },
+
+  '& .MuiChip-label': {
     lineHeight: '24px'
   },
-  labelSmall: {
+
+  '& .MuiChip-labelSmall': {
     lineHeight: '20px'
   }
-}))(Chip);
+}));
 
 export interface SFChipProps extends ChipProps {
   sfColor: 'primary' | 'default';
@@ -275,7 +255,7 @@ export const SFChip = ({
   label,
   disabled,
   deleteable,
-  variant = 'default',
+  variant = 'filled',
   fullWidth,
   hasError,
   onDelete,

@@ -6,7 +6,7 @@ import { SFChip, SFChipProps } from './SFChip';
 export default {
   title: 'Components/SFChip',
   component: SFChip,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: { controls: { sort: 'alpha', exclude: ['classes', 'sx'] } },
   args: {
     label: 'Bagel'
   },
