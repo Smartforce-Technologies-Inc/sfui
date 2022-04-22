@@ -24,14 +24,11 @@ export interface SFDialogProps extends DialogProps {}
 
 export const SFDialogTitle = styled(DialogTitle)(({ theme }) => ({
   padding: 0,
-
-  '& h2': {
-    color: `${theme.palette.mode === 'light' ? SFGrey[900] : SFGrey[50]}`,
-    fontSize: 24,
-    fontStyle: 'normal',
-    fontWeight: 500,
-    lineHeight: '28px'
-  }
+  color: `${theme.palette.mode === 'light' ? SFGrey[900] : SFGrey[50]}`,
+  fontSize: 24,
+  fontStyle: 'normal',
+  fontWeight: 500,
+  lineHeight: '28px'
 }));
 
 export const SFDialogContent = styled(DialogContent)({
