@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
+import { styled } from '@mui/material/styles';
 import { SFBadge } from './SFBadge';
-import { SFBadgeProps, SFIcon, SFIconButton, SFLink } from '../..';
-import { makeStyles, Theme } from '@material-ui/core/styles';
+import { SFBadgeProps, SFIcon, SFIconButton } from '../..';
 
 const AnchorOrigins = {
   topLeft: { vertical: 'top', horizontal: 'left' },
@@ -25,7 +25,7 @@ const headerNote = (): JSX.Element => {
       <code>anchorOrigin={`{ vertical: 'top', horizontal: 'left' }`}</code>
       <p>you should be to adjust the following class:</p>
       <code>
-        .MuiBadge-anchorOriginTopLeftCircle{' '}
+        .MuiBadge-anchorOriginTopLeftCircular{' '}
         {`{
           top: '14%';
           left: '14%';
@@ -35,45 +35,38 @@ const headerNote = (): JSX.Element => {
   );
 };
 
-const useCircleStyles = makeStyles((theme: Theme) => ({
-  custom: {
-    '& .MuiBadge-anchorOriginTopLeftCircle': {
-      top: '28%',
-      left: '28%'
-    },
-    '& .MuiBadge-anchorOriginTopRightCircle': {
-      top: '28%',
-      right: '28%'
-    },
-    '& .MuiBadge-anchorOriginBottomLeftCircle': {
-      bottom: '28%',
-      left: '28%'
-    },
-    '& .MuiBadge-anchorOriginBottomRightCircle': {
-      bottom: '28%',
-      right: '28%'
-    }
-  }
-}));
-
-const useRectangleStyles = makeStyles((theme: Theme) => ({
-  custom: {
-    '& .MuiBadge-anchorOriginTopLeftRectangle': {
-      top: '-7%',
-      left: '-7%'
-    },
-    '& .MuiBadge-anchorOriginTopRightRectangle': {
-      top: '-7%',
-      right: '-7%'
-    },
-    '& .MuiBadge-anchorOriginBottomLeftRectangle': {
-      bottom: '-7%',
-      left: '-7%'
-    },
-    '& .MuiBadge-anchorOriginBottomRightRectangle': {
-      bottom: '-7%',
-      right: '-7%'
-    }
+const StyledBadge = styled(SFBadge)(({ theme }) => ({
+  '& .MuiBadge-anchorOriginTopLeftCircular': {
+    top: '28%',
+    left: '28%'
+  },
+  '& .MuiBadge-anchorOriginTopRightCircular': {
+    top: '28%',
+    right: '28%'
+  },
+  '& .MuiBadge-anchorOriginBottomLeftCircular': {
+    bottom: '28%',
+    left: '28%'
+  },
+  '& .MuiBadge-anchorOriginBottomRightCircular': {
+    bottom: '28%',
+    right: '28%'
+  },
+  '& .MuiBadge-anchorOriginTopLeftRectangular': {
+    top: '-7%',
+    left: '-7%'
+  },
+  '& .MuiBadge-anchorOriginTopRightRectangular': {
+    top: '-7%',
+    right: '-7%'
+  },
+  '& .MuiBadge-anchorOriginBottomLeftRectangular': {
+    bottom: '-7%',
+    left: '-7%'
+  },
+  '& .MuiBadge-anchorOriginBottomRightRectangular': {
+    bottom: '-7%',
+    right: '-7%'
   }
 }));
 
@@ -82,9 +75,10 @@ export default {
   component: SFBadge,
   parameters: { controls: { sort: 'alpha' } },
   args: {
-    value: 0,
+    value: 5,
     size: 'small',
-    type: 'numeric'
+    type: 'numeric',
+    overlap: 'circular'
   },
   argTypes: {
     value: {
@@ -152,10 +146,7 @@ export default {
   }
 } as Meta;
 
-const BadgeTemplate: Story<SFBadgeProps> = ({ overlap, ...args }) => {
-  const style =
-    overlap && overlap === 'circle' ? useCircleStyles() : useRectangleStyles();
-
+const BadgeTemplate: Story<SFBadgeProps> = (args) => {
   return (
     <Fragment>
       {headerNote()}
@@ -170,27 +161,15 @@ const BadgeTemplate: Story<SFBadgeProps> = ({ overlap, ...args }) => {
       </div>
       <h4>Position adjusted</h4>
       <div style={{ display: 'flex', gap: '30px', alignItems: 'center' }}>
-        <SFBadge {...args}>
+        <StyledBadge {...args}>
           <SFIcon icon='Bell' />
-        </SFBadge>
-        <SFBadge className={style.custom} {...args}>
+        </StyledBadge>
+        <StyledBadge {...args}>
           <SFIconButton sfSize='medium' sfIcon='Bell' />
-        </SFBadge>
+        </StyledBadge>
       </div>
     </Fragment>
   );
 };
 
-export const BadgeCircular = BadgeTemplate.bind({});
-
-export const BadgeRectangular = BadgeTemplate.bind({});
-
-BadgeCircular.args = {
-  ...BadgeCircular.args,
-  overlap: 'circle'
-};
-
-BadgeRectangular.args = {
-  ...BadgeRectangular.args,
-  overlap: 'rectangle'
-};
+export const Default = BadgeTemplate.bind({});

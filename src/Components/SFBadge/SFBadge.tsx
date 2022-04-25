@@ -1,7 +1,5 @@
 import React from 'react';
-
-import { Badge, BadgeProps } from '@material-ui/core';
-import { withStyles, Theme } from '@material-ui/core/styles';
+import { styled, Badge, BadgeProps } from '@mui/material';
 import {
   SFCommonBlack,
   SFCommonWhite,
@@ -9,39 +7,38 @@ import {
   SFRedMainLight
 } from '../../SFColors/SFColors';
 
-const StyledBadge = withStyles((theme: Theme) => ({
-  root: {
-    '&.small': {
-      '& .MuiBadge-badge': {
-        minWidth: 'unset',
-        width: '17px',
-        height: '17px'
-      }
-    },
-
-    '&.medium': {
-      '& .MuiBadge-badge': {
-        width: '21px',
-        height: '21px'
-      }
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  '&.small': {
+    '& .MuiBadge-badge': {
+      minWidth: 'unset',
+      width: '17px',
+      height: '17px'
     }
   },
-  badge: {
+
+  '&.medium': {
+    '& .MuiBadge-badge': {
+      width: '21px',
+      height: '21px'
+    }
+  },
+
+  '& .MuiBadge-badge': {
     backgroundColor:
-      theme.palette.type === 'light' ? SFRedMainLight : SFRedMainDark,
+      theme.palette.mode === 'light' ? SFRedMainLight : SFRedMainDark,
     padding: 0,
     fontWeight: 900,
     fontSize: '12px',
     lineHeight: '14px',
-    color: theme.palette.type === 'light' ? SFCommonWhite : SFCommonBlack,
+    color: theme.palette.mode === 'light' ? SFCommonWhite : SFCommonBlack,
     boxShadow:
       '0px 2px 1px -1px rgba(0, 0, 0, 0.02), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12)',
 
     '& .badgeDot': {
-      fill: theme.palette.type === 'light' ? SFCommonWhite : SFCommonBlack
+      fill: theme.palette.mode === 'light' ? SFCommonWhite : SFCommonBlack
     }
   }
-}))(Badge);
+}));
 
 export interface SFBadgeProps extends BadgeProps {
   value: number;
@@ -53,7 +50,7 @@ export const SFBadge = ({
   value,
   size = 'small',
   type = 'numeric',
-  overlap = 'circle',
+  overlap = 'circular',
   className = '',
   anchorOrigin = { vertical: 'top', horizontal: 'left' },
   children,
