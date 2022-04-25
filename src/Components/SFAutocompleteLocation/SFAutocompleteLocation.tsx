@@ -1,13 +1,17 @@
 import React from 'react';
-import { Theme, withStyles, makeStyles } from '@material-ui/core/styles';
-import { Autocomplete, AutocompleteRenderInputParams } from '@material-ui/lab';
+import {
+  styled,
+  Autocomplete,
+  AutocompleteRenderInputParams
+} from '@mui/material';
 import debounce from 'lodash.debounce';
 import { DebouncedFunc } from 'lodash';
-import parse from 'autosuggest-highlight/parse';
 import { SFIcon } from '../SFIcon/SFIcon';
 import { SFTextField } from '../SFTextField/SFTextField';
 import { SFGrey, SFSurfaceLight } from '../../SFColors/SFColors';
 import { hexToRgba } from '../../Helpers';
+import { SFAutocompleteLocationOption } from './SFAutocompleteLocationOption/SFAutocompleteLocationOption';
+import { SFAutocompletePopper } from '../SFAutocomplete/SFAutocomplete';
 
 /*
   This component uses three Google Maps API's: Places API, Places Autocomplete API and Geocoder API.
@@ -111,17 +115,12 @@ interface GeolocationPosition {
   };
 }
 
-interface TextPart {
-  text: string;
-  highlight: boolean;
-}
-
-const StyledAutocomplete = withStyles((theme: Theme) => ({
-  inputRoot: {
+const StyledAutocomplete = styled(Autocomplete)(({ theme }) => ({
+  '& .MuiAutocomplete-inputRoot': {
     '&[class*="MuiOutlinedInput-root"]': {
       paddingTop: '20px',
 
-      '& input.MuiAutocomplete-input:first-child': {
+      '& input.MuiAutocomplete-input:first-of-type': {
         padding: '9.5px 4px'
       },
 
@@ -130,78 +129,28 @@ const StyledAutocomplete = withStyles((theme: Theme) => ({
       }
     }
   },
-  endAdornment: {
+  '& .MuiAutocomplete-endAdornment': {
     marginTop: '-3px'
   },
-  popupIndicator: {
+  '& .MuiAutocomplete-popupIndicator': {
     padding: 0
   },
-  clearIndicator: {
+  '& .MuiAutocomplete-clearIndicator': {
     padding: '9px',
     '&:hover': {
       '@media (hover: hover)': {
         backgroundColor:
-          theme.palette.type === 'light'
+          theme.palette.mode === 'light'
             ? hexToRgba(SFGrey.A100 as string, 0.3)
             : hexToRgba(SFGrey[500] as string, 0.3)
       }
     },
     '&:active': {
       backgroundColor:
-        theme.palette.type === 'light'
+        theme.palette.mode === 'light'
           ? hexToRgba(SFGrey.A100 as string, 0.5)
           : hexToRgba(SFGrey[500] as string, 0.5)
     }
-  },
-  listbox: {
-    padding: '13px 0',
-    backgroundColor:
-      theme.palette.type === 'light' ? SFSurfaceLight : SFGrey[800]
-  },
-  option: {
-    padding: '6px 24px',
-
-    '&[data-focus="true"]': {
-      backgroundColor:
-        theme.palette.type === 'light'
-          ? hexToRgba(SFGrey.A100 as string, 0.3)
-          : hexToRgba(SFGrey[500] as string, 0.3),
-      '&:active': {
-        backgroundColor:
-          theme.palette.type === 'light'
-            ? hexToRgba(SFGrey.A100 as string, 0.5)
-            : hexToRgba(SFGrey[500] as string, 0.5)
-      }
-    },
-
-    '&[aria-selected="true"]': {
-      backgroundColor:
-        theme.palette.type === 'light'
-          ? hexToRgba(SFGrey.A100 as string, 0.5)
-          : hexToRgba(SFGrey[500] as string, 0.5)
-    }
-  }
-}))(Autocomplete);
-
-const useStyles = makeStyles((theme: Theme) => ({
-  menu: {
-    display: 'grid',
-    gridTemplateColumns: 'auto 1fr',
-    gap: '15px',
-    alignItems: 'center'
-  },
-  itemText: {
-    fontSize: '16px',
-    lineHeight: '24px',
-    color: theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]
-  },
-  textHighlight: {
-    fontWeight: 700
-  },
-  itemSecondaryText: {
-    fontSize: '12px',
-    lineHeight: '14px',
-    color: theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400]
   }
 }));
 
@@ -242,7 +191,7 @@ export const SFAutocompleteLocation = ({
   minChar = 3,
   onChange
 }: SFAutocompleteLocationProps): React.ReactElement<SFAutocompleteLocationResult> => {
-  const classes = useStyles();
+  // const classes = useStyles();
   const autocompleteService = React.useRef<google.maps.places.AutocompleteService>();
   const placesService = React.useRef<google.maps.places.PlacesService>();
   const geocoderService = React.useRef<google.maps.Geocoder>();
@@ -463,45 +412,10 @@ export const SFAutocompleteLocation = ({
   ): string => option.description || '';
 
   const renderOption = (
+    props: React.HTMLAttributes<HTMLLIElement>,
     option: google.maps.places.AutocompletePrediction
   ): React.ReactNode => {
-    let matches: google.maps.places.PredictionSubstring[] = [];
-    let parts: TextPart[] = [];
-
-    if (option.structured_formatting) {
-      matches = option.structured_formatting.main_text_matched_substrings;
-      parts = parse(
-        option.structured_formatting.main_text,
-        matches.map((match: google.maps.places.PredictionSubstring) => [
-          match.offset,
-          match.offset + match.length
-        ])
-      );
-    }
-
-    return (
-      <div className={classes.menu}>
-        <SFIcon icon='Loction-1' />
-
-        <div className={classes.itemText}>
-          {parts.map((part, index) => (
-            <span
-              key={index}
-              className={part.highlight ? classes.textHighlight : ''}
-            >
-              {part.text}
-            </span>
-          ))}
-
-          <br />
-
-          <span className={classes.itemSecondaryText}>
-            {option.structured_formatting &&
-              option.structured_formatting.secondary_text}
-          </span>
-        </div>
-      </div>
-    );
+    return <SFAutocompleteLocationOption option={option} {...props} />;
   };
 
   return (
@@ -511,13 +425,14 @@ export const SFAutocompleteLocation = ({
       options={options}
       renderInput={renderInput}
       popupIcon={null}
-      closeIcon={<SFIcon icon='Close' size='16' />}
       value={selectedOption}
       inputValue={value.text}
       onChange={onAutocompleteChange}
       onInputChange={onInputChange}
       getOptionLabel={getOptionLabel}
       renderOption={renderOption}
+      clearIcon={<SFIcon icon='Close' size='16' />}
+      PopperComponent={SFAutocompletePopper}
     />
   );
 };
