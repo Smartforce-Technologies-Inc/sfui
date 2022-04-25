@@ -68,7 +68,7 @@ const usePopOverStyle = makeStyles((theme: Theme) =>
           border: `1px solid ${
             theme.palette.type !== 'light' ? SFBlueMainDark : SFBlueMainLight
           }`,
-          '&:first-child': {
+          '&:first-of-type': {
             marginLeft: 0
           },
           '&:hover': {

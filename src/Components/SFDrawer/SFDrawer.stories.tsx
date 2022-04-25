@@ -96,7 +96,7 @@ const StyledDrawerContent = styled(DrawerContent)(({ theme }) => ({
         listStyle: 'none',
         marginBottom: 24,
 
-        '&:first-child': {
+        '&:first-of-type': {
           fontWeight: 700
         }
       }

@@ -28,7 +28,7 @@ const StyledAutocomplete = styled(Autocomplete)(({ theme }) => ({
     '&[class*="MuiOutlinedInput-root"]': {
       paddingTop: '20px',
 
-      '& input.MuiAutocomplete-input:first-child': {
+      '& input.MuiAutocomplete-input:first-of-type': {
         padding: '9.5px 4px'
       },
 
@@ -59,7 +59,7 @@ const StyledAutocomplete = styled(Autocomplete)(({ theme }) => ({
   }
 }));
 
-const StyledPopper = styled(Popper)(({ theme }) => ({
+export const SFAutocompletePopper = styled(Popper)(({ theme }) => ({
   '& .MuiAutocomplete-listbox': {
     padding: '13px 0',
     backgroundColor:
@@ -189,7 +189,7 @@ const SFAutocompleteBase = ({
       )}
       popupIcon={<SFIcon icon='Down-2' size={16} />}
       clearIcon={<SFIcon icon='Close' size={16} />}
-      PopperComponent={StyledPopper}
+      PopperComponent={SFAutocompletePopper}
     />
   );
 };

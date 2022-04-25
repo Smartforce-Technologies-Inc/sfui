@@ -53,7 +53,7 @@ const StyledButtonGroup = styled(ButtonGroup)(({ theme }) => ({
   },
 
   '& .MuiButtonGroup-groupedContainedHorizontal': {
-    '&:first-child': {
+    '&:first-of-type': {
       borderRight: `1px solid ${theme.palette.background.default}`
     }
   }

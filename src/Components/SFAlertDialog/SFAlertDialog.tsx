@@ -45,11 +45,11 @@ const StyledSFDialog = styled(SFDialog)({
 
 const SFAlertDialogActions = styled(SFDialogActions)({
   // if first child it's also last child (only one button)
-  '& button:first-child:nth-last-child(1)': {
+  '& button:first-of-type:nth-last-child(1)': {
     width: '100%'
   },
   '@media screen and (min-width: 768px)': {
-    '& button:first-child:nth-last-child(1)': {
+    '& button:first-of-type:nth-last-child(1)': {
       width: 'auto'
     }
   }
