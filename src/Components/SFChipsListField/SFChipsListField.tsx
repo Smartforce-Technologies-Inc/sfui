@@ -1,102 +1,30 @@
 import React, { ChangeEvent } from 'react';
-import FormControl from '@material-ui/core/FormControl';
 import {
+  styled,
+  FormControl,
   Autocomplete,
   AutocompleteRenderInputParams,
   AutocompleteInputChangeReason,
   AutocompleteChangeReason
-} from '@material-ui/lab';
-import { SFTextField, SFTextFieldProps } from '../SFTextField/SFTextField';
+} from '@mui/material';
 import { SFChipListModal } from './SFChipFieldModal/SFChipFieldModal';
 import { SFChipListRender } from './SFChipFieldRender/SFChipFieldRender';
-import { hexToRgba } from '../../Helpers';
-import { SFGrey } from '../../SFColors/SFColors';
-import { withStyles, Theme, makeStyles } from '@material-ui/core/styles';
+import { SFAutocompletePopper } from '../SFAutocomplete/SFAutocomplete';
+import { SFChipFieldTextField } from './SFChipFieldTextField/SFChipFieldTextField';
+import { SFChipListDisplayValues } from './SFChipFieldDisplayValues/SFChipFieldDisplayValues';
 
-const StyledAutoComplete = withStyles((theme: Theme) => ({
-  root: {
-    '& .MuiAutocomplete-endAdornment': {
-      display: 'none'
-    }
+const StyledAutoComplete = styled(Autocomplete)({
+  '& .MuiAutocomplete-endAdornment': {
+    display: 'none'
   },
-  listbox: {
-    padding: '13px 0'
-  },
-  paper: {
+
+  '& .MuiAutocomplete-paper': {
     marginLeft: '4px',
     marginRight: '-4px'
-  },
-  option: {
-    padding: '6px 24px',
-
-    '&[data-focus="true"]': {
-      backgroundColor:
-        theme.palette.type === 'light'
-          ? hexToRgba(SFGrey.A100 as string, 0.3)
-          : hexToRgba(SFGrey[500] as string, 0.3),
-      '&:active': {
-        backgroundColor:
-          theme.palette.type === 'light'
-            ? hexToRgba(SFGrey.A100 as string, 0.5)
-            : hexToRgba(SFGrey[500] as string, 0.5)
-      }
-    },
-
-    '&[aria-selected="true"]': {
-      backgroundColor:
-        theme.palette.type === 'light'
-          ? hexToRgba(SFGrey.A100 as string, 0.5)
-          : hexToRgba(SFGrey[500] as string, 0.5)
-    }
   }
-}))(Autocomplete);
+});
 
 export type minWidthInputSize = number | 'auto' | 'full-width';
-
-interface TextFieldStylesProps extends SFTextFieldProps {
-  minWidth: string;
-}
-
-const useTextFieldStyles = makeStyles({
-  root: {
-    '& .MuiInputBase-root': {
-      height: 'inherit',
-      minHeight: '56px',
-      gap: '6px',
-      padding: '28px 9px 9px !important',
-      '& .MuiAutocomplete-input': {
-        padding: '0',
-        minWidth: (props: TextFieldStylesProps): string => props.minWidth
-      },
-      '& .MuiFormControl-root .MuiChip-outlined': {
-        margin: '3px auto 2px'
-      }
-    }
-  }
-});
-
-const chipsDisplay = makeStyles({
-  chipDisplayInline: {
-    display: 'flex',
-    gap: '8px',
-    marginTop: '14px',
-    flexWrap: 'wrap',
-    flexDirection: 'row'
-  },
-  chipDisplayBlock: {
-    display: 'flex',
-    gap: '8px',
-    marginTop: '14px',
-    flexWrap: 'wrap',
-    flexDirection: 'column'
-  }
-});
-
-function StyledTextField(props: TextFieldStylesProps): React.ReactElement {
-  const { minWidth, ...other } = props;
-  const classes = useTextFieldStyles(props);
-  return <SFTextField className={classes.root} {...other} />;
-}
 
 export type ChipFieldValueType = {
   value: string;
@@ -145,7 +73,7 @@ export const SFChipsListField = ({
   const [isModalOpen, setIsModalOpen] = React.useState<boolean>(false);
   const [editedValue, setEditedValue] = React.useState<ChipFieldValueType>();
   const [inputValue, setInputValue] = React.useState<string>('');
-  const { chipDisplayInline, chipDisplayBlock } = chipsDisplay();
+  // const { chipDisplayInline, chipDisplayBlock } = chipsDisplay();
 
   const isFreeSolo = (): boolean => {
     return freeSolo || options.length === 0;
@@ -187,7 +115,7 @@ export const SFChipsListField = ({
     onChange(values);
   };
 
-  const deleteValue = (input: ChipFieldValueType): void => {
+  const onDelete = (input: ChipFieldValueType): void => {
     const index: number = items.indexOf(input);
     const values: ChipFieldValueType[] = [
       ...items.slice(0, index),
@@ -286,7 +214,7 @@ export const SFChipsListField = ({
     value: (ChipFieldValueType | string)[],
     reason: AutocompleteChangeReason
   ): void => {
-    if (reason === 'select-option' || reason === 'create-option') {
+    if (reason === 'selectOption' || reason === 'createOption') {
       const lastItem = value[value.length - 1];
 
       if (typeof lastItem === 'string') {
@@ -314,31 +242,6 @@ export const SFChipsListField = ({
     }
   };
 
-  const DisplayValues = (): JSX.Element => {
-    return (
-      <div
-        className={` ${
-          itemChipDisplay === 'block' ? chipDisplayBlock : chipDisplayInline
-        }`}
-      >
-        {savedValues.length !== 0 && (
-          <SFChipListRender
-            values={savedValues}
-            isChipFullWidth={itemChipDisplay === 'block'}
-            chipSize={itemChipSize}
-            disabled={disabled}
-            onDelete={deleteValue}
-            onEdit={isEditable ? onEdit : undefined}
-            isValid={isValid}
-          />
-        )}
-        {emptyMessage && (!savedValues || savedValues.length === 0) && (
-          <p>{emptyMessage}</p>
-        )}
-      </div>
-    );
-  };
-
   return (
     <FormControl fullWidth>
       <SFChipListModal
@@ -360,7 +263,7 @@ export const SFChipsListField = ({
         onClose={(): void => setIsPopperOpen(false)}
         filterSelectedOptions
         freeSolo={isFreeSolo()}
-        getOptionSelected={(
+        isOptionEqualToValue={(
           option: string,
           value: ChipFieldValueType
         ): boolean => option === value.value}
@@ -370,13 +273,13 @@ export const SFChipsListField = ({
             chipSize='small'
             values={value}
             disabled={disabled}
-            onDelete={deleteValue}
+            onDelete={onDelete}
             onEdit={isEditable ? onEdit : undefined}
             isValid={isValid}
           />
         )}
         renderInput={(params: AutocompleteRenderInputParams): JSX.Element => (
-          <StyledTextField
+          <SFChipFieldTextField
             {...params}
             type={inputType}
             rows={1}
@@ -391,8 +294,18 @@ export const SFChipsListField = ({
             }
           />
         )}
+        PopperComponent={SFAutocompletePopper}
       />
-      <DisplayValues />
+
+      <SFChipListDisplayValues
+        values={savedValues}
+        chipSize={itemChipSize}
+        itemChipDisplay={itemChipDisplay}
+        disabled={disabled}
+        onDelete={onDelete}
+        onEdit={isEditable ? onEdit : undefined}
+        isValid={isValid}
+      />
     </FormControl>
   );
 };
