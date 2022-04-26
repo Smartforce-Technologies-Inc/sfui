@@ -11,14 +11,6 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
     '&.Mui-focused': {
       '& .MuiOutlinedInput-notchedOutline': {
         border: `2px solid ${theme.palette.primary.main}`
-      },
-
-      '&.Mui-error': {
-        '& .MuiOutlinedInput-notchedOutline': {
-          border: `1px solid ${
-            theme.palette.mode === 'light' ? SFRed[700] : SFRed[200]
-          }`
-        }
       }
     },
 
@@ -56,6 +48,14 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
           '& .MuiOutlinedInput-notchedOutline': {
             border: `1px solid ${
               theme.palette.mode === 'light' ? SFGrey[200] : SFGrey[700]
+            }`
+          }
+        },
+
+        '&.Mui-error': {
+          '& .MuiOutlinedInput-notchedOutline': {
+            border: `1px solid ${
+              theme.palette.mode === 'light' ? SFRed[700] : SFRed[200]
             }`
           }
         }
