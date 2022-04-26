@@ -9,7 +9,9 @@ export default {
   component: SFTimeField,
   parameters: { controls: { sort: 'alpha' } },
   args: {
-    label: 'Bagel'
+    label: 'Bagel',
+    error: false,
+    helperText: ''
   },
   argTypes: {
     onChange: { action: 'onChange', table: { disable: true } },
