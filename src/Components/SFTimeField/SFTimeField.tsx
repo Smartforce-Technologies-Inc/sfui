@@ -26,7 +26,8 @@ export const SFTimeField = ({
         disableOpenPicker
         showToolbar={false}
         disableMaskedInput={false}
-        inputFormat='HH:MM'
+        mask='__:__ _M'
+        inputFormat='HH:MM A'
         renderInput={(props): React.ReactElement<SFTextFieldProps> => (
           <SFTextField
             {...props}
