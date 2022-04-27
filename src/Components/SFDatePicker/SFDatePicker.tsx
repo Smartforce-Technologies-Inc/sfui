@@ -120,7 +120,6 @@ const SFDatePickerBase = ({
           />
         )}
         renderDay={renderDay}
-        open
       />
     </LocalizationProvider>
   );
