@@ -1,260 +1,155 @@
-import React, { forwardRef } from 'react';
+import React from 'react';
 import {
-  withStyles,
-  Theme,
-  makeStyles,
-  createStyles,
-  useTheme
-} from '@material-ui/core/styles';
-import { Paper, CheckboxProps } from '@material-ui/core';
-import MaterialTable, {
-  MTableBodyRow,
-  MaterialTableProps,
-  Column,
-  Options,
-  Icons
-} from 'material-table';
-import { SFBlue, SFGrey } from '../../SFColors/SFColors';
-import { SFIcon } from '../SFIcon/SFIcon';
+  styled,
+  Table,
+  TableHead,
+  TableCell,
+  TableBody,
+  TableRow,
+  TableProps
+} from '@mui/material';
+import { SFGrey } from '../../SFColors/SFColors';
 import { hexToRgba } from '../../Helpers';
+import { SFPaper } from '../SFPaper/SFPaper';
+import { SFCheckbox } from '../SFCheckbox/SFCheckbox';
 
-const StyledRow = withStyles((theme: Theme) => ({
-  root: {
-    '&.MuiTableRow-hover:hover, &:hover': {
-      '@media (hover: hover)': {
-        backgroundColor: `${
-          theme.palette.type === 'light'
-            ? hexToRgba(SFGrey[200], 0.3)
-            : hexToRgba(SFGrey[500], 0.3)
-        } !important`
-      }
+const StyledPaper = styled(SFPaper)({
+  padding: 24
+});
+
+const StyledHeadTableRow = styled(TableRow)(({ theme }) => ({
+  '&.MuiTableRow-head': {
+    '& .MuiTableCell-root': {
+      color: theme.palette.mode === 'light' ? SFGrey[600] : SFGrey[400],
+      fontWeight: 500,
+      fontSize: '14px',
+      lineHeight: '20px',
+      borderBottom: `2px solid ${
+        theme.palette.mode === 'light' ? SFGrey[100] : SFGrey[700]
+      }`
     }
   }
-}))(MTableBodyRow);
+}));
 
-const StyledContainer = withStyles({
-  root: {
-    padding: '24px 24px 34px 24px',
-    width: 'auto',
-    '& th:not(.MuiTableCell-paddingNone)': {
-      padding: 20
+const StyledBodyTableRow = styled(TableRow)(({ theme }) => ({
+  '& .MuiTableCell-root': {
+    fontSize: '14px',
+    lineHeight: '20px',
+    borderBottom: `1px solid ${
+      theme.palette.mode === 'light' ? SFGrey[100] : SFGrey[700]
+    }`
+  },
+  '&:last-child': {
+    '& .MuiTableCell-root': {
+      border: 0
+    }
+  },
+  '&.Mui-selected': {
+    backgroundColor: `${
+      theme.palette.mode === 'light'
+        ? hexToRgba(SFGrey[200], 0.5)
+        : hexToRgba(SFGrey[500], 0.5)
+    } !important`
+  },
+  '&:hover': {
+    '@media (hover: hover)': {
+      backgroundColor: `${
+        theme.palette.mode === 'light'
+          ? hexToRgba(SFGrey[200], 0.3)
+          : hexToRgba(SFGrey[500], 0.3)
+      } !important`
     }
   }
-})(Paper);
+}));
 
-const useSelectionStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      color: `${theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400]}`
-    },
-    colorSecondary: {
-      '&.Mui-checked': {
-        color: `${theme.palette.type === 'light' ? SFBlue[500] : SFBlue[200]}`
-      },
-      '&:hover': {
-        '@media (hover: hover)': {
-          backgroundColor:
-            theme.palette.type === 'light'
-              ? hexToRgba(SFGrey[200], 0.3)
-              : hexToRgba(SFGrey[500], 0.3)
-        }
-      },
-      '&:active': {
-        backgroundColor:
-          theme.palette.type === 'light'
-            ? hexToRgba(SFGrey[200], 0.5)
-            : hexToRgba(SFGrey[500], 0.2)
-      },
-      '&.Mui-checked:hover': {
-        '@media (hover: hover)': {
-          backgroundColor:
-            theme.palette.type === 'light'
-              ? hexToRgba(SFBlue[100], 0.4)
-              : hexToRgba(SFBlue[200], 0.2)
-        }
-      },
-      '&.Mui-checked:active': {
-        backgroundColor:
-          theme.palette.type === 'light'
-            ? hexToRgba(SFBlue[100], 0.6)
-            : hexToRgba(SFBlue[200], 0.1)
-      },
-      '&.Mui-disabled': {
-        color: `${theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]}`
-      }
-    }
-  })
-);
+const StyledTableCell = styled(TableCell)({
+  padding: 20
+});
 
-const iconSize = 16;
-
-const tableIcons: Icons = {
-  Add: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
-    <SFIcon icon='Add' {...props} {...ref} size={iconSize} />
-  )),
-  Check: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
-    <SFIcon icon='Check-2' {...props} {...ref} size={iconSize} />
-  )),
-  Clear: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
-    <SFIcon icon='Close' {...props} {...ref} size={iconSize} />
-  )),
-  Delete: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
-    <SFIcon icon='Trash' {...props} {...ref} size={iconSize} />
-  )),
-  Edit: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
-    <SFIcon icon='Pencil' {...props} {...ref} size={iconSize} />
-  )),
-  Export: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
-    <SFIcon icon='Download' {...props} {...ref} size={iconSize} />
-  )),
-  Filter: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
-    <SFIcon icon='Filter' {...props} {...ref} size={iconSize} />
-  )),
-  FirstPage: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
-    <SFIcon icon='Left-3' {...props} {...ref} size={iconSize} />
-  )),
-  LastPage: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
-    <SFIcon icon='Right-3' {...props} {...ref} size={iconSize} />
-  )),
-  NextPage: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
-    <SFIcon icon='Right-2' {...props} {...ref} size={iconSize} />
-  )),
-  PreviousPage: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
-    <SFIcon icon='Left-2' {...props} {...ref} size={iconSize} />
-  )),
-  ResetSearch: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
-    <SFIcon icon='Close' {...props} {...ref} size={iconSize} />
-  )),
-  Search: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
-    <SFIcon icon='Search' {...props} {...ref} size={iconSize} />
-  )),
-  SortArrow: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
-    <SFIcon icon='Up-7' {...props} {...ref} size={iconSize} />
-  )),
-  ThirdStateCheck: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
-    <SFIcon icon='Remove' {...props} {...ref} size={iconSize} />
-  )),
-  ViewColumn: forwardRef((props, ref: React.Ref<SVGSVGElement>) => (
-    <SFIcon icon='Eye' {...props} {...ref} size={iconSize} />
-  ))
-};
-
-interface RowTableData {
-  id: number;
-  checked: boolean;
+export interface SFTableColumn {
+  field: string;
+  title: string;
 }
 
-const defaultOptions = {
-  sorting: false,
-  search: false,
-  toolbar: false,
-  showTitle: false,
-  paging: false,
-  draggable: false,
-  selection: false
-};
+export interface SFTableRow {
+  [key: string]: string | number | undefined;
+  id?: number;
+}
 
-export type RowData = {
-  [key: string]: number | string | boolean | undefined;
-} & { tableData?: RowTableData };
-
-export interface SFTableColumn extends Column<RowData> {}
-export interface SFTableOptions extends Options<RowData> {}
-export interface SFTableProps extends MaterialTableProps<RowData> {
+export interface SFTableProps extends TableProps {
   className?: string;
   elevation?: number;
   columns: SFTableColumn[];
-  options?: SFTableOptions;
+  rows: SFTableRow[];
+  selection?: boolean;
+  selectedRows?: number[];
+  onSelectRow?: (row: SFTableRow) => void;
+  onSelectAll?: (checked: boolean) => void;
 }
 
 export const SFTable = ({
   className = '',
   elevation = 2,
   columns,
-  options,
+  rows,
+  selection = false,
+  selectedRows = [],
+  onSelectRow,
   ...props
 }: SFTableProps): React.ReactElement<SFTableProps> => {
-  options = { ...defaultOptions, ...options };
-  const theme = useTheme();
-  const iconCheckedColor: string = theme.palette.primary.main;
-  const iconUncheckedColor: string =
-    theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400];
+  const onSelectAll = (
+    _e: React.ChangeEvent<HTMLInputElement>,
+    checked: boolean
+  ): void => props.onSelectAll && props.onSelectAll(checked);
 
-  const selectionProps: CheckboxProps = {
-    classes: useSelectionStyles(props),
-    checkedIcon: (
-      <SFIcon icon='Checkbox-Selected' size={18} color={iconCheckedColor} />
-    ),
-    icon: (
-      <SFIcon icon='Checkbox-Unselected' size={18} color={iconUncheckedColor} />
-    )
-  };
-
-  const customColumns: SFTableColumn[] = columns.map(
-    (column: SFTableColumn) => {
-      return {
-        ...column,
-        cellStyle: {
-          padding: 20,
-          borderBottom: `1px solid  ${
-            theme.palette.type === 'light' ? SFGrey[100] : SFGrey[700]
-          }`,
-          color: `${theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]}`,
-          fontWeight: 400,
-          fontSize: 14
-        }
-      };
-    }
-  );
-
-  const customOptions: SFTableOptions = {
-    ...options,
-    headerStyle: {
-      borderBottom: `2px solid  ${
-        theme.palette.type === 'light' ? SFGrey[100] : SFGrey[700]
-      }`,
-      fontWeight: 500,
-      color: `${theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400]}`,
-      fontSize: 14
-    },
-    rowStyle: (rowData: RowData): React.CSSProperties => {
-      if (rowData?.tableData?.checked) {
-        return {
-          backgroundColor:
-            theme.palette.type === 'light'
-              ? hexToRgba(SFGrey[200], 0.5)
-              : hexToRgba(SFGrey[500], 0.2)
-        };
-      }
-      return {};
-    },
-    selectionProps: {
-      ...selectionProps
-    },
-    headerSelectionProps: {
-      indeterminate: false,
-      ...selectionProps
-    }
-  };
+  const isSelected = (id: number): boolean => selectedRows.indexOf(id) !== -1;
 
   return (
-    <MaterialTable
-      {...props}
-      icons={tableIcons}
-      columns={customColumns}
-      options={customOptions}
-      components={{
-        // eslint-disable-next-line
-        Container: (props: any): JSX.Element => (
-          <StyledContainer
-            {...props}
-            className={className}
-            elevation={elevation}
-          />
-        ),
-        // eslint-disable-next-line
-        Row: (props: any): JSX.Element => <StyledRow {...props} />
-      }}
-    />
+    <StyledPaper elevation={elevation}>
+      <Table {...props}>
+        <TableHead>
+          <StyledHeadTableRow>
+            {selection && (
+              <TableCell style={{ padding: '0 10px 10px 10px' }}>
+                <SFCheckbox
+                  checked={rows.length === selectedRows.length}
+                  onChange={onSelectAll}
+                />
+              </TableCell>
+            )}
+
+            {columns.map((column: SFTableColumn) => (
+              <StyledTableCell key={`col-${column.field}`} component='th'>
+                {column.title}
+              </StyledTableCell>
+            ))}
+          </StyledHeadTableRow>
+        </TableHead>
+
+        <TableBody>
+          {rows.map((row: SFTableRow, rowIndex: number) => (
+            <StyledBodyTableRow
+              key={`table-row-${rowIndex}`}
+              selected={row.id !== undefined && isSelected(row.id)}
+            >
+              {selection && (
+                <TableCell style={{ padding: '0 10px 10px 10px' }}>
+                  <SFCheckbox
+                    checked={row.id !== undefined && isSelected(row.id)}
+                    onChange={(): void => onSelectRow && onSelectRow(row)}
+                  />
+                </TableCell>
+              )}
+
+              {columns.map((column: SFTableColumn) => (
+                <StyledTableCell key={`table-row-${rowIndex}-${column.field}`}>
+                  {row[column.field]}
+                </StyledTableCell>
+              ))}
+            </StyledBodyTableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </StyledPaper>
   );
 };
