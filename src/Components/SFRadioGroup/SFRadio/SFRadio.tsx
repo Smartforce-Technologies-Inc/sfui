@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { styled, Radio, RadioProps } from '@mui/material';
-import FormControl from '@material-ui/core/FormControl';
+import { styled, FormControl, Radio, RadioProps } from '@mui/material';
 import { SFFormControlBooleanLabel } from '../../SFFormControlBooleanLabel/SFFormControlBooleanLabel';
 import { SFGrey } from '../../../SFColors/SFColors';
 

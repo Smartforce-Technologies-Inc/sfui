@@ -1,6 +1,10 @@
 import * as React from 'react';
-import { styled, RadioGroup, RadioGroupProps } from '@mui/material';
-import FormControl from '@material-ui/core/FormControl';
+import {
+  styled,
+  FormControl,
+  RadioGroup,
+  RadioGroupProps
+} from '@mui/material';
 import { SFFormControlBooleanLabel } from '../SFFormControlBooleanLabel/SFFormControlBooleanLabel';
 import { SFRadio } from './SFRadio/SFRadio';
 
