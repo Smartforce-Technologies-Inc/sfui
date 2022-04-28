@@ -299,6 +299,7 @@ export const SFChipsListField = ({
 
       <SFChipListDisplayValues
         values={savedValues}
+        emptyMessage={emptyMessage}
         chipSize={itemChipSize}
         itemChipDisplay={itemChipDisplay}
         disabled={disabled}
