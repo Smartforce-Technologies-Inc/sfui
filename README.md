@@ -28,9 +28,109 @@ class Example extends Component {
 }
 ```
 
-## Example app
+### Story creation format
 
-You can try a demo app deployed into github pages [here](https://adventoscorp.github.io/sfui/).
+Each story must describe the component's functionality with all the controls needed to do so, if it is necessary, you can create more than one story to make the component's functionality as clear as possible.
+
+As a convention, when writing the stories, You have to take into account the following conditions:
+
+- All controls props must be ordered alphabetically on the docs in the storybook:
+
+  To do this You must add the props `parameters: { controls: { sort: 'alpha' } }` into the story config.
+
+  Example:
+
+  ```tsx
+  export default {
+    title: 'Components/SFAlert',
+    component: SFAlert,
+    parameters: { controls: { sort: 'alpha' } },
+    args: {},
+    argTypes: {}
+  };
+  ```
+
+- By default, all controls of type object into the story should be disabled on the table in order to avoid stories having errors for bad property usage:
+
+  To do this You must add the props `table: { disable: true}` on argTypes prop into the story config.
+
+  Example:
+
+  ```tsx
+  argTypes: {
+    children: {
+      table: {
+        disable: true;
+      }
+    }
+  }
+  ```
+
+- Functions/callbacks triggered by the component actions should be disabled on the table and add the action corresponding to its prop definition:
+
+  This could be done by following storybook [action's guideline](https://storybook.js.org/docs/react/essentials/actions#action-args).
+
+  In addition to the guideline, to avoid stories from stop working due to bad property assignment, you should add this to the prop:
+
+  ```tsx
+  prop: {
+    control: {
+      disabled: true;
+    }
+  }
+  ```
+
+- If a component property lack description, you must add it to the story:
+
+  ```tsx
+  prop: {
+    description: 'Some text describing the prop functionality';
+  }
+  ```
+
+### Full Story Example
+
+```tsx
+import React from 'react';
+import { Story, Meta } from '@storybook/react/types-6-0';
+
+import { Component } from './Component';
+
+export default {
+  title: 'Components/ComponentName',
+  component: Component,
+  parameters: { controls: { sort: 'alpha' } },
+  args: { // Added arguments that need assignment for the purpose of the story,
+    title: 'Example Title'
+  }
+  argTypes: {
+    onClose: {
+      description: 'Callback function when close action is triggered',
+      table: {
+        disable: true
+      }
+    },
+    actionButton : {
+      description: 'Some action button',
+      control: {
+        disabled: true
+      }
+    }
+  }
+} as Meta;
+
+export const DefaultStory: Story =({title, ...args}) => {
+  return <Component {...args} title={title}  />
+}
+```
+
+Every time you add a new story, you should add the url of the base component's [MUI API](https://v4.mui.com/) to the StorybookWrapper component.
+
+All needed information on how to create a story and other related matters, please follow [Storybook's Page](https://storybook.js.org/)
+
+## Examples
+
+You can try a demo deployed into github pages [here](https://adventoscorp.github.io/sfui/).
 
 ## Development tools
 
@@ -66,13 +166,6 @@ npm run storybook
 ```bash
 # deploys the example app into github pages.
 npm run deploy
-```
-
-### Into the example/ folder
-
-```bash
-# runs the example app locally.
-npm run start
 ```
 
 ## License

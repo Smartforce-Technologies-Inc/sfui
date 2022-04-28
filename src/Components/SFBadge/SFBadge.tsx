@@ -53,7 +53,7 @@ export const SFBadge = ({
   value,
   size = 'small',
   type = 'numeric',
-  overlap = 'circle',
+  overlap = 'circular',
   className = '',
   anchorOrigin = { vertical: 'top', horizontal: 'left' },
   children,

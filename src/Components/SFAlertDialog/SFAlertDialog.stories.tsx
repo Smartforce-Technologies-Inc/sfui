@@ -6,14 +6,50 @@ import { SFTextField } from '../SFTextField/SFTextField';
 export default {
   title: 'Components/SFAlertDialog',
   component: SFAlertDialog,
+  parameters: { controls: { sort: 'alpha' } },
   args: {
     title: 'Alert dialog title',
-    content:
+    contentText:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' +
       ' Mauris lobortis a erat eu mattis.',
-    open: true
+    disableBackdropClick: true,
+    open: false,
+    leftAction: undefined,
+    rightAction: undefined
   },
   argTypes: {
+    contentText: {
+      description: 'The content to display.'
+    },
+    disableBackdropClick: {
+      table: {
+        defaultValue: {
+          summary: 'false'
+        }
+      }
+    },
+    open: {
+      description: 'If true, the component is shown.',
+      control: {
+        type: 'boolean'
+      },
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: {
+          summary: 'false'
+        }
+      }
+    },
+    title: {
+      description: 'The title of the alert to display.'
+    },
+    leftAction: {
+      description: `Adds a button on the bottom right of the dialog with props to handle it's change. When paired with the right
+        action button, this button aligns to the left of the other button.`,
+      control: false
+    },
     onClose: {
       table: {
         disable: true
@@ -26,17 +62,12 @@ export default {
         disable: true
       }
     },
-    ref: {
-      table: {
-        disable: true
-      }
-    },
-    leftAction: {
-      table: {
-        disable: true
-      }
-    },
     rightAction: {
+      description: `Adds a button on the bottom right of the dialog with props to handle it's change.  
+       When paired with the left action button, this button aligns to the right of the other button.`,
+      control: false
+    },
+    ref: {
       table: {
         disable: true
       }

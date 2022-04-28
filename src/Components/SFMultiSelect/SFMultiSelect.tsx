@@ -1,32 +1,36 @@
 import * as React from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import { SelectProps } from '@material-ui/core';
-import { SFTextField } from '../SFTextField/SFTextField';
 import { SFIcon } from '../SFIcon/SFIcon';
 import { SFCheckbox } from '../SFCheckbox/SFCheckbox';
 import { SFMenuItem } from '../SFMenuItem/SFMenuItem';
-import { SFMenuOption } from '../SFSelect/SFSelect';
-
-const StyledSelect = withStyles(() => ({
-  root: {
-    '& svg': {
-      position: 'absolute',
-      right: 18,
-      pointerEvents: 'none',
-      top: 'auto'
-    }
-  }
-}))(SFTextField);
+import { SFMenuOption, StyledSelect } from '../SFSelect/SFSelect';
 
 const StyledMenuItem = withStyles(() => ({
   root: {
-    height: 52
+    whiteSpace: 'unset',
+    wordBreak: 'break-word',
+    minHeight: '52px',
+    height: 'auto',
+    alignItems: 'flex-start',
+
+    '& .MuiFormControl-root': {
+      minWidth: 'auto'
+    }
   }
 }))(SFMenuItem);
 
 const useMenuStyles = makeStyles({
   paper: {
+    width: '1px',
     marginTop: '8px'
+  },
+  list: {
+    '& li > span': {
+      paddingTop: '9px',
+      fontSize: '16px',
+      lineHeight: '24px'
+    }
   }
 });
 
@@ -47,7 +51,7 @@ export const SFMultiSelect = ({
   ...props
 }: SFMultiSelectProps): React.ReactElement<SFMultiSelectProps> => {
   const [selected, setSelected] = React.useState<string[]>([]);
-  const menuClasses: Record<'paper', string> = useMenuStyles();
+  const menuClasses: Record<'paper' | 'list', string> = useMenuStyles();
 
   React.useEffect(() => {
     const selectedValue = value || defaultValue;
@@ -89,6 +93,7 @@ export const SFMultiSelect = ({
       helperText={helperText}
       error={props.error}
       disabled={props.disabled}
+      required={props.required}
       SelectProps={{
         ...props,
         defaultValue,
@@ -110,7 +115,7 @@ export const SFMultiSelect = ({
       {options.map((option) => (
         <StyledMenuItem key={option.value} value={option.value}>
           <SFCheckbox checked={isChecked(option, selected)} />
-          {option.label}
+          <span>{option.label}</span>
         </StyledMenuItem>
       ))}
     </StyledSelect>

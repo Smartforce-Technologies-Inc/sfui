@@ -8,14 +8,15 @@ import { hexToRgba } from '../../Helpers';
 
 const StyledAlert = withStyles((theme: Theme) => ({
   root: {
-    padding: '16px'
+    padding: '16px',
+    alignItems: 'flex-start'
   },
   action: {
     margin: '0 11px',
     padding: '0'
   },
   message: {
-    padding: '0 0 0 16px',
+    padding: '10px 0 10px 16px',
     fontWeight: 400,
     fontSize: '16px',
     lineHeight: '24px',
@@ -30,7 +31,7 @@ const StyledAlert = withStyles((theme: Theme) => ({
   },
   icon: {
     padding: '0px',
-    margin: '0px'
+    margin: '8px 0'
   },
   standardError: {
     backgroundColor: theme.palette.type === 'light' ? SFRed[50] : SFRed[900],
@@ -204,8 +205,9 @@ const StyledAlert = withStyles((theme: Theme) => ({
   }
 }))(Alert);
 
-export interface SFAlertProps extends AlertProps {
-  title: string;
+export interface SFAlertProps
+  extends Omit<AlertProps, 'severity' | 'icon' | 'action'> {
+  title?: string;
   type: 'error' | 'warning' | 'info' | 'success';
 }
 
@@ -224,10 +226,6 @@ const getIcon = (type: string): JSX.Element | undefined => {
 };
 
 const useStyles = makeStyles({
-  root: {
-    alignItems: (props: Partial<SFAlertProps>): string =>
-      props.children ? 'unset' : 'center'
-  },
   message: {
     '& .MuiTypography-gutterBottom': {
       marginBottom: (props: Partial<SFAlertProps>): string =>
@@ -257,9 +255,8 @@ export const SFAlert = ({
           <SFIconButton sfIcon='Close' sfSize='medium' onClick={onClose} />
         ) : undefined
       }
-      onClose={onClose}
     >
-      <AlertTitle>{title}</AlertTitle>
+      {title && <AlertTitle>{title}</AlertTitle>}
       {children}
     </StyledAlert>
   );

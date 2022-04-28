@@ -46,6 +46,14 @@ const StyledTimePicker = withStyles((theme: Theme) => ({
 
         '& .MuiFilledInput-input': {
           padding: '26px 10px 7px'
+        },
+
+        '&:hover': {
+          '@media (hover: hover)': {
+            borderColor: `${
+              theme.palette.type === 'light' ? SFBlue[500] : SFBlue[200]
+            }`
+          }
         }
       },
 
@@ -62,7 +70,7 @@ const StyledTimePicker = withStyles((theme: Theme) => ({
       '&.Mui-disabled': {
         border: `1px solid ${
           theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
-        }`
+        } !important`
       },
 
       '& .MuiFilledInput-input': {
@@ -71,7 +79,12 @@ const StyledTimePicker = withStyles((theme: Theme) => ({
         padding: '26px 11px 7px',
 
         '&.Mui-disabled': {
-          color: `${theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]}`
+          color: `${
+            theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
+          }`,
+          WebkitTextFillColor: `${
+            theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
+          }`
         }
       }
     },

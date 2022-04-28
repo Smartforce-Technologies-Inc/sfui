@@ -6,18 +6,27 @@ import { SFPaper, SFPaperProps } from './SFPaper';
 
 export default {
   title: 'Components/SFPaper',
-  component: SFPaper
+  component: SFPaper,
+  parameters: {
+    controls: {
+      disable: true
+    }
+  },
+  argTypes: {
+    ref: {
+      table: {
+        disable: true
+      }
+    }
+  }
 } as Meta;
 
-const Template: Story<SFPaperProps> = (args) => (
+// TODO see why ref argtypes doesnt work.
+
+const Template: Story = (args) => (
   <SFPaper {...args}>
     <p>All Stories are wrapped into a SFPaper component</p>
   </SFPaper>
 );
 
 export const Default = Template.bind({});
-Default.parameters = {
-  controls: {
-    disable: true
-  }
-};

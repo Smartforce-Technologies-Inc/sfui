@@ -6,30 +6,76 @@ import { SFTooltip, SFTooltipProps } from './SFTooltip';
 export default {
   title: 'Components/SFTooltip',
   component: SFTooltip,
+  parameters: { controls: { sort: 'alpha' } },
   args: {
     title: 'Title',
     open: true,
-    arrow: true
+    arrow: true,
+    placement: 'bottom-end'
   },
   argTypes: {
     placement: {
-      defaultValue: 'bottom-end',
+      description: 'The placement of the tooltip.',
+      table: {
+        type: {
+          summary: `'bottom-end'
+          | 'bottom-start'
+          | 'bottom'
+          | 'left-end'
+          | 'left-start'
+          | 'left'
+          | 'right-end'
+          | 'right-start'
+          | 'right'
+          | 'top-end'
+          | 'top-start'
+          | 'top'`
+        },
+        defaultValue: {
+          summary: 'bottom'
+        }
+      },
+      options: [
+        'bottom-end',
+        'bottom-start',
+        'bottom',
+        'left-end',
+        'left-start',
+        'left',
+        'right-end',
+        'right-start',
+        'right',
+        'top-end',
+        'top-start',
+        'top'
+      ],
       control: {
-        type: 'select',
-        options: [
-          'bottom-end',
-          'bottom-start',
-          'bottom',
-          'left-end',
-          'left-start',
-          'left',
-          'right-end',
-          'right-start',
-          'right',
-          'top-end',
-          'top-start',
-          'top'
-        ]
+        type: 'select'
+      }
+    },
+    sfColor: {
+      description: 'The color of the tooltip.'
+    },
+    open: {
+      description: 'If true, tooltip will be open.',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: {
+          summary: true
+        }
+      }
+    },
+    arrow: {
+      description: 'If true, tooltip will show an arrow in the border.',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: {
+          summary: true
+        }
       }
     },
     content: {

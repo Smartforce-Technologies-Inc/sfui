@@ -7,8 +7,11 @@ import { SFTextField, SFTextFieldProps } from './SFTextField';
 export default {
   title: 'Components/SFTextField',
   component: SFTextField,
+  parameters: { controls: { sort: 'alpha' } },
   args: {
-    label: 'Bagel'
+    label: 'Bagel',
+    value: 'Some text',
+    type: 'text'
   },
   argTypes: {
     onChange: {
@@ -18,23 +21,94 @@ export default {
       }
     },
     disabled: {
+      description: 'If true, the component will be disabled.',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: {
+          summary: 'false'
+        }
+      },
       control: {
         type: 'boolean'
       }
     },
     error: {
+      description: 'If true, the component will display the error state.',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: {
+          summary: 'false'
+        }
+      },
       control: {
         type: 'boolean'
       }
     },
     helperText: {
+      description: 'Text to help understand input values.',
+      table: {
+        type: {
+          summary: 'string'
+        }
+      },
       control: {
         type: 'text'
       }
     },
+    label: {
+      description: 'The label asociated to the input value meaning.',
+      table: {
+        type: {
+          summary: 'string'
+        }
+      }
+    },
     multiline: {
+      description: 'If true, the textfield becames multiline input.',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: {
+          summary: 'false'
+        }
+      },
       control: {
         type: 'boolean'
+      }
+    },
+    focused: {
+      table: {
+        defaultValue: {
+          summary: 'false'
+        }
+      }
+    },
+    hiddenLabel: {
+      table: {
+        defaultValue: {
+          summary: 'false'
+        }
+      }
+    },
+    type: {
+      description: `Type of the input element. It should be a valid HTML5 input type.`,
+      table: {
+        type: {
+          summary: 'string'
+        }
+      }
+    },
+    value: {
+      description: 'The value of the input element.',
+      table: {
+        type: {
+          summary: 'any'
+        }
       }
     },
     defaultValue: {
@@ -60,27 +134,27 @@ const Template: Story<SFTextFieldProps> = (args) => <SFTextField {...args} />;
 export const Default = Template.bind({});
 Default.argTypes = {
   value: {
-    defaultValue: 'Some text',
     control: {
       type: 'text'
     }
   },
   type: {
-    defaultValue: 'text',
+    options: ['text', 'password'],
     control: {
-      type: 'select',
-      options: ['text', 'password']
+      type: 'select'
     }
   }
 };
 
-export const Number = Template.bind({});
-Number.args = {
-  type: 'number'
+Default.args = {
+  value: 'Some text',
+  type: 'text'
 };
+
+export const Number = Template.bind({});
+
 Number.argTypes = {
   value: {
-    defaultValue: 20,
     control: {
       type: 'number'
     }
@@ -90,6 +164,11 @@ Number.argTypes = {
       disable: true
     }
   }
+};
+
+Number.args = {
+  type: 'number',
+  value: 20
 };
 
 const AllTemplate: Story<SFTextFieldProps> = (args) => (

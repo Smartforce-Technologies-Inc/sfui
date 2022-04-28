@@ -8,13 +8,34 @@ import { SFMenuItem } from '../SFMenuItem/SFMenuItem';
 export default {
   title: 'Components/SFMenu',
   component: SFMenu,
+  parameters: { controls: { sort: 'alpha' } },
   args: {
+    transitionDuration: 'auto',
     open: false
   },
   argTypes: {
     transitionDuration: {
+      description: `The duration of the transition in ms, or 'auto'.`,
+      table: {
+        defaultValue: {
+          summary: 'auto'
+        },
+        type: {
+          summary: `'auto'
+          | number
+          | { appear?: number, enter?: number, exit?: number }`
+        }
+      },
       control: {
         type: 'number'
+      }
+    },
+    open: {
+      description: 'If true, the menu is visible.',
+      table: {
+        type: {
+          summary: 'boolean'
+        }
       }
     },
     onClose: { action: 'onClose', table: { disable: true } },

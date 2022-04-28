@@ -25,9 +25,11 @@ const getOptions = (): SFMenuOption[] => {
 export default {
   title: 'Components/SFMultiSelect',
   component: SFMultiSelect,
+  parameters: { controls: { sort: 'alpha' } },
   args: {
     label: 'Bagel',
-    options: getOptions()
+    options: getOptions(),
+    value: ['Bagel number one']
   },
   argTypes: {
     onChange: {
@@ -36,26 +38,44 @@ export default {
         disable: true
       }
     },
+    label: {
+      description: 'The label asociated to the input value meaning.',
+      table: {
+        type: {
+          summary: 'string'
+        }
+      }
+    },
     value: {
-      defaultValue: ['Bagel number one'],
+      options: getOptions().map((o: SFMenuOption) => o.value),
       control: {
-        type: 'multi-select',
-        options: getOptions().map((o: SFMenuOption) => o.value)
+        type: 'multi-select'
       }
     },
     disabled: {
-      control: {
-        type: 'boolean'
-      }
-    },
-    error: {
-      control: {
-        type: 'boolean'
+      table: {
+        disable: true
       }
     },
     helperText: {
+      description: 'Text to help understand input values.',
       control: {
         type: 'text'
+      },
+      table: {
+        type: {
+          summary: 'string'
+        }
+      }
+    },
+    required: {
+      table: {
+        disable: true
+      }
+    },
+    error: {
+      table: {
+        disable: true
       }
     },
     options: {

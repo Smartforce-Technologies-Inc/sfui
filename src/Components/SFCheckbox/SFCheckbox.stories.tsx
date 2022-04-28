@@ -7,8 +7,11 @@ import { SFCheckbox, SFCheckboxProps } from './SFCheckbox';
 export default {
   title: 'Components/SFCheckbox',
   component: SFCheckbox,
+  parameters: { controls: { sort: 'alpha' } },
   args: {
-    label: 'Bagel'
+    label: 'Bagel',
+    checked: true,
+    disabled: false
   },
   argTypes: {
     onChange: {
@@ -17,17 +20,48 @@ export default {
         disable: true
       }
     },
+    label: {
+      description: 'The label asociated to the input value meaning.'
+    },
     checked: {
-      defaultValue: true,
+      description: 'If true, the component is checked.',
+      table: {
+        type: {
+          summary: 'boolean'
+        }
+      },
       control: {
         type: 'boolean'
       }
     },
     disabled: {
-      defaultValue: false,
+      description: 'If true, the checkbox will be disabled.',
+      table: {
+        type: {
+          summary: 'boolean'
+        }
+      },
       control: {
         type: 'boolean'
       }
+    },
+    disableRipple: {
+      table: { disable: true }
+    },
+    disableFocusRipple: {
+      table: { disable: true }
+    },
+    disableTouchRipple: {
+      table: { disable: true }
+    },
+    centerRipple: {
+      table: { disable: true }
+    },
+    edge: {
+      table: { disable: true }
+    },
+    focusRipple: {
+      table: { disable: true }
     },
     ref: {
       table: {

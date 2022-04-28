@@ -6,14 +6,33 @@ import { SFChip, SFChipProps } from './SFChip';
 export default {
   title: 'Components/SFChip',
   component: SFChip,
+  parameters: { controls: { sort: 'alpha' } },
   args: {
     label: 'Bagel'
   },
   argTypes: {
     label: {
+      description: 'The label asociated to the input value meaning.',
       control: {
         type: 'text'
       }
+    },
+    deleteable: {
+      description:
+        'If true, the chip shows the delete icon and the chip could be deleted.'
+    },
+    fullWidth: {
+      description:
+        'If true, the component will take up the full width of its container.'
+    },
+    hasError: {
+      description: 'If true, the chip should be displayed in a error state.'
+    },
+    variant: {
+      table: { disable: true }
+    },
+    disabled: {
+      table: { disable: true }
     },
     avatar: {
       table: {

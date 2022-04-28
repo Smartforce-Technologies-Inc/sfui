@@ -1,5 +1,5 @@
 import React from 'react';
-import StorybookWrapper from '../src/StorybookWrapper/StorybookWrapper';
+import StorybookWrapper from '../src/Storybook/StorybookWrapper/StorybookWrapper';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -15,5 +15,7 @@ export const parameters = {
 };
 
 export const decorators = [
-  (Story) => <StorybookWrapper children={<Story />} />
+  (Story, Context) => {
+    return <StorybookWrapper children={<Story />} context={Context} />;
+  }
 ];

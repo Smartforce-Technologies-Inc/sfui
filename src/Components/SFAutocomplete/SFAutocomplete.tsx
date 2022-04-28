@@ -129,7 +129,6 @@ export const SFAutocomplete = ({
   ...props
 }: SFAutocompleteProps): React.ReactElement<SFAutocompleteProps> => {
   const classes = useStyles({ hasPopupIcon });
-  const [isOpen, setIsOpen] = React.useState<boolean>(false);
 
   let initInputValue = '';
   if (value && isOption(value, props.options)) {
@@ -146,12 +145,6 @@ export const SFAutocomplete = ({
     if (reason !== 'reset') {
       setInputValue(newValue);
 
-      if (!isOpen && newValue.length > 0) {
-        setIsOpen(true);
-      } else if (isOpen && newValue.length === 0) {
-        setIsOpen(false);
-      }
-
       if (props.freeSolo) {
         props.onChange(newValue);
       }
@@ -165,35 +158,9 @@ export const SFAutocomplete = ({
     option: SFMenuOption,
     reason: AutocompleteChangeReason
   ): void => {
-    setIsOpen(false);
-
     if (reason !== 'create-option' && reason !== 'remove-option') {
       setInputValue(option ? option.value : '');
       props.onChange(option ? option.value : '');
-    }
-  };
-
-  const onOpen = (event: React.ChangeEvent): void => {
-    event.persist();
-
-    // If reason of open is click on button
-    if (event.type === 'click') {
-      setIsOpen(!isOpen);
-    }
-  };
-
-  const onClose = (
-    event: React.ChangeEvent,
-    reason: SFAutocompleteCloseReason
-  ): void => {
-    event.persist();
-
-    if (isOpen) {
-      setIsOpen(false);
-
-      if (props.onClose) {
-        props.onClose(event, reason);
-      }
     }
   };
 
@@ -207,14 +174,11 @@ export const SFAutocomplete = ({
     <StyledAutocomplete
       className={`${classes.root} ${props.className || ''}`}
       {...props}
+      openOnFocus
       value={value}
-      open={isOpen}
-      openOnFocus={false}
       options={options}
       onChange={onChange}
       onInputChange={onInputChange}
-      onClose={onClose}
-      onOpen={onOpen}
       inputValue={inputValue}
       getOptionSelected={(
         option: SFMenuOption,
