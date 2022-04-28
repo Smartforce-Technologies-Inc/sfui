@@ -27,6 +27,7 @@ export interface SFDatePickerProps extends DatePickerProps {
 
 const StyledTextField = styled(SFTextField)(({ theme }) => ({
   paddingRight: '12px',
+
   '& .MuiIconButton-root': {
     padding: '12px',
     '&:hover': {
@@ -100,6 +101,7 @@ const SFDatePickerBase = ({
         value={value}
         label={label}
         showToolbar
+        toolbarFormat='ddd, MMM D YYYY'
         onOpen={(): void => setOpenCalendarStyle(true)}
         onClose={(): void => setOpenCalendarStyle(false)}
         components={{
@@ -130,10 +132,15 @@ export const SFDatePicker = styled(
     <SFDatePickerBase
       {...props}
       PaperProps={{ classes: { root: className } }}
+      DialogProps={{ classes: { root: className } }}
     />
   )
-)({
+)(({ theme }) => ({
   marginTop: '3px',
+
+  '& .MuiDialogActions-root': {
+    display: 'none'
+  },
 
   '& .PrivatePickersToolbar-root': {
     padding: '20px 24px 0 24px',
@@ -147,5 +154,49 @@ export const SFDatePicker = styled(
         display: 'none'
       }
     }
+  },
+
+  '& .MuiCalendarPicker-root': {
+    '& .PrivatePickersSlideTransition-root': {
+      minHeight: '216px'
+    },
+    '& .MuiIconButton-root': {
+      '&:hover': {
+        '@media (hover: hover)': {
+          backgroundColor: `${
+            theme.palette.mode === 'light'
+              ? 'rgba(204, 204, 204, 0.3)'
+              : 'rgba(128, 128, 128, 0.3)'
+          }`
+        }
+      },
+      '&:active': {
+        backgroundColor: `${
+          theme.palette.mode === 'light'
+            ? 'rgba(204, 204, 204, 0.5)'
+            : 'rgba(128, 128, 128, 0.2)'
+        }`
+      }
+    },
+
+    '& .MuiYearPicker-root': {
+      '& .PrivatePickersYear-yearButton': {
+        '&:hover, &:active, &:focus': {
+          backgroundColor:
+            theme.palette.mode === 'light'
+              ? hexToRgba(SFGrey[200], 0.3)
+              : hexToRgba(SFGrey[200], 0.3)
+        },
+
+        '&.Mui-selected': {
+          backgroundColor:
+            theme.palette.mode === 'light' ? SFBlue[500] : SFBlue[200],
+          '&:hover, &:active, &:focus': {
+            backgroundColor:
+              theme.palette.mode === 'light' ? SFBlue[500] : SFBlue[200]
+          }
+        }
+      }
+    }
   }
-});
+}));
