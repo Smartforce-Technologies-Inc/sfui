@@ -5,6 +5,7 @@ import {
   SFPeoplePickerProps,
   SFPeopleOption
 } from './SFPeoplePicker';
+import { values } from 'lodash';
 
 const options: SFPeopleOption[] = [
   {
@@ -75,10 +76,15 @@ export default {
 } as Meta;
 
 const Template: Story<SFPeoplePickerProps> = (args) => (
-  <SFPeoplePicker {...args} isAsync={false} options={options} />
+  <SFPeoplePicker {...args} />
 );
 
 export const Default = Template.bind({});
+
+Default.args = {
+  isAsync: false,
+  options
+};
 
 export const AsyncOptions: Story = () => {
   return (
@@ -125,6 +131,7 @@ export const AsyncOptions: Story = () => {
     </div>
   );
 };
+
 AsyncOptions.parameters = {
   controls: {
     disable: true

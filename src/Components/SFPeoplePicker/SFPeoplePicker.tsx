@@ -28,11 +28,17 @@ const getStringAbbreviation = (value: string): string => {
   return stringAbbreviation;
 };
 
-type PeopleOptionsFn = (url: string) => Promise<unknown[]>;
+type PeopleOptionsFn = (
+  url: string,
+  options?: RequestInit
+) => Promise<unknown[]>;
 
-const getPeopleOptions = async (url: string): Promise<unknown[]> => {
+const getPeopleOptions = async (
+  url: string,
+  options?: RequestInit
+): Promise<unknown[]> => {
   try {
-    const fetchResp = await fetch(url);
+    const fetchResp = await fetch(url, options);
     const response = await fetchResp.json();
     return response;
   } catch (e) {
@@ -43,13 +49,18 @@ const getPeopleOptions = async (url: string): Promise<unknown[]> => {
 
 const memoizePeopleFn = (fn: PeopleOptionsFn): PeopleOptionsFn => {
   const cache = {};
-  return async (url: string): Promise<unknown[]> => {
+  return async (url: string, options?: RequestInit): Promise<unknown[]> => {
     if (url in cache) {
       return cache[url];
     } else {
-      const result = await fn(url);
-      cache[url] = result;
-      return result;
+      try {
+        const result = await fn(url, options);
+        cache[url] = result;
+        return result;
+      } catch (e) {
+        console.error('SFPeoplePicker:getPeopleFn', e);
+        return [];
+      }
     }
   };
 };
@@ -106,6 +117,7 @@ interface SFPeoplePickerAsyncProps extends SFPeoplePickerBaseProps {
   isAsync: true;
   formatUrlQuery: (value: string) => string;
   formatOption: (option: unknown) => SFPeopleOption;
+  fetchOptions?: RequestInit;
   minChar?: number;
 }
 
@@ -138,16 +150,21 @@ export const SFPeoplePicker = ({
 
   const fetchOptions = async (url: string): Promise<SFPeopleOption[]> => {
     if (props.isAsync && refGetOptions.current) {
-      const options = await refGetOptions.current(url);
-      return options
-        ? options.map((option: unknown) => {
-            const newObj: SFPeopleOption = props.formatOption(option);
-            if (!newObj.asyncObject) {
-              newObj.asyncObject = option;
-            }
-            return newObj;
-          })
-        : [];
+      try {
+        const options = await refGetOptions.current(url, props.fetchOptions);
+        return options?.length
+          ? options.map((option: unknown) => {
+              const newObj: SFPeopleOption = props.formatOption(option);
+              if (!newObj.asyncObject) {
+                newObj.asyncObject = option;
+              }
+              return newObj;
+            })
+          : [];
+      } catch (e) {
+        console.error('SFPeoplePicker:fetchOptions', e);
+        return [];
+      }
     } else {
       return [];
     }
@@ -193,11 +210,17 @@ export const SFPeoplePicker = ({
   ): Promise<void> => {
     if (props.isAsync) {
       if (value.length >= (props.minChar || 3)) {
-        setIsLoading(true);
-        const url: string = props.formatUrlQuery(value);
-        const options = await fetchOptions(url);
-        setAsyncOptions(options);
-        setIsLoading(false);
+        try {
+          setIsLoading(true);
+          const url: string = props.formatUrlQuery(value);
+          const options = await fetchOptions(url);
+          setAsyncOptions(options);
+          setIsLoading(false);
+        } catch (e) {
+          console.error('SFPeoplePicker:onInputChange', e);
+          setAsyncOptions([]);
+          setIsLoading(false);
+        }
       } else {
         setAsyncOptions([]);
       }
