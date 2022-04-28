@@ -128,6 +128,47 @@ export const AsyncOptions: Story = () => {
         <code>formatOption</code> is a function used to map the options returned
         from the api call to an SFPeopleOption object.
       </p>
+
+      <p>
+        There's an optional prop named <code>fetchInit</code> in case we need to
+        send aditional information in the fetch request. For example,
+        <br />
+        <br />
+        <code>
+          <span>{'<SFPeoplePicker'}</span> <br />
+          <div style={{ marginLeft: '20px' }}>
+            <span>isAsync</span> <br />
+            <span>
+              {'formatUrlQuery={(value: string) => API_URL_WITH_QUERY}'}
+            </span>
+            <br />
+            <span>{'fetchInit={{ '}</span>
+            <br />
+            <span style={{ marginLeft: 20 }}>method: 'POST',</span>
+            <br />
+            <span style={{ marginLeft: 20 }}>{'headers: new Headers({'}</span>
+            <br />
+            <span style={{ marginLeft: 40 }}>
+              'Content-Type': 'application/json'
+            </span>
+            <br />
+            <span style={{ marginLeft: 40 }}>
+              'Authorization': 'bearer TOKEN'
+            </span>
+            <br />
+            <span style={{ marginLeft: 20 }}>{'})'}</span>
+            <br />
+            <span>{'}}'}</span>
+            <br />
+            <span>
+              {
+                'formatOption={(apiResultOption) => ({ name: apiResultOption.full_name })} '
+              }
+            </span>
+          </div>
+          <span>{'/>'}</span>
+        </code>
+      </p>
     </div>
   );
 };
