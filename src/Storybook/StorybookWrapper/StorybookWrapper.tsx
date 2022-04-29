@@ -5,7 +5,7 @@ import { SFThemeProvider, createSFTheme, SFTheme } from '../../SFTheme/SFTheme';
 import { SFPaper } from '../../Components/SFPaper/SFPaper';
 import { SFSwitch } from '../../Components/SFSwitch/SFSwitch';
 import { SFLink } from '../../Components/SFLink/SFLink';
-import { useSFMediaQuery } from '../../SFUtils/SFUtils';
+import { SFStyledEngineProvider, useSFMediaQuery } from '../../SFUtils/SFUtils';
 import ReactDOM from 'react-dom';
 
 export interface StorybookWrapperProps {
@@ -118,44 +118,46 @@ const StorybookWrapper = ({
 
   return (
     <SFThemeProvider theme={theme}>
-      <div
-        id='sf-topbar'
-        style={{
-          backgroundColor: theme.palette.background.default
-        }}
-      >
+      <SFStyledEngineProvider injectFirst>
         <div
+          id='sf-topbar'
           style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            padding: '5px 1rem',
-            borderBottom: `2px solid ${theme.palette.primary.main}`
+            backgroundColor: theme.palette.background.default
           }}
         >
-          <h2
+          <div
             style={{
-              display: 'inline-block',
-              margin: '7px 0',
-              color: theme.palette.text.primary
+              display: 'flex',
+              justifyContent: 'space-between',
+              padding: '5px 1rem',
+              borderBottom: `2px solid ${theme.palette.primary.main}`
             }}
           >
-            SFUI Library
-          </h2>
-          <SFSwitch checked={nightMode} onChange={toggleSwitch} />
+            <h2
+              style={{
+                display: 'inline-block',
+                margin: '7px 0',
+                color: theme.palette.text.primary
+              }}
+            >
+              SFUI Library
+            </h2>
+            <SFSwitch checked={nightMode} onChange={toggleSwitch} />
+          </div>
+          <br />
         </div>
-        <br />
-      </div>
-      <SFPaper
-        id='sf-story-wrapper'
-        style={{
-          height: '100%',
-          minHeight: 'calc(100vh - 106px)',
-          padding: '1rem',
-          backgroundColor: theme.palette.background.default
-        }}
-      >
-        {children}
-      </SFPaper>
+        <SFPaper
+          id='sf-story-wrapper'
+          style={{
+            height: '100%',
+            minHeight: 'calc(100vh - 106px)',
+            padding: '1rem',
+            backgroundColor: theme.palette.background.default
+          }}
+        >
+          {children}
+        </SFPaper>
+      </SFStyledEngineProvider>
     </SFThemeProvider>
   );
 };
