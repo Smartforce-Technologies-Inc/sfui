@@ -3,14 +3,17 @@ import NumberFormat, { NumberFormatProps } from 'react-number-format';
 import { SFTextField, SFTextFieldProps } from '../SFTextField/SFTextField';
 
 interface NumberFormatCustomProps extends NumberFormatProps {
-  inputRef: (instance: NumberFormat | null) => void;
+  // inputRef: (instance: NumberFormat | null) => void;
   onChange: (event: { target: { name: string; value: string } }) => void;
   name: string;
   allowDecimals: boolean;
 }
 
-function NumberFormatCustom(props: NumberFormatCustomProps): JSX.Element {
-  const { inputRef, onChange, allowDecimals, ...other } = props;
+const NumberFormatCustom = React.forwardRef<
+  NumberFormat,
+  NumberFormatCustomProps
+>(function NumberFormatCustom(props, ref) {
+  const { onChange, allowDecimals, ...other } = props;
 
   return (
     <NumberFormat
@@ -18,7 +21,7 @@ function NumberFormatCustom(props: NumberFormatCustomProps): JSX.Element {
       inputMode={allowDecimals ? 'decimal' : 'numeric'}
       decimalScale={!allowDecimals ? 0 : props.decimalScale}
       pattern={allowDecimals ? undefined : '[0-9]*'}
-      getInputRef={inputRef}
+      getInputRef={ref}
       onValueChange={(values): void => {
         onChange &&
           onChange({
@@ -30,7 +33,7 @@ function NumberFormatCustom(props: NumberFormatCustomProps): JSX.Element {
       }}
     />
   );
-}
+});
 
 export interface SFNumericFieldProps extends SFTextFieldProps {
   numberFormatProps?: NumberFormatProps;
