@@ -18,6 +18,9 @@ import {
 import { SFIcon } from '../SFIcon/SFIcon';
 import { hexToRgba } from '../../Helpers';
 import { TextFieldProps } from '@mui/material';
+import { ParseableDate as SFParsableDate } from '@mui/x-date-pickers/internals/models/parseableDate';
+
+export { SFParsableDate };
 
 export interface SFDatePickerProps
   extends Omit<DatePickerProps, 'renderInput'> {
