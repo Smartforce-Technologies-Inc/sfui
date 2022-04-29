@@ -5,7 +5,6 @@ import {
   SFPeoplePickerProps,
   SFPeopleOption
 } from './SFPeoplePicker';
-import { values } from 'lodash';
 
 const options: SFPeopleOption[] = [
   {
@@ -27,49 +26,11 @@ export default {
   },
   argTypes: {
     onChange: {
-      action: 'onChange',
-      table: {
-        disable: true
-      }
+      action: 'onChange'
     },
     disabled: {
       control: {
         type: 'boolean'
-      }
-    },
-    isAsync: {
-      table: {
-        disable: true
-      }
-    },
-    options: {
-      table: {
-        disable: true
-      }
-    },
-    value: {
-      table: {
-        disable: true
-      }
-    },
-    helperText: {
-      table: {
-        disable: true
-      }
-    },
-    formatUrlQuery: {
-      table: {
-        disable: true
-      }
-    },
-    formatOption: {
-      table: {
-        disable: true
-      }
-    },
-    minChar: {
-      table: {
-        disable: true
       }
     }
   }

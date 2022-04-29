@@ -1,15 +1,18 @@
 import * as React from 'react';
-import { makeStyles, Theme } from '@material-ui/core/styles';
 import { SFTextField } from '../SFTextField/SFTextField';
 import { SFIcon } from '../SFIcon/SFIcon';
 import {
+  styled,
   AutocompleteInputChangeReason,
   AutocompleteRenderInputParams
-} from '@material-ui/lab';
+} from '@mui/material';
 import { SFBlue, SFGrey, SFTextWhite } from '../../SFColors/SFColors';
 import { DebouncedFunc } from 'lodash';
 import debounce from 'lodash.debounce';
-import { StyledAutocomplete } from '../SFAutocomplete/SFAutocomplete';
+import {
+  SFAutocompletePopper,
+  StyledAutocomplete
+} from '../SFAutocomplete/SFAutocomplete';
 
 const getStringAbbreviation = (value: string): string => {
   const abbreviation = value.split(' ');
@@ -65,14 +68,37 @@ const memoizePeopleFn = (fn: PeopleOptionsFn): PeopleOptionsFn => {
   };
 };
 
-const useStyles = makeStyles((theme: Theme) => ({
-  menu: {
-    display: 'grid',
-    gridTemplateColumns: 'auto 1fr',
-    gap: '15px',
-    alignItems: 'center'
-  },
-  avatar: {
+interface SFPeoplePickerRenderOptionProps
+  extends React.HTMLAttributes<HTMLLIElement> {
+  option: SFPeopleOption;
+}
+
+const OptionBase = ({
+  option,
+  ...props
+}: SFPeoplePickerRenderOptionProps): React.ReactElement<SFPeoplePickerRenderOptionProps> => (
+  <li {...props}>
+    <div
+      className='SFPeoplePicker-optionAvatar'
+      style={{
+        backgroundImage: option.avatarUrl ? `url("${option.avatarUrl}")` : '',
+        backgroundSize: 'cover'
+      }}
+    >
+      {!option.avatarUrl && <span>{getStringAbbreviation(option.name)}</span>}
+    </div>
+
+    <div className='SFPeoplePicker-optionName'>{option.name}</div>
+  </li>
+);
+
+const StyledOption = styled(OptionBase)(({ theme }) => ({
+  display: 'grid',
+  gridTemplateColumns: 'auto 1fr',
+  gap: '15px',
+  alignItems: 'center',
+
+  '& .SFPeoplePicker-optionAvatar': {
     backgroundColor: SFBlue[400],
     width: '42px',
     height: '42px',
@@ -85,10 +111,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontWeight: 700,
     color: SFTextWhite
   },
-  name: {
+  '& .SFPeoplePicker-optionName': {
     fontSize: '16px',
     lineHeight: '24px',
-    color: theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]
+    color: theme.palette.mode === 'light' ? SFGrey[900] : SFGrey[50]
   }
 }));
 
@@ -97,6 +123,12 @@ export interface SFPeopleOption {
   avatarUrl?: string;
   asyncObject?: unknown;
 }
+
+const StyledPeoplePickerAutocomplete = styled(StyledAutocomplete)({
+  '& .MuiAutocomplete-popupIndicator': {
+    display: 'none'
+  }
+});
 
 interface SFPeoplePickerBaseProps {
   label: string;
@@ -131,10 +163,9 @@ export const SFPeoplePicker = ({
   disabled,
   required,
   value,
-  onChange,
   ...props
 }: SFPeoplePickerProps): React.ReactElement<SFPeoplePickerProps> => {
-  const classes = useStyles();
+  // const classes = useStyles();
 
   const [asyncOptions, setAsyncOptions] = React.useState<SFPeopleOption[]>([]);
   const [loading, setIsLoading] = React.useState<boolean>(false);
@@ -168,28 +199,6 @@ export const SFPeoplePicker = ({
     } else {
       return [];
     }
-  };
-
-  const renderOption = (option: SFPeopleOption): React.ReactNode => {
-    return (
-      <div className={classes.menu}>
-        <div
-          className={classes.avatar}
-          style={{
-            backgroundImage: option.avatarUrl
-              ? `url("${option.avatarUrl}")`
-              : '',
-            backgroundSize: 'cover'
-          }}
-        >
-          {!option.avatarUrl && (
-            <span>{getStringAbbreviation(option.name)}</span>
-          )}
-        </div>
-
-        <div className={classes.name}>{option.name}</div>
-      </div>
-    );
   };
 
   const renderInput = (
@@ -231,24 +240,27 @@ export const SFPeoplePicker = ({
     _event: React.ChangeEvent,
     newValue: SFPeopleOption
   ): void => {
-    onChange(newValue);
+    props.onChange(newValue);
   };
 
   return (
-    <StyledAutocomplete
+    <StyledPeoplePickerAutocomplete
       freeSolo={false}
       loading={loading}
       clearOnBlur
       disabled={disabled}
       options={props.isAsync ? asyncOptions : props.options}
       renderInput={renderInput}
-      popupIcon={null}
-      closeIcon={<SFIcon icon='Close' size='16' />}
+      clearIcon={<SFIcon icon='Close' size='16' />}
       value={value}
       onInputChange={onInputChange}
       onChange={onPeopleChange}
       getOptionLabel={(option: SFPeopleOption): string => option.name}
-      renderOption={renderOption}
+      renderOption={(
+        props: React.HTMLAttributes<HTMLLIElement>,
+        option: SFPeopleOption
+      ): React.ReactNode => <StyledOption {...props} option={option} />}
+      PopperComponent={SFAutocompletePopper}
     />
   );
 };

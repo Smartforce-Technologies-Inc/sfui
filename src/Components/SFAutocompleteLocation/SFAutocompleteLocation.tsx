@@ -8,7 +8,7 @@ import debounce from 'lodash.debounce';
 import { DebouncedFunc } from 'lodash';
 import { SFIcon } from '../SFIcon/SFIcon';
 import { SFTextField } from '../SFTextField/SFTextField';
-import { SFGrey, SFSurfaceLight } from '../../SFColors/SFColors';
+import { SFGrey } from '../../SFColors/SFColors';
 import { hexToRgba } from '../../Helpers';
 import { SFAutocompleteLocationOption } from './SFAutocompleteLocationOption/SFAutocompleteLocationOption';
 import { SFAutocompletePopper } from '../SFAutocomplete/SFAutocomplete';

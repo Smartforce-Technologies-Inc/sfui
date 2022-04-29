@@ -1,8 +1,5 @@
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, Fragment } from 'react';
 import {
-  styled,
-  FormControl,
-  Autocomplete,
   AutocompleteRenderInputParams,
   AutocompleteInputChangeReason,
   AutocompleteChangeReason
@@ -10,19 +7,9 @@ import {
 import { SFChipListModal } from './SFChipFieldModal/SFChipFieldModal';
 import { SFChipListRender } from './SFChipFieldRender/SFChipFieldRender';
 import { SFAutocompletePopper } from '../SFAutocomplete/SFAutocomplete';
-import { SFChipFieldTextField } from './SFChipFieldTextField/SFChipFieldTextField';
 import { SFChipListDisplayValues } from './SFChipFieldDisplayValues/SFChipFieldDisplayValues';
-
-const StyledAutoComplete = styled(Autocomplete)({
-  '& .MuiAutocomplete-endAdornment': {
-    display: 'none'
-  },
-
-  '& .MuiAutocomplete-paper': {
-    marginLeft: '4px',
-    marginRight: '-4px'
-  }
-});
+import { StyledAutoComplete } from '../SFAutocompleteChip/SFAutocompleteChip';
+import { SFAutocompleteInput } from '../SFAutocompleteChip/SFAutocompleteInput/SFAutocompleteInput';
 
 export type minWidthInputSize = number | 'auto' | 'full-width';
 
@@ -280,7 +267,7 @@ export const SFChipsListField = ({
           />
         )}
         renderInput={(params: AutocompleteRenderInputParams): JSX.Element => (
-          <SFChipFieldTextField
+          <SFAutocompleteInput
             {...params}
             type={inputType}
             rows={1}
@@ -308,6 +295,6 @@ export const SFChipsListField = ({
         onEdit={isEditable ? onEdit : undefined}
         isValid={isValid}
       />
-    </FormControl>
+    </Fragment>
   );
 };

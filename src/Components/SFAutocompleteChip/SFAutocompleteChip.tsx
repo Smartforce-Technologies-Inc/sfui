@@ -1,52 +1,23 @@
 import React, { ChangeEvent } from 'react';
 import {
+  styled,
   Autocomplete,
   AutocompleteRenderInputParams,
   AutocompleteInputChangeReason,
   AutocompleteChangeReason
-} from '@material-ui/lab';
-import { hexToRgba } from '../../Helpers';
-import { SFGrey } from '../../SFColors/SFColors';
-import { withStyles, Theme } from '@material-ui/core/styles';
+} from '@mui/material';
 import { SFAutocompleteChipRender } from './SFAutocompleteChipRender/SFAutocompleteChipRender';
 import {
   minWidthInputSize,
   SFAutocompleteInput
 } from './SFAutocompleteInput/SFAutocompleteInput';
+import { SFAutocompletePopper } from '../SFAutocomplete/SFAutocomplete';
 
-export const StyledAutoComplete = withStyles((theme: Theme) => ({
-  root: {
-    '& .MuiAutocomplete-endAdornment': {
-      display: 'none'
-    }
-  },
-  listbox: {
-    padding: '13px 0'
-  },
-  option: {
-    padding: '6px 24px',
-
-    '&[data-focus="true"]': {
-      backgroundColor:
-        theme.palette.type === 'light'
-          ? hexToRgba(SFGrey.A100 as string, 0.3)
-          : hexToRgba(SFGrey[500] as string, 0.3),
-      '&:active': {
-        backgroundColor:
-          theme.palette.type === 'light'
-            ? hexToRgba(SFGrey.A100 as string, 0.5)
-            : hexToRgba(SFGrey[500] as string, 0.5)
-      }
-    },
-
-    '&[aria-selected="true"]': {
-      backgroundColor:
-        theme.palette.type === 'light'
-          ? hexToRgba(SFGrey.A100 as string, 0.5)
-          : hexToRgba(SFGrey[500] as string, 0.5)
-    }
+export const StyledAutoComplete = styled(Autocomplete)({
+  '& .MuiAutocomplete-endAdornment': {
+    display: 'none'
   }
-}))(Autocomplete);
+});
 
 export interface SFAutocompleteChipProps {
   value: string[];
@@ -97,7 +68,7 @@ export const SFAutocompleteChip = ({
     value: string[],
     reason: AutocompleteChangeReason
   ): void => {
-    if (reason === 'select-option') {
+    if (reason === 'selectOption') {
       onChange(value);
     }
   };
@@ -114,7 +85,7 @@ export const SFAutocompleteChip = ({
       onInputChange={onInputChange}
       onChange={onAutoCompleteChange}
       filterSelectedOptions
-      getOptionSelected={(option: string, value: string): boolean =>
+      isOptionEqualToValue={(option: string, value: string): boolean =>
         option === value
       }
       renderTags={(value: string[]): JSX.Element => (
@@ -140,6 +111,7 @@ export const SFAutocompleteChip = ({
           }
         />
       )}
+      PopperComponent={SFAutocompletePopper}
     />
   );
 };

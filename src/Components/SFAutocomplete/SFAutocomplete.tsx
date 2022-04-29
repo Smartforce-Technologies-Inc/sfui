@@ -68,7 +68,7 @@ export const SFAutocompletePopper = styled(Popper)(({ theme }) => ({
     '& .MuiAutocomplete-option': {
       padding: '6px 24px',
 
-      '&.Mui-focused': {
+      '&.Mui-focused, &:focus, &:hover': {
         backgroundColor:
           theme.palette.mode === 'light'
             ? hexToRgba(SFGrey.A100 as string, 0.3)
