@@ -19,10 +19,12 @@ import { SFIcon } from '../SFIcon/SFIcon';
 import { hexToRgba } from '../../Helpers';
 import { TextFieldProps } from '@mui/material';
 
-export interface SFDatePickerProps extends DatePickerProps {
+export interface SFDatePickerProps
+  extends Omit<DatePickerProps, 'renderInput'> {
   className?: string;
   error?: boolean;
   helperText?: string;
+  label?: string;
 }
 
 const StyledTextField = styled(SFTextField)(({ theme }) => ({

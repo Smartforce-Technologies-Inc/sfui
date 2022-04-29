@@ -1,5 +1,9 @@
 import * as React from 'react';
-import { styled, SelectProps } from '@mui/material';
+import {
+  styled,
+  SelectProps,
+  SelectChangeEvent as SFSelectChangeEvent
+} from '@mui/material';
 import { SFTextField } from '../SFTextField/SFTextField';
 import { SFIcon } from '../SFIcon/SFIcon';
 import { SFMenuItem } from '../SFMenuItem/SFMenuItem';
@@ -19,6 +23,8 @@ const StyledMenuItem = styled(SFMenuItem)({
   minHeight: '36px',
   height: 'auto'
 });
+
+export { SFSelectChangeEvent };
 
 export interface SFMenuOption {
   label: string;

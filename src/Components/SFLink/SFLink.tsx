@@ -33,7 +33,7 @@ export type SFLinkColor = 'inherit' | 'primary';
 
 export interface SFLinkProps extends LinkProps {
   sfSize: SFSize;
-  color: SFLinkColor;
+  color?: SFLinkColor;
 }
 
 export const SFLink = ({
