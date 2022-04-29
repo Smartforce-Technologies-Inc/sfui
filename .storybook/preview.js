@@ -1,5 +1,5 @@
 import React from 'react';
-import StorybookWrapper from '../src/StorybookWrapper/StorybookWrapper';
+import StorybookWrapper from '../src/Storybook/StorybookWrapper/StorybookWrapper';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },

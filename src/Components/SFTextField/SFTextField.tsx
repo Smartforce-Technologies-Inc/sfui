@@ -148,7 +148,7 @@ export const SFTextField = ({
       fullWidth
       color='primary'
       variant='outlined'
-      rows={props.multiline ? rows : 1}
+      minRows={props.multiline ? rows : 1}
       autoComplete={autoComplete}
     />
   );

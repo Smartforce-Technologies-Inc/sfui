@@ -128,9 +128,9 @@ Every time you add a new story, you should add the url of the base component's [
 
 All needed information on how to create a story and other related matters, please follow [Storybook's Page](https://storybook.js.org/)
 
-## Example app
+## Examples
 
-You can try a demo app deployed into github pages [here](https://adventoscorp.github.io/sfui/).
+You can try a demo deployed into github pages [here](https://adventoscorp.github.io/sfui/).
 
 ## Development tools
 
@@ -166,13 +166,6 @@ npm run storybook
 ```bash
 # deploys the example app into github pages.
 npm run deploy
-```
-
-### Into the example/ folder
-
-```bash
-# runs the example app locally.
-npm run start
 ```
 
 ## License

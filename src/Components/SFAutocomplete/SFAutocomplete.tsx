@@ -23,7 +23,7 @@ const isOption = (value: string, options: SFMenuOption[]): boolean => {
   }
 };
 
-const StyledAutocomplete = styled(Autocomplete)(({ theme }) => ({
+export const StyledAutocomplete = styled(Autocomplete)(({ theme }) => ({
   '& .MuiAutocomplete-inputRoot': {
     '&[class*="MuiOutlinedInput-root"]': {
       paddingTop: '20px',

@@ -15,7 +15,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 625,
+        "order": 791,
         "name": "Active-Protection",
         "prevSize": 32,
         "id": 1
@@ -39,7 +39,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 626,
+        "order": 792,
         "name": "Add",
         "prevSize": 32,
         "id": 2
@@ -61,7 +61,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 627,
+        "order": 793,
         "name": "Add-Book",
         "prevSize": 32,
         "id": 91
@@ -87,7 +87,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 628,
+        "order": 794,
         "name": "Add-File",
         "prevSize": 32,
         "id": 105
@@ -113,7 +113,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 629,
+        "order": 795,
         "name": "Add-Folder",
         "prevSize": 32,
         "id": 118
@@ -135,7 +135,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 630,
+        "order": 796,
         "name": "Add-Task",
         "prevSize": 32,
         "id": 131
@@ -165,7 +165,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 631,
+        "order": 797,
         "name": "Adjustments",
         "prevSize": 32,
         "id": 3
@@ -190,7 +190,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 632,
+        "order": 798,
         "name": "Alarm",
         "prevSize": 32,
         "id": 4
@@ -214,7 +214,7 @@
       },
       "attrs": [{}, {}, {}],
       "properties": {
-        "order": 633,
+        "order": 799,
         "id": 153,
         "name": "Announcement",
         "prevSize": 32
@@ -239,7 +239,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 634,
+        "order": 800,
         "name": "Archive-File",
         "prevSize": 32,
         "id": 5
@@ -270,7 +270,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 635,
+        "order": 801,
         "name": "Assignment",
         "prevSize": 32,
         "id": 6
@@ -292,7 +292,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 636,
+        "order": 802,
         "name": "Atention-Task",
         "prevSize": 32,
         "id": 132
@@ -318,7 +318,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 637,
+        "order": 803,
         "name": "Attach-File",
         "prevSize": 32,
         "id": 106
@@ -340,7 +340,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 638,
+        "order": 804,
         "name": "Attache-Task",
         "prevSize": 32,
         "id": 133
@@ -362,7 +362,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 639,
+        "order": 805,
         "name": "Award-2",
         "prevSize": 32,
         "id": 143
@@ -386,7 +386,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 640,
+        "order": 806,
         "name": "Bell",
         "prevSize": 32,
         "id": 7
@@ -416,7 +416,7 @@
       },
       "attrs": [{}, {}, {}, {}, {}, {}, {}, {}, {}],
       "properties": {
-        "order": 622,
+        "order": 807,
         "id": 156,
         "name": "Bike-2",
         "prevSize": 32
@@ -439,7 +439,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 641,
+        "order": 808,
         "name": "Blank-File",
         "prevSize": 32,
         "id": 107
@@ -465,7 +465,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 642,
+        "order": 809,
         "name": "Block-Chart-1",
         "prevSize": 32,
         "id": 84
@@ -491,7 +491,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 643,
+        "order": 810,
         "name": "Block-Chart-4",
         "prevSize": 32,
         "id": 85
@@ -513,7 +513,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 644,
+        "order": 811,
         "name": "Book-2",
         "prevSize": 32,
         "id": 92
@@ -535,7 +535,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 645,
+        "order": 812,
         "name": "Book-Dismiss",
         "prevSize": 32,
         "id": 93
@@ -557,7 +557,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 646,
+        "order": 813,
         "name": "Book-Done",
         "prevSize": 32,
         "id": 94
@@ -579,7 +579,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 647,
+        "order": 814,
         "name": "Book-Down",
         "prevSize": 32,
         "id": 95
@@ -601,7 +601,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 648,
+        "order": 815,
         "name": "Book-Question",
         "prevSize": 32,
         "id": 96
@@ -623,7 +623,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 649,
+        "order": 816,
         "name": "Book-Settings",
         "prevSize": 32,
         "id": 97
@@ -645,7 +645,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 650,
+        "order": 817,
         "name": "Book-Up",
         "prevSize": 32,
         "id": 98
@@ -667,7 +667,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 651,
+        "order": 818,
         "name": "Book-User",
         "prevSize": 32,
         "id": 99
@@ -689,7 +689,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 652,
+        "order": 819,
         "name": "Book-Warning",
         "prevSize": 32,
         "id": 100
@@ -711,7 +711,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 653,
+        "order": 820,
         "name": "Bookmark-1",
         "prevSize": 32,
         "id": 80
@@ -734,7 +734,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 654,
+        "order": 821,
         "name": "Bookmark-3",
         "prevSize": 32,
         "id": 81
@@ -763,7 +763,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 655,
+        "order": 822,
         "name": "Brake-Link",
         "prevSize": 32,
         "id": 8
@@ -791,7 +791,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 656,
+        "order": 823,
         "name": "Callendar",
         "prevSize": 32,
         "id": 9
@@ -815,7 +815,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 657,
+        "order": 824,
         "name": "Camera-1",
         "prevSize": 32,
         "id": 10
@@ -837,7 +837,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 658,
+        "order": 825,
         "name": "Camera-2",
         "prevSize": 32,
         "id": 11
@@ -866,7 +866,7 @@
       },
       "attrs": [{}, {}, {}, {}, {}, {}, {}, {}],
       "properties": {
-        "order": 624,
+        "order": 826,
         "id": 154,
         "name": "Car",
         "prevSize": 32
@@ -889,7 +889,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 659,
+        "order": 827,
         "name": "Check-1",
         "prevSize": 32,
         "id": 12
@@ -911,7 +911,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 660,
+        "order": 828,
         "name": "Check-2",
         "prevSize": 32,
         "id": 13
@@ -936,7 +936,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 661,
+        "order": 829,
         "name": "Check-File",
         "prevSize": 32,
         "id": 108
@@ -958,7 +958,7 @@
       },
       "attrs": [{}],
       "properties": {
-        "order": 662,
+        "order": 830,
         "id": 0,
         "name": "Checkbox-Selected",
         "prevSize": 32
@@ -980,7 +980,7 @@
       },
       "attrs": [{}],
       "properties": {
-        "order": 663,
+        "order": 831,
         "id": 149,
         "name": "Checkbox-Unselected",
         "prevSize": 32
@@ -1002,7 +1002,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 664,
+        "order": 832,
         "name": "Circle-Star",
         "prevSize": 32,
         "id": 144
@@ -1028,7 +1028,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 665,
+        "order": 833,
         "name": "Clear-File",
         "prevSize": 32,
         "id": 109
@@ -1054,7 +1054,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 666,
+        "order": 834,
         "name": "Clear-Folder",
         "prevSize": 32,
         "id": 119
@@ -1076,7 +1076,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 667,
+        "order": 835,
         "name": "Clear-Task",
         "prevSize": 32,
         "id": 134
@@ -1098,7 +1098,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 668,
+        "order": 836,
         "name": "Clipboard",
         "prevSize": 32,
         "id": 135
@@ -1127,7 +1127,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 669,
+        "order": 837,
         "name": "Clock",
         "prevSize": 32,
         "id": 14
@@ -1150,7 +1150,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 670,
+        "order": 838,
         "name": "Close",
         "prevSize": 32,
         "id": 15
@@ -1172,7 +1172,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 671,
+        "order": 839,
         "name": "Cloud",
         "prevSize": 32,
         "id": 16
@@ -1196,7 +1196,7 @@
       },
       "attrs": [{}, {}, {}],
       "properties": {
-        "order": 787,
+        "order": 840,
         "id": 166,
         "name": "Cloud-Off",
         "prevSize": 32
@@ -1221,7 +1221,7 @@
       },
       "attrs": [{}, {}, {}, {}],
       "properties": {
-        "order": 786,
+        "order": 841,
         "id": 165,
         "name": "Cloud-Upload",
         "prevSize": 32
@@ -1248,7 +1248,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 672,
+        "order": 842,
         "name": "Collaboration",
         "prevSize": 32,
         "id": 17
@@ -1270,7 +1270,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 673,
+        "order": 843,
         "name": "Cop-Badge",
         "prevSize": 32,
         "id": 145
@@ -1295,7 +1295,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 674,
+        "order": 844,
         "name": "Database",
         "prevSize": 32,
         "id": 18
@@ -1317,7 +1317,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 675,
+        "order": 845,
         "name": "Delete-Book",
         "prevSize": 32,
         "id": 101
@@ -1339,7 +1339,7 @@
       },
       "attrs": [{}],
       "properties": {
-        "order": 781,
+        "order": 846,
         "id": 160,
         "name": "Dismiss-App",
         "prevSize": 32
@@ -1364,7 +1364,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 676,
+        "order": 847,
         "name": "Dismiss-File",
         "prevSize": 32,
         "id": 110
@@ -1389,7 +1389,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 677,
+        "order": 848,
         "name": "Dismiss-Folder",
         "prevSize": 32,
         "id": 120
@@ -1413,7 +1413,7 @@
       },
       "attrs": [{}, {}, {}],
       "properties": {
-        "order": 785,
+        "order": 849,
         "id": 164,
         "name": "Done-Cloud",
         "prevSize": 32
@@ -1438,7 +1438,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 678,
+        "order": 850,
         "name": "Done-Folder",
         "prevSize": 32,
         "id": 121
@@ -1460,7 +1460,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 679,
+        "order": 851,
         "name": "Done-Task",
         "prevSize": 32,
         "id": 136
@@ -1491,7 +1491,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 680,
+        "order": 852,
         "name": "Dot-Chart-1",
         "prevSize": 32,
         "id": 86
@@ -1513,7 +1513,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 681,
+        "order": 853,
         "name": "Down-2",
         "prevSize": 32,
         "id": 72
@@ -1536,7 +1536,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 682,
+        "order": 854,
         "name": "Down-7",
         "prevSize": 32,
         "id": 73
@@ -1560,7 +1560,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 683,
+        "order": 855,
         "name": "Download",
         "prevSize": 32,
         "id": 19
@@ -1586,7 +1586,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 684,
+        "order": 856,
         "name": "Download-File",
         "prevSize": 32,
         "id": 111
@@ -1612,7 +1612,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 685,
+        "order": 857,
         "name": "Download-Folder",
         "prevSize": 32,
         "id": 122
@@ -1634,7 +1634,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 686,
+        "order": 858,
         "name": "Download-Task",
         "prevSize": 32,
         "id": 137
@@ -1662,7 +1662,7 @@
       },
       "attrs": [{}, {}, {}, {}, {}, {}, {}],
       "properties": {
-        "order": 783,
+        "order": 859,
         "id": 162,
         "name": "Electric-Plug",
         "prevSize": 32
@@ -1688,7 +1688,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 687,
+        "order": 860,
         "name": "Eroor-Folder",
         "prevSize": 32,
         "id": 123
@@ -1712,7 +1712,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 688,
+        "order": 861,
         "name": "Error",
         "prevSize": 32,
         "id": 21
@@ -1736,7 +1736,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 689,
+        "order": 862,
         "name": "Error-Mark",
         "prevSize": 32,
         "id": 20
@@ -1759,7 +1759,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 690,
+        "order": 863,
         "name": "Eye",
         "prevSize": 32,
         "id": 22
@@ -1782,7 +1782,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 691,
+        "order": 864,
         "name": "Favorite",
         "prevSize": 32,
         "id": 82
@@ -1805,7 +1805,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 692,
+        "order": 865,
         "name": "File-1",
         "prevSize": 32,
         "id": 23
@@ -1831,7 +1831,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 693,
+        "order": 866,
         "name": "File-2",
         "prevSize": 32,
         "id": 24
@@ -1857,7 +1857,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 694,
+        "order": 867,
         "name": "File-Error",
         "prevSize": 32,
         "id": 112
@@ -1882,7 +1882,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 695,
+        "order": 868,
         "name": "File-Settings",
         "prevSize": 32,
         "id": 113
@@ -1906,7 +1906,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 696,
+        "order": 869,
         "name": "Files",
         "prevSize": 32,
         "id": 104
@@ -1930,7 +1930,7 @@
       },
       "attrs": [{}, {}, {}],
       "properties": {
-        "order": 697,
+        "order": 870,
         "id": 150,
         "name": "Filter",
         "prevSize": 32
@@ -1953,7 +1953,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 698,
+        "order": 871,
         "name": "Folder",
         "prevSize": 32,
         "id": 25
@@ -1976,7 +1976,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 699,
+        "order": 872,
         "name": "Folder-1",
         "prevSize": 32,
         "id": 124
@@ -1998,7 +1998,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 700,
+        "order": 873,
         "name": "Home",
         "prevSize": 32,
         "id": 26
@@ -2022,7 +2022,7 @@
       },
       "attrs": [{}, {}, {}],
       "properties": {
-        "order": 788,
+        "order": 874,
         "id": 167,
         "name": "Information",
         "prevSize": 32
@@ -2048,7 +2048,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 701,
+        "order": 875,
         "name": "Invisible",
         "prevSize": 32,
         "id": 27
@@ -2070,7 +2070,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 702,
+        "order": 876,
         "name": "Left-2",
         "prevSize": 32,
         "id": 74
@@ -2093,7 +2093,7 @@
       },
       "attrs": [{}, {}],
       "properties": {
-        "order": 703,
+        "order": 877,
         "id": 151,
         "name": "Left-3",
         "prevSize": 32
@@ -2116,7 +2116,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 704,
+        "order": 878,
         "name": "Left-7",
         "prevSize": 32,
         "id": 75
@@ -2141,7 +2141,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 705,
+        "order": 879,
         "name": "Lightbulb",
         "prevSize": 32,
         "id": 28
@@ -2164,7 +2164,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 706,
+        "order": 880,
         "name": "Line-Chart-1",
         "prevSize": 32,
         "id": 87
@@ -2188,7 +2188,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 707,
+        "order": 881,
         "name": "Link",
         "prevSize": 32,
         "id": 29
@@ -2213,7 +2213,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 708,
+        "order": 882,
         "name": "Lock",
         "prevSize": 32,
         "id": 31
@@ -2235,7 +2235,7 @@
       },
       "attrs": [{}],
       "properties": {
-        "order": 780,
+        "order": 883,
         "id": 159,
         "name": "Lock-App",
         "prevSize": 32
@@ -2260,7 +2260,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 709,
+        "order": 884,
         "name": "Lock-Open",
         "prevSize": 32,
         "id": 30
@@ -2283,7 +2283,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 710,
+        "order": 885,
         "name": "Loction-1",
         "prevSize": 32,
         "id": 32
@@ -2307,7 +2307,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 711,
+        "order": 886,
         "name": "Login",
         "prevSize": 32,
         "id": 33
@@ -2331,7 +2331,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 712,
+        "order": 887,
         "name": "Logout",
         "prevSize": 32,
         "id": 34
@@ -2356,7 +2356,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 713,
+        "order": 888,
         "name": "Mail",
         "prevSize": 32,
         "id": 35
@@ -2382,7 +2382,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 714,
+        "order": 889,
         "name": "Mails",
         "prevSize": 32,
         "id": 36
@@ -2406,7 +2406,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 715,
+        "order": 890,
         "name": "Map",
         "prevSize": 32,
         "id": 37
@@ -2430,7 +2430,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 716,
+        "order": 891,
         "name": "Menu-1",
         "prevSize": 32,
         "id": 38
@@ -2459,7 +2459,7 @@
       },
       "attrs": [{}, {}, {}, {}, {}, {}, {}, {}],
       "properties": {
-        "order": 623,
+        "order": 892,
         "id": 155,
         "name": "Name-Tag",
         "prevSize": 32
@@ -2485,7 +2485,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 717,
+        "order": 893,
         "name": "New-Tag-2",
         "id": 148,
         "prevSize": 32
@@ -2508,7 +2508,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 718,
+        "order": 894,
         "name": "Open-Folder",
         "prevSize": 32,
         "id": 39
@@ -2531,7 +2531,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 719,
+        "order": 895,
         "name": "Open-Folder1",
         "prevSize": 32,
         "id": 125
@@ -2553,7 +2553,7 @@
       },
       "attrs": [{}],
       "properties": {
-        "order": 789,
+        "order": 896,
         "id": 168,
         "name": "Open-Hand-1",
         "prevSize": 32
@@ -2579,7 +2579,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 720,
+        "order": 897,
         "name": "Open-Mail",
         "prevSize": 32,
         "id": 40
@@ -2603,7 +2603,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 721,
+        "order": 898,
         "name": "Other",
         "prevSize": 32,
         "id": 41
@@ -2625,7 +2625,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 722,
+        "order": 899,
         "name": "Paperclip",
         "prevSize": 32,
         "id": 42
@@ -2650,7 +2650,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 723,
+        "order": 900,
         "name": "Pencil",
         "prevSize": 32,
         "id": 43
@@ -2674,7 +2674,7 @@
       },
       "attrs": [{}, {}, {}],
       "properties": {
-        "order": 779,
+        "order": 901,
         "id": 158,
         "name": "Phone-In-Talk",
         "prevSize": 32
@@ -2698,7 +2698,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 724,
+        "order": 902,
         "name": "Picture",
         "prevSize": 32,
         "id": 44
@@ -2720,7 +2720,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 725,
+        "order": 903,
         "name": "Pie-Chart-1",
         "prevSize": 32,
         "id": 88
@@ -2743,7 +2743,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 726,
+        "order": 904,
         "name": "Pin-1",
         "prevSize": 32,
         "id": 45
@@ -2766,7 +2766,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 727,
+        "order": 905,
         "name": "Preferences-1",
         "prevSize": 32,
         "id": 46
@@ -2788,7 +2788,7 @@
       },
       "attrs": [{}],
       "properties": {
-        "order": 782,
+        "order": 906,
         "id": 161,
         "name": "Question-App",
         "prevSize": 32
@@ -2812,7 +2812,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 728,
+        "order": 907,
         "name": "Question-Mark",
         "prevSize": 32,
         "id": 47
@@ -2837,7 +2837,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 729,
+        "order": 908,
         "name": "Refresh",
         "prevSize": 32,
         "id": 48
@@ -2860,7 +2860,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 730,
+        "order": 909,
         "name": "Reload",
         "prevSize": 32,
         "id": 49
@@ -2885,7 +2885,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 731,
+        "order": 910,
         "name": "Remouve-File",
         "prevSize": 32,
         "id": 114
@@ -2910,7 +2910,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 732,
+        "order": 911,
         "name": "Remouve-Folder",
         "prevSize": 32,
         "id": 126
@@ -2932,7 +2932,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 733,
+        "order": 912,
         "name": "Remouve-Task",
         "prevSize": 32,
         "id": 138
@@ -2955,7 +2955,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 734,
+        "order": 913,
         "name": "Remove",
         "prevSize": 32,
         "id": 50
@@ -2977,7 +2977,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 735,
+        "order": 914,
         "name": "Remove-Book",
         "prevSize": 32,
         "id": 102
@@ -2999,7 +2999,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 736,
+        "order": 915,
         "name": "Reply",
         "prevSize": 32,
         "id": 51
@@ -3021,7 +3021,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 737,
+        "order": 916,
         "name": "Right-2",
         "prevSize": 32,
         "id": 76
@@ -3044,7 +3044,7 @@
       },
       "attrs": [{}, {}],
       "properties": {
-        "order": 738,
+        "order": 917,
         "id": 152,
         "name": "Right-3",
         "prevSize": 32
@@ -3067,7 +3067,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 739,
+        "order": 918,
         "name": "Right-7",
         "prevSize": 32,
         "id": 77
@@ -3089,7 +3089,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 740,
+        "order": 919,
         "name": "Ring-Chart-1",
         "prevSize": 32,
         "id": 89
@@ -3112,7 +3112,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 741,
+        "order": 920,
         "name": "Search",
         "prevSize": 32,
         "id": 52
@@ -3134,7 +3134,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 742,
+        "order": 921,
         "name": "Search-Book",
         "prevSize": 32,
         "id": 103
@@ -3159,7 +3159,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 743,
+        "order": 922,
         "name": "Search-File",
         "prevSize": 32,
         "id": 115
@@ -3184,7 +3184,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 744,
+        "order": 923,
         "name": "Search-Folder",
         "prevSize": 32,
         "id": 127
@@ -3206,7 +3206,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 745,
+        "order": 924,
         "name": "Search-Task",
         "prevSize": 32,
         "id": 139
@@ -3231,7 +3231,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 746,
+        "order": 925,
         "name": "Settings-Folder",
         "prevSize": 32,
         "id": 128
@@ -3257,7 +3257,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 747,
+        "order": 926,
         "name": "Share",
         "prevSize": 32,
         "id": 53
@@ -3285,7 +3285,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 748,
+        "order": 927,
         "name": "Share-File-2",
         "prevSize": 32,
         "id": 116
@@ -3307,7 +3307,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 749,
+        "order": 928,
         "name": "Share-Task",
         "prevSize": 32,
         "id": 140
@@ -3331,7 +3331,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 750,
+        "order": 929,
         "name": "Shopping-Basket",
         "prevSize": 32,
         "id": 54
@@ -3356,7 +3356,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 751,
+        "order": 930,
         "name": "Shopping-Cart",
         "prevSize": 32,
         "id": 55
@@ -3378,7 +3378,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 752,
+        "order": 931,
         "name": "Speach-Bubble",
         "prevSize": 32,
         "id": 56
@@ -3401,7 +3401,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 753,
+        "order": 932,
         "name": "Speach-Bubbles",
         "prevSize": 32,
         "id": 57
@@ -3423,7 +3423,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 754,
+        "order": 933,
         "name": "Star",
         "prevSize": 32,
         "id": 58
@@ -3445,7 +3445,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 755,
+        "order": 934,
         "name": "Star-Shield-1",
         "prevSize": 32,
         "id": 146
@@ -3467,7 +3467,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 756,
+        "order": 935,
         "name": "Star-Shield-2",
         "prevSize": 32,
         "id": 147
@@ -3489,7 +3489,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 757,
+        "order": 936,
         "name": "Sttings-Task",
         "prevSize": 32,
         "id": 141
@@ -3514,7 +3514,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 758,
+        "order": 937,
         "name": "Syncronizaion",
         "prevSize": 32,
         "id": 59
@@ -3543,7 +3543,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 759,
+        "order": 938,
         "name": "Syncronize-Folder-2",
         "prevSize": 32,
         "id": 129
@@ -3565,7 +3565,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 760,
+        "order": 939,
         "name": "Table-Chart-1",
         "prevSize": 32,
         "id": 90
@@ -3588,7 +3588,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 761,
+        "order": 940,
         "name": "Tag",
         "prevSize": 32,
         "id": 60
@@ -3611,7 +3611,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 762,
+        "order": 941,
         "name": "Tag-1",
         "prevSize": 32,
         "id": 83
@@ -3634,7 +3634,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 763,
+        "order": 942,
         "name": "Time",
         "prevSize": 32,
         "id": 61
@@ -3642,6 +3642,28 @@
       "setIdx": 0,
       "setId": 1,
       "iconIdx": 151
+    },
+    {
+      "icon": {
+        "paths": [
+          "M119.467 68.267c-9.421 0-17.067 7.646-17.067 17.067s7.646 17.067 17.067 17.067c9.421 0 17.067-7.612 17.067-17.067s-7.646-17.067-17.067-17.067zM324.267 68.267c-9.421 0-17.067 7.646-17.067 17.067s7.646 17.067 17.067 17.067c9.421 0 17.067-7.612 17.067-17.067s-7.646-17.067-17.067-17.067zM221.867 68.267c-9.421 0-17.067 7.646-17.067 17.067s7.646 17.067 17.067 17.067c9.421 0 17.067-7.612 17.067-17.067s-7.646-17.067-17.067-17.067zM529.067 887.501h-427.452c-37.205 0-67.482-30.242-67.482-67.482v-649.353h853.367v358.4c0 9.421 7.646 17.067 17.067 17.067s17.067-7.646 17.067-17.067v-427.452c0-56.081-45.568-101.615-101.615-101.615h-718.404c-56.047 0-101.615 45.534-101.615 101.615v718.404c0 56.013 45.568 101.581 101.615 101.581h427.452c9.421 0 17.067-7.612 17.067-17.033s-7.646-17.067-17.067-17.067zM34.133 101.615c0-37.205 30.276-67.482 67.482-67.482h718.404c37.205 0 67.482 30.276 67.482 67.482v34.918h-853.367v-34.918zM802.133 580.267c-122.334 0-221.867 99.533-221.867 221.867s99.533 221.867 221.867 221.867c122.334 0 221.867-99.533 221.867-221.867s-99.533-221.867-221.867-221.867zM802.133 989.867c-103.492 0-187.733-84.241-187.733-187.733s84.241-187.733 187.733-187.733c103.492 0 187.733 84.241 187.733 187.733s-84.241 187.733-187.733 187.733zM819.2 795.068v-129.468c0-9.421-7.646-17.067-17.067-17.067s-17.067 7.646-17.067 17.067v136.533c0 4.54 1.775 8.875 4.983 12.083l68.267 68.267c3.345 3.311 7.714 4.983 12.083 4.983s8.738-1.673 12.083-4.983c6.656-6.656 6.656-17.476 0-24.132l-63.283-63.283z"
+        ],
+        "attrs": [{}],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": ["Time-App"]
+      },
+      "attrs": [{}],
+      "properties": {
+        "order": 790,
+        "id": 169,
+        "name": "Time-App",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 1,
+      "iconIdx": 152
     },
     {
       "icon": {
@@ -3656,14 +3678,14 @@
       },
       "attrs": [{}],
       "properties": {
-        "order": 784,
+        "order": 943,
         "id": 163,
         "name": "Traffic-Conversion",
         "prevSize": 32
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 152
+      "iconIdx": 153
     },
     {
       "icon": {
@@ -3682,14 +3704,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 764,
+        "order": 944,
         "name": "Trash",
         "prevSize": 32,
         "id": 62
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 153
+      "iconIdx": 154
     },
     {
       "icon": {
@@ -3705,14 +3727,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 765,
+        "order": 945,
         "name": "Undo",
         "prevSize": 32,
         "id": 63
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 154
+      "iconIdx": 155
     },
     {
       "icon": {
@@ -3727,14 +3749,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 766,
+        "order": 946,
         "name": "Up-2",
         "prevSize": 32,
         "id": 78
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 155
+      "iconIdx": 156
     },
     {
       "icon": {
@@ -3750,14 +3772,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 767,
+        "order": 947,
         "name": "Up-7",
         "prevSize": 32,
         "id": 79
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 156
+      "iconIdx": 157
     },
     {
       "icon": {
@@ -3774,14 +3796,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 768,
+        "order": 948,
         "name": "Up-Arrow",
         "prevSize": 32,
         "id": 64
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 157
+      "iconIdx": 158
     },
     {
       "icon": {
@@ -3798,14 +3820,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 769,
+        "order": 949,
         "name": "Upload",
         "prevSize": 32,
         "id": 65
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 158
+      "iconIdx": 159
     },
     {
       "icon": {
@@ -3824,14 +3846,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 770,
+        "order": 950,
         "name": "Upload-File",
         "prevSize": 32,
         "id": 117
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 159
+      "iconIdx": 160
     },
     {
       "icon": {
@@ -3850,14 +3872,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 771,
+        "order": 951,
         "name": "Upload-Folder",
         "prevSize": 32,
         "id": 130
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 160
+      "iconIdx": 161
     },
     {
       "icon": {
@@ -3872,14 +3894,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 772,
+        "order": 952,
         "name": "Upload-Task",
         "prevSize": 32,
         "id": 142
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 161
+      "iconIdx": 162
     },
     {
       "icon": {
@@ -3895,14 +3917,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 773,
+        "order": 953,
         "name": "User-1",
         "prevSize": 32,
         "id": 66
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 162
+      "iconIdx": 163
     },
     {
       "icon": {
@@ -3919,14 +3941,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 774,
+        "order": 954,
         "name": "User-2",
         "prevSize": 32,
         "id": 67
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 163
+      "iconIdx": 164
     },
     {
       "icon": {
@@ -3941,14 +3963,14 @@
       },
       "attrs": [{}],
       "properties": {
-        "order": 621,
+        "order": 955,
         "id": 157,
         "name": "User-Path",
         "prevSize": 32
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 164
+      "iconIdx": 165
     },
     {
       "icon": {
@@ -3968,14 +3990,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 775,
+        "order": 956,
         "name": "Users",
         "prevSize": 32,
         "id": 68
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 165
+      "iconIdx": 166
     },
     {
       "icon": {
@@ -4000,14 +4022,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 776,
+        "order": 957,
         "name": "Video",
         "prevSize": 32,
         "id": 69
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 166
+      "iconIdx": 167
     },
     {
       "icon": {
@@ -4025,14 +4047,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 777,
+        "order": 958,
         "name": "Zoom-In",
         "prevSize": 32,
         "id": 70
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 167
+      "iconIdx": 168
     },
     {
       "icon": {
@@ -4049,14 +4071,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 778,
+        "order": 959,
         "name": "Zoom-Out",
         "prevSize": 32,
         "id": 71
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 168
+      "iconIdx": 169
     }
   ],
   "height": 1024,

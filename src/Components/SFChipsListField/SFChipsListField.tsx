@@ -243,7 +243,7 @@ export const SFChipsListField = ({
   };
 
   return (
-    <FormControl fullWidth>
+    <Fragment>
       <SFChipListModal
         value={editedValue}
         open={isModalOpen}
@@ -255,6 +255,7 @@ export const SFChipsListField = ({
         disabled={disabled}
         options={filteredOptions(options)}
         multiple
+        fullWidth
         value={inputValues}
         inputValue={inputValue}
         onChange={onAutoCompleteChange}
