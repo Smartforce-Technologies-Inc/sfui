@@ -4,7 +4,8 @@ import Paper, { PaperProps } from '@mui/material/Paper';
 
 const StyledPaper = styled(Paper)({
   borderRadius: 0,
-  height: '100%'
+  height: '100%',
+  backgroundImage: 'unset'
 });
 
 export interface SFPaperProps extends PaperProps {}
