@@ -86,7 +86,7 @@ export default {
     columns: getColumns(),
     selection: false,
     stickyHeader: false,
-    selectedRows: [2]
+    selectedRows: []
   },
   argTypes: {
     elevation: {
