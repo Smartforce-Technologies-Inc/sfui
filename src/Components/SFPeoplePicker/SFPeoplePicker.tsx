@@ -31,15 +31,12 @@ const getStringAbbreviation = (value: string): string => {
   return stringAbbreviation;
 };
 
-type PeopleOptionsFn = (
-  url: string,
-  fetchInit?: RequestInit
-) => Promise<unknown[]>;
+type PeopleOptionsFn = (url: string, fetchInit?: RequestInit) => Promise<any[]>;
 
 const getPeopleOptions = async (
   url: string,
   fetchInit?: RequestInit
-): Promise<unknown[]> => {
+): Promise<any[]> => {
   try {
     const fetchResp = await fetch(url, fetchInit);
     const response = await fetchResp.json();
@@ -52,7 +49,7 @@ const getPeopleOptions = async (
 
 const memoizePeopleFn = (fn: PeopleOptionsFn): PeopleOptionsFn => {
   const cache = {};
-  return async (url: string, fetchInit?: RequestInit): Promise<unknown[]> => {
+  return async (url: string, fetchInit?: RequestInit): Promise<any[]> => {
     if (url in cache) {
       return cache[url];
     } else {
@@ -121,7 +118,7 @@ const StyledOption = styled(OptionBase)(({ theme }) => ({
 export interface SFPeopleOption {
   name: string;
   avatarUrl?: string;
-  asyncObject?: unknown;
+  asyncObject?: any;
 }
 
 const StyledPeoplePickerAutocomplete = styled(StyledAutocomplete)({
@@ -148,7 +145,7 @@ interface SFPeoplePickerWithOptionsProps extends SFPeoplePickerBaseProps {
 interface SFPeoplePickerAsyncProps extends SFPeoplePickerBaseProps {
   isAsync: true;
   formatUrlQuery: (value: string) => string;
-  formatOption: (option: unknown) => SFPeopleOption;
+  formatOption: (option: any) => SFPeopleOption;
   fetchInit?: RequestInit;
   minChar?: number;
 }
@@ -184,7 +181,7 @@ export const SFPeoplePicker = ({
       try {
         const options = await refGetOptions.current(url, props.fetchInit);
         return options?.length
-          ? options.map((option: unknown) => {
+          ? options.map((option: any) => {
               const newObj: SFPeopleOption = props.formatOption(option);
               if (!newObj.asyncObject) {
                 newObj.asyncObject = option;
