@@ -23,6 +23,7 @@ const StyledTimelineContent = styled(TimelineContent)(({ theme }) => ({
   padding: '12px',
   marginTop: '-16px',
   marginBottom: '16px',
+  letterSpacing: 0,
 
   '&:hover': {
     '@media (hover: hover)': {
