@@ -9,11 +9,15 @@ export default {
   title: 'Components/SFMenu',
   component: SFMenu,
   parameters: {
-    controls: { sort: 'alpha', include: ['open', 'transitionDuration'] }
+    controls: {
+      sort: 'alpha',
+      include: ['open', 'transitionDuration', 'onClose']
+    }
   },
   args: {
     transitionDuration: 'auto',
-    open: false
+    open: false,
+    autoFocus: false
   },
   argTypes: {
     transitionDuration: {
