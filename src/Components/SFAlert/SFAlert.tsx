@@ -25,12 +25,10 @@ const StyledAlert = styled(Alert)(({ theme }) => ({
     },
 
     '& .MuiIconButton-root': {
-      '& .MuiIconButton-label': {
-        '& svg path': {
-          fill: `${
-            theme.palette.mode === 'light' ? SFRed[900] : SFRed[50]
-          } !important`
-        }
+      '& svg path': {
+        fill: `${
+          theme.palette.mode === 'light' ? SFRed[900] : SFRed[50]
+        } !important`
       },
 
       '@media (hover: hover)': {
@@ -68,12 +66,10 @@ const StyledAlert = styled(Alert)(({ theme }) => ({
     },
 
     '& .MuiIconButton-root': {
-      '& .MuiIconButton-label': {
-        '& svg path': {
-          fill: `${
-            theme.palette.mode === 'light' ? SFBlue[900] : SFBlue[50]
-          } !important`
-        }
+      '& svg path': {
+        fill: `${
+          theme.palette.mode === 'light' ? SFBlue[900] : SFBlue[50]
+        } !important`
       },
 
       '&:hover': {
@@ -112,12 +108,10 @@ const StyledAlert = styled(Alert)(({ theme }) => ({
     },
 
     '& .MuiIconButton-root': {
-      '& .MuiIconButton-label': {
-        '& svg path': {
-          fill: `${
-            theme.palette.mode === 'light' ? SFGreen[900] : SFGreen[50]
-          } !important`
-        }
+      '& svg path': {
+        fill: `${
+          theme.palette.mode === 'light' ? SFGreen[900] : SFGreen[50]
+        } !important`
       },
 
       '&:hover': {
@@ -156,12 +150,10 @@ const StyledAlert = styled(Alert)(({ theme }) => ({
     },
 
     '& .MuiIconButton-root': {
-      '& .MuiIconButton-label': {
-        '& svg path': {
-          fill: `${
-            theme.palette.mode === 'light' ? SFGrey[900] : SFGrey[50]
-          } !important`
-        }
+      '& svg path': {
+        fill: `${
+          theme.palette.mode === 'light' ? SFGrey[900] : SFGrey[50]
+        } !important`
       },
 
       '&:hover': {
@@ -178,7 +170,7 @@ const StyledAlert = styled(Alert)(({ theme }) => ({
           theme.palette.mode === 'light'
             ? hexToRgba(SFGrey[100], 0.6)
             : hexToRgba(SFGrey[200], 0.1)
-        } !important`
+        }`
       }
     }
   },
@@ -236,13 +228,11 @@ const SFAlertBase = ({
   onClose,
   ...props
 }: SFAlertProps): React.ReactElement<SFAlertProps> => {
-  // const classes = useStyles({ children });
   const icon: JSX.Element | undefined = getIcon(type);
 
   return (
     <StyledAlert
       {...props}
-      // classes={classes}
       icon={icon}
       severity={type}
       action={

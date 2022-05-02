@@ -5,7 +5,9 @@ import { SFAlert } from './SFAlert';
 export default {
   title: 'Components/SFAlert',
   component: SFAlert,
-  parameters: { controls: { sort: 'alpha', include: ['title', 'type'] } },
+  parameters: {
+    controls: { sort: 'alpha', include: ['title', 'type', 'onClose'] }
+  },
   args: {
     title: 'Lorem ipsum dolor sit amet.',
     type: 'error'
