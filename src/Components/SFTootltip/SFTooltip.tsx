@@ -67,16 +67,16 @@ export const SFTooltip = styled(({ className, ...props }: SFTooltipProps) => (
   '&	.MuiTooltip-arrow': {
     color: getBackgroundColor(sfColor, theme.palette.mode === 'light')
   },
-  '&[data-popper-placement*="top"] .MuiTooltip-tooltipPlacementTop': {
+  '&[data-popper-placement*="top"] .MuiTooltip-tooltip.MuiTooltip-tooltip': {
     marginBottom: '5px'
   },
-  '&[data-popper-placement*="left"] .MuiTooltip-tooltipPlacementLeft': {
+  '&[data-popper-placement*="left"] .MuiTooltip-tooltip.MuiTooltip-tooltipPlacementLeft': {
     marginRight: '5px'
   },
-  '&[data-popper-placement*="right"] .MuiTooltip-tooltipPlacementRight': {
+  '&[data-popper-placement*="right"] .MuiTooltip-tooltip.MuiTooltip-tooltipPlacementRight': {
     marginLeft: '5px'
   },
-  '&[data-popper-placement*="bottom"] .MuiTooltip-tooltipPlacementBottom': {
+  '&[data-popper-placement*="bottom"] .MuiTooltip-tooltip.MuiTooltip-tooltipPlacementBottom': {
     marginTop: 5
   },
   '& .SFTooltip-title': {
