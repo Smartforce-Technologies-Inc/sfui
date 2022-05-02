@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, Theme } from '@material-ui/core/styles';
+import { makeStyles, Theme, withStyles } from '@material-ui/core/styles';
 import { SFTextField } from '../SFTextField/SFTextField';
 import { SFIcon } from '../SFIcon/SFIcon';
 import {
@@ -10,6 +10,14 @@ import { SFBlue, SFGrey, SFTextWhite } from '../../SFColors/SFColors';
 import { DebouncedFunc } from 'lodash';
 import debounce from 'lodash.debounce';
 import { StyledAutocomplete } from '../SFAutocomplete/SFAutocomplete';
+
+export const StyledPeopleAutocomplete = withStyles({
+  endAdornment: {
+    '& .MuiAutocomplete-popupIndicator': {
+      display: 'none'
+    }
+  }
+})(StyledAutocomplete);
 
 const getStringAbbreviation = (value: string): string => {
   const abbreviation = value.split(' ');
@@ -28,15 +36,12 @@ const getStringAbbreviation = (value: string): string => {
   return stringAbbreviation;
 };
 
-type PeopleOptionsFn = (
-  url: string,
-  fetchInit?: RequestInit
-) => Promise<unknown[]>;
+type PeopleOptionsFn = (url: string, fetchInit?: RequestInit) => Promise<any[]>;
 
 const getPeopleOptions = async (
   url: string,
   fetchInit?: RequestInit
-): Promise<unknown[]> => {
+): Promise<any[]> => {
   try {
     const fetchResp = await fetch(url, fetchInit);
     const response = await fetchResp.json();
@@ -49,7 +54,7 @@ const getPeopleOptions = async (
 
 const memoizePeopleFn = (fn: PeopleOptionsFn): PeopleOptionsFn => {
   const cache = {};
-  return async (url: string, fetchInit?: RequestInit): Promise<unknown[]> => {
+  return async (url: string, fetchInit?: RequestInit): Promise<any[]> => {
     if (url in cache) {
       return cache[url];
     } else {
@@ -95,7 +100,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 export interface SFPeopleOption {
   name: string;
   avatarUrl?: string;
-  asyncObject?: unknown;
+  asyncObject?: any;
 }
 
 interface SFPeoplePickerBaseProps {
@@ -116,7 +121,7 @@ interface SFPeoplePickerWithOptionsProps extends SFPeoplePickerBaseProps {
 interface SFPeoplePickerAsyncProps extends SFPeoplePickerBaseProps {
   isAsync: true;
   formatUrlQuery: (value: string) => string;
-  formatOption: (option: unknown) => SFPeopleOption;
+  formatOption: (option: any) => SFPeopleOption;
   fetchInit?: RequestInit;
   minChar?: number;
 }
@@ -153,7 +158,7 @@ export const SFPeoplePicker = ({
       try {
         const options = await refGetOptions.current(url, props.fetchInit);
         return options?.length
-          ? options.map((option: unknown) => {
+          ? options.map((option: any) => {
               const newObj: SFPeopleOption = props.formatOption(option);
               if (!newObj.asyncObject) {
                 newObj.asyncObject = option;
@@ -235,7 +240,7 @@ export const SFPeoplePicker = ({
   };
 
   return (
-    <StyledAutocomplete
+    <StyledPeopleAutocomplete
       freeSolo={false}
       loading={loading}
       clearOnBlur
