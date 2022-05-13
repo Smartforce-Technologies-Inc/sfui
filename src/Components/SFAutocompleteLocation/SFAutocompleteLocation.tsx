@@ -514,6 +514,9 @@ export const SFAutocompleteLocation = ({
       closeIcon={<SFIcon icon='Close' size='16' />}
       value={selectedOption}
       inputValue={value.text}
+      filterOptions={(
+        options: SFAutocompleteLocationResult[]
+      ): SFAutocompleteLocationResult[] => options}
       onChange={onAutocompleteChange}
       onInputChange={onInputChange}
       getOptionLabel={getOptionLabel}
