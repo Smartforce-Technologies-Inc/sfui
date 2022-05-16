@@ -56,6 +56,12 @@ export const StyledAutocomplete = withStyles((theme: Theme) => ({
       }
     }
   },
+  paper: {
+    margin: '0 0 0 2px',
+    boxShadow:
+      '0px 5px 5px -3px rgba(0, 0, 0, 0.02), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12)',
+    borderRadius: '2px'
+  },
   listbox: {
     padding: '13px 0',
     backgroundColor:
@@ -83,7 +89,8 @@ export const StyledAutocomplete = withStyles((theme: Theme) => ({
           ? hexToRgba(SFGrey.A100 as string, 0.5)
           : hexToRgba(SFGrey[500] as string, 0.5)
     }
-  }
+  },
+  popupIndicator: {}
 }))(Autocomplete);
 
 const useStyles = makeStyles({

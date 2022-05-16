@@ -14,9 +14,7 @@ const useTextFieldStyles = makeStyles({
       height: 'inherit',
       minHeight: '56px',
       gap: '6px',
-      padding: '28px 9px 9px !important',
       '& .MuiAutocomplete-input': {
-        padding: '0',
         minWidth: (props: SFAutocompleteInputProps): string => props.minWidth
       },
       '& .MuiFormControl-root .MuiChip-outlined': {

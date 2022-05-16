@@ -1,52 +1,31 @@
 import React, { ChangeEvent } from 'react';
 import {
-  Autocomplete,
   AutocompleteRenderInputParams,
   AutocompleteInputChangeReason,
   AutocompleteChangeReason
 } from '@material-ui/lab';
-import { hexToRgba } from '../../Helpers';
-import { SFGrey } from '../../SFColors/SFColors';
-import { withStyles, Theme } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import { SFAutocompleteChipRender } from './SFAutocompleteChipRender/SFAutocompleteChipRender';
 import {
   minWidthInputSize,
   SFAutocompleteInput
 } from './SFAutocompleteInput/SFAutocompleteInput';
+import { StyledAutocomplete } from '../SFAutocomplete/SFAutocomplete';
 
-export const StyledAutoComplete = withStyles((theme: Theme) => ({
-  root: {
-    '& .MuiAutocomplete-endAdornment': {
-      display: 'none'
-    }
-  },
-  listbox: {
-    padding: '13px 0'
-  },
-  option: {
-    padding: '6px 24px',
+export const StyledAutocompleteChip = withStyles({
+  inputRoot: {
+    '&[class*="MuiOutlinedInput-root"]': {
+      padding: '28px 9px 9px',
 
-    '&[data-focus="true"]': {
-      backgroundColor:
-        theme.palette.type === 'light'
-          ? hexToRgba(SFGrey.A100 as string, 0.3)
-          : hexToRgba(SFGrey[500] as string, 0.3),
-      '&:active': {
-        backgroundColor:
-          theme.palette.type === 'light'
-            ? hexToRgba(SFGrey.A100 as string, 0.5)
-            : hexToRgba(SFGrey[500] as string, 0.5)
+      '& input.MuiAutocomplete-input:first-child': {
+        padding: 0
       }
-    },
-
-    '&[aria-selected="true"]': {
-      backgroundColor:
-        theme.palette.type === 'light'
-          ? hexToRgba(SFGrey.A100 as string, 0.5)
-          : hexToRgba(SFGrey[500] as string, 0.5)
     }
+  },
+  endAdornment: {
+    display: 'none'
   }
-}))(Autocomplete);
+})(StyledAutocomplete);
 
 export interface SFAutocompleteChipProps {
   value: string[];
@@ -103,7 +82,7 @@ export const SFAutocompleteChip = ({
   };
 
   return (
-    <StyledAutoComplete
+    <StyledAutocompleteChip
       disabled={disabled}
       clearOnBlur
       options={options}

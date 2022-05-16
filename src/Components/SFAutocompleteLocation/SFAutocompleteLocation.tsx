@@ -1,13 +1,14 @@
 import React from 'react';
 import { Theme, withStyles, makeStyles } from '@material-ui/core/styles';
-import { Autocomplete, AutocompleteRenderInputParams } from '@material-ui/lab';
+import { AutocompleteRenderInputParams } from '@material-ui/lab';
 import debounce from 'lodash.debounce';
 import { DebouncedFunc } from 'lodash';
 import parse from 'autosuggest-highlight/parse';
 import { SFIcon } from '../SFIcon/SFIcon';
 import { SFTextField } from '../SFTextField/SFTextField';
-import { SFGrey, SFSurfaceLight } from '../../SFColors/SFColors';
+import { SFGrey } from '../../SFColors/SFColors';
 import { hexToRgba } from '../../Helpers';
+import { StyledAutocomplete } from '../SFAutocomplete/SFAutocomplete';
 
 /*
   This component uses three Google Maps API's: Places API, Places Autocomplete API and Geocoder API.
@@ -116,23 +117,7 @@ interface TextPart {
   highlight: boolean;
 }
 
-const StyledAutocomplete = withStyles((theme: Theme) => ({
-  inputRoot: {
-    '&[class*="MuiOutlinedInput-root"]': {
-      paddingTop: '20px',
-
-      '& input.MuiAutocomplete-input:first-child': {
-        padding: '9.5px 4px'
-      },
-
-      '& .MuiAutocomplete-endAdornment': {
-        right: '18px'
-      }
-    }
-  },
-  endAdornment: {
-    marginTop: '-3px'
-  },
+const StyledAutocompleteLocation = withStyles((theme: Theme) => ({
   popupIndicator: {
     padding: 0
   },
@@ -152,36 +137,8 @@ const StyledAutocomplete = withStyles((theme: Theme) => ({
           ? hexToRgba(SFGrey.A100 as string, 0.5)
           : hexToRgba(SFGrey[500] as string, 0.5)
     }
-  },
-  listbox: {
-    padding: '13px 0',
-    backgroundColor:
-      theme.palette.type === 'light' ? SFSurfaceLight : SFGrey[800]
-  },
-  option: {
-    padding: '6px 24px',
-
-    '&[data-focus="true"]': {
-      backgroundColor:
-        theme.palette.type === 'light'
-          ? hexToRgba(SFGrey.A100 as string, 0.3)
-          : hexToRgba(SFGrey[500] as string, 0.3),
-      '&:active': {
-        backgroundColor:
-          theme.palette.type === 'light'
-            ? hexToRgba(SFGrey.A100 as string, 0.5)
-            : hexToRgba(SFGrey[500] as string, 0.5)
-      }
-    },
-
-    '&[aria-selected="true"]': {
-      backgroundColor:
-        theme.palette.type === 'light'
-          ? hexToRgba(SFGrey.A100 as string, 0.5)
-          : hexToRgba(SFGrey[500] as string, 0.5)
-    }
   }
-}))(Autocomplete);
+}))(StyledAutocomplete);
 
 const useStyles = makeStyles((theme: Theme) => ({
   menu: {
@@ -505,7 +462,7 @@ export const SFAutocompleteLocation = ({
   };
 
   return (
-    <StyledAutocomplete
+    <StyledAutocompleteLocation
       freeSolo
       disabled={disabled}
       options={options}
