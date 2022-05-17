@@ -254,6 +254,7 @@ export const SFPeoplePicker = ({
       onChange={onPeopleChange}
       getOptionLabel={(option: SFPeopleOption): string => option.name}
       renderOption={renderOption}
+      filterOptions={(options: SFPeopleOption[]): SFPeopleOption[] => options}
     />
   );
 };

@@ -7,7 +7,7 @@ import {
 import { SFChipListModal } from './SFChipFieldModal/SFChipFieldModal';
 import { SFChipListRender } from './SFChipFieldRender/SFChipFieldRender';
 import { makeStyles } from '@material-ui/core/styles';
-import { StyledAutoComplete } from '../SFAutocompleteChip/SFAutocompleteChip';
+import { StyledAutocompleteChip } from '../SFAutocompleteChip/SFAutocompleteChip';
 import {
   minWidthInputSize,
   SFAutocompleteInput
@@ -278,7 +278,7 @@ export const SFChipsListField = ({
         onEdit={editValue}
         onClose={(): void => setIsModalOpen(false)}
       />
-      <StyledAutoComplete
+      <StyledAutocompleteChip
         disabled={disabled}
         options={filteredOptions(options)}
         multiple
