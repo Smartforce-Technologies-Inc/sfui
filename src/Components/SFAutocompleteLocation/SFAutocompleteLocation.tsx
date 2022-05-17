@@ -204,6 +204,8 @@ export const SFAutocompleteLocation = ({
   const placesService = React.useRef<google.maps.places.PlacesService>();
   const geocoderService = React.useRef<google.maps.Geocoder>();
 
+  const [open, setOpen] = React.useState<boolean>(false);
+
   const [selectedOption, setSelectedOption] = React.useState<
     Partial<google.maps.places.AutocompletePrediction>
   >({});
@@ -461,6 +463,12 @@ export const SFAutocompleteLocation = ({
     );
   };
 
+  const onOpen = (): void => {
+    if (options.length > 0) {
+      setOpen(true);
+    }
+  };
+
   return (
     <StyledAutocompleteLocation
       freeSolo
@@ -478,6 +486,9 @@ export const SFAutocompleteLocation = ({
       onInputChange={onInputChange}
       getOptionLabel={getOptionLabel}
       renderOption={renderOption}
+      open={open}
+      onOpen={onOpen}
+      onClose={(): void => setOpen(false)}
     />
   );
 };

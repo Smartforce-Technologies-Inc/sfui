@@ -90,7 +90,8 @@ export const StyledAutocomplete = withStyles((theme: Theme) => ({
           : hexToRgba(SFGrey[500] as string, 0.5)
     }
   },
-  popupIndicator: {}
+  popupIndicator: {},
+  clearIndicator: {}
 }))(Autocomplete);
 
 const useStyles = makeStyles({
