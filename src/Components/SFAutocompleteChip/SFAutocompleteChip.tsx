@@ -13,15 +13,6 @@ import {
 import { StyledAutocomplete } from '../SFAutocomplete/SFAutocomplete';
 
 export const StyledAutocompleteChip = withStyles({
-  inputRoot: {
-    '&[class*="MuiOutlinedInput-root"]': {
-      padding: '28px 9px 9px',
-
-      '& input.MuiAutocomplete-input:first-child': {
-        padding: 0
-      }
-    }
-  },
   endAdornment: {
     display: 'none'
   }
