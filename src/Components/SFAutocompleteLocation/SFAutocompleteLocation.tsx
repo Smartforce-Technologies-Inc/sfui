@@ -426,11 +426,13 @@ export const SFAutocompleteLocation = ({
   ): React.ReactNode => {
     let matches: google.maps.places.PredictionSubstring[] = [];
     let parts: TextPart[] = [];
+    const structuredFormatting: google.maps.places.StructuredFormatting =
+      option.structured_formatting;
 
-    if (option.structured_formatting) {
-      matches = option.structured_formatting.main_text_matched_substrings;
+    if (structuredFormatting) {
+      matches = structuredFormatting.main_text_matched_substrings || [];
       parts = parse(
-        option.structured_formatting.main_text,
+        structuredFormatting.main_text,
         matches.map((match: google.maps.places.PredictionSubstring) => [
           match.offset,
           match.offset + match.length
