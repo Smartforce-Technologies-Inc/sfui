@@ -5,6 +5,7 @@ import BlueButton from './CustomButtons/BlueButton';
 import RedButton from './CustomButtons/RedButton';
 import GreyButton from './CustomButtons/GreyButton';
 import { CircularProgress } from '@material-ui/core';
+import InvertedGreyButton from './CustomButtons/InvertedGreyButton';
 
 interface ButtonInnerProps {
   padding?: string;
@@ -45,7 +46,7 @@ const getButtonInnerProps = (size?: string): ButtonInnerProps => {
 };
 
 export interface SFButtonProps extends ButtonProps {
-  sfColor?: 'blue' | 'red' | 'grey';
+  sfColor?: 'blue' | 'red' | 'grey' | 'invertedGrey';
   isLoading?: boolean;
 }
 
@@ -69,6 +70,7 @@ export const SFButton = ({
 
   const Buttons = {
     grey: GreyButton,
+    invertedGrey: InvertedGreyButton,
     blue: BlueButton,
     red: RedButton
   };
