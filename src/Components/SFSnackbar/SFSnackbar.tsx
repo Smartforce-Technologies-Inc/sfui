@@ -22,15 +22,14 @@ const messageStyles = makeStyles((theme: Theme) => ({
   }
 }));
 
-export interface SFSnackBarProps extends Omit<SnackbarProps, 'message'> {
+export interface SFSnackBarProps extends SnackbarProps {
   buttonText: string;
-  message: string;
   onClick?: () => void;
 }
 
 export const SFSnackBar = ({
   buttonText,
-  open = true,
+  open,
   message,
   anchorOrigin = { vertical: 'top', horizontal: 'center' },
   onClick
@@ -41,7 +40,7 @@ export const SFSnackBar = ({
     <StyledSnackBar
       open={open}
       anchorOrigin={anchorOrigin}
-      message={<p className={mesageStyle}>{message}</p>}
+      message={<div className={mesageStyle}>{message}</div>}
       action={
         <SFButton variant='text' sfColor='invertedGrey' onClick={onClick}>
           {buttonText}
