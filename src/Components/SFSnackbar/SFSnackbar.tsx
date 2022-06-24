@@ -47,6 +47,7 @@ export const SFSnackBar = ({
 
   return (
     <StyledSnackBar
+      {...props}
       open={open}
       anchorOrigin={anchorOrigin}
       message={<div className={mesageStyle}>{message}</div>}
