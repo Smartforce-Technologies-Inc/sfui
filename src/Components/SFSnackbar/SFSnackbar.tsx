@@ -11,7 +11,15 @@ import { SFButton } from '../SFButton/SFButton';
 
 const StyledSnackBar = withStyles((theme: Theme) => ({
   root: {
-    backgroundColor: theme.palette.type === 'light' ? SFGrey[800] : SFGrey[200]
+    '& .MuiSnackbarContent-root': {
+      backgroundColor:
+        theme.palette.type === 'light' ? SFGrey[800] : SFGrey[200],
+      boxShadow:
+        theme.palette.type === 'light'
+          ? '0px 3px 3px -2px rgba(0, 0, 0, 0.02), 0px 3px 4px rgba(0, 0, 0, 0.14), 0px 1px 8px rgba(0, 0, 0, 0.12)'
+          : '0px 3px 3px -2px rgba(0, 0, 0, 0.02), 0px 3px 4px rgba(0, 0, 0, 0.14), 0px 1px 8px rgba(0, 0, 0, 0.12)',
+      borderRadius: '2px'
+    }
   }
 }))(Snackbar);
 
@@ -32,7 +40,8 @@ export const SFSnackBar = ({
   open,
   message,
   anchorOrigin = { vertical: 'top', horizontal: 'center' },
-  onClick
+  onClick,
+  ...props
 }: SFSnackBarProps): React.ReactElement<SFSnackBarProps> => {
   const { mesageStyle } = messageStyles();
 
