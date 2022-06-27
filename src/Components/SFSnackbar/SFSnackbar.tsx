@@ -6,6 +6,7 @@ import {
   withStyles
 } from '@material-ui/core';
 import React from 'react';
+import { hexToRgba } from '../../Helpers';
 import { SFGrey } from '../../SFColors/SFColors';
 import { SFButton } from '../SFButton/SFButton';
 
@@ -18,7 +19,15 @@ const StyledSnackBar = withStyles((theme: Theme) => ({
         theme.palette.type === 'light'
           ? '0px 3px 3px -2px rgba(0, 0, 0, 0.02), 0px 3px 4px rgba(0, 0, 0, 0.14), 0px 1px 8px rgba(0, 0, 0, 0.12)'
           : '0px 3px 3px -2px rgba(0, 0, 0, 0.02), 0px 3px 4px rgba(0, 0, 0, 0.14), 0px 1px 8px rgba(0, 0, 0, 0.12)',
-      borderRadius: '2px'
+      borderRadius: '2px',
+      '& .MuiButtonBase-root': {
+        '&:hover': {
+          backgroundColor: hexToRgba(SFGrey[500], 0.3)
+        },
+        '&:active': {
+          backgroundColor: hexToRgba(SFGrey[500], 0.2)
+        }
+      }
     }
   }
 }))(Snackbar);
