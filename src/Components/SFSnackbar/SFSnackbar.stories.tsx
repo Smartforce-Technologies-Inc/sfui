@@ -2,6 +2,7 @@ import React from 'react';
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { SFSnackBar, SFSnackBarProps } from './SFSnackbar';
+import { overArgs, set } from 'lodash';
 
 export default {
   title: 'Components/SFSnackBar',
@@ -9,6 +10,7 @@ export default {
   parameters: { controls: { sort: 'alpha' } },
   args: {
     open: false,
+    showActionButton: false,
     message: 'Lorem ipsum dolor sit amet.',
     buttonText: 'Done'
   },
@@ -92,6 +94,9 @@ export default {
         }
       }
     },
+    showActionButton: {
+      description: 'If true, the action button will be shown.'
+    },
     open: {
       description: 'If true, tooltip will be open.',
       control: {
@@ -122,4 +127,26 @@ export default {
 
 export const Default: Story<SFSnackBarProps> = (args) => {
   return <SFSnackBar {...args} />;
+};
+
+export const AutoHide: Story<SFSnackBarProps> = (args) => {
+  const [isOpen, setIsOpen] = React.useState<boolean>(
+    args.open ? args.open : true
+  );
+
+  React.useEffect(() => {
+    args.open && setIsOpen(args.open === true);
+  }, [args.open]);
+
+  return (
+    <SFSnackBar
+      {...args}
+      open={isOpen}
+      onClose={(): void => setIsOpen(false)}
+    />
+  );
+};
+
+AutoHide.args = {
+  autoHideDuration: 3600
 };
