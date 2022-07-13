@@ -2,6 +2,7 @@ import {
   makeStyles,
   Snackbar,
   SnackbarProps,
+  SnackbarOrigin,
   Theme,
   withStyles
 } from '@material-ui/core';
@@ -39,6 +40,8 @@ const messageStyles = makeStyles((theme: Theme) => ({
   }
 }));
 
+export type SFSnackbarOrigin = SnackbarOrigin;
+
 export interface SFSnackBarProps extends SnackbarProps {
   buttonText?: string;
   onClick?: () => void;
@@ -62,6 +65,7 @@ export const SFSnackBar = ({
       open={open}
       anchorOrigin={anchorOrigin}
       message={<div className={mesageStyle}>{message}</div>}
+      autoHideDuration={autoHideDuration}
       action={
         showActionButton && (
           <SFButton variant='text' sfColor='invertedGrey' onClick={onClick}>
