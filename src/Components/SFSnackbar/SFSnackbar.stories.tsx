@@ -123,3 +123,25 @@ export default {
 export const Default: Story<SFSnackBarProps> = (args) => {
   return <SFSnackBar {...args} />;
 };
+
+export const AutoHide: Story<SFSnackBarProps> = (args) => {
+  const [isOpen, setIsOpen] = React.useState<boolean>(
+    args.open ? args.open : true
+  );
+
+  React.useEffect(() => {
+    args.open && setIsOpen(args.open === true);
+  }, [args.open]);
+
+  return (
+    <SFSnackBar
+      {...args}
+      open={isOpen}
+      onClose={(): void => setIsOpen(false)}
+    />
+  );
+};
+
+AutoHide.args = {
+  autoHideDuration: 3600
+};

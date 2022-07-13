@@ -49,10 +49,12 @@ export const SFSnackBar = ({
   open,
   message,
   anchorOrigin = { vertical: 'top', horizontal: 'center' },
+  autoHideDuration,
   onClick,
   ...props
 }: SFSnackBarProps): React.ReactElement<SFSnackBarProps> => {
   const { mesageStyle } = messageStyles();
+  const showActionButton = !autoHideDuration;
 
   return (
     <StyledSnackBar
@@ -61,9 +63,11 @@ export const SFSnackBar = ({
       anchorOrigin={anchorOrigin}
       message={<div className={mesageStyle}>{message}</div>}
       action={
-        <SFButton variant='text' sfColor='invertedGrey' onClick={onClick}>
-          {buttonText}
-        </SFButton>
+        showActionButton && (
+          <SFButton variant='text' sfColor='invertedGrey' onClick={onClick}>
+            {buttonText}
+          </SFButton>
+        )
       }
     />
   );
