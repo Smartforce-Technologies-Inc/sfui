@@ -41,20 +41,20 @@ const messageStyles = makeStyles((theme: Theme) => ({
 
 export interface SFSnackBarProps extends SnackbarProps {
   buttonText: string;
-  showActionButton?: boolean;
   onClick?: () => void;
 }
 
 export const SFSnackBar = ({
   buttonText,
-  showActionButton = false,
   open,
   message,
   anchorOrigin = { vertical: 'top', horizontal: 'center' },
+  autoHideDuration,
   onClick,
   ...props
 }: SFSnackBarProps): React.ReactElement<SFSnackBarProps> => {
   const { mesageStyle } = messageStyles();
+  const showActionButton: boolean = autoHideDuration === (null || undefined);
 
   return (
     <StyledSnackBar
