@@ -40,7 +40,7 @@ const messageStyles = makeStyles((theme: Theme) => ({
 }));
 
 export interface SFSnackBarProps extends SnackbarProps {
-  buttonText: string;
+  buttonText?: string;
   onClick?: () => void;
 }
 
