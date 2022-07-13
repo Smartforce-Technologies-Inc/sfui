@@ -54,7 +54,7 @@ export const SFSnackBar = ({
   ...props
 }: SFSnackBarProps): React.ReactElement<SFSnackBarProps> => {
   const { mesageStyle } = messageStyles();
-  const showActionButton: boolean = autoHideDuration === (null || undefined);
+  const showActionButton = !!autoHideDuration;
 
   return (
     <StyledSnackBar
