@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { ChipFieldValueType } from '../SFChipsListField';
+import { ChipFieldValueType } from '../SFChipListField';
 import { SFChip } from '../../SFChip/SFChip';
 
 export interface SFChipListRenderProps {

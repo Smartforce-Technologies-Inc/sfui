@@ -4,8 +4,8 @@ import {
   AutocompleteInputChangeReason,
   AutocompleteChangeReason
 } from '@material-ui/lab';
-import { SFChipListModal } from '../SFChipsListField/SFChipFieldModal/SFChipFieldModal';
-import { SFChipListRender } from '../SFChipsListField/SFChipFieldRender/SFChipFieldRender';
+import { SFChipListModal } from '../SFChipListField/SFChipFieldModal/SFChipFieldModal';
+import { SFChipListRender } from '../SFChipListField/SFChipFieldRender/SFChipFieldRender';
 import { StyledAutocompleteChip } from '../SFAutocompleteChip/SFAutocompleteChip';
 import {
   minWidthInputSize,

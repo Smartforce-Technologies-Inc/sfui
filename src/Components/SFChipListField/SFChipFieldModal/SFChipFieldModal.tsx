@@ -1,7 +1,7 @@
 import React from 'react';
 import { SFAlertDialog } from '../../SFAlertDialog/SFAlertDialog';
 import { SFTextField } from '../../SFTextField/SFTextField';
-import { ChipFieldValueType } from '../SFChipsListField';
+import { ChipFieldValueType } from '../SFChipListField';
 
 export interface SFChipListModalProps {
   value: ChipFieldValueType | undefined;

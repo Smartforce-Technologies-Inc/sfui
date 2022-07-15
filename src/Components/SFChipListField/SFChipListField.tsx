@@ -54,7 +54,7 @@ export interface SFChipListFieldProps {
   onChange: (newItems: ChipFieldValueType[]) => void;
 }
 
-export const SFChipsListField = ({
+export const SFChipListField = ({
   itemChipSize = 'small',
   itemChipDisplay = 'inline',
   inputMinWidth = 30,
