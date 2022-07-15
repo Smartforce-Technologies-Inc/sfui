@@ -35,7 +35,7 @@ export type ChipFieldValueType = {
   isValid?: boolean;
 };
 
-export interface SFChipsListFieldProps {
+export interface SFChipListFieldProps {
   itemChipSize?: 'small' | 'medium';
   itemChipDisplay?: 'inline' | 'block';
   items?: ChipFieldValueType[];
@@ -70,7 +70,7 @@ export const SFChipsListField = ({
   inputType = 'text',
   isValid,
   onChange
-}: SFChipsListFieldProps): React.ReactElement<SFChipsListFieldProps> => {
+}: SFChipListFieldProps): React.ReactElement<SFChipListFieldProps> => {
   const [isPopperOpen, setIsPopperOpen] = React.useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = React.useState<boolean>(false);
   const [editedValue, setEditedValue] = React.useState<ChipFieldValueType>();

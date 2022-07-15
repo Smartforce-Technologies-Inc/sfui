@@ -5,7 +5,7 @@ import { ChipListOptions } from '../../Storybook/constants';
 import {
   ChipFieldValueType,
   SFChipsListField,
-  SFChipsListFieldProps
+  SFChipListFieldProps
 } from './SFChipsListField';
 
 export default {
@@ -83,8 +83,10 @@ const ChipListItems = [
   { value: 'The Godfather', isNew: true }
 ];
 
-const Template: Story<SFChipsListFieldProps> = (args) => {
-  const [items, setItems] = React.useState<ChipFieldValueType[]>(args.items);
+const Template: Story<SFChipListFieldProps> = (args) => {
+  const [items, setItems] = React.useState<ChipFieldValueType[] | undefined>(
+    args.items
+  );
 
   return (
     <div
