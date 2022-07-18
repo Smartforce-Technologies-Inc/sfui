@@ -37,6 +37,13 @@ const StyledFormControl = withStyles((theme: Theme) => ({
         border: `1px solid ${
           theme.palette.type === 'light' ? SFRed[700] : SFRed[200]
         }`
+      },
+      '&:hover': {
+        '@media (hover: hover)': {
+          border: `1px solid ${
+            theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]
+          }`
+        }
       }
     },
     '& .MuiInputBase-input': {
@@ -105,12 +112,12 @@ export interface SFSearchProps
 
 export const SFSearch = ({
   label,
-  value,
+  value = '',
   onChange,
   ...props
 }: SFSearchProps): React.ReactElement<SFSearchProps> => {
   const classes = useStyles();
-  const [inputValue, setInputValue] = React.useState<string>('');
+  const [inputValue, setInputValue] = React.useState<string>(value);
 
   const onInputChange = (
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
