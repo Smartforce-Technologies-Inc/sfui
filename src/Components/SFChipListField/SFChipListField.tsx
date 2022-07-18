@@ -4,8 +4,8 @@ import {
   AutocompleteInputChangeReason,
   AutocompleteChangeReason
 } from '@material-ui/lab';
-import { SFChipListModal } from './SFChipFieldModal/SFChipFieldModal';
-import { SFChipListRender } from './SFChipFieldRender/SFChipFieldRender';
+import { SFChipFieldModal } from './SFChipFieldModal/SFChipFieldModal';
+import { SFChipFieldRender } from './SFChipFieldRender/SFChipFieldRender';
 import { makeStyles } from '@material-ui/core/styles';
 import { StyledAutocompleteChip } from '../SFAutocompleteChip/SFAutocompleteChip';
 import {
@@ -252,7 +252,7 @@ export const SFChipListField = ({
         }`}
       >
         {savedValues.length !== 0 && (
-          <SFChipListRender
+          <SFChipFieldRender
             values={savedValues}
             isChipFullWidth={itemChipDisplay === 'block'}
             chipSize={itemChipSize}
@@ -271,7 +271,7 @@ export const SFChipListField = ({
 
   return (
     <Fragment>
-      <SFChipListModal
+      <SFChipFieldModal
         value={editedValue}
         open={isModalOpen}
         isValid={isValid}
@@ -296,7 +296,7 @@ export const SFChipListField = ({
           value: ChipFieldValueType
         ): boolean => option === value.value}
         renderTags={(value: ChipFieldValueType[]): JSX.Element => (
-          <SFChipListRender
+          <SFChipFieldRender
             isChipFullWidth={false}
             chipSize='small'
             values={value}
