@@ -3,7 +3,7 @@ import { SFAlertDialog } from '../../SFAlertDialog/SFAlertDialog';
 import { SFTextField } from '../../SFTextField/SFTextField';
 import { ChipFieldValueType } from '../SFChipListField';
 
-export interface SFChipListModalProps {
+export interface SFChipFieldModalProps {
   value: ChipFieldValueType | undefined;
   open: boolean;
   isValid?: (value: string) => boolean;
@@ -14,13 +14,13 @@ export interface SFChipListModalProps {
   onClose: () => void;
 }
 
-export const SFChipListModal = ({
+export const SFChipFieldModal = ({
   value,
   open,
   isValid,
   onEdit,
   onClose
-}: SFChipListModalProps): React.ReactElement<SFChipListModalProps> => {
+}: SFChipFieldModalProps): React.ReactElement<SFChipFieldModalProps> => {
   const [editedValue, setEditedValue] = React.useState<string>(
     value?.value || ''
   );

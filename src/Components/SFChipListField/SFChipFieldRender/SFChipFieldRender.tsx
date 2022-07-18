@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { ChipFieldValueType } from '../SFChipListField';
 import { SFChip } from '../../SFChip/SFChip';
 
-export interface SFChipListRenderProps {
+export interface SFChipFieldRenderProps {
   values: ChipFieldValueType[];
   isChipFullWidth: boolean;
   chipSize: 'small' | 'medium';
@@ -12,7 +12,7 @@ export interface SFChipListRenderProps {
   onEdit?: (value: ChipFieldValueType) => void;
 }
 
-export const SFChipListRender = ({
+export const SFChipFieldRender = ({
   values,
   isChipFullWidth,
   chipSize,
@@ -20,7 +20,7 @@ export const SFChipListRender = ({
   isValid,
   onDelete,
   onEdit
-}: SFChipListRenderProps): React.ReactElement<SFChipListRenderProps> => {
+}: SFChipFieldRenderProps): React.ReactElement<SFChipFieldRenderProps> => {
   return (
     <Fragment>
       {values.map((input: ChipFieldValueType, index: number) => (
