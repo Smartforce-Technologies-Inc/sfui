@@ -4,8 +4,7 @@ import {
   AutocompleteInputChangeReason,
   AutocompleteChangeReason
 } from '@material-ui/lab';
-import { SFChipListModal } from '../SFChipListField/SFChipFieldModal/SFChipFieldModal';
-import { SFChipListRender } from '../SFChipListField/SFChipFieldRender/SFChipFieldRender';
+import { SFChipFieldRender } from '../SFChipListField/SFChipFieldRender/SFChipFieldRender';
 import { StyledAutocompleteChip } from '../SFAutocompleteChip/SFAutocompleteChip';
 import {
   minWidthInputSize,
@@ -14,14 +13,12 @@ import {
 
 export type ChipInputFieldValueType = {
   value: string;
-  hasChanged?: boolean;
   isValid?: boolean;
 };
 
 export interface SFChipListInputProps {
   items?: ChipInputFieldValueType[];
   inputMinWidth?: minWidthInputSize;
-  emptyMessage?: string;
   label: string;
   helperText?: string;
   options?: string[];
@@ -29,7 +26,6 @@ export interface SFChipListInputProps {
   freeSolo?: boolean;
   disabled?: boolean;
   required?: boolean;
-  isEditable?: boolean;
   inputType?: string;
   isValid?: (value: string) => boolean;
   onChange: (newItems: ChipInputFieldValueType[]) => void;
@@ -44,17 +40,11 @@ export const SFChipListInput = ({
   delimiters = [','],
   freeSolo = false,
   disabled = false,
-  isEditable = false,
   inputType = 'text',
   isValid,
   onChange
 }: SFChipListInputProps): React.ReactElement<SFChipListInputProps> => {
   const [isPopperOpen, setIsPopperOpen] = React.useState<boolean>(false);
-  const [isModalOpen, setIsModalOpen] = React.useState<boolean>(false);
-  const [
-    editedValue,
-    setEditedValue
-  ] = React.useState<ChipInputFieldValueType>();
   const [inputValue, setInputValue] = React.useState<string>('');
 
   const isFreeSolo = (): boolean => {
@@ -73,21 +63,6 @@ export const SFChipListInput = ({
     onChange(values);
   };
 
-  const editValue = (
-    previousInput: ChipInputFieldValueType,
-    input: ChipInputFieldValueType
-  ): void => {
-    const index: number = items.findIndex(
-      (item) => item.value === previousInput.value
-    );
-    const values: ChipInputFieldValueType[] = [
-      ...items.slice(0, index),
-      input,
-      ...items.slice(index + 1)
-    ];
-    onChange(values);
-  };
-
   const deleteValue = (input: ChipInputFieldValueType): void => {
     const index: number = items.indexOf(input);
     const values: ChipInputFieldValueType[] = [
@@ -95,17 +70,6 @@ export const SFChipListInput = ({
       ...items.slice(index + 1)
     ];
     onChange(values);
-  };
-
-  const onEdit = (value: ChipInputFieldValueType): void => {
-    if (isFreeSolo()) {
-      setEditedValue(value);
-      setIsModalOpen(true);
-    }
-  };
-
-  const filteredOptions = (options: string[]): string[] => {
-    return options;
   };
 
   const getValuesFromInputField = (value: string): string[] => {
@@ -210,16 +174,9 @@ export const SFChipListInput = ({
 
   return (
     <Fragment>
-      <SFChipListModal
-        value={editedValue}
-        open={isModalOpen}
-        isValid={isValid}
-        onEdit={editValue}
-        onClose={(): void => setIsModalOpen(false)}
-      />
       <StyledAutocompleteChip
         disabled={disabled}
-        options={filteredOptions(options)}
+        options={options}
         multiple
         fullWidth
         value={items}
@@ -235,13 +192,12 @@ export const SFChipListInput = ({
           value: ChipInputFieldValueType
         ): boolean => option === value.value}
         renderTags={(value: ChipInputFieldValueType[]): JSX.Element => (
-          <SFChipListRender
+          <SFChipFieldRender
             isChipFullWidth={false}
             chipSize='small'
             values={value}
             disabled={disabled}
             onDelete={deleteValue}
-            onEdit={isEditable ? onEdit : undefined}
             isValid={isValid}
           />
         )}
