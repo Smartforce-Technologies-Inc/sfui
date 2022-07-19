@@ -31,7 +31,10 @@ const StyledFormControl = withStyles((theme: Theme) => ({
       }`,
       '&.Mui-focused': {
         border: `2px solid ${theme.palette.primary.main}`,
-        padding: '3px 12px'
+        padding: '3px 12px',
+        '&:hover': {
+          border: `2px solid ${theme.palette.primary.main}`
+        }
       },
       '&.Mui-error': {
         border: `1px solid ${
