@@ -126,12 +126,15 @@ export const SFSearch = ({
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
   ): void => {
     setInputValue(event.target.value);
-    onChange && onChange(event.target.value);
   };
 
   const cleanInput = (): void => {
     setInputValue('');
   };
+
+  React.useEffect(() => {
+    onChange && onChange(inputValue);
+  }, [inputValue]);
 
   return (
     <StyledFormControl {...props} variant='outlined' fullWidth>
