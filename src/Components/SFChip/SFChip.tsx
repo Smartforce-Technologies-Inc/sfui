@@ -1,6 +1,6 @@
 import React from 'react';
 import FormControl from '@material-ui/core/FormControl';
-import { withStyles, Theme } from '@material-ui/core/styles';
+import { withStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import Chip, { ChipProps } from '@material-ui/core/Chip';
 import { SFBlue, SFGrey, SFRed, SFSurfaceLight } from '../../SFColors/SFColors';
 import { SFIconButton } from '../SFIconButton/SFIconButton';
@@ -262,8 +262,24 @@ const StyledChip = withStyles((theme: Theme) => ({
   }
 }))(Chip);
 
+const useStyles = makeStyles({
+  disableClick: {
+    cursor: 'auto',
+    '&:hover, &:active': {
+      '@media (hover: hover)': {
+        backgroundColor: 'inherit'
+      }
+    },
+    '&:active': {
+      boxShadow: 'none',
+      backgroundColor: 'transparent !important'
+    }
+  }
+});
+
 export interface SFChipProps extends ChipProps {
   sfColor: 'primary' | 'default';
+  disableChipClick?: boolean;
   deleteable?: boolean;
   hasError?: boolean;
   fullWidth?: boolean;
@@ -271,6 +287,7 @@ export interface SFChipProps extends ChipProps {
 
 export const SFChip = ({
   sfColor = 'primary',
+  disableChipClick = false,
   size = 'medium',
   label,
   disabled,
@@ -281,13 +298,14 @@ export const SFChip = ({
   onDelete,
   ...props
 }: SFChipProps): React.ReactElement<SFChipProps> => {
+  const classes = useStyles();
   return (
     <FormControl fullWidth={fullWidth}>
       <StyledChip
         {...props}
         className={`${sfColor} ${fullWidth ? 'fullWidth' : ''} ${
           hasError ? 'hasError' : ''
-        }`}
+        } ${disableChipClick ? classes.disableClick : ''}`}
         label={label}
         size={size}
         variant={variant}
