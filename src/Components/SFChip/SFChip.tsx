@@ -279,7 +279,6 @@ const useStyles = makeStyles({
 
 export interface SFChipProps extends ChipProps {
   sfColor: 'primary' | 'default';
-  disableChipClick?: boolean;
   deleteable?: boolean;
   hasError?: boolean;
   fullWidth?: boolean;
@@ -287,7 +286,6 @@ export interface SFChipProps extends ChipProps {
 
 export const SFChip = ({
   sfColor = 'primary',
-  disableChipClick = false,
   size = 'medium',
   label,
   disabled,
@@ -295,6 +293,7 @@ export const SFChip = ({
   variant = 'default',
   fullWidth,
   hasError,
+  clickable,
   onDelete,
   ...props
 }: SFChipProps): React.ReactElement<SFChipProps> => {
@@ -305,11 +304,12 @@ export const SFChip = ({
         {...props}
         className={`${sfColor} ${fullWidth ? 'fullWidth' : ''} ${
           hasError ? 'hasError' : ''
-        } ${disableChipClick ? classes.disableClick : ''}`}
+        } ${!clickable ? classes.disableClick : ''}`}
         label={label}
         size={size}
         variant={variant}
         disabled={disabled}
+        clickable={clickable}
         deleteIcon={<SFIconButton sfIcon='Close' sfSize='tiny' />}
         onDelete={deleteable ? onDelete : undefined}
       />
