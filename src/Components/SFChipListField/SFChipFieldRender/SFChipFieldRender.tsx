@@ -26,6 +26,7 @@ export const SFChipFieldRender = ({
       {values.map((input: ChipFieldValueType, index: number) => (
         <SFChip
           key={`${input.value}-${index}`}
+          disableChipClick={onEdit === undefined}
           fullWidth={isChipFullWidth}
           deleteable
           clickable
