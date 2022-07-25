@@ -23,9 +23,6 @@ export default {
     disabled: {
       description: 'If true, the chip should be displayed in a disabled state.'
     },
-    emptyMessage: {
-      description: 'Message displayed when the input is empty.'
-    },
     freeSolo: {
       description:
         'If true, the component is free solo, meaning that the user input is not bound to provided options.'
@@ -38,9 +35,6 @@ export default {
     },
     inputType: {
       description: 'The type of the inner input component field.'
-    },
-    isEditable: {
-      description: 'If true, the content of the chip is able to be edited.'
     },
     items: {
       description: 'List of chip items loaded.',
