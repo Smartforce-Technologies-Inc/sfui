@@ -6,6 +6,7 @@ import { ChipFieldValueType } from '../SFChipListField';
 export interface SFChipFieldModalProps {
   value: ChipFieldValueType | undefined;
   open: boolean;
+  isValueAlreadyAdded: (value: string) => boolean;
   isValid?: (value: string) => boolean;
   onEdit: (
     prevoiusValue: ChipFieldValueType,
@@ -17,6 +18,7 @@ export interface SFChipFieldModalProps {
 export const SFChipFieldModal = ({
   value,
   open,
+  isValueAlreadyAdded,
   isValid,
   onEdit,
   onClose
@@ -39,6 +41,14 @@ export const SFChipFieldModal = ({
     onClose();
   };
 
+  const isButtonDisabled = (): boolean => {
+    if (!(value?.value === editedValue)) {
+      return isValueAlreadyAdded(editedValue);
+    } else {
+      return true;
+    }
+  };
+
   React.useEffect(() => {
     setEditedValue(value ? value.value : '');
   }, [value]);
@@ -49,7 +59,7 @@ export const SFChipFieldModal = ({
       rightAction={{
         label: 'Done',
         buttonProps: {
-          disabled: value?.value === editedValue,
+          disabled: isButtonDisabled(),
           onClick: (): void => onFinishEdition()
         }
       }}

@@ -274,6 +274,7 @@ export const SFChipListField = ({
       <SFChipFieldModal
         value={editedValue}
         open={isModalOpen}
+        isValueAlreadyAdded={isValueAlreadyAdded}
         isValid={isValid}
         onEdit={editValue}
         onClose={(): void => setIsModalOpen(false)}
