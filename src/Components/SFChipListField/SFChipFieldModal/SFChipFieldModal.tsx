@@ -42,7 +42,7 @@ export const SFChipFieldModal = ({
   };
 
   const isButtonDisabled = (): boolean => {
-    if (!(value?.value === editedValue)) {
+    if (value?.value !== editedValue) {
       return isValueAlreadyAdded(editedValue);
     } else {
       return true;
