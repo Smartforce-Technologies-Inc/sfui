@@ -4,43 +4,21 @@ import {
   AutocompleteInputChangeReason,
   AutocompleteChangeReason
 } from '@material-ui/lab';
-import { SFChipListModal } from './SFChipFieldModal/SFChipFieldModal';
-import { SFChipListRender } from './SFChipFieldRender/SFChipFieldRender';
-import { makeStyles } from '@material-ui/core/styles';
+import { SFChipFieldRender } from '../SFChipListField/SFChipFieldRender/SFChipFieldRender';
 import { StyledAutocompleteChip } from '../SFAutocompleteChip/SFAutocompleteChip';
 import {
   minWidthInputSize,
   SFAutocompleteInput
 } from '../SFAutocompleteChip/SFAutocompleteInput/SFAutocompleteInput';
 
-const chipsDisplayClasses = makeStyles({
-  chipDisplayInline: {
-    display: 'flex',
-    gap: '8px',
-    flexWrap: 'wrap',
-    flexDirection: 'row'
-  },
-  chipDisplayBlock: {
-    display: 'flex',
-    gap: '8px',
-    flexWrap: 'wrap',
-    flexDirection: 'column'
-  }
-});
-
-export type ChipFieldValueType = {
+export type ChipInputFieldValueType = {
   value: string;
-  isNew?: boolean;
-  hasChanged?: boolean;
   isValid?: boolean;
 };
 
-export interface SFChipsListFieldProps {
-  itemChipSize?: 'small' | 'medium';
-  itemChipDisplay?: 'inline' | 'block';
-  items?: ChipFieldValueType[];
+export interface SFChipListInputProps {
+  items?: ChipInputFieldValueType[];
   inputMinWidth?: minWidthInputSize;
-  emptyMessage?: string;
   label: string;
   helperText?: string;
   options?: string[];
@@ -48,100 +26,50 @@ export interface SFChipsListFieldProps {
   freeSolo?: boolean;
   disabled?: boolean;
   required?: boolean;
-  isEditable?: boolean;
   inputType?: string;
   isValid?: (value: string) => boolean;
-  onChange: (newItems: ChipFieldValueType[]) => void;
+  onChange: (newItems: ChipInputFieldValueType[]) => void;
 }
 
-export const SFChipsListField = ({
-  itemChipSize = 'small',
-  itemChipDisplay = 'inline',
+export const SFChipListInput = ({
+  items = [],
   inputMinWidth = 30,
-  emptyMessage,
   label,
   helperText,
   options = [],
-  items = [],
   delimiters = [','],
   freeSolo = false,
   disabled = false,
-  isEditable = false,
   inputType = 'text',
   isValid,
   onChange
-}: SFChipsListFieldProps): React.ReactElement<SFChipsListFieldProps> => {
+}: SFChipListInputProps): React.ReactElement<SFChipListInputProps> => {
   const [isPopperOpen, setIsPopperOpen] = React.useState<boolean>(false);
-  const [isModalOpen, setIsModalOpen] = React.useState<boolean>(false);
-  const [editedValue, setEditedValue] = React.useState<ChipFieldValueType>();
   const [inputValue, setInputValue] = React.useState<string>('');
-  const { chipDisplayInline, chipDisplayBlock } = chipsDisplayClasses();
 
   const isFreeSolo = (): boolean => {
     return freeSolo || options.length === 0;
   };
 
-  const savedValues: ChipFieldValueType[] = items.filter(
-    (item: ChipFieldValueType) => item.isNew !== true
-  );
-
-  const inputValues: ChipFieldValueType[] = items.filter(
-    (item: ChipFieldValueType) => item.isNew === true
-  );
-
-  const createNewValue = (value: string): ChipFieldValueType => {
+  const createNewValue = (value: string): ChipInputFieldValueType => {
     return {
       value: value,
-      isNew: true,
       isValid: isValid ? isValid(value) : true
     };
   };
 
-  const addValue = (input: ChipFieldValueType[]): void => {
-    const values: ChipFieldValueType[] = [...items, ...input];
+  const addValue = (input: ChipInputFieldValueType[]): void => {
+    const values: ChipInputFieldValueType[] = [...items, ...input];
     onChange(values);
   };
 
-  const editValue = (
-    previousInput: ChipFieldValueType,
-    input: ChipFieldValueType
-  ): void => {
-    const index: number = items.findIndex(
-      (item) => item.value === previousInput.value
-    );
-    const values: ChipFieldValueType[] = [
-      ...items.slice(0, index),
-      input,
-      ...items.slice(index + 1)
-    ];
-    onChange(values);
-  };
-
-  const deleteValue = (input: ChipFieldValueType): void => {
+  const deleteValue = (input: ChipInputFieldValueType): void => {
     const index: number = items.indexOf(input);
-    const values: ChipFieldValueType[] = [
+    const values: ChipInputFieldValueType[] = [
       ...items.slice(0, index),
       ...items.slice(index + 1)
     ];
     onChange(values);
-  };
-
-  const onEdit = (value: ChipFieldValueType): void => {
-    if (isFreeSolo()) {
-      setEditedValue(value);
-      setIsModalOpen(true);
-    }
-  };
-
-  const filteredOptions = (options: string[]): string[] => {
-    if (savedValues.length !== 0) {
-      return options.filter(
-        (option: string) =>
-          !savedValues.find((item: ChipFieldValueType) => item.value === option)
-      );
-    } else {
-      return options;
-    }
   };
 
   const getValuesFromInputField = (value: string): string[] => {
@@ -158,7 +86,7 @@ export const SFChipsListField = ({
   };
 
   const isValueAlreadyAdded = (value: string): boolean => {
-    const matchValueItem: ChipFieldValueType | undefined = items.find(
+    const matchValueItem: ChipInputFieldValueType | undefined = items.find(
       (item) => item.value.toLowerCase() === value.toLowerCase()
     );
 
@@ -185,7 +113,7 @@ export const SFChipsListField = ({
         setIsPopperOpen(false);
         const insertedValues: string[] = getValuesFromInputField(value);
 
-        let valuesToAdd: ChipFieldValueType[] = [];
+        let valuesToAdd: ChipInputFieldValueType[] = [];
         insertedValues.forEach((insertedValue: string) => {
           const valueTrim: string = insertedValue.trim();
 
@@ -213,7 +141,7 @@ export const SFChipsListField = ({
 
   const onAutoCompleteChange = (
     _event: ChangeEvent,
-    value: (ChipFieldValueType | string)[],
+    value: (ChipInputFieldValueType | string)[],
     reason: AutocompleteChangeReason
   ): void => {
     if (reason === 'select-option' || reason === 'create-option') {
@@ -221,7 +149,7 @@ export const SFChipsListField = ({
 
       if (typeof lastItem === 'string') {
         const values: string[] = getValuesFromInputField(lastItem as string);
-        let currentValues: ChipFieldValueType[] = [];
+        let currentValues: ChipInputFieldValueType[] = [];
 
         values.forEach((value: string) => {
           const valueTrim: string = value.trim();
@@ -244,65 +172,32 @@ export const SFChipsListField = ({
     }
   };
 
-  const DisplayValues = (): JSX.Element => {
-    return (
-      <div
-        className={` ${
-          itemChipDisplay === 'block' ? chipDisplayBlock : chipDisplayInline
-        }`}
-      >
-        {savedValues.length !== 0 && (
-          <SFChipListRender
-            values={savedValues}
-            isChipFullWidth={itemChipDisplay === 'block'}
-            chipSize={itemChipSize}
-            disabled={disabled}
-            onDelete={deleteValue}
-            onEdit={isEditable ? onEdit : undefined}
-            isValid={isValid}
-          />
-        )}
-        {emptyMessage && (!savedValues || savedValues.length === 0) && (
-          <p>{emptyMessage}</p>
-        )}
-      </div>
-    );
-  };
-
   return (
     <Fragment>
-      <SFChipListModal
-        value={editedValue}
-        open={isModalOpen}
-        isValid={isValid}
-        onEdit={editValue}
-        onClose={(): void => setIsModalOpen(false)}
-      />
       <StyledAutocompleteChip
         disabled={disabled}
-        options={filteredOptions(options)}
+        options={options}
         multiple
         fullWidth
-        value={inputValues}
-        inputValue={inputValue}
+        value={items}
         onChange={onAutoCompleteChange}
         onInputChange={onInputChange}
+        inputValue={inputValue}
         open={options.length > 0 ? isPopperOpen : false}
         onClose={(): void => setIsPopperOpen(false)}
         filterSelectedOptions
         freeSolo={isFreeSolo()}
         getOptionSelected={(
           option: string,
-          value: ChipFieldValueType
+          value: ChipInputFieldValueType
         ): boolean => option === value.value}
-        renderTags={(value: ChipFieldValueType[]): JSX.Element => (
-          <SFChipListRender
+        renderTags={(value: ChipInputFieldValueType[]): JSX.Element => (
+          <SFChipFieldRender
             isChipFullWidth={false}
             chipSize='small'
             values={value}
             disabled={disabled}
             onDelete={deleteValue}
-            onEdit={isEditable ? onEdit : undefined}
             isValid={isValid}
           />
         )}
@@ -323,7 +218,6 @@ export const SFChipsListField = ({
           />
         )}
       />
-      <DisplayValues />
     </Fragment>
   );
 };

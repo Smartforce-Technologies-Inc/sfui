@@ -4,13 +4,13 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import { ChipListOptions } from '../../Storybook/constants';
 import {
   ChipFieldValueType,
-  SFChipsListField,
-  SFChipsListFieldProps
-} from './SFChipsListField';
+  SFChipListField,
+  SFChipListFieldProps
+} from './SFChipListField';
 
 export default {
   title: 'Components/SFChipListField',
-  component: SFChipsListField,
+  component: SFChipListField,
   parameters: { controls: { sort: 'alpha' } },
   args: {
     label: 'Bagel'
@@ -83,8 +83,10 @@ const ChipListItems = [
   { value: 'The Godfather', isNew: true }
 ];
 
-const Template: Story<SFChipsListFieldProps> = (args) => {
-  const [items, setItems] = React.useState<ChipFieldValueType[]>(args.items);
+const Template: Story<SFChipListFieldProps> = (args) => {
+  const [items, setItems] = React.useState<ChipFieldValueType[] | undefined>(
+    args.items
+  );
 
   return (
     <div
@@ -95,7 +97,7 @@ const Template: Story<SFChipsListFieldProps> = (args) => {
         width: '100%'
       }}
     >
-      <SFChipsListField
+      <SFChipListField
         {...args}
         items={items}
         onChange={(newItems: ChipFieldValueType[]): void => setItems(newItems)}

@@ -8,7 +8,8 @@ export * from './Components/SFBadge/SFBadge';
 export * from './Components/SFButton/SFButton';
 export * from './Components/SFCard/SFCard';
 export * from './Components/SFChip/SFChip';
-export * from './Components/SFChipsListField/SFChipsListField';
+export * from './Components/SFChipListInput/SFChipListInput';
+export * from './Components/SFChipListField/SFChipListField';
 export * from './Components/SFCheckbox/SFCheckbox';
 export * from './Components/SFDatePicker/SFDatePicker';
 export * from './Components/SFDialog/SFDialog';
@@ -37,7 +38,7 @@ export * from './Components/SFTable/SFTable';
 export * from './Components/SFTextField/SFTextField';
 export * from './Components/SFTimeField/SFTimeField';
 export * from './Components/SFTimeline/SFTimeline';
-export * from './Components/SFTootltip/SFTooltip';
+export * from './Components/SFTooltip/SFTooltip';
 
 export * from './SFTheme/SFTheme';
 export * from './SFColors/SFColors';
