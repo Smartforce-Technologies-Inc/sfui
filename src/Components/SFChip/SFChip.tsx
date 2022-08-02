@@ -264,12 +264,12 @@ const StyledChip = withStyles((theme: Theme) => ({
 
 const useStyles = makeStyles((theme: Theme) => ({
   disableClick: {
-    cursor: 'auto',
-    '&:not(.Mui-disabled).hasError': {
+    cursor: 'default',
+    '&:not(.Mui-disabled)': {
       '&:hover, &:active': {
         '@media (hover: hover)': {
           backgroundColor: `${
-            theme.palette.type === 'light' ? SFRed[700] : SFRed[200]
+            theme.palette.type === 'light' ? SFGrey[100] : SFGrey[500]
           } !important`
         }
       },
@@ -277,6 +277,24 @@ const useStyles = makeStyles((theme: Theme) => ({
         '&:hover, &:active': {
           '@media (hover: hover)': {
             backgroundColor: `transparent !important`
+          }
+        }
+      },
+      '&.hasError': {
+        '&:hover, &:active': {
+          '@media (hover: hover)': {
+            backgroundColor: `${
+              theme.palette.type === 'light' ? SFRed[700] : SFRed[200]
+            } !important`
+          }
+        }
+      },
+      '&.primary': {
+        '&:hover, &:active': {
+          '@media (hover: hover)': {
+            backgroundColor: `${
+              theme.palette.type === 'light' ? SFBlue[500] : SFBlue[200]
+            } !important`
           }
         }
       }
