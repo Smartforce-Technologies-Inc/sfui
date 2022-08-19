@@ -22,6 +22,9 @@ export default {
     required: {
       description: 'If true, the field is required.'
     },
+    error: {
+      description: 'If true, the component is in error state.'
+    },
     helperText: {
       description: 'Text to help understand input values.'
     },

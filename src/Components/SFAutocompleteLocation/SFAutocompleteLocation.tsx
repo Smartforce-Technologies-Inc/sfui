@@ -183,6 +183,8 @@ export interface SFAutocompleteLocationProps {
   value: SFAutocompleteLocationResult;
   disabled?: boolean;
   required?: boolean;
+  error?: boolean;
+  helperText?: string;
   currentLocation?: boolean;
   currentLocationType?: 'address' | 'route';
   minChar?: number;
@@ -194,6 +196,8 @@ export const SFAutocompleteLocation = ({
   value,
   disabled = false,
   required = false,
+  error = false,
+  helperText,
   currentLocation = false,
   currentLocationType = 'route',
   minChar = 3,
@@ -362,7 +366,13 @@ export const SFAutocompleteLocation = ({
   const renderInput = (
     params: AutocompleteRenderInputParams
   ): React.ReactNode => (
-    <SFTextField {...params} required={required} label={label} />
+    <SFTextField
+      {...params}
+      required={required}
+      label={label}
+      error={error}
+      helperText={helperText}
+    />
   );
 
   const onAutocompleteChange = async (

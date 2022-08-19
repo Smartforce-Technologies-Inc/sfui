@@ -37,6 +37,12 @@ export default {
         type: 'boolean'
       }
     },
+    error: {
+      description: 'If true, the component is in error state.'
+    },
+    helperText: {
+      description: 'Text to help understand input values.'
+    },
     freeSolo: {
       description:
         'If true, the Autocomplete is free solo, meaning that the user input is not bound to provided options.',
