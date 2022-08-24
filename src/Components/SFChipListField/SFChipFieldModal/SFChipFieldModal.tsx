@@ -1,11 +1,12 @@
 import React from 'react';
 import { SFAlertDialog } from '../../SFAlertDialog/SFAlertDialog';
 import { SFTextField } from '../../SFTextField/SFTextField';
-import { ChipFieldValueType } from '../SFChipsListField';
+import { ChipFieldValueType } from '../SFChipListField';
 
-export interface SFChipListModalProps {
+export interface SFChipFieldModalProps {
   value: ChipFieldValueType | undefined;
   open: boolean;
+  isValueAlreadyAdded: (value: string) => boolean;
   isValid?: (value: string) => boolean;
   onEdit: (
     prevoiusValue: ChipFieldValueType,
@@ -14,13 +15,14 @@ export interface SFChipListModalProps {
   onClose: () => void;
 }
 
-export const SFChipListModal = ({
+export const SFChipFieldModal = ({
   value,
   open,
+  isValueAlreadyAdded,
   isValid,
   onEdit,
   onClose
-}: SFChipListModalProps): React.ReactElement<SFChipListModalProps> => {
+}: SFChipFieldModalProps): React.ReactElement<SFChipFieldModalProps> => {
   const [editedValue, setEditedValue] = React.useState<string>(
     value?.value || ''
   );
@@ -39,6 +41,14 @@ export const SFChipListModal = ({
     onClose();
   };
 
+  const isButtonDisabled = (): boolean => {
+    if (value?.value !== editedValue) {
+      return isValueAlreadyAdded(editedValue);
+    } else {
+      return true;
+    }
+  };
+
   React.useEffect(() => {
     setEditedValue(value ? value.value : '');
   }, [value]);
@@ -49,7 +59,7 @@ export const SFChipListModal = ({
       rightAction={{
         label: 'Done',
         buttonProps: {
-          disabled: value?.value === editedValue,
+          disabled: isButtonDisabled(),
           onClick: (): void => onFinishEdition()
         }
       }}
