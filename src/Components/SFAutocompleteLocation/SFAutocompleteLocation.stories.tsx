@@ -30,6 +30,12 @@ export default {
       description:
         'The minimun number of characters required for the input value to do the search.'
     },
+    error: {
+      description: 'If true, the component is in error state.'
+    },
+    helperText: {
+      description: 'Text to help understand input values.'
+    },
     onChange: {
       action: 'onChange',
       table: {

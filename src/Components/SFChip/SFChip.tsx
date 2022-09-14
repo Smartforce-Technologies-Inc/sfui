@@ -262,25 +262,45 @@ const StyledChip = withStyles((theme: Theme) => ({
   }
 }))(Chip);
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme: Theme) => ({
   disableClick: {
-    cursor: 'auto',
-    '&:hover, &:active': {
-      '@media (hover: hover)': {
-        backgroundColor: 'inherit'
-      }
-    },
-    '&:active': {
-      boxShadow: 'none',
-      backgroundColor: 'transparent !important'
-    },
-    '&:not(.Mui-disabled).hasError': {
+    cursor: 'default',
+    '&:not(.Mui-disabled)': {
       '&:hover, &:active': {
-        backgroundColor: 'inherit !important'
+        '@media (hover: hover)': {
+          backgroundColor: `${
+            theme.palette.type === 'light' ? SFGrey[100] : SFGrey[500]
+          } !important`
+        }
+      },
+      '&.MuiChip-outlined': {
+        '&:hover, &:active': {
+          '@media (hover: hover)': {
+            backgroundColor: `transparent !important`
+          }
+        }
+      },
+      '&.hasError': {
+        '&:hover, &:active': {
+          '@media (hover: hover)': {
+            backgroundColor: `${
+              theme.palette.type === 'light' ? SFRed[700] : SFRed[200]
+            } !important`
+          }
+        }
+      },
+      '&.primary': {
+        '&:hover, &:active': {
+          '@media (hover: hover)': {
+            backgroundColor: `${
+              theme.palette.type === 'light' ? SFBlue[500] : SFBlue[200]
+            } !important`
+          }
+        }
       }
     }
   }
-});
+}));
 
 export interface SFChipProps extends ChipProps {
   sfColor: 'primary' | 'default';

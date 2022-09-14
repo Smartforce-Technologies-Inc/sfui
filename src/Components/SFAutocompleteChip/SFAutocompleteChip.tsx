@@ -22,6 +22,7 @@ export interface SFAutocompleteChipProps {
   value: string[];
   inputMinWidth?: minWidthInputSize;
   label: string;
+  error?: boolean;
   helperText?: string;
   options: string[];
   disabled?: boolean;
@@ -32,6 +33,7 @@ export interface SFAutocompleteChipProps {
 export const SFAutocompleteChip = ({
   inputMinWidth = 30,
   label,
+  error = false,
   helperText,
   options = [],
   value = [],
@@ -99,6 +101,7 @@ export const SFAutocompleteChip = ({
           {...params}
           rows={1}
           label={label}
+          error={error}
           helperText={helperText}
           required={required}
           minWidth={
