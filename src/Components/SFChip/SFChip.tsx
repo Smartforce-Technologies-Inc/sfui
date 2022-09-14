@@ -310,6 +310,7 @@ export interface SFChipProps extends ChipProps {
 }
 
 export const SFChip = ({
+  className = '',
   sfColor = 'primary',
   size = 'medium',
   label,
@@ -327,7 +328,7 @@ export const SFChip = ({
     <FormControl fullWidth={fullWidth}>
       <StyledChip
         {...props}
-        className={`${sfColor} ${fullWidth ? 'fullWidth' : ''} ${
+        className={`${className} ${sfColor} ${fullWidth ? 'fullWidth' : ''} ${
           hasError ? 'hasError' : ''
         } ${!clickable ? classes.disableClick : ''}`}
         label={label}
