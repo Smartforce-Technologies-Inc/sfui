@@ -169,7 +169,7 @@ const StyledChip = withStyles((theme: Theme) => ({
                   theme.palette.type === 'light'
                     ? hexToRgba(SFGrey[200], 0.3)
                     : hexToRgba(SFGrey[500], 0.3)
-                } `
+                }`
               }
             }
           },
@@ -177,7 +177,7 @@ const StyledChip = withStyles((theme: Theme) => ({
           '&:active': {
             backgroundColor: `${
               theme.palette.type === 'light' ? SFRed[800] : SFRed[300]
-            } `
+            }`
           }
         },
 
@@ -212,7 +212,7 @@ const StyledChip = withStyles((theme: Theme) => ({
                 theme.palette.type === 'light'
                   ? hexToRgba(SFRed[100], 0.4)
                   : hexToRgba(SFRed[200], 0.2)
-              } `
+              }`
             }
           }
         }
