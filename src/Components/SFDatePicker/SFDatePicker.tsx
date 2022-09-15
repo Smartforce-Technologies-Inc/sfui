@@ -23,6 +23,7 @@ import {
   KeyboardDatePickerProps
 } from '@material-ui/pickers';
 import { hexToRgba } from '../../Helpers';
+export { MaterialUiPickersDate as SFMaterialUiPickersDate } from '@material-ui/pickers/typings/date';
 
 const useButtonBackgrounds = makeStyles((theme: Theme) =>
   createStyles({
