@@ -9,6 +9,7 @@ import {
 } from '@material-ui/pickers';
 
 import { SFBlue, SFGrey, SFRed } from '../../SFColors/SFColors';
+export { MaterialUiPickersDate as SFMaterialUiPickersDate } from '@material-ui/pickers/typings/date';
 
 const StyledTimePicker = withStyles((theme: Theme) => ({
   root: {
