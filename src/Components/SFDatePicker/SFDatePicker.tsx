@@ -23,6 +23,7 @@ import {
   KeyboardDatePickerProps
 } from '@material-ui/pickers';
 import { hexToRgba } from '../../Helpers';
+import { SFMaterialUiPickersDate } from '../../SFTypes';
 
 const useButtonBackgrounds = makeStyles((theme: Theme) =>
   createStyles({
@@ -350,7 +351,12 @@ const StyledDatePicker = withStyles((theme: Theme) => ({
   }
 }))(KeyboardDatePicker);
 
-export interface SFDatePickerProps extends KeyboardDatePickerProps {}
+export interface SFDatePickerProps extends KeyboardDatePickerProps {
+  onChange: (
+    date: SFMaterialUiPickersDate | null,
+    value?: string | null
+  ) => void;
+}
 
 export const SFDatePicker = ({
   value = null,

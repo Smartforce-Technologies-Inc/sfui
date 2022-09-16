@@ -9,6 +9,7 @@ import {
 } from '@material-ui/pickers';
 
 import { SFBlue, SFGrey, SFRed } from '../../SFColors/SFColors';
+import { SFMaterialUiPickersDate } from '../../SFTypes';
 
 const StyledTimePicker = withStyles((theme: Theme) => ({
   root: {
@@ -123,7 +124,12 @@ const StyledTimePicker = withStyles((theme: Theme) => ({
   }
 }))(KeyboardTimePicker);
 
-export interface SFTimeFieldProps extends KeyboardTimePickerProps {}
+export interface SFTimeFieldProps extends KeyboardTimePickerProps {
+  onChange: (
+    date: SFMaterialUiPickersDate | null,
+    value?: string | null
+  ) => void;
+}
 
 export const SFTimeField = ({
   placeholder = '08:00 AM',
