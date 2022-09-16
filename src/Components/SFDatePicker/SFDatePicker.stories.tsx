@@ -100,20 +100,20 @@ const AllTemplate: Story<SFDatePickerProps> = (args) => (
     }}
   >
     <SFDatePicker {...args} />
-    <SFDatePicker error {...args} />
-    <SFDatePicker disabled {...args} />
-    <SFDatePicker value={Date.now()} {...args} />
+    <SFDatePicker {...args} error />
+    <SFDatePicker {...args} disabled />
+    <SFDatePicker {...args} value={Date.now()} />
     <SFDatePicker
-      value={Date.now()}
+      {...args}
       helperText='Error message'
       error
-      {...args}
+      value={Date.now()}
     />
     <SFDatePicker
-      value={Date.now()}
+      {...args}
       helperText='Helper message'
       disabled
-      {...args}
+      value={Date.now()}
     />
   </div>
 );
