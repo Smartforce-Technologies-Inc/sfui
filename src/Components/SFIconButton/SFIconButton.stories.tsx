@@ -12,7 +12,6 @@ export default {
   args: {
     sfColor: 'grey',
     sfIcon: 'Bell',
-    sfSize: 'medium',
     rotate: 'none'
   },
   argTypes: {
@@ -34,7 +33,6 @@ export default {
     },
     sfIcon: {
       description: 'The icon name to be used.',
-
       options: SFIconSet.icons.map((icon) => icon.properties.name),
       control: {
         type: 'select'
@@ -129,6 +127,31 @@ export default {
 export const Default: Story<SFIconButtonProps> = (args) => (
   <SFIconButton {...args} />
 );
+Default.argTypes = {
+  sfSize: {
+    defaultValue: 'medium',
+    type: 'string',
+    options: ['tiny', 'small', 'medium', 'large'],
+    control: {
+      type: 'radio'
+    }
+  }
+};
+
+export const CustomSize: Story<SFIconButtonProps> = (args) => (
+  <SFIconButton {...args} />
+);
+CustomSize.argTypes = {
+  buttonSize: {
+    defaultValue: 42,
+    type: 'number'
+  },
+  iconSize: {
+    defaultValue: 20,
+    type: 'number'
+  }
+};
+CustomSize.parameters = { controls: { exclude: ['sfSize'] } };
 
 export const AllSizes: Story<SFIconButtonProps> = (args) => (
   <div
