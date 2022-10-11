@@ -6,18 +6,31 @@ import IconButton, { IconButtonProps } from '@material-ui/core/IconButton';
 
 type SFSize = 'tiny' | 'small' | 'medium' | 'large';
 
-function getSize(sfSize: SFSize): number[] {
-  switch (sfSize) {
-    case 'tiny':
-      return [20, 10];
-    case 'small':
-      return [34, 16];
-    case 'large':
-      return [54, 26];
-    default:
-      return [42, 20];
+type SFSizeDict = {
+  [key: string]: {
+    button: number;
+    icon: number;
+  };
+};
+
+const SIZES: SFSizeDict = {
+  tiny: {
+    button: 20,
+    icon: 10
+  },
+  small: {
+    button: 34,
+    icon: 16
+  },
+  medium: {
+    button: 42,
+    icon: 20
+  },
+  large: {
+    button: 54,
+    icon: 26
   }
-}
+};
 
 const StyledIconButton = withStyles((theme: Theme) => ({
   root: {
@@ -52,8 +65,8 @@ interface SFIconButtonSizeProps extends SFIconButtonBaseProps {
 
 interface SFIconButtonCustomSizeProps extends SFIconButtonBaseProps {
   sfSize: undefined;
-  buttonSize: number;
-  iconSize: number;
+  buttonSize: SFSize | number;
+  iconSize: SFSize | number;
 }
 
 export type SFIconButtonProps =
@@ -75,10 +88,18 @@ export const SFIconButton = ({
   let buttonSize, iconSize;
 
   if (props.sfSize) {
-    [buttonSize, iconSize] = getSize(props.sfSize);
+    buttonSize = SIZES[props.sfSize].button;
+    iconSize = SIZES[props.sfSize].icon;
   } else {
-    buttonSize = props.buttonSize;
-    iconSize = props.iconSize;
+    buttonSize =
+      typeof props.buttonSize === 'number'
+        ? props.buttonSize
+        : SIZES[props.buttonSize].button;
+
+    iconSize =
+      typeof props.iconSize === 'number'
+        ? props.iconSize
+        : SIZES[props.iconSize].icon;
   }
 
   return (
