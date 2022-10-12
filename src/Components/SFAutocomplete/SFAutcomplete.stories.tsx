@@ -58,8 +58,14 @@ export default {
         }
       }
     },
-    hasPopupIcon: {
-      description: 'Enables the dropdown icon.'
+    popupIconType: {
+      description:
+        "Type of popup icon to show. One of these: 'default' | 'search' | 'none' ",
+      control: {
+        type: 'radio',
+        options: ['default', 'search', 'none']
+      },
+      defaultValue: 'default'
     },
     inputValue: {
       description: 'The value of the autocomplete input.',
