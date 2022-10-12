@@ -97,10 +97,16 @@ export const StyledAutocomplete = withStyles((theme: Theme) => ({
 const useStyles = makeStyles({
   root: {
     '& button.MuiAutocomplete-popupIndicator': {
+      pointerEvents: (props: Partial<SFAutocompleteProps>): string =>
+        props.popupIconType === 'search' ? 'none' : 'auto',
       display: (props: Partial<SFAutocompleteProps>): string =>
-        props.hasPopupIcon ? 'inline-flex' : 'none',
+        props.popupIconType !== 'none' ? 'inline-flex' : 'none',
       padding: (props: Partial<SFAutocompleteProps>): string =>
-        props.hasPopupIcon ? '9px' : '0'
+        props.popupIconType !== 'none' ? '9px' : '0'
+    },
+    '& button.MuiAutocomplete-popupIndicatorOpen': {
+      transform: (props: Partial<SFAutocompleteProps>): string =>
+        props.popupIconType === 'search' ? 'none' : 'rotate(180deg)'
     }
   }
 });
@@ -122,7 +128,7 @@ export interface SFAutocompleteProps
   label: string;
   required?: boolean;
   options: SFMenuOption[];
-  hasPopupIcon?: boolean;
+  popupIconType?: 'default' | 'search' | 'none';
   allowEmpty?: boolean;
   error?: boolean;
   helperText?: string;
@@ -131,16 +137,17 @@ export interface SFAutocompleteProps
 }
 
 export const SFAutocomplete = ({
+  className = '',
   label,
   required = false,
-  hasPopupIcon = false,
+  popupIconType = 'none',
   allowEmpty = false,
   value,
   error = false,
   helperText,
   ...props
 }: SFAutocompleteProps): React.ReactElement<SFAutocompleteProps> => {
-  const classes = useStyles({ hasPopupIcon });
+  const classes = useStyles({ popupIconType });
 
   let initInputValue = '';
   if (value && isOption(value, props.options)) {
@@ -182,10 +189,17 @@ export const SFAutocomplete = ({
     options = [...options, { label: '', value: '' }];
   }
 
+  const popupIcon =
+    popupIconType === 'search' ? (
+      <SFIcon icon='Search' size={16} />
+    ) : (
+      <SFIcon icon='Down-2' size={16} />
+    );
+
   return (
     <StyledAutocomplete
-      className={`${classes.root} ${props.className || ''}`}
       {...props}
+      className={`${classes.root} ${className}`}
       openOnFocus
       value={value}
       options={options}
@@ -212,7 +226,7 @@ export const SFAutocomplete = ({
           helperText={helperText}
         />
       )}
-      popupIcon={<SFIcon icon='Down-2' size={16} />}
+      popupIcon={popupIcon}
       closeIcon={<SFIcon icon='Close' size={16} />}
     />
   );
