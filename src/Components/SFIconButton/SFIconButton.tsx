@@ -57,6 +57,7 @@ interface SFIconButtonBaseProps extends IconButtonProps {
   sfIcon: string;
   sfColor?: string | undefined;
   rotate?: SFIconRotation;
+  sfSize?: SFSize;
 }
 
 interface SFIconButtonSizeProps extends SFIconButtonBaseProps {
@@ -64,7 +65,6 @@ interface SFIconButtonSizeProps extends SFIconButtonBaseProps {
 }
 
 interface SFIconButtonCustomSizeProps extends SFIconButtonBaseProps {
-  sfSize: undefined;
   buttonSize: SFSize | number;
   iconSize: SFSize | number;
 }
