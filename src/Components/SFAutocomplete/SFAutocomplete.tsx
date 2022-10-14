@@ -14,12 +14,8 @@ import { SFIcon } from '../SFIcon/SFIcon';
 import { SFGrey, SFSurfaceLight } from '../../SFColors/SFColors';
 import { hexToRgba } from '../../Helpers';
 
-const isOption = (value: string, options: SFMenuOption[]): boolean => {
-  if (options.find((option: SFMenuOption) => value === option.value)) {
-    return true;
-  } else {
-    return false;
-  }
+const isOption = (option: SFMenuOption, options: SFMenuOption[]): boolean => {
+  return !!options.find((o: SFMenuOption) => o.value === option.value);
 };
 
 export const StyledAutocomplete = withStyles((theme: Theme) => ({
@@ -132,8 +128,8 @@ export interface SFAutocompleteProps
   allowEmpty?: boolean;
   error?: boolean;
   helperText?: string;
-  value?: string;
-  onChange: (value: string) => void;
+  value?: string | SFMenuOption;
+  onChange: (value: string | SFMenuOption) => void;
 }
 
 export const SFAutocomplete = ({
@@ -148,13 +144,22 @@ export const SFAutocomplete = ({
   ...props
 }: SFAutocompleteProps): React.ReactElement<SFAutocompleteProps> => {
   const classes = useStyles({ popupIconType });
+  const [inputValue, setInputValue] = React.useState<string>('');
 
-  let initInputValue = '';
-  if (value && isOption(value, props.options)) {
-    initInputValue = value;
-  }
-
-  const [inputValue, setInputValue] = React.useState<string>(initInputValue);
+  React.useEffect(() => {
+    if (value) {
+      if (typeof value === 'string') {
+        setInputValue(value);
+      } else if (isOption(value, props.options)) {
+        // It's of type SFMenuOption
+        setInputValue(value.label);
+      } else {
+        setInputValue('');
+      }
+    } else {
+      setInputValue('');
+    }
+  }, [value]);
 
   const onInputChange = (
     _event: React.ChangeEvent,
@@ -168,7 +173,7 @@ export const SFAutocomplete = ({
         props.onChange(newValue);
       }
     } else if (props.clearOnBlur) {
-      setInputValue(value && value.length > 0 ? value : '');
+      setInputValue(value ? (value as SFMenuOption).label : '');
     }
   };
 
@@ -178,8 +183,7 @@ export const SFAutocomplete = ({
     reason: AutocompleteChangeReason
   ): void => {
     if (reason !== 'create-option' && reason !== 'remove-option') {
-      setInputValue(option ? option.value : '');
-      props.onChange(option ? option.value : '');
+      props.onChange(option || '');
     }
   };
 
@@ -210,6 +214,7 @@ export const SFAutocomplete = ({
         option: SFMenuOption,
         value: SFMenuOption | string
       ): boolean => {
+        // Check needed if allowEmpty
         return typeof value === 'string'
           ? value === option.value
           : value.value === option.value;
