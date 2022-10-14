@@ -86,10 +86,12 @@ export const SFIconButton = ({
   const colorPicked: string = sfColor || iconDefaultColor;
 
   let buttonSize, iconSize;
+  let buttonProps;
 
   if (props.sfSize) {
     buttonSize = SIZES[props.sfSize].button;
     iconSize = SIZES[props.sfSize].icon;
+    buttonProps = props;
   } else {
     buttonSize =
       typeof props.buttonSize === 'number'
@@ -100,11 +102,14 @@ export const SFIconButton = ({
       typeof props.iconSize === 'number'
         ? props.iconSize
         : SIZES[props.iconSize].icon;
+
+    const { buttonSize: bs, iconSize: is, ...rest } = props;
+    buttonProps = rest;
   }
 
   return (
     <StyledIconButton
-      {...props}
+      {...buttonProps}
       disableRipple
       style={{
         padding: 0,
