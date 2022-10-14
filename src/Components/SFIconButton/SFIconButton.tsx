@@ -89,21 +89,14 @@ export const SFIconButton = ({
   let buttonProps;
 
   if (props.sfSize) {
-    buttonSize = SIZES[props.sfSize].button;
-    iconSize = SIZES[props.sfSize].icon;
-    buttonProps = props;
+    const { sfSize, ...rest } = props;
+    buttonSize = SIZES[sfSize].button;
+    iconSize = SIZES[sfSize].icon;
+    buttonProps = rest;
   } else {
-    buttonSize =
-      typeof props.buttonSize === 'number'
-        ? props.buttonSize
-        : SIZES[props.buttonSize].button;
-
-    iconSize =
-      typeof props.iconSize === 'number'
-        ? props.iconSize
-        : SIZES[props.iconSize].icon;
-
     const { buttonSize: bs, iconSize: is, ...rest } = props;
+    buttonSize = typeof bs === 'number' ? bs : SIZES[bs].button;
+    iconSize = typeof is === 'number' ? is : SIZES[is].icon;
     buttonProps = rest;
   }
 
