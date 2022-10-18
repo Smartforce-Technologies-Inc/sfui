@@ -14,8 +14,8 @@ import { SFIcon } from '../SFIcon/SFIcon';
 import { SFGrey, SFSurfaceLight } from '../../SFColors/SFColors';
 import { hexToRgba } from '../../Helpers';
 
-const isOption = (option: SFMenuOption, options: SFMenuOption[]): boolean => {
-  return !!options.find((o: SFMenuOption) => o.value === option.value);
+const isOption = (value: string, options: SFMenuOption[]): boolean => {
+  return !!options.find((o: SFMenuOption) => o.value === value);
 };
 
 export const StyledAutocomplete = withStyles((theme: Theme) => ({
@@ -132,7 +132,7 @@ export interface SFAutocompleteProps
   allowEmpty?: boolean;
   error?: boolean;
   helperText?: string;
-  value?: string | SFMenuOption;
+  value?: string;
   onChange: (value: string | SFMenuOption) => void;
 }
 
@@ -158,15 +158,8 @@ export const SFAutocomplete = React.forwardRef<
     const [inputValue, setInputValue] = React.useState<string>('');
 
     React.useEffect(() => {
-      if (value) {
-        if (typeof value === 'string') {
-          setInputValue(value);
-        } else if (isOption(value, props.options)) {
-          // It's of type SFMenuOption
-          setInputValue(value.label);
-        } else {
-          setInputValue('');
-        }
+      if (value && isOption(value, props.options)) {
+        setInputValue(value);
       } else {
         setInputValue('');
       }
@@ -196,7 +189,7 @@ export const SFAutocomplete = React.forwardRef<
           props.onChange(newValue);
         }
       } else if (props.clearOnBlur) {
-        setInputValue(value ? (value as SFMenuOption).label : '');
+        setInputValue(value || '');
       }
     };
 
