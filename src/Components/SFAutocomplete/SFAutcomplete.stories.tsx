@@ -126,7 +126,7 @@ Disabled.args = {
 };
 
 export const ClearOnBlur: Story<SFAutocompleteProps> = (args) => {
-  const [value, setValue] = React.useState<string>('');
+  const [value, setValue] = React.useState<SFMenuOption | string>('');
 
   return (
     <SFAutocomplete

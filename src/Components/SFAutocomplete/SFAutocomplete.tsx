@@ -15,11 +15,7 @@ import { SFGrey, SFSurfaceLight } from '../../SFColors/SFColors';
 import { hexToRgba } from '../../Helpers';
 
 const isOption = (value: string, options: SFMenuOption[]): boolean => {
-  if (options.find((option: SFMenuOption) => value === option.value)) {
-    return true;
-  } else {
-    return false;
-  }
+  return !!options.find((o: SFMenuOption) => o.value === value);
 };
 
 export const StyledAutocomplete = withStyles((theme: Theme) => ({
@@ -115,6 +111,10 @@ export type SFAutocompleteInputChangeReason = AutocompleteInputChangeReason;
 export type SFAutocompleteChangeReason = AutocompleteChangeReason;
 export type SFAutocompleteCloseReason = AutocompleteCloseReason;
 
+export interface SFAutocompleteRefHandler {
+  focus: () => void;
+}
+
 export interface SFAutocompleteProps
   extends Omit<
     AutocompleteProps<
@@ -133,101 +133,126 @@ export interface SFAutocompleteProps
   error?: boolean;
   helperText?: string;
   value?: string;
-  onChange: (value: string) => void;
+  onChange: (value: string | SFMenuOption) => void;
 }
 
-export const SFAutocomplete = ({
-  className = '',
-  label,
-  required = false,
-  popupIconType = 'none',
-  allowEmpty = false,
-  value,
-  error = false,
-  helperText,
-  ...props
-}: SFAutocompleteProps): React.ReactElement<SFAutocompleteProps> => {
-  const classes = useStyles({ popupIconType });
+export const SFAutocomplete = React.forwardRef<
+  SFAutocompleteRefHandler,
+  SFAutocompleteProps
+>(
+  (
+    {
+      className = '',
+      label,
+      required = false,
+      popupIconType = 'none',
+      allowEmpty = false,
+      value,
+      error = false,
+      helperText,
+      ...props
+    },
+    ref
+  ) => {
+    const classes = useStyles({ popupIconType });
+    const [inputValue, setInputValue] = React.useState<string>('');
 
-  let initInputValue = '';
-  if (value && isOption(value, props.options)) {
-    initInputValue = value;
-  }
-
-  const [inputValue, setInputValue] = React.useState<string>(initInputValue);
-
-  const onInputChange = (
-    _event: React.ChangeEvent,
-    newValue: string,
-    reason: AutocompleteInputChangeReason
-  ): void => {
-    if (reason !== 'reset') {
-      setInputValue(newValue);
-
-      if (props.freeSolo) {
-        props.onChange(newValue);
+    React.useEffect(() => {
+      if (value && isOption(value, props.options)) {
+        setInputValue(value);
+      } else {
+        setInputValue('');
       }
-    } else if (props.clearOnBlur) {
-      setInputValue(value && value.length > 0 ? value : '');
-    }
-  };
+    }, [value]);
 
-  const onChange = (
-    _event: React.ChangeEvent,
-    option: SFMenuOption,
-    reason: AutocompleteChangeReason
-  ): void => {
-    if (reason !== 'create-option' && reason !== 'remove-option') {
-      setInputValue(option ? option.value : '');
-      props.onChange(option ? option.value : '');
-    }
-  };
-
-  let options: SFMenuOption[] = [...props.options];
-
-  if (allowEmpty) {
-    options = [...options, { label: '', value: '' }];
-  }
-
-  const popupIcon =
-    popupIconType === 'search' ? (
-      <SFIcon icon='Search' size={16} />
-    ) : (
-      <SFIcon icon='Down-2' size={16} />
+    const inputRef: React.RefObject<HTMLInputElement> = React.useRef<HTMLInputElement>(
+      null
     );
 
-  return (
-    <StyledAutocomplete
-      {...props}
-      className={`${classes.root} ${className}`}
-      openOnFocus
-      value={value}
-      options={options}
-      onChange={onChange}
-      onInputChange={onInputChange}
-      inputValue={inputValue}
-      getOptionSelected={(
-        option: SFMenuOption,
-        value: SFMenuOption | string
-      ): boolean => {
-        return typeof value === 'string'
-          ? value === option.value
-          : value.value === option.value;
-      }}
-      getOptionLabel={(option: SFMenuOption): string =>
-        typeof option === 'string' ? option : option.label
+    React.useImperativeHandle(ref, () => ({
+      focus(): void {
+        if (inputRef.current) {
+          inputRef.current.focus();
+        }
       }
-      renderInput={(params: AutocompleteRenderInputParams): React.ReactNode => (
-        <SFTextField
-          {...params}
-          label={label}
-          required={required}
-          error={error}
-          helperText={helperText}
-        />
-      )}
-      popupIcon={popupIcon}
-      closeIcon={<SFIcon icon='Close' size={16} />}
-    />
-  );
-};
+    }));
+
+    const onInputChange = (
+      _event: React.ChangeEvent,
+      newValue: string,
+      reason: AutocompleteInputChangeReason
+    ): void => {
+      if (reason !== 'reset') {
+        setInputValue(newValue);
+
+        if (props.freeSolo) {
+          props.onChange(newValue);
+        }
+      } else if (props.clearOnBlur) {
+        setInputValue(value || '');
+      }
+    };
+
+    const onChange = (
+      _event: React.ChangeEvent,
+      option: SFMenuOption,
+      reason: AutocompleteChangeReason
+    ): void => {
+      if (reason !== 'create-option' && reason !== 'remove-option') {
+        props.onChange(option || '');
+      }
+    };
+
+    let options: SFMenuOption[] = [...props.options];
+
+    if (allowEmpty) {
+      options = [...options, { label: '', value: '' }];
+    }
+
+    const popupIcon =
+      popupIconType === 'search' ? (
+        <SFIcon icon='Search' size={16} />
+      ) : (
+        <SFIcon icon='Down-2' size={16} />
+      );
+
+    return (
+      <StyledAutocomplete
+        {...props}
+        className={`${classes.root} ${className}`}
+        openOnFocus
+        value={value}
+        options={options}
+        onChange={onChange}
+        onInputChange={onInputChange}
+        inputValue={inputValue}
+        getOptionSelected={(
+          option: SFMenuOption,
+          value: SFMenuOption | string
+        ): boolean => {
+          // Check needed if allowEmpty
+          return typeof value === 'string'
+            ? value === option.value
+            : value.value === option.value;
+        }}
+        getOptionLabel={(option: SFMenuOption): string =>
+          typeof option === 'string' ? option : option.label
+        }
+        renderInput={(
+          params: AutocompleteRenderInputParams
+        ): React.ReactNode => (
+          <SFTextField
+            {...params}
+            inputRef={inputRef}
+            label={label}
+            required={required}
+            error={error}
+            helperText={helperText}
+          />
+        )}
+        popupIcon={popupIcon}
+        closeIcon={<SFIcon icon='Close' size={16} />}
+      />
+    );
+  }
+);
