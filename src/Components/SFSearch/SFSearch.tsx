@@ -109,32 +109,25 @@ export interface SFSearchProps
     | 'color'
   > {
   label: string;
-  value?: string;
-  onChange?: (value: string) => void;
+  value: string;
+  onChange: (value: string) => void;
 }
 
 export const SFSearch = ({
   label,
-  value = '',
+  value,
   onChange,
   ...props
 }: SFSearchProps): React.ReactElement<SFSearchProps> => {
   const classes = useStyles();
-  const [inputValue, setInputValue] = React.useState<string>(value);
 
   const onInputChange = (
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
   ): void => {
-    setInputValue(event.target.value);
+    onChange(event.target.value.trimStart());
   };
 
-  const cleanInput = (): void => {
-    setInputValue('');
-  };
-
-  React.useEffect(() => {
-    onChange && onChange(inputValue);
-  }, [inputValue]);
+  const onClean = (): void => onChange('');
 
   return (
     <StyledFormControl {...props} variant='outlined' fullWidth>
@@ -142,19 +135,15 @@ export const SFSearch = ({
       <Input
         endAdornment={
           <div className={classes.endAdornmentContainer}>
-            {inputValue !== '' && (
-              <SFIconButton
-                sfSize='medium'
-                sfIcon='Close'
-                onClick={cleanInput}
-              />
+            {value.length > 0 && (
+              <SFIconButton sfSize='medium' sfIcon='Close' onClick={onClean} />
             )}
             <SFIcon className='searchIcon' icon='Search' />
           </div>
         }
         fullWidth
         onChange={onInputChange}
-        value={inputValue}
+        value={value}
         disableUnderline
       />
     </StyledFormControl>
