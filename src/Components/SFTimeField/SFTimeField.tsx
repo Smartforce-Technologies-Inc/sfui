@@ -9,6 +9,7 @@ import {
 } from '@material-ui/pickers';
 
 import { SFBlue, SFGrey, SFRed } from '../../SFColors/SFColors';
+import { SFMaterialUiPickersDate } from '../../SFTypes';
 
 const StyledTimePicker = withStyles((theme: Theme) => ({
   root: {
@@ -123,10 +124,16 @@ const StyledTimePicker = withStyles((theme: Theme) => ({
   }
 }))(KeyboardTimePicker);
 
-export interface SFTimeFieldProps extends KeyboardTimePickerProps {}
+export interface SFTimeFieldProps extends KeyboardTimePickerProps {
+  onChange: (
+    date: SFMaterialUiPickersDate | null,
+    value?: string | null
+  ) => void;
+}
 
 export const SFTimeField = ({
   placeholder = '08:00 AM',
+  mask = '__:__ _M',
   ...props
 }: SFTimeFieldProps): React.ReactElement<SFTimeFieldProps> => {
   return (
@@ -137,7 +144,7 @@ export const SFTimeField = ({
         variant='inline'
         inputVariant='filled'
         disableToolbar
-        mask='__:__ _M'
+        mask={mask}
         keyboardIcon={null}
       />
     </MuiPickersUtilsProvider>

@@ -35,6 +35,17 @@ export default {
         }
       }
     },
+    mask: {
+      description: 'Custom mask. Can be used to override generate from format.',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: {
+          summary: '__:__ _M'
+        }
+      }
+    },
     value: {
       table: {
         disable: true
@@ -61,3 +72,10 @@ export default {
 const Template: Story<SFTimeFieldProps> = (args) => <SFTimeField {...args} />;
 
 export const Default = Template.bind({});
+
+export const Mask = Template.bind({});
+
+Mask.args = {
+  mask: '__:__',
+  format: 'HH:mm'
+};
