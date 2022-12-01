@@ -41,6 +41,7 @@ export interface SFCardProps {
   isLoading?: boolean;
   loadingAtTop?: boolean;
   children?: React.ReactNode;
+  ref?: React.Ref<unknown> | undefined;
 }
 
 export const SFCard = ({
@@ -48,7 +49,8 @@ export const SFCard = ({
   className = '',
   isLoading = false,
   loadingAtTop = false,
-  children
+  children,
+  ref
 }: SFCardProps): React.ReactElement<SFCardProps> => {
   const externalClass: string = className || '';
   const customCardStyles: Record<'root', string> = cardStyles();
@@ -58,6 +60,7 @@ export const SFCard = ({
     <SFPaper
       elevation={sfElevation}
       classes={sfElevation === 0 ? styledPaper : undefined}
+      ref={ref}
     >
       <div className={`${customCardStyles.root} ${externalClass} `}>
         {isLoading === true ? (
