@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { forwardRef } from 'react';
 
 import { SFSpinner } from '../SFSpinner/SFSpinner';
 import { SFPaper } from '../SFPaper/SFPaper';
@@ -43,34 +43,40 @@ export interface SFCardProps {
   children?: React.ReactNode;
 }
 
-export const SFCard = ({
-  sfElevation = 0,
-  className = '',
-  isLoading = false,
-  loadingAtTop = false,
-  children
-}: SFCardProps): React.ReactElement<SFCardProps> => {
-  const externalClass: string = className || '';
-  const customCardStyles: Record<'root', string> = cardStyles();
-  const styledPaper: Record<'root', string> = usePaperStyles();
+export const SFCard = forwardRef(
+  (
+    {
+      sfElevation = 0,
+      className = '',
+      isLoading = false,
+      loadingAtTop = false,
+      children
+    }: SFCardProps,
+    ref?: React.Ref<unknown> | undefined
+  ): React.ReactElement<SFCardProps> => {
+    const externalClass: string = className || '';
+    const customCardStyles: Record<'root', string> = cardStyles();
+    const styledPaper: Record<'root', string> = usePaperStyles();
 
-  return (
-    <SFPaper
-      elevation={sfElevation}
-      classes={sfElevation === 0 ? styledPaper : undefined}
-    >
-      <div className={`${customCardStyles.root} ${externalClass} `}>
-        {isLoading === true ? (
-          <div
-            className={`loader ${loadingAtTop === true ? 'top' : undefined}`}
-          >
-            <SFSpinner />
-            <p>Loading...</p>
-          </div>
-        ) : (
-          children
-        )}
-      </div>
-    </SFPaper>
-  );
-};
+    return (
+      <SFPaper
+        elevation={sfElevation}
+        classes={sfElevation === 0 ? styledPaper : undefined}
+        ref={ref}
+      >
+        <div className={`${customCardStyles.root} ${externalClass} `}>
+          {isLoading === true ? (
+            <div
+              className={`loader ${loadingAtTop === true ? 'top' : undefined}`}
+            >
+              <SFSpinner />
+              <p>Loading...</p>
+            </div>
+          ) : (
+            children
+          )}
+        </div>
+      </SFPaper>
+    );
+  }
+);
