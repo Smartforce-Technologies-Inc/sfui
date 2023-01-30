@@ -80,32 +80,30 @@ export const SFAlertDialog = ({
   ...props
 }: SFAlertDialogProps): React.ReactElement<SFAlertDialogProps> => {
   return (
-    <div>
-      <StyledSFDialog {...props}>
-        <SFDialogTitle>{title}</SFDialogTitle>
+    <StyledSFDialog {...props}>
+      <SFDialogTitle>{title}</SFDialogTitle>
 
-        <SFDialogContent>
-          {contentText && (
-            <SFDialogContentText>{contentText}</SFDialogContentText>
-          )}
+      <SFDialogContent>
+        {contentText && (
+          <SFDialogContentText>{contentText}</SFDialogContentText>
+        )}
 
-          {children}
-        </SFDialogContent>
+        {children}
+      </SFDialogContent>
 
-        <SFAlertDialogActions>
-          {leftAction && (
-            <SFButton sfColor='grey' variant='text' {...leftAction.buttonProps}>
-              {leftAction.label}
-            </SFButton>
-          )}
+      <SFAlertDialogActions>
+        {leftAction && (
+          <SFButton sfColor='grey' variant='text' {...leftAction.buttonProps}>
+            {leftAction.label}
+          </SFButton>
+        )}
 
-          {rightAction && (
-            <SFButton sfColor='blue' {...rightAction.buttonProps}>
-              {rightAction.label}
-            </SFButton>
-          )}
-        </SFAlertDialogActions>
-      </StyledSFDialog>
-    </div>
+        {rightAction && (
+          <SFButton sfColor='blue' {...rightAction.buttonProps}>
+            {rightAction.label}
+          </SFButton>
+        )}
+      </SFAlertDialogActions>
+    </StyledSFDialog>
   );
 };
