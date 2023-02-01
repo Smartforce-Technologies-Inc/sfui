@@ -35,17 +35,19 @@ function NumberFormatCustom(props: NumberFormatCustomProps): JSX.Element {
 export interface SFNumericFieldProps extends SFTextFieldProps {
   numberFormatProps?: NumberFormatProps;
   allowDecimals?: boolean;
+  allowNegative?: boolean;
 }
 
 export const SFNumericField = ({
   numberFormatProps,
   allowDecimals = true,
+  allowNegative = true,
   ...props
 }: SFNumericFieldProps): React.ReactElement<SFNumericFieldProps> => {
   return (
     <SFTextField
       {...props}
-      inputProps={{ ...numberFormatProps, allowDecimals }}
+      inputProps={{ ...numberFormatProps, allowDecimals, allowNegative }}
       InputProps={{
         inputComponent: NumberFormatCustom as any
       }}
