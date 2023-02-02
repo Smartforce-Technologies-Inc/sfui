@@ -41,7 +41,7 @@ export interface SFNumericFieldProps extends SFTextFieldProps {
 export const SFNumericField = ({
   numberFormatProps,
   allowDecimals = true,
-  allowNegative = true,
+  allowNegative = false,
   ...props
 }: SFNumericFieldProps): React.ReactElement<SFNumericFieldProps> => {
   return (
