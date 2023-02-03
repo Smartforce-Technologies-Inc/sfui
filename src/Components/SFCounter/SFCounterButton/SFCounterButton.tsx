@@ -15,6 +15,7 @@ const counterButtonStyles = makeStyles((theme: Theme) => ({
     border: `1px solid ${
       theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
     }`,
+    boxSizing: 'border-box',
     cursor: 'pointer',
     width: '100%',
     height: '100%',
@@ -48,14 +49,7 @@ const counterButtonStyles = makeStyles((theme: Theme) => ({
     }
   },
   buttonDisabled: {
-    border: `1px solid ${
-      theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
-    }`,
-    width: '100%',
-    height: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+    pointerEvents: 'none',
     '& svg path': {
       fill: `${
         theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
@@ -81,7 +75,7 @@ export const SFCounterButton = ({
 
   return (
     <div
-      className={`${disabled ? classes.buttonDisabled : classes.button} ${
+      className={`${classes.button} ${disabled ? classes.buttonDisabled : ''} ${
         icon === 'Add' ? classes.right : classes.left
       }`}
       onClick={disabled ? undefined : onClick}
