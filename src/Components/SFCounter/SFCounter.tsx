@@ -13,10 +13,10 @@ const counterStyles = makeStyles({
   },
   input: {
     '& .MuiInputBase-root': {
-      height: '46px',
+      height: '42px',
 
       '& .MuiInputBase-input': {
-        padding: '13px 12px 12px',
+        padding: '12px 12px 11px',
         textAlign: 'center',
         fontSize: '16px',
         lineHeight: '24px',
@@ -30,6 +30,10 @@ const counterStyles = makeStyles({
           WebkitAppearance: 'none',
           margin: 0
         }
+      },
+
+      '& .MuiOutlinedInput-notchedOutline': {
+        borderRadius: 0
       }
     }
   }
@@ -54,9 +58,7 @@ export const SFCounter = ({
   };
 
   const onDecrement = (): void => {
-    const newValue: number = value - 1;
-
-    onChange(newValue < 0 ? 0 : newValue);
+    onChange(Math.max(value - 1, 0));
   };
 
   return (
