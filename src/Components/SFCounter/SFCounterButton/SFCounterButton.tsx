@@ -6,7 +6,7 @@ import { SFIcon } from '../../SFIcon/SFIcon';
 
 export interface SFCounterButtonProps {
   disabled: boolean;
-  icon: string;
+  icon: 'Add' | 'Remove';
   onClick: () => void;
 }
 
@@ -78,7 +78,7 @@ export const SFCounterButton = ({
       className={`${classes.button} ${disabled ? classes.buttonDisabled : ''} ${
         icon === 'Add' ? classes.right : classes.left
       }`}
-      onClick={disabled ? undefined : onClick}
+      onClick={onClick}
     >
       <SFIcon icon={icon} />
     </div>
