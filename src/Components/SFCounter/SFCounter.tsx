@@ -40,7 +40,7 @@ const counterStyles = makeStyles({
 });
 
 export interface SFCounterProps {
-  disabled: boolean;
+  disabled?: boolean;
   value: number;
   onChange: (value: number) => void;
 }
