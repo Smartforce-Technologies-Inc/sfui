@@ -10,7 +10,8 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       height: '100%',
-      position: 'relative'
+      position: 'relative',
+      boxSizing: 'border-box'
     },
     withHorizontalScroll: {
       paddingBottom: 12
