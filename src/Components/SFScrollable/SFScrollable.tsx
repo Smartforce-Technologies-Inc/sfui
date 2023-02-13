@@ -83,7 +83,7 @@ export interface SFScrollData {
 }
 
 export interface SFScrollableRefHandler {
-  scrollToTop: () => void;
+  scrollToTop: (behavior?: ScrollBehavior) => void;
 }
 
 export interface SFScrollableProps {
