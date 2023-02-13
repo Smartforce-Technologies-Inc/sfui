@@ -112,9 +112,9 @@ export const SFScrollable = React.forwardRef(
     );
 
     React.useImperativeHandle(ref, () => ({
-      scrollToTop(): void {
+      scrollToTop(behavior?: ScrollBehavior): void {
         if (scrollHostRef.current) {
-          scrollHostRef.current.scrollTo(0, 0);
+          scrollHostRef.current.scrollTo({ top: 0, behavior });
         }
       }
     }));
