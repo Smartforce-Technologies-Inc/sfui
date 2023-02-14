@@ -12,6 +12,11 @@ export interface SFCounterButtonProps {
 
 const counterButtonStyles = makeStyles((theme: Theme) => ({
   button: {
+    backgroundColor: 'transparent',
+    MozAppearance: 'none',
+    WebkitAppearance: 'none',
+    WebkitTapHighlightColor: 'transparent',
+    padding: 0,
     border: `1px solid ${
       theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
     }`,
@@ -24,10 +29,12 @@ const counterButtonStyles = makeStyles((theme: Theme) => ({
     alignItems: 'center',
 
     '&:hover': {
-      backgroundColor:
-        theme.palette.type === 'light'
-          ? hexToRgba(SFGrey[200], 0.3)
-          : hexToRgba(SFGrey[500], 0.3)
+      '@media (hover: hover)': {
+        backgroundColor:
+          theme.palette.type === 'light'
+            ? hexToRgba(SFGrey[200], 0.3)
+            : hexToRgba(SFGrey[500], 0.3)
+      }
     },
     '&:active': {
       backgroundColor:
@@ -74,13 +81,13 @@ export const SFCounterButton = ({
   const classes = counterButtonStyles();
 
   return (
-    <div
+    <button
       className={`${classes.button} ${disabled ? classes.buttonDisabled : ''} ${
         icon === 'Add' ? classes.right : classes.left
       }`}
       onClick={onClick}
     >
-      <SFIcon icon={icon} />
-    </div>
+      <SFIcon icon={icon} size={26} />
+    </button>
   );
 };
