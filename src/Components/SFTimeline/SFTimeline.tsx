@@ -144,16 +144,10 @@ export const SFTimeline = ({
                   selectedIndex === index ? classes.isSelected : ''
                 } ${index === itemsLength - 1 ? classes.lastItem : ''}`}
               >
-                <span className={classes.title}>{item.title}</span>
+                <p className={classes.title}>{item.title}</p>
 
-                {children && (
-                  <React.Fragment>
-                    <br />
-                    {children}
-                  </React.Fragment>
-                )}
-                <br />
-                <span className={classes.subtitle}>{item.subtitle}</span>
+                {children}
+                <p className={classes.subtitle}>{item.subtitle}</p>
               </StyledTimelineContent>
             </StyledTimelineItem>
           </div>
