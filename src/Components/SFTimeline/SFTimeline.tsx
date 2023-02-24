@@ -80,6 +80,7 @@ export interface SFTimelineItem {
 
 export interface SFTimelineProps {
   className?: string;
+  children?: React.ReactElement;
   items: SFTimelineItem[];
   size?: 'medium' | 'large';
   selectedIndex?: number;
@@ -94,10 +95,12 @@ const useStyles = makeStyles((theme: Theme) => ({
       size === 'large' ? '24px' : '20px'
   },
   title: {
-    fontWeight: 500
+    fontWeight: 500,
+    margin: 0
   },
   subtitle: {
-    color: theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400]
+    color: theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400],
+    margin: 0
   },
   isSelected: {
     backgroundColor:
@@ -112,6 +115,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export const SFTimeline = ({
   className = '',
+  children,
   items,
   selectedIndex = 0,
   size = 'medium',
@@ -142,9 +146,10 @@ export const SFTimeline = ({
                   selectedIndex === index ? classes.isSelected : ''
                 } ${index === itemsLength - 1 ? classes.lastItem : ''}`}
               >
-                <span className={classes.title}>{item.title}</span>
-                <br />
-                <span className={classes.subtitle}>{item.subtitle}</span>
+                <p className={classes.title}>{item.title}</p>
+
+                {children}
+                <p className={classes.subtitle}>{item.subtitle}</p>
               </StyledTimelineContent>
             </StyledTimelineItem>
           </div>
