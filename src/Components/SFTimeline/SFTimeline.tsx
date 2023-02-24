@@ -80,6 +80,7 @@ export interface SFTimelineItem {
 
 export interface SFTimelineProps {
   className?: string;
+  children?: React.ReactElement;
   items: SFTimelineItem[];
   size?: 'medium' | 'large';
   selectedIndex?: number;
@@ -112,6 +113,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export const SFTimeline = ({
   className = '',
+  children,
   items,
   selectedIndex = 0,
   size = 'medium',
@@ -143,6 +145,13 @@ export const SFTimeline = ({
                 } ${index === itemsLength - 1 ? classes.lastItem : ''}`}
               >
                 <span className={classes.title}>{item.title}</span>
+
+                {children && (
+                  <React.Fragment>
+                    <br />
+                    {children}
+                  </React.Fragment>
+                )}
                 <br />
                 <span className={classes.subtitle}>{item.subtitle}</span>
               </StyledTimelineContent>
