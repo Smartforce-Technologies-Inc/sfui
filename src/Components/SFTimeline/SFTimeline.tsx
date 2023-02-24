@@ -95,10 +95,12 @@ const useStyles = makeStyles((theme: Theme) => ({
       size === 'large' ? '24px' : '20px'
   },
   title: {
-    fontWeight: 500
+    fontWeight: 500,
+    margin: 0
   },
   subtitle: {
-    color: theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400]
+    color: theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400],
+    margin: 0
   },
   isSelected: {
     backgroundColor:

@@ -71,7 +71,7 @@ export const WithChildren = Template.bind({});
 WithChildren.args = {
   children: (
     <div>
-      <p>This is a children</p>
+      <div>This is a children</div>
       <div>Another children</div>
     </div>
   )
