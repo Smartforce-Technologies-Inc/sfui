@@ -34,8 +34,8 @@ const SIZES: SFSizeDict = {
 
 const StyledIconButton = withStyles((theme: Theme) => ({
   root: {
-    '&:hover': {
-      '@media (hover: hover)': {
+    '@media (hover: hover)': {
+      '&:hover, &:focus': {
         backgroundColor: `${
           theme.palette.type === 'light'
             ? 'rgba(204, 204, 204, 0.3)'
