@@ -13,7 +13,7 @@ export default {
   },
   argTypes: {
     type: {
-      description: 'The placement of the tooltip.',
+      description: 'The text type',
       table: {
         type: {
           summary: `'component-title-number'
