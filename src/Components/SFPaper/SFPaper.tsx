@@ -6,16 +6,12 @@ const StyledPaper = styled(Paper)({
   height: '100%'
 });
 
-export interface SFPaperProps extends PaperProps {}
+export interface SFPaperProps extends Omit<PaperProps, 'ref'> {}
 
-export const SFPaper = forwardRef(
+export const SFPaper = forwardRef<HTMLDivElement>(
   (
     { elevation = 0, ...props }: SFPaperProps,
-    ref:
-      | ((instance: HTMLDivElement | null) => void)
-      | React.RefObject<HTMLDivElement>
-      | null
-      | undefined
+    ref
   ): React.ReactElement<SFPaperProps> => {
     return <StyledPaper elevation={elevation} {...props} ref={ref} />;
   }
