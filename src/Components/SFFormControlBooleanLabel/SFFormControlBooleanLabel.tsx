@@ -1,13 +1,10 @@
+import { FormControlLabel, FormControlLabelProps, styled } from '@mui/material';
 import * as React from 'react';
-import { withStyles, Theme } from '@material-ui/core/styles';
-import FormControlLabel, {
-  FormControlLabelProps
-} from '@material-ui/core/FormControlLabel';
 import { SFGrey } from '../../SFColors/SFColors';
 
-const StyledFromControlLabel = withStyles((theme: Theme) => ({
+const StyledFromControlLabel = styled(FormControlLabel)(({ theme }) => ({
   root: {
-    color: `${theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]}`,
+    color: `${theme.palette.mode === 'light' ? SFGrey[900] : SFGrey[50]}`,
     gap: '3px',
     margin: '0px',
     alignItems: 'flex-start',
@@ -17,13 +14,13 @@ const StyledFromControlLabel = withStyles((theme: Theme) => ({
     },
 
     '&.Mui-disabled': {
-      color: `${theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400]}`
+      color: `${theme.palette.mode === 'light' ? SFGrey[600] : SFGrey[400]}`
     }
   },
   label: {
     lineHeight: ' 24px'
   }
-}))(FormControlLabel);
+}));
 
 export interface SFFormControlLabelProps extends FormControlLabelProps {}
 

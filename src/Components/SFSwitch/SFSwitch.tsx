@@ -1,11 +1,9 @@
 import * as React from 'react';
-import { withStyles, Theme } from '@material-ui/core/styles';
-import Switch, { SwitchProps } from '@material-ui/core/Switch';
-import FormControl from '@material-ui/core/FormControl';
+import { Switch, styled, SwitchProps, FormControl } from '@mui/material';
 import { SFSurfaceLight, SFSurfaceDark, SFGrey } from '../../SFColors/SFColors';
 import { SFFormControlBooleanLabel } from '../SFFormControlBooleanLabel/SFFormControlBooleanLabel';
 
-const StyledSwitch = withStyles((theme: Theme) => ({
+const StyledSwitch = styled(Switch)(({ theme }) => ({
   root: {
     display: 'flex',
     width: 60,
@@ -59,12 +57,12 @@ const StyledSwitch = withStyles((theme: Theme) => ({
     }
   },
   switchBase: {
-    color: theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400],
+    color: theme.palette.mode === 'light' ? SFGrey[600] : SFGrey[400],
 
     '&:hover': {
       '@media (hover: hover)': {
         backgroundColor:
-          theme.palette.type === 'light'
+          theme.palette.mode === 'light'
             ? `rgba(204, 204, 204, 0.3)`
             : `rgba(128, 128, 128, 0.3)`
       }
@@ -72,13 +70,13 @@ const StyledSwitch = withStyles((theme: Theme) => ({
 
     '&:active': {
       backgroundColor:
-        theme.palette.type === 'light'
+        theme.palette.mode === 'light'
           ? `rgba(204, 204, 204, 0.5)`
           : `rgba(128, 128, 128, 0.2)`
     },
 
     '&.Mui-checked': {
-      color: theme.palette.type === 'light' ? SFSurfaceLight : SFSurfaceDark,
+      color: theme.palette.mode === 'light' ? SFSurfaceLight : SFSurfaceDark,
 
       '& + $track': {
         opacity: 1,
@@ -89,7 +87,7 @@ const StyledSwitch = withStyles((theme: Theme) => ({
       '&:hover': {
         '@media (hover: hover)': {
           backgroundColor:
-            theme.palette.type === 'light'
+            theme.palette.mode === 'light'
               ? `rgba(204, 235, 255, 0.4)`
               : `rgba(128, 198, 255, 0.2)`
         }
@@ -97,29 +95,29 @@ const StyledSwitch = withStyles((theme: Theme) => ({
 
       '&:active': {
         backgroundColor:
-          theme.palette.type === 'light'
+          theme.palette.mode === 'light'
             ? `rgba(204, 235, 255, 0.6)`
             : `rgba(128, 198, 255, 0.1)`
       }
     },
 
     '&.Mui-disabled': {
-      color: theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700],
+      color: theme.palette.mode === 'light' ? SFGrey[200] : SFGrey[700],
 
       '& + $track': {
         opacity: 1,
         backgroundColor: 'transparent',
-        borderColor: theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
+        borderColor: theme.palette.mode === 'light' ? SFGrey[200] : SFGrey[700]
       },
 
       '&.Mui-checked': {
-        color: theme.palette.type === 'light' ? SFSurfaceLight : SFSurfaceDark,
+        color: theme.palette.mode === 'light' ? SFSurfaceLight : SFSurfaceDark,
 
         '& + $track': {
           backgroundColor:
-            theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700],
+            theme.palette.mode === 'light' ? SFGrey[200] : SFGrey[700],
           borderColor:
-            theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
+            theme.palette.mode === 'light' ? SFGrey[200] : SFGrey[700]
         }
       }
     }
@@ -132,9 +130,9 @@ const StyledSwitch = withStyles((theme: Theme) => ({
     borderRadius: 10,
     opacity: 1,
     backgroundColor:
-      theme.palette.type === 'light' ? SFSurfaceLight : SFSurfaceDark
+      theme.palette.mode === 'light' ? SFSurfaceLight : SFSurfaceDark
   }
-}))(Switch);
+}));
 
 export interface SFSwitchProps extends SwitchProps {
   label?: React.ReactNode;

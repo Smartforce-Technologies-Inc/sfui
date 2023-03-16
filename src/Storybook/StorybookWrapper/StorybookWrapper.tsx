@@ -86,6 +86,8 @@ const StorybookWrapper = ({
   );
   const [nightMode, setNightMode] = useState(prefersDarkMode);
 
+  console.log(nightMode);
+
   const theme: SFTheme = createSFTheme(nightMode ? 'night' : 'day');
 
   const toggleSwitch = (): void => {

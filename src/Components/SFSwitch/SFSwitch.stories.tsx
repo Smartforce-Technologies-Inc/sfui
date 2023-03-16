@@ -1,6 +1,5 @@
 import React from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { Story, ComponentMeta } from '@storybook/react';
 
 import { SFSwitch, SFSwitchProps } from './SFSwitch';
 
@@ -127,7 +126,7 @@ export default {
       }
     }
   }
-} as Meta;
+} as ComponentMeta<typeof SFSwitch>;
 
 const Template: Story<SFSwitchProps> = (args) => <SFSwitch {...args} />;
 
