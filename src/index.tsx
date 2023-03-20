@@ -36,6 +36,7 @@ export * from './Components/SFSpinner/SFSpinner';
 export * from './Components/SFSplitButton/SFSplitButton';
 export * from './Components/SFSwitch/SFSwitch';
 export * from './Components/SFTable/SFTable';
+export * from './Components/SFText/SFText';
 export * from './Components/SFTextField/SFTextField';
 export * from './Components/SFTimeField/SFTimeField';
 export * from './Components/SFTimeline/SFTimeline';

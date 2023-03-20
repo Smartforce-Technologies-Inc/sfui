@@ -76,11 +76,11 @@ const StyledTimeline = withStyles(() => ({
 export interface SFTimelineItem {
   title: string;
   subtitle: string;
+  children?: React.ReactElement;
 }
 
 export interface SFTimelineProps {
   className?: string;
-  children?: React.ReactElement;
   items: SFTimelineItem[];
   size?: 'medium' | 'large';
   selectedIndex?: number;
@@ -115,7 +115,6 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export const SFTimeline = ({
   className = '',
-  children,
   items,
   selectedIndex = 0,
   size = 'medium',
@@ -148,7 +147,7 @@ export const SFTimeline = ({
               >
                 <p className={classes.title}>{item.title}</p>
 
-                {children}
+                {item.children}
                 <p className={classes.subtitle}>{item.subtitle}</p>
               </StyledTimelineContent>
             </StyledTimelineItem>
