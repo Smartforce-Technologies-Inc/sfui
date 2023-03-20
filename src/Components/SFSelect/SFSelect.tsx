@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { SelectProps } from '@material-ui/core';
+import { OutlinedInputProps, SelectProps } from '@material-ui/core';
 import { SFTextField } from '../SFTextField/SFTextField';
 import { SFIcon } from '../SFIcon/SFIcon';
 import { SFMenuItem } from '../SFMenuItem/SFMenuItem';
@@ -29,27 +29,26 @@ const StyledMenuItem = withStyles(() => ({
 }))(SFMenuItem);
 
 export interface SFMenuOption {
-  item?: React.ReactNode;
   label: string;
   value: string;
+  item?: React.ReactNode;
 }
 
 export interface SFSelectProps extends SelectProps {
   options: SFMenuOption[];
   value?: string;
   helperText?: React.ReactNode;
+  InputProps?: Partial<OutlinedInputProps>;
 }
 
 export const SFSelect = ({
   options,
   helperText,
   label,
+  InputProps,
   value,
   ...props
 }: SFSelectProps): React.ReactElement<SFSelectProps> => {
-  const optionsHasItem: boolean =
-    options.find((o: SFMenuOption) => o.item) !== undefined;
-
   return (
     <StyledSelect
       select
@@ -60,7 +59,7 @@ export const SFSelect = ({
       value={value}
       disabled={props.disabled}
       required={props.required}
-      InputProps={optionsHasItem ? { style: { height: 'unset' } } : undefined}
+      InputProps={InputProps}
       SelectProps={{
         ...props,
         autoWidth: false,

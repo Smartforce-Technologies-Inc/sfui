@@ -150,7 +150,8 @@ Empty.argTypes = {
 export const WithChildren = Template.bind({});
 WithChildren.args = {
   label: 'Report',
-  options: getNewOptions()
+  options: getNewOptions(),
+  InputProps: { style: { height: 'unset' } }
 };
 WithChildren.argTypes = {
   value: {
