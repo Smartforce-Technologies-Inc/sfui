@@ -1,6 +1,21 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { SFSelect, SFSelectProps, SFMenuOption } from './SFSelect';
+import { SFIcon } from '../SFIcon/SFIcon';
+
+const optionItem = (title: string, subTitle: string): JSX.Element => (
+  <div>
+    <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
+      <SFIcon icon='Blank-File' size={22} />
+      <div style={{ display: 'flex', gap: '2px', flexDirection: 'column' }}>
+        <p style={{ margin: 0, fontSize: 16, lineHeight: '24px' }}>{title}</p>
+        <p style={{ margin: 0, fontSize: 12, lineHeight: '14px' }}>
+          {subTitle}
+        </p>
+      </div>
+    </div>
+  </div>
+);
 
 const getOptions = (): SFMenuOption[] => {
   return [
@@ -15,6 +30,22 @@ const getOptions = (): SFMenuOption[] => {
     {
       label: 'Bagel number three',
       value: 'Bagel number three'
+    }
+  ];
+};
+
+const getNewOptions = (): SFMenuOption[] => {
+  return [
+    ...getOptions(),
+    {
+      label: '02/03/2023 - 8:23',
+      value: '123456',
+      item: optionItem('02/03/2023 - 8:23', 'John Williams')
+    },
+    {
+      label: '03/02/2024 - 10:30',
+      value: '12345',
+      item: optionItem('03/02/2024 - 10:30', 'Ana Rodriguez')
     }
   ];
 };
@@ -112,6 +143,20 @@ Empty.argTypes = {
   value: {
     table: {
       disable: true
+    }
+  }
+};
+
+export const WithChildren = Template.bind({});
+WithChildren.args = {
+  label: 'Report',
+  options: getNewOptions()
+};
+WithChildren.argTypes = {
+  value: {
+    options: getNewOptions().map((o: SFMenuOption) => o.value),
+    control: {
+      type: 'select'
     }
   }
 };
