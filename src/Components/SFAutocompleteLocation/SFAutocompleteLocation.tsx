@@ -118,6 +118,9 @@ interface TextPart {
 }
 
 const StyledAutocompleteLocation = withStyles((theme: Theme) => ({
+  option: {
+    padding: '6px 24px'
+  },
   popupIndicator: {
     padding: 0
   },

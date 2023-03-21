@@ -13,6 +13,9 @@ import {
 import { StyledAutocomplete } from '../SFAutocomplete/SFAutocomplete';
 
 export const StyledAutocompleteChip = withStyles({
+  option: {
+    padding: '6px 24px'
+  },
   endAdornment: {
     display: 'none'
   }
