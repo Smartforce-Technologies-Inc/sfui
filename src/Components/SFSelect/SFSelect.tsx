@@ -10,7 +10,7 @@ export const StyledSelect = withStyles(() => ({
     '& .MuiSelect-nativeInput': {
       boxSizing: 'border-box'
     },
-    '& svg': {
+    '& .MuiSelect-icon': {
       position: 'absolute',
       right: 18,
       pointerEvents: 'none',
@@ -31,6 +31,7 @@ const StyledMenuItem = withStyles(() => ({
 export interface SFMenuOption {
   label: string;
   value: string;
+  item?: React.ReactNode;
 }
 
 export interface SFSelectProps extends SelectProps {
@@ -62,6 +63,12 @@ export const SFSelect = ({
         IconComponent: (props): React.ReactElement => (
           <SFIcon icon='Down-2' size='16' {...props} />
         ),
+        renderValue: (value: string): string | undefined => {
+          const returnedValue = options.find(
+            (option: SFMenuOption) => option.value === value
+          );
+          return returnedValue?.label;
+        },
         MenuProps: {
           variant: 'menu',
           autoFocus: false,
@@ -72,7 +79,7 @@ export const SFSelect = ({
     >
       {options.map((option: SFMenuOption, index: number) => (
         <StyledMenuItem key={`option-${index}`} value={option.value}>
-          {option.label}
+          {option.item ?? option.label}
         </StyledMenuItem>
       ))}
     </StyledSelect>
