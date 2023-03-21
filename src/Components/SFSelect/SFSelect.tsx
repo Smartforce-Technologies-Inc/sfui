@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { OutlinedInputProps, SelectProps } from '@material-ui/core';
+import { SelectProps } from '@material-ui/core';
 import { SFTextField } from '../SFTextField/SFTextField';
 import { SFIcon } from '../SFIcon/SFIcon';
 import { SFMenuItem } from '../SFMenuItem/SFMenuItem';
@@ -38,14 +38,12 @@ export interface SFSelectProps extends SelectProps {
   options: SFMenuOption[];
   value?: string;
   helperText?: React.ReactNode;
-  InputProps?: Partial<OutlinedInputProps>;
 }
 
 export const SFSelect = ({
   options,
   helperText,
   label,
-  InputProps,
   value,
   ...props
 }: SFSelectProps): React.ReactElement<SFSelectProps> => {
@@ -59,13 +57,18 @@ export const SFSelect = ({
       value={value}
       disabled={props.disabled}
       required={props.required}
-      InputProps={InputProps}
       SelectProps={{
         ...props,
         autoWidth: false,
         IconComponent: (props): React.ReactElement => (
           <SFIcon icon='Down-2' size='16' {...props} />
         ),
+        renderValue: (value: string): string | undefined => {
+          const returnedValue = options.find(
+            (option: SFMenuOption) => option.value === value
+          );
+          return returnedValue?.label;
+        },
         MenuProps: {
           variant: 'menu',
           autoFocus: false,

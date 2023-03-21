@@ -36,7 +36,6 @@ const getOptions = (): SFMenuOption[] => {
 
 const getNewOptions = (): SFMenuOption[] => {
   return [
-    ...getOptions(),
     {
       label: '02/03/2023 - 8:23',
       value: '123456',
@@ -150,8 +149,7 @@ Empty.argTypes = {
 export const WithChildren = Template.bind({});
 WithChildren.args = {
   label: 'Report',
-  options: getNewOptions(),
-  InputProps: { style: { height: 'unset' } }
+  options: getNewOptions()
 };
 WithChildren.argTypes = {
   value: {
