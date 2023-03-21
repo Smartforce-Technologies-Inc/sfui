@@ -148,6 +148,7 @@ Empty.argTypes = {
 
 export const WithChildren = Template.bind({});
 WithChildren.args = {
+  value: '',
   label: 'Report',
   options: getNewOptions()
 };
