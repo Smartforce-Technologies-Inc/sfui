@@ -64,8 +64,7 @@ export const StyledAutocomplete = withStyles((theme: Theme) => ({
       theme.palette.type === 'light' ? SFSurfaceLight : SFGrey[800]
   },
   option: {
-    padding: '6px 24px',
-
+    padding: 0,
     '&[data-focus="true"]': {
       backgroundColor:
         theme.palette.type === 'light'
@@ -238,6 +237,16 @@ export const SFAutocomplete = React.forwardRef<
         getOptionLabel={(option: SFMenuOption): string =>
           typeof option === 'string' ? option : option.label
         }
+        renderOption={(option: SFMenuOption): React.ReactNode => (
+          <div
+            style={{
+              padding:
+                option.label && option.label.length > 0 ? '6px 24px' : '0'
+            }}
+          >
+            {typeof option === 'string' ? option : option.label}
+          </div>
+        )}
         renderInput={(
           params: AutocompleteRenderInputParams
         ): React.ReactNode => (
