@@ -12,6 +12,9 @@ import debounce from 'lodash.debounce';
 import { StyledAutocomplete } from '../SFAutocomplete/SFAutocomplete';
 
 export const StyledPeopleAutocomplete = withStyles({
+  option: {
+    padding: '6px 24px'
+  },
   endAdornment: {
     '& .MuiAutocomplete-popupIndicator': {
       display: 'none'
