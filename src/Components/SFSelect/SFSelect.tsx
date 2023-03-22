@@ -73,7 +73,16 @@ export const SFSelect = ({
           variant: 'menu',
           autoFocus: false,
           disableAutoFocusItem: true,
-          style: { width: '1px' }
+          style: { width: '1px' },
+          anchorOrigin: {
+            vertical: 'bottom',
+            horizontal: 'left'
+          },
+          transformOrigin: {
+            vertical: -3,
+            horizontal: 0
+          },
+          getContentAnchorEl: null
         }
       }}
     >
