@@ -66,3 +66,20 @@ export default {
 const Template: Story<SFTimelineProps> = (args) => <SFTimeline {...args} />;
 
 export const Default = Template.bind({});
+export const WithChildren = Template.bind({});
+
+WithChildren.args = {
+  items: [
+    ...items,
+    {
+      title: 'Title',
+      subtitle: 'Subtitle',
+      children: <p>This is a child</p>
+    },
+    {
+      title: 'Title',
+      subtitle: 'Subtitle',
+      children: <p>This is another child</p>
+    }
+  ]
+};

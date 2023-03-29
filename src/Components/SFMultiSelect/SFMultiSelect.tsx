@@ -22,8 +22,7 @@ const StyledMenuItem = withStyles(() => ({
 
 const useMenuStyles = makeStyles({
   paper: {
-    width: '1px',
-    marginTop: '8px'
+    width: '1px'
   },
   list: {
     '& li > span': {
@@ -103,7 +102,16 @@ export const SFMultiSelect = ({
           variant: 'menu',
           autoFocus: false,
           disableAutoFocusItem: true,
-          classes: menuClasses
+          classes: menuClasses,
+          anchorOrigin: {
+            vertical: 'bottom',
+            horizontal: 'left'
+          },
+          transformOrigin: {
+            vertical: -3,
+            horizontal: 0
+          },
+          getContentAnchorEl: null
         },
         onChange: handleChange,
         renderValue: renderSelected,
