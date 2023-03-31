@@ -1,6 +1,5 @@
 import React from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { Story, ComponentMeta } from '@storybook/react';
 
 import { SFPaper, SFPaperProps } from './SFPaper';
 
@@ -11,19 +10,10 @@ export default {
     controls: {
       disable: true
     }
-  },
-  argTypes: {
-    ref: {
-      table: {
-        disable: true
-      }
-    }
   }
-} as Meta;
+} as ComponentMeta<typeof SFPaper>;
 
-// TODO see why ref argtypes doesnt work.
-
-const Template: Story = (args) => (
+const Template: Story<SFPaperProps> = (args) => (
   <SFPaper {...args}>
     <p>All Stories are wrapped into a SFPaper component</p>
   </SFPaper>

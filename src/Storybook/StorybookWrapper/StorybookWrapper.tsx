@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
-
+import ReactDOM from 'react-dom';
 import { SFThemeProvider, createSFTheme, SFTheme } from '../../SFTheme/SFTheme';
-
 import { SFPaper } from '../../Components/SFPaper/SFPaper';
 import { SFSwitch } from '../../Components/SFSwitch/SFSwitch';
 import { SFLink } from '../../Components/SFLink/SFLink';
 import { useSFMediaQuery, SFStylesProvider } from '../../SFUtils/SFUtils';
-import ReactDOM from 'react-dom';
 
 export interface StorybookWrapperProps {
   children: React.ReactNode;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   context: any;
 }
 
@@ -74,7 +73,9 @@ const getMUILinkTemplate = (name: string): JSX.Element => {
         {muiName}
       </SFLink>
     </div>
-  ) : undefined;
+  ) : (
+    <div />
+  );
 };
 
 const StorybookWrapper = ({
@@ -93,17 +94,20 @@ const StorybookWrapper = ({
   };
 
   useEffect(() => {
-    const docTable: Element = document
+    const docTable: Element | null = document
       .getElementsByClassName('docblock-argstable')
       .item(0);
-    let apiLinkWrapper: HTMLElement = document.getElementById(
+
+    let apiLinkWrapper: HTMLElement | null = document.getElementById(
       'mui-api-link-wrapper'
     );
+
     if (
       context &&
       context.component &&
       context.component.displayName &&
       docTable &&
+      docTable.parentNode &&
       !apiLinkWrapper
     ) {
       apiLinkWrapper = document.createElement('div');

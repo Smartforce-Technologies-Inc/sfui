@@ -1,21 +1,15 @@
 import React, { forwardRef } from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import Paper, { PaperProps } from '@material-ui/core/Paper';
+import { styled, Paper, PaperProps } from '@mui/material';
 
-const StyledPaper = withStyles({
-  root: {
-    borderRadius: 0,
-    height: '100%'
-  }
-})(Paper);
+const StyledPaper = styled(Paper)({
+  borderRadius: 0,
+  height: '100%'
+});
 
-export interface SFPaperProps extends PaperProps {}
+export interface SFPaperProps extends Omit<PaperProps, 'ref'> {}
 
-export const SFPaper = forwardRef(
-  (
-    { elevation = 0, ...props }: SFPaperProps,
-    ref?: React.Ref<unknown> | undefined
-  ): React.ReactElement<SFPaperProps> => {
+export const SFPaper = forwardRef<HTMLDivElement, SFPaperProps>(
+  ({ elevation = 0, ...props }, ref): React.ReactElement<SFPaperProps> => {
     return <StyledPaper elevation={elevation} {...props} ref={ref} />;
   }
 );

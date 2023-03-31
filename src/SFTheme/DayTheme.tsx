@@ -1,4 +1,4 @@
-import { createTheme } from '@material-ui/core/styles';
+import { createTheme } from '@mui/material/styles';
 import { CommonThemeOptions } from './CommonThemeOptions';
 import {
   SFGrey,
@@ -11,7 +11,7 @@ import {
 } from '../SFColors/SFColors';
 
 CommonThemeOptions.palette = {
-  type: 'light',
+  mode: 'light',
   text: {
     primary: SFTextBlack
   },

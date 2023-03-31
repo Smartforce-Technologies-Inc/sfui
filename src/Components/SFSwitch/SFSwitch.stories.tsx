@@ -1,20 +1,22 @@
 import React from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { Story, ComponentMeta } from '@storybook/react';
 
 import { SFSwitch, SFSwitchProps } from './SFSwitch';
 
 export default {
   title: 'Components/SFSwitch',
   component: SFSwitch,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: {
+    controls: {
+      sort: 'alpha',
+      include: ['label', 'checked', 'disabled', 'size']
+    }
+  },
   args: {
     label: 'Off / On',
     checked: false,
     disabled: false,
-    size: 'medium',
-    sfColor: 'primary',
-    edge: false
+    size: 'medium'
   },
   argTypes: {
     onChange: {
@@ -70,64 +72,9 @@ export default {
           summary: 'string'
         }
       }
-    },
-    sfColor: {
-      description: 'The color of the switch.'
-    },
-    edge: {
-      table: {
-        defaultValue: {
-          summary: 'false'
-        }
-      }
-    },
-    centerRipple: {
-      table: {
-        disable: true
-      }
-    },
-    disableFocusRipple: {
-      table: {
-        disable: true
-      }
-    },
-    disableTouchRipple: {
-      table: {
-        disable: true
-      }
-    },
-    focusRipple: {
-      table: {
-        disable: true
-      }
-    },
-    ref: {
-      table: {
-        disable: true
-      }
-    },
-    action: {
-      table: {
-        disable: true
-      }
-    },
-    focusVisibleClassName: {
-      table: {
-        disable: true
-      }
-    },
-    onFocusVisible: {
-      table: {
-        disable: true
-      }
-    },
-    TouchRippleProps: {
-      table: {
-        disable: true
-      }
     }
   }
-} as Meta;
+} as ComponentMeta<typeof SFSwitch>;
 
 const Template: Story<SFSwitchProps> = (args) => <SFSwitch {...args} />;
 
