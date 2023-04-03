@@ -122,7 +122,11 @@ const StyledSwitch = styled(Switch)(({ theme }) => ({
   }
 }));
 
-export interface SFSwitchProps extends SwitchProps {
+export interface SFSwitchProps
+  extends Omit<
+    SwitchProps,
+    'color' | 'disableRipple' | 'disableTouchRipple' | 'disableFocusRipple'
+  > {
   label?: React.ReactNode;
 }
 

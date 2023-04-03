@@ -20,7 +20,7 @@ function getColor(sfColor: SFLinkColor, theme: SFTheme): string {
 export type SFLinkSize = 'small' | 'medium';
 export type SFLinkColor = 'default' | 'primary';
 
-export interface SFLinkProps extends LinkProps {
+export interface SFLinkProps extends Omit<LinkProps, 'color'> {
   sfSize?: SFLinkSize;
   sfColor?: SFLinkColor;
 }
@@ -28,7 +28,6 @@ export interface SFLinkProps extends LinkProps {
 const SFLinkBase = ({
   sfSize = 'medium',
   sfColor = 'default',
-  color,
   ...props
 }: SFLinkProps): React.ReactElement<SFLinkProps> => {
   return <Link {...props} />;
