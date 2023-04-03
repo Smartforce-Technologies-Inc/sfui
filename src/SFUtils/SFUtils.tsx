@@ -1,5 +1,5 @@
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { StylesProvider } from '@material-ui/core/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { StyledEngineProvider } from '@mui/material/styles';
 
 export { useMediaQuery as useSFMediaQuery };
-export { StylesProvider as SFStylesProvider };
+export { StyledEngineProvider as SFStylesProvider };

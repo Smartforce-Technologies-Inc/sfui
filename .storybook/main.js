@@ -1,8 +1,11 @@
 module.exports = {
-  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
-  addons: [
-    '@storybook/preset-create-react-app',
-    '@storybook/addon-links',
-    '@storybook/addon-essentials'
-  ]
+  // TODO set this value when migration its done
+  // stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  // TODO remove (used to test migrated components on storybook)
+  stories: [
+    '../src/Components/SFLink/*.stories.@(js|jsx|ts|tsx)',
+    '../src/Components/SFPaper/*.stories.@(js|jsx|ts|tsx)',
+    '../src/Components/SFSwitch/*.stories.@(js|jsx|ts|tsx)'
+  ],
+  addons: ['@storybook/addon-links', '@storybook/addon-essentials']
 };
