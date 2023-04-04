@@ -36,16 +36,10 @@ export const SFIcon = forwardRef(
   ): React.ReactElement<SFIconProps> => {
     const theme: SFTheme = useSFTheme();
 
-    let color: string =
-      theme.palette.mode === 'light' ? SFGrey[600] : SFGrey[400];
-
-    if (props.color) {
-      if (props.colorDarkMode && theme.palette.mode === 'dark') {
-        color = props.colorDarkMode;
-      } else {
-        color = props.color;
-      }
-    }
+    const lightColor: string = props.color ?? SFGrey[600];
+    const darkColor: string = props.colorDarkMode ?? SFGrey[400];
+    const color: string =
+      theme.palette.mode === 'light' ? lightColor : darkColor;
 
     const customStyle: React.CSSProperties = {
       transform: `rotate(${getRotationDeg(rotate)}deg)`
