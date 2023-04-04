@@ -1,21 +1,10 @@
 import React, { forwardRef } from 'react';
-import { useTheme, Theme } from '@material-ui/core/styles';
-import { SFGrey } from '../../SFColors/SFColors';
 import IcomoonReact from 'icomoon-react';
+import { SFGrey } from '../../SFColors/SFColors';
 import IconSet from './icons/selection.json';
+import { SFTheme, useSFTheme } from '../../SFTheme/SFTheme';
 
-export type SFIconRotation = 'left' | 'right' | 'invert' | 'none';
-
-export interface SFIconProps {
-  color?: string | undefined;
-  size?: string | number | undefined;
-  rotate?: SFIconRotation;
-  icon: string;
-  className?: string | undefined;
-  style?: React.CSSProperties | undefined;
-}
-
-const getRotationDeg = (rotation: SFIconRotation): number => {
+function getRotationDeg(rotation: SFIconRotation): number {
   switch (rotation) {
     case 'left':
       return -90;
@@ -25,19 +14,33 @@ const getRotationDeg = (rotation: SFIconRotation): number => {
       return 180;
     default:
       return 0;
-      break;
   }
-};
+}
+
+export type SFIconRotation = 'left' | 'right' | 'invert' | 'none';
+
+export interface SFIconProps {
+  className?: string;
+  color?: string;
+  colorDarkMode?: string;
+  icon: string;
+  rotate?: SFIconRotation;
+  size?: string | number;
+  style?: React.CSSProperties;
+}
 
 export const SFIcon = forwardRef(
   (
     { icon = 'Bell', size = 24, rotate = 'none', ...props }: SFIconProps,
     ref: React.Ref<SVGSVGElement>
   ): React.ReactElement<SFIconProps> => {
-    const theme: Theme = useTheme();
-    const colorDefault: string =
-      theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400];
-    const color: string = props.color ? props.color : colorDefault;
+    const theme: SFTheme = useSFTheme();
+
+    const lightColor: string = props.color ?? SFGrey[600];
+    const darkColor: string = props.colorDarkMode ?? SFGrey[400];
+    const color: string =
+      theme.palette.mode === 'light' ? lightColor : darkColor;
+
     const customStyle: React.CSSProperties = {
       transform: `rotate(${getRotationDeg(rotate)}deg)`
     };

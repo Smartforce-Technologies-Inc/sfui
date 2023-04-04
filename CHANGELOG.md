@@ -8,6 +8,10 @@
 
 ## Components Changes
 
+### SFIcon
+
+- `colorDarkMode` prop added
+
 ### SFLink
 
 - `sfColor` prop instead `color` prop
