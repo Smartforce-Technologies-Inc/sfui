@@ -1,14 +1,17 @@
 import React from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
-
+import { Story, ComponentMeta } from '@storybook/react';
 import { SFIcon, SFIconProps } from './SFIcon';
 import SFIconSet from './icons/selection.json';
 
 export default {
   title: 'Components/SFIcon',
   component: SFIcon,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: {
+    controls: {
+      sort: 'alpha',
+      include: ['icon', 'color', 'colorDarkMode', 'rotate', 'size']
+    }
+  },
   args: {
     size: 24,
     rotate: 'none',
@@ -26,6 +29,10 @@ export default {
       control: 'color',
       description: 'The color of the icon.'
     },
+    colorDarkMode: {
+      control: 'color',
+      description: 'The color of the icon in dark mode'
+    },
     rotate: {
       description: 'The rotation of the icon.'
     },
@@ -34,24 +41,9 @@ export default {
       control: {
         type: 'number'
       }
-    },
-    className: {
-      table: {
-        disable: true
-      }
-    },
-    ref: {
-      table: {
-        disable: true
-      }
-    },
-    style: {
-      table: {
-        disable: true
-      }
     }
   }
-} as Meta;
+} as ComponentMeta<typeof SFIcon>;
 
 export const Default: Story<SFIconProps> = (args) => <SFIcon {...args} />;
 
@@ -79,6 +71,7 @@ export const AllTogether: Story<SFIconProps> = (args) => (
     ))}
   </div>
 );
+
 AllTogether.parameters = {
   controls: {
     disable: true
