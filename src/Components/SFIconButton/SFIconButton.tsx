@@ -2,7 +2,6 @@ import * as React from 'react';
 import { IconButton, IconButtonProps, styled } from '@mui/material';
 import { SFGrey } from '../../SFColors/SFColors';
 import { SFIcon, SFIconRotation } from '../SFIcon/SFIcon';
-import { SFTheme, useSFTheme } from '../../SFTheme/SFTheme';
 
 export type SFIconSize = 'tiny' | 'small' | 'medium' | 'large';
 
