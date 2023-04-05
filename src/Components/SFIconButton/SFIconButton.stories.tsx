@@ -76,7 +76,11 @@ CustomSize.argTypes = {
     type: 'number'
   }
 };
-CustomSize.parameters = { controls: { exclude: ['sfSize'] } };
+CustomSize.parameters = {
+  controls: {
+    include: ['sfIcon', 'buttonSize', 'iconSize']
+  }
+};
 
 export const AllSizes: Story<SFIconButtonProps> = (args) => (
   <div
