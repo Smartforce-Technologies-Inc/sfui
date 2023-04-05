@@ -1,13 +1,12 @@
 import * as React from 'react';
-import { useTheme, Theme, withStyles } from '@material-ui/core/styles';
+import { IconButton, IconButtonProps, styled } from '@mui/material';
 import { SFGrey } from '../../SFColors/SFColors';
 import { SFIcon, SFIconRotation } from '../SFIcon/SFIcon';
-import IconButton, { IconButtonProps } from '@material-ui/core/IconButton';
 
-type SFSize = 'tiny' | 'small' | 'medium' | 'large';
+export type SFIconSize = 'tiny' | 'small' | 'medium' | 'large';
 
 type SFSizeDict = {
-  [key: string]: {
+  [k in SFIconSize]: {
     button: number;
     icon: number;
   };
@@ -32,41 +31,41 @@ const SIZES: SFSizeDict = {
   }
 };
 
-const StyledIconButton = withStyles((theme: Theme) => ({
-  root: {
-    '@media (hover: hover)': {
-      '&:hover, &:focus': {
-        backgroundColor: `${
-          theme.palette.type === 'light'
-            ? 'rgba(204, 204, 204, 0.3)'
-            : 'rgba(128, 128, 128, 0.3)'
-        }`
-      }
-    },
-    '&:active': {
+const StyledIconButton = styled(IconButton)(({ theme }) => ({
+  '@media (hover: hover)': {
+    '&:hover, &:focus': {
       backgroundColor: `${
-        theme.palette.type === 'light'
-          ? 'rgba(204, 204, 204, 0.5)'
-          : 'rgba(128, 128, 128, 0.2)'
+        theme.palette.mode === 'light'
+          ? 'rgba(204, 204, 204, 0.3)'
+          : 'rgba(128, 128, 128, 0.3)'
       }`
     }
+  },
+  '&:active': {
+    backgroundColor: `${
+      theme.palette.mode === 'light'
+        ? 'rgba(204, 204, 204, 0.5)'
+        : 'rgba(128, 128, 128, 0.2)'
+    }`
   }
-}))(IconButton);
+}));
 
-interface SFIconButtonBaseProps extends IconButtonProps {
+interface SFIconButtonBaseProps
+  extends Omit<IconButtonProps, 'color' | 'disableRipple'> {
+  sfColor?: string;
+  sfColorDarkMode?: string;
   sfIcon: string;
-  sfColor?: string | undefined;
   rotate?: SFIconRotation;
-  sfSize?: SFSize;
+  sfSize?: SFIconSize;
 }
 
 interface SFIconButtonSizeProps extends SFIconButtonBaseProps {
-  sfSize: SFSize;
+  sfSize: SFIconSize;
 }
 
 interface SFIconButtonCustomSizeProps extends SFIconButtonBaseProps {
-  buttonSize: SFSize | number;
-  iconSize: SFSize | number;
+  buttonSize: SFIconSize | number;
+  iconSize: SFIconSize | number;
 }
 
 export type SFIconButtonProps =
@@ -74,17 +73,14 @@ export type SFIconButtonProps =
   | SFIconButtonCustomSizeProps;
 
 export const SFIconButton = ({
-  sfIcon,
   sfColor,
+  sfColorDarkMode,
+  sfIcon,
   rotate = 'none',
   ...props
 }: SFIconButtonProps): React.ReactElement<SFIconButtonProps> => {
-  const theme: Theme = useTheme();
-  const isThemeLight: boolean = theme.palette.type === 'light';
-  const iconDefaultColor: string = isThemeLight ? SFGrey[600] : SFGrey[400];
-  const disabledColor: string = isThemeLight ? SFGrey[200] : SFGrey[700];
-  const colorPicked: string = sfColor || iconDefaultColor;
-
+  const color = props.disabled ? SFGrey[200] : sfColor;
+  const colorDarkMode = props.disabled ? SFGrey[700] : sfColorDarkMode;
   let buttonSize, iconSize;
   let buttonProps;
 
@@ -112,9 +108,10 @@ export const SFIconButton = ({
     >
       <SFIcon
         icon={sfIcon}
-        size={iconSize}
-        color={props.disabled ? disabledColor : colorPicked}
+        color={color}
+        colorDarkMode={colorDarkMode}
         rotate={rotate}
+        size={iconSize}
       />
     </StyledIconButton>
   );

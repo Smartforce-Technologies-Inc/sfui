@@ -17,8 +17,8 @@
 // export * from './Components/SFDatePicker/SFDatePicker';
 // export * from './Components/SFDialog/SFDialog';
 // export * from './Components/SFDrawer/SFDrawer';
-// export * from './Components/SFIcon/SFIcon';
-// export * from './Components/SFIconButton/SFIconButton';
+export * from './Components/SFIcon/SFIcon';
+export * from './Components/SFIconButton/SFIconButton';
 export * from './Components/SFLink/SFLink';
 // export * from './Components/SFMenu/SFMenu';
 // export * from './Components/SFMenuItem/SFMenuItem';

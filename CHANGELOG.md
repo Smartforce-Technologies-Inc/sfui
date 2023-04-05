@@ -12,6 +12,10 @@
 
 - `colorDarkMode` prop added
 
+### SFIconButton
+
+- `sfColorDarkMode` prop added
+
 ### SFLink
 
 - `sfColor` prop instead `color` prop
