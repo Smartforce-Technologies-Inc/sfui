@@ -52,9 +52,9 @@ const StyledIconButton = styled(IconButton)(({ theme }) => ({
 
 interface SFIconButtonBaseProps
   extends Omit<IconButtonProps, 'color' | 'disableRipple'> {
-  sfIcon: string;
   sfColor?: string;
   sfColorDarkMode?: string;
+  sfIcon: string;
   rotate?: SFIconRotation;
   sfSize?: SFIconSize;
 }
@@ -73,9 +73,9 @@ export type SFIconButtonProps =
   | SFIconButtonCustomSizeProps;
 
 export const SFIconButton = ({
-  sfIcon,
   sfColor,
   sfColorDarkMode,
+  sfIcon,
   rotate = 'none',
   ...props
 }: SFIconButtonProps): React.ReactElement<SFIconButtonProps> => {
