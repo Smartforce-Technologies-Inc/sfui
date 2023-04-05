@@ -1,32 +1,37 @@
 import React from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
-
+import { Story, ComponentMeta } from '@storybook/react';
 import { SFIconButton, SFIconButtonProps } from './SFIconButton';
 import SFIconSet from '../SFIcon/icons/selection.json';
 
 export default {
   title: 'Components/SFIconButton',
   component: SFIconButton,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: {
+    controls: {
+      sort: 'alpha',
+      include: [
+        'disabled',
+        'sfColor',
+        'sfColorDarkMode',
+        'sfSize',
+        'sfIcon',
+        'rotate'
+      ]
+    }
+  },
   args: {
-    sfColor: 'grey',
     sfIcon: 'Bell',
     rotate: 'none'
   },
   argTypes: {
     onClick: { action: 'onClick', table: { disable: true } },
     sfColor: {
-      description: 'The color of the component.',
-      table: {
-        defaultValue: {
-          summary: `"grey"`
-        }
-      },
-      options: ['blue', 'red', 'grey'],
-      control: {
-        type: 'radio'
-      }
+      control: 'color',
+      description: 'The color of the icon.'
+    },
+    sfColorDarkMode: {
+      control: 'color',
+      description: 'The color of the icon in dark mode'
     },
     sfSize: {
       description: 'The size of the component.'
@@ -40,89 +45,9 @@ export default {
     },
     rotate: {
       description: 'The rotation of the icon.'
-    },
-    disabled: {
-      control: {
-        type: 'boolean'
-      }
-    },
-    color: {
-      table: {
-        disable: true
-      }
-    },
-    size: {
-      table: {
-        disable: true
-      }
-    },
-    action: {
-      table: {
-        disable: true
-      }
-    },
-    edge: {
-      table: {
-        disable: true
-      }
-    },
-    focusVisibleClassName: {
-      table: {
-        disable: true
-      }
-    },
-    onFocusVisible: {
-      table: {
-        disable: true
-      }
-    },
-    tabIndex: {
-      table: {
-        disable: true
-      }
-    },
-    TouchRippleProps: {
-      table: {
-        disable: true
-      }
-    },
-    disableFocusRipple: {
-      table: {
-        disable: true
-      }
-    },
-    disableRipple: {
-      table: {
-        disable: true
-      }
-    },
-    focusRipple: {
-      table: {
-        disable: true
-      }
-    },
-    disableTouchRipple: {
-      table: {
-        disable: true
-      }
-    },
-    centerRipple: {
-      table: {
-        disable: true
-      }
-    },
-    children: {
-      table: {
-        disable: true
-      }
-    },
-    ref: {
-      table: {
-        disable: true
-      }
     }
   }
-} as Meta;
+} as ComponentMeta<typeof SFIconButton>;
 
 export const Default: Story<SFIconButtonProps> = (args) => (
   <SFIconButton {...args} />
