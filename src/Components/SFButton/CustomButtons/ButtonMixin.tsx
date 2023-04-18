@@ -1,5 +1,4 @@
-import { withStyles, Theme } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+import { Button, styled } from '@mui/material';
 import { SFGrey } from '../../../SFColors/SFColors';
 
 export interface ButtonMixinProps {
@@ -69,138 +68,134 @@ export interface ButtonMixinProps {
 
 // TODO: Fix this 'any' return type
 export default function ButtonMixin(sfButtonConfig: ButtonMixinProps): any {
-  return withStyles((theme: Theme) => ({
-    root: {
-      color: sfButtonConfig.contained[theme.palette.type].color,
-      backgroundColor:
-        sfButtonConfig.contained[theme.palette.type].backgroundColor,
-      '@media (hover: hover)': {
-        '&:hover, &:focus': {
-          backgroundColor:
-            sfButtonConfig.contained[theme.palette.type].backgroundColorHover
-        },
-        '&:active': {
-          backgroundColor:
-            sfButtonConfig.contained[theme.palette.type].backgroundColorActive
-        }
-      },
-      '@media (hover: none)': {
-        '&:hover, &:focus': {
-          color: sfButtonConfig.contained[theme.palette.type].color,
-          backgroundColor:
-            sfButtonConfig.contained[theme.palette.type].backgroundColor
-        },
-        '&:active': {
-          backgroundColor:
-            sfButtonConfig.contained[theme.palette.type].backgroundColorActive
-        }
-      },
-      '&$disabled': {
-        color: theme.palette.type === 'light' ? SFGrey[400] : SFGrey[600],
+  return styled(Button)(({ theme }) => ({
+    display: 'flex',
+    gap: '6px',
+    color: sfButtonConfig.contained[theme.palette.mode].color,
+    backgroundColor:
+      sfButtonConfig.contained[theme.palette.mode].backgroundColor,
+    '@media (hover: hover)': {
+      '&:hover, &:focus': {
         backgroundColor:
-          theme.palette.type === 'light' ? SFGrey[100] : SFGrey[800]
+          sfButtonConfig.contained[theme.palette.mode].backgroundColorHover
       },
-      '& .MuiCircularProgress-circle': {
-        color: sfButtonConfig.contained[theme.palette.type].color
+      '&:active': {
+        backgroundColor:
+          sfButtonConfig.contained[theme.palette.mode].backgroundColorActive
       }
     },
-    outlined: {
-      color: sfButtonConfig.outlined[theme.palette.type].color,
-      borderColor: sfButtonConfig.outlined[theme.palette.type].borderColor,
+    '@media (hover: none)': {
+      '&:hover, &:focus': {
+        color: sfButtonConfig.contained[theme.palette.mode].color,
+        backgroundColor:
+          sfButtonConfig.contained[theme.palette.mode].backgroundColor
+      },
+      '&:active': {
+        backgroundColor:
+          sfButtonConfig.contained[theme.palette.mode].backgroundColorActive
+      }
+    },
+    '&$disabled': {
+      color: theme.palette.mode === 'light' ? SFGrey[400] : SFGrey[600],
       backgroundColor:
-        sfButtonConfig.outlined[theme.palette.type].backgroundColor,
+        theme.palette.mode === 'light' ? SFGrey[100] : SFGrey[800]
+    },
+    '& .MuiCircularProgress-circle': {
+      color: sfButtonConfig.contained[theme.palette.mode].color
+    },
+    '&.MuiButton-outlined': {
+      color: sfButtonConfig.outlined[theme.palette.mode].color,
+      borderColor: sfButtonConfig.outlined[theme.palette.mode].borderColor,
+      backgroundColor:
+        sfButtonConfig.outlined[theme.palette.mode].backgroundColor,
       '@media (hover: hover)': {
         '&:hover, &:focus': {
-          color: sfButtonConfig.outlined[theme.palette.type].colorHover,
+          color: sfButtonConfig.outlined[theme.palette.mode].colorHover,
           borderColor:
-            sfButtonConfig.outlined[theme.palette.type].borderColorHover,
+            sfButtonConfig.outlined[theme.palette.mode].borderColorHover,
           backgroundColor:
-            sfButtonConfig.outlined[theme.palette.type].backgroundColorHover
+            sfButtonConfig.outlined[theme.palette.mode].backgroundColorHover
         },
         '&:active': {
-          color: sfButtonConfig.outlined[theme.palette.type].colorActive,
+          color: sfButtonConfig.outlined[theme.palette.mode].colorActive,
           borderColor:
-            sfButtonConfig.outlined[theme.palette.type].borderColorActive,
+            sfButtonConfig.outlined[theme.palette.mode].borderColorActive,
           backgroundColor:
-            sfButtonConfig.outlined[theme.palette.type].backgroundColorActive
+            sfButtonConfig.outlined[theme.palette.mode].backgroundColorActive
         }
       },
       '@media (hover: none)': {
         '&:hover, &:focus': {
-          color: sfButtonConfig.outlined[theme.palette.type].color,
-          borderColor: sfButtonConfig.outlined[theme.palette.type].borderColor,
+          color: sfButtonConfig.outlined[theme.palette.mode].color,
+          borderColor: sfButtonConfig.outlined[theme.palette.mode].borderColor,
           backgroundColor:
-            sfButtonConfig.outlined[theme.palette.type].backgroundColor
+            sfButtonConfig.outlined[theme.palette.mode].backgroundColor
         },
         '&:active': {
-          color: sfButtonConfig.outlined[theme.palette.type].colorActive,
+          color: sfButtonConfig.outlined[theme.palette.mode].colorActive,
           borderColor:
-            sfButtonConfig.outlined[theme.palette.type].borderColorActive,
+            sfButtonConfig.outlined[theme.palette.mode].borderColorActive,
           backgroundColor:
-            sfButtonConfig.outlined[theme.palette.type].backgroundColorActive
+            sfButtonConfig.outlined[theme.palette.mode].backgroundColorActive
         }
       },
       '&$disabled': {
-        color: theme.palette.type === 'light' ? SFGrey[400] : SFGrey[600],
+        color: theme.palette.mode === 'light' ? SFGrey[400] : SFGrey[600],
         backgroundColor: 'transparent',
-        borderColor: theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
+        borderColor: theme.palette.mode === 'light' ? SFGrey[200] : SFGrey[700]
       },
       '& .MuiCircularProgress-circle': {
-        color: sfButtonConfig.outlined[theme.palette.type].color
+        color: sfButtonConfig.outlined[theme.palette.mode].color
       }
     },
-    text: {
-      color: sfButtonConfig.text[theme.palette.type].color,
-      backgroundColor: sfButtonConfig.text[theme.palette.type].backgroundColor,
+    '&.MuiButton-text': {
+      color: sfButtonConfig.text[theme.palette.mode].color,
+      backgroundColor: sfButtonConfig.text[theme.palette.mode].backgroundColor,
       border: 'none',
       '@media (hover: hover)': {
         '&:hover, &:focus': {
-          color: sfButtonConfig.text[theme.palette.type].colorHover,
+          color: sfButtonConfig.text[theme.palette.mode].colorHover,
           backgroundColor:
-            sfButtonConfig.text[theme.palette.type].backgroundColorHover,
+            sfButtonConfig.text[theme.palette.mode].backgroundColorHover,
           border: 'none'
         },
         '&:active': {
-          color: sfButtonConfig.text[theme.palette.type].colorActive,
+          color: sfButtonConfig.text[theme.palette.mode].colorActive,
           backgroundColor:
-            sfButtonConfig.text[theme.palette.type].backgroundColorActive,
+            sfButtonConfig.text[theme.palette.mode].backgroundColorActive,
           border: 'none'
         }
       },
       '@media (hover: none)': {
         '&:hover, &:focus': {
-          color: sfButtonConfig.text[theme.palette.type].color,
+          color: sfButtonConfig.text[theme.palette.mode].color,
           backgroundColor:
-            sfButtonConfig.text[theme.palette.type].backgroundColor,
+            sfButtonConfig.text[theme.palette.mode].backgroundColor,
           border: 'none'
         },
         '&:active': {
-          color: sfButtonConfig.text[theme.palette.type].colorActive,
+          color: sfButtonConfig.text[theme.palette.mode].colorActive,
           backgroundColor:
-            sfButtonConfig.text[theme.palette.type].backgroundColorActive,
+            sfButtonConfig.text[theme.palette.mode].backgroundColorActive,
           border: 'none'
         }
       },
       '&$disabled': {
-        color: theme.palette.type === 'light' ? SFGrey[400] : SFGrey[600],
+        color: theme.palette.mode === 'light' ? SFGrey[400] : SFGrey[600],
         backgroundColor: 'transparent',
         borderColor: 'none'
       },
       '& .MuiCircularProgress-circle': {
-        color: sfButtonConfig.text[theme.palette.type].color
+        color: sfButtonConfig.text[theme.palette.mode].color
       }
     },
-    disabled: {
-      color: theme.palette.type === 'light' ? SFGrey[400] : SFGrey[600],
+    '&.Mui-disabled': {
+      color: theme.palette.mode === 'light' ? SFGrey[400] : SFGrey[600],
       backgroundColor:
-        theme.palette.type === 'light' ? SFGrey[100] : SFGrey[800],
+        theme.palette.mode === 'light' ? SFGrey[100] : SFGrey[800],
       '& .MuiCircularProgress-circle': {
-        color: theme.palette.type === 'light' ? SFGrey[400] : SFGrey[600]
+        color: theme.palette.mode === 'light' ? SFGrey[400] : SFGrey[600]
       }
-    },
-    label: {
-      display: 'flex',
-      gap: '6px'
     }
-  }))(Button);
+  }));
 }
