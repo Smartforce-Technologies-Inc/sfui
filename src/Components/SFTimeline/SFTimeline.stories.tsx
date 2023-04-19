@@ -22,7 +22,10 @@ export default {
   title: 'Components/SFTimeline',
   component: SFTimeline,
   parameters: {
-    controls: { sort: 'alpha', include: ['size', 'selectedIndex'] }
+    controls: {
+      sort: 'alpha',
+      include: ['size', 'selectedIndex', 'onItemClick']
+    }
   },
   args: {
     items,
@@ -30,6 +33,12 @@ export default {
     selectedIndex: 0
   },
   argTypes: {
+    onItemClick: {
+      action: 'onItemClick',
+      table: {
+        disable: true
+      }
+    },
     size: {
       description: 'The size of the timeline.'
     },
