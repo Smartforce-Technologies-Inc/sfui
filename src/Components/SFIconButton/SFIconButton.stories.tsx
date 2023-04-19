@@ -15,7 +15,8 @@ export default {
         'sfColorDarkMode',
         'sfSize',
         'sfIcon',
-        'rotate'
+        'rotate',
+        'onClick'
       ]
     }
   },
