@@ -120,9 +120,7 @@ export default {
   }
 } as ComponentMeta<typeof SFTextField>;
 
-const Template: Story<SFTextFieldProps> = (args) => {
-  return <SFTextField {...args} />;
-};
+const Template: Story<SFTextFieldProps> = (args) => <SFTextField {...args} />;
 
 export const Default = Template.bind({});
 Default.argTypes = {
