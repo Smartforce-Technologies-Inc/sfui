@@ -1,13 +1,26 @@
 import React from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
-
+import { Story, ComponentMeta } from '@storybook/react';
 import { SFTextField, SFTextFieldProps } from './SFTextField';
 
 export default {
   title: 'Components/SFTextField',
   component: SFTextField,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: {
+    controls: {
+      sort: 'alpha',
+      include: [
+        'disabled',
+        'error',
+        'focused',
+        'helperText',
+        'label',
+        'multiline',
+        'type',
+        'value',
+        'onChange'
+      ]
+    }
+  },
   args: {
     label: 'Bagel',
     value: 'Some text',
@@ -88,13 +101,6 @@ export default {
         }
       }
     },
-    hiddenLabel: {
-      table: {
-        defaultValue: {
-          summary: 'false'
-        }
-      }
-    },
     type: {
       description: `Type of the input element. It should be a valid HTML5 input type.`,
       table: {
@@ -110,26 +116,13 @@ export default {
           summary: 'any'
         }
       }
-    },
-    defaultValue: {
-      table: {
-        disable: true
-      }
-    },
-    variant: {
-      table: {
-        disable: true
-      }
-    },
-    ref: {
-      table: {
-        disable: true
-      }
     }
   }
-} as Meta;
+} as ComponentMeta<typeof SFTextField>;
 
-const Template: Story<SFTextFieldProps> = (args) => <SFTextField {...args} />;
+const Template: Story<SFTextFieldProps> = (args) => {
+  return <SFTextField {...args} />;
+};
 
 export const Default = Template.bind({});
 Default.argTypes = {
