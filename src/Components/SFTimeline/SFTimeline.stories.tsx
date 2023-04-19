@@ -1,6 +1,5 @@
 import React from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { Story, ComponentMeta } from '@storybook/react';
 
 import { SFTimeline, SFTimelineItem, SFTimelineProps } from './SFTimeline';
 
@@ -22,7 +21,9 @@ const items: SFTimelineItem[] = [
 export default {
   title: 'Components/SFTimeline',
   component: SFTimeline,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: {
+    controls: { sort: 'alpha', include: ['size', 'selectedIndex'] }
+  },
   args: {
     items,
     size: 'medium',
@@ -34,34 +35,9 @@ export default {
     },
     selectedIndex: {
       description: 'The item index in the timeline to be selected.'
-    },
-    onItemClick: {
-      table: {
-        disable: true
-      }
-    },
-    items: {
-      table: {
-        disable: true
-      }
-    },
-    className: {
-      table: {
-        disable: true
-      }
-    },
-    style: {
-      table: {
-        disable: true
-      }
-    },
-    ref: {
-      table: {
-        disable: true
-      }
     }
   }
-} as Meta;
+} as ComponentMeta<typeof SFTimeline>;
 
 const Template: Story<SFTimelineProps> = (args) => <SFTimeline {...args} />;
 
