@@ -41,6 +41,7 @@ export const SFChipListInput = ({
   freeSolo = false,
   disabled = false,
   inputType = 'text',
+  required,
   isValid,
   onChange
 }: SFChipListInputProps): React.ReactElement<SFChipListInputProps> => {
@@ -204,6 +205,7 @@ export const SFChipListInput = ({
         renderInput={(params: AutocompleteRenderInputParams): JSX.Element => (
           <SFAutocompleteInput
             {...params}
+            required={required}
             type={inputType}
             rows={1}
             label={label}
