@@ -1,13 +1,16 @@
 import React from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
-
+import { Story, ComponentMeta } from '@storybook/react';
 import { SFRadio, SFRadioProps } from './SFRadio';
 
 export default {
   title: 'Components/SFRadio',
   component: SFRadio,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: {
+    controls: {
+      sort: 'alpha',
+      include: ['checked', 'isGroup', 'label', 'disabled']
+    }
+  },
   args: {
     label: 'Bagel'
   },
@@ -50,59 +53,9 @@ export default {
       control: {
         type: 'boolean'
       }
-    },
-    ref: {
-      table: {
-        disable: true
-      }
-    },
-    action: {
-      table: {
-        disable: true
-      }
-    },
-    centerRipple: {
-      table: {
-        disable: true
-      }
-    },
-    disableFocusRipple: {
-      table: {
-        disable: true
-      }
-    },
-    disableTouchRipple: {
-      table: {
-        disable: true
-      }
-    },
-    focusRipple: {
-      table: {
-        disable: true
-      }
-    },
-    edge: {
-      table: {
-        disable: true
-      }
-    },
-    focusVisibleClassName: {
-      table: {
-        disable: true
-      }
-    },
-    onFocusVisible: {
-      table: {
-        disable: true
-      }
-    },
-    TouchRippleProps: {
-      table: {
-        disable: true
-      }
     }
   }
-} as Meta;
+} as ComponentMeta<typeof SFRadio>;
 
 const Template: Story<SFRadioProps> = (args) => <SFRadio {...args} />;
 
