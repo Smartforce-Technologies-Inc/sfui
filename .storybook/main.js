@@ -7,7 +7,9 @@ module.exports = {
     '../src/Components/SFIconButton/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFLink/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFPaper/*.stories.@(js|jsx|ts|tsx)',
-    '../src/Components/SFSwitch/*.stories.@(js|jsx|ts|tsx)'
+    '../src/Components/SFSwitch/*.stories.@(js|jsx|ts|tsx)',
+    '../src/Components/SFRadioGroup/SFRadio/*.stories.@(js|jsx|ts|tsx)',
+    '../src/Components/SFRadioGroup/*.stories.@(js|jsx|ts|tsx)'
   ],
   addons: ['@storybook/addon-links', '@storybook/addon-essentials']
 };
