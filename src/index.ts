@@ -41,7 +41,7 @@ export * from './Components/SFSwitch/SFSwitch';
 // export * from './Components/SFText/SFText';
 // export * from './Components/SFTextField/SFTextField';
 // export * from './Components/SFTimeField/SFTimeField';
-// export * from './Components/SFTimeline/SFTimeline';
+export * from './Components/SFTimeline/SFTimeline';
 // export * from './Components/SFTooltip/SFTooltip';
 
 export * from './SFTheme/SFTheme';
