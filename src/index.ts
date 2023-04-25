@@ -32,7 +32,7 @@ export * from './Components/SFPaper/SFPaper';
 // export * from './Components/SFScrollable/SFScrollable';
 // export * from './Components/SFSearch/SFSearch';
 // export * from './Components/SFSelect/SFSelect';
-// export * from './Components/SFSkeleton/SFSkeleton';
+export * from './Components/SFSkeleton/SFSkeleton';
 // export * from './Components/SFSnackbar/SFSnackbar';
 // export * from './Components/SFSpinner/SFSpinner';
 // export * from './Components/SFSplitButton/SFSplitButton';
