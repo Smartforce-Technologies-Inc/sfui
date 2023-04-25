@@ -1,26 +1,13 @@
 import React from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
-
+import { Story, ComponentMeta } from '@storybook/react';
 import { SFScrollable, SFScrollableProps } from './SFScrollable';
 
 export default {
   title: 'Components/SFScrollable',
   component: SFScrollable,
-  parameters: { controls: { sort: 'alpha' } },
-  argTypes: {
-    className: {
-      table: {
-        disable: true
-      }
-    },
-    onScroll: {
-      table: {
-        disable: true
-      }
-    }
-  }
-} as Meta;
+  parameters: { controls: { sort: 'alpha', include: [] } },
+  argTypes: {}
+} as ComponentMeta<typeof SFScrollable>;
 
 // TODO same inconvenient as SFPaper, argtypes not functioning
 
