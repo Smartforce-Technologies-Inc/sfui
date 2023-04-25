@@ -1,5 +1,5 @@
 import React from 'react';
-import { Skeleton, SkeletonProps } from '@material-ui/lab';
+import { Skeleton, SkeletonProps } from '@mui/material';
 
 export interface SFSkeletonProps extends SkeletonProps {}
 
