@@ -8,7 +8,7 @@
 // export * from './Components/SFAutocompleteLocation/SFAutocompleteLocation';
 // export * from './Components/SFBadge/SFBadge';
 // export * from './Components/SFButton/SFButton';
-// export * from './Components/SFCard/SFCard';
+export * from './Components/SFCard/SFCard';
 // export * from './Components/SFChip/SFChip';
 // export * from './Components/SFChipListInput/SFChipListInput';
 // export * from './Components/SFChipListField/SFChipListField';

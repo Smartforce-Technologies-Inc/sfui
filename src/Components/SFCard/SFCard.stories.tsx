@@ -1,12 +1,15 @@
 import React from 'react';
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { Story, ComponentMeta } from '@storybook/react';
 
 import { SFCard, SFCardProps, sfElevations } from './SFCard';
 
 export default {
   title: 'Components/SFCard',
   component: SFCard,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: {
+    controls: { sort: 'alpha' },
+    include: ['isLoading', 'loadingAtTop', 'sfElevation']
+  },
   argTypes: {
     isLoading: {
       description: 'If true, displays a spinner inside the card.'
@@ -18,14 +21,9 @@ export default {
     sfElevation: {
       description:
         'Shadow depth, corresponds to dp in the spec. It accepts values between 0 and 24 inclusive.'
-    },
-    className: {
-      table: {
-        disable: true
-      }
     }
   }
-} as Meta;
+} as ComponentMeta<typeof SFCard>;
 
 const Template: Story<SFCardProps> = (args) => (
   <SFCard {...args}>
