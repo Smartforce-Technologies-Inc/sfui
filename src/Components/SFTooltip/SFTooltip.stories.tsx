@@ -1,16 +1,16 @@
 import React from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { Story, ComponentMeta } from '@storybook/react';
 import { SFTooltip, SFTooltipProps } from './SFTooltip';
 
 export default {
   title: 'Components/SFTooltip',
   component: SFTooltip,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: { controls: { sort: 'alpha', exclude: ['content', 'ref'] } },
   args: {
     title: 'Title',
     open: true,
     arrow: true,
+    sfColor: 'default',
     placement: 'bottom-end'
   },
   argTypes: {
@@ -77,19 +77,9 @@ export default {
           summary: true
         }
       }
-    },
-    content: {
-      table: {
-        disable: true
-      }
-    },
-    ref: {
-      table: {
-        disable: true
-      }
     }
   }
-} as Meta;
+} as ComponentMeta<typeof SFTooltip>;
 
 const Template: Story<SFTooltipProps> = (args) => (
   <div
