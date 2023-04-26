@@ -25,6 +25,7 @@ export default {
           | 'component-button-M'
           | 'component-2-medium'
           | 'component-2'
+          | 'component-3'
           | 'component-button-S'
           | 'component-tooltip-title'
           | 'component-chip-S-M'
@@ -47,6 +48,7 @@ export default {
         'component-button-M',
         'component-2-medium',
         'component-2',
+        'component-3',
         'component-button-S',
         'component-tooltip-title',
         'component-chip-S-M',

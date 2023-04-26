@@ -1,5 +1,11 @@
 import React from 'react';
-import { SFGrey, SFTextBlack, SFTextWhite } from '../../SFColors/SFColors';
+import {
+  SFBlueMainDark,
+  SFBlueMainLight,
+  SFGrey,
+  SFTextBlack,
+  SFTextWhite
+} from '../../SFColors/SFColors';
 import { styled } from '@mui/material';
 
 export type SFTextType =
@@ -12,6 +18,7 @@ export type SFTextType =
   | 'component-button-M'
   | 'component-2-medium'
   | 'component-2'
+  | 'component-3'
   | 'component-button-S'
   | 'component-tooltip-title'
   | 'component-chip-S-M'
@@ -82,6 +89,12 @@ const textTypeProps: Record<SFTextType, TextCSSProps> = {
     lineHeight: '20px',
     letterSpacing: '0em'
   },
+  'component-3': {
+    fontSize: '12px',
+    fontWeight: 400,
+    lineHeight: '14px',
+    letterSpacing: '0.02em'
+  },
   'component-button-S': {
     fontSize: '13px',
     fontWeight: 500,
@@ -126,7 +139,7 @@ const textTypeProps: Record<SFTextType, TextCSSProps> = {
   }
 };
 
-export type SFTextColor = 'default' | 'neutral';
+export type SFTextColor = 'default' | 'neutral' | 'primary';
 
 function getColor(color: SFTextColor, isLight: boolean): string {
   switch (color) {
@@ -135,6 +148,13 @@ function getColor(color: SFTextColor, isLight: boolean): string {
         return SFGrey[600];
       } else {
         return SFGrey[400];
+      }
+    }
+    case 'primary': {
+      if (isLight) {
+        return SFBlueMainLight;
+      } else {
+        return SFBlueMainDark;
       }
     }
     default: {
