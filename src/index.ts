@@ -1,6 +1,6 @@
 // TODO uncomment migrated components
 
-// export * from './Components/SFAlert/SFAlert';
+export * from './Components/SFAlert/SFAlert';
 // export * from './Components/SFAlertCollapse/SFAlertCollapse';
 // export * from './Components/SFAlertDialog/SFAlertDialog';
 // export * from './Components/SFAutocomplete/SFAutocomplete';
