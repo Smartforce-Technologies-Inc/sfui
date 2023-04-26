@@ -1,22 +1,22 @@
 // TODO uncomment migrated components
 
-// export * from './Components/SFAlert/SFAlert';
+export * from './Components/SFAlert/SFAlert';
 // export * from './Components/SFAlertCollapse/SFAlertCollapse';
 // export * from './Components/SFAlertDialog/SFAlertDialog';
 // export * from './Components/SFAutocomplete/SFAutocomplete';
 // export * from './Components/SFAutocompleteChip/SFAutocompleteChip';
 // export * from './Components/SFAutocompleteLocation/SFAutocompleteLocation';
-// export * from './Components/SFBadge/SFBadge';
+export * from './Components/SFBadge/SFBadge';
 // export * from './Components/SFButton/SFButton';
-// export * from './Components/SFCard/SFCard';
+export * from './Components/SFCard/SFCard';
 // export * from './Components/SFChip/SFChip';
 // export * from './Components/SFChipListInput/SFChipListInput';
 // export * from './Components/SFChipListField/SFChipListField';
 export * from './Components/SFCheckbox/SFCheckbox';
 // export * from './Components/SFCounter/SFCounter';
 // export * from './Components/SFDatePicker/SFDatePicker';
-// export * from './Components/SFDialog/SFDialog';
-// export * from './Components/SFDrawer/SFDrawer';
+export * from './Components/SFDialog/SFDialog';
+export * from './Components/SFDrawer/SFDrawer';
 export * from './Components/SFIcon/SFIcon';
 export * from './Components/SFIconButton/SFIconButton';
 export * from './Components/SFLink/SFLink';
@@ -34,15 +34,15 @@ export * from './Components/SFPaper/SFPaper';
 // export * from './Components/SFSelect/SFSelect';
 // export * from './Components/SFSkeleton/SFSkeleton';
 // export * from './Components/SFSnackbar/SFSnackbar';
-// export * from './Components/SFSpinner/SFSpinner';
+export * from './Components/SFSpinner/SFSpinner';
 // export * from './Components/SFSplitButton/SFSplitButton';
 export * from './Components/SFSwitch/SFSwitch';
 // export * from './Components/SFTable/SFTable';
 // export * from './Components/SFText/SFText';
 // export * from './Components/SFTextField/SFTextField';
 // export * from './Components/SFTimeField/SFTimeField';
-// export * from './Components/SFTimeline/SFTimeline';
-// export * from './Components/SFTooltip/SFTooltip';
+export * from './Components/SFTimeline/SFTimeline';
+export * from './Components/SFTooltip/SFTooltip';
 
 export * from './SFTheme/SFTheme';
 // export * from './SFColors/SFColors';
