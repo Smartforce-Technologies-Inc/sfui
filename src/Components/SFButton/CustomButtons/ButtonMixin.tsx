@@ -72,6 +72,7 @@ export default function ButtonMixin(sfButtonConfig: ButtonMixinProps): any {
     display: 'flex',
     gap: '6px',
     color: sfButtonConfig.contained[theme.palette.mode].color,
+    textTransform: 'unset',
     backgroundColor:
       sfButtonConfig.contained[theme.palette.mode].backgroundColor,
     '@media (hover: hover)': {
@@ -101,6 +102,7 @@ export default function ButtonMixin(sfButtonConfig: ButtonMixinProps): any {
     '&.MuiButton-outlined': {
       color: sfButtonConfig.outlined[theme.palette.mode].color,
       borderColor: sfButtonConfig.outlined[theme.palette.mode].borderColor,
+      textTransform: 'unset',
       backgroundColor:
         sfButtonConfig.outlined[theme.palette.mode].backgroundColor,
       '@media (hover: hover)': {
