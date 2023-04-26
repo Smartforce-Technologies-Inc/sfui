@@ -48,6 +48,12 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
           }`
         },
 
+        '&.Mui-focused': {
+          '.MuiOutlinedInput-notchedOutline': {
+            border: `2px solid ${theme.palette.primary.main}`
+          }
+        },
+
         '&.Mui-disabled': {
           '.MuiOutlinedInput-notchedOutline': {
             border: `1px solid ${
