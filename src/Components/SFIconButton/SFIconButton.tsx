@@ -41,6 +41,13 @@ const StyledIconButton = styled(IconButton)(({ theme }) => ({
       }`
     }
   },
+  '&:focus-visible': {
+    backgroundColor: `${
+      theme.palette.mode === 'light'
+        ? 'rgba(204, 204, 204, 0.3)'
+        : 'rgba(128, 128, 128, 0.3)'
+    }`
+  },
   '&:active': {
     backgroundColor: `${
       theme.palette.mode === 'light'
