@@ -12,6 +12,7 @@ module.exports = {
     '../src/Components/SFIconButton/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFLink/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFPaper/*.stories.@(js|jsx|ts|tsx)',
+    '../src/Components/SFSearch/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFSwitch/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFTimeline/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFTooltip/*.stories.@(js|jsx|ts|tsx)'
