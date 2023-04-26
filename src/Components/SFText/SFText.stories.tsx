@@ -1,12 +1,11 @@
 import React from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { Story, ComponentMeta } from '@storybook/react';
 import { SFText, SFTextProps } from './SFText';
 
 export default {
   title: 'Components/SFText',
   component: SFText,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: { controls: { sort: 'alpha', exclude: ['className'] } },
   args: {
     type: 'component-title-number',
     sfColor: 'default'
@@ -63,12 +62,9 @@ export default {
     },
     sfColor: {
       description: 'The color of the text.'
-    },
-    className: {
-      table: { disable: true }
     }
   }
-} as Meta;
+} as ComponentMeta<typeof SFText>;
 
 const Template: Story<SFTextProps> = (args) => (
   <div
