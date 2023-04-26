@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Story, ComponentMeta } from '@storybook/react';
 
 import { SFButton } from './SFButton';
+import { SFSurfaceDark, SFSurfaceLight } from '../../SFColors/SFColors';
+import { useTheme } from '@mui/material';
 
 export default {
   title: 'Components/SFButton',
@@ -62,6 +64,29 @@ export default {
   }
 } as ComponentMeta<typeof SFButton>;
 
-export const Default: Story = ({ text, ...args }) => {
-  return <SFButton {...args}>{text}</SFButton>;
+export const Default: Story = ({ text, sfColor, ...args }) => {
+  const themeMode = useTheme().palette.mode;
+
+  return (
+    <Fragment>
+      {sfColor === 'invertedGrey' && (
+        <div
+          style={{
+            padding: '20px',
+            backgroundColor:
+              themeMode === 'light' ? SFSurfaceDark : SFSurfaceLight
+          }}
+        >
+          <SFButton sfColor={sfColor} {...args}>
+            {text}
+          </SFButton>
+        </div>
+      )}
+      {sfColor !== 'invertedGrey' && (
+        <SFButton sfColor={sfColor} {...args}>
+          {text}
+        </SFButton>
+      )}
+    </Fragment>
+  );
 };
