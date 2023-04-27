@@ -1,6 +1,6 @@
 import React from 'react';
-import { Story, ComponentMeta } from '@storybook/react';
-import { SFTextField, SFTextFieldProps } from './SFTextField';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { SFTextField } from './SFTextField';
 
 export default {
   title: 'Components/SFTextField',
@@ -120,7 +120,9 @@ export default {
   }
 } as ComponentMeta<typeof SFTextField>;
 
-const Template: Story<SFTextFieldProps> = (args) => <SFTextField {...args} />;
+const Template: ComponentStory<typeof SFTextField> = (args) => (
+  <SFTextField {...args} />
+);
 
 export const Default = Template.bind({});
 Default.argTypes = {
@@ -162,7 +164,7 @@ Number.args = {
   value: 20
 };
 
-const AllTemplate: Story<SFTextFieldProps> = (args) => (
+const AllTemplate: ComponentStory<typeof SFTextField> = (args) => (
   <div
     style={{
       display: 'grid',
