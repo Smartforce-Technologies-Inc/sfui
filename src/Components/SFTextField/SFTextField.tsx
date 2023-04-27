@@ -37,6 +37,11 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
         color: theme.palette.mode === 'light' ? SFGrey[400] : SFGrey[600],
         WebkitTextFillColor:
           theme.palette.mode === 'light' ? SFGrey[400] : SFGrey[600]
+      },
+      '.MuiOutlinedInput-notchedOutline': {
+        border: `1px solid ${
+          theme.palette.mode === 'light' ? SFGrey[200] : SFGrey[700]
+        }`
       }
     },
 
