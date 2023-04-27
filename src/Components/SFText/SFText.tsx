@@ -175,19 +175,19 @@ export interface SFTextProps {
 }
 
 const SFTextBase = ({
-  className = '',
-  children
+  children,
+  className = ''
 }: SFTextProps): React.ReactElement<SFTextProps> => {
   return <p className={className}>{children}</p>;
 };
 
 export const SFText = styled(SFTextBase)(
-  ({ theme, sfColor = 'default', type }) => ({
-    margin: 0,
+  ({ sfColor = 'default', theme, type }) => ({
     color: getColor(sfColor, theme.palette.mode === 'light'),
     fontSize: textTypeProps[type].fontSize,
     fontWeight: textTypeProps[type].fontWeight,
+    letterSpacing: textTypeProps[type].letterSpacing,
     lineHeight: textTypeProps[type].lineHeight,
-    letterSpacing: textTypeProps[type].letterSpacing
+    margin: 0
   })
 );
