@@ -8,9 +8,9 @@ import {
   DialogContentText,
   DialogContentTextProps,
   DialogActions,
-  DialogActionsProps
-} from '@material-ui/core';
-import { withStyles, Theme } from '@material-ui/core/styles';
+  DialogActionsProps,
+  styled
+} from '@mui/material';
 import { SFGrey } from '../../SFColors/SFColors';
 import { hexToRgba } from '../../Helpers';
 import React from 'react';
@@ -21,52 +21,42 @@ export interface SFDialogContentTextProps extends DialogContentTextProps {}
 export interface SFDialogActionsProps extends DialogActionsProps {}
 export interface SFDialogProps extends DialogProps {}
 
-export const SFDialogTitle = withStyles((theme: Theme) => ({
-  root: {
-    padding: 0,
-    '& h2': {
-      color: `${theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]}`,
-      fontSize: 24,
-      fontStyle: 'normal',
-      fontWeight: 500,
-      lineHeight: '28px'
-    }
-  }
-}))(DialogTitle);
-
-export const SFDialogContent = withStyles(() => ({
-  root: {
-    padding: 0
-  }
-}))(DialogContent);
-
-export const SFDialogContentText = withStyles((theme: Theme) => ({
-  root: {
-    margin: 0,
-    color: `${theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]}`,
-    fontSize: 16,
+export const SFDialogTitle = styled(DialogTitle)(({ theme }) => ({
+  padding: 0,
+  '& h2': {
+    color: `${theme.palette.mode === 'light' ? SFGrey[900] : SFGrey[50]}`,
+    fontSize: 24,
     fontStyle: 'normal',
-    fontWeight: 400,
-    lineHeight: '24px'
+    fontWeight: 500,
+    lineHeight: '28px'
   }
-}))(DialogContentText);
+}));
 
-export const SFDialogActions = withStyles(() => ({
-  root: {
-    padding: 0,
-    display: 'flex'
-  }
-}))(DialogActions);
+export const SFDialogContent = styled(DialogContent)(() => ({
+  padding: 0
+}));
 
-const StyledDialog = withStyles((theme: Theme) => ({
-  root: {
-    backgroundColor: `${
-      theme.palette.type === 'light'
-        ? 'rgba(0, 0, 0, 0.3)'
-        : hexToRgba(SFGrey.A400 as string, 0.8)
-    }`
-  }
-}))(Dialog);
+export const SFDialogContentText = styled(DialogContentText)(({ theme }) => ({
+  margin: 0,
+  color: `${theme.palette.mode === 'light' ? SFGrey[900] : SFGrey[50]}`,
+  fontSize: 16,
+  fontStyle: 'normal',
+  fontWeight: 400,
+  lineHeight: '24px'
+}));
+
+export const SFDialogActions = styled(DialogActions)(() => ({
+  padding: 0,
+  display: 'flex'
+}));
+
+const StyledDialog = styled(Dialog)(({ theme }) => ({
+  backgroundColor: `${
+    theme.palette.mode === 'light'
+      ? 'rgba(0, 0, 0, 0.3)'
+      : hexToRgba(SFGrey.A400 as string, 0.8)
+  }`
+}));
 
 export interface SFDialogProps extends DialogProps {
   disableBackdropClick?: boolean;
@@ -75,8 +65,8 @@ export interface SFDialogProps extends DialogProps {
 export const SFDialog = ({
   disableBackdropClick = true,
   children,
-  onClose,
   transitionDuration = 360,
+  onClose,
   ...props
 }: SFDialogProps): React.ReactElement<SFDialogProps> => {
   const checkCloseReason = (
