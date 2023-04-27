@@ -3,35 +3,31 @@ import React, { forwardRef } from 'react';
 import { SFSpinner } from '../SFSpinner/SFSpinner';
 import { SFPaper } from '../SFPaper/SFPaper';
 
-import { makeStyles } from '@material-ui/core/styles';
+import { styled } from '@mui/material';
 import { SFGrey } from '../../SFColors/SFColors';
 
-const cardStyles = makeStyles({
-  root: {
-    position: 'relative',
-    padding: '30px',
-    borderRadius: '2px',
-    '& .loader': {
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      flexDirection: 'column',
-      '&.top': {
-        flexDirection: 'row',
-        '& p': {
-          margin: '0px 15px'
-        }
+const StyledCard = styled('div')({
+  position: 'relative',
+  padding: '30px',
+  borderRadius: '2px',
+  '& .loader': {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
+    '&.top': {
+      flexDirection: 'row',
+      '& p': {
+        margin: '0px 15px'
       }
     }
   }
 });
 
-const usePaperStyles = makeStyles({
-  root: {
-    border: `1px solid ${SFGrey[100]}`,
-    borderRadius: '2px'
-  }
-});
+const usePaperStyles = {
+  border: `1px solid ${SFGrey[100]}`,
+  borderRadius: '2px'
+};
 
 export type sfElevations = 0 | 1 | 2 | 3 | 4 | 6 | 8 | 9 | 12 | 16 | 24;
 
@@ -52,19 +48,17 @@ export const SFCard = forwardRef(
       loadingAtTop = false,
       children
     }: SFCardProps,
-    ref?: React.Ref<unknown> | undefined
+    ref?: React.Ref<HTMLDivElement> | undefined
   ): React.ReactElement<SFCardProps> => {
     const externalClass: string = className || '';
-    const customCardStyles: Record<'root', string> = cardStyles();
-    const styledPaper: Record<'root', string> = usePaperStyles();
 
     return (
       <SFPaper
         elevation={sfElevation}
-        classes={sfElevation === 0 ? styledPaper : undefined}
+        sx={sfElevation === 0 ? usePaperStyles : undefined}
         ref={ref}
       >
-        <div className={`${customCardStyles.root} ${externalClass} `}>
+        <StyledCard className={externalClass}>
           {isLoading === true ? (
             <div
               className={`loader ${loadingAtTop === true ? 'top' : undefined}`}
@@ -75,7 +69,7 @@ export const SFCard = forwardRef(
           ) : (
             children
           )}
-        </div>
+        </StyledCard>
       </SFPaper>
     );
   }
