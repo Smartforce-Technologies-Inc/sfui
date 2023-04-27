@@ -1,6 +1,6 @@
 import React from 'react';
-import { Story, ComponentMeta } from '@storybook/react';
-import { SFText, SFTextProps } from './SFText';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { SFText } from './SFText';
 
 export default {
   title: 'Components/SFText',
@@ -66,7 +66,7 @@ export default {
   }
 } as ComponentMeta<typeof SFText>;
 
-const Template: Story<SFTextProps> = (args) => (
+const Template: ComponentStory<typeof SFText> = (args) => (
   <div
     style={{
       display: 'flex',
