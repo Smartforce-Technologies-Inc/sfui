@@ -1,10 +1,6 @@
 import React from 'react';
-import { Story, ComponentMeta } from '@storybook/react';
-import {
-  SFRadioGroup,
-  SFRadioGroupProps,
-  SFRadioOptionsProps
-} from './SFRadioGroup';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { SFRadioGroup, SFRadioOptionsProps } from './SFRadioGroup';
 
 const options: SFRadioOptionsProps[] = [
   { value: 'Bagel 1', label: 'Bagel 1', disabled: false },
@@ -28,6 +24,8 @@ export default {
   }
 } as ComponentMeta<typeof SFRadioGroup>;
 
-const Template: Story<SFRadioGroupProps> = (args) => <SFRadioGroup {...args} />;
+const Template: ComponentStory<typeof SFRadioGroup> = (args) => (
+  <SFRadioGroup {...args} />
+);
 
 export const Default = Template.bind({});

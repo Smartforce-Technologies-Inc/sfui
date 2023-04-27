@@ -1,6 +1,6 @@
 import React from 'react';
-import { Story, ComponentMeta } from '@storybook/react';
-import { SFRadio, SFRadioProps } from './SFRadio';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { SFRadio } from './SFRadio';
 
 export default {
   title: 'Components/SFRadio',
@@ -57,6 +57,8 @@ export default {
   }
 } as ComponentMeta<typeof SFRadio>;
 
-const Template: Story<SFRadioProps> = (args) => <SFRadio {...args} />;
+const Template: ComponentStory<typeof SFRadio> = (args) => (
+  <SFRadio {...args} />
+);
 
 export const Default = Template.bind({});
