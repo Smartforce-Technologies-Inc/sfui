@@ -1,5 +1,5 @@
 import React from 'react';
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { SFAlertCollapse } from './SFAlertCollapse';
 
 export default {
@@ -59,7 +59,7 @@ export default {
         'Specifies if the transition should be displayed on item unmount.'
     }
   }
-} as Meta;
+} as ComponentMeta<typeof SFAlertCollapse>;
 
 const AlertCollapseStory = ({ isOpen, title, type, ...args }): JSX.Element => (
   <SFAlertCollapse {...args} isOpen={isOpen} title={title} type={type} />
