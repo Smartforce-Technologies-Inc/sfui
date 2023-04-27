@@ -21,7 +21,7 @@ export * from './Components/SFIcon/SFIcon';
 export * from './Components/SFIconButton/SFIconButton';
 export * from './Components/SFLink/SFLink';
 // export * from './Components/SFMenu/SFMenu';
-// export * from './Components/SFMenuItem/SFMenuItem';
+export * from './Components/SFMenuItem/SFMenuItem';
 // export * from './Components/SFMultiSelect/SFMultiSelect';
 // export * from './Components/SFNumericField/SFNumericField';
 // export * from './Components/SFPanel/SFPanel';
