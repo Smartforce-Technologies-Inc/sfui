@@ -15,7 +15,8 @@ module.exports = {
     '../src/Components/SFSpinner/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFSwitch/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFTimeline/*.stories.@(js|jsx|ts|tsx)',
-    '../src/Components/SFTooltip/*.stories.@(js|jsx|ts|tsx)'
+    '../src/Components/SFTooltip/*.stories.@(js|jsx|ts|tsx)',
+    '../src/SFHttpStatusCode/*.stories.@(js|jsx|ts|tsx)'
   ],
   addons: ['@storybook/addon-links', '@storybook/addon-essentials']
 };
