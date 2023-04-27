@@ -8,10 +8,12 @@ module.exports = {
     '../src/Components/SFBadge/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFCard/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFDialog/*.stories.@(js|jsx|ts|tsx)',
+    '../src/Components/SFDrawer/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFIcon/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFIconButton/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFLink/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFPaper/*.stories.@(js|jsx|ts|tsx)',
+    '../src/Components/SFSpinner/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFSwitch/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFTimeline/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFTooltip/*.stories.@(js|jsx|ts|tsx)'
