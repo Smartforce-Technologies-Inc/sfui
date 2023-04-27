@@ -131,8 +131,8 @@ export interface SFSearchProps
 
 export const SFSearch = ({
   label,
-  value,
   onChange,
+  value,
   ...props
 }: SFSearchProps): React.ReactElement<SFSearchProps> => {
   const onInputChange = (
