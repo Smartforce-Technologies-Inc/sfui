@@ -1,6 +1,6 @@
 import React from 'react';
-import { Story, ComponentMeta } from '@storybook/react';
-import { SFScrollable, SFScrollableProps } from './SFScrollable';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { SFScrollable } from './SFScrollable';
 
 export default {
   title: 'Components/SFScrollable',
@@ -11,7 +11,7 @@ export default {
 
 // TODO same inconvenient as SFPaper, argtypes not functioning
 
-const Template: Story<SFScrollableProps> = () => {
+const Template: ComponentStory<typeof SFScrollable> = () => {
   return (
     <div>
       <div style={{ height: 200 }}>
@@ -71,7 +71,7 @@ Default.parameters = {
   }
 };
 
-export const ScrollToTop: Story = () => {
+export const ScrollToTop: ComponentStory<typeof SFScrollable> = () => {
   return (
     <div>
       <p>
