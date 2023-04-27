@@ -1,14 +1,16 @@
 import React from 'react';
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import { Meta } from '@storybook/react/types-6-0';
+import { Story, ComponentMeta } from '@storybook/react';
 import { SFDrawer, SFDrawerProps } from './SFDrawer';
 import { SFIconButton } from '../SFIconButton/SFIconButton';
 import { SFGrey } from '../../SFColors/SFColors';
+import { styled } from '@mui/material';
 
 export default {
   title: 'Components/SFDrawer',
   component: SFDrawer,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: {
+    controls: { sort: 'alpha', include: ['open', 'onClose', 'anchor'] }
+  },
   args: {
     open: false,
     anchor: 'left'
@@ -51,64 +53,49 @@ export default {
           top: 'Top'
         }
       }
-    },
-    ref: {
-      table: {
-        disable: true
-      }
     }
   }
-} as Meta;
+} as ComponentMeta<typeof SFDrawer>;
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    container: {
-      minWidth: 396,
-      font: 'Roboto',
-      color: `${theme.palette.type === 'light' ? SFGrey[700] : SFGrey[400]}`
-    },
-    topBar: {
-      margin: '20px 20px 8px 20px',
-      display: 'flex',
-      justifyContent: 'space-between'
-    },
-    btnRight: { alignSelf: 'flex-end' },
-    content: {
-      margin: 24,
+const StyledContent = styled('div')(({ theme }) => ({
+  minWidth: 396,
+  font: 'Roboto',
+  color: `${theme.palette.mode === 'light' ? SFGrey[700] : SFGrey[400]}`,
+  '& .topBar': {
+    margin: '20px 20px 8px 20px',
+    display: 'flex',
+    justifyContent: 'space-between'
+  },
+  '& .btnRight': { alignSelf: 'flex-end' },
+  '& .content': {
+    margin: 24,
 
-      '& h2': { marginBottom: 24, padding: 0 },
-      '& ul': {
-        padding: 0,
+    '& h2': { marginBottom: 24, padding: 0 },
+    '& ul': {
+      padding: 0,
 
-        '& li': {
-          listStyle: 'none',
-          marginBottom: 24,
+      '& li': {
+        listStyle: 'none',
+        marginBottom: 24,
 
-          '&:first-child': {
-            fontWeight: 700
-          }
+        '&:first-child': {
+          fontWeight: 700
         }
       }
     }
-  })
-);
+  }
+}));
 
 export const Drawer = (args: SFDrawerProps): JSX.Element => {
-  const classes = useStyles();
-
   return (
     <SFDrawer {...args}>
-      <div className={classes.container}>
-        <div className={classes.topBar}>
+      <StyledContent>
+        <div className='topBar'>
           <SFIconButton sfSize='medium' sfIcon='Left-7' />
-          <SFIconButton
-            className={classes.btnRight}
-            sfSize='medium'
-            sfIcon='Close'
-          />
+          <SFIconButton className='btnRight' sfSize='medium' sfIcon='Close' />
         </div>
 
-        <div className={classes.content}>
+        <div className='content'>
           <h2>Title</h2>
           <ul>
             <li>Lorem ipsum dolor</li>
@@ -116,7 +103,7 @@ export const Drawer = (args: SFDrawerProps): JSX.Element => {
             <li>Lorem ipsum dolor</li>
           </ul>
         </div>
-      </div>
+      </StyledContent>
     </SFDrawer>
   );
 };

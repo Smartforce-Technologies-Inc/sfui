@@ -1,21 +1,18 @@
 import React from 'react';
-import { Meta } from '@storybook/react/types-6-0';
+import { Story, ComponentMeta } from '@storybook/react';
 import { SFAlert } from './SFAlert';
 
 export default {
   title: 'Components/SFAlert',
   component: SFAlert,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: {
+    controls: { sort: 'alpha', include: ['title', 'type', 'onClose'] }
+  },
   args: {
     title: 'Lorem ipsum dolor sit amet.',
     type: 'error'
   },
   argTypes: {
-    children: {
-      table: {
-        disable: true
-      }
-    },
     onClose: {
       description:
         'Callback fired when the component requests to be closed. When provided a close icon button is displayed that triggers the callback when clicked.',
@@ -29,11 +26,6 @@ export default {
         }
       }
     },
-    ref: {
-      table: {
-        disable: true
-      }
-    },
     title: {
       description: 'The title of the alert to display.'
     },
@@ -42,7 +34,7 @@ export default {
         'The type of the alert. This defines the color and icon used.'
     }
   }
-} as Meta;
+} as ComponentMeta<typeof SFAlert>;
 
 const AlertStory = ({ title, type, ...args }): JSX.Element => (
   <SFAlert {...args} title={title} type={type} />

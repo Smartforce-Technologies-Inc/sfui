@@ -1,11 +1,11 @@
 import React from 'react';
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { Story, ComponentMeta } from '@storybook/react';
 import { SFSpinner, SFSpinnerProps } from './SFSpinner';
 
 export default {
   title: 'Components/SFSpinner',
   component: SFSpinner,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: { controls: { sort: 'alpha', include: ['size'] } },
   args: {
     size: 40
   },
@@ -20,14 +20,9 @@ export default {
       control: {
         type: 'number'
       }
-    },
-    ref: {
-      table: {
-        disable: true
-      }
     }
   }
-} as Meta;
+} as ComponentMeta<typeof SFSpinner>;
 
 const Template: Story<SFSpinnerProps> = (args) => <SFSpinner {...args} />;
 
