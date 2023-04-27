@@ -1,6 +1,6 @@
 import React from 'react';
-import { Story, ComponentMeta } from '@storybook/react';
-import { SFSkeleton, SFSkeletonProps } from './SFSkeleton';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { SFSkeleton } from './SFSkeleton';
 
 export default {
   title: 'Components/SFSkeleton',
@@ -40,7 +40,7 @@ export default {
   }
 } as ComponentMeta<typeof SFSkeleton>;
 
-export const Text: Story<SFSkeletonProps> = (args) => {
+export const Text: ComponentStory<typeof SFSkeleton> = (args) => {
   return <SFSkeleton {...args} variant='text' />;
 };
 
@@ -58,7 +58,7 @@ Text.argTypes = {
   }
 };
 
-export const Circle: Story<SFSkeletonProps> = (args) => {
+export const Circle: ComponentStory<typeof SFSkeleton> = (args) => {
   return <SFSkeleton {...args} variant='circular' width={args.height} />;
 };
 
@@ -88,7 +88,7 @@ Circle.args = {
   height: 30
 };
 
-export const Rect: Story<SFSkeletonProps> = (args) => {
+export const Rect: ComponentStory<typeof SFSkeleton> = (args) => {
   return <SFSkeleton {...args} variant='rectangular' />;
 };
 
@@ -113,7 +113,9 @@ Rect.args = {
   height: 50
 };
 
-export const AllTogether: Story = ({ animation }) => {
+export const AllTogether: ComponentStory<typeof SFSkeleton> = ({
+  animation
+}) => {
   return (
     <div
       style={{
