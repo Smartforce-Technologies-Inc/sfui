@@ -1,152 +1,149 @@
 import React from 'react';
-import { Theme, withStyles } from '@material-ui/core/styles';
+import { TextFieldProps, styled } from '@mui/material';
 import MomentUtils from '@date-io/moment';
 
 import {
-  MuiPickersUtilsProvider,
-  KeyboardTimePicker,
-  KeyboardTimePickerProps
-} from '@material-ui/pickers';
+  TimeField,
+  TimeFieldProps,
+  LocalizationProvider
+} from '@mui/x-date-pickers';
+import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 
 import { SFBlue, SFGrey, SFRed } from '../../SFColors/SFColors';
-import { SFMaterialUiPickersDate } from '../../SFTypes';
+import { MomentObjectOutput } from 'moment';
 
-const StyledTimePicker = withStyles((theme: Theme) => ({
-  root: {
+const StyledTimePicker = styled(TimeField)(({ theme }) => ({
+  boxSizing: 'border-box',
+
+  '& .MuiFilledInput-root': {
+    height: '56px',
+    backgroundColor: theme.palette.background.paper,
+    border: `1px solid ${
+      theme.palette.mode === 'light' ? SFGrey[200] : SFGrey[700]
+    }`,
+    borderRadius: 2,
     boxSizing: 'border-box',
 
-    '& .MuiFilledInput-root': {
-      height: '56px',
+    '&:before': {
+      content: 'none'
+    },
+
+    '&:after': {
+      content: 'none'
+    },
+
+    '&:hover': {
       backgroundColor: theme.palette.background.paper,
-      border: `1px solid ${
-        theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
+
+      '@media (hover: hover)': {
+        borderColor: `${
+          theme.palette.mode === 'light' ? SFGrey[900] : SFGrey[50]
+        }`
+      }
+    },
+
+    '&.Mui-focused': {
+      border: `2px solid ${
+        theme.palette.mode === 'light' ? SFBlue[500] : SFBlue[200]
       }`,
-      borderRadius: 2,
-      boxSizing: 'border-box',
 
-      '&:before': {
-        content: `none !important`
-      },
-
-      '&:after': {
-        content: `none !important`
+      '& .MuiFilledInput-input': {
+        padding: '26px 10px 7px'
       },
 
       '&:hover': {
         '@media (hover: hover)': {
           borderColor: `${
-            theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]
+            theme.palette.mode === 'light' ? SFBlue[500] : SFBlue[200]
           }`
         }
-      },
+      }
+    },
 
-      '&.Mui-focused': {
-        border: `2px solid ${
-          theme.palette.type === 'light' ? SFBlue[500] : SFBlue[200]
-        }`,
-
-        '& .MuiFilledInput-input': {
-          padding: '26px 10px 7px'
-        },
-
-        '&:hover': {
-          '@media (hover: hover)': {
-            borderColor: `${
-              theme.palette.type === 'light' ? SFBlue[500] : SFBlue[200]
-            }`
-          }
-        }
-      },
-
-      '&.Mui-error': {
-        border: `1px solid ${
-          theme.palette.type === 'light' ? SFRed[700] : SFRed[200]
-        } !important`,
-
-        '& .MuiFilledInput-input': {
-          padding: '26px 11px 7px !important'
-        }
-      },
-
-      '&.Mui-disabled': {
-        border: `1px solid ${
-          theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
-        } !important`
-      },
+    '&.Mui-error': {
+      border: `1px solid ${
+        theme.palette.mode === 'light' ? SFRed[700] : SFRed[200]
+      } !important`,
 
       '& .MuiFilledInput-input': {
-        fontWeight: 400,
-        fontSize: '16px',
-        padding: '26px 11px 7px',
-
-        '&.Mui-disabled': {
-          color: `${
-            theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
-          }`,
-          WebkitTextFillColor: `${
-            theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
-          }`
-        }
+        padding: '26px 11px 7px !important'
       }
     },
 
-    '& .MuiInputLabel-filled': {
+    '&.Mui-disabled': {
+      border: `1px solid ${
+        theme.palette.mode === 'light' ? SFGrey[200] : SFGrey[700]
+      } !important`
+    },
+
+    '& .MuiFilledInput-input': {
+      fontWeight: 400,
       fontSize: '16px',
-      lineHeight: '24px',
-      color: `${theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400]}`,
-
-      '&.MuiInputLabel-shrink': {
-        fontSize: '14px',
-        lineHeight: '20px',
-        transform: `translate(12px, 6px)`
-      },
-
-      '&.Mui-focused': {
-        color: theme.palette.type === 'light' ? SFBlue[500] : SFBlue[200]
-      },
-
-      '&.Mui-error': {
-        color: `${theme.palette.type === 'light' ? SFRed[700] : SFRed[200]}`
-      },
+      padding: '26px 11px 7px',
 
       '&.Mui-disabled': {
-        color: `${theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]}`
-      }
-    },
-
-    '& .MuiFormHelperText-root': {
-      backgroundColor: 'transparent',
-
-      '&.Mui-error': {
-        color: `${theme.palette.type === 'light' ? SFRed[700] : SFRed[200]}`
+        color: `${theme.palette.mode === 'light' ? SFGrey[200] : SFGrey[700]}`,
+        WebkitTextFillColor: `${
+          theme.palette.mode === 'light' ? SFGrey[200] : SFGrey[700]
+        }`
       }
     }
-  }
-}))(KeyboardTimePicker);
+  },
 
-export interface SFTimeFieldProps extends KeyboardTimePickerProps {
-  onChange: (
-    date: SFMaterialUiPickersDate | null,
-    value?: string | null
-  ) => void;
+  '& .MuiInputLabel-filled': {
+    fontSize: '16px',
+    lineHeight: '24px',
+    color: `${theme.palette.mode === 'light' ? SFGrey[600] : SFGrey[400]}`,
+
+    '&.MuiInputLabel-shrink': {
+      fontSize: '14px',
+      lineHeight: '20px',
+      transform: `translate(12px, 6px)`
+    },
+
+    '&.Mui-focused': {
+      color: theme.palette.mode === 'light' ? SFBlue[500] : SFBlue[200]
+    },
+
+    '&.Mui-error': {
+      color: `${theme.palette.mode === 'light' ? SFRed[700] : SFRed[200]}`
+    },
+
+    '&.Mui-disabled': {
+      color: `${theme.palette.mode === 'light' ? SFGrey[200] : SFGrey[700]}`
+    }
+  },
+
+  '& .MuiFormHelperText-root': {
+    backgroundColor: 'transparent',
+
+    '&.Mui-error': {
+      color: `${theme.palette.mode === 'light' ? SFRed[700] : SFRed[200]}`
+    }
+  }
+}));
+
+export interface SFTimeFieldProps
+  extends Omit<TimeFieldProps<TextFieldProps>, 'onChange'> {
+  onChange: (date: MomentObjectOutput, value?: string | null) => void;
 }
 
 export const SFTimeField = ({
-  placeholder = '08:00 AM',
-  mask = '__:__ _M',
+  ampm = true,
   ...props
 }: SFTimeFieldProps): React.ReactElement<SFTimeFieldProps> => {
   return (
-    <MuiPickersUtilsProvider utils={MomentUtils}>
+    <LocalizationProvider dateAdapter={AdapterMoment} utils={MomentUtils}>
+      {/* 
+        e => returns the moment value
+        v => returns the validation error
+      */}
       <StyledTimePicker
         {...props}
         fullWidth
-        variant='inline'
-        inputVariant='filled'
-        disableToolbar
-        mask={mask}
-        keyboardIcon={null}
+        onChange={(value, error): void => console.log(value, error)}
+        variant='filled'
       />
-    </MuiPickersUtilsProvider>
+    </LocalizationProvider>
   );
 };

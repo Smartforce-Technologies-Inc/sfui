@@ -1,13 +1,14 @@
 import React from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { SFTimeField, SFTimeFieldProps } from './SFTimeField';
+import { SFTimeField } from './SFTimeField';
 
 export default {
   title: 'Components/SFTimeField',
   component: SFTimeField,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: {
+    controls: { sort: 'alpha', include: ['onChange', 'disabled', 'label'] }
+  },
   args: {
     label: 'Bagel'
   },
@@ -34,48 +35,30 @@ export default {
           summary: 'string'
         }
       }
-    },
-    mask: {
-      description: 'Custom mask. Can be used to override generate from format.',
-      table: {
-        type: {
-          summary: 'string'
-        },
-        defaultValue: {
-          summary: '__:__ _M'
-        }
-      }
-    },
-    value: {
-      table: {
-        disable: true
-      }
-    },
-    focused: {
-      table: {
-        disable: true
-      }
-    },
-    hiddenLabel: {
-      table: {
-        disable: true
-      }
-    },
-    ref: {
-      table: {
-        disable: true
-      }
     }
+    // mask: {
+    //   description: 'Custom mask. Can be used to override generate from format.',
+    //   table: {
+    //     type: {
+    //       summary: 'string'
+    //     },
+    //     defaultValue: {
+    //       summary: '__:__ _M'
+    //     }
+    //   }
+    // }
   }
-} as Meta;
+} as ComponentMeta<typeof SFTimeField>;
 
-const Template: Story<SFTimeFieldProps> = (args) => <SFTimeField {...args} />;
+const Template: ComponentStory<typeof SFTimeField> = (args) => (
+  <SFTimeField {...args} />
+);
 
 export const Default = Template.bind({});
 
 export const Mask = Template.bind({});
 
-Mask.args = {
-  mask: '__:__',
-  format: 'HH:mm'
-};
+// Mask.args = {
+//   mask: '__:__',
+//   format: 'HH:mm'
+// };
