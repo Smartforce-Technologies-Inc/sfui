@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { ButtonProps } from '@material-ui/core/Button';
+import { ButtonProps, CircularProgress } from '@mui/material';
 
 import BlueButton from './CustomButtons/BlueButton';
 import RedButton from './CustomButtons/RedButton';
 import GreyButton from './CustomButtons/GreyButton';
-import { CircularProgress } from '@material-ui/core';
 import InvertedGreyButton from './CustomButtons/InvertedGreyButton';
 
 interface ButtonInnerProps {
@@ -52,7 +51,6 @@ export interface SFButtonProps extends ButtonProps {
 
 export const SFButton = ({
   variant = 'contained',
-  color,
   size = 'medium',
   sfColor = 'blue',
   isLoading = false,
