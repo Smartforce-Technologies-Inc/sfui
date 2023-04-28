@@ -3,7 +3,6 @@ module.exports = {
   // stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
   // TODO remove (used to test migrated components on storybook)
   stories: [
-    '../src/Components/SFMenu/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFAlert/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFBadge/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFCard/*.stories.@(js|jsx|ts|tsx)',
@@ -12,6 +11,7 @@ module.exports = {
     '../src/Components/SFIcon/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFIconButton/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFLink/*.stories.@(js|jsx|ts|tsx)',
+    '../src/Components/SFMenu/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFPaper/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFSpinner/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFSwitch/*.stories.@(js|jsx|ts|tsx)',
