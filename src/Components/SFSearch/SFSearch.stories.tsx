@@ -1,18 +1,24 @@
 import React from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
-
-import { SFSearch, SFSearchProps } from './SFSearch';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { SFSearch } from './SFSearch';
 
 export default {
   title: 'Components/SFSearch',
   component: SFSearch,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: {
+    controls: { sort: 'alpha', include: ['label', 'value', 'onChange'] }
+  },
   args: {
     label: 'Search',
     value: ''
   },
   argTypes: {
+    onChange: {
+      action: 'onChange',
+      table: {
+        disable: true
+      }
+    },
     label: {
       description: 'The label asociated to the input value meaning.',
       table: {
@@ -27,48 +33,13 @@ export default {
         type: {
           summary: 'string'
         }
-      },
-      control: false
-    },
-    disabled: {
-      table: {
-        disable: true
-      }
-    },
-    error: {
-      table: {
-        disable: true
-      }
-    },
-    hiddenLabel: {
-      table: {
-        disable: true
-      }
-    },
-    margin: {
-      table: {
-        disable: true
-      }
-    },
-    ref: {
-      table: {
-        disable: true
-      }
-    },
-    variant: {
-      table: {
-        disable: true
-      }
-    },
-    onChange: {
-      action: 'onChange',
-      table: {
-        disable: true
       }
     }
   }
-};
+} as ComponentMeta<typeof SFSearch>;
 
-const Template: Story<SFSearchProps> = (args) => <SFSearch {...args} />;
+const Template: ComponentStory<typeof SFSearch> = (args) => (
+  <SFSearch {...args} />
+);
 
 export const Default = Template.bind({});
