@@ -19,6 +19,7 @@ module.exports = {
     '../src/Components/SFSwitch/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFSpinner/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFSwitch/*.stories.@(js|jsx|ts|tsx)',
+    '../src/Components/SFText/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFTextField/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFTextShadow/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFTimeline/*.stories.@(js|jsx|ts|tsx)',
