@@ -89,11 +89,12 @@
     "@emotion/styled": "^11.10.6",
     "@mui/lab": "^5.0.0-alpha.127",
     "@mui/material": "^5.11.15",
+    "@mui/x-date-pickers": "^6.2.1",
     "@types/google.maps": "^3.48.3",
     "@types/resize-observer-browser": "^0.1.5",
     "autosuggest-highlight": "^3.1.1",
     "lodash.debounce": "^4.0.8",
-    "moment": "^2.29.1",
+    "moment": "^2.29.4",
     "react-number-format": "^4.6.3"
   }
 }
