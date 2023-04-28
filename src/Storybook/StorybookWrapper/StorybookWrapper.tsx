@@ -62,12 +62,12 @@ const getMUILinkTemplate = (name: string): JSX.Element => {
   return muiName ? (
     <div style={{ marginBottom: '40px' }}>
       <span style={{ fontSize: '16px', lineHeight: '24px' }}>
-        For more information you can check the Mui v.4 documentation{' '}
+        For more information you can check the MUI documentation{' '}
       </span>
       <SFLink
         sfSize='medium'
-        color='primary'
-        href={`https://v4.mui.com/${muiName}/`}
+        sfColor='primary'
+        href={`https://mui.com/material-ui/${muiName}/`}
         target='_blank'
       >
         {muiName}
