@@ -38,7 +38,7 @@ export * from './Components/SFPaper/SFPaper';
 // export * from './Components/SFSkeleton/SFSkeleton';
 // export * from './Components/SFSnackbar/SFSnackbar';
 export * from './Components/SFSpinner/SFSpinner';
-// export * from './Components/SFSplitButton/SFSplitButton';
+export * from './Components/SFSplitButton/SFSplitButton';
 export * from './Components/SFSwitch/SFSwitch';
 // export * from './Components/SFTable/SFTable';
 // export * from './Components/SFText/SFText';
