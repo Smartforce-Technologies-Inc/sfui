@@ -2,13 +2,13 @@ import React from 'react';
 import { getColorRgb } from '../../Helpers';
 
 interface CommonProps {
-  type: 'default' | 'repeated' | 'gradient';
-  text: string;
-  color: string;
-  size: number;
-  opacity?: number;
-  blur?: number;
   angle?: number;
+  blur?: number;
+  color: string;
+  opacity?: number;
+  size: number;
+  text: string;
+  type: 'default' | 'repeated' | 'gradient';
 }
 
 interface DefaultProps extends CommonProps {
@@ -16,22 +16,22 @@ interface DefaultProps extends CommonProps {
 }
 
 interface RepeatProps extends CommonProps {
-  type: 'repeated';
-  repeatTimes: number;
   repeatBgColor: string;
+  repeatTimes: number;
+  type: 'repeated';
 }
 
 interface GradientProps extends CommonProps {
-  type: 'gradient';
   gradientEndColor: string;
+  type: 'gradient';
 }
 
 export type SFTextShadowProps = DefaultProps | RepeatProps | GradientProps;
 
 export const SFTextShadow = ({
-  opacity = 0,
-  blur = 0,
   angle = 45,
+  blur = 0,
+  opacity = 0,
   ...props
 }: SFTextShadowProps): React.ReactElement<SFTextShadowProps> => {
   const defaultRender = <span>{props.text}</span>;
