@@ -14,6 +14,7 @@ module.exports = {
     '../src/Components/SFIconButton/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFLink/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFMenu/*.stories.@(js|jsx|ts|tsx)',
+    '../src/Components/SFNumericField/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFPaper/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFSwitch/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFSpinner/*.stories.@(js|jsx|ts|tsx)',
