@@ -4,6 +4,7 @@ module.exports = {
   // TODO remove (used to test migrated components on storybook)
   stories: [
     '../src/Components/SFAlert/*.stories.@(js|jsx|ts|tsx)',
+    '../src/Components/SFAlertCollapse/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFBadge/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFButton/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFCard/*.stories.@(js|jsx|ts|tsx)',

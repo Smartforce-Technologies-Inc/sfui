@@ -1,27 +1,27 @@
 import React from 'react';
 import { SFAlert, SFAlertProps } from '../SFAlert/SFAlert';
-import { Collapse } from '@material-ui/core';
-import { TransitionProps } from '@material-ui/core/transitions';
+import { TransitionProps } from '@mui/material/transitions';
+import { Collapse } from '@mui/material';
 
 export interface SFAlertCollapseProps extends SFAlertProps {
   isOpen: boolean;
-  timeout?: TransitionProps['timeout'] | 'auto';
   mountOnEnter?: boolean;
+  timeout?: TransitionProps['timeout'] | 'auto';
   unmountOnExit?: boolean;
 }
 
 export const SFAlertCollapse = ({
   isOpen,
-  timeout = 'auto',
   mountOnEnter = true,
+  timeout = 'auto',
   unmountOnExit = true,
   ...props
 }: SFAlertCollapseProps): React.ReactElement<SFAlertCollapseProps> => {
   return (
     <Collapse
       in={isOpen}
-      timeout={timeout}
       mountOnEnter={mountOnEnter}
+      timeout={timeout}
       unmountOnExit={unmountOnExit}
     >
       <SFAlert {...props} />
