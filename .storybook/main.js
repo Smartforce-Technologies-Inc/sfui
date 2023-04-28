@@ -5,18 +5,24 @@ module.exports = {
   stories: [
     '../src/Components/SFAlert/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFBadge/*.stories.@(js|jsx|ts|tsx)',
+    '../src/Components/SFButton/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFCard/*.stories.@(js|jsx|ts|tsx)',
+    '../src/Components/SFCheckbox/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFDialog/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFDrawer/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFIcon/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFIconButton/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFLink/*.stories.@(js|jsx|ts|tsx)',
+    '../src/Components/SFMenu/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFPaper/*.stories.@(js|jsx|ts|tsx)',
+    '../src/Components/SFSwitch/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFSpinner/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFSwitch/*.stories.@(js|jsx|ts|tsx)',
+    '../src/Components/SFTextField/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFTimeline/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFTooltip/*.stories.@(js|jsx|ts|tsx)',
-    '../src/SFColors/*.stories.@(js|jsx|ts|tsx)'
+    '../src/SFColors/*.stories.@(js|jsx|ts|tsx)',
+    '../src/SFHttpStatusCode/*.stories.@(js|jsx|ts|tsx)'
   ],
   addons: ['@storybook/addon-links', '@storybook/addon-essentials']
 };

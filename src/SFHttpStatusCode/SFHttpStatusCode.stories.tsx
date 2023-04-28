@@ -1,5 +1,5 @@
 import React from 'react';
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { Story, Meta } from '@storybook/react';
 import { HttpStatusCode } from './SFHttpStatusCode';
 import { SFLink } from '../Components/SFLink/SFLink';
 

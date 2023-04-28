@@ -1,6 +1,6 @@
 import React from 'react';
-import { Story, ComponentMeta } from '@storybook/react';
-import { SFIconButton, SFIconButtonProps } from './SFIconButton';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { SFIconButton } from './SFIconButton';
 import SFIconSet from '../SFIcon/icons/selection.json';
 
 export default {
@@ -15,7 +15,8 @@ export default {
         'sfColorDarkMode',
         'sfSize',
         'sfIcon',
-        'rotate'
+        'rotate',
+        'onClick'
       ]
     }
   },
@@ -49,7 +50,7 @@ export default {
   }
 } as ComponentMeta<typeof SFIconButton>;
 
-export const Default: Story<SFIconButtonProps> = (args) => (
+export const Default: ComponentStory<typeof SFIconButton> = (args) => (
   <SFIconButton {...args} />
 );
 Default.argTypes = {
@@ -63,7 +64,7 @@ Default.argTypes = {
   }
 };
 
-export const CustomSize: Story<SFIconButtonProps> = (args) => (
+export const CustomSize: ComponentStory<typeof SFIconButton> = (args) => (
   <SFIconButton {...args} />
 );
 CustomSize.argTypes = {
@@ -82,7 +83,7 @@ CustomSize.parameters = {
   }
 };
 
-export const AllSizes: Story<SFIconButtonProps> = (args) => (
+export const AllSizes: ComponentStory<typeof SFIconButton> = (args) => (
   <div
     style={{
       display: 'grid',

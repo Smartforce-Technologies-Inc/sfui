@@ -1,14 +1,17 @@
 import React from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
-
+import { Story, ComponentMeta } from '@storybook/react';
 import { SFMenu, SFMenuProps } from './SFMenu';
 import { SFMenuItem } from '../SFMenuItem/SFMenuItem';
 
 export default {
   title: 'Components/SFMenu',
   component: SFMenu,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: {
+    controls: {
+      sort: 'alpha',
+      include: ['transitionDuration', 'open', 'onClose']
+    }
+  },
   args: {
     transitionDuration: 'auto',
     open: false
@@ -38,17 +41,12 @@ export default {
         }
       }
     },
-    onClose: { action: 'onClose', table: { disable: true } },
-    ref: {
-      table: {
-        disable: true
-      }
-    }
+    onClose: { action: 'onClose', table: { disable: true } }
   }
-} as Meta;
+} as ComponentMeta<typeof SFMenu>;
 
 const Template: Story<SFMenuProps> = (args) => {
-  const refAnchorEl = React.useRef<HTMLDivElement | null>();
+  const refAnchorEl = React.useRef<HTMLDivElement>(null);
 
   return (
     <div>
