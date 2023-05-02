@@ -1,11 +1,16 @@
 import React from 'react';
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { SFAlertCollapse } from './SFAlertCollapse';
 
 export default {
   title: 'Components/SFAlertCollapse',
   component: SFAlertCollapse,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: {
+    controls: {
+      sort: 'alpha',
+      include: ['isOpen', 'timeout', 'title', 'type', 'onClose']
+    }
+  },
   args: {
     isOpen: false,
     mountOnEnter: true,
@@ -15,11 +20,6 @@ export default {
     unmountOnExit: true
   },
   argTypes: {
-    children: {
-      table: {
-        disable: true
-      }
-    },
     isOpen: {
       description: 'If true, the component is shown.',
       table: {
@@ -39,18 +39,11 @@ export default {
       description:
         'Callback fired when the component requests to be closed. When provided a close icon button is displayed that triggers the callback when clicked.',
       action: 'onClose',
-      control: {
-        disabled: true
-      },
+      control: false,
       table: {
         type: {
           summary: 'func'
         }
-      }
-    },
-    ref: {
-      table: {
-        disable: true
       }
     },
     timeout: {
@@ -66,7 +59,7 @@ export default {
         'Specifies if the transition should be displayed on item unmount.'
     }
   }
-} as Meta;
+} as ComponentMeta<typeof SFAlertCollapse>;
 
 const AlertCollapseStory = ({ isOpen, title, type, ...args }): JSX.Element => (
   <SFAlertCollapse {...args} isOpen={isOpen} title={title} type={type} />
