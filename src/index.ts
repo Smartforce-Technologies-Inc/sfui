@@ -48,6 +48,9 @@ export * from './Components/SFTimeline/SFTimeline';
 export * from './Components/SFTooltip/SFTooltip';
 
 export * from './SFTheme/SFTheme';
+// export * from './SFColors/SFColors';
+// export * from './SFHttpStatusCode/SFHttpStatusCode';
+export * from './SFMedia/SFMedia';
 export * from './SFColors/SFColors';
 export * from './SFHttpStatusCode/SFHttpStatusCode';
 

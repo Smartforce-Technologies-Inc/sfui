@@ -27,6 +27,7 @@ module.exports = {
     '../src/Components/SFTimeline/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFTooltip/*.stories.@(js|jsx|ts|tsx)',
     '../src/SFColors/*.stories.@(js|jsx|ts|tsx)',
+    '../src/SFMedia/*.stories.@(js|jsx|ts|tsx)',
     '../src/SFHttpStatusCode/*.stories.@(js|jsx|ts|tsx)'
   ],
   addons: ['@storybook/addon-links', '@storybook/addon-essentials']
