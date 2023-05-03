@@ -1,19 +1,17 @@
 import * as React from 'react';
-import { withStyles, Theme } from '@material-ui/core/styles';
-import Radio, { RadioProps } from '@material-ui/core/Radio';
-import FormControl from '@material-ui/core/FormControl';
+import { Radio, RadioProps, FormControl, styled } from '@mui/material';
 import { SFFormControlBooleanLabel } from '../../SFFormControlBooleanLabel/SFFormControlBooleanLabel';
 import { SFGrey } from '../../../SFColors/SFColors';
 
-const StyledRadio = withStyles((theme: Theme) => ({
+const StyledRadio = styled(Radio)(({ theme }) => ({
   root: {
-    color: `${theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400]}`
+    color: `${theme.palette.mode === 'light' ? SFGrey[600] : SFGrey[400]}`
   },
   colorPrimary: {
     '&:hover': {
       '@media (hover: hover)': {
         backgroundColor: `${
-          theme.palette.type === 'light'
+          theme.palette.mode === 'light'
             ? 'rgba(204, 204, 204, 0.3)'
             : 'rgba(128, 128, 128, 0.3)'
         }`
@@ -21,7 +19,7 @@ const StyledRadio = withStyles((theme: Theme) => ({
     },
     '&:active': {
       backgroundColor: `${
-        theme.palette.type === 'light'
+        theme.palette.mode === 'light'
           ? 'rgba(204, 204, 204, 0.5)'
           : 'rgba(128, 128, 128, 0.2)'
       }`
@@ -29,7 +27,7 @@ const StyledRadio = withStyles((theme: Theme) => ({
     '&.Mui-checked:hover': {
       '@media (hover: hover)': {
         backgroundColor: `${
-          theme.palette.type === 'light'
+          theme.palette.mode === 'light'
             ? 'rgba(204, 235, 255, 0.4)'
             : 'rgba(128, 198, 255, 0.2)'
         }`
@@ -37,16 +35,16 @@ const StyledRadio = withStyles((theme: Theme) => ({
     },
     '&.Mui-checked:active': {
       backgroundColor: `${
-        theme.palette.type === 'light'
+        theme.palette.mode === 'light'
           ? 'rgba(204, 235, 255, 0.6)'
           : 'rgba(128, 198, 255, 0.1)'
       }`
     },
     '&.Mui-disabled': {
-      color: `${theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]}`
+      color: `${theme.palette.mode === 'light' ? SFGrey[200] : SFGrey[700]}`
     }
   }
-}))(Radio);
+}));
 
 export interface SFRadioProps extends RadioProps {
   label?: React.ReactNode;
