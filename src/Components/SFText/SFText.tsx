@@ -4,6 +4,8 @@ import {
   SFBlueMainDark,
   SFBlueMainLight,
   SFGrey,
+  SFRedMainDark,
+  SFRedMainLight,
   SFTextBlack,
   SFTextWhite
 } from '../../SFColors/SFColors';
@@ -139,7 +141,7 @@ const textTypeProps: Record<SFTextType, TextCSSProps> = {
   }
 };
 
-export type SFTextColor = 'default' | 'neutral' | 'primary';
+export type SFTextColor = 'default' | 'neutral' | 'primary' | 'error';
 
 function getColor(color: SFTextColor, isLight: boolean): string {
   switch (color) {
@@ -155,6 +157,13 @@ function getColor(color: SFTextColor, isLight: boolean): string {
         return SFBlueMainLight;
       } else {
         return SFBlueMainDark;
+      }
+    }
+    case 'error': {
+      if (isLight) {
+        return SFRedMainLight;
+      } else {
+        return SFRedMainDark;
       }
     }
     default: {
