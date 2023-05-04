@@ -3,18 +3,21 @@ import NumberFormat, { NumberFormatProps } from 'react-number-format';
 import { SFTextField, SFTextFieldProps } from '../SFTextField/SFTextField';
 
 interface NumberFormatCustomProps extends NumberFormatProps {
-  inputRef: (instance: NumberFormat | null) => void;
-  onChange: (event: { target: { name: string; value: string } }) => void;
-  name: string;
   allowDecimals: boolean;
+  inputRef: (instance: NumberFormat | null) => void;
+  name: string;
+  onChange: (event: { target: { name: string; value: string } }) => void;
 }
 
-function NumberFormatCustom(props: NumberFormatCustomProps): JSX.Element {
-  const { inputRef, onChange, allowDecimals, ...other } = props;
-
+function NumberFormatCustom({
+  allowDecimals,
+  onChange,
+  inputRef,
+  ...props
+}: NumberFormatCustomProps): JSX.Element {
   return (
     <NumberFormat
-      {...other}
+      {...props}
       inputMode={allowDecimals ? 'decimal' : 'numeric'}
       decimalScale={!allowDecimals ? 0 : props.decimalScale}
       pattern={allowDecimals ? undefined : '[0-9]*'}
@@ -33,15 +36,15 @@ function NumberFormatCustom(props: NumberFormatCustomProps): JSX.Element {
 }
 
 export interface SFNumericFieldProps extends SFTextFieldProps {
-  numberFormatProps?: NumberFormatProps;
   allowDecimals?: boolean;
   allowNegative?: boolean;
+  numberFormatProps?: NumberFormatProps;
 }
 
 export const SFNumericField = ({
-  numberFormatProps,
   allowDecimals = true,
   allowNegative = false,
+  numberFormatProps,
   ...props
 }: SFNumericFieldProps): React.ReactElement<SFNumericFieldProps> => {
   return (
@@ -49,6 +52,7 @@ export const SFNumericField = ({
       {...props}
       inputProps={{ ...numberFormatProps, allowDecimals, allowNegative }}
       InputProps={{
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         inputComponent: NumberFormatCustom as any
       }}
     />
