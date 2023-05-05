@@ -391,6 +391,14 @@ export const SFScrollable = React.forwardRef(
       }
     };
 
+    const stopMousePropagation = (
+      e:
+        | React.MouseEvent<HTMLDivElement, MouseEvent>
+        | React.TouchEvent<HTMLDivElement>
+    ): void => {
+      e.stopPropagation();
+    };
+
     return (
       <StyledSFScrollable
         className={` ${hasHorizontalScroll ? 'withHorizontalScroll' : ''} ${
@@ -403,6 +411,10 @@ export const SFScrollable = React.forwardRef(
       >
         <div
           className={`scrollableContainer ${containerClassName || ''}`}
+          onMouseOver={stopMousePropagation}
+          onMouseOut={stopMousePropagation}
+          onTouchEnd={stopMousePropagation}
+          onTouchStart={stopMousePropagation}
           ref={scrollHostRef}
           onScroll={onHostScroll}
         >
@@ -411,6 +423,10 @@ export const SFScrollable = React.forwardRef(
 
         <div
           className='vScrollBar'
+          onMouseOver={stopMousePropagation}
+          onMouseOut={stopMousePropagation}
+          onTouchEnd={stopMousePropagation}
+          onTouchStart={stopMousePropagation}
           style={{ opacity: showVerticalScroll ? 1 : 0 }}
         >
           <div
@@ -422,6 +438,10 @@ export const SFScrollable = React.forwardRef(
 
         <div
           className='hScrollBar'
+          onMouseOver={stopMousePropagation}
+          onMouseOut={stopMousePropagation}
+          onTouchEnd={stopMousePropagation}
+          onTouchStart={stopMousePropagation}
           style={{ opacity: showHorizontalScroll ? 1 : 0 }}
         >
           <div
