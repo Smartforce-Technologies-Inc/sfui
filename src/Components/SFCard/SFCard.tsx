@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 
 import { SFSpinner } from '../SFSpinner/SFSpinner';
-import { SFPaper } from '../SFPaper/SFPaper';
+import { SFPaper, SFPaperProps } from '../SFPaper/SFPaper';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { SFGrey } from '../../SFColors/SFColors';
@@ -35,12 +35,11 @@ const usePaperStyles = makeStyles({
 
 export type sfElevations = 0 | 1 | 2 | 3 | 4 | 6 | 8 | 9 | 12 | 16 | 24;
 
-export interface SFCardProps {
+export interface SFCardProps extends SFPaperProps {
   sfElevation?: sfElevations;
   className?: string;
   isLoading?: boolean;
   loadingAtTop?: boolean;
-  paperClassName?: string;
   children?: React.ReactNode;
 }
 
@@ -51,8 +50,8 @@ export const SFCard = forwardRef(
       className = '',
       isLoading = false,
       loadingAtTop = false,
-      paperClassName,
-      children
+      children,
+      ...props
     }: SFCardProps,
     ref?: React.Ref<unknown> | undefined
   ): React.ReactElement<SFCardProps> => {
@@ -62,8 +61,8 @@ export const SFCard = forwardRef(
 
     return (
       <SFPaper
+        {...props}
         elevation={sfElevation}
-        className={paperClassName}
         classes={sfElevation === 0 ? styledPaper : undefined}
         ref={ref}
       >
