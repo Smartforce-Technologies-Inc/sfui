@@ -35,7 +35,7 @@ const usePaperStyles = makeStyles({
 
 export type sfElevations = 0 | 1 | 2 | 3 | 4 | 6 | 8 | 9 | 12 | 16 | 24;
 
-export interface SFCardProps extends Omit<SFPaperProps, 'sfElevation'> {
+export interface SFCardProps extends SFPaperProps {
   sfElevation?: sfElevations;
   containerClassName?: string;
   isLoading?: boolean;
