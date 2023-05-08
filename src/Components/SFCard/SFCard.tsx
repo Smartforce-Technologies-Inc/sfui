@@ -35,9 +35,9 @@ const usePaperStyles = makeStyles({
 
 export type sfElevations = 0 | 1 | 2 | 3 | 4 | 6 | 8 | 9 | 12 | 16 | 24;
 
-export interface SFCardProps extends SFPaperProps {
+export interface SFCardProps extends Omit<SFPaperProps, 'sfElevation'> {
   sfElevation?: sfElevations;
-  className?: string;
+  containerClassName?: string;
   isLoading?: boolean;
   loadingAtTop?: boolean;
   children?: React.ReactNode;
@@ -47,7 +47,7 @@ export const SFCard = forwardRef(
   (
     {
       sfElevation = 0,
-      className = '',
+      containerClassName = '',
       isLoading = false,
       loadingAtTop = false,
       children,
@@ -55,7 +55,6 @@ export const SFCard = forwardRef(
     }: SFCardProps,
     ref?: React.Ref<unknown> | undefined
   ): React.ReactElement<SFCardProps> => {
-    const externalClass: string = className || '';
     const customCardStyles: Record<'root', string> = cardStyles();
     const styledPaper: Record<'root', string> = usePaperStyles();
 
@@ -66,7 +65,7 @@ export const SFCard = forwardRef(
         classes={sfElevation === 0 ? styledPaper : undefined}
         ref={ref}
       >
-        <div className={`${customCardStyles.root} ${externalClass} `}>
+        <div className={`${customCardStyles.root} ${containerClassName} `}>
           {isLoading === true ? (
             <div
               className={`loader ${loadingAtTop === true ? 'top' : undefined}`}
