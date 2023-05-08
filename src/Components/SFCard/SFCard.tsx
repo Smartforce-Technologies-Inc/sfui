@@ -40,6 +40,7 @@ export interface SFCardProps {
   className?: string;
   isLoading?: boolean;
   loadingAtTop?: boolean;
+  paperClassName?: string;
   children?: React.ReactNode;
 }
 
@@ -50,6 +51,7 @@ export const SFCard = forwardRef(
       className = '',
       isLoading = false,
       loadingAtTop = false,
+      paperClassName,
       children
     }: SFCardProps,
     ref?: React.Ref<unknown> | undefined
@@ -61,6 +63,7 @@ export const SFCard = forwardRef(
     return (
       <SFPaper
         elevation={sfElevation}
+        className={paperClassName}
         classes={sfElevation === 0 ? styledPaper : undefined}
         ref={ref}
       >
