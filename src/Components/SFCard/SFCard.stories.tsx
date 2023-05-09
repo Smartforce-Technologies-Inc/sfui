@@ -19,6 +19,12 @@ export default {
       description:
         'Shadow depth, corresponds to dp in the spec. It accepts values between 0 and 24 inclusive.'
     },
+    containerClassName: {
+      description: 'Classname applied to the container element.',
+      control: {
+        type: null
+      }
+    },
     className: {
       table: {
         disable: true

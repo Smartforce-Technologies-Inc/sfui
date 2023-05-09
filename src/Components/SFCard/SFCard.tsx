@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 
 import { SFSpinner } from '../SFSpinner/SFSpinner';
-import { SFPaper } from '../SFPaper/SFPaper';
+import { SFPaper, SFPaperProps } from '../SFPaper/SFPaper';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { SFGrey } from '../../SFColors/SFColors';
@@ -35,9 +35,9 @@ const usePaperStyles = makeStyles({
 
 export type sfElevations = 0 | 1 | 2 | 3 | 4 | 6 | 8 | 9 | 12 | 16 | 24;
 
-export interface SFCardProps {
+export interface SFCardProps extends Omit<SFPaperProps, 'elevation'> {
   sfElevation?: sfElevations;
-  className?: string;
+  containerClassName?: string;
   isLoading?: boolean;
   loadingAtTop?: boolean;
   children?: React.ReactNode;
@@ -47,24 +47,25 @@ export const SFCard = forwardRef(
   (
     {
       sfElevation = 0,
-      className = '',
+      containerClassName = '',
       isLoading = false,
       loadingAtTop = false,
-      children
+      children,
+      ...props
     }: SFCardProps,
     ref?: React.Ref<unknown> | undefined
   ): React.ReactElement<SFCardProps> => {
-    const externalClass: string = className || '';
     const customCardStyles: Record<'root', string> = cardStyles();
     const styledPaper: Record<'root', string> = usePaperStyles();
 
     return (
       <SFPaper
+        {...props}
         elevation={sfElevation}
         classes={sfElevation === 0 ? styledPaper : undefined}
         ref={ref}
       >
-        <div className={`${customCardStyles.root} ${externalClass} `}>
+        <div className={`${customCardStyles.root} ${containerClassName} `}>
           {isLoading === true ? (
             <div
               className={`loader ${loadingAtTop === true ? 'top' : undefined}`}
