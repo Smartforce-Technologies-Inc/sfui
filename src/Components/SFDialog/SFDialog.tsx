@@ -11,7 +11,7 @@ import {
   DialogActionsProps,
   styled
 } from '@mui/material';
-import { SFGrey, SFSurfaceDark, SFSurfaceLight } from '../../SFColors/SFColors';
+import { SFGrey } from '../../SFColors/SFColors';
 import { hexToRgba } from '../../Helpers';
 import React from 'react';
 
