@@ -11,7 +11,7 @@ import {
   DialogActionsProps,
   styled
 } from '@mui/material';
-import { SFGrey } from '../../SFColors/SFColors';
+import { SFGrey, SFSurfaceDark, SFSurfaceLight } from '../../SFColors/SFColors';
 import { hexToRgba } from '../../Helpers';
 import React from 'react';
 
@@ -23,13 +23,11 @@ export interface SFDialogProps extends DialogProps {}
 
 export const SFDialogTitle = styled(DialogTitle)(({ theme }) => ({
   padding: 0,
-  '& h2': {
-    color: `${theme.palette.mode === 'light' ? SFGrey[900] : SFGrey[50]}`,
-    fontSize: 24,
-    fontStyle: 'normal',
-    fontWeight: 500,
-    lineHeight: '28px'
-  }
+  color: `${theme.palette.mode === 'light' ? SFGrey[900] : SFGrey[50]}`,
+  fontSize: 24,
+  fontStyle: 'normal',
+  fontWeight: 500,
+  lineHeight: '28px'
 }));
 
 export const SFDialogContent = styled(DialogContent)(() => ({
@@ -51,11 +49,14 @@ export const SFDialogActions = styled(DialogActions)(() => ({
 }));
 
 const StyledDialog = styled(Dialog)(({ theme }) => ({
-  backgroundColor: `${
+  backgroundColor:
     theme.palette.mode === 'light'
       ? 'rgba(0, 0, 0, 0.3)'
-      : hexToRgba(SFGrey.A400 as string, 0.8)
-  }`
+      : hexToRgba(SFGrey.A400 as string, 0.8),
+
+  '.MuiDialog-paper': {
+    backgroundImage: 'none'
+  }
 }));
 
 export interface SFDialogProps extends DialogProps {

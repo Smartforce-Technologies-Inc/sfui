@@ -1,12 +1,25 @@
 import React from 'react';
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { ComponentMeta } from '@storybook/react';
 import { SFAlertDialog, SFAlertDialogProps } from './SFAlertDialog';
 import { SFTextField } from '../SFTextField/SFTextField';
 
 export default {
   title: 'Components/SFAlertDialog',
   component: SFAlertDialog,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: {
+    controls: {
+      sort: 'alpha',
+      include: [
+        'contentText',
+        'disableBackdropClick',
+        'leftAction',
+        'onClose',
+        'open',
+        'rightAction',
+        'title'
+      ]
+    }
+  },
   args: {
     title: 'Alert dialog title',
     contentText:
@@ -51,13 +64,7 @@ export default {
       control: false
     },
     onClose: {
-      table: {
-        disable: true
-      },
-      action: 'onClose'
-    },
-    onClick: {
-      action: 'onClick',
+      action: 'onClose',
       table: {
         disable: true
       }
@@ -66,14 +73,9 @@ export default {
       description: `Adds a button on the bottom right of the dialog with props to handle it's change.  
        When paired with the left action button, this button aligns to the right of the other button.`,
       control: false
-    },
-    ref: {
-      table: {
-        disable: true
-      }
     }
   }
-} as Meta;
+} as ComponentMeta<typeof SFAlertDialog>;
 
 export const AlertDialog = (args: SFAlertDialogProps): JSX.Element => (
   <SFAlertDialog

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Story, ComponentMeta } from '@storybook/react';
+import { ComponentMeta } from '@storybook/react';
 import { SFAlert } from './SFAlert';
 
 export default {
