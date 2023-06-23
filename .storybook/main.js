@@ -20,6 +20,7 @@ module.exports = {
     '../src/Components/SFRadioGroup/SFRadio/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFRadioGroup/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFSearch/*.stories.@(js|jsx|ts|tsx)',
+    '../src/Components/SFSnackbar/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFSpinner/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFSwitch/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFText/*.stories.@(js|jsx|ts|tsx)',
