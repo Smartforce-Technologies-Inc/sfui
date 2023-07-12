@@ -15,9 +15,11 @@ module.exports = {
     '../src/Components/SFIconButton/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFLink/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFMenu/*.stories.@(js|jsx|ts|tsx)',
+    '../src/Components/SFNumericField/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFPaper/*.stories.@(js|jsx|ts|tsx)',
+    '../src/Components/SFRadioGroup/SFRadio/*.stories.@(js|jsx|ts|tsx)',
+    '../src/Components/SFRadioGroup/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFSearch/*.stories.@(js|jsx|ts|tsx)',
-    '../src/Components/SFSwitch/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFSpinner/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFSwitch/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFText/*.stories.@(js|jsx|ts|tsx)',
@@ -27,6 +29,7 @@ module.exports = {
     '../src/Components/SFTooltip/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFTimeField/*.stories.@(js|jsx|ts|tsx)',
     '../src/SFColors/*.stories.@(js|jsx|ts|tsx)',
+    '../src/SFMedia/*.stories.@(js|jsx|ts|tsx)',
     '../src/SFHttpStatusCode/*.stories.@(js|jsx|ts|tsx)'
   ],
   addons: ['@storybook/addon-links', '@storybook/addon-essentials']

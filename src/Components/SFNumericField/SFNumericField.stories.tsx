@@ -1,13 +1,28 @@
 import React from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { Story, ComponentMeta } from '@storybook/react';
 
 import { SFNumericField } from './SFNumericField';
 
 export default {
   title: 'Components/SFNumericField',
   component: SFNumericField,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: {
+    controls: {
+      sort: 'alpha',
+      include: [
+        'allowDecimals',
+        'allowNegative',
+        'decimalScale',
+        'disabled',
+        'fixedDecimalScale',
+        'format',
+        'label',
+        'prefix',
+        'sufix',
+        'thousandSeparator'
+      ]
+    }
+  },
   args: {
     label: 'Bagel',
     decimalScale: 2,
@@ -107,47 +122,15 @@ export default {
       control: {
         type: 'text'
       }
-    },
-    mask: {
-      table: {
-        disable: true
-      }
-    },
-    onChange: {
-      action: 'onChange',
-      table: {
-        disable: true
-      }
-    },
-    numberFormatProps: {
-      table: {
-        disable: true
-      }
-    },
-    focused: {
-      table: {
-        disable: true
-      }
-    },
-    hiddenLabel: {
-      table: {
-        disable: true
-      }
-    },
-    ref: {
-      table: {
-        disable: true
-      }
     }
   }
-} as Meta;
+} as ComponentMeta<typeof SFNumericField>;
 
 const Template: Story = ({
   thousandSeparator,
   decimalSeparator,
   decimalScale,
   fixedDecimalScale,
-  allowNegative,
   allowLeadingZeros,
   prefix,
   suffix,
@@ -167,7 +150,6 @@ const Template: Story = ({
           thousandSeparator,
           decimalScale,
           fixedDecimalScale,
-          allowNegative,
           allowLeadingZeros,
           prefix,
           suffix,

@@ -1,12 +1,6 @@
 import React from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
-
-import {
-  SFRadioGroup,
-  SFRadioGroupProps,
-  SFRadioOptionsProps
-} from './SFRadioGroup';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { SFRadioGroup, SFRadioOptionsProps } from './SFRadioGroup';
 
 const options: SFRadioOptionsProps[] = [
   { value: 'Bagel 1', label: 'Bagel 1', disabled: false },
@@ -18,7 +12,7 @@ const options: SFRadioOptionsProps[] = [
 export default {
   title: 'Components/SFRadioGroup',
   component: SFRadioGroup,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: { controls: { sort: 'alpha', include: ['label', 'options'] } },
   args: {
     options,
     label: 'Bagel'
@@ -26,25 +20,12 @@ export default {
   argTypes: {
     label: {
       description: 'The label asociated to the input value meaning.'
-    },
-    color: {
-      table: {
-        disable: true
-      }
-    },
-    options: {
-      table: {
-        disable: true
-      }
-    },
-    ref: {
-      table: {
-        disable: true
-      }
     }
   }
-} as Meta;
+} as ComponentMeta<typeof SFRadioGroup>;
 
-const Template: Story<SFRadioGroupProps> = (args) => <SFRadioGroup {...args} />;
+const Template: ComponentStory<typeof SFRadioGroup> = (args) => (
+  <SFRadioGroup {...args} />
+);
 
 export const Default = Template.bind({});
