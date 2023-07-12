@@ -36,17 +36,6 @@ export default {
         }
       }
     }
-    // mask: {
-    //   description: 'Custom mask. Can be used to override generate from format.',
-    //   table: {
-    //     type: {
-    //       summary: 'string'
-    //     },
-    //     defaultValue: {
-    //       summary: '__:__ _M'
-    //     }
-    //   }
-    // }
   }
 } as ComponentMeta<typeof SFTimeField>;
 
@@ -57,8 +46,3 @@ const Template: ComponentStory<typeof SFTimeField> = (args) => (
 export const Default = Template.bind({});
 
 export const Mask = Template.bind({});
-
-// Mask.args = {
-//   mask: '__:__',
-//   format: 'HH:mm'
-// };
