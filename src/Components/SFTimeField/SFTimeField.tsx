@@ -125,23 +125,22 @@ const StyledTimePicker = styled(TimeField)(({ theme }) => ({
 
 export interface SFTimeFieldProps
   extends Omit<TimeFieldProps<TextFieldProps>, 'onChange'> {
-  onChange: (date: MomentObjectOutput, value?: string | null) => void;
+  onChange: (date: MomentObjectOutput, error?: string | null) => void;
 }
 
 export const SFTimeField = ({
   ampm = true,
+  onChange,
   ...props
 }: SFTimeFieldProps): React.ReactElement<SFTimeFieldProps> => {
   return (
     <LocalizationProvider dateAdapter={AdapterMoment} utils={MomentUtils}>
-      {/* 
-        e => returns the moment value
-        v => returns the validation error
-      */}
       <StyledTimePicker
         {...props}
         fullWidth
-        onChange={(value, error): void => console.log(value, error)}
+        onChange={(date: MomentObjectOutput, error): void =>
+          onChange(date, error.validationError)
+        }
         variant='filled'
       />
     </LocalizationProvider>
