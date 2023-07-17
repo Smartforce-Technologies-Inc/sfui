@@ -8,13 +8,20 @@ export default {
   parameters: {
     controls: {
       sort: 'alpha',
-      include: ['checked', 'isGroup', 'label', 'disabled']
+      include: ['onChange', 'checked', 'isGroup', 'label', 'disabled']
     }
   },
   args: {
-    label: 'Bagel'
+    label: 'Bagel',
+    checked: false
   },
   argTypes: {
+    onChange: {
+      action: 'onChange',
+      table: {
+        disable: true
+      }
+    },
     checked: {
       description: 'If true, the component is checked.',
       table: {

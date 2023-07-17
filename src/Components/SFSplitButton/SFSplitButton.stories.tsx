@@ -1,12 +1,6 @@
 import React from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
-
-import {
-  SFSplitButton,
-  SFSplitButtonProps,
-  SFSplitButtonOption
-} from './SFSplitButton';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { SFSplitButton, SFSplitButtonOption } from './SFSplitButton';
 
 const getOptions = (): SFSplitButtonOption[] => {
   return [
@@ -34,34 +28,29 @@ const getOptionsWithDisabled = (): SFSplitButtonOption[] => {
 export default {
   title: 'Components/SFSplitButton',
   component: SFSplitButton,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: {
+    controls: { sort: 'alpha', exclude: ['options', 'defaultSelected'] }
+  },
   args: {
     options: getOptions()
   },
   argTypes: {
     sfColor: {
+      defaultValue: 'blue',
       description: 'The color of the button.'
     },
     size: {
+      defaultValue: 'medium',
       description: 'The size of the button.'
     },
     variant: {
+      defaultValue: 'contained',
       description: 'The variant to use.'
-    },
-    options: {
-      table: {
-        disable: true
-      }
-    },
-    defaultSelected: {
-      table: {
-        disable: true
-      }
     }
   }
-} as Meta;
+} as ComponentMeta<typeof SFSplitButton>;
 
-const Template: Story<SFSplitButtonProps> = (args) => (
+const Template: ComponentStory<typeof SFSplitButton> = (args) => (
   <SFSplitButton {...args} />
 );
 
