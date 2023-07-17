@@ -22,6 +22,7 @@ module.exports = {
     '../src/Components/SFSearch/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFSkeleton/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFSpinner/*.stories.@(js|jsx|ts|tsx)',
+    '../src/Components/SFSplitButton/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFSwitch/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFText/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFTextField/*.stories.@(js|jsx|ts|tsx)',
