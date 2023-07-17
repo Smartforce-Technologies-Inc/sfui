@@ -1,32 +1,27 @@
 import * as React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import { SelectProps } from '@material-ui/core';
+import { SelectProps, styled } from '@mui/material';
 import { SFTextField } from '../SFTextField/SFTextField';
 import { SFIcon } from '../SFIcon/SFIcon';
 import { SFMenuItem } from '../SFMenuItem/SFMenuItem';
 
-export const StyledSelect = withStyles(() => ({
-  root: {
-    '& .MuiSelect-nativeInput': {
-      boxSizing: 'border-box'
-    },
-    '& .MuiSelect-icon': {
-      position: 'absolute',
-      right: 18,
-      pointerEvents: 'none',
-      top: 'auto'
-    }
+export const StyledSelect = styled(SFTextField)(() => ({
+  '& .MuiSelect-nativeInput': {
+    boxSizing: 'border-box'
+  },
+  '& .MuiSelect-icon': {
+    position: 'absolute',
+    right: 18,
+    pointerEvents: 'none',
+    top: 'auto'
   }
-}))(SFTextField);
+}));
 
-const StyledMenuItem = withStyles(() => ({
-  root: {
-    whiteSpace: 'unset',
-    wordBreak: 'break-word',
-    minHeight: '36px',
-    height: 'auto'
-  }
-}))(SFMenuItem);
+const StyledMenuItem = styled(SFMenuItem)(() => ({
+  whiteSpace: 'unset',
+  wordBreak: 'break-word',
+  minHeight: '36px',
+  height: 'auto'
+}));
 
 export interface SFMenuOption {
   label: string;
@@ -50,7 +45,6 @@ export const SFSelect = ({
   return (
     <StyledSelect
       select
-      fullWidth
       label={label}
       helperText={helperText}
       error={props.error}
@@ -72,22 +66,12 @@ export const SFSelect = ({
         MenuProps: {
           variant: 'menu',
           autoFocus: false,
-          disableAutoFocusItem: true,
-          style: { width: '1px' },
-          anchorOrigin: {
-            vertical: 'bottom',
-            horizontal: 'left'
-          },
-          transformOrigin: {
-            vertical: -3,
-            horizontal: 0
-          },
-          getContentAnchorEl: null
+          disableAutoFocusItem: true
         }
       }}
     >
       {options.map((option: SFMenuOption, index: number) => (
-        <StyledMenuItem key={`option-${index}`} value={option.value}>
+        <StyledMenuItem key={`${option.value}-${index}`} value={option.value}>
           {option.item ?? option.label}
         </StyledMenuItem>
       ))}

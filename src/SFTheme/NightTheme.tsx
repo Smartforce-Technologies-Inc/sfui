@@ -11,7 +11,9 @@ import {
   SFTextWhite
 } from '../SFColors/SFColors';
 
-CommonThemeOptions.palette = {
+const NightThemeOptions = { ...CommonThemeOptions };
+
+NightThemeOptions.palette = {
   mode: 'dark',
   text: {
     primary: SFTextWhite
@@ -43,6 +45,18 @@ CommonThemeOptions.palette = {
   }
 };
 
-const NightTheme = createTheme(CommonThemeOptions);
+NightThemeOptions.components = {
+  ...NightThemeOptions.components,
+  MuiMenu: {
+    styleOverrides: {
+      paper: {
+        backgroundImage: 'none',
+        backgroundColor: SFGrey[800]
+      }
+    }
+  }
+};
+
+const NightTheme = createTheme(NightThemeOptions);
 
 export { NightTheme };
