@@ -1,5 +1,5 @@
 import React from 'react';
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { SFSelect, SFSelectProps, SFMenuOption } from './SFSelect';
 import { SFIcon } from '../SFIcon/SFIcon';
 
@@ -52,7 +52,12 @@ const getNewOptions = (): SFMenuOption[] => {
 export default {
   title: 'Components/SFSelect',
   component: SFSelect,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: {
+    controls: {
+      sort: 'alpha',
+      include: ['disabled', 'error', 'helperText', 'label', 'onChange', 'value']
+    }
+  },
   args: {
     label: 'Bagel',
     options: getOptions(),
@@ -111,26 +116,13 @@ export default {
           summary: 'string'
         }
       }
-    },
-    options: {
-      table: {
-        disable: true
-      }
-    },
-    defaultValue: {
-      table: {
-        disable: true
-      }
-    },
-    ref: {
-      table: {
-        disable: true
-      }
     }
   }
-} as Meta;
+} as ComponentMeta<typeof SFSelect>;
 
-const Template: Story<SFSelectProps> = (args) => <SFSelect {...args} />;
+const Template: ComponentStory<typeof SFSelect> = (args) => (
+  <SFSelect {...args} />
+);
 
 export const Default = Template.bind({});
 
