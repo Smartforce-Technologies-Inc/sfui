@@ -97,25 +97,25 @@ export type SFSplitButtonColor = 'blue' | 'grey';
 export type SFSplitButtonSize = 'medium' | 'large';
 
 export interface SFSplitButtonOption {
-  label: string;
   disabled?: boolean;
+  label: string;
   onClick: () => void;
 }
 
 export interface SFSplitButtonProps {
-  options: SFSplitButtonOption[];
   defaultSelected?: number;
-  variant: SFSplitButtonVariant;
+  options: SFSplitButtonOption[];
   sfColor: SFSplitButtonColor;
   size?: SFSplitButtonSize;
+  variant: SFSplitButtonVariant;
 }
 
 export const SFSplitButton = ({
-  options,
   defaultSelected = 0,
-  variant = 'contained',
+  options,
   sfColor = 'blue',
-  size = 'medium'
+  size = 'medium',
+  variant = 'contained'
 }: SFSplitButtonProps): React.ReactElement<SFSplitButtonProps> => {
   const [isMenuOpen, setIsMenuOpen] = React.useState<boolean>(false);
   const [selectedItemIndex, setSelectedItemIndex] = React.useState<number>(
