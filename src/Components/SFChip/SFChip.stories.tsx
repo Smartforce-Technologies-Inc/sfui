@@ -11,6 +11,8 @@ export default {
       include: [
         'label',
         'deleteable',
+        'disabled',
+        'clickable',
         'fullWidth',
         'sfColor',
         'size',
@@ -21,7 +23,15 @@ export default {
     }
   },
   args: {
-    label: 'Bagel'
+    clickable: false,
+    deleteable: false,
+    disabled: false,
+    fullWidth: false,
+    hasError: false,
+    sfColor: 'primary',
+    size: 'small',
+    label: 'Bagel',
+    variant: 'filled'
   },
   argTypes: {
     label: {
