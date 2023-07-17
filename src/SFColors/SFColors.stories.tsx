@@ -1,7 +1,5 @@
 import React from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
-import { Theme } from '@material-ui/core/styles';
+import { Story, Meta } from '@storybook/react';
 import {
   SFBlue,
   SFBlueMainLight,
@@ -22,7 +20,7 @@ import {
   SFTextWhite,
   SFTextBlack
 } from './SFColors';
-import { makeStyles } from '@material-ui/core';
+import { styled } from '@mui/material';
 
 export default {
   title: 'Theme/SFColor'
@@ -35,34 +33,42 @@ interface MainColor {
   textColor: string;
 }
 
-const useStyles = makeStyles((theme: Theme) => ({
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    gap: '25px 80px',
-    marginBottom: '25px'
-  },
-  content: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '6px'
-  },
-  item: {
-    display: 'grid',
-    gridTemplateColumns: '15px 80px auto',
-    gap: '15px',
-    alignItems: 'center'
-  },
-  color: { width: '20px', height: '20px' },
-  text: { margin: '0' },
-  code: {
-    padding: '4px 12px',
-    borderLeft: `1px solid ${
-      theme.palette.type === 'light' ? SFBlueMainLight : SFBlueMainDark
-    }`,
-    fontSize: '14px'
-  }
+const Code = styled('div')(({ theme }) => ({
+  padding: '4px 12px',
+  borderLeft: `1px solid ${
+    theme.palette.mode === 'light' ? SFBlueMainLight : SFBlueMainDark
+  }`,
+  fontSize: '14px'
 }));
+
+const Container = styled('div')({
+  display: 'flex',
+  flexWrap: 'wrap',
+  gap: '25px 80px',
+  marginBottom: '25px'
+});
+
+const Content = styled('div')({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '6px'
+});
+
+const Item = styled('div')({
+  display: 'grid',
+  gridTemplateColumns: '15px 80px auto',
+  gap: '15px',
+  alignItems: 'center'
+});
+
+const Color = styled('div')({
+  width: '20px',
+  height: '20px'
+});
+
+const Text = styled('p')({
+  margin: '0'
+});
 
 const lightMainColors: MainColor[] = [
   {
@@ -298,8 +304,6 @@ Palette.parameters = {
 };
 
 const ColorsConstTemplate: Story = () => {
-  const styles = useStyles();
-
   return (
     <div>
       <h2>SFColors Typescript Constants</h2>
@@ -307,105 +311,90 @@ const ColorsConstTemplate: Story = () => {
         List of SFColor typescript constants. Can be imported from the library.
       </p>
 
-      <div className={styles.code}>
+      <Code>
         <code>@import {'{SFColor, Another Color}'} from 'sfui';</code>
         <br />
         <code>{'<div style={{color: SFColor}}></div>'}</code>
-      </div>
-      <div className={styles.container}>
+      </Code>
+
+      <Container>
         <div>
           <h3>Light Main Colors</h3>
-          <div className={styles.content}>
+          <Content>
             {lightMainColors.map((item, index) => (
-              <div className={styles.item} key={index}>
-                <div
-                  className={styles.color}
-                  style={{ backgroundColor: item.bgColor }}
-                />
-                <p className={styles.text}>{`${item.bgColor}`}</p>
-                <p className={styles.text}>{`${item.name}`}</p>
-              </div>
+              <Item key={index}>
+                <Color style={{ backgroundColor: item.bgColor }} />
+                <Text>{`${item.bgColor}`}</Text>
+                <Text>{`${item.name}`}</Text>
+              </Item>
             ))}
-          </div>
+          </Content>
         </div>
+
         <div>
           <h3>Dark Main Colors</h3>
-          <div className={styles.content}>
+          <Content>
             {darkMainColors.map((item, index) => (
-              <div className={styles.item} key={index}>
-                <div
-                  className={styles.color}
-                  style={{ backgroundColor: item.bgColor }}
-                />
-                <p className={styles.text}>{`${item.bgColor}`}</p>
-                <p className={styles.text}>{`${item.name}`}</p>
-              </div>
+              <Item key={index}>
+                <Color style={{ backgroundColor: item.bgColor }} />
+                <Text>{`${item.bgColor}`}</Text>
+                <Text>{`${item.name}`}</Text>
+              </Item>
             ))}
-          </div>
+          </Content>
         </div>
-      </div>
-      <div className={styles.container}>
+      </Container>
+
+      <Container>
         <div>
           <h3>SFBlue</h3>
-          <div className={styles.content}>
+          <Content>
             {Object.keys(SFBlue).map((value, index) => (
-              <div className={styles.item} key={index}>
-                <div
-                  className={styles.color}
-                  style={{ backgroundColor: SFBlue[value] }}
-                />
-                <p className={styles.text}>{`${SFBlue[value]}`}</p>
-                <p className={styles.text}>SFBlue[{value}]</p>
-              </div>
+              <Item key={index}>
+                <Color style={{ backgroundColor: SFBlue[value] }} />
+                <Text>{`${SFBlue[value]}`}</Text>
+                <Text>SFBlue[{value}]</Text>
+              </Item>
             ))}
-          </div>
+          </Content>
         </div>
         <div>
           <h3>SFRed</h3>
-          <div className={styles.content}>
+          <Content>
             {Object.keys(SFRed).map((value, index) => (
-              <div className={styles.item} key={index}>
-                <div
-                  className={styles.color}
-                  style={{ backgroundColor: SFRed[value] }}
-                />
-                <p className={styles.text}>{`${SFRed[value]}`}</p>
-                <p className={styles.text}>SFRed[{value}]</p>
-              </div>
+              <Item key={index}>
+                <Color style={{ backgroundColor: SFRed[value] }} />
+                <Text>{`${SFRed[value]}`}</Text>
+                <Text>SFRed[{value}]</Text>
+              </Item>
             ))}
-          </div>
+          </Content>
         </div>
         <div>
           <h3>SFGrey</h3>
-          <div className={styles.content}>
+          <Content>
             {Object.keys(SFGrey).map((value, index) => (
-              <div className={styles.item} key={index}>
-                <div
-                  className={styles.color}
-                  style={{ backgroundColor: SFGrey[value] }}
-                />
-                <p className={styles.text}>{`${SFGrey[value]}`}</p>
-                <p className={styles.text}>SFGrey[{value}]</p>
-              </div>
+              <Item key={index}>
+                <Color style={{ backgroundColor: SFGrey[value] }} />
+                <Text>{`${SFGrey[value]}`}</Text>
+                <Text>SFGrey[{value}]</Text>
+              </Item>
             ))}
-          </div>
+          </Content>
         </div>
         <div>
           <h3>SFGreen</h3>
-          <div className={styles.content}>
+          <Content>
             {Object.keys(SFGreen).map((value, index) => (
-              <div className={styles.item} key={index}>
-                <div
-                  className={styles.color}
-                  style={{ backgroundColor: SFGreen[value] }}
-                />
-                <p className={styles.text}>{`${SFGreen[value]}`}</p>
-                <p className={styles.text}>SFGreen[{value}]</p>
-              </div>
+              <Item key={index}>
+                <Color style={{ backgroundColor: SFGreen[value] }} />
+                <Text>{`${SFGreen[value]}`}</Text>
+                <Text>SFGreen[{value}]</Text>
+              </Item>
             ))}
-          </div>
+          </Content>
         </div>
-      </div>
+      </Container>
     </div>
   );
 };
@@ -498,115 +487,98 @@ palette.set('NMColors', [
 ]);
 
 const SassTemplate: Story = () => {
-  const styles = useStyles();
-  const LightMainColors = palette.get('LMColors');
-  const NightMainColors = palette.get('NMColors');
-  const SFBluePalette = palette.get('SFBlue');
-  const SFRedPalette = palette.get('SFRed');
-  const SFGreyPalette = palette.get('SFGrey');
-  const SFGreenPalette = palette.get('SFGreen');
+  const LightMainColors = palette.get('LMColors') as Color[];
+  const NightMainColors = palette.get('NMColors') as Color[];
+  const SFBluePalette = palette.get('SFBlue') as Color[];
+  const SFRedPalette = palette.get('SFRed') as Color[];
+  const SFGreyPalette = palette.get('SFGrey') as Color[];
+  const SFGreenPalette = palette.get('SFGreen') as Color[];
 
   return (
     <div>
       <h2>SFColors Sass Variables</h2>
       <p>List of SFColor Sass variables. Can be imported from the library.</p>
-      <div className={styles.code}>
+      <Code>
         <code>@import '~sf-ui-fabric/dist/styles/SFPalette.scss'; </code>
-      </div>
-      <div className={styles.container}>
+      </Code>
+
+      <Container>
         <div>
           <h3>Light Main Colors</h3>
-          <div className={styles.content}>
+          <Content>
             {LightMainColors.map((color, index) => (
-              <div className={styles.item} key={index}>
-                <div
-                  className={styles.color}
-                  style={{ backgroundColor: color.hex }}
-                />
-                <p className={styles.text}>{`${color.hex.toUpperCase()}`}</p>
-                <p className={styles.text}>{`${color.name}`}</p>
-              </div>
+              <Item key={index}>
+                <Color style={{ backgroundColor: color.hex }} />
+                <Text>{`${color.hex.toUpperCase()}`}</Text>
+                <Text>{`${color.name}`}</Text>
+              </Item>
             ))}
-          </div>
+          </Content>
         </div>
         <div>
           <h3>Dark Main Colors</h3>
-          <div className={styles.content}>
+          <Content>
             {NightMainColors.map((color, index) => (
-              <div className={styles.item} key={index}>
-                <div
-                  className={styles.color}
-                  style={{ backgroundColor: color.hex }}
-                />
-                <p className={styles.text}>{`${color.hex.toUpperCase()}`}</p>
-                <p className={styles.text}>{`${color.name}`}</p>
-              </div>
+              <Item key={index}>
+                <Color style={{ backgroundColor: color.hex }} />
+                <Text>{`${color.hex.toUpperCase()}`}</Text>
+                <Text>{`${color.name}`}</Text>
+              </Item>
             ))}
-          </div>
+          </Content>
         </div>
-      </div>
-      <div className={styles.container}>
+      </Container>
+
+      <Container>
         <div>
           <h3>SFBlue</h3>
-          <div className={styles.content}>
+          <Content>
             {SFBluePalette.map((color, index) => (
-              <div className={styles.item} key={index}>
-                <div
-                  className={styles.color}
-                  style={{ backgroundColor: color.hex }}
-                />
-                <p className={styles.text}>{`${color.hex.toUpperCase()}`}</p>
-                <p className={styles.text}>{`${color.name}`}</p>
-              </div>
+              <Item key={index}>
+                <Color style={{ backgroundColor: color.hex }} />
+                <Text>{`${color.hex.toUpperCase()}`}</Text>
+                <Text>{`${color.name}`}</Text>
+              </Item>
             ))}
-          </div>
+          </Content>
         </div>
         <div>
           <h3>SFRed</h3>
-          <div className={styles.content}>
+          <Content>
             {SFRedPalette.map((color, index) => (
-              <div className={styles.item} key={index}>
-                <div
-                  className={styles.color}
-                  style={{ backgroundColor: color.hex }}
-                />
-                <p className={styles.text}>{`${color.hex.toUpperCase()}`}</p>
-                <p className={styles.text}>{`${color.name}`}</p>
-              </div>
+              <Item key={index}>
+                <Color style={{ backgroundColor: color.hex }} />
+                <Text>{`${color.hex.toUpperCase()}`}</Text>
+                <Text>{`${color.name}`}</Text>
+              </Item>
             ))}
-          </div>
+          </Content>
         </div>
         <div>
           <h3>SFGrey</h3>
-          <div className={styles.content}>
+          <Content>
             {SFGreyPalette.map((color, index) => (
-              <div className={styles.item} key={index}>
-                <div
-                  className={styles.color}
-                  style={{ backgroundColor: color.hex }}
-                />
-                <p className={styles.text}>{`${color.hex.toUpperCase()}`}</p>
-                <p className={styles.text}>{`${color.name}`}</p>
-              </div>
+              <Item key={index}>
+                <Color style={{ backgroundColor: color.hex }} />
+                <Text>{`${color.hex.toUpperCase()}`}</Text>
+                <Text>{`${color.name}`}</Text>
+              </Item>
             ))}
-          </div>
+          </Content>
         </div>
         <div>
           <h3>SFGreen</h3>
-          <div className={styles.content}>
+          <Content>
             {SFGreenPalette.map((color, index) => (
-              <div className={styles.item} key={index}>
-                <div
-                  className={styles.color}
-                  style={{ backgroundColor: color.hex }}
-                />
-                <p className={styles.text}>{`${color.hex.toUpperCase()}`}</p>
-                <p className={styles.text}>{`${color.name}`}</p>
-              </div>
+              <Item key={index}>
+                <Color style={{ backgroundColor: color.hex }} />
+                <Text>{`${color.hex.toUpperCase()}`}</Text>
+                <Text>{`${color.name}`}</Text>
+              </Item>
             ))}
-          </div>
+          </Content>
         </div>
-      </div>
+      </Container>
     </div>
   );
 };

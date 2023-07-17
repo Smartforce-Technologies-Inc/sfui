@@ -1,5 +1,4 @@
 import React from 'react';
-import { makeStyles, Theme } from '@material-ui/core/styles';
 import {
   SFBlueMainDark,
   SFBlueMainLight,
@@ -7,6 +6,7 @@ import {
   SFTextBlack,
   SFTextWhite
 } from '../../SFColors/SFColors';
+import { styled } from '@mui/material';
 
 export type SFTextType =
   | 'component-title-number'
@@ -167,39 +167,27 @@ function getColor(color: SFTextColor, isLight: boolean): string {
   }
 }
 
-const useStyles = makeStyles((theme: Theme) => ({
-  root: {
-    margin: 0,
-    color: (props: Partial<SFTextProps>): string =>
-      getColor(props.sfColor as SFTextColor, theme.palette.type === 'light'),
-    fontSize: (props: Partial<SFTextProps>): string =>
-      textTypeProps[props.type as SFTextType].fontSize,
-    fontWeight: (props: Partial<SFTextProps>): number =>
-      textTypeProps[props.type as SFTextType].fontWeight,
-    lineHeight: (props: Partial<SFTextProps>): string =>
-      textTypeProps[props.type as SFTextType].lineHeight,
-    letterSpacing: (props: Partial<SFTextProps>): string =>
-      textTypeProps[props.type as SFTextType].letterSpacing
-  }
-}));
-
 export interface SFTextProps {
-  className?: string;
   children: React.ReactNode;
-  type: SFTextType;
+  className?: string;
   sfColor?: SFTextColor;
+  type: SFTextType;
 }
 
-export const SFText = ({
-  className = '',
+const SFTextBase = ({
   children,
-  type,
-  sfColor = 'default'
+  className = ''
 }: SFTextProps): React.ReactElement<SFTextProps> => {
-  const classes = useStyles({
-    sfColor,
-    type
-  });
-
-  return <p className={`${className} ${classes.root}`}>{children}</p>;
+  return <p className={className}>{children}</p>;
 };
+
+export const SFText = styled(SFTextBase)(
+  ({ sfColor = 'default', theme, type }) => ({
+    color: getColor(sfColor, theme.palette.mode === 'light'),
+    fontSize: textTypeProps[type].fontSize,
+    fontWeight: textTypeProps[type].fontWeight,
+    letterSpacing: textTypeProps[type].letterSpacing,
+    lineHeight: textTypeProps[type].lineHeight,
+    margin: 0
+  })
+);
