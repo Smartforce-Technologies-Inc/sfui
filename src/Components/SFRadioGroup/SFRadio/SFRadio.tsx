@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { SFFormControlBooleanLabel } from '../../SFFormControlBooleanLabel/SFFormControlBooleanLabel';
 import { SFGrey } from '../../../SFColors/SFColors';
-import { FormControl, Radio, RadioProps, styled } from '@mui/material';
+import { Radio, RadioProps, styled } from '@mui/material';
 
 const StyledRadio = styled(Radio)(({ theme }) => ({
   color: `${theme.palette.mode === 'light' ? SFGrey[600] : SFGrey[400]}`,
@@ -45,25 +45,33 @@ const StyledRadio = styled(Radio)(({ theme }) => ({
 }));
 
 export interface SFRadioProps extends RadioProps {
-  label?: React.ReactNode;
   isGroup?: boolean;
+  label?: React.ReactNode;
 }
 
 export const SFRadio = ({
-  label,
+  className = '',
   isGroup = false,
+  label,
   ...props
 }: SFRadioProps): React.ReactElement<SFRadioProps> => {
   if (isGroup) {
-    return <StyledRadio {...props} color='primary' disableRipple />;
-  }
-  return (
-    <FormControl>
-      <SFFormControlBooleanLabel
-        control={<StyledRadio {...props} color='primary' disableRipple />}
-        label={label}
-        disabled={props.disabled}
+    return (
+      <StyledRadio
+        {...props}
+        className={className}
+        color='primary'
+        disableRipple
       />
-    </FormControl>
+    );
+  }
+
+  return (
+    <SFFormControlBooleanLabel
+      className={className}
+      control={<StyledRadio {...props} color='primary' disableRipple />}
+      label={label}
+      disabled={props.disabled}
+    />
   );
 };
