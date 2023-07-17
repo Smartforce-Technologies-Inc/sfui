@@ -1,6 +1,12 @@
 import React from 'react';
-import { makeStyles, Theme } from '@material-ui/core/styles';
-import { SFGrey, SFTextBlack, SFTextWhite } from '../../SFColors/SFColors';
+import {
+  SFBlueMainDark,
+  SFBlueMainLight,
+  SFGrey,
+  SFTextBlack,
+  SFTextWhite
+} from '../../SFColors/SFColors';
+import { styled } from '@mui/material';
 
 export type SFTextType =
   | 'component-title-number'
@@ -12,6 +18,7 @@ export type SFTextType =
   | 'component-button-M'
   | 'component-2-medium'
   | 'component-2'
+  | 'component-3'
   | 'component-button-S'
   | 'component-tooltip-title'
   | 'component-chip-S-M'
@@ -82,6 +89,12 @@ const textTypeProps: Record<SFTextType, TextCSSProps> = {
     lineHeight: '20px',
     letterSpacing: '0em'
   },
+  'component-3': {
+    fontSize: '12px',
+    fontWeight: 400,
+    lineHeight: '14px',
+    letterSpacing: '0.02em'
+  },
   'component-button-S': {
     fontSize: '13px',
     fontWeight: 500,
@@ -126,7 +139,7 @@ const textTypeProps: Record<SFTextType, TextCSSProps> = {
   }
 };
 
-export type SFTextColor = 'default' | 'neutral';
+export type SFTextColor = 'default' | 'neutral' | 'primary';
 
 function getColor(color: SFTextColor, isLight: boolean): string {
   switch (color) {
@@ -135,6 +148,13 @@ function getColor(color: SFTextColor, isLight: boolean): string {
         return SFGrey[600];
       } else {
         return SFGrey[400];
+      }
+    }
+    case 'primary': {
+      if (isLight) {
+        return SFBlueMainLight;
+      } else {
+        return SFBlueMainDark;
       }
     }
     default: {
@@ -147,39 +167,27 @@ function getColor(color: SFTextColor, isLight: boolean): string {
   }
 }
 
-const useStyles = makeStyles((theme: Theme) => ({
-  root: {
-    margin: 0,
-    color: (props: Partial<SFTextProps>): string =>
-      getColor(props.sfColor as SFTextColor, theme.palette.type === 'light'),
-    fontSize: (props: Partial<SFTextProps>): string =>
-      textTypeProps[props.type as SFTextType].fontSize,
-    fontWeight: (props: Partial<SFTextProps>): number =>
-      textTypeProps[props.type as SFTextType].fontWeight,
-    lineHeight: (props: Partial<SFTextProps>): string =>
-      textTypeProps[props.type as SFTextType].lineHeight,
-    letterSpacing: (props: Partial<SFTextProps>): string =>
-      textTypeProps[props.type as SFTextType].letterSpacing
-  }
-}));
-
 export interface SFTextProps {
-  className?: string;
   children: React.ReactNode;
-  type: SFTextType;
+  className?: string;
   sfColor?: SFTextColor;
+  type: SFTextType;
 }
 
-export const SFText = ({
-  className = '',
+const SFTextBase = ({
   children,
-  type,
-  sfColor = 'default'
+  className = ''
 }: SFTextProps): React.ReactElement<SFTextProps> => {
-  const classes = useStyles({
-    sfColor,
-    type
-  });
-
-  return <p className={`${className} ${classes.root}`}>{children}</p>;
+  return <p className={className}>{children}</p>;
 };
+
+export const SFText = styled(SFTextBase)(
+  ({ sfColor = 'default', theme, type }) => ({
+    color: getColor(sfColor, theme.palette.mode === 'light'),
+    fontSize: textTypeProps[type].fontSize,
+    fontWeight: textTypeProps[type].fontWeight,
+    letterSpacing: textTypeProps[type].letterSpacing,
+    lineHeight: textTypeProps[type].lineHeight,
+    margin: 0
+  })
+);

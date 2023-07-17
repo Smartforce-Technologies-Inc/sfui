@@ -1,12 +1,15 @@
 import React from 'react';
 import { Story, ComponentMeta } from '@storybook/react';
-import { SFLink, SFLinkProps } from './SFLink';
+import { SFLink } from './SFLink';
 
 export default {
   title: 'Components/SFLink',
   component: SFLink,
   parameters: {
-    controls: { sort: 'alpha', include: ['sfColor', 'sfSize', 'text'] }
+    controls: {
+      sort: 'alpha',
+      include: ['sfColor', 'sfSize', 'text', 'onClick']
+    }
   },
   args: {
     text: 'I am a link example',
@@ -15,7 +18,10 @@ export default {
   },
   argTypes: {
     onClick: {
-      action: 'onClick'
+      action: 'onClick',
+      table: {
+        disable: true
+      }
     },
     text: {
       description: 'The text to display.',

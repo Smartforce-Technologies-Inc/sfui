@@ -1,13 +1,18 @@
 import React from 'react';
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { Story, ComponentMeta } from '@storybook/react';
 
 import { SFCheckbox, SFCheckboxProps } from './SFCheckbox';
 
 export default {
   title: 'Components/SFCheckbox',
   component: SFCheckbox,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: {
+    controls: {
+      sort: 'alpha',
+      include: ['label', 'onChange', 'checked', 'disabled']
+    }
+  },
   args: {
     label: 'Bagel',
     checked: true,
@@ -44,52 +49,9 @@ export default {
       control: {
         type: 'boolean'
       }
-    },
-    disableRipple: {
-      table: { disable: true }
-    },
-    disableFocusRipple: {
-      table: { disable: true }
-    },
-    disableTouchRipple: {
-      table: { disable: true }
-    },
-    centerRipple: {
-      table: { disable: true }
-    },
-    edge: {
-      table: { disable: true }
-    },
-    focusRipple: {
-      table: { disable: true }
-    },
-    ref: {
-      table: {
-        disable: true
-      }
-    },
-    action: {
-      table: {
-        disable: true
-      }
-    },
-    focusVisibleClassName: {
-      table: {
-        disable: true
-      }
-    },
-    onFocusVisible: {
-      table: {
-        disable: true
-      }
-    },
-    TouchRippleProps: {
-      table: {
-        disable: true
-      }
     }
   }
-} as Meta;
+} as ComponentMeta<typeof SFCheckbox>;
 
 const Template: Story<SFCheckboxProps> = (args) => <SFCheckbox {...args} />;
 
