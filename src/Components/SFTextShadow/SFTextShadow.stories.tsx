@@ -1,7 +1,6 @@
 import React from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
-import { SFTextShadow, SFTextShadowProps } from './SFTextShadow';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { SFTextShadow } from './SFTextShadow';
 
 export default {
   title: 'Components/SFTextShadow',
@@ -27,19 +26,14 @@ export default {
     size: {
       description: 'The size of the text shadow.'
     },
-    type: {
-      table: {
-        disable: true
-      }
-    },
     color: {
       description: 'The color used in the text shadow.',
       control: 'color'
     }
   }
-} as Meta;
+} as ComponentMeta<typeof SFTextShadow>;
 
-const Template: Story<SFTextShadowProps> = (args) => (
+const Template: ComponentStory<typeof SFTextShadow> = (args) => (
   <div
     style={{
       display: 'flex',
@@ -57,21 +51,9 @@ Default.args = {
   type: 'default',
   color: '#fcc'
 };
-Default.argTypes = {
-  repeatTimes: {
-    table: {
-      disable: true
-    }
-  },
-  repeatBgColor: {
-    table: {
-      disable: true
-    }
-  },
-  gradientEndColor: {
-    table: {
-      disable: true
-    }
+Default.parameters = {
+  controls: {
+    exclude: ['type', 'repeatTimes', 'repeatBgColor', 'gradientEndColor']
   }
 };
 
@@ -83,12 +65,12 @@ Repeated.args = {
   repeatTimes: 3,
   repeatBgColor: '#fff'
 };
+Repeated.parameters = {
+  controls: {
+    exclude: ['type', 'gradientEndColor']
+  }
+};
 Repeated.argTypes = {
-  gradientEndColor: {
-    table: {
-      disable: true
-    }
-  },
   repeatBgColor: {
     control: 'color'
   }
@@ -100,17 +82,12 @@ Gradient.args = {
   color: 'rgb(2,172,181)',
   gradientEndColor: 'rgb(26,255,213)'
 };
+Gradient.parameters = {
+  controls: {
+    exclude: ['type', 'repeatTimes', 'repeatBgColor']
+  }
+};
 Gradient.argTypes = {
-  repeatTimes: {
-    table: {
-      disable: true
-    }
-  },
-  repeatBgColor: {
-    table: {
-      disable: true
-    }
-  },
   gradientEndColor: {
     control: 'color'
   }

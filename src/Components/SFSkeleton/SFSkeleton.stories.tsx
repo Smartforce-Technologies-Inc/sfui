@@ -1,12 +1,16 @@
 import React from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
-import { SFSkeleton, SFSkeletonProps } from './SFSkeleton';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { SFSkeleton } from './SFSkeleton';
 
 export default {
   title: 'Components/SFSkeleton',
   component: SFSkeleton,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: {
+    controls: {
+      sort: 'alpha',
+      include: ['animation', 'variant', 'height', 'width']
+    }
+  },
   args: {
     height: 20,
     width: 300,
@@ -32,16 +36,11 @@ export default {
       control: {
         type: 'number'
       }
-    },
-    ref: {
-      table: {
-        disable: true
-      }
     }
   }
-} as Meta;
+} as ComponentMeta<typeof SFSkeleton>;
 
-export const Text: Story<SFSkeletonProps> = (args) => {
+export const Text: ComponentStory<typeof SFSkeleton> = (args) => {
   return <SFSkeleton {...args} variant='text' />;
 };
 
@@ -59,8 +58,8 @@ Text.argTypes = {
   }
 };
 
-export const Circle: Story<SFSkeletonProps> = (args) => {
-  return <SFSkeleton {...args} variant='circle' width={args.height} />;
+export const Circle: ComponentStory<typeof SFSkeleton> = (args) => {
+  return <SFSkeleton {...args} variant='circular' width={args.height} />;
 };
 
 Circle.args = {
@@ -89,8 +88,8 @@ Circle.args = {
   height: 30
 };
 
-export const Rect: Story<SFSkeletonProps> = (args) => {
-  return <SFSkeleton {...args} variant='rect' />;
+export const Rect: ComponentStory<typeof SFSkeleton> = (args) => {
+  return <SFSkeleton {...args} variant='rectangular' />;
 };
 
 Rect.args = {
@@ -114,7 +113,9 @@ Rect.args = {
   height: 50
 };
 
-export const AllTogether: Story = ({ animation }) => {
+export const AllTogether: ComponentStory<typeof SFSkeleton> = ({
+  animation
+}) => {
   return (
     <div
       style={{
@@ -130,8 +131,8 @@ export const AllTogether: Story = ({ animation }) => {
           gap: 10
         }}
       >
-        <SFSkeleton variant='circle' height={50} animation={animation} />
-        <SFSkeleton variant='rect' height={50} animation={animation} />
+        <SFSkeleton variant='circular' height={50} animation={animation} />
+        <SFSkeleton variant='rectangular' height={50} animation={animation} />
       </div>
 
       <SFSkeleton variant='text' animation={animation} />

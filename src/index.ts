@@ -1,7 +1,7 @@
 // TODO uncomment migrated components
 
 export * from './Components/SFAlert/SFAlert';
-// export * from './Components/SFAlertCollapse/SFAlertCollapse';
+export * from './Components/SFAlertCollapse/SFAlertCollapse';
 // export * from './Components/SFAlertDialog/SFAlertDialog';
 // export * from './Components/SFAutocomplete/SFAutocomplete';
 // export * from './Components/SFAutocompleteChip/SFAutocompleteChip';
@@ -26,22 +26,22 @@ export * from './Components/SFLink/SFLink';
 export * from './Components/SFMenu/SFMenu';
 export * from './Components/SFMenuItem/SFMenuItem';
 // export * from './Components/SFMultiSelect/SFMultiSelect';
-// export * from './Components/SFNumericField/SFNumericField';
+export * from './Components/SFNumericField/SFNumericField';
 // export * from './Components/SFPanel/SFPanel';
 export * from './Components/SFPaper/SFPaper';
 // export * from './Components/SFPeoplePicker/SFPeoplePicker';
-// export * from './Components/SFRadioGroup/SFRadio/SFRadio';
-// export * from './Components/SFRadioGroup/SFRadioGroup';
+export * from './Components/SFRadioGroup/SFRadio/SFRadio';
+export * from './Components/SFRadioGroup/SFRadioGroup';
 // export * from './Components/SFScrollable/SFScrollable';
-// export * from './Components/SFSearch/SFSearch';
+export * from './Components/SFSearch/SFSearch';
 // export * from './Components/SFSelect/SFSelect';
-// export * from './Components/SFSkeleton/SFSkeleton';
+export * from './Components/SFSkeleton/SFSkeleton';
 // export * from './Components/SFSnackbar/SFSnackbar';
 export * from './Components/SFSpinner/SFSpinner';
 export * from './Components/SFSplitButton/SFSplitButton';
 export * from './Components/SFSwitch/SFSwitch';
 // export * from './Components/SFTable/SFTable';
-// export * from './Components/SFText/SFText';
+export * from './Components/SFText/SFText';
 export * from './Components/SFTextField/SFTextField';
 // export * from './Components/SFTimeField/SFTimeField';
 export * from './Components/SFTimeline/SFTimeline';
@@ -49,7 +49,11 @@ export * from './Components/SFTooltip/SFTooltip';
 
 export * from './SFTheme/SFTheme';
 // export * from './SFColors/SFColors';
+// export * from './SFHttpStatusCode/SFHttpStatusCode';
+export * from './SFMedia/SFMedia';
+export * from './SFColors/SFColors';
 export * from './SFHttpStatusCode/SFHttpStatusCode';
+
 // export * from './SFMedia/SFMedia';
 export * from './SFUtils/SFUtils';
 // export * from './SFTypes/index';
