@@ -1,76 +1,16 @@
 import React from 'react';
 import { styled } from '@mui/material';
-import { SFGrey } from '../../SFColors/SFColors';
-import { hexToRgba } from '../../Helpers';
+import { ScrollableContainer } from './ScrollableContainer/ScrollableContainer';
+import { ScrollBar } from './ScrollBar/ScrollBar';
 
 const SCROLL_BOX_MIN_HEIGHT = 20;
 const SCROLL_BOX_MIN_WIDTH = 20;
 
-const StyledSFScrollable = styled('div')(({ theme }) => ({
+const StyledSFScrollable = styled('div')({
   height: '100%',
   position: 'relative',
-  boxSizing: 'border-box',
-
-  '&.withHorizontalScroll': {
-    paddingBottom: 12
-  },
-  '& .scrollableContainer': {
-    height: '100%',
-    overflow: 'auto',
-    scrollbarWidth: 'none',
-    msOverflowStyle: 'none',
-
-    '&::-webkit-scrollbar': {
-      display: 'none'
-    }
-  },
-  '& .vScrollBar': {
-    height: '100%',
-    width: '9px',
-    position: 'absolute',
-    right: 3,
-    top: 0,
-    bottom: 0,
-
-    '& .vScrollThumb': {
-      marginLeft: '3px',
-      width: '6px',
-      position: 'absolute',
-      borderRadius: '3px',
-      backgroundColor:
-        theme.palette.mode === 'light'
-          ? hexToRgba(SFGrey.A100 as string, 0.3)
-          : hexToRgba(SFGrey[500], 0.3)
-    },
-
-    '@media print': {
-      display: 'none'
-    }
-  },
-
-  '& .hScrollBar': {
-    position: 'absolute',
-    width: '100%',
-    height: '9px',
-    left: 0,
-    right: 0,
-    bottom: 0,
-
-    '& .hScrollThumb': {
-      height: '6px',
-      position: 'absolute',
-      borderRadius: '3px',
-      backgroundColor:
-        theme.palette.mode === 'light'
-          ? hexToRgba(SFGrey.A100 as string, 0.3)
-          : hexToRgba(SFGrey[500], 0.3)
-    },
-
-    '@media print': {
-      display: 'none'
-    }
-  }
-}));
+  boxSizing: 'border-box'
+});
 
 const hasScrollVertical = (elem: HTMLDivElement): boolean =>
   elem.scrollHeight > elem.clientHeight;
@@ -401,55 +341,44 @@ export const SFScrollable = React.forwardRef(
 
     return (
       <StyledSFScrollable
-        className={` ${hasHorizontalScroll ? 'withHorizontalScroll' : ''} ${
-          className || ''
-        }`}
-        onMouseOver={onMouseOver}
-        onTouchStart={onMouseOver}
-        onMouseOut={onMouseOut}
+        className={className}
+        style={{ paddingBottom: hasHorizontalScroll ? '12px' : '' }}
+        onMouseOver={stopMousePropagation}
+        onTouchStart={stopMousePropagation}
+        onMouseLeave={onMouseOut}
         onTouchEnd={onMouseOut}
       >
-        <div
-          className={`scrollableContainer ${containerClassName || ''}`}
-          onMouseOver={stopMousePropagation}
-          onMouseOut={stopMousePropagation}
-          onTouchEnd={stopMousePropagation}
-          onTouchStart={stopMousePropagation}
+        <ScrollableContainer
+          className={containerClassName}
+          onCursorInteraction={stopMousePropagation}
+          onMouseOver={onMouseOver}
+          onHostScroll={onHostScroll}
           ref={scrollHostRef}
-          onScroll={onHostScroll}
         >
           {children}
-        </div>
+        </ScrollableContainer>
 
-        <div
-          className='vScrollBar'
-          onMouseOver={stopMousePropagation}
-          onMouseOut={stopMousePropagation}
-          onTouchEnd={stopMousePropagation}
-          onTouchStart={stopMousePropagation}
-          style={{ opacity: showVerticalScroll ? 1 : 0 }}
-        >
-          <div
-            className='vScrollThumb'
-            style={{ height: verticalScrollHeight, top: verticalScrollTop }}
-            onMouseDown={onVerticalScrollMouseDown}
-          />
-        </div>
+        <ScrollBar
+          isVisible={showVerticalScroll}
+          orientation='vertical'
+          onCursorInteraction={stopMousePropagation}
+          scrollThumbProps={{
+            onMouseDown: onVerticalScrollMouseDown,
+            visibleSpace: verticalScrollHeight,
+            spaceLeft: verticalScrollTop
+          }}
+        />
 
-        <div
-          className='hScrollBar'
-          onMouseOver={stopMousePropagation}
-          onMouseOut={stopMousePropagation}
-          onTouchEnd={stopMousePropagation}
-          onTouchStart={stopMousePropagation}
-          style={{ opacity: showHorizontalScroll ? 1 : 0 }}
-        >
-          <div
-            className='hScrollThumb'
-            style={{ width: horizontalScrollWidth, left: horizontalScrollLeft }}
-            onMouseDown={onHorizontalScrollMouseDown}
-          />
-        </div>
+        <ScrollBar
+          isVisible={showHorizontalScroll}
+          orientation='horizontal'
+          onCursorInteraction={stopMousePropagation}
+          scrollThumbProps={{
+            onMouseDown: onHorizontalScrollMouseDown,
+            visibleSpace: horizontalScrollWidth,
+            spaceLeft: horizontalScrollLeft
+          }}
+        />
       </StyledSFScrollable>
     );
   }
