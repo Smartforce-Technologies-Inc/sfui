@@ -1,105 +1,122 @@
 import * as React from 'react';
-import { makeStyles, withStyles, Theme } from '@material-ui/core/styles';
 import {
-  ButtonGroup,
-  Popper,
   ClickAwayListener,
-  MenuList
-} from '@material-ui/core';
+  MenuList,
+  Popper,
+  ButtonGroup,
+  styled
+} from '@mui/material';
 import { SFButton } from '../SFButton/SFButton';
 import { SFIcon } from '../SFIcon/SFIcon';
 import { SFGrey, SFBlue, SFTextWhite } from '../../SFColors/SFColors';
 import { SFPaper } from '../SFPaper/SFPaper';
 import { SFMenuItem } from '../SFMenuItem/SFMenuItem';
 
-const useStyles = makeStyles((theme: Theme) => ({
-  paper: {
-    borderRadius: 2
-  },
-  iconButton: {
+function getFillColor(
+  sfColor: string,
+  variant: string,
+  isLight: boolean,
+  type?: 'hover' | 'active'
+): string {
+  if (type === 'hover') {
+    if (variant === 'outlined' && sfColor === 'blue') {
+      return `${isLight ? SFBlue[700] : SFBlue[300]} !important`;
+    }
+    return 'inherit';
+  } else if (type === 'active') {
+    if (variant === 'outlined' && sfColor === 'blue') {
+      return `${isLight ? SFBlue[800] : SFBlue[400]} !important`;
+    }
+    return 'inherit';
+  } else {
+    if (sfColor === 'grey') {
+      return `${isLight ? SFGrey[900] : SFGrey[50]} !important`;
+    } else {
+      if (variant === 'outlined') {
+        return `${isLight ? SFBlue[500] : SFBlue[200]} !important`;
+      }
+      return `${isLight ? SFTextWhite : SFGrey[900]} !important`;
+    }
+  }
+}
+
+const StyledPaper = styled(SFPaper)({
+  borderRadius: 2
+});
+
+const StyledButton = styled(SFButton)(
+  ({ theme, sfColor = 'blue', variant = 'contained' }) => ({
     '& svg': {
       '& path': {
-        fill: (props: Partial<SFSplitButtonProps>): string => {
-          const isLight: boolean = theme.palette.type === 'light';
-          if (props.sfColor === 'grey') {
-            return `${isLight ? SFGrey[900] : SFGrey[50]} !important`;
-          } else {
-            if (props.variant === 'outlined') {
-              return `${isLight ? SFBlue[500] : SFBlue[200]} !important`;
-            }
-            return `${isLight ? SFTextWhite : SFGrey[900]} !important`;
-          }
-        }
+        fill: getFillColor(sfColor, variant, theme.palette.mode === 'light')
       }
     },
     '&:hover': {
       '& svg': {
         '& path': {
-          fill: (props: Partial<SFSplitButtonProps>): string => {
-            const isLight: boolean = theme.palette.type === 'light';
-            if (props.variant === 'outlined' && props.sfColor === 'blue') {
-              return `${isLight ? SFBlue[700] : SFBlue[300]} !important`;
-            }
-            return 'auto';
-          }
+          fill: getFillColor(
+            sfColor,
+            variant,
+            theme.palette.mode === 'light',
+            'hover'
+          )
         }
       }
     },
     '&:active': {
       '& svg': {
         '& path': {
-          fill: (props: Partial<SFSplitButtonProps>): string => {
-            const isLight: boolean = theme.palette.type === 'light';
-            if (props.variant === 'outlined' && props.sfColor === 'blue') {
-              return `${isLight ? SFBlue[800] : SFBlue[400]} !important`;
-            }
-            return 'auto';
-          }
+          fill: getFillColor(
+            sfColor,
+            variant,
+            theme.palette.mode === 'light',
+            'active'
+          )
         }
       }
     }
-  }
-}));
+  })
+);
 
-const StyledButtonGroup = withStyles((theme: Theme) => ({
-  root: {
-    boxShadow: 'none'
-  },
-  grouped: {
+const StyledButtonGroup = styled(ButtonGroup)(({ theme }) => ({
+  boxShadow: 'none',
+  '.MuiButtonGroup-grouped': {
     '&:last-child': {
       padding: '0 !important'
     }
   },
-  groupedContainedHorizontal: {
-    '&:first-child': {
+  '.MuiButtonGroup-groupedContainedHorizontal': {
+    '&:first-of-type': {
       borderRight: `1px solid ${theme.palette.background.default}`
     }
   }
-}))(ButtonGroup);
+}));
+
+export type SFSplitButtonVariant = 'outlined' | 'contained';
+export type SFSplitButtonColor = 'blue' | 'grey';
+export type SFSplitButtonSize = 'medium' | 'large';
 
 export interface SFSplitButtonOption {
-  label: string;
   disabled?: boolean;
+  label: string;
   onClick: () => void;
 }
 
 export interface SFSplitButtonProps {
-  options: SFSplitButtonOption[];
   defaultSelected?: number;
-  variant: 'outlined' | 'contained';
-  sfColor: 'blue' | 'grey';
-  size?: 'medium' | 'large';
+  options: SFSplitButtonOption[];
+  sfColor: SFSplitButtonColor;
+  size?: SFSplitButtonSize;
+  variant: SFSplitButtonVariant;
 }
 
 export const SFSplitButton = ({
-  options,
   defaultSelected = 0,
-  variant = 'contained',
+  options,
   sfColor = 'blue',
-  size = 'medium'
+  size = 'medium',
+  variant = 'contained'
 }: SFSplitButtonProps): React.ReactElement<SFSplitButtonProps> => {
-  const classes = useStyles({ variant, sfColor });
-
   const [isMenuOpen, setIsMenuOpen] = React.useState<boolean>(false);
   const [selectedItemIndex, setSelectedItemIndex] = React.useState<number>(
     defaultSelected
@@ -115,7 +132,7 @@ export const SFSplitButton = ({
     setIsMenuOpen((prevOpen) => !prevOpen);
   };
 
-  const onClickAway = (event: React.MouseEvent<Document, MouseEvent>): void => {
+  const onClickAway = (event: MouseEvent | TouchEvent): void => {
     if (
       refMenu.current &&
       refMenu.current.contains(event.target as HTMLElement)
@@ -130,6 +147,7 @@ export const SFSplitButton = ({
     <div>
       <StyledButtonGroup ref={refMenu} variant={variant} size='medium'>
         <SFButton
+          variant={variant}
           sfColor={sfColor}
           size={size}
           onClick={options[selectedItemIndex].onClick}
@@ -137,9 +155,9 @@ export const SFSplitButton = ({
           {options[selectedItemIndex].label}
         </SFButton>
 
-        <SFButton
+        <StyledButton
+          variant={variant}
           sfColor={sfColor}
-          className={classes.iconButton}
           size={size}
           aria-controls={isMenuOpen ? 'split-button-menu' : undefined}
           aria-expanded={isMenuOpen ? 'true' : undefined}
@@ -147,7 +165,7 @@ export const SFSplitButton = ({
           onClick={onToggleMenu}
         >
           <SFIcon icon='Down-2' size={13} />
-        </SFButton>
+        </StyledButton>
       </StyledButtonGroup>
 
       <Popper
@@ -157,7 +175,7 @@ export const SFSplitButton = ({
         placement='bottom-end'
         disablePortal
       >
-        <SFPaper className={classes.paper} elevation={8}>
+        <StyledPaper elevation={8}>
           <ClickAwayListener onClickAway={onClickAway}>
             <MenuList id='split-button-menu'>
               {options.map((option, index) => (
@@ -172,7 +190,7 @@ export const SFSplitButton = ({
               ))}
             </MenuList>
           </ClickAwayListener>
-        </SFPaper>
+        </StyledPaper>
       </Popper>
     </div>
   );

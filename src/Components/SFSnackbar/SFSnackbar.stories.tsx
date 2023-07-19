@@ -1,12 +1,16 @@
 import React from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
-import { SFSnackBar, SFSnackBarProps } from './SFSnackbar';
+import { SFSnackBar } from './SFSnackbar';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
   title: 'Components/SFSnackBar',
   component: SFSnackBar,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: {
+    controls: {
+      sort: 'alpha',
+      exclude: ['ref']
+    }
+  },
   args: {
     open: false,
     message: 'Lorem ipsum dolor sit amet.',
@@ -106,11 +110,6 @@ export default {
         }
       }
     },
-    ref: {
-      table: {
-        disable: true
-      }
-    },
     onClick: {
       action: 'onClick',
       table: {
@@ -118,13 +117,13 @@ export default {
       }
     }
   }
-} as Meta;
+} as ComponentMeta<typeof SFSnackBar>;
 
-export const Default: Story<SFSnackBarProps> = (args) => {
+export const Default: ComponentStory<typeof SFSnackBar> = (args) => {
   return <SFSnackBar {...args} />;
 };
 
-export const AutoHide: Story<SFSnackBarProps> = (args) => {
+export const AutoHide: ComponentStory<typeof SFSnackBar> = (args) => {
   const [isOpen, setIsOpen] = React.useState<boolean>(
     args.open ? args.open : true
   );

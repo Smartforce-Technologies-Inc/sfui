@@ -1,4 +1,5 @@
 import React from 'react';
+import { styled } from '@mui/material';
 import {
   SFDialog,
   SFDialogProps,
@@ -8,75 +9,70 @@ import {
   SFDialogTitle
 } from '../SFDialog/SFDialog';
 import { SFButton, SFButtonProps } from '../SFButton/SFButton';
-import { withStyles } from '@material-ui/core';
 
-const StyledSFDialog = withStyles(() => ({
-  root: {
-    '& .MuiDialog-paper': {
-      width: '270px',
-      margin: '0px',
-      padding: '36px',
-      maxWidth: 'unset',
-      overflowY: 'unset',
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 24,
+const StyledSFDialog = styled(SFDialog)(() => ({
+  '& .MuiDialog-paper': {
+    width: '270px',
+    margin: '0px',
+    padding: '36px',
+    maxWidth: 'unset',
+    overflowY: 'unset',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 24,
 
-      '@media screen and (min-width: 768px)': {
-        width: '462px'
-      },
-
-      '@media screen and (min-width: 1024px)': {
-        width: '404px'
-      },
-
-      '@media screen and (min-width: 1280px)': {
-        width: '532px'
-      },
-
-      '@media screen and (min-width: 1600px)': {
-        width: '430px'
-      },
-
-      '@media screen and (min-width: 1920px)': {
-        width: '536px'
-      }
-    }
-  }
-}))(SFDialog);
-
-const SFAlertDialogActions = withStyles(() => ({
-  root: {
-    // if first child it's also last child (only one button)
-    '& button:first-child:nth-last-child(1)': {
-      width: '100%'
-    },
     '@media screen and (min-width: 768px)': {
-      '& button:first-child:nth-last-child(1)': {
-        width: 'auto'
-      }
+      width: '462px'
+    },
+
+    '@media screen and (min-width: 1024px)': {
+      width: '404px'
+    },
+
+    '@media screen and (min-width: 1280px)': {
+      width: '532px'
+    },
+
+    '@media screen and (min-width: 1600px)': {
+      width: '430px'
+    },
+
+    '@media screen and (min-width: 1920px)': {
+      width: '536px'
     }
   }
-}))(SFDialogActions);
+}));
+
+const SFAlertDialogActions = styled(SFDialogActions)(() => ({
+  // if first child it's also last child (only one button)
+  '& button:first-child:nth-last-child(1)': {
+    width: '100%'
+  },
+  '@media screen and (min-width: 768px)': {
+    '& button:first-child:nth-last-child(1)': {
+      width: 'auto'
+    }
+  }
+}));
 
 export interface SFAlertDialogProps extends SFDialogProps {
-  title: string;
   contentText?: string;
   leftAction?: SFAlertDialogAction;
   rightAction?: SFAlertDialogAction;
+  title: string;
 }
 
 export interface SFAlertDialogAction {
-  label: string;
   buttonProps?: SFButtonProps;
+  label: string;
 }
 
 export const SFAlertDialog = ({
-  title,
+  children,
   contentText,
   leftAction,
   rightAction,
-  children,
+  title,
   ...props
 }: SFAlertDialogProps): React.ReactElement<SFAlertDialogProps> => {
   return (
