@@ -2,6 +2,7 @@ import React from 'react';
 import { styled } from '@mui/material';
 import { ScrollableContainer } from './ScrollableContainer/ScrollableContainer';
 import { ScrollBar } from './ScrollBar/ScrollBar';
+import { ScrollThumb } from './ScrollBar/ScrollThumb/ScrollThumb';
 
 const SCROLL_BOX_MIN_HEIGHT = 20;
 const SCROLL_BOX_MIN_WIDTH = 20;
@@ -362,23 +363,27 @@ export const SFScrollable = React.forwardRef(
           isVisible={showVerticalScroll}
           orientation='vertical'
           onCursorInteraction={stopMousePropagation}
-          scrollThumbProps={{
-            onMouseDown: onVerticalScrollMouseDown,
-            visibleSpace: verticalScrollHeight,
-            spaceLeft: verticalScrollTop
-          }}
-        />
+        >
+          <ScrollThumb
+            orientation='vertical'
+            onMouseDown={onVerticalScrollMouseDown}
+            spaceLeft={verticalScrollTop}
+            visibleSpace={verticalScrollHeight}
+          />
+        </ScrollBar>
 
         <ScrollBar
           isVisible={showHorizontalScroll}
           orientation='horizontal'
           onCursorInteraction={stopMousePropagation}
-          scrollThumbProps={{
-            onMouseDown: onHorizontalScrollMouseDown,
-            visibleSpace: horizontalScrollWidth,
-            spaceLeft: horizontalScrollLeft
-          }}
-        />
+        >
+          <ScrollThumb
+            orientation='horizontal'
+            onMouseDown={onHorizontalScrollMouseDown}
+            spaceLeft={horizontalScrollLeft}
+            visibleSpace={horizontalScrollWidth}
+          />
+        </ScrollBar>
       </StyledSFScrollable>
     );
   }
