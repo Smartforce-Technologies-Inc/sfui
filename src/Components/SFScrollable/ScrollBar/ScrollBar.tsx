@@ -1,6 +1,5 @@
 import React, { CSSProperties } from 'react';
 import { styled } from '@mui/material';
-import { ScrollThumb, ScrollThumbProps } from './ScrollThumb/ScrollThumb';
 
 export type ScrollBarOrientationType = 'horizontal' | 'vertical';
 
@@ -34,6 +33,7 @@ const StyledScrollBar = styled('div')({
 });
 
 export interface ScrollBarProps {
+  children: React.ReactElement;
   isVisible: boolean;
   onCursorInteraction: (
     event:
@@ -41,14 +41,11 @@ export interface ScrollBarProps {
       | React.TouchEvent<HTMLDivElement>
   ) => void;
   orientation: ScrollBarOrientationType;
-  scrollThumbProps: Omit<ScrollThumbProps, 'orientation'>;
 }
 
-export const ScrollBar = ({
-  isVisible,
-  onCursorInteraction,
-  scrollThumbProps,
-  orientation
+const ScrollBarBase = ({
+  children,
+  onCursorInteraction
 }: ScrollBarProps): React.ReactElement<ScrollBarProps> => {
   return (
     <StyledScrollBar
@@ -56,12 +53,15 @@ export const ScrollBar = ({
       onMouseOut={onCursorInteraction}
       onTouchEnd={onCursorInteraction}
       onTouchStart={onCursorInteraction}
-      style={{
-        opacity: isVisible ? 1 : 0,
-        ...getScrollBarPositions(orientation)
-      }}
     >
-      <ScrollThumb {...scrollThumbProps} orientation={orientation} />
+      {children}
     </StyledScrollBar>
   );
 };
+
+export const ScrollBar = styled(ScrollBarBase)(
+  ({ isVisible, orientation }) => ({
+    opacity: isVisible ? 1 : 0,
+    ...getScrollBarPositions(orientation)
+  })
+);
