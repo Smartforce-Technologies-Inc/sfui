@@ -37,16 +37,14 @@ const getScrollThumbStyles = (
   };
 };
 
-export const ScrollThumb = ({
-  onMouseDown,
-  orientation,
-  spaceLeft,
-  visibleSpace
+const ScrollThumbBase = ({
+  onMouseDown
 }: ScrollThumbProps): React.ReactElement<ScrollThumbProps> => {
-  return (
-    <StyledScrollThumb
-      style={{ ...getScrollThumbStyles(orientation, spaceLeft, visibleSpace) }}
-      onMouseDown={onMouseDown}
-    />
-  );
+  return <StyledScrollThumb onMouseDown={onMouseDown} />;
 };
+
+export const ScrollThumb = styled(ScrollThumbBase)(
+  ({ orientation, spaceLeft, visibleSpace }) => ({
+    ...getScrollThumbStyles(orientation, spaceLeft, visibleSpace)
+  })
+);
