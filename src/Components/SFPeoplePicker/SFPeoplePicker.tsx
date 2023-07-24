@@ -10,6 +10,7 @@ import { SFBlue, SFGrey, SFTextWhite } from '../../SFColors/SFColors';
 import { DebouncedFunc } from 'lodash';
 import debounce from 'lodash.debounce';
 import { StyledAutocomplete } from '../SFAutocomplete/SFAutocomplete';
+import { SFAutocompleteChipRender } from '../SFAutocompleteChip/SFAutocompleteChipRender/SFAutocompleteChipRender';
 
 export const StyledPeopleAutocomplete = withStyles({
   option: {
@@ -97,6 +98,25 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontSize: '16px',
     lineHeight: '24px',
     color: theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]
+  },
+  multipleValues: {
+    '& .MuiInputBase-root': {
+      height: 'inherit',
+      minHeight: '56px',
+      gap: '6px',
+      padding: '28px 9px 9px',
+
+      '& input.MuiAutocomplete-input': {
+        padding: 0,
+
+        '&:first-child': {
+          padding: 0
+        }
+      },
+      '& .MuiFormControl-root .MuiChip-outlined': {
+        margin: '3px auto 2px'
+      }
+    }
   }
 }));
 
@@ -108,12 +128,23 @@ export interface SFPeopleOption {
 
 interface SFPeoplePickerBaseProps {
   label: string;
-  value: SFPeopleOption;
   isAsync: boolean;
   disabled?: boolean;
   required?: boolean;
+  multiple?: boolean;
   helperText?: React.ReactNode;
+}
+
+interface SFPeoplePickerSingleProps extends SFPeoplePickerBaseProps {
+  multiple: false;
+  value: SFPeopleOption;
   onChange: (value: SFPeopleOption) => void;
+}
+
+interface SFPeoplePickerMultipleProps extends SFPeoplePickerBaseProps {
+  multiple: true;
+  value: SFPeopleOption[];
+  onChange: (value: SFPeopleOption[]) => void;
 }
 
 interface SFPeoplePickerWithOptionsProps extends SFPeoplePickerBaseProps {
@@ -130,13 +161,16 @@ interface SFPeoplePickerAsyncProps extends SFPeoplePickerBaseProps {
 }
 
 export type SFPeoplePickerProps =
-  | SFPeoplePickerWithOptionsProps
-  | SFPeoplePickerAsyncProps;
+  | (SFPeoplePickerSingleProps & SFPeoplePickerWithOptionsProps)
+  | (SFPeoplePickerSingleProps & SFPeoplePickerAsyncProps)
+  | (SFPeoplePickerMultipleProps & SFPeoplePickerWithOptionsProps)
+  | (SFPeoplePickerMultipleProps & SFPeoplePickerAsyncProps);
 
 export const SFPeoplePicker = ({
   helperText,
   label,
-  disabled,
+  multiple = false,
+  disabled = false,
   required,
   value,
   onChange,
@@ -239,13 +273,23 @@ export const SFPeoplePicker = ({
     _event: React.ChangeEvent,
     newValue: SFPeopleOption
   ): void => {
-    onChange(newValue);
+    onChange(newValue as SFPeopleOption & SFPeopleOption[]);
+  };
+
+  const onDelete = (currentValue: SFPeopleOption[], index: number): void => {
+    const newValue = currentValue.filter(
+      (_v: SFPeopleOption, i: number) => i !== index
+    );
+
+    onChange(newValue as SFPeopleOption & SFPeopleOption[]);
   };
 
   return (
     <StyledPeopleAutocomplete
+      className={multiple ? classes.multipleValues : ''}
       freeSolo={false}
       loading={loading}
+      multiple={multiple}
       clearOnBlur
       disabled={disabled}
       options={props.isAsync ? asyncOptions : props.options}
@@ -258,6 +302,17 @@ export const SFPeoplePicker = ({
       getOptionLabel={(option: SFPeopleOption): string => option.name}
       renderOption={renderOption}
       filterOptions={(options: SFPeopleOption[]): SFPeopleOption[] => options}
+      renderTags={
+        multiple
+          ? (value: SFPeopleOption[]): JSX.Element => (
+              <SFAutocompleteChipRender
+                disabled={disabled}
+                values={value.map((val) => val.name)}
+                onDelete={(_v, index: number): void => onDelete(value, index)}
+              />
+            )
+          : undefined
+      }
     />
   );
 };
