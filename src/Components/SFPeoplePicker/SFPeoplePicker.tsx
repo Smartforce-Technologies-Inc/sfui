@@ -292,7 +292,7 @@ export const SFPeoplePicker = ({
       return (
         <SFAutocompleteChipRender
           disabled={disabled}
-          values={value.map((val) => val.name)}
+          values={value.map((val: SFPeopleOption) => val.name)}
           onDelete={(_v, index: number): void => onDelete(value, index)}
         />
       );
