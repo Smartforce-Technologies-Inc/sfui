@@ -303,7 +303,7 @@ export const SFPeoplePicker = ({
 
   return (
     <StyledPeopleAutocomplete
-      className={props.multiple ? classes.multipleValues : ''}
+      className={isMultiple ? classes.multipleValues : ''}
       freeSolo={false}
       loading={loading}
       multiple={isMultiple}
