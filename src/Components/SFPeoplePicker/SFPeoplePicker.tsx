@@ -175,6 +175,7 @@ export const SFPeoplePicker = ({
   ...props
 }: SFPeoplePickerProps): React.ReactElement<SFPeoplePickerProps> => {
   const classes = useStyles();
+  const isMultiple: boolean = props.multiple ?? false;
 
   const [asyncOptions, setAsyncOptions] = React.useState<SFPeopleOption[]>([]);
   const [loading, setIsLoading] = React.useState<boolean>(false);
@@ -305,13 +306,13 @@ export const SFPeoplePicker = ({
       className={props.multiple ? classes.multipleValues : ''}
       freeSolo={false}
       loading={loading}
-      multiple={props.multiple}
+      multiple={isMultiple}
       clearOnBlur
       disabled={disabled}
       options={props.isAsync ? asyncOptions : props.options}
       renderInput={renderInput}
       popupIcon={null}
-      filterSelectedOptions={props.multiple}
+      filterSelectedOptions={isMultiple}
       closeIcon={<SFIcon icon='Close' size='16' />}
       value={value}
       onInputChange={onInputChange}
