@@ -169,11 +169,9 @@ export type SFPeoplePickerProps =
 export const SFPeoplePicker = ({
   helperText,
   label,
-  multiple = false,
   disabled = false,
   required,
   value,
-  onChange,
   ...props
 }: SFPeoplePickerProps): React.ReactElement<SFPeoplePickerProps> => {
   const classes = useStyles();
@@ -212,6 +210,49 @@ export const SFPeoplePicker = ({
     }
   };
 
+  const onInputChange = async (
+    _event: React.ChangeEvent,
+    value: string,
+    _reason: AutocompleteInputChangeReason
+  ): Promise<void> => {
+    if (props.isAsync) {
+      if (value.length >= (props.minChar || 3)) {
+        try {
+          setIsLoading(true);
+          const url: string = props.formatUrlQuery(value);
+          const options = await fetchOptions(url);
+          setAsyncOptions(options);
+          setIsLoading(false);
+        } catch (e) {
+          console.error('SFPeoplePicker:onInputChange', e);
+          setAsyncOptions([]);
+          setIsLoading(false);
+        }
+      } else {
+        setAsyncOptions([]);
+      }
+    }
+  };
+
+  const onPeopleChange = (
+    _event: React.ChangeEvent,
+    newValue: SFPeopleOption | SFPeopleOption[]
+  ): void => {
+    if (props.multiple) {
+      props.onChange(newValue as SFPeopleOption[]);
+    } else {
+      props.onChange(newValue as SFPeopleOption);
+    }
+  };
+
+  const onDelete = (currentValue: SFPeopleOption[], index: number): void => {
+    const newValue = currentValue.filter(
+      (_v: SFPeopleOption, i: number) => i !== index
+    );
+
+    props.multiple && props.onChange(newValue as SFPeopleOption[]);
+  };
+
   const renderOption = (option: SFPeopleOption): React.ReactNode => {
     return (
       <div className={classes.menu}>
@@ -245,56 +286,32 @@ export const SFPeoplePicker = ({
     />
   );
 
-  const onInputChange = async (
-    _event: React.ChangeEvent,
-    value: string,
-    _reason: AutocompleteInputChangeReason
-  ): Promise<void> => {
-    if (props.isAsync) {
-      if (value.length >= (props.minChar || 3)) {
-        try {
-          setIsLoading(true);
-          const url: string = props.formatUrlQuery(value);
-          const options = await fetchOptions(url);
-          setAsyncOptions(options);
-          setIsLoading(false);
-        } catch (e) {
-          console.error('SFPeoplePicker:onInputChange', e);
-          setAsyncOptions([]);
-          setIsLoading(false);
-        }
-      } else {
-        setAsyncOptions([]);
-      }
+  const renderTags = (value: SFPeopleOption[]): React.ReactNode => {
+    if (props.multiple) {
+      return (
+        <SFAutocompleteChipRender
+          disabled={disabled}
+          values={value.map((val) => val.name)}
+          onDelete={(_v, index: number): void => onDelete(value, index)}
+        />
+      );
     }
-  };
 
-  const onPeopleChange = (
-    _event: React.ChangeEvent,
-    newValue: SFPeopleOption
-  ): void => {
-    onChange(newValue as SFPeopleOption & SFPeopleOption[]);
-  };
-
-  const onDelete = (currentValue: SFPeopleOption[], index: number): void => {
-    const newValue = currentValue.filter(
-      (_v: SFPeopleOption, i: number) => i !== index
-    );
-
-    onChange(newValue as SFPeopleOption & SFPeopleOption[]);
+    return undefined;
   };
 
   return (
     <StyledPeopleAutocomplete
-      className={multiple ? classes.multipleValues : ''}
+      className={props.multiple ? classes.multipleValues : ''}
       freeSolo={false}
       loading={loading}
-      multiple={multiple}
+      multiple={props.multiple}
       clearOnBlur
       disabled={disabled}
       options={props.isAsync ? asyncOptions : props.options}
       renderInput={renderInput}
       popupIcon={null}
+      filterSelectedOptions={props.multiple}
       closeIcon={<SFIcon icon='Close' size='16' />}
       value={value}
       onInputChange={onInputChange}
@@ -302,17 +319,7 @@ export const SFPeoplePicker = ({
       getOptionLabel={(option: SFPeopleOption): string => option.name}
       renderOption={renderOption}
       filterOptions={(options: SFPeopleOption[]): SFPeopleOption[] => options}
-      renderTags={
-        multiple
-          ? (value: SFPeopleOption[]): JSX.Element => (
-              <SFAutocompleteChipRender
-                disabled={disabled}
-                values={value.map((val) => val.name)}
-                onDelete={(_v, index: number): void => onDelete(value, index)}
-              />
-            )
-          : undefined
-      }
+      renderTags={renderTags}
     />
   );
 };
