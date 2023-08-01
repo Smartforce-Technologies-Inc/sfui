@@ -28,7 +28,7 @@ export const getStringAbbreviation = (
   acronym?: string
 ): string => {
   if (acronym) {
-    return acronym.toUpperCase();
+    return acronym;
   }
 
   const abbreviation = value.split(' ');
@@ -99,7 +99,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontSize: '14px',
     lineHeight: '21px',
     fontWeight: 700,
-    color: SFTextWhite
+    color: SFTextWhite,
+    textTransform: 'uppercase'
   },
   name: {
     fontSize: '16px',
