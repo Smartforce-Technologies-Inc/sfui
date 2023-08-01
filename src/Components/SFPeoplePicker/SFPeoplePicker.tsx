@@ -23,7 +23,11 @@ export const StyledPeopleAutocomplete = withStyles({
   }
 })(StyledAutocomplete);
 
-const getStringAbbreviation = (value: string): string => {
+export const getStringAbbreviation = (value: string): string => {
+  if (value.length === 3) {
+    return value.toUpperCase();
+  }
+
   const abbreviation = value.split(' ');
   let stringAbbreviation = '';
 
@@ -122,6 +126,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export interface SFPeopleOption {
   name: string;
+  acronym?: string;
   avatarUrl?: string;
   asyncObject?: any;
 }
@@ -267,7 +272,7 @@ export const SFPeoplePicker = ({
           }}
         >
           {!option.avatarUrl && (
-            <span>{getStringAbbreviation(option.name)}</span>
+            <span>{getStringAbbreviation(option.acronym ?? option.name)}</span>
           )}
         </div>
 
