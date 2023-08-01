@@ -11,7 +11,8 @@ const options: SFPeopleOption[] = [
     name: 'Andrea Johnson'
   },
   {
-    name: 'John Carpenter'
+    name: 'John Carpenter',
+    acronym: 'JSK'
   },
   {
     name: 'John Williams'
