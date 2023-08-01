@@ -23,9 +23,12 @@ export const StyledPeopleAutocomplete = withStyles({
   }
 })(StyledAutocomplete);
 
-export const getStringAbbreviation = (value: string): string => {
-  if (value.length === 3) {
-    return value.toUpperCase();
+export const getStringAbbreviation = (
+  value: string,
+  acronym?: string
+): string => {
+  if (acronym) {
+    return acronym.toUpperCase();
   }
 
   const abbreviation = value.split(' ');
@@ -272,7 +275,7 @@ export const SFPeoplePicker = ({
           }}
         >
           {!option.avatarUrl && (
-            <span>{getStringAbbreviation(option.acronym ?? option.name)}</span>
+            <span>{getStringAbbreviation(option.name, option.acronym)}</span>
           )}
         </div>
 
