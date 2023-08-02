@@ -152,6 +152,10 @@ interface SFPeoplePickerSingleProps extends SFPeoplePickerBaseProps {
 
 interface SFPeoplePickerMultipleProps extends SFPeoplePickerBaseProps {
   multiple: true;
+  getOptionSelected?: (
+    option: SFPeopleOption,
+    value: SFPeopleOption
+  ) => boolean;
   value: SFPeopleOption[];
   onChange: (value: SFPeopleOption[]) => void;
 }
@@ -327,6 +331,7 @@ export const SFPeoplePicker = ({
       onInputChange={onInputChange}
       onChange={onPeopleChange}
       getOptionLabel={(option: SFPeopleOption): string => option.name}
+      getOptionSelected={props.multiple ? props.getOptionSelected : undefined}
       renderOption={renderOption}
       filterOptions={(options: SFPeopleOption[]): SFPeopleOption[] => options}
       renderTags={renderTags}
