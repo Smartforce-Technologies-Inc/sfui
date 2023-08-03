@@ -147,6 +147,10 @@ interface SFPeoplePickerBaseProps {
 interface SFPeoplePickerSingleProps extends SFPeoplePickerBaseProps {
   multiple: false;
   value: SFPeopleOption;
+  getOptionSelected?: (
+    option: SFPeopleOption,
+    value: SFPeopleOption
+  ) => boolean;
   onChange: (value: SFPeopleOption) => void;
 }
 
@@ -154,7 +158,7 @@ interface SFPeoplePickerMultipleProps extends SFPeoplePickerBaseProps {
   multiple: true;
   getOptionSelected?: (
     option: SFPeopleOption,
-    value: SFPeopleOption
+    value: SFPeopleOption[]
   ) => boolean;
   value: SFPeopleOption[];
   onChange: (value: SFPeopleOption[]) => void;
@@ -333,7 +337,11 @@ export const SFPeoplePicker = ({
       getOptionLabel={(option: SFPeopleOption): string => option.name}
       getOptionSelected={props.multiple ? props.getOptionSelected : undefined}
       renderOption={renderOption}
-      filterOptions={(options: SFPeopleOption[]): SFPeopleOption[] => options}
+      filterOptions={
+        props.isAsync
+          ? (options: SFPeopleOption[]): SFPeopleOption[] => options
+          : undefined
+      }
       renderTags={renderTags}
     />
   );
