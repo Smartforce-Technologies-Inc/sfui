@@ -142,24 +142,20 @@ interface SFPeoplePickerBaseProps {
   required?: boolean;
   multiple?: boolean;
   helperText?: React.ReactNode;
+  getOptionSelected?: (
+    option: SFPeopleOption,
+    value: SFPeopleOption
+  ) => boolean;
 }
 
 interface SFPeoplePickerSingleProps extends SFPeoplePickerBaseProps {
   multiple: false;
   value: SFPeopleOption;
-  getOptionSelected?: (
-    option: SFPeopleOption,
-    value: SFPeopleOption
-  ) => boolean;
   onChange: (value: SFPeopleOption) => void;
 }
 
 interface SFPeoplePickerMultipleProps extends SFPeoplePickerBaseProps {
   multiple: true;
-  getOptionSelected?: (
-    option: SFPeopleOption,
-    value: SFPeopleOption[]
-  ) => boolean;
   value: SFPeopleOption[];
   onChange: (value: SFPeopleOption[]) => void;
 }
@@ -335,7 +331,7 @@ export const SFPeoplePicker = ({
       onInputChange={onInputChange}
       onChange={onPeopleChange}
       getOptionLabel={(option: SFPeopleOption): string => option.name}
-      getOptionSelected={props.multiple ? props.getOptionSelected : undefined}
+      getOptionSelected={props.getOptionSelected}
       renderOption={renderOption}
       filterOptions={
         props.isAsync
