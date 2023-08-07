@@ -327,6 +327,7 @@ export const SFPeoplePicker = ({
       popupIcon={null}
       filterSelectedOptions={isMultiple}
       closeIcon={<SFIcon icon='Close' size='16' />}
+      disableClearable={isMultiple}
       value={value}
       onInputChange={onInputChange}
       onChange={onPeopleChange}
