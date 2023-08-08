@@ -82,6 +82,7 @@ export interface SFTimelineItem {
 export interface SFTimelineProps {
   className?: string;
   items: SFTimelineItem[];
+  selectable?: boolean;
   size?: 'medium' | 'large';
   selectedIndex?: number;
   onItemClick?: (item: SFTimelineItem, index: number) => void;
@@ -100,7 +101,8 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   subtitle: {
     color: theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400],
-    margin: 0
+    margin: 0,
+    whiteSpace: 'pre-line'
   },
   isSelected: {
     backgroundColor:
@@ -110,11 +112,16 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   lastItem: {
     marginBottom: '0px'
+  },
+  notSelectable: {
+    cursor: 'auto',
+    backgroundColor: 'transparent !important'
   }
 }));
 
 export const SFTimeline = ({
   className = '',
+  selectable = true,
   items,
   selectedIndex = 0,
   size = 'medium',
@@ -133,7 +140,11 @@ export const SFTimeline = ({
         return (
           <div
             key={`timeline-item-${index}`}
-            onClick={(): void => onItemClick && onItemClick(item, index)}
+            onClick={
+              selectable
+                ? (): void => onItemClick && onItemClick(item, index)
+                : undefined
+            }
           >
             <StyledTimelineItem>
               <TimelineSeparator>
@@ -142,8 +153,12 @@ export const SFTimeline = ({
               </TimelineSeparator>
               <StyledTimelineContent
                 className={`${classes.text} ${
-                  selectedIndex === index ? classes.isSelected : ''
-                } ${index === itemsLength - 1 ? classes.lastItem : ''}`}
+                  selectedIndex === index && selectable
+                    ? classes.isSelected
+                    : ''
+                } ${index === itemsLength - 1 ? classes.lastItem : ''} ${
+                  !selectable ? classes.notSelectable : ''
+                }`}
               >
                 <p className={classes.title}>{item.title}</p>
 
