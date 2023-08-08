@@ -11,7 +11,7 @@ const items: SFTimelineItem[] = [
   },
   {
     title: 'Title',
-    subtitle: 'Subtitle'
+    subtitle: `Subtitle \nAnother subtitle`
   },
   {
     title: 'Title',
