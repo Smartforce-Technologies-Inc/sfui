@@ -5,14 +5,14 @@ import {
   SFPeoplePickerProps,
   SFPeopleOption
 } from './SFPeoplePicker';
-import { values } from 'lodash';
 
 const options: SFPeopleOption[] = [
   {
     name: 'Andrea Johnson'
   },
   {
-    name: 'John Carpenter'
+    name: 'John Carpenter',
+    acronym: 'JSK'
   },
   {
     name: 'John Williams'
@@ -68,6 +68,11 @@ export default {
       }
     },
     minChar: {
+      table: {
+        disable: true
+      }
+    },
+    multiple: {
       table: {
         disable: true
       }
@@ -176,5 +181,20 @@ export const AsyncOptions: Story = () => {
 AsyncOptions.parameters = {
   controls: {
     disable: true
+  }
+};
+
+export const MultipleValues = Template.bind({});
+
+MultipleValues.args = {
+  multiple: true,
+  options: options
+};
+
+MultipleValues.argTypes = {
+  fetchInit: {
+    table: {
+      disable: true
+    }
   }
 };

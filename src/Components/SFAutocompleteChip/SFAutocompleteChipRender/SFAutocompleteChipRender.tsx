@@ -4,7 +4,7 @@ import { SFChip } from '../../SFChip/SFChip';
 export interface SFAutocompleteChipRenderProps {
   values: string[];
   disabled: boolean;
-  onDelete: (input: string) => void;
+  onDelete: (input: string, index?: number) => void;
 }
 
 export const SFAutocompleteChipRender = ({
@@ -23,7 +23,7 @@ export const SFAutocompleteChipRender = ({
           size='small'
           label={input}
           disabled={disabled}
-          onDelete={(): void => onDelete(input)}
+          onDelete={(): void => onDelete(input, index)}
         />
       ))}
     </Fragment>

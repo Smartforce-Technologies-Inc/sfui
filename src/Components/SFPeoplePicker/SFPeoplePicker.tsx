@@ -10,6 +10,7 @@ import { SFBlue, SFGrey, SFTextWhite } from '../../SFColors/SFColors';
 import { DebouncedFunc } from 'lodash';
 import debounce from 'lodash.debounce';
 import { StyledAutocomplete } from '../SFAutocomplete/SFAutocomplete';
+import { SFAutocompleteChipRender } from '../SFAutocompleteChip/SFAutocompleteChipRender/SFAutocompleteChipRender';
 
 export const StyledPeopleAutocomplete = withStyles({
   option: {
@@ -22,7 +23,14 @@ export const StyledPeopleAutocomplete = withStyles({
   }
 })(StyledAutocomplete);
 
-const getStringAbbreviation = (value: string): string => {
+export const getStringAbbreviation = (
+  value: string,
+  acronym?: string
+): string => {
+  if (acronym) {
+    return acronym;
+  }
+
   const abbreviation = value.split(' ');
   let stringAbbreviation = '';
 
@@ -91,29 +99,65 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontSize: '14px',
     lineHeight: '21px',
     fontWeight: 700,
-    color: SFTextWhite
+    color: SFTextWhite,
+    textTransform: 'uppercase'
   },
   name: {
     fontSize: '16px',
     lineHeight: '24px',
     color: theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]
+  },
+  multipleValues: {
+    '& .MuiInputBase-root': {
+      height: 'inherit',
+      minHeight: '56px',
+      gap: '6px',
+      padding: '28px 9px 9px',
+
+      '& input.MuiAutocomplete-input': {
+        padding: 0,
+
+        '&:first-child': {
+          padding: 0
+        }
+      },
+      '& .MuiFormControl-root .MuiChip-outlined': {
+        margin: '3px auto 2px'
+      }
+    }
   }
 }));
 
 export interface SFPeopleOption {
   name: string;
+  acronym?: string;
   avatarUrl?: string;
   asyncObject?: any;
 }
 
 interface SFPeoplePickerBaseProps {
   label: string;
-  value: SFPeopleOption;
   isAsync: boolean;
   disabled?: boolean;
   required?: boolean;
+  multiple?: boolean;
   helperText?: React.ReactNode;
+  getOptionSelected?: (
+    option: SFPeopleOption,
+    value: SFPeopleOption
+  ) => boolean;
+}
+
+interface SFPeoplePickerSingleProps extends SFPeoplePickerBaseProps {
+  multiple: false;
+  value: SFPeopleOption;
   onChange: (value: SFPeopleOption) => void;
+}
+
+interface SFPeoplePickerMultipleProps extends SFPeoplePickerBaseProps {
+  multiple: true;
+  value: SFPeopleOption[];
+  onChange: (value: SFPeopleOption[]) => void;
 }
 
 interface SFPeoplePickerWithOptionsProps extends SFPeoplePickerBaseProps {
@@ -130,19 +174,21 @@ interface SFPeoplePickerAsyncProps extends SFPeoplePickerBaseProps {
 }
 
 export type SFPeoplePickerProps =
-  | SFPeoplePickerWithOptionsProps
-  | SFPeoplePickerAsyncProps;
+  | (SFPeoplePickerSingleProps & SFPeoplePickerWithOptionsProps)
+  | (SFPeoplePickerSingleProps & SFPeoplePickerAsyncProps)
+  | (SFPeoplePickerMultipleProps & SFPeoplePickerWithOptionsProps)
+  | (SFPeoplePickerMultipleProps & SFPeoplePickerAsyncProps);
 
 export const SFPeoplePicker = ({
   helperText,
   label,
-  disabled,
+  disabled = false,
   required,
   value,
-  onChange,
   ...props
 }: SFPeoplePickerProps): React.ReactElement<SFPeoplePickerProps> => {
   const classes = useStyles();
+  const isMultiple: boolean = props.multiple ?? false;
 
   const [asyncOptions, setAsyncOptions] = React.useState<SFPeopleOption[]>([]);
   const [loading, setIsLoading] = React.useState<boolean>(false);
@@ -178,39 +224,6 @@ export const SFPeoplePicker = ({
     }
   };
 
-  const renderOption = (option: SFPeopleOption): React.ReactNode => {
-    return (
-      <div className={classes.menu}>
-        <div
-          className={classes.avatar}
-          style={{
-            backgroundImage: option.avatarUrl
-              ? `url("${option.avatarUrl}")`
-              : '',
-            backgroundSize: 'cover'
-          }}
-        >
-          {!option.avatarUrl && (
-            <span>{getStringAbbreviation(option.name)}</span>
-          )}
-        </div>
-
-        <div className={classes.name}>{option.name}</div>
-      </div>
-    );
-  };
-
-  const renderInput = (
-    params: AutocompleteRenderInputParams
-  ): React.ReactNode => (
-    <SFTextField
-      {...params}
-      required={required}
-      label={label}
-      helperText={helperText}
-    />
-  );
-
   const onInputChange = async (
     _event: React.ChangeEvent,
     value: string,
@@ -237,27 +250,96 @@ export const SFPeoplePicker = ({
 
   const onPeopleChange = (
     _event: React.ChangeEvent,
-    newValue: SFPeopleOption
+    newValue: SFPeopleOption | SFPeopleOption[]
   ): void => {
-    onChange(newValue);
+    if (props.multiple) {
+      props.onChange(newValue as SFPeopleOption[]);
+    } else {
+      props.onChange(newValue as SFPeopleOption);
+    }
+  };
+
+  const onDelete = (currentValue: SFPeopleOption[], index: number): void => {
+    const newValue = currentValue.filter(
+      (_v: SFPeopleOption, i: number) => i !== index
+    );
+
+    props.multiple && props.onChange(newValue as SFPeopleOption[]);
+  };
+
+  const renderOption = (option: SFPeopleOption): React.ReactNode => {
+    return (
+      <div className={classes.menu}>
+        <div
+          className={classes.avatar}
+          style={{
+            backgroundImage: option.avatarUrl
+              ? `url("${option.avatarUrl}")`
+              : '',
+            backgroundSize: 'cover'
+          }}
+        >
+          {!option.avatarUrl && (
+            <span>{getStringAbbreviation(option.name, option.acronym)}</span>
+          )}
+        </div>
+
+        <div className={classes.name}>{option.name}</div>
+      </div>
+    );
+  };
+
+  const renderInput = (
+    params: AutocompleteRenderInputParams
+  ): React.ReactNode => (
+    <SFTextField
+      {...params}
+      required={required}
+      label={label}
+      helperText={helperText}
+    />
+  );
+
+  const renderTags = (value: SFPeopleOption[]): React.ReactNode => {
+    if (props.multiple) {
+      return (
+        <SFAutocompleteChipRender
+          disabled={disabled}
+          values={value.map((val: SFPeopleOption) => val.name)}
+          onDelete={(_v, index: number): void => onDelete(value, index)}
+        />
+      );
+    }
+
+    return undefined;
   };
 
   return (
     <StyledPeopleAutocomplete
+      className={isMultiple ? classes.multipleValues : ''}
       freeSolo={false}
       loading={loading}
+      multiple={isMultiple}
       clearOnBlur
       disabled={disabled}
       options={props.isAsync ? asyncOptions : props.options}
       renderInput={renderInput}
       popupIcon={null}
+      filterSelectedOptions={isMultiple}
       closeIcon={<SFIcon icon='Close' size='16' />}
+      disableClearable={isMultiple}
       value={value}
       onInputChange={onInputChange}
       onChange={onPeopleChange}
       getOptionLabel={(option: SFPeopleOption): string => option.name}
+      getOptionSelected={props.getOptionSelected}
       renderOption={renderOption}
-      filterOptions={(options: SFPeopleOption[]): SFPeopleOption[] => options}
+      filterOptions={
+        props.isAsync
+          ? (options: SFPeopleOption[]): SFPeopleOption[] => options
+          : undefined
+      }
+      renderTags={renderTags}
     />
   );
 };
