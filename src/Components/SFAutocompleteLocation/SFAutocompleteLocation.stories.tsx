@@ -42,6 +42,12 @@ export default {
         disable: true
       }
     },
+    onSetLocation: {
+      action: 'onSetLocation',
+      table: {
+        disable: true
+      }
+    },
     required: {
       table: { disable: true }
     },

@@ -6,7 +6,11 @@ import { DebouncedFunc } from 'lodash';
 import parse from 'autosuggest-highlight/parse';
 import { SFIcon } from '../SFIcon/SFIcon';
 import { SFTextField } from '../SFTextField/SFTextField';
-import { SFGrey } from '../../SFColors/SFColors';
+import {
+  SFBlueMainDark,
+  SFBlueMainLight,
+  SFGrey
+} from '../../SFColors/SFColors';
 import { hexToRgba } from '../../Helpers';
 import { StyledAutocomplete } from '../SFAutocomplete/SFAutocomplete';
 
@@ -46,6 +50,21 @@ import { StyledAutocomplete } from '../SFAutocomplete/SFAutocomplete';
   https://developers.google.com/maps/documentation/javascript/reference/places-service#PlaceGeometry
   
 */
+
+const SET_LOCATION_OPTION: google.maps.places.AutocompletePrediction = {
+  description: 'set_location_option',
+  /* eslint-disable */
+  matched_substrings: [],
+  place_id: '',
+  structured_formatting: {
+    main_text: '',
+    main_text_matched_substrings: [],
+    secondary_text: ''
+  },
+  /* eslint-enable */
+  terms: [],
+  types: []
+};
 
 type PlacePredictionsFn = (
   text: string,
@@ -119,7 +138,8 @@ interface TextPart {
 
 const StyledAutocompleteLocation = withStyles((theme: Theme) => ({
   option: {
-    padding: '6px 24px'
+    padding: '6px 24px',
+    minHeight: '52px'
   },
   popupIndicator: {
     padding: 0
@@ -144,6 +164,14 @@ const StyledAutocompleteLocation = withStyles((theme: Theme) => ({
 }))(StyledAutocomplete);
 
 const useStyles = makeStyles((theme: Theme) => ({
+  setLocationOption: {
+    color: theme.palette.type === 'light' ? SFBlueMainLight : SFBlueMainDark,
+    '& path': {
+      fill:
+        (theme.palette.type === 'light' ? SFBlueMainLight : SFBlueMainDark) +
+        '!important'
+    }
+  },
   menu: {
     display: 'grid',
     gridTemplateColumns: 'auto 1fr',
@@ -151,6 +179,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     alignItems: 'center'
   },
   itemText: {
+    display: 'flex',
+    flexDirection: 'column',
     fontSize: '16px',
     lineHeight: '24px',
     color: theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]
@@ -191,7 +221,10 @@ export interface SFAutocompleteLocationProps {
   currentLocation?: boolean;
   currentLocationType?: 'address' | 'route';
   minChar?: number;
+  showSetLocation?: boolean;
+  multiline?: boolean;
   onChange: (value: SFAutocompleteLocationResult) => void;
+  onSetLocation?: () => void;
 }
 
 export const SFAutocompleteLocation = ({
@@ -203,8 +236,11 @@ export const SFAutocompleteLocation = ({
   helperText,
   currentLocation = false,
   currentLocationType = 'route',
-  minChar = 3,
-  onChange
+  minChar = 9,
+  showSetLocation = false,
+  multiline = false,
+  onChange,
+  onSetLocation
 }: SFAutocompleteLocationProps): React.ReactElement<SFAutocompleteLocationResult> => {
   const classes = useStyles();
   const autocompleteService = React.useRef<google.maps.places.AutocompleteService>();
@@ -242,11 +278,16 @@ export const SFAutocompleteLocation = ({
       refGetPlacePredictions.current &&
       autocompleteService.current
     ) {
-      const options = await refGetPlacePredictions.current(
+      const predictions = await refGetPlacePredictions.current(
         value.text,
         autocompleteService.current
       );
-      setOptions(options || []);
+
+      let options = predictions ?? [];
+      if (showSetLocation) {
+        options = [SET_LOCATION_OPTION, ...options];
+      }
+      setOptions(options);
     }
   };
 
@@ -362,7 +403,11 @@ export const SFAutocompleteLocation = ({
     if (value.text && value.text.length > minChar) {
       fetchOptions();
     } else {
-      setOptions([]);
+      let options: google.maps.places.AutocompletePrediction[] = [];
+      if (showSetLocation) {
+        options = [SET_LOCATION_OPTION, ...options];
+      }
+      setOptions(options);
     }
   }, [value]);
 
@@ -371,10 +416,13 @@ export const SFAutocompleteLocation = ({
   ): React.ReactNode => (
     <SFTextField
       {...params}
+      multiline={multiline}
       required={required}
       label={label}
       error={error}
       helperText={helperText}
+      // with minRows prop don't work as needed
+      rows={1}
     />
   );
 
@@ -384,7 +432,12 @@ export const SFAutocompleteLocation = ({
     reason: string
   ): Promise<void> => {
     if (reason !== 'create-option' && newValue) {
-      if (newValue.place_id) {
+      if (
+        newValue.description === SET_LOCATION_OPTION.description &&
+        onSetLocation
+      ) {
+        onSetLocation();
+      } else if (newValue.place_id) {
         let placeDetails: SFAutocompleteLocationPlaceDetails = {
           placeId: newValue.place_id
         };
@@ -437,45 +490,54 @@ export const SFAutocompleteLocation = ({
   const renderOption = (
     option: google.maps.places.AutocompletePrediction
   ): React.ReactNode => {
-    let matches: google.maps.places.PredictionSubstring[] = [];
-    let parts: TextPart[] = [];
-    const structuredFormatting: google.maps.places.StructuredFormatting =
-      option.structured_formatting;
+    if (option.description === SET_LOCATION_OPTION.description) {
+      return (
+        <div className={`${classes.menu} ${classes.setLocationOption}`}>
+          <SFIcon icon='Loction-1' />
+          <span>Set your location on the map</span>
+        </div>
+      );
+    } else {
+      let matches: google.maps.places.PredictionSubstring[] = [];
+      let parts: TextPart[] = [];
+      const structuredFormatting: google.maps.places.StructuredFormatting =
+        option.structured_formatting;
 
-    if (structuredFormatting) {
-      matches = structuredFormatting.main_text_matched_substrings || [];
-      parts = parse(
-        structuredFormatting.main_text,
-        matches.map((match: google.maps.places.PredictionSubstring) => [
-          match.offset,
-          match.offset + match.length
-        ])
+      if (structuredFormatting) {
+        matches = structuredFormatting.main_text_matched_substrings || [];
+        parts = parse(
+          structuredFormatting.main_text,
+          matches.map((match: google.maps.places.PredictionSubstring) => [
+            match.offset,
+            match.offset + match.length
+          ])
+        );
+      }
+
+      return (
+        <div className={classes.menu}>
+          <SFIcon icon='Loction-11' />
+
+          <div className={classes.itemText}>
+            <span>
+              {parts.map((part, index) => (
+                <span
+                  key={index}
+                  className={part.highlight ? classes.textHighlight : ''}
+                >
+                  {part.text}
+                </span>
+              ))}
+            </span>
+
+            <span className={classes.itemSecondaryText}>
+              {option.structured_formatting &&
+                option.structured_formatting.secondary_text}
+            </span>
+          </div>
+        </div>
       );
     }
-
-    return (
-      <div className={classes.menu}>
-        <SFIcon icon='Loction-1' />
-
-        <div className={classes.itemText}>
-          {parts.map((part, index) => (
-            <span
-              key={index}
-              className={part.highlight ? classes.textHighlight : ''}
-            >
-              {part.text}
-            </span>
-          ))}
-
-          <br />
-
-          <span className={classes.itemSecondaryText}>
-            {option.structured_formatting &&
-              option.structured_formatting.secondary_text}
-          </span>
-        </div>
-      </div>
-    );
   };
 
   const onOpen = (): void => {
