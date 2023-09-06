@@ -137,6 +137,12 @@ interface TextPart {
 }
 
 const StyledAutocompleteLocation = withStyles((theme: Theme) => ({
+  hasClearIcon: {
+    '& .MuiInputBase-root.MuiOutlinedInput-root': {
+      paddingRight: '43px'
+    }
+  },
+
   option: {
     padding: '6px 24px',
     minHeight: '52px'
