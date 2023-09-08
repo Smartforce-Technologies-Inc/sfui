@@ -2,7 +2,7 @@ export {
   useMediaQuery as useSFMediaQuery,
   StylesProvider as SFStylesProvider,
   ClickAwayListener as SFClickAwayListener,
-  Fade as SFade,
+  Fade as SFFade,
   Collapse as SFCollapse,
   Grow as SFGrow,
   Slide as SFSlide,
