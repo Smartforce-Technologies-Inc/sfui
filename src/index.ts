@@ -27,7 +27,7 @@ export * from './Components/SFMenu/SFMenu';
 export * from './Components/SFMenuItem/SFMenuItem';
 // export * from './Components/SFMultiSelect/SFMultiSelect';
 export * from './Components/SFNumericField/SFNumericField';
-// export * from './Components/SFPanel/SFPanel';
+export * from './Components/SFPanel/SFPanel';
 export * from './Components/SFPaper/SFPaper';
 // export * from './Components/SFPeoplePicker/SFPeoplePicker';
 export * from './Components/SFRadioGroup/SFRadio/SFRadio';
