@@ -1,12 +1,17 @@
 import React from 'react';
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { Story, ComponentMeta } from '@storybook/react';
 import { SFPanel, SFPanelProps } from './SFPanel';
 import { SFTextField } from '../SFTextField/SFTextField';
 
 export default {
   title: 'Components/SFPanel',
   component: SFPanel,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: {
+    controls: {
+      sort: 'alpha',
+      include: ['anchor', 'elevation', 'open', 'title', 'maxWidth']
+    }
+  },
   args: {
     title: 'Drawer title',
     open: false,
@@ -15,12 +20,6 @@ export default {
     maxWidth: 450
   },
   argTypes: {
-    onClose: {
-      action: 'onClose',
-      table: {
-        disable: true
-      }
-    },
     anchor: {
       description: 'Side from which the panel will appear.',
       table: {
@@ -75,26 +74,11 @@ export default {
       control: {
         type: 'number'
       }
-    },
-    ref: {
-      table: {
-        disable: true
-      }
-    },
-    leftAction: {
-      table: {
-        disable: true
-      }
-    },
-    rightAction: {
-      table: {
-        disable: true
-      }
     }
   }
-} as Meta;
+} as ComponentMeta<typeof SFPanel>;
 
-export const Panel = (args: SFPanelProps): JSX.Element => (
+export const Panel: Story<SFPanelProps> = (args) => (
   <SFPanel
     {...args}
     leftAction={{ label: 'Medium' }}
