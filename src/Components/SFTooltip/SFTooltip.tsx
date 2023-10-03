@@ -18,7 +18,9 @@ const getTitleColor = (
   props: Partial<SFTooltipProps>,
   isLight: boolean
 ): string => {
-  if (props.sfColor === 'red') {
+  if (props.sfColor === 'inverted') {
+    return isLight ? SFGrey[300] : SFGrey[700];
+  } else if (props.sfColor === 'red') {
     return isLight ? SFRed[50] : SFRed[900];
   } else {
     return isLight ? SFGrey[50] : SFGrey[900];
@@ -29,7 +31,9 @@ const getContentColor = (
   props: Partial<SFTooltipProps>,
   isLight: boolean
 ): string => {
-  if (props.sfColor === 'red') {
+  if (props.sfColor === 'inverted') {
+    return isLight ? SFGrey[50] : SFGrey[900];
+  } else if (props.sfColor === 'red') {
     return isLight ? SFRed[100] : SFRed[800];
   } else {
     return isLight ? (SFGrey.A200 as string) : SFGrey[700];
@@ -76,10 +80,11 @@ const useStyles = makeStyles((theme: Theme) => ({
 export interface SFTooltipProps extends TooltipProps {
   title: string;
   content?: React.ReactNode;
-  sfColor?: 'default' | 'red';
+  sfColor?: 'default' | 'red' | 'inverted';
 }
 
 export const SFTooltip = ({
+  className,
   title,
   content,
   sfColor = 'default',
@@ -98,6 +103,12 @@ export const SFTooltip = ({
   );
 
   return (
-    <Tooltip classes={classes} arrow={arrow} title={tooltipTitle} {...props} />
+    <Tooltip
+      className={className}
+      classes={classes}
+      arrow={arrow}
+      title={tooltipTitle}
+      {...props}
+    />
   );
 };
