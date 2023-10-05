@@ -63,13 +63,16 @@ const useStyles = makeStyles((theme: Theme) => ({
     margin: '5px 0 0 0'
   },
   title: {
-    fontWeight: 500,
+    fontWeight: ({ sfColor }: Partial<SFTooltipProps>): number =>
+      sfColor === 'inverted' ? 400 : 500,
     fontSize: '13px',
     lineHeight: '22px',
     color: (props: Partial<SFTooltipProps>): string =>
       getTitleColor(props, theme.palette.type === 'light')
   },
   content: {
+    fontWeight: ({ sfColor }: Partial<SFTooltipProps>): number =>
+      sfColor === 'inverted' ? 500 : 400,
     fontSize: '12px',
     lineHeight: '18px',
     color: (props: Partial<SFTooltipProps>): string =>
