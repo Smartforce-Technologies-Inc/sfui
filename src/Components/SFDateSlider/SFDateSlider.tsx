@@ -180,7 +180,7 @@ export const SFDateSlider = ({
   );
 
   const onSilderChange = (
-    event: React.ChangeEvent<Record<string, unknown>>,
+    _event: React.ChangeEvent<Record<string, unknown>>,
     val: number | number[]
   ): void => {
     onChange([
