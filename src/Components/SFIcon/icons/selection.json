@@ -17,7 +17,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1322,
+        "order": 1501,
         "name": "Active-Protection",
         "prevSize": 32,
         "id": 1
@@ -43,7 +43,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1323,
+        "order": 1502,
         "name": "Add",
         "prevSize": 32,
         "id": 2
@@ -67,7 +67,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1324,
+        "order": 1503,
         "name": "Add-Book",
         "prevSize": 32,
         "id": 91
@@ -95,7 +95,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1325,
+        "order": 1504,
         "name": "Add-File",
         "prevSize": 32,
         "id": 105
@@ -123,7 +123,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1326,
+        "order": 1505,
         "name": "Add-Folder",
         "prevSize": 32,
         "id": 118
@@ -147,7 +147,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1327,
+        "order": 1506,
         "name": "Add-Task",
         "prevSize": 32,
         "id": 131
@@ -179,7 +179,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1328,
+        "order": 1507,
         "name": "Adjustments",
         "prevSize": 32,
         "id": 3
@@ -206,7 +206,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1329,
+        "order": 1508,
         "name": "Alarm",
         "prevSize": 32,
         "id": 4
@@ -240,7 +240,7 @@
         {}
       ],
       "properties": {
-        "order": 1330,
+        "order": 1509,
         "id": 153,
         "name": "Announcement",
         "prevSize": 32
@@ -267,7 +267,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1331,
+        "order": 1510,
         "name": "Archive-File",
         "prevSize": 32,
         "id": 5
@@ -300,7 +300,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1332,
+        "order": 1511,
         "name": "Assignment",
         "prevSize": 32,
         "id": 6
@@ -324,7 +324,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1333,
+        "order": 1512,
         "name": "Atention-Task",
         "prevSize": 32,
         "id": 132
@@ -352,7 +352,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1334,
+        "order": 1513,
         "name": "Attach-File",
         "prevSize": 32,
         "id": 106
@@ -376,7 +376,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1335,
+        "order": 1514,
         "name": "Attache-Task",
         "prevSize": 32,
         "id": 133
@@ -404,7 +404,7 @@
         {}
       ],
       "properties": {
-        "order": 1336,
+        "order": 1515,
         "id": 170,
         "name": "Attention",
         "prevSize": 32
@@ -428,7 +428,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1337,
+        "order": 1516,
         "name": "Award-2",
         "prevSize": 32,
         "id": 143
@@ -454,7 +454,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1338,
+        "order": 1517,
         "name": "Bell",
         "prevSize": 32,
         "id": 7
@@ -506,7 +506,7 @@
         {}
       ],
       "properties": {
-        "order": 1339,
+        "order": 1518,
         "id": 156,
         "name": "Bike-2",
         "prevSize": 32
@@ -531,7 +531,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1340,
+        "order": 1519,
         "name": "Blank-File",
         "prevSize": 32,
         "id": 107
@@ -559,7 +559,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1341,
+        "order": 1520,
         "name": "Block-Chart-1",
         "prevSize": 32,
         "id": 84
@@ -587,7 +587,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1342,
+        "order": 1521,
         "name": "Block-Chart-4",
         "prevSize": 32,
         "id": 85
@@ -611,7 +611,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1343,
+        "order": 1522,
         "name": "Book-2",
         "prevSize": 32,
         "id": 92
@@ -635,7 +635,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1344,
+        "order": 1523,
         "name": "Book-Dismiss",
         "prevSize": 32,
         "id": 93
@@ -659,7 +659,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1345,
+        "order": 1524,
         "name": "Book-Done",
         "prevSize": 32,
         "id": 94
@@ -683,7 +683,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1346,
+        "order": 1525,
         "name": "Book-Down",
         "prevSize": 32,
         "id": 95
@@ -707,7 +707,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1347,
+        "order": 1526,
         "name": "Book-Question",
         "prevSize": 32,
         "id": 96
@@ -731,7 +731,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1348,
+        "order": 1527,
         "name": "Book-Settings",
         "prevSize": 32,
         "id": 97
@@ -755,7 +755,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1349,
+        "order": 1528,
         "name": "Book-Up",
         "prevSize": 32,
         "id": 98
@@ -779,7 +779,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1350,
+        "order": 1529,
         "name": "Book-User",
         "prevSize": 32,
         "id": 99
@@ -803,7 +803,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1351,
+        "order": 1530,
         "name": "Book-Warning",
         "prevSize": 32,
         "id": 100
@@ -831,7 +831,7 @@
         {}
       ],
       "properties": {
-        "order": 1319,
+        "order": 1531,
         "id": 179,
         "name": "Bookmark-1",
         "prevSize": 32
@@ -855,7 +855,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1352,
+        "order": 1532,
         "name": "Bookmark-11",
         "prevSize": 32,
         "id": 80
@@ -880,7 +880,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1353,
+        "order": 1533,
         "name": "Bookmark-3",
         "prevSize": 32,
         "id": 81
@@ -911,7 +911,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1354,
+        "order": 1534,
         "name": "Brake-Link",
         "prevSize": 32,
         "id": 8
@@ -941,7 +941,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1355,
+        "order": 1535,
         "name": "Callendar",
         "prevSize": 32,
         "id": 9
@@ -967,7 +967,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1356,
+        "order": 1536,
         "name": "Camera-1",
         "prevSize": 32,
         "id": 10
@@ -991,7 +991,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1357,
+        "order": 1537,
         "name": "Camera-2",
         "prevSize": 32,
         "id": 11
@@ -1040,7 +1040,7 @@
         {}
       ],
       "properties": {
-        "order": 1358,
+        "order": 1538,
         "id": 154,
         "name": "Car",
         "prevSize": 32
@@ -1065,7 +1065,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1359,
+        "order": 1539,
         "name": "Check-1",
         "prevSize": 32,
         "id": 12
@@ -1089,7 +1089,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1360,
+        "order": 1540,
         "name": "Check-2",
         "prevSize": 32,
         "id": 13
@@ -1116,7 +1116,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1361,
+        "order": 1541,
         "name": "Check-File",
         "prevSize": 32,
         "id": 108
@@ -1144,7 +1144,7 @@
         {}
       ],
       "properties": {
-        "order": 1362,
+        "order": 1542,
         "id": 0,
         "name": "Checkbox-Selected",
         "prevSize": 32
@@ -1172,7 +1172,7 @@
         {}
       ],
       "properties": {
-        "order": 1363,
+        "order": 1543,
         "id": 149,
         "name": "Checkbox-Unselected",
         "prevSize": 32
@@ -1196,7 +1196,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1364,
+        "order": 1544,
         "name": "Circle-Star",
         "prevSize": 32,
         "id": 144
@@ -1224,7 +1224,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1365,
+        "order": 1545,
         "name": "Clear-File",
         "prevSize": 32,
         "id": 109
@@ -1252,7 +1252,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1366,
+        "order": 1546,
         "name": "Clear-Folder",
         "prevSize": 32,
         "id": 119
@@ -1276,7 +1276,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1367,
+        "order": 1547,
         "name": "Clear-Task",
         "prevSize": 32,
         "id": 134
@@ -1300,7 +1300,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1368,
+        "order": 1548,
         "name": "Clipboard",
         "prevSize": 32,
         "id": 135
@@ -1331,7 +1331,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1369,
+        "order": 1549,
         "name": "Clock",
         "prevSize": 32,
         "id": 14
@@ -1356,7 +1356,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1370,
+        "order": 1550,
         "name": "Close",
         "prevSize": 32,
         "id": 15
@@ -1380,7 +1380,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1371,
+        "order": 1551,
         "name": "Cloud",
         "prevSize": 32,
         "id": 16
@@ -1414,7 +1414,7 @@
         {}
       ],
       "properties": {
-        "order": 1372,
+        "order": 1552,
         "id": 166,
         "name": "Cloud-Off",
         "prevSize": 32
@@ -1451,7 +1451,7 @@
         {}
       ],
       "properties": {
-        "order": 1373,
+        "order": 1553,
         "id": 165,
         "name": "Cloud-Upload",
         "prevSize": 32
@@ -1480,7 +1480,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1374,
+        "order": 1554,
         "name": "Collaboration",
         "prevSize": 32,
         "id": 17
@@ -1508,7 +1508,7 @@
         {}
       ],
       "properties": {
-        "order": 1320,
+        "order": 1555,
         "id": 178,
         "name": "Computer",
         "prevSize": 32
@@ -1532,7 +1532,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1375,
+        "order": 1556,
         "name": "Cop-Badge",
         "prevSize": 32,
         "id": 145
@@ -1559,7 +1559,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1376,
+        "order": 1557,
         "name": "Database",
         "prevSize": 32,
         "id": 18
@@ -1587,7 +1587,7 @@
         {}
       ],
       "properties": {
-        "order": 1377,
+        "order": 1558,
         "id": 175,
         "name": "Database-Preferences",
         "prevSize": 32
@@ -1615,7 +1615,7 @@
         {}
       ],
       "properties": {
-        "order": 1378,
+        "order": 1559,
         "id": 174,
         "name": "Database-Warning",
         "prevSize": 32
@@ -1639,7 +1639,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1379,
+        "order": 1560,
         "name": "Delete-Book",
         "prevSize": 32,
         "id": 101
@@ -1667,7 +1667,7 @@
         {}
       ],
       "properties": {
-        "order": 1380,
+        "order": 1561,
         "id": 160,
         "name": "Dismiss-App",
         "prevSize": 32
@@ -1694,7 +1694,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1381,
+        "order": 1562,
         "name": "Dismiss-File",
         "prevSize": 32,
         "id": 110
@@ -1721,7 +1721,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1382,
+        "order": 1563,
         "name": "Dismiss-Folder",
         "prevSize": 32,
         "id": 120
@@ -1755,7 +1755,7 @@
         {}
       ],
       "properties": {
-        "order": 1383,
+        "order": 1564,
         "id": 164,
         "name": "Done-Cloud",
         "prevSize": 32
@@ -1782,7 +1782,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1384,
+        "order": 1565,
         "name": "Done-Folder",
         "prevSize": 32,
         "id": 121
@@ -1806,7 +1806,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1385,
+        "order": 1566,
         "name": "Done-Task",
         "prevSize": 32,
         "id": 136
@@ -1839,7 +1839,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1386,
+        "order": 1567,
         "name": "Dot-Chart-1",
         "prevSize": 32,
         "id": 86
@@ -1863,7 +1863,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1387,
+        "order": 1568,
         "name": "Down-2",
         "prevSize": 32,
         "id": 72
@@ -1888,7 +1888,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1388,
+        "order": 1569,
         "name": "Down-7",
         "prevSize": 32,
         "id": 73
@@ -1914,7 +1914,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1389,
+        "order": 1570,
         "name": "Download",
         "prevSize": 32,
         "id": 19
@@ -1942,7 +1942,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1390,
+        "order": 1571,
         "name": "Download-File",
         "prevSize": 32,
         "id": 111
@@ -1970,7 +1970,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1391,
+        "order": 1572,
         "name": "Download-Folder",
         "prevSize": 32,
         "id": 122
@@ -1994,7 +1994,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1392,
+        "order": 1573,
         "name": "Download-Task",
         "prevSize": 32,
         "id": 137
@@ -2040,7 +2040,7 @@
         {}
       ],
       "properties": {
-        "order": 1393,
+        "order": 1574,
         "id": 162,
         "name": "Electric-Plug",
         "prevSize": 32
@@ -2068,7 +2068,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1394,
+        "order": 1575,
         "name": "Eroor-Folder",
         "prevSize": 32,
         "id": 123
@@ -2094,7 +2094,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1395,
+        "order": 1576,
         "name": "Error",
         "prevSize": 32,
         "id": 21
@@ -2120,7 +2120,7 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1396,
+        "order": 1577,
         "name": "Error-Mark",
         "prevSize": 32,
         "id": 20
@@ -2128,6 +2128,52 @@
       "setIdx": 0,
       "setId": 1,
       "iconIdx": 76
+    },
+    {
+      "icon": {
+        "paths": [
+          "M802.133 989.867h-614.4c-103.526 0-187.733-84.207-187.733-187.733v-546.133c0-103.526 84.207-187.733 187.733-187.733 9.421 0 17.067 7.646 17.067 17.067s-7.646 17.067-17.067 17.067c-84.685 0-153.6 68.915-153.6 153.6v546.133c0 84.685 68.915 153.6 153.6 153.6h614.4c84.685 0 153.6-68.915 153.6-153.6v-546.133c0-84.685-68.915-153.6-153.6-153.6-9.421 0-17.067-7.646-17.067-17.067s7.646-17.067 17.067-17.067c103.526 0 187.733 84.207 187.733 187.733v546.133c0 103.526-84.207 187.733-187.733 187.733z",
+          "M597.333 102.4h-204.8c-9.421 0-17.067-7.646-17.067-17.067s7.646-17.067 17.067-17.067h204.8c9.421 0 17.067 7.646 17.067 17.067s-7.646 17.067-17.067 17.067z",
+          "M972.8 307.2h-955.733c-9.421 0-17.067-7.646-17.067-17.067s7.646-17.067 17.067-17.067h955.733c9.421 0 17.067 7.646 17.067 17.067s-7.646 17.067-17.067 17.067z",
+          "M290.133 204.8c-9.421 0-17.067-7.646-17.067-17.067v-170.667c0-9.421 7.646-17.067 17.067-17.067s17.067 7.646 17.067 17.067v170.667c0 9.421-7.646 17.067-17.067 17.067z",
+          "M699.733 204.8c-9.421 0-17.067-7.646-17.067-17.067v-170.667c0-9.421 7.646-17.067 17.067-17.067s17.067 7.646 17.067 17.067v170.667c0 9.421-7.646 17.067-17.067 17.067z",
+          "M494.933 716.8c-32.017 0-65.809-33.212-68.233-67.038l-17.067-256.068c-0.307-4.71 1.365-9.353 4.574-12.8 3.209-3.482 7.748-5.427 12.459-5.427h136.533c4.71 0 9.25 1.946 12.459 5.393s4.881 8.090 4.574 12.8l-17.067 256c-2.423 33.929-36.215 67.14-68.233 67.14zM444.928 409.6l15.838 237.807c1.126 15.77 19.968 35.26 34.167 35.26s33.041-19.49 34.167-35.362l15.838-237.705h-100.011z",
+          "M494.933 887.467c-37.649 0-68.267-30.618-68.267-68.267s30.618-68.267 68.267-68.267 68.267 30.618 68.267 68.267-30.618 68.267-68.267 68.267zM494.933 785.067c-18.807 0-34.133 15.326-34.133 34.133s15.326 34.133 34.133 34.133 34.133-15.326 34.133-34.133-15.326-34.133-34.133-34.133z"
+        ],
+        "attrs": [
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {}
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "Event"
+        ]
+      },
+      "attrs": [
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {}
+      ],
+      "properties": {
+        "order": 1500,
+        "id": 183,
+        "name": "Event",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 1,
+      "iconIdx": 77
     },
     {
       "icon": {
@@ -2145,14 +2191,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1397,
+        "order": 1578,
         "name": "Eye",
         "prevSize": 32,
         "id": 22
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 77
+      "iconIdx": 78
     },
     {
       "icon": {
@@ -2170,14 +2216,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1398,
+        "order": 1579,
         "name": "Favorite",
         "prevSize": 32,
         "id": 82
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 78
+      "iconIdx": 79
     },
     {
       "icon": {
@@ -2195,14 +2241,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1399,
+        "order": 1580,
         "name": "File-1",
         "prevSize": 32,
         "id": 23
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 79
+      "iconIdx": 80
     },
     {
       "icon": {
@@ -2223,14 +2269,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1400,
+        "order": 1581,
         "name": "File-2",
         "prevSize": 32,
         "id": 24
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 80
+      "iconIdx": 81
     },
     {
       "icon": {
@@ -2251,14 +2297,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1401,
+        "order": 1582,
         "name": "File-Error",
         "prevSize": 32,
         "id": 112
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 81
+      "iconIdx": 82
     },
     {
       "icon": {
@@ -2278,14 +2324,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1402,
+        "order": 1583,
         "name": "File-Settings",
         "prevSize": 32,
         "id": 113
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 82
+      "iconIdx": 83
     },
     {
       "icon": {
@@ -2304,14 +2350,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1403,
+        "order": 1584,
         "name": "Files",
         "prevSize": 32,
         "id": 104
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 83
+      "iconIdx": 84
     },
     {
       "icon": {
@@ -2338,14 +2384,14 @@
         {}
       ],
       "properties": {
-        "order": 1404,
+        "order": 1585,
         "id": 150,
         "name": "Filter",
         "prevSize": 32
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 84
+      "iconIdx": 85
     },
     {
       "icon": {
@@ -2363,14 +2409,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1405,
+        "order": 1586,
         "name": "Folder",
         "prevSize": 32,
         "id": 25
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 85
+      "iconIdx": 86
     },
     {
       "icon": {
@@ -2388,14 +2434,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1406,
+        "order": 1587,
         "name": "Folder-1",
         "prevSize": 32,
         "id": 124
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 86
+      "iconIdx": 87
     },
     {
       "icon": {
@@ -2440,14 +2486,14 @@
         {}
       ],
       "properties": {
-        "order": 1407,
+        "order": 1588,
         "id": 176,
         "name": "Gps-Off",
         "prevSize": 32
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 87
+      "iconIdx": 88
     },
     {
       "icon": {
@@ -2464,14 +2510,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1408,
+        "order": 1589,
         "name": "Home",
         "prevSize": 32,
         "id": 26
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 88
+      "iconIdx": 89
     },
     {
       "icon": {
@@ -2498,14 +2544,14 @@
         {}
       ],
       "properties": {
-        "order": 1409,
+        "order": 1590,
         "id": 167,
         "name": "Information",
         "prevSize": 32
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 89
+      "iconIdx": 90
     },
     {
       "icon": {
@@ -2526,14 +2572,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1410,
+        "order": 1591,
         "name": "Invisible",
         "prevSize": 32,
         "id": 27
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 90
+      "iconIdx": 91
     },
     {
       "icon": {
@@ -2550,14 +2596,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1411,
+        "order": 1592,
         "name": "Left-2",
         "prevSize": 32,
         "id": 74
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 91
+      "iconIdx": 92
     },
     {
       "icon": {
@@ -2581,14 +2627,14 @@
         {}
       ],
       "properties": {
-        "order": 1412,
+        "order": 1593,
         "id": 151,
         "name": "Left-3",
         "prevSize": 32
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 92
+      "iconIdx": 93
     },
     {
       "icon": {
@@ -2606,14 +2652,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1413,
+        "order": 1594,
         "name": "Left-7",
         "prevSize": 32,
         "id": 75
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 93
+      "iconIdx": 94
     },
     {
       "icon": {
@@ -2633,14 +2679,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1414,
+        "order": 1595,
         "name": "Lightbulb",
         "prevSize": 32,
         "id": 28
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 94
+      "iconIdx": 95
     },
     {
       "icon": {
@@ -2658,14 +2704,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1415,
+        "order": 1596,
         "name": "Line-Chart-1",
         "prevSize": 32,
         "id": 87
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 95
+      "iconIdx": 96
     },
     {
       "icon": {
@@ -2684,14 +2730,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1416,
+        "order": 1597,
         "name": "Link",
         "prevSize": 32,
         "id": 29
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 96
+      "iconIdx": 97
     },
     {
       "icon": {
@@ -2711,14 +2757,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1417,
+        "order": 1598,
         "name": "Lock",
         "prevSize": 32,
         "id": 31
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 97
+      "iconIdx": 98
     },
     {
       "icon": {
@@ -2739,14 +2785,14 @@
         {}
       ],
       "properties": {
-        "order": 1418,
+        "order": 1599,
         "id": 159,
         "name": "Lock-App",
         "prevSize": 32
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 98
+      "iconIdx": 99
     },
     {
       "icon": {
@@ -2766,14 +2812,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1419,
+        "order": 1600,
         "name": "Lock-Open",
         "prevSize": 32,
         "id": 30
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 99
+      "iconIdx": 100
     },
     {
       "icon": {
@@ -2794,14 +2840,14 @@
         {}
       ],
       "properties": {
-        "order": 1321,
+        "order": 1601,
         "id": 177,
         "name": "Loction-1",
         "prevSize": 32
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 100
+      "iconIdx": 101
     },
     {
       "icon": {
@@ -2819,14 +2865,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1420,
+        "order": 1602,
         "name": "Loction-11",
         "prevSize": 32,
         "id": 32
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 101
+      "iconIdx": 102
     },
     {
       "icon": {
@@ -2845,14 +2891,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1421,
+        "order": 1603,
         "name": "Login",
         "prevSize": 32,
         "id": 33
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 102
+      "iconIdx": 103
     },
     {
       "icon": {
@@ -2871,14 +2917,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1422,
+        "order": 1604,
         "name": "Logout",
         "prevSize": 32,
         "id": 34
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 103
+      "iconIdx": 104
     },
     {
       "icon": {
@@ -2898,14 +2944,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1423,
+        "order": 1605,
         "name": "Mail",
         "prevSize": 32,
         "id": 35
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 104
+      "iconIdx": 105
     },
     {
       "icon": {
@@ -2926,14 +2972,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1424,
+        "order": 1606,
         "name": "Mails",
         "prevSize": 32,
         "id": 36
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 105
+      "iconIdx": 106
     },
     {
       "icon": {
@@ -2952,14 +2998,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1425,
+        "order": 1607,
         "name": "Map",
         "prevSize": 32,
         "id": 37
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 106
+      "iconIdx": 107
     },
     {
       "icon": {
@@ -2978,14 +3024,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1426,
+        "order": 1608,
         "name": "Menu-1",
         "prevSize": 32,
         "id": 38
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 107
+      "iconIdx": 108
     },
     {
       "icon": {
@@ -3027,14 +3073,14 @@
         {}
       ],
       "properties": {
-        "order": 1427,
+        "order": 1609,
         "id": 155,
         "name": "Name-Tag",
         "prevSize": 32
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 108
+      "iconIdx": 109
     },
     {
       "icon": {
@@ -3055,14 +3101,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1428,
+        "order": 1610,
         "name": "New-Tag-2",
         "id": 148,
         "prevSize": 32
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 109
+      "iconIdx": 110
     },
     {
       "icon": {
@@ -3080,14 +3126,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1429,
+        "order": 1611,
         "name": "Open-Folder",
         "prevSize": 32,
         "id": 39
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 110
+      "iconIdx": 111
     },
     {
       "icon": {
@@ -3105,14 +3151,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1430,
+        "order": 1612,
         "name": "Open-Folder1",
         "prevSize": 32,
         "id": 125
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 111
+      "iconIdx": 112
     },
     {
       "icon": {
@@ -3133,14 +3179,14 @@
         {}
       ],
       "properties": {
-        "order": 1431,
+        "order": 1613,
         "id": 168,
         "name": "Open-Hand-1",
         "prevSize": 32
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 112
+      "iconIdx": 113
     },
     {
       "icon": {
@@ -3161,14 +3207,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1432,
+        "order": 1614,
         "name": "Open-Mail",
         "prevSize": 32,
         "id": 40
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 113
+      "iconIdx": 114
     },
     {
       "icon": {
@@ -3187,14 +3233,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1433,
+        "order": 1615,
         "name": "Other",
         "prevSize": 32,
         "id": 41
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 114
+      "iconIdx": 115
     },
     {
       "icon": {
@@ -3211,14 +3257,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1434,
+        "order": 1616,
         "name": "Paperclip",
         "prevSize": 32,
         "id": 42
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 115
+      "iconIdx": 116
     },
     {
       "icon": {
@@ -3238,14 +3284,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1435,
+        "order": 1617,
         "name": "Pencil",
         "prevSize": 32,
         "id": 43
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 116
+      "iconIdx": 117
     },
     {
       "icon": {
@@ -3272,14 +3318,14 @@
         {}
       ],
       "properties": {
-        "order": 1436,
+        "order": 1618,
         "id": 158,
         "name": "Phone-In-Talk",
         "prevSize": 32
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 117
+      "iconIdx": 118
     },
     {
       "icon": {
@@ -3298,14 +3344,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1437,
+        "order": 1619,
         "name": "Picture",
         "prevSize": 32,
         "id": 44
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 118
+      "iconIdx": 119
     },
     {
       "icon": {
@@ -3322,14 +3368,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1438,
+        "order": 1620,
         "name": "Pie-Chart-1",
         "prevSize": 32,
         "id": 88
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 119
+      "iconIdx": 120
     },
     {
       "icon": {
@@ -3347,14 +3393,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1439,
+        "order": 1621,
         "name": "Pin-1",
         "prevSize": 32,
         "id": 45
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 120
+      "iconIdx": 121
     },
     {
       "icon": {
@@ -3372,14 +3418,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1440,
+        "order": 1622,
         "name": "Preferences-1",
         "prevSize": 32,
         "id": 46
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 121
+      "iconIdx": 122
     },
     {
       "icon": {
@@ -3400,14 +3446,14 @@
         {}
       ],
       "properties": {
-        "order": 1441,
+        "order": 1623,
         "id": 161,
         "name": "Question-App",
         "prevSize": 32
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 122
+      "iconIdx": 123
     },
     {
       "icon": {
@@ -3426,14 +3472,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1442,
+        "order": 1624,
         "name": "Question-Mark",
         "prevSize": 32,
         "id": 47
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 123
+      "iconIdx": 124
     },
     {
       "icon": {
@@ -3453,14 +3499,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1443,
+        "order": 1625,
         "name": "Refresh",
         "prevSize": 32,
         "id": 48
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 124
+      "iconIdx": 125
     },
     {
       "icon": {
@@ -3478,14 +3524,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1444,
+        "order": 1626,
         "name": "Reload",
         "prevSize": 32,
         "id": 49
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 125
+      "iconIdx": 126
     },
     {
       "icon": {
@@ -3505,14 +3551,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1445,
+        "order": 1627,
         "name": "Remouve-File",
         "prevSize": 32,
         "id": 114
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 126
+      "iconIdx": 127
     },
     {
       "icon": {
@@ -3532,14 +3578,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1446,
+        "order": 1628,
         "name": "Remouve-Folder",
         "prevSize": 32,
         "id": 126
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 127
+      "iconIdx": 128
     },
     {
       "icon": {
@@ -3556,14 +3602,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1447,
+        "order": 1629,
         "name": "Remouve-Task",
         "prevSize": 32,
         "id": 138
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 128
+      "iconIdx": 129
     },
     {
       "icon": {
@@ -3581,14 +3627,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1448,
+        "order": 1630,
         "name": "Remove",
         "prevSize": 32,
         "id": 50
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 129
+      "iconIdx": 130
     },
     {
       "icon": {
@@ -3605,14 +3651,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1449,
+        "order": 1631,
         "name": "Remove-Book",
         "prevSize": 32,
         "id": 102
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 130
+      "iconIdx": 131
     },
     {
       "icon": {
@@ -3629,14 +3675,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1450,
+        "order": 1632,
         "name": "Reply",
         "prevSize": 32,
         "id": 51
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 131
+      "iconIdx": 132
     },
     {
       "icon": {
@@ -3653,14 +3699,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1451,
+        "order": 1633,
         "name": "Right-2",
         "prevSize": 32,
         "id": 76
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 132
+      "iconIdx": 133
     },
     {
       "icon": {
@@ -3684,14 +3730,14 @@
         {}
       ],
       "properties": {
-        "order": 1452,
+        "order": 1634,
         "id": 152,
         "name": "Right-3",
         "prevSize": 32
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 133
+      "iconIdx": 134
     },
     {
       "icon": {
@@ -3709,14 +3755,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1453,
+        "order": 1635,
         "name": "Right-7",
         "prevSize": 32,
         "id": 77
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 134
+      "iconIdx": 135
     },
     {
       "icon": {
@@ -3733,14 +3779,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1454,
+        "order": 1636,
         "name": "Ring-Chart-1",
         "prevSize": 32,
         "id": 89
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 135
+      "iconIdx": 136
     },
     {
       "icon": {
@@ -3758,14 +3804,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1455,
+        "order": 1637,
         "name": "Search",
         "prevSize": 32,
         "id": 52
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 136
+      "iconIdx": 137
     },
     {
       "icon": {
@@ -3782,14 +3828,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1456,
+        "order": 1638,
         "name": "Search-Book",
         "prevSize": 32,
         "id": 103
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 137
+      "iconIdx": 138
     },
     {
       "icon": {
@@ -3809,14 +3855,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1457,
+        "order": 1639,
         "name": "Search-File",
         "prevSize": 32,
         "id": 115
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 138
+      "iconIdx": 139
     },
     {
       "icon": {
@@ -3836,14 +3882,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1458,
+        "order": 1640,
         "name": "Search-Folder",
         "prevSize": 32,
         "id": 127
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 139
+      "iconIdx": 140
     },
     {
       "icon": {
@@ -3860,14 +3906,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1459,
+        "order": 1641,
         "name": "Search-Task",
         "prevSize": 32,
         "id": 139
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 140
+      "iconIdx": 141
     },
     {
       "icon": {
@@ -3887,14 +3933,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1460,
+        "order": 1642,
         "name": "Settings-Folder",
         "prevSize": 32,
         "id": 128
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 141
+      "iconIdx": 142
     },
     {
       "icon": {
@@ -3915,14 +3961,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1461,
+        "order": 1643,
         "name": "Share",
         "prevSize": 32,
         "id": 53
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 142
+      "iconIdx": 143
     },
     {
       "icon": {
@@ -3945,14 +3991,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1462,
+        "order": 1644,
         "name": "Share-File-2",
         "prevSize": 32,
         "id": 116
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 143
+      "iconIdx": 144
     },
     {
       "icon": {
@@ -3969,14 +4015,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1463,
+        "order": 1645,
         "name": "Share-Task",
         "prevSize": 32,
         "id": 140
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 144
+      "iconIdx": 145
     },
     {
       "icon": {
@@ -3997,14 +4043,14 @@
         {}
       ],
       "properties": {
-        "order": 1464,
+        "order": 1646,
         "id": 171,
         "name": "Sharring-Rights",
         "prevSize": 32
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 145
+      "iconIdx": 146
     },
     {
       "icon": {
@@ -4023,14 +4069,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1465,
+        "order": 1647,
         "name": "Shopping-Basket",
         "prevSize": 32,
         "id": 54
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 146
+      "iconIdx": 147
     },
     {
       "icon": {
@@ -4050,14 +4096,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1466,
+        "order": 1648,
         "name": "Shopping-Cart",
         "prevSize": 32,
         "id": 55
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 147
+      "iconIdx": 148
     },
     {
       "icon": {
@@ -4078,14 +4124,14 @@
         {}
       ],
       "properties": {
-        "order": 1317,
+        "order": 1649,
         "id": 181,
         "name": "Smartphone",
         "prevSize": 32
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 148
+      "iconIdx": 149
     },
     {
       "icon": {
@@ -4102,14 +4148,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1467,
+        "order": 1650,
         "name": "Speach-Bubble",
         "prevSize": 32,
         "id": 56
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 149
+      "iconIdx": 150
     },
     {
       "icon": {
@@ -4127,14 +4173,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1468,
+        "order": 1651,
         "name": "Speach-Bubbles",
         "prevSize": 32,
         "id": 57
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 150
+      "iconIdx": 151
     },
     {
       "icon": {
@@ -4151,14 +4197,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1469,
+        "order": 1652,
         "name": "Star",
         "prevSize": 32,
         "id": 58
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 151
+      "iconIdx": 152
     },
     {
       "icon": {
@@ -4175,14 +4221,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1470,
+        "order": 1653,
         "name": "Star-Shield-1",
         "prevSize": 32,
         "id": 146
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 152
+      "iconIdx": 153
     },
     {
       "icon": {
@@ -4199,14 +4245,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1471,
+        "order": 1654,
         "name": "Star-Shield-2",
         "prevSize": 32,
         "id": 147
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 153
+      "iconIdx": 154
     },
     {
       "icon": {
@@ -4223,14 +4269,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1472,
+        "order": 1655,
         "name": "Sttings-Task",
         "prevSize": 32,
         "id": 141
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 154
+      "iconIdx": 155
     },
     {
       "icon": {
@@ -4250,14 +4296,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1473,
+        "order": 1656,
         "name": "Syncronizaion",
         "prevSize": 32,
         "id": 59
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 155
+      "iconIdx": 156
     },
     {
       "icon": {
@@ -4281,14 +4327,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1474,
+        "order": 1657,
         "name": "Syncronize-Folder-2",
         "prevSize": 32,
         "id": 129
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 156
+      "iconIdx": 157
     },
     {
       "icon": {
@@ -4305,14 +4351,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1475,
+        "order": 1658,
         "name": "Table-Chart-1",
         "prevSize": 32,
         "id": 90
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 157
+      "iconIdx": 158
     },
     {
       "icon": {
@@ -4330,14 +4376,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1476,
+        "order": 1659,
         "name": "Tag",
         "prevSize": 32,
         "id": 60
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 158
+      "iconIdx": 159
     },
     {
       "icon": {
@@ -4355,14 +4401,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1477,
+        "order": 1660,
         "name": "Tag-1",
         "prevSize": 32,
         "id": 83
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 159
+      "iconIdx": 160
     },
     {
       "icon": {
@@ -4404,14 +4450,14 @@
         {}
       ],
       "properties": {
-        "order": 1499,
+        "order": 1661,
         "id": 182,
         "name": "Tap",
         "prevSize": 32
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 160
+      "iconIdx": 161
     },
     {
       "icon": {
@@ -4435,14 +4481,14 @@
         {}
       ],
       "properties": {
-        "order": 1478,
+        "order": 1662,
         "id": 173,
         "name": "Thumbs-Down",
         "prevSize": 32
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 161
+      "iconIdx": 162
     },
     {
       "icon": {
@@ -4466,14 +4512,14 @@
         {}
       ],
       "properties": {
-        "order": 1318,
+        "order": 1663,
         "id": 180,
         "name": "Thumbs-Up",
         "prevSize": 32
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 162
+      "iconIdx": 163
     },
     {
       "icon": {
@@ -4497,14 +4543,14 @@
         {}
       ],
       "properties": {
-        "order": 1479,
+        "order": 1664,
         "id": 172,
         "name": "Thumbs-Up1",
         "prevSize": 32
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 163
+      "iconIdx": 164
     },
     {
       "icon": {
@@ -4522,14 +4568,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1480,
+        "order": 1665,
         "name": "Time",
         "prevSize": 32,
         "id": 61
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 164
+      "iconIdx": 165
     },
     {
       "icon": {
@@ -4550,14 +4596,14 @@
         {}
       ],
       "properties": {
-        "order": 1481,
+        "order": 1666,
         "id": 169,
         "name": "Time-App",
         "prevSize": 32
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 165
+      "iconIdx": 166
     },
     {
       "icon": {
@@ -4578,14 +4624,14 @@
         {}
       ],
       "properties": {
-        "order": 1482,
+        "order": 1667,
         "id": 163,
         "name": "Traffic-Conversion",
         "prevSize": 32
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 166
+      "iconIdx": 167
     },
     {
       "icon": {
@@ -4606,14 +4652,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1483,
+        "order": 1668,
         "name": "Trash",
         "prevSize": 32,
         "id": 62
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 167
+      "iconIdx": 168
     },
     {
       "icon": {
@@ -4631,14 +4677,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1484,
+        "order": 1669,
         "name": "Undo",
         "prevSize": 32,
         "id": 63
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 168
+      "iconIdx": 169
     },
     {
       "icon": {
@@ -4655,14 +4701,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1485,
+        "order": 1670,
         "name": "Up-2",
         "prevSize": 32,
         "id": 78
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 169
+      "iconIdx": 170
     },
     {
       "icon": {
@@ -4680,14 +4726,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1486,
+        "order": 1671,
         "name": "Up-7",
         "prevSize": 32,
         "id": 79
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 170
+      "iconIdx": 171
     },
     {
       "icon": {
@@ -4706,14 +4752,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1487,
+        "order": 1672,
         "name": "Up-Arrow",
         "prevSize": 32,
         "id": 64
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 171
+      "iconIdx": 172
     },
     {
       "icon": {
@@ -4732,14 +4778,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1488,
+        "order": 1673,
         "name": "Upload",
         "prevSize": 32,
         "id": 65
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 172
+      "iconIdx": 173
     },
     {
       "icon": {
@@ -4760,14 +4806,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1489,
+        "order": 1674,
         "name": "Upload-File",
         "prevSize": 32,
         "id": 117
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 173
+      "iconIdx": 174
     },
     {
       "icon": {
@@ -4788,14 +4834,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1490,
+        "order": 1675,
         "name": "Upload-Folder",
         "prevSize": 32,
         "id": 130
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 174
+      "iconIdx": 175
     },
     {
       "icon": {
@@ -4812,14 +4858,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1491,
+        "order": 1676,
         "name": "Upload-Task",
         "prevSize": 32,
         "id": 142
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 175
+      "iconIdx": 176
     },
     {
       "icon": {
@@ -4837,14 +4883,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1492,
+        "order": 1677,
         "name": "User-1",
         "prevSize": 32,
         "id": 66
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 176
+      "iconIdx": 177
     },
     {
       "icon": {
@@ -4863,14 +4909,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1493,
+        "order": 1678,
         "name": "User-2",
         "prevSize": 32,
         "id": 67
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 177
+      "iconIdx": 178
     },
     {
       "icon": {
@@ -4891,14 +4937,14 @@
         {}
       ],
       "properties": {
-        "order": 1494,
+        "order": 1679,
         "id": 157,
         "name": "User-Path",
         "prevSize": 32
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 178
+      "iconIdx": 179
     },
     {
       "icon": {
@@ -4920,14 +4966,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1495,
+        "order": 1680,
         "name": "Users",
         "prevSize": 32,
         "id": 68
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 179
+      "iconIdx": 180
     },
     {
       "icon": {
@@ -4954,14 +5000,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1496,
+        "order": 1681,
         "name": "Video",
         "prevSize": 32,
         "id": 69
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 180
+      "iconIdx": 181
     },
     {
       "icon": {
@@ -4981,14 +5027,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1497,
+        "order": 1682,
         "name": "Zoom-In",
         "prevSize": 32,
         "id": 70
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 181
+      "iconIdx": 182
     },
     {
       "icon": {
@@ -5007,14 +5053,14 @@
       },
       "attrs": [],
       "properties": {
-        "order": 1498,
+        "order": 1683,
         "name": "Zoom-Out",
         "prevSize": 32,
         "id": 71
       },
       "setIdx": 0,
       "setId": 1,
-      "iconIdx": 182
+      "iconIdx": 183
     }
   ],
   "height": 1024,
