@@ -75,7 +75,7 @@ export default function ButtonMixin(sfButtonConfig: ButtonMixinProps): any {
       backgroundColor:
         sfButtonConfig.contained[theme.palette.type].backgroundColor,
       '@media (hover: hover)': {
-        '&:hover, &:focus': {
+        '&:hover, &:focus-visible': {
           backgroundColor:
             sfButtonConfig.contained[theme.palette.type].backgroundColorHover
         },
@@ -85,11 +85,6 @@ export default function ButtonMixin(sfButtonConfig: ButtonMixinProps): any {
         }
       },
       '@media (hover: none)': {
-        '&:hover, &:focus': {
-          color: sfButtonConfig.contained[theme.palette.type].color,
-          backgroundColor:
-            sfButtonConfig.contained[theme.palette.type].backgroundColor
-        },
         '&:active': {
           backgroundColor:
             sfButtonConfig.contained[theme.palette.type].backgroundColorActive
@@ -110,7 +105,7 @@ export default function ButtonMixin(sfButtonConfig: ButtonMixinProps): any {
       backgroundColor:
         sfButtonConfig.outlined[theme.palette.type].backgroundColor,
       '@media (hover: hover)': {
-        '&:hover, &:focus': {
+        '&:hover, &:focus-visible': {
           color: sfButtonConfig.outlined[theme.palette.type].colorHover,
           borderColor:
             sfButtonConfig.outlined[theme.palette.type].borderColorHover,
@@ -126,12 +121,6 @@ export default function ButtonMixin(sfButtonConfig: ButtonMixinProps): any {
         }
       },
       '@media (hover: none)': {
-        '&:hover, &:focus': {
-          color: sfButtonConfig.outlined[theme.palette.type].color,
-          borderColor: sfButtonConfig.outlined[theme.palette.type].borderColor,
-          backgroundColor:
-            sfButtonConfig.outlined[theme.palette.type].backgroundColor
-        },
         '&:active': {
           color: sfButtonConfig.outlined[theme.palette.type].colorActive,
           borderColor:
@@ -154,7 +143,7 @@ export default function ButtonMixin(sfButtonConfig: ButtonMixinProps): any {
       backgroundColor: sfButtonConfig.text[theme.palette.type].backgroundColor,
       border: 'none',
       '@media (hover: hover)': {
-        '&:hover, &:focus': {
+        '&:hover, &:focus-visible': {
           color: sfButtonConfig.text[theme.palette.type].colorHover,
           backgroundColor:
             sfButtonConfig.text[theme.palette.type].backgroundColorHover,
@@ -168,12 +157,6 @@ export default function ButtonMixin(sfButtonConfig: ButtonMixinProps): any {
         }
       },
       '@media (hover: none)': {
-        '&:hover, &:focus': {
-          color: sfButtonConfig.text[theme.palette.type].color,
-          backgroundColor:
-            sfButtonConfig.text[theme.palette.type].backgroundColor,
-          border: 'none'
-        },
         '&:active': {
           color: sfButtonConfig.text[theme.palette.type].colorActive,
           backgroundColor:
