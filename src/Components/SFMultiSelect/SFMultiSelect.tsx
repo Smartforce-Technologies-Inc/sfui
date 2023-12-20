@@ -1,12 +1,17 @@
 import * as React from 'react';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
-import { SelectProps } from '@material-ui/core';
+import {
+  SelectProps,
+  SelectChangeEvent,
+  styled,
+  PaperProps
+} from '@mui/material';
 import { SFIcon } from '../SFIcon/SFIcon';
 import { SFCheckbox } from '../SFCheckbox/SFCheckbox';
 import { SFMenuItem } from '../SFMenuItem/SFMenuItem';
 import { SFMenuOption, StyledSelect } from '../SFSelect/SFSelect';
+import { isArray } from 'lodash';
 
-const StyledMenuItem = withStyles(() => ({
+const StyledMenuItem = styled(SFMenuItem)(() => ({
   root: {
     whiteSpace: 'unset',
     wordBreak: 'break-word',
@@ -18,26 +23,26 @@ const StyledMenuItem = withStyles(() => ({
       minWidth: 'auto'
     }
   }
-}))(SFMenuItem);
+}));
 
-const useMenuStyles = makeStyles({
-  paper: {
+const PaperStyles: PaperProps = {
+  style: {
     width: '1px'
-  },
-  list: {
-    '& li > span': {
-      paddingTop: '9px',
-      fontSize: '16px',
-      lineHeight: '24px'
-    }
   }
-});
+};
 
-export interface SFMultiSelectProps extends SelectProps {
+const LabelStyle: React.CSSProperties = {
+  paddingTop: '9px',
+  fontSize: '16px',
+  lineHeight: '24px'
+};
+
+export interface SFMultiSelectProps extends Omit<SelectProps, 'onChange'> {
   options: SFMenuOption[];
   defaultValue?: string[];
   value?: string[];
   helperText?: React.ReactNode;
+  onChange: (value: string[]) => void;
 }
 
 export const SFMultiSelect = ({
@@ -45,31 +50,15 @@ export const SFMultiSelect = ({
   helperText,
   label,
   defaultValue,
-  value,
+  value = [],
   onChange,
   ...props
 }: SFMultiSelectProps): React.ReactElement<SFMultiSelectProps> => {
-  const [selected, setSelected] = React.useState<string[]>([]);
-  const menuClasses: Record<'paper' | 'list', string> = useMenuStyles();
-
-  React.useEffect(() => {
-    const selectedValue = value || defaultValue;
-    setSelected(selectedValue || []);
-  }, [value, defaultValue]);
-
-  const handleChange = (
-    event: React.ChangeEvent<{
-      name?: string | undefined;
-      value: unknown;
-    }>,
-    child: React.ReactNode
-  ): void => {
-    if (!value) {
-      setSelected(event.target.value as string[]);
-    }
-
-    if (onChange) {
-      onChange(event, child);
+  const handleChange = (newValue: string | string[]): void => {
+    if (isArray(newValue)) {
+      onChange(newValue);
+    } else {
+      onChange([newValue]);
     }
   };
 
@@ -87,7 +76,6 @@ export const SFMultiSelect = ({
   return (
     <StyledSelect
       select
-      fullWidth
       label={label}
       helperText={helperText}
       error={props.error}
@@ -97,12 +85,12 @@ export const SFMultiSelect = ({
         ...props,
         defaultValue,
         multiple: true,
-        value: selected,
+        value: value,
         MenuProps: {
           variant: 'menu',
           autoFocus: false,
           disableAutoFocusItem: true,
-          classes: menuClasses,
+          PaperProps: PaperStyles,
           anchorOrigin: {
             vertical: 'bottom',
             horizontal: 'left'
@@ -110,10 +98,10 @@ export const SFMultiSelect = ({
           transformOrigin: {
             vertical: -3,
             horizontal: 0
-          },
-          getContentAnchorEl: null
+          }
         },
-        onChange: handleChange,
+        onChange: (e: SelectChangeEvent<string | string[]>, _c): void =>
+          handleChange(e.target.value),
         renderValue: renderSelected,
         IconComponent: (props): React.ReactElement => (
           <SFIcon icon='Down-2' size='16' {...props} />
@@ -122,8 +110,8 @@ export const SFMultiSelect = ({
     >
       {options.map((option) => (
         <StyledMenuItem key={option.value} value={option.value}>
-          <SFCheckbox checked={isChecked(option, selected)} />
-          <span>{option.label}</span>
+          <SFCheckbox checked={isChecked(option, value)} />
+          <span style={LabelStyle}>{option.label}</span>
         </StyledMenuItem>
       ))}
     </StyledSelect>
