@@ -212,15 +212,13 @@ export const SFPeoplePicker = ({
             options = options.filter(props.filterOptions);
           }
 
-          options.map((option: any) => {
+          return options.map((option: any) => {
             const newObj: SFPeopleOption = props.formatOption(option);
             if (!newObj.asyncObject) {
               newObj.asyncObject = option;
             }
             return newObj;
           });
-
-          return options;
         } else {
           return [];
         }
