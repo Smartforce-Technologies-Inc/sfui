@@ -171,7 +171,7 @@ interface SFPeoplePickerAsyncProps extends SFPeoplePickerBaseProps {
   formatOption: (option: any) => SFPeopleOption;
   fetchInit?: RequestInit;
   minChar?: number;
-  filterOptions?: (option: any[]) => any[];
+  filterOptions?: (option: any) => boolean;
 }
 
 export type SFPeoplePickerProps =
