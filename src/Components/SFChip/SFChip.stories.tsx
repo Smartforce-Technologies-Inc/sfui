@@ -1,14 +1,37 @@
 import React from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { Story, ComponentMeta } from '@storybook/react';
 import { SFChip, SFChipProps } from './SFChip';
 
 export default {
   title: 'Components/SFChip',
   component: SFChip,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: {
+    controls: {
+      sort: 'alpha',
+      include: [
+        'label',
+        'deleteable',
+        'disabled',
+        'clickable',
+        'fullWidth',
+        'sfColor',
+        'size',
+        'hasError',
+        'variant',
+        'onDelete'
+      ]
+    }
+  },
   args: {
-    label: 'Bagel'
+    clickable: false,
+    deleteable: false,
+    disabled: false,
+    fullWidth: false,
+    hasError: false,
+    sfColor: 'primary',
+    size: 'small',
+    label: 'Bagel',
+    variant: 'filled'
   },
   argTypes: {
     label: {
@@ -28,47 +51,6 @@ export default {
     hasError: {
       description: 'If true, the chip should be displayed in a error state.'
     },
-    variant: {
-      table: { disable: true }
-    },
-    disabled: {
-      table: { disable: true }
-    },
-    avatar: {
-      table: {
-        disable: true
-      }
-    },
-    clickable: {
-      table: {
-        disable: true
-      }
-    },
-    children: {
-      table: {
-        disable: true
-      }
-    },
-    color: {
-      table: {
-        disable: true
-      }
-    },
-    deleteIcon: {
-      table: {
-        disable: true
-      }
-    },
-    icon: {
-      table: {
-        disable: true
-      }
-    },
-    ref: {
-      table: {
-        disable: true
-      }
-    },
     onDelete: {
       action: 'onDelete',
       table: {
@@ -76,7 +58,7 @@ export default {
       }
     }
   }
-} as Meta;
+} as ComponentMeta<typeof SFChip>;
 
 const Template: Story<SFChipProps> = (args) => {
   return (
