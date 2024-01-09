@@ -31,13 +31,19 @@ export interface SFIconProps {
 
 export const SFIcon = forwardRef(
   (
-    { icon = 'Bell', size = 24, rotate = 'none', ...props }: SFIconProps,
+    {
+      icon = 'Bell',
+      size = 24,
+      rotate = 'none',
+      colorDarkMode,
+      ...props
+    }: SFIconProps,
     ref: React.Ref<SVGSVGElement>
   ): React.ReactElement<SFIconProps> => {
     const theme: SFTheme = useSFTheme();
 
     const lightColor: string = props.color ?? SFGrey[600];
-    const darkColor: string = props.colorDarkMode ?? SFGrey[400];
+    const darkColor: string = colorDarkMode ?? SFGrey[400];
     const color: string =
       theme.palette.mode === 'light' ? lightColor : darkColor;
 
