@@ -21,6 +21,7 @@ module.exports = {
     '../src/Components/SFPaper/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFRadioGroup/SFRadio/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFRadioGroup/*.stories.@(js|jsx|ts|tsx)',
+    '../src/Components/SFScrollable/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFSearch/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFSelect/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFSnackbar/*.stories.@(js|jsx|ts|tsx)',
