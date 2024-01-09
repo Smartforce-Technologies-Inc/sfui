@@ -14,25 +14,19 @@ const getScrollBarPositions = (
       right: 0,
       bottom: 0
     };
+  } else {
+    return {
+      height: '100%',
+      width: '9px',
+      right: 3,
+      top: 0,
+      bottom: 0
+    };
   }
-
-  return {
-    height: '100%',
-    width: '9px',
-    right: 3,
-    top: 0,
-    bottom: 0
-  };
 };
 
-const StyledScrollBar = styled('div')({
-  position: 'absolute',
-  '@media print': {
-    display: 'none'
-  }
-});
-
 export interface ScrollBarProps {
+  className?: string;
   children: React.ReactElement;
   isVisible: boolean;
   onCursorInteraction: (
@@ -44,23 +38,29 @@ export interface ScrollBarProps {
 }
 
 const ScrollBarBase = ({
+  className = '',
   children,
   onCursorInteraction
 }: ScrollBarProps): React.ReactElement<ScrollBarProps> => {
   return (
-    <StyledScrollBar
+    <div
+      className={className}
       onMouseOver={onCursorInteraction}
       onMouseOut={onCursorInteraction}
       onTouchEnd={onCursorInteraction}
       onTouchStart={onCursorInteraction}
     >
       {children}
-    </StyledScrollBar>
+    </div>
   );
 };
 
 export const ScrollBar = styled(ScrollBarBase)(
   ({ isVisible, orientation }) => ({
+    position: 'absolute',
+    '@media print': {
+      display: 'none'
+    },
     opacity: isVisible ? 1 : 0,
     ...getScrollBarPositions(orientation)
   })
