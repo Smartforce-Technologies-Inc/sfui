@@ -10,7 +10,7 @@ export interface SFCounterButtonProps {
   onClick: () => void;
 }
 
-const StyledCounterButton = styled('button')(({ theme }) => ({
+const StyledCounterButton = styled('button')(({ theme, value }) => ({
   backgroundColor: 'transparent',
   MozAppearance: 'none',
   WebkitAppearance: 'none',
@@ -53,16 +53,11 @@ const StyledCounterButton = styled('button')(({ theme }) => ({
       theme.palette.mode === 'light' ? SFGrey[600] : SFGrey[400]
     } !important`
   },
-  '&.right': {
-    borderLeft: 'none',
-    borderRadius: '0 2px 2px 0'
-  },
-  '&.left': {
-    borderRight: 'none',
-    borderRadius: '2px 0 0 2px'
-  },
+  borderRight: value === 'left' ? 'none' : undefined,
+  borderLeft: value === 'right' ? 'none' : undefined,
+  borderRadius: value === 'right' ? '0 2px 2px 0' : '2px 0 0 2px',
 
-  '&.buttonDisabled': {
+  '&:disabled': {
     pointerEvents: 'none',
     '& svg path': {
       fill: `${
@@ -79,9 +74,8 @@ export const SFCounterButton = ({
 }: SFCounterButtonProps): React.ReactElement<SFCounterButtonProps> => {
   return (
     <StyledCounterButton
-      className={`${disabled ? 'buttonDisabled' : ''} ${
-        icon === 'Add' ? 'right' : 'left'
-      }`}
+      value={icon === 'Add' ? 'right' : 'left'}
+      disabled={disabled}
       onClick={onClick}
     >
       <SFIcon icon={icon} size={26} />
