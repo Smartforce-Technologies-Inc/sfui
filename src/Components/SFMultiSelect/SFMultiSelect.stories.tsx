@@ -1,6 +1,6 @@
 import React from 'react';
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { SFMultiSelect, SFMultiSelectProps } from './SFMultiSelect';
 import { SFMenuOption } from '../SFSelect/SFSelect';
@@ -25,7 +25,12 @@ const getOptions = (): SFMenuOption[] => {
 export default {
   title: 'Components/SFMultiSelect',
   component: SFMultiSelect,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: {
+    controls: {
+      sort: 'alpha',
+      include: ['helperText', 'label', 'value']
+    }
+  },
   args: {
     label: 'Bagel',
     options: getOptions(),
@@ -52,11 +57,6 @@ export default {
         type: 'multi-select'
       }
     },
-    disabled: {
-      table: {
-        disable: true
-      }
-    },
     helperText: {
       description: 'Text to help understand input values.',
       control: {
@@ -67,38 +67,13 @@ export default {
           summary: 'string'
         }
       }
-    },
-    required: {
-      table: {
-        disable: true
-      }
-    },
-    error: {
-      table: {
-        disable: true
-      }
-    },
-    options: {
-      table: {
-        disable: true
-      }
-    },
-    defaultValue: {
-      table: {
-        disable: true
-      }
-    },
-    ref: {
-      table: {
-        disable: true
-      }
     }
   }
-} as Meta;
+} as ComponentMeta<typeof SFMultiSelect>;
 
-const Template: Story<SFMultiSelectProps> = (args) => (
-  <SFMultiSelect {...args} />
-);
+const Template: ComponentStory<typeof SFMultiSelect> = (args) => {
+  return <SFMultiSelect {...args} />;
+};
 
 export const Default = Template.bind({});
 

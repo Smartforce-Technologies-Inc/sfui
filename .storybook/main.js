@@ -18,6 +18,7 @@ module.exports = {
     '../src/Components/SFIconButton/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFLink/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFMenu/*.stories.@(js|jsx|ts|tsx)',
+    '../src/Components/SFMultiSelect/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFNumericField/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFPanel/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFPaper/*.stories.@(js|jsx|ts|tsx)',
