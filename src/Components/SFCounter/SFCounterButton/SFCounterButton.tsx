@@ -1,8 +1,8 @@
-import { makeStyles, Theme } from '@material-ui/core';
 import React from 'react';
 import { hexToRgba } from '../../../Helpers';
 import { SFGrey } from '../../../SFColors/SFColors';
 import { SFIcon } from '../../SFIcon/SFIcon';
+import { styled } from '@mui/material';
 
 export interface SFCounterButtonProps {
   disabled: boolean;
@@ -10,66 +10,60 @@ export interface SFCounterButtonProps {
   onClick: () => void;
 }
 
-const counterButtonStyles = makeStyles((theme: Theme) => ({
-  button: {
-    backgroundColor: 'transparent',
-    MozAppearance: 'none',
-    WebkitAppearance: 'none',
-    WebkitTapHighlightColor: 'transparent',
-    padding: 0,
-    border: `1px solid ${
-      theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
-    }`,
-    boxSizing: 'border-box',
-    cursor: 'pointer',
-    width: '100%',
-    height: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+const StyledCounterButton = styled('button')(({ theme, value }) => ({
+  backgroundColor: 'transparent',
+  MozAppearance: 'none',
+  WebkitAppearance: 'none',
+  WebkitTapHighlightColor: 'transparent',
+  padding: 0,
+  border: `1px solid ${
+    theme.palette.mode === 'light' ? SFGrey[200] : SFGrey[700]
+  }`,
+  boxSizing: 'border-box',
+  cursor: 'pointer',
+  width: '100%',
+  height: '100%',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
 
-    '&:hover': {
-      '@media (hover: hover)': {
-        backgroundColor:
-          theme.palette.type === 'light'
-            ? hexToRgba(SFGrey[200], 0.3)
-            : hexToRgba(SFGrey[500], 0.3)
-      }
-    },
-    '&:active': {
+  '&:hover': {
+    '@media (hover: hover)': {
       backgroundColor:
-        theme.palette.type === 'light'
+        theme.palette.mode === 'light'
           ? hexToRgba(SFGrey[200], 0.3)
-          : hexToRgba(SFGrey[500], 0.3),
-
-      '& svg path': {
-        fill: `${
-          theme.palette.type === 'light' ? SFGrey[800] : SFGrey[200]
-        } !important`
-      }
-    },
+          : hexToRgba(SFGrey[500], 0.3)
+    }
+  },
+  '&:active': {
+    backgroundColor:
+      theme.palette.mode === 'light'
+        ? hexToRgba(SFGrey[200], 0.3)
+        : hexToRgba(SFGrey[500], 0.3),
 
     '& svg path': {
       fill: `${
-        theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400]
+        theme.palette.mode === 'light' ? SFGrey[800] : SFGrey[200]
       } !important`
     }
   },
-  buttonDisabled: {
+
+  '& svg path': {
+    fill: `${
+      theme.palette.mode === 'light' ? SFGrey[600] : SFGrey[400]
+    } !important`
+  },
+  borderRight: value === 'left' ? 'none' : undefined,
+  borderLeft: value === 'right' ? 'none' : undefined,
+  borderRadius: value === 'right' ? '0 2px 2px 0' : '2px 0 0 2px',
+
+  '&:disabled': {
     pointerEvents: 'none',
     '& svg path': {
       fill: `${
-        theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
+        theme.palette.mode === 'light' ? SFGrey[200] : SFGrey[700]
       } !important`
     }
-  },
-  right: {
-    borderLeft: 'none',
-    borderRadius: '0 2px 2px 0'
-  },
-  left: {
-    borderRight: 'none',
-    borderRadius: '2px 0 0 2px'
   }
 }));
 
@@ -78,16 +72,13 @@ export const SFCounterButton = ({
   icon,
   onClick
 }: SFCounterButtonProps): React.ReactElement<SFCounterButtonProps> => {
-  const classes = counterButtonStyles();
-
   return (
-    <button
-      className={`${classes.button} ${disabled ? classes.buttonDisabled : ''} ${
-        icon === 'Add' ? classes.right : classes.left
-      }`}
+    <StyledCounterButton
+      value={icon === 'Add' ? 'right' : 'left'}
+      disabled={disabled}
       onClick={onClick}
     >
       <SFIcon icon={icon} size={26} />
-    </button>
+    </StyledCounterButton>
   );
 };

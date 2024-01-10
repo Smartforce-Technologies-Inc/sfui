@@ -1,5 +1,5 @@
 import React from 'react';
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { SFCounter, SFCounterProps } from './SFCounter';
 
 export default {
@@ -18,9 +18,9 @@ export default {
       }
     }
   }
-} as Meta;
+} as ComponentMeta<typeof SFCounter>;
 
-const Template: Story<SFCounterProps> = (args) => {
+const Template: ComponentStory<typeof SFCounter> = (args) => {
   const [value, setValue] = React.useState<number>(args.value);
   return (
     <SFCounter

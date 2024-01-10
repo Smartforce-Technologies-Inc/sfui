@@ -9,6 +9,7 @@ module.exports = {
     '../src/Components/SFBadge/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFButton/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFCard/*.stories.@(js|jsx|ts|tsx)',
+    '../src/Components/SFCounter/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFCheckbox/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFChip/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFDialog/*.stories.@(js|jsx|ts|tsx)',

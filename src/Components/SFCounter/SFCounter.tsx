@@ -1,40 +1,38 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-
 import { SFNumericField } from '../SFNumericField/SFNumericField';
 import { SFCounterButton } from './SFCounterButton/SFCounterButton';
+import { styled } from '@mui/material';
 
-const counterStyles = makeStyles({
-  counter: {
-    display: 'grid',
-    gridTemplateColumns: '42px 108px 42px',
-    gridTemplateRows: '42px',
-    width: 'fit-content'
-  },
-  input: {
-    '& .MuiInputBase-root': {
-      height: '42px',
+const StyledCounter = styled('div')({
+  display: 'grid',
+  gridTemplateColumns: '42px 108px 42px',
+  gridTemplateRows: '42px',
+  width: 'fit-content'
+});
 
-      '& .MuiInputBase-input': {
-        padding: '12px 12px 11px',
-        textAlign: 'center',
-        fontSize: '16px',
-        lineHeight: '24px',
-        MozAppearance: 'textfield',
+const StyledNumericField = styled(SFNumericField)({
+  '& .MuiInputBase-root': {
+    height: '42px',
 
-        '&::-webkit-outer-spin-button': {
-          WebkitAppearance: 'none',
-          margin: 0
-        },
-        '&::-webkit-inner-spin-button': {
-          WebkitAppearance: 'none',
-          margin: 0
-        }
+    '& .MuiInputBase-input': {
+      padding: '12px 12px 11px',
+      textAlign: 'center',
+      fontSize: '16px',
+      lineHeight: '24px',
+      MozAppearance: 'textfield',
+
+      '&::-webkit-outer-spin-button': {
+        WebkitAppearance: 'none',
+        margin: 0
       },
-
-      '& .MuiOutlinedInput-notchedOutline': {
-        borderRadius: 0
+      '&::-webkit-inner-spin-button': {
+        WebkitAppearance: 'none',
+        margin: 0
       }
+    },
+
+    '& .MuiOutlinedInput-notchedOutline': {
+      borderRadius: 0
     }
   }
 });
@@ -50,7 +48,6 @@ export const SFCounter = ({
   value,
   onChange
 }: SFCounterProps): React.ReactElement<SFCounterProps> => {
-  const classes = counterStyles();
   const isRemoveDisabled: boolean = disabled || value === 0;
 
   const onIncrement = (): void => {
@@ -62,19 +59,18 @@ export const SFCounter = ({
   };
 
   return (
-    <div className={classes.counter}>
+    <StyledCounter>
       <SFCounterButton
         icon='Remove'
         disabled={isRemoveDisabled}
         onClick={onDecrement}
       />
-      <SFNumericField
-        className={classes.input}
+      <StyledNumericField
         disabled={disabled}
         value={value}
         onChange={(event): void => onChange(+event.target.value)}
       />
       <SFCounterButton icon='Add' disabled={disabled} onClick={onIncrement} />
-    </div>
+    </StyledCounter>
   );
 };
