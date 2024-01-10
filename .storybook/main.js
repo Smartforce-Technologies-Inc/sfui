@@ -37,6 +37,7 @@ module.exports = {
     '../src/Components/SFTextShadow/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFTimeline/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFTooltip/*.stories.@(js|jsx|ts|tsx)',
+    '../src/Components/SFTimeField/*.stories.@(js|jsx|ts|tsx)',
     '../src/SFColors/*.stories.@(js|jsx|ts|tsx)',
     '../src/SFMedia/*.stories.@(js|jsx|ts|tsx)',
     '../src/SFHttpStatusCode/*.stories.@(js|jsx|ts|tsx)'
