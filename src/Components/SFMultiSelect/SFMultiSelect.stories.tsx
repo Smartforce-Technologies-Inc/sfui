@@ -72,14 +72,7 @@ export default {
 } as ComponentMeta<typeof SFMultiSelect>;
 
 const Template: ComponentStory<typeof SFMultiSelect> = (args) => {
-  const [value, setValue] = React.useState<string[]>(args.value ?? []);
-  return (
-    <SFMultiSelect
-      {...args}
-      value={value}
-      onChange={(e: string[]): void => setValue(e)}
-    />
-  );
+  return <SFMultiSelect {...args} />;
 };
 
 export const Default = Template.bind({});
