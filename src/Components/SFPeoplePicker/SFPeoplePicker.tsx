@@ -171,6 +171,7 @@ interface SFPeoplePickerAsyncProps extends SFPeoplePickerBaseProps {
   formatOption: (option: any) => SFPeopleOption;
   fetchInit?: RequestInit;
   minChar?: number;
+  filterOptions?: (option: any) => boolean;
 }
 
 export type SFPeoplePickerProps =
@@ -205,16 +206,22 @@ export const SFPeoplePicker = ({
   const fetchOptions = async (url: string): Promise<SFPeopleOption[]> => {
     if (props.isAsync && refGetOptions.current) {
       try {
-        const options = await refGetOptions.current(url, props.fetchInit);
-        return options?.length
-          ? options.map((option: any) => {
-              const newObj: SFPeopleOption = props.formatOption(option);
-              if (!newObj.asyncObject) {
-                newObj.asyncObject = option;
-              }
-              return newObj;
-            })
-          : [];
+        let options = await refGetOptions.current(url, props.fetchInit);
+        if (options?.length) {
+          if (props.filterOptions) {
+            options = options.filter(props.filterOptions);
+          }
+
+          return options.map((option: any) => {
+            const newObj: SFPeopleOption = props.formatOption(option);
+            if (!newObj.asyncObject) {
+              newObj.asyncObject = option;
+            }
+            return newObj;
+          });
+        } else {
+          return [];
+        }
       } catch (e) {
         console.error('SFPeoplePicker:fetchOptions', e);
         return [];
