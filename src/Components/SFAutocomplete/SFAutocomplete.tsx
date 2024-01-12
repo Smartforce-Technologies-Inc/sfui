@@ -1,109 +1,96 @@
 import * as React from 'react';
-import { Theme, withStyles, makeStyles } from '@material-ui/core/styles';
 import {
   Autocomplete,
   AutocompleteProps,
   AutocompleteInputChangeReason,
   AutocompleteChangeReason,
   AutocompleteCloseReason,
-  AutocompleteRenderInputParams
-} from '@material-ui/lab';
+  AutocompleteRenderInputParams,
+  styled
+} from '@mui/material';
 import { SFMenuOption } from '../SFSelect/SFSelect';
 import { SFTextField } from '../SFTextField/SFTextField';
 import { SFIcon } from '../SFIcon/SFIcon';
-import { SFGrey, SFSurfaceLight } from '../../SFColors/SFColors';
+import { SFGrey } from '../../SFColors/SFColors';
 import { hexToRgba } from '../../Helpers';
+import { SFPaper } from '../SFPaper/SFPaper';
 
 const isOption = (value: string, options: SFMenuOption[]): boolean => {
   return !!options.find((o: SFMenuOption) => o.value === value);
 };
 
-export const StyledAutocomplete = withStyles((theme: Theme) => ({
-  inputRoot: {
-    '&[class*="MuiOutlinedInput-root"]': {
-      paddingTop: '20px',
+export const StyledAutocomplete = styled(Autocomplete)(({ theme }) => ({
+  '& .MuiAutocomplete-input': {
+    padding: '12.5px 4px 9.5px 3px !important',
 
-      '& input.MuiAutocomplete-input:first-child': {
-        padding: '9.5px 4px'
-      },
-
-      '& .MuiAutocomplete-endAdornment': {
-        right: '18px'
-      }
+    '& .MuiAutocomplete-endAdornment': {
+      right: '18px'
     }
   },
-  endAdornment: {
-    marginTop: '-3px',
+  '& .Mui-focused .MuiAutocomplete-popupIndicatorOpen:not(.search)': {
+    transform: 'rotate(180deg) !important'
+  },
+  '& .MuiAutocomplete-endAdornment': {
+    marginTop: '-4px',
     '& button': {
       padding: '9px',
+      transform: ' rotate(0deg) !important',
+
       '&:hover': {
         '@media (hover: hover)': {
           backgroundColor:
-            theme.palette.type === 'light'
+            theme.palette.mode === 'light'
               ? hexToRgba(SFGrey.A100 as string, 0.3)
               : hexToRgba(SFGrey[500] as string, 0.3)
         }
       },
       '&:active': {
         backgroundColor:
-          theme.palette.type === 'light'
+          theme.palette.mode === 'light'
             ? hexToRgba(SFGrey.A100 as string, 0.5)
             : hexToRgba(SFGrey[500] as string, 0.5)
       }
     }
-  },
-  paper: {
-    margin: '0 0 0 2px',
-    boxShadow:
-      '0px 5px 5px -3px rgba(0, 0, 0, 0.02), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12)',
-    borderRadius: '2px'
-  },
-  listbox: {
-    padding: '13px 0',
-    backgroundColor:
-      theme.palette.type === 'light' ? SFSurfaceLight : SFGrey[800]
-  },
-  option: {
-    padding: 0,
-    '&[data-focus="true"]': {
-      backgroundColor:
-        theme.palette.type === 'light'
-          ? hexToRgba(SFGrey.A100 as string, 0.3)
-          : hexToRgba(SFGrey[500] as string, 0.3),
-      '&:active': {
-        backgroundColor:
-          theme.palette.type === 'light'
-            ? hexToRgba(SFGrey.A100 as string, 0.5)
-            : hexToRgba(SFGrey[500] as string, 0.5)
-      }
-    },
+  }
+}));
 
-    '&[aria-selected="true"]': {
+const StyledOption = styled('li')(({ theme, value }) => ({
+  padding: (value as number) > 0 ? '6px 24px' : '0',
+  '&[data-focus="true"]': {
+    backgroundColor:
+      theme.palette.mode === 'light'
+        ? hexToRgba(SFGrey.A100 as string, 0.3)
+        : hexToRgba(SFGrey[500] as string, 0.3),
+    '&:active': {
       backgroundColor:
-        theme.palette.type === 'light'
+        theme.palette.mode === 'light'
           ? hexToRgba(SFGrey.A100 as string, 0.5)
           : hexToRgba(SFGrey[500] as string, 0.5)
     }
   },
-  popupIndicator: {},
-  clearIndicator: {}
-}))(Autocomplete);
 
-const useStyles = makeStyles({
-  root: {
-    '& button.MuiAutocomplete-popupIndicator': {
-      pointerEvents: (props: Partial<SFAutocompleteProps>): string =>
-        props.popupIconType === 'search' ? 'none' : 'auto',
-      display: (props: Partial<SFAutocompleteProps>): string =>
-        props.popupIconType !== 'none' ? 'inline-flex' : 'none',
-      padding: (props: Partial<SFAutocompleteProps>): string =>
-        props.popupIconType !== 'none' ? '9px' : '0'
-    },
-    '& button.MuiAutocomplete-popupIndicatorOpen': {
-      transform: (props: Partial<SFAutocompleteProps>): string =>
-        props.popupIconType === 'search' ? 'none' : 'rotate(180deg)'
-    }
+  '&[aria-selected="true"]': {
+    backgroundColor:
+      theme.palette.mode === 'light'
+        ? hexToRgba(SFGrey.A100 as string, 0.5)
+        : hexToRgba(SFGrey[500] as string, 0.5)
   }
+}));
+
+const StyledIcon = styled(SFIcon)(({ icon }) => ({
+  pointerEvents: icon === 'Search' ? 'none' : 'auto',
+  height: 'fit-content',
+  display: 'inline-flex',
+  '[class*=MuiAutocomplete-popupIndicatorOpen]': {
+    backgroundColor: 'blue'
+  }
+}));
+
+const StyledPaper = styled(SFPaper)({
+  margin: '0 0 0 2px',
+  boxShadow:
+    '0px 5px 5px -3px rgba(0, 0, 0, 0.02), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12)',
+  borderRadius: '2px'
 });
 
 export type SFAutocompleteInputChangeReason = AutocompleteInputChangeReason;
@@ -141,7 +128,6 @@ export const SFAutocomplete = React.forwardRef<
 >(
   (
     {
-      className = '',
       label,
       required = false,
       popupIconType = 'none',
@@ -153,7 +139,6 @@ export const SFAutocomplete = React.forwardRef<
     },
     ref
   ) => {
-    const classes = useStyles({ popupIconType });
     const [inputValue, setInputValue] = React.useState<string>('');
 
     React.useEffect(() => {
@@ -197,9 +182,13 @@ export const SFAutocomplete = React.forwardRef<
       option: SFMenuOption,
       reason: AutocompleteChangeReason
     ): void => {
-      if (reason !== 'create-option' && reason !== 'remove-option') {
-        props.onChange(option || '');
+      if (reason !== 'removeOption') {
+        props.onChange(option.value || '');
       }
+    };
+
+    const onOptionClick = (option: string): void => {
+      props.onChange(option);
     };
 
     let options: SFMenuOption[] = [...props.options];
@@ -209,43 +198,49 @@ export const SFAutocomplete = React.forwardRef<
     }
 
     const popupIcon =
-      popupIconType === 'search' ? (
-        <SFIcon icon='Search' size={16} />
+      popupIconType !== 'none' && !props.freeSolo ? (
+        <StyledIcon
+          icon={popupIconType === 'search' ? 'Search' : 'Down-2'}
+          size={16}
+        />
       ) : (
-        <SFIcon icon='Down-2' size={16} />
+        <></>
       );
 
     return (
       <StyledAutocomplete
         {...props}
-        className={`${classes.root} ${className}`}
         openOnFocus
         value={value}
         options={options}
         onChange={onChange}
         onInputChange={onInputChange}
         inputValue={inputValue}
-        getOptionSelected={(
+        PaperComponent={(props): JSX.Element => (
+          <StyledPaper {...props}>{props.children}</StyledPaper>
+        )}
+        isOptionEqualToValue={(
           option: SFMenuOption,
           value: SFMenuOption | string
-        ): boolean => {
-          // Check needed if allowEmpty
-          return typeof value === 'string'
+        ): boolean =>
+          typeof value === 'string'
             ? value === option.value
-            : value.value === option.value;
-        }}
+            : value.value === option.value
+        }
         getOptionLabel={(option: SFMenuOption): string =>
           typeof option === 'string' ? option : option.label
         }
-        renderOption={(option: SFMenuOption): React.ReactNode => (
-          <div
-            style={{
-              padding:
-                option.label && option.label.length > 0 ? '6px 24px' : '0'
-            }}
+        renderOption={(props, option: SFMenuOption): React.ReactNode => (
+          <StyledOption
+            {...props}
+            key={option.label}
+            value={option.label.length}
+            onClick={(_e): void =>
+              onOptionClick(typeof option === 'string' ? option : option.label)
+            }
           >
             {typeof option === 'string' ? option : option.label}
-          </div>
+          </StyledOption>
         )}
         renderInput={(
           params: AutocompleteRenderInputParams
@@ -259,8 +254,9 @@ export const SFAutocomplete = React.forwardRef<
             helperText={helperText}
           />
         )}
+        componentsProps={{ popupIndicator: { className: popupIconType } }}
         popupIcon={popupIcon}
-        closeIcon={<SFIcon icon='Close' size={16} />}
+        clearIcon={<SFIcon icon='Close' size={16} />}
       />
     );
   }
