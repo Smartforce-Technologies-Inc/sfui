@@ -31,24 +31,31 @@ export const StyledAutocomplete = styled(Autocomplete)(({ theme }) => ({
     transform: 'rotate(180deg) !important'
   },
   '& .MuiAutocomplete-endAdornment': {
+    height: '34px',
+    width: '34px',
     marginTop: '-4px',
     '& button': {
+      height: '100%',
       padding: '9px',
       transform: ' rotate(0deg) !important',
+      pointerEvents: 'none',
 
-      '&:hover': {
-        '@media (hover: hover)': {
+      '&.default': {
+        pointerEvents: 'auto',
+        '&:hover': {
+          '@media (hover: hover)': {
+            backgroundColor:
+              theme.palette.mode === 'light'
+                ? hexToRgba(SFGrey.A100 as string, 0.3)
+                : hexToRgba(SFGrey[500] as string, 0.3)
+          }
+        },
+        '&:active': {
           backgroundColor:
             theme.palette.mode === 'light'
-              ? hexToRgba(SFGrey.A100 as string, 0.3)
-              : hexToRgba(SFGrey[500] as string, 0.3)
+              ? hexToRgba(SFGrey.A100 as string, 0.5)
+              : hexToRgba(SFGrey[500] as string, 0.5)
         }
-      },
-      '&:active': {
-        backgroundColor:
-          theme.palette.mode === 'light'
-            ? hexToRgba(SFGrey.A100 as string, 0.5)
-            : hexToRgba(SFGrey[500] as string, 0.5)
       }
     }
   }
