@@ -62,7 +62,7 @@ export const StyledAutocomplete = styled(Autocomplete)(({ theme }) => ({
 }));
 
 const StyledOption = styled('li')(({ theme, value }) => ({
-  padding: (value as number) > 0 ? '6px 24px' : '0',
+  padding: (value as string).length > 0 ? '6px 24px' : '0',
   '&[data-focus="true"]': {
     backgroundColor:
       theme.palette.mode === 'light'
@@ -241,7 +241,7 @@ export const SFAutocomplete = React.forwardRef<
           <StyledOption
             {...props}
             key={option.label}
-            value={option.label.length}
+            value={option.label}
             onClick={(_e): void =>
               onOptionClick(typeof option === 'string' ? option : option.label)
             }
