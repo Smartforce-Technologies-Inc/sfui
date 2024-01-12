@@ -1,5 +1,5 @@
 import React from 'react';
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { Story, ComponentMeta } from '@storybook/react';
 import { SFMenuOption } from '../SFSelect/SFSelect';
 import { SFAutocomplete, SFAutocompleteProps } from './SFAutocomplete';
 
@@ -23,7 +23,22 @@ const getOptions = (): SFMenuOption[] => {
 export default {
   title: 'Components/SFAutocomplete',
   component: SFAutocomplete,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: {
+    controls: {
+      sort: 'alpha',
+      include: [
+        'error',
+        'inputValue',
+        'label',
+        'required',
+        'disabled',
+        'freeSolo',
+        'popupIconType',
+        'onChange',
+        'helperText'
+      ]
+    }
+  },
   args: {
     label: 'Bagel',
     options: getOptions()
@@ -31,11 +46,6 @@ export default {
   argTypes: {
     allowEmpty: {
       description: 'Determinates if the input could be empty.'
-    },
-    disabled: {
-      control: {
-        type: 'boolean'
-      }
     },
     error: {
       description: 'If true, the component is in error state.'
@@ -81,13 +91,13 @@ export default {
     label: {
       description: 'The label asociated to the input value meaning.'
     },
-    options: {},
     onChange: {
       action: 'onChange',
       table: {
         disable: true
       }
     },
+    disabled: { control: { type: 'boolean' } },
     onInputChange: {
       action: 'onInputChange',
       table: {
@@ -96,15 +106,9 @@ export default {
     },
     required: {
       description: 'Indicates whether the input is required or not.'
-    },
-    ref: {
-      table: {
-        disable: true
-      }
-    },
-    value: {}
+    }
   }
-} as Meta;
+} as ComponentMeta<typeof SFAutocomplete>;
 
 const Template: Story<SFAutocompleteProps> = (args) => (
   <SFAutocomplete {...args} />
@@ -126,16 +130,12 @@ Disabled.args = {
 };
 
 export const ClearOnBlur: Story<SFAutocompleteProps> = (args) => {
-  const [value, setValue] = React.useState<SFMenuOption | string>('');
-
   return (
     <SFAutocomplete
       {...args}
       clearOnBlur
       options={getOptions()}
       label='Bagel'
-      value={value}
-      onChange={(value): void => setValue(value)}
     />
   );
 };

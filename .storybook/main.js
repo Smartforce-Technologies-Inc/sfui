@@ -6,6 +6,7 @@ module.exports = {
     '../src/Components/SFAlert/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFAlertCollapse/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFAlertDialog/*.stories.@(js|jsx|ts|tsx)',
+    '../src/Components/SFAutocomplete/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFBadge/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFButton/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFCard/*.stories.@(js|jsx|ts|tsx)',
