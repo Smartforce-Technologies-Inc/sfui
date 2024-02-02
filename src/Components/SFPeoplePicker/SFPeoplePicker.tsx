@@ -146,6 +146,7 @@ interface SFPeoplePickerBaseProps {
     option: SFPeopleOption,
     value: SFPeopleOption
   ) => boolean;
+  renderOptionName?: (option: SFPeopleOption) => React.ReactNode;
 }
 
 interface SFPeoplePickerSingleProps extends SFPeoplePickerBaseProps {
@@ -291,7 +292,11 @@ export const SFPeoplePicker = ({
           )}
         </div>
 
-        <div className={classes.name}>{option.name}</div>
+        {props.renderOptionName ? (
+          props.renderOptionName(option)
+        ) : (
+          <div className={classes.name}>{option.name}</div>
+        )}
       </div>
     );
   };
