@@ -19,6 +19,7 @@ export type SFTextType =
   | 'component-button-L'
   | 'component-button-M'
   | 'component-2-medium'
+  | 'component-3-medium'
   | 'component-2'
   | 'component-3'
   | 'component-button-S'
@@ -84,6 +85,12 @@ const textTypeProps: Record<SFTextType, TextCSSProps> = {
     fontWeight: 500,
     lineHeight: '20px',
     letterSpacing: '0em'
+  },
+  'component-3-medium': {
+    fontSize: '12px',
+    fontWeight: 500,
+    lineHeight: '14px',
+    letterSpacing: '0.02em'
   },
   'component-2': {
     fontSize: '14px',
