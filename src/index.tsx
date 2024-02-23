@@ -28,6 +28,7 @@ export * from './Components/SFNumericField/SFNumericField';
 export * from './Components/SFPanel/SFPanel';
 export * from './Components/SFPaper/SFPaper';
 export * from './Components/SFPeoplePicker/SFPeoplePicker';
+export * from './Components/SFPopover/SFPopover';
 export * from './Components/SFRadioGroup/SFRadio/SFRadio';
 export * from './Components/SFRadioGroup/SFRadioGroup';
 export * from './Components/SFScrollable/SFScrollable';
