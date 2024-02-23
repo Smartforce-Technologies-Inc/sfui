@@ -15,6 +15,7 @@ export * from './Components/SFCounter/SFCounter';
 export * from './Components/SFDatePicker/SFDatePicker';
 export * from './Components/SFDateSlider/SFDateSlider';
 export * from './Components/SFDialog/SFDialog';
+export * from './Components/SFDivider/SFDivider';
 export * from './Components/SFDrawer/SFDrawer';
 export * from './Components/SFDropdownField/SFDropdownField';
 export * from './Components/SFIcon/SFIcon';
