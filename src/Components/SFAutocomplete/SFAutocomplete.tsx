@@ -206,7 +206,7 @@ export const SFAutocomplete = React.forwardRef<
     let options: SFMenuOption[] = [...props.options];
 
     if (allowEmpty) {
-      options = [...options, { label: '', value: '' }];
+      options = [{ label: '', value: '' }, ...options];
     }
 
     const popupIcon =
