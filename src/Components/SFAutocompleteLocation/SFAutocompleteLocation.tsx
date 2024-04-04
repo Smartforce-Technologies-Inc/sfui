@@ -2,7 +2,6 @@ import React from 'react';
 import { Theme, withStyles, makeStyles } from '@material-ui/core/styles';
 import { AutocompleteRenderInputParams } from '@material-ui/lab';
 import debounce from 'lodash.debounce';
-import { DebouncedFunc } from 'lodash';
 import parse from 'autosuggest-highlight/parse';
 import { SFIcon } from '../SFIcon/SFIcon';
 import { SFTextField } from '../SFTextField/SFTextField';
@@ -13,6 +12,30 @@ import {
 } from '../../SFColors/SFColors';
 import { hexToRgba } from '../../Helpers';
 import { StyledAutocomplete } from '../SFAutocomplete/SFAutocomplete';
+
+/* eslint-disable */
+// Needed to resolve lodash issue with async
+// https://github.com/lodash/lodash/issues/4815
+function asyncDebounce<F extends (...args: any[]) => Promise<any>>(
+  func: F,
+  wait?: number,
+  options?: any
+) {
+  const debounced = debounce(
+    (resolve, reject, args: Parameters<F>) => {
+      func(...args)
+        .then(resolve)
+        .catch(reject);
+    },
+    wait,
+    options
+  );
+  return (...args: Parameters<F>): ReturnType<F> =>
+    new Promise((resolve, reject) => {
+      debounced(resolve, reject, args);
+    }) as ReturnType<F>;
+}
+/* eslint-enable */
 
 /*
   This component uses three Google Maps API's: Places API, Places Autocomplete API and Geocoder API.
@@ -221,6 +244,7 @@ export interface SFAutocompleteLocationProps {
   label: string;
   value: SFAutocompleteLocationResult;
   disabled?: boolean;
+  debounceWait?: number;
   required?: boolean;
   error?: boolean;
   helperText?: string;
@@ -236,6 +260,7 @@ export interface SFAutocompleteLocationProps {
 export const SFAutocompleteLocation = ({
   label,
   value,
+  debounceWait = 500,
   disabled = false,
   required = false,
   error = false,
@@ -263,20 +288,19 @@ export const SFAutocompleteLocation = ({
     google.maps.places.AutocompletePrediction[]
   >([]);
 
-  const refGetPlacePredictions = React.useRef<
-    DebouncedFunc<PlacePredictionsFn>
-  >();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const refGetPlacePredictions = React.useRef<any>();
 
   React.useEffect(() => {
-    refGetPlacePredictions.current = debounce(
+    refGetPlacePredictions.current = asyncDebounce(
       memoizePredictionsFn(getPlacePredictions),
-      100,
+      debounceWait,
       {
         leading: true,
-        trailing: false
+        trailing: true
       }
     );
-  }, []);
+  }, [debounceWait]);
 
   const fetchOptions = async (): Promise<void> => {
     if (
