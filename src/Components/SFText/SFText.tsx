@@ -199,23 +199,24 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }));
 
-export interface SFTextProps {
-  className?: string;
-  children: React.ReactNode;
+export interface SFTextProps
+  extends React.DetailedHTMLProps<
+    React.HTMLAttributes<HTMLParagraphElement>,
+    HTMLParagraphElement
+  > {
   type: SFTextType;
   sfColor?: SFTextColor;
 }
 
 export const SFText = ({
-  className = '',
-  children,
   type,
-  sfColor = 'default'
+  sfColor = 'default',
+  ...props
 }: SFTextProps): React.ReactElement<SFTextProps> => {
   const classes = useStyles({
     sfColor,
     type
   });
 
-  return <p className={`${className} ${classes.root}`}>{children}</p>;
+  return <p className={classes.root} {...props} />;
 };
