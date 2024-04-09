@@ -20,14 +20,14 @@ export interface SFDividerProps
     React.HTMLAttributes<HTMLHRElement>,
     HTMLHRElement
   > {
-  className?: string;
   size?: number;
 }
 
 export const SFDivider = ({
   size = 1,
+  className = '',
   ...props
 }: SFDividerProps): React.ReactElement<SFDividerProps> => {
   const classes = useStyles({ size });
-  return <hr className={`${props.className} ${classes.root}`} {...props} />;
+  return <hr className={`${className} ${classes.root}`} {...props} />;
 };
