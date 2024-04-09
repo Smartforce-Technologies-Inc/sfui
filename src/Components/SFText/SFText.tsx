@@ -209,6 +209,7 @@ export interface SFTextProps
 }
 
 export const SFText = ({
+  className = '',
   type,
   sfColor = 'default',
   ...props
@@ -218,5 +219,5 @@ export const SFText = ({
     type
   });
 
-  return <p className={classes.root} {...props} />;
+  return <p className={`${className} ${classes.root}`} {...props} />;
 };
