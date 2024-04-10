@@ -1,13 +1,14 @@
 import * as React from 'react';
-import { Theme, withStyles, makeStyles } from '@material-ui/core/styles';
 import {
   Autocomplete,
-  AutocompleteProps,
-  AutocompleteInputChangeReason,
   AutocompleteChangeReason,
   AutocompleteCloseReason,
-  AutocompleteRenderInputParams
-} from '@material-ui/lab';
+  AutocompleteInputChangeReason,
+  AutocompleteProps,
+  AutocompleteRenderInputParams,
+  Paper,
+  styled
+} from '@mui/material';
 import { SFMenuOption } from '../SFSelect/SFSelect';
 import { SFTextField } from '../SFTextField/SFTextField';
 import { SFIcon } from '../SFIcon/SFIcon';
@@ -18,12 +19,13 @@ const isOption = (value: string, options: SFMenuOption[]): boolean => {
   return !!options.find((o: SFMenuOption) => o.value === value);
 };
 
-export const StyledAutocomplete = withStyles((theme: Theme) => ({
-  inputRoot: {
+export const StyledAutocomplete = styled(Autocomplete)(({ theme }) => ({
+  '.MuiAutocomplete-inputRoot': {
     '&[class*="MuiOutlinedInput-root"]': {
       paddingTop: '20px',
 
       '& input.MuiAutocomplete-input:first-child': {
+        height: '1.1876em',
         padding: '9.5px 4px'
       },
 
@@ -32,79 +34,75 @@ export const StyledAutocomplete = withStyles((theme: Theme) => ({
       }
     }
   },
-  endAdornment: {
+  '.MuiAutocomplete-endAdornment': {
     marginTop: '-3px',
     '& button': {
       padding: '9px',
       '&:hover': {
         '@media (hover: hover)': {
           backgroundColor:
-            theme.palette.type === 'light'
+            theme.palette.mode === 'light'
               ? hexToRgba(SFGrey.A100 as string, 0.3)
               : hexToRgba(SFGrey[500] as string, 0.3)
         }
       },
       '&:active': {
         backgroundColor:
-          theme.palette.type === 'light'
+          theme.palette.mode === 'light'
             ? hexToRgba(SFGrey.A100 as string, 0.5)
             : hexToRgba(SFGrey[500] as string, 0.5)
       }
-    }
-  },
-  paper: {
-    margin: '0 0 0 2px',
-    boxShadow:
-      '0px 5px 5px -3px rgba(0, 0, 0, 0.02), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12)',
-    borderRadius: '2px'
-  },
-  listbox: {
-    padding: '13px 0',
-    backgroundColor:
-      theme.palette.type === 'light' ? SFSurfaceLight : SFGrey[800]
-  },
-  option: {
-    padding: 0,
-    '&[data-focus="true"]': {
-      backgroundColor:
-        theme.palette.type === 'light'
-          ? hexToRgba(SFGrey.A100 as string, 0.3)
-          : hexToRgba(SFGrey[500] as string, 0.3),
-      '&:active': {
-        backgroundColor:
-          theme.palette.type === 'light'
-            ? hexToRgba(SFGrey.A100 as string, 0.5)
-            : hexToRgba(SFGrey[500] as string, 0.5)
-      }
-    },
-
-    '&[aria-selected="true"]': {
-      backgroundColor:
-        theme.palette.type === 'light'
-          ? hexToRgba(SFGrey.A100 as string, 0.5)
-          : hexToRgba(SFGrey[500] as string, 0.5)
-    }
-  },
-  popupIndicator: {},
-  clearIndicator: {}
-}))(Autocomplete);
-
-const useStyles = makeStyles({
-  root: {
-    '& button.MuiAutocomplete-popupIndicator': {
-      pointerEvents: (props: Partial<SFAutocompleteProps>): string =>
-        props.popupIconType === 'search' ? 'none' : 'auto',
-      display: (props: Partial<SFAutocompleteProps>): string =>
-        props.popupIconType !== 'none' ? 'inline-flex' : 'none',
-      padding: (props: Partial<SFAutocompleteProps>): string =>
-        props.popupIconType !== 'none' ? '9px' : '0'
-    },
-    '& button.MuiAutocomplete-popupIndicatorOpen': {
-      transform: (props: Partial<SFAutocompleteProps>): string =>
-        props.popupIconType === 'search' ? 'none' : 'rotate(180deg)'
     }
   }
-});
+}));
+
+const StyledPaper = styled(Paper)(({ theme }) => ({
+  margin: '0 0 0 2px',
+  boxShadow:
+    '0px 5px 5px -3px rgba(0, 0, 0, 0.02), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12)',
+  borderRadius: '2px',
+
+  '.MuiAutocomplete-listbox': {
+    padding: '13px 0',
+    backgroundColor:
+      theme.palette.mode === 'light' ? SFSurfaceLight : SFGrey[800],
+
+    '.MuiAutocomplete-option': {
+      padding: 0,
+
+      '&.Mui-focused': {
+        backgroundColor:
+          theme.palette.mode === 'light'
+            ? hexToRgba(SFGrey.A100 as string, 0.3)
+            : hexToRgba(SFGrey[500] as string, 0.3),
+        '&:active, &[aria-selected="true"]': {
+          backgroundColor:
+            theme.palette.mode === 'light'
+              ? hexToRgba(SFGrey.A100 as string, 0.5)
+              : hexToRgba(SFGrey[500] as string, 0.5)
+        }
+      },
+
+      '&[aria-selected="true"]': {
+        backgroundColor:
+          theme.palette.mode === 'light'
+            ? hexToRgba(SFGrey.A100 as string, 0.5)
+            : hexToRgba(SFGrey[500] as string, 0.5)
+      }
+    }
+  }
+}));
+
+interface PopupIconProps {
+  type?: 'default' | 'search' | 'none';
+}
+
+const PopupIcon = ({
+  type = 'default'
+}: PopupIconProps): React.ReactElement<PopupIconProps> => {
+  const iconName = type === 'search' ? 'Search' : 'Down-2';
+  return <SFIcon icon={iconName} size={16} />;
+};
 
 export type SFAutocompleteInputChangeReason = AutocompleteInputChangeReason;
 export type SFAutocompleteChangeReason = AutocompleteChangeReason;
@@ -135,13 +133,12 @@ export interface SFAutocompleteProps
   onChange: (value: string | SFMenuOption) => void;
 }
 
-export const SFAutocomplete = React.forwardRef<
+const SFAutocompleteBase = React.forwardRef<
   SFAutocompleteRefHandler,
   SFAutocompleteProps
 >(
   (
     {
-      className = '',
       label,
       required = false,
       popupIconType = 'none',
@@ -153,7 +150,6 @@ export const SFAutocomplete = React.forwardRef<
     },
     ref
   ) => {
-    const classes = useStyles({ popupIconType });
     const [inputValue, setInputValue] = React.useState<string>('');
 
     React.useEffect(() => {
@@ -197,7 +193,7 @@ export const SFAutocomplete = React.forwardRef<
       option: SFMenuOption,
       reason: AutocompleteChangeReason
     ): void => {
-      if (reason !== 'create-option' && reason !== 'remove-option') {
+      if (reason !== 'createOption' && reason !== 'removeOption') {
         props.onChange(option || '');
       }
     };
@@ -208,24 +204,16 @@ export const SFAutocomplete = React.forwardRef<
       options = [...options, { label: '', value: '' }];
     }
 
-    const popupIcon =
-      popupIconType === 'search' ? (
-        <SFIcon icon='Search' size={16} />
-      ) : (
-        <SFIcon icon='Down-2' size={16} />
-      );
-
     return (
       <StyledAutocomplete
         {...props}
-        className={`${classes.root} ${className}`}
         openOnFocus
         value={value}
         options={options}
         onChange={onChange}
         onInputChange={onInputChange}
         inputValue={inputValue}
-        getOptionSelected={(
+        isOptionEqualToValue={(
           option: SFMenuOption,
           value: SFMenuOption | string
         ): boolean => {
@@ -237,15 +225,16 @@ export const SFAutocomplete = React.forwardRef<
         getOptionLabel={(option: SFMenuOption): string =>
           typeof option === 'string' ? option : option.label
         }
-        renderOption={(option: SFMenuOption): React.ReactNode => (
-          <div
+        renderOption={(props, option: SFMenuOption): React.ReactNode => (
+          <li
+            {...props}
             style={{
               padding:
                 option.label && option.label.length > 0 ? '6px 24px' : '0'
             }}
           >
             {typeof option === 'string' ? option : option.label}
-          </div>
+          </li>
         )}
         renderInput={(
           params: AutocompleteRenderInputParams
@@ -259,9 +248,23 @@ export const SFAutocomplete = React.forwardRef<
             helperText={helperText}
           />
         )}
-        popupIcon={popupIcon}
-        closeIcon={<SFIcon icon='Close' size={16} />}
+        popupIcon={<PopupIcon type={popupIconType} />}
+        clearIcon={<SFIcon icon='Close' size={16} />}
+        PaperComponent={StyledPaper}
       />
     );
   }
+);
+
+export const SFAutocomplete = styled(SFAutocompleteBase)(
+  ({ popupIconType }) => ({
+    '& .MuiAutocomplete-popupIndicator': {
+      pointerEvents: popupIconType === 'search' ? 'none' : 'auto',
+      display: popupIconType !== 'none' ? 'inline-flex' : 'none',
+      padding: popupIconType !== 'none' ? '9px' : '0'
+    },
+    '& .MuiAutocomplete-popupIndicatorOpen': {
+      transform: popupIconType === 'search' ? 'none' : 'rotate(180deg)'
+    }
+  })
 );

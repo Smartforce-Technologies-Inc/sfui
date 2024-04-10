@@ -106,7 +106,7 @@ export default {
   }
 } as Meta;
 
-const Template: Story<SFAutocompleteProps> = (args) => (
+const Template: Story<SFAutocompleteProps> = ({ ref, ...args }) => (
   <SFAutocomplete {...args} />
 );
 
@@ -125,8 +125,8 @@ Disabled.args = {
   disabled: true
 };
 
-export const ClearOnBlur: Story<SFAutocompleteProps> = (args) => {
-  const [value, setValue] = React.useState<SFMenuOption | string>('');
+export const ClearOnBlur: Story<SFAutocompleteProps> = ({ ref, ...args }) => {
+  const [value, setValue] = React.useState<string>('');
 
   return (
     <SFAutocomplete
@@ -135,7 +135,9 @@ export const ClearOnBlur: Story<SFAutocompleteProps> = (args) => {
       options={getOptions()}
       label='Bagel'
       value={value}
-      onChange={(value): void => setValue(value)}
+      onChange={(value): void =>
+        setValue(typeof value === 'string' ? value : value.value)
+      }
     />
   );
 };
