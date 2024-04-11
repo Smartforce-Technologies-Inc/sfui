@@ -9,7 +9,7 @@ import { ChipListOptions } from '../../Storybook/constants';
 export default {
   title: 'Components/SFAutocompleteChip',
   component: SFAutocompleteChip,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: { controls: { sort: 'alpha', exclude: ['options', 'value'] } },
   args: {
     label: 'Bagel',
     value: []

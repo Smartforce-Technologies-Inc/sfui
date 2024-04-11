@@ -1,25 +1,43 @@
 import React, { ChangeEvent } from 'react';
 import {
-  AutocompleteRenderInputParams,
+  AutocompleteChangeReason,
   AutocompleteInputChangeReason,
-  AutocompleteChangeReason
-} from '@material-ui/lab';
-import { withStyles } from '@material-ui/core/styles';
+  AutocompleteRenderInputParams,
+  styled
+} from '@mui/material';
 import { SFAutocompleteChipRender } from './SFAutocompleteChipRender/SFAutocompleteChipRender';
 import {
   minWidthInputSize,
   SFAutocompleteInput
 } from './SFAutocompleteInput/SFAutocompleteInput';
-import { StyledAutocomplete } from '../SFAutocomplete/SFAutocomplete';
+import {
+  SFAutocompletePaper,
+  StyledAutocomplete
+} from '../SFAutocomplete/SFAutocomplete';
 
-export const StyledAutocompleteChip = withStyles({
-  option: {
-    padding: '6px 24px'
-  },
-  endAdornment: {
-    display: 'none'
+export const StyledAutocompleteChip = styled(StyledAutocomplete)(
+  ({ value }) => ({
+    '.MuiAutocomplete-inputRoot': {
+      '&[class*="MuiOutlinedInput-root"]': {
+        padding:
+          Array.isArray(value) && value.length > 0
+            ? '32px 13px 10px'
+            : '5px 13px'
+      }
+    },
+    '.MuiAutocomplete-endAdornment': {
+      display: 'none'
+    }
+  })
+);
+
+const SFAutocompleteChipPaper = styled(SFAutocompletePaper)({
+  '.MuiAutocomplete-listbox': {
+    '.MuiAutocomplete-option': {
+      padding: '6px 24px'
+    }
   }
-})(StyledAutocomplete);
+});
 
 export interface SFAutocompleteChipProps {
   value: string[];
@@ -72,7 +90,7 @@ export const SFAutocompleteChip = ({
     value: string[],
     reason: AutocompleteChangeReason
   ): void => {
-    if (reason === 'select-option') {
+    if (reason === 'selectOption') {
       onChange(value);
     }
   };
@@ -89,7 +107,8 @@ export const SFAutocompleteChip = ({
       onInputChange={onInputChange}
       onChange={onAutoCompleteChange}
       filterSelectedOptions
-      getOptionSelected={(option: string, value: string): boolean =>
+      PaperComponent={SFAutocompleteChipPaper}
+      isOptionEqualToValue={(option: string, value: string): boolean =>
         option === value
       }
       renderTags={(value: string[]): JSX.Element => (

@@ -23,7 +23,9 @@ const getOptions = (): SFMenuOption[] => {
 export default {
   title: 'Components/SFAutocomplete',
   component: SFAutocomplete,
-  parameters: { controls: { sort: 'alpha' } },
+  parameters: {
+    controls: { sort: 'alpha', exclude: ['inputValue', 'options'] }
+  },
   args: {
     label: 'Bagel',
     options: getOptions()
