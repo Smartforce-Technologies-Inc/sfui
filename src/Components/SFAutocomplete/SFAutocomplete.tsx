@@ -22,11 +22,10 @@ const isOption = (value: string, options: SFMenuOption[]): boolean => {
 export const StyledAutocomplete = styled(Autocomplete)(({ theme }) => ({
   '.MuiAutocomplete-inputRoot': {
     '&[class*="MuiOutlinedInput-root"]': {
-      paddingTop: '20px',
+      padding: '5px 13px',
 
       '& input.MuiAutocomplete-input:first-child': {
-        height: '1.1876em',
-        padding: '9.5px 4px'
+        padding: '22px 0 0'
       },
 
       '& .MuiAutocomplete-endAdornment': {
@@ -56,7 +55,7 @@ export const StyledAutocomplete = styled(Autocomplete)(({ theme }) => ({
   }
 }));
 
-const StyledPaper = styled(Paper)(({ theme }) => ({
+export const SFAutocompletePaper = styled(Paper)(({ theme }) => ({
   margin: '0 0 0 2px',
   boxShadow:
     '0px 5px 5px -3px rgba(0, 0, 0, 0.02), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12)',
@@ -250,7 +249,7 @@ const SFAutocompleteBase = React.forwardRef<
         )}
         popupIcon={<PopupIcon type={popupIconType} />}
         clearIcon={<SFIcon icon='Close' size={16} />}
-        PaperComponent={StyledPaper}
+        PaperComponent={SFAutocompletePaper}
       />
     );
   }
