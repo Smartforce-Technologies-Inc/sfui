@@ -1,14 +1,14 @@
 import React from 'react';
-import { Theme, withStyles, makeStyles } from '@material-ui/core/styles';
-import { AutocompleteRenderInputParams } from '@material-ui/lab';
 import debounce from 'lodash.debounce';
 import { DebouncedFunc } from 'lodash';
-import parse from 'autosuggest-highlight/parse';
 import { SFIcon } from '../SFIcon/SFIcon';
 import { SFTextField } from '../SFTextField/SFTextField';
-import { SFGrey } from '../../SFColors/SFColors';
-import { hexToRgba } from '../../Helpers';
-import { StyledAutocomplete } from '../SFAutocomplete/SFAutocomplete';
+import {
+  SFAutocompletePaper,
+  StyledAutocomplete
+} from '../SFAutocomplete/SFAutocomplete';
+import { AutocompleteRenderInputParams, styled } from '@mui/material';
+import { SFAutocompleteLocationOption } from './SFAutocompleteLocationOption/SFAutocompleteLocationOption';
 
 /*
   This component uses three Google Maps API's: Places API, Places Autocomplete API and Geocoder API.
@@ -53,7 +53,7 @@ type PlacePredictionsFn = (
 ) => Promise<google.maps.places.AutocompletePrediction[]>;
 
 const memoizePredictionsFn = (fn: PlacePredictionsFn): PlacePredictionsFn => {
-  const cache = {};
+  const cache: Record<string, google.maps.places.AutocompletePrediction[]> = {};
   return async (
     text: string,
     service: google.maps.places.AutocompleteService
@@ -112,58 +112,17 @@ interface GeolocationPosition {
   };
 }
 
-interface TextPart {
-  text: string;
-  highlight: boolean;
-}
-
-const StyledAutocompleteLocation = withStyles((theme: Theme) => ({
-  option: {
-    padding: '6px 24px'
-  },
-  popupIndicator: {
-    padding: 0
-  },
-  clearIndicator: {
-    padding: '9px',
-    '&:hover': {
-      '@media (hover: hover)': {
-        backgroundColor:
-          theme.palette.type === 'light'
-            ? hexToRgba(SFGrey.A100 as string, 0.3)
-            : hexToRgba(SFGrey[500] as string, 0.3)
-      }
-    },
-    '&:active': {
-      backgroundColor:
-        theme.palette.type === 'light'
-          ? hexToRgba(SFGrey.A100 as string, 0.5)
-          : hexToRgba(SFGrey[500] as string, 0.5)
+const SFAutocompleteLocationPaper = styled(SFAutocompletePaper)({
+  '.MuiAutocomplete-listbox': {
+    '.MuiAutocomplete-option': {
+      padding: '6px 24px',
+      display: 'grid',
+      gridTemplateColumns: 'auto 1fr',
+      gap: '15px',
+      alignItems: 'center'
     }
   }
-}))(StyledAutocomplete);
-
-const useStyles = makeStyles((theme: Theme) => ({
-  menu: {
-    display: 'grid',
-    gridTemplateColumns: 'auto 1fr',
-    gap: '15px',
-    alignItems: 'center'
-  },
-  itemText: {
-    fontSize: '16px',
-    lineHeight: '24px',
-    color: theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]
-  },
-  textHighlight: {
-    fontWeight: 700
-  },
-  itemSecondaryText: {
-    fontSize: '12px',
-    lineHeight: '14px',
-    color: theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400]
-  }
-}));
+});
 
 export interface SFGeocoderAddressComponent
   extends google.maps.GeocoderAddressComponent {}
@@ -206,7 +165,6 @@ export const SFAutocompleteLocation = ({
   minChar = 3,
   onChange
 }: SFAutocompleteLocationProps): React.ReactElement<SFAutocompleteLocationResult> => {
-  const classes = useStyles();
   const autocompleteService = React.useRef<google.maps.places.AutocompleteService>();
   const placesService = React.useRef<google.maps.places.PlacesService>();
   const geocoderService = React.useRef<google.maps.Geocoder>();
@@ -435,47 +393,10 @@ export const SFAutocompleteLocation = ({
   ): string => option.description || '';
 
   const renderOption = (
+    props: object,
     option: google.maps.places.AutocompletePrediction
   ): React.ReactNode => {
-    let matches: google.maps.places.PredictionSubstring[] = [];
-    let parts: TextPart[] = [];
-    const structuredFormatting: google.maps.places.StructuredFormatting =
-      option.structured_formatting;
-
-    if (structuredFormatting) {
-      matches = structuredFormatting.main_text_matched_substrings || [];
-      parts = parse(
-        structuredFormatting.main_text,
-        matches.map((match: google.maps.places.PredictionSubstring) => [
-          match.offset,
-          match.offset + match.length
-        ])
-      );
-    }
-
-    return (
-      <div className={classes.menu}>
-        <SFIcon icon='Loction-1' />
-
-        <div className={classes.itemText}>
-          {parts.map((part, index) => (
-            <span
-              key={index}
-              className={part.highlight ? classes.textHighlight : ''}
-            >
-              {part.text}
-            </span>
-          ))}
-
-          <br />
-
-          <span className={classes.itemSecondaryText}>
-            {option.structured_formatting &&
-              option.structured_formatting.secondary_text}
-          </span>
-        </div>
-      </div>
-    );
+    return <SFAutocompleteLocationOption liProps={props} option={option} />;
   };
 
   const onOpen = (): void => {
@@ -485,13 +406,13 @@ export const SFAutocompleteLocation = ({
   };
 
   return (
-    <StyledAutocompleteLocation
+    <StyledAutocomplete
       freeSolo
       disabled={disabled}
       options={options}
       renderInput={renderInput}
       popupIcon={null}
-      closeIcon={<SFIcon icon='Close' size='16' />}
+      clearIcon={<SFIcon icon='Close' size='16' />}
       value={selectedOption}
       inputValue={value.text}
       filterOptions={(
@@ -504,6 +425,7 @@ export const SFAutocompleteLocation = ({
       open={open}
       onOpen={onOpen}
       onClose={(): void => setOpen(false)}
+      PaperComponent={SFAutocompleteLocationPaper}
     />
   );
 };
