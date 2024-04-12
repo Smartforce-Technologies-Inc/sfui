@@ -102,8 +102,6 @@ export const SFPeoplePicker = ({
   onChange,
   ...props
 }: SFPeoplePickerProps): React.ReactElement<SFPeoplePickerProps> => {
-  // const classes = useStyles();
-
   const [asyncOptions, setAsyncOptions] = React.useState<SFPeopleOption[]>([]);
   const [loading, setIsLoading] = React.useState<boolean>(false);
 
