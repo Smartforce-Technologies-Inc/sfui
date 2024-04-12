@@ -1,7 +1,5 @@
 import React from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, ComponentMeta } from '@storybook/react';
-
 import { SFCheckbox, SFCheckboxProps } from './SFCheckbox';
 
 export default {

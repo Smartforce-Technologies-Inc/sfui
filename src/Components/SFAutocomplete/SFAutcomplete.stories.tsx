@@ -1,7 +1,7 @@
 import React from 'react';
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { SFMenuOption } from '../SFSelect/SFSelect';
-import { SFAutocomplete, SFAutocompleteProps } from './SFAutocomplete';
+import { SFAutocomplete } from './SFAutocomplete';
 
 const getOptions = (): SFMenuOption[] => {
   return [
@@ -106,9 +106,9 @@ export default {
     },
     value: {}
   }
-} as Meta;
+} as ComponentMeta<typeof SFAutocomplete>;
 
-const Template: Story<SFAutocompleteProps> = ({ ref, ...args }) => (
+const Template: ComponentStory<typeof SFAutocomplete> = ({ ref, ...args }) => (
   <SFAutocomplete {...args} />
 );
 
@@ -127,7 +127,10 @@ Disabled.args = {
   disabled: true
 };
 
-export const ClearOnBlur: Story<SFAutocompleteProps> = ({ ref, ...args }) => {
+export const ClearOnBlur: ComponentStory<typeof SFAutocomplete> = ({
+  ref,
+  ...args
+}) => {
   const [value, setValue] = React.useState<string>('');
 
   return (

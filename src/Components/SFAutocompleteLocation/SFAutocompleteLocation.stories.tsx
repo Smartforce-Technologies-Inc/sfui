@@ -1,8 +1,7 @@
 import React from 'react';
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 import {
   SFAutocompleteLocation,
-  SFAutocompleteLocationProps,
   SFAutocompleteLocationResult
 } from './SFAutocompleteLocation';
 
@@ -51,11 +50,11 @@ export default {
       }
     }
   }
-} as Meta;
+} as ComponentMeta<typeof SFAutocompleteLocation>;
 
-const AutocompleteLocationTemplate: Story<SFAutocompleteLocationProps> = (
-  args
-) => {
+const AutocompleteLocationTemplate: ComponentStory<
+  typeof SFAutocompleteLocation
+> = (args) => {
   const [value, setValue] = React.useState<SFAutocompleteLocationResult>({
     text: ''
   });

@@ -1,32 +1,66 @@
 import React, { ChangeEvent, Fragment } from 'react';
 import {
-  AutocompleteRenderInputParams,
+  AutocompleteChangeReason,
   AutocompleteInputChangeReason,
-  AutocompleteChangeReason
-} from '@material-ui/lab';
+  AutocompleteRenderInputParams,
+  styled
+} from '@mui/material';
 import { SFChipFieldModal } from './SFChipFieldModal/SFChipFieldModal';
 import { SFChipFieldRender } from './SFChipFieldRender/SFChipFieldRender';
-import { makeStyles } from '@material-ui/core/styles';
 import { StyledAutocompleteChip } from '../SFAutocompleteChip/SFAutocompleteChip';
 import {
   minWidthInputSize,
   SFAutocompleteInput
 } from '../SFAutocompleteChip/SFAutocompleteInput/SFAutocompleteInput';
 
-const chipsDisplayClasses = makeStyles({
-  chipDisplayInline: {
+interface DisplayValuesProps {
+  className?: string;
+  disabled?: boolean;
+  emptyMsg?: string;
+  itemChipDisplay?: 'inline' | 'block';
+  itemChipSize?: 'small' | 'medium';
+  values: ChipFieldValueType[];
+  onDelete: (input: ChipFieldValueType) => void;
+  onEdit?: (value: ChipFieldValueType) => void;
+  isValid?: (value: string) => boolean;
+}
+const DisplayValuesBase = ({
+  className,
+  disabled = false,
+  itemChipSize = 'small',
+  itemChipDisplay = 'inline',
+  emptyMsg,
+  values,
+  onDelete,
+  onEdit,
+  isValid
+}: DisplayValuesProps): React.ReactElement<DisplayValuesProps> => {
+  return (
+    <div className={className}>
+      {values.length !== 0 && (
+        <SFChipFieldRender
+          values={values}
+          isChipFullWidth={itemChipDisplay === 'block'}
+          chipSize={itemChipSize}
+          disabled={disabled}
+          onDelete={onDelete}
+          onEdit={onEdit}
+          isValid={isValid}
+        />
+      )}
+      {emptyMsg && (!values || values.length === 0) && <p>{emptyMsg}</p>}
+    </div>
+  );
+};
+
+const DisplayValues = styled(DisplayValuesBase)(
+  ({ itemChipDisplay = 'inline' }) => ({
     display: 'flex',
     gap: '8px',
     flexWrap: 'wrap',
-    flexDirection: 'row'
-  },
-  chipDisplayBlock: {
-    display: 'flex',
-    gap: '8px',
-    flexWrap: 'wrap',
-    flexDirection: 'column'
-  }
-});
+    flexDirection: itemChipDisplay === 'inline' ? 'row' : 'column'
+  })
+);
 
 export type ChipFieldValueType = {
   value: string;
@@ -75,7 +109,6 @@ export const SFChipListField = ({
   const [isModalOpen, setIsModalOpen] = React.useState<boolean>(false);
   const [editedValue, setEditedValue] = React.useState<ChipFieldValueType>();
   const [inputValue, setInputValue] = React.useState<string>('');
-  const { chipDisplayInline, chipDisplayBlock } = chipsDisplayClasses();
 
   const isFreeSolo = (): boolean => {
     return freeSolo || options.length === 0;
@@ -216,7 +249,7 @@ export const SFChipListField = ({
     value: (ChipFieldValueType | string)[],
     reason: AutocompleteChangeReason
   ): void => {
-    if (reason === 'select-option' || reason === 'create-option') {
+    if (reason === 'selectOption' || reason === 'createOption') {
       const lastItem = value[value.length - 1];
 
       if (typeof lastItem === 'string') {
@@ -244,31 +277,6 @@ export const SFChipListField = ({
     }
   };
 
-  const DisplayValues = (): JSX.Element => {
-    return (
-      <div
-        className={` ${
-          itemChipDisplay === 'block' ? chipDisplayBlock : chipDisplayInline
-        }`}
-      >
-        {savedValues.length !== 0 && (
-          <SFChipFieldRender
-            values={savedValues}
-            isChipFullWidth={itemChipDisplay === 'block'}
-            chipSize={itemChipSize}
-            disabled={disabled}
-            onDelete={deleteValue}
-            onEdit={isEditable ? onEdit : undefined}
-            isValid={isValid}
-          />
-        )}
-        {emptyMessage && (!savedValues || savedValues.length === 0) && (
-          <p>{emptyMessage}</p>
-        )}
-      </div>
-    );
-  };
-
   return (
     <Fragment>
       <SFChipFieldModal
@@ -292,7 +300,7 @@ export const SFChipListField = ({
         onClose={(): void => setIsPopperOpen(false)}
         filterSelectedOptions
         freeSolo={isFreeSolo()}
-        getOptionSelected={(
+        isOptionEqualToValue={(
           option: string,
           value: ChipFieldValueType
         ): boolean => option === value.value}
@@ -324,7 +332,16 @@ export const SFChipListField = ({
           />
         )}
       />
-      <DisplayValues />
+      <DisplayValues
+        disabled={disabled}
+        itemChipSize={itemChipSize}
+        itemChipDisplay={itemChipDisplay}
+        emptyMsg={emptyMessage}
+        values={savedValues}
+        onDelete={deleteValue}
+        onEdit={isEditable ? onEdit : undefined}
+        isValid={isValid}
+      />
     </Fragment>
   );
 };
