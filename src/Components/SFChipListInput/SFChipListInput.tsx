@@ -1,9 +1,9 @@
 import React, { ChangeEvent, Fragment } from 'react';
 import {
-  AutocompleteRenderInputParams,
   AutocompleteInputChangeReason,
-  AutocompleteChangeReason
-} from '@material-ui/lab';
+  AutocompleteChangeReason,
+  AutocompleteRenderInputParams
+} from '@mui/material';
 import { SFChipFieldRender } from '../SFChipListField/SFChipFieldRender/SFChipFieldRender';
 import { StyledAutocompleteChip } from '../SFAutocompleteChip/SFAutocompleteChip';
 import {
@@ -145,7 +145,7 @@ export const SFChipListInput = ({
     value: (ChipInputFieldValueType | string)[],
     reason: AutocompleteChangeReason
   ): void => {
-    if (reason === 'select-option' || reason === 'create-option') {
+    if (reason === 'selectOption' || reason === 'createOption') {
       const lastItem = value[value.length - 1];
 
       if (typeof lastItem === 'string') {
@@ -188,7 +188,7 @@ export const SFChipListInput = ({
         onClose={(): void => setIsPopperOpen(false)}
         filterSelectedOptions
         freeSolo={isFreeSolo()}
-        getOptionSelected={(
+        isOptionEqualToValue={(
           option: string,
           value: ChipInputFieldValueType
         ): boolean => option === value.value}

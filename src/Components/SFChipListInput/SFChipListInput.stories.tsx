@@ -1,12 +1,7 @@
 import React from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ChipListOptions } from '../../Storybook/constants';
-import {
-  ChipInputFieldValueType,
-  SFChipListInput,
-  SFChipListInputProps
-} from './SFChipListInput';
+import { ChipInputFieldValueType, SFChipListInput } from './SFChipListInput';
 
 export default {
   title: 'Components/SFChipListInput',
@@ -60,7 +55,7 @@ export default {
       }
     }
   }
-} as Meta;
+} as ComponentMeta<typeof SFChipListInput>;
 
 const ChipListItems = [
   { value: 'This War of Mine' },
@@ -71,7 +66,7 @@ const ChipListItems = [
   { value: 'The Godfather', isNew: true }
 ];
 
-const Template: Story<SFChipListInputProps> = (args) => {
+const Template: ComponentStory<typeof SFChipListInput> = (args) => {
   const [items, setItems] = React.useState<
     ChipInputFieldValueType[] | undefined
   >(args.items);
