@@ -16,6 +16,7 @@ module.exports = {
     '../src/Components/SFCheckbox/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFChip/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFChipListField/*.stories.@(js|jsx|ts|tsx)',
+    '../src/Components/SFChipListInput/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFDialog/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFDrawer/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFIcon/*.stories.@(js|jsx|ts|tsx)',
