@@ -1,5 +1,5 @@
 import React from 'react';
-import { Story, ComponentMeta } from '@storybook/react';
+import { ComponentMeta } from '@storybook/react';
 import { SFDrawer, SFDrawerProps } from './SFDrawer';
 import { SFIconButton } from '../SFIconButton/SFIconButton';
 import { SFGrey } from '../../SFColors/SFColors';

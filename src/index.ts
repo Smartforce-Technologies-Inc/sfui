@@ -11,7 +11,7 @@ export * from './Components/SFButton/SFButton';
 export * from './Components/SFCard/SFCard';
 export * from './Components/SFChip/SFChip';
 // export * from './Components/SFChipListInput/SFChipListInput';
-// export * from './Components/SFChipListField/SFChipListField';
+export * from './Components/SFChipListField/SFChipListField';
 export * from './Components/SFCheckbox/SFCheckbox';
 export * from './Components/SFCounter/SFCounter';
 // export * from './Components/SFDatePicker/SFDatePicker';

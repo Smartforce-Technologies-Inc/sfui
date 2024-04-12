@@ -1,9 +1,6 @@
 import React from 'react';
-import { Story, Meta } from '@storybook/react/types-6-0';
-import {
-  SFAutocompleteChip,
-  SFAutocompleteChipProps
-} from './SFAutocompleteChip';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { SFAutocompleteChip } from './SFAutocompleteChip';
 import { ChipListOptions } from '../../Storybook/constants';
 
 export default {
@@ -49,9 +46,9 @@ export default {
       }
     }
   }
-} as Meta;
+} as ComponentMeta<typeof SFAutocompleteChip>;
 
-const Template: Story<SFAutocompleteChipProps> = (args) => {
+const Template: ComponentStory<typeof SFAutocompleteChip> = (args) => {
   const [values, setValues] = React.useState<string[]>(args.value);
 
   return <SFAutocompleteChip {...args} value={values} onChange={setValues} />;
