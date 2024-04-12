@@ -25,6 +25,7 @@ module.exports = {
     '../src/Components/SFNumericField/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFPanel/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFPaper/*.stories.@(js|jsx|ts|tsx)',
+    '../src/Components/SFPeoplePicker/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFRadioGroup/SFRadio/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFRadioGroup/*.stories.@(js|jsx|ts|tsx)',
     '../src/Components/SFScrollable/*.stories.@(js|jsx|ts|tsx)',

@@ -112,7 +112,7 @@ interface GeolocationPosition {
   };
 }
 
-const SFAutocompleteLocationPaper = styled(SFAutocompletePaper)({
+export const SFAutocompleteLocationPaper = styled(SFAutocompletePaper)({
   '.MuiAutocomplete-listbox': {
     '.MuiAutocomplete-option': {
       padding: '6px 24px',
