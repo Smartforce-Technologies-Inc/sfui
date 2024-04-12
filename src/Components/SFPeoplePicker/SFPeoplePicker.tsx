@@ -1,49 +1,32 @@
 import * as React from 'react';
-import { makeStyles, Theme, withStyles } from '@material-ui/core/styles';
 import { SFTextField } from '../SFTextField/SFTextField';
 import { SFIcon } from '../SFIcon/SFIcon';
-import {
-  AutocompleteInputChangeReason,
-  AutocompleteRenderInputParams
-} from '@material-ui/lab';
-import { SFBlue, SFGrey, SFTextWhite } from '../../SFColors/SFColors';
 import { DebouncedFunc } from 'lodash';
 import debounce from 'lodash.debounce';
 import { StyledAutocomplete } from '../SFAutocomplete/SFAutocomplete';
+import {
+  AutocompleteInputChangeReason,
+  AutocompleteRenderInputParams,
+  styled
+} from '@mui/material';
+import { SFPeoplePickerOption } from './SFPeoplePickerOption/SFPeoplePickerOption';
+import { SFAutocompleteLocationPaper } from '../SFAutocompleteLocation/SFAutocompleteLocation';
 
-export const StyledPeopleAutocomplete = withStyles({
-  option: {
-    padding: '6px 24px'
-  },
-  endAdornment: {
-    '& .MuiAutocomplete-popupIndicator': {
+const StyledPeopleAutocomplete = styled(StyledAutocomplete)({
+  '.MuiAutocomplete-endAdornment': {
+    '.MuiAutocomplete-popupIndicator': {
       display: 'none'
     }
   }
-})(StyledAutocomplete);
+});
 
-const getStringAbbreviation = (value: string): string => {
-  const abbreviation = value.split(' ');
-  let stringAbbreviation = '';
-
-  if (abbreviation) {
-    for (let i = 0; i < 3; i++) {
-      if (abbreviation[i]) {
-        stringAbbreviation += abbreviation[i][0];
-      } else {
-        break;
-      }
-    }
-  }
-
-  return stringAbbreviation;
-};
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type PeopleOptionsFn = (url: string, fetchInit?: RequestInit) => Promise<any[]>;
 
 const getPeopleOptions = async (
   url: string,
   fetchInit?: RequestInit
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): Promise<any[]> => {
   try {
     const fetchResp = await fetch(url, fetchInit);
@@ -56,7 +39,9 @@ const getPeopleOptions = async (
 };
 
 const memoizePeopleFn = (fn: PeopleOptionsFn): PeopleOptionsFn => {
-  const cache = {};
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const cache: Record<string, any> = {};
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return async (url: string, fetchInit?: RequestInit): Promise<any[]> => {
     if (url in cache) {
       return cache[url];
@@ -73,36 +58,10 @@ const memoizePeopleFn = (fn: PeopleOptionsFn): PeopleOptionsFn => {
   };
 };
 
-const useStyles = makeStyles((theme: Theme) => ({
-  menu: {
-    display: 'grid',
-    gridTemplateColumns: 'auto 1fr',
-    gap: '15px',
-    alignItems: 'center'
-  },
-  avatar: {
-    backgroundColor: SFBlue[400],
-    width: '42px',
-    height: '42px',
-    borderRadius: '50%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    fontSize: '14px',
-    lineHeight: '21px',
-    fontWeight: 700,
-    color: SFTextWhite
-  },
-  name: {
-    fontSize: '16px',
-    lineHeight: '24px',
-    color: theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]
-  }
-}));
-
 export interface SFPeopleOption {
   name: string;
   avatarUrl?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   asyncObject?: any;
 }
 
@@ -124,6 +83,7 @@ interface SFPeoplePickerWithOptionsProps extends SFPeoplePickerBaseProps {
 interface SFPeoplePickerAsyncProps extends SFPeoplePickerBaseProps {
   isAsync: true;
   formatUrlQuery: (value: string) => string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   formatOption: (option: any) => SFPeopleOption;
   fetchInit?: RequestInit;
   minChar?: number;
@@ -142,7 +102,7 @@ export const SFPeoplePicker = ({
   onChange,
   ...props
 }: SFPeoplePickerProps): React.ReactElement<SFPeoplePickerProps> => {
-  const classes = useStyles();
+  // const classes = useStyles();
 
   const [asyncOptions, setAsyncOptions] = React.useState<SFPeopleOption[]>([]);
   const [loading, setIsLoading] = React.useState<boolean>(false);
@@ -161,7 +121,8 @@ export const SFPeoplePicker = ({
       try {
         const options = await refGetOptions.current(url, props.fetchInit);
         return options?.length
-          ? options.map((option: any) => {
+          ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            options.map((option: any) => {
               const newObj: SFPeopleOption = props.formatOption(option);
               if (!newObj.asyncObject) {
                 newObj.asyncObject = option;
@@ -176,28 +137,6 @@ export const SFPeoplePicker = ({
     } else {
       return [];
     }
-  };
-
-  const renderOption = (option: SFPeopleOption): React.ReactNode => {
-    return (
-      <div className={classes.menu}>
-        <div
-          className={classes.avatar}
-          style={{
-            backgroundImage: option.avatarUrl
-              ? `url("${option.avatarUrl}")`
-              : '',
-            backgroundSize: 'cover'
-          }}
-        >
-          {!option.avatarUrl && (
-            <span>{getStringAbbreviation(option.name)}</span>
-          )}
-        </div>
-
-        <div className={classes.name}>{option.name}</div>
-      </div>
-    );
   };
 
   const renderInput = (
@@ -251,13 +190,16 @@ export const SFPeoplePicker = ({
       options={props.isAsync ? asyncOptions : props.options}
       renderInput={renderInput}
       popupIcon={null}
-      closeIcon={<SFIcon icon='Close' size='16' />}
+      clearIcon={<SFIcon icon='Close' size='16' />}
       value={value}
       onInputChange={onInputChange}
       onChange={onPeopleChange}
       getOptionLabel={(option: SFPeopleOption): string => option.name}
-      renderOption={renderOption}
+      renderOption={(props, option: SFPeopleOption): React.ReactNode => (
+        <SFPeoplePickerOption liProps={props} option={option} />
+      )}
       filterOptions={(options: SFPeopleOption[]): SFPeopleOption[] => options}
+      PaperComponent={SFAutocompleteLocationPaper}
     />
   );
 };
