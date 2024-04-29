@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { Tooltip, TooltipProps } from '@material-ui/core';
 import { SFGrey, SFRed } from '../../SFColors/SFColors';
+import { mergeClasses } from '../../Helpers';
 
 const getBackgroundColor = (
   props: Partial<SFTooltipProps>,
@@ -88,13 +89,18 @@ export interface SFTooltipProps extends TooltipProps {
 
 export const SFTooltip = ({
   className,
+  classes,
   title,
   content,
   sfColor = 'default',
   arrow = true,
   ...props
 }: SFTooltipProps): React.ReactElement<SFTooltipProps> => {
-  const { title: classTitle, content: classContent, ...classes } = useStyles({
+  const {
+    title: classTitle,
+    content: classContent,
+    ...customClasses
+  } = useStyles({
     sfColor
   });
 
@@ -107,8 +113,7 @@ export const SFTooltip = ({
 
   return (
     <Tooltip
-      className={className}
-      classes={classes}
+      classes={mergeClasses(customClasses, classes)}
       arrow={arrow}
       title={tooltipTitle}
       {...props}
