@@ -3,6 +3,9 @@ import { Theme, withStyles, makeStyles } from '@material-ui/core/styles';
 import { AutocompleteRenderInputParams } from '@material-ui/lab';
 import debounce from 'lodash.debounce';
 import parse from 'autosuggest-highlight/parse';
+import TurfCircle from '@turf/circle';
+import booleanIntersects from '@turf/boolean-intersects';
+import { point as TurfPoint } from '@turf/helpers';
 import { SFIcon } from '../SFIcon/SFIcon';
 import { SFTextField } from '../SFTextField/SFTextField';
 import {
@@ -240,6 +243,14 @@ export interface SFAutocompleteLocationResult {
   placeDetails?: SFAutocompleteLocationPlaceDetails;
 }
 
+export interface CurrentLocationLimit {
+  center: {
+    latitude: number;
+    longitude: number;
+  };
+  distance: number;
+}
+
 export interface SFAutocompleteLocationProps {
   label: string;
   value: SFAutocompleteLocationResult;
@@ -250,6 +261,7 @@ export interface SFAutocompleteLocationProps {
   helperText?: string;
   currentLocation?: boolean;
   currentLocationType?: 'address' | 'route';
+  currentLocationLimit?: CurrentLocationLimit;
   minChar?: number;
   showSetLocation?: boolean;
   multiline?: boolean;
@@ -267,6 +279,7 @@ export const SFAutocompleteLocation = ({
   helperText,
   currentLocation = false,
   currentLocationType = 'route',
+  currentLocationLimit,
   minChar = 9,
   showSetLocation = false,
   multiline = false,
@@ -274,12 +287,8 @@ export const SFAutocompleteLocation = ({
   onSetLocation
 }: SFAutocompleteLocationProps): React.ReactElement<SFAutocompleteLocationResult> => {
   const classes = useStyles();
-  const autocompleteService = React.useRef<google.maps.places.AutocompleteService>();
-  const placesService = React.useRef<google.maps.places.PlacesService>();
-  const geocoderService = React.useRef<google.maps.Geocoder>();
 
   const [open, setOpen] = React.useState<boolean>(false);
-
   const [selectedOption, setSelectedOption] = React.useState<
     Partial<google.maps.places.AutocompletePrediction>
   >({});
@@ -290,6 +299,8 @@ export const SFAutocompleteLocation = ({
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const refGetPlacePredictions = React.useRef<any>();
+  const autocompleteService = React.useRef<google.maps.places.AutocompleteService>();
+  const placesService = React.useRef<google.maps.places.PlacesService>();
 
   React.useEffect(() => {
     refGetPlacePredictions.current = asyncDebounce(
@@ -328,6 +339,8 @@ export const SFAutocompleteLocation = ({
       typeof window.google === 'object' &&
       typeof window.google.maps === 'object'
     ) {
+      const geocoderService = new google.maps.Geocoder();
+
       autocompleteService.current = new window.google.maps.places.AutocompleteService();
 
       // The service needs an html div or a map as an argument
@@ -340,8 +353,6 @@ export const SFAutocompleteLocation = ({
         currentLocation &&
         navigator.geolocation
       ) {
-        geocoderService.current = new google.maps.Geocoder();
-
         const onLocationError = (): void =>
           console.error("Can't get GeolocationPosition: ");
 
@@ -351,8 +362,32 @@ export const SFAutocompleteLocation = ({
             lng: pos.coords.longitude
           };
 
-          if (geocoderService.current) {
-            geocoderService.current.geocode(
+          if (currentLocationLimit) {
+            const turfCurrentPoint = TurfPoint([latlng.lng, latlng.lat]);
+
+            const turfCenter = TurfPoint([
+              currentLocationLimit.center.longitude,
+              currentLocationLimit.center.latitude
+            ]);
+
+            const tolerance = TurfCircle(
+              turfCenter,
+              currentLocationLimit.distance,
+              {
+                units: 'meters'
+              }
+            );
+
+            if (!booleanIntersects(tolerance, turfCurrentPoint)) {
+              console.error(
+                'Geolocation API results dont accomplish the limit requirement'
+              );
+              return;
+            }
+          }
+
+          if (geocoderService) {
+            geocoderService.geocode(
               { location: latlng },
               (
                 results: google.maps.GeocoderResult[],
@@ -410,7 +445,7 @@ export const SFAutocompleteLocation = ({
                     console.error('Geocoder: no results found');
                   }
                 } else {
-                  console.error('Geocoder: failed due to: ' + status);
+                  console.error('Geolocation failed due to: ' + status);
                 }
               }
             );

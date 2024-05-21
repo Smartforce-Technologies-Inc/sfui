@@ -55,6 +55,11 @@ export default {
       table: {
         disable: true
       }
+    },
+    currentLocationLimit: {
+      table: {
+        disable: true
+      }
     }
   }
 } as Meta;
