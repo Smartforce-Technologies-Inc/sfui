@@ -454,7 +454,10 @@ export const SFAutocompleteLocation = ({
 
         navigator.geolocation.getCurrentPosition(
           onLocationSuccess,
-          onLocationError
+          onLocationError,
+          {
+            enableHighAccuracy: true
+          }
         );
       } else if (value.text && value.text.length > 0) {
         fetchOptions();
