@@ -13,6 +13,20 @@ import {
 import { hexToRgba } from '../../Helpers';
 import { StyledAutocomplete } from '../SFAutocomplete/SFAutocomplete';
 
+function isSameState(
+  addressComponents: google.maps.GeocoderAddressComponent[],
+  state?: string
+): boolean {
+  if (!state) return true;
+
+  return !!addressComponents.find(
+    (c) =>
+      (c.types.includes('administrative_area_level_1') ||
+        c.types.includes('administrative_area_level_2')) &&
+      c.short_name === state
+  );
+}
+
 /* eslint-disable */
 // Needed to resolve lodash issue with async
 // https://github.com/lodash/lodash/issues/4815
@@ -250,6 +264,7 @@ export interface SFAutocompleteLocationProps {
   helperText?: string;
   currentLocation?: boolean;
   currentLocationType?: 'address' | 'route';
+  currentLocationState?: string;
   minChar?: number;
   showSetLocation?: boolean;
   multiline?: boolean;
@@ -267,6 +282,7 @@ export const SFAutocompleteLocation = ({
   helperText,
   currentLocation = false,
   currentLocationType = 'route',
+  currentLocationState,
   minChar = 9,
   showSetLocation = false,
   multiline = false,
@@ -274,12 +290,8 @@ export const SFAutocompleteLocation = ({
   onSetLocation
 }: SFAutocompleteLocationProps): React.ReactElement<SFAutocompleteLocationResult> => {
   const classes = useStyles();
-  const autocompleteService = React.useRef<google.maps.places.AutocompleteService>();
-  const placesService = React.useRef<google.maps.places.PlacesService>();
-  const geocoderService = React.useRef<google.maps.Geocoder>();
 
   const [open, setOpen] = React.useState<boolean>(false);
-
   const [selectedOption, setSelectedOption] = React.useState<
     Partial<google.maps.places.AutocompletePrediction>
   >({});
@@ -290,6 +302,8 @@ export const SFAutocompleteLocation = ({
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const refGetPlacePredictions = React.useRef<any>();
+  const autocompleteService = React.useRef<google.maps.places.AutocompleteService>();
+  const placesService = React.useRef<google.maps.places.PlacesService>();
 
   React.useEffect(() => {
     refGetPlacePredictions.current = asyncDebounce(
@@ -328,6 +342,8 @@ export const SFAutocompleteLocation = ({
       typeof window.google === 'object' &&
       typeof window.google.maps === 'object'
     ) {
+      const geocoderService = new google.maps.Geocoder();
+
       autocompleteService.current = new window.google.maps.places.AutocompleteService();
 
       // The service needs an html div or a map as an argument
@@ -340,8 +356,6 @@ export const SFAutocompleteLocation = ({
         currentLocation &&
         navigator.geolocation
       ) {
-        geocoderService.current = new google.maps.Geocoder();
-
         const onLocationError = (): void =>
           console.error("Can't get GeolocationPosition: ");
 
@@ -351,8 +365,8 @@ export const SFAutocompleteLocation = ({
             lng: pos.coords.longitude
           };
 
-          if (geocoderService.current) {
-            geocoderService.current.geocode(
+          if (geocoderService) {
+            geocoderService.geocode(
               { location: latlng },
               (
                 results: google.maps.GeocoderResult[],
@@ -372,18 +386,31 @@ export const SFAutocompleteLocation = ({
                   );
 
                   if (result) {
-                    setSelectedOption({
-                      description: result.formatted_address,
-                      // eslint-disable-next-line
-                      place_id: result.place_id
-                    });
-
                     if (placesService.current) {
                       getPlaceDetails(placesService.current, result.place_id)
                         .then(
                           (
                             placeDetailsResult: google.maps.places.PlaceResult
                           ) => {
+                            if (
+                              placeDetailsResult.address_components &&
+                              !isSameState(
+                                placeDetailsResult.address_components,
+                                currentLocationState
+                              )
+                            ) {
+                              console.error(
+                                'Geolocation coordinates not in valid state'
+                              );
+                              return;
+                            }
+
+                            setSelectedOption({
+                              description: result.formatted_address,
+                              // eslint-disable-next-line
+                              place_id: result.place_id
+                            });
+
                             onChange({
                               text: result.formatted_address,
                               placeDetails: {
@@ -398,7 +425,13 @@ export const SFAutocompleteLocation = ({
                         .catch((e) =>
                           console.error('PlacesService::getPlaceDetails', e)
                         );
-                    } else {
+                    } else if (!currentLocationState) {
+                      setSelectedOption({
+                        description: result.formatted_address,
+                        // eslint-disable-next-line
+                        place_id: result.place_id
+                      });
+
                       onChange({
                         text: result.formatted_address,
                         placeDetails: {
@@ -410,7 +443,7 @@ export const SFAutocompleteLocation = ({
                     console.error('Geocoder: no results found');
                   }
                 } else {
-                  console.error('Geocoder: failed due to: ' + status);
+                  console.error('Geolocation failed due to: ' + status);
                 }
               }
             );
@@ -419,7 +452,10 @@ export const SFAutocompleteLocation = ({
 
         navigator.geolocation.getCurrentPosition(
           onLocationSuccess,
-          onLocationError
+          onLocationError,
+          {
+            enableHighAccuracy: true
+          }
         );
       } else if (value.text && value.text.length > 0) {
         fetchOptions();
