@@ -136,7 +136,9 @@ const StyledTextField = withStyles((theme: Theme) => ({
   }
 }))(TextField);
 
-export interface SFTextFieldProps extends Partial<OutlinedTextFieldProps> {}
+export interface SFTextFieldProps extends Partial<OutlinedTextFieldProps> {
+  label: string;
+}
 
 export const SFTextField = ({
   variant,
@@ -153,6 +155,7 @@ export const SFTextField = ({
       variant='outlined'
       minRows={props.multiline ? rows : 1}
       autoComplete={autoComplete}
+      inputProps={{ 'aria-label': props.label }}
     />
   );
 };

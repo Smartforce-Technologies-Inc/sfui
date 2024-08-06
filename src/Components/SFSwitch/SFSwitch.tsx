@@ -145,6 +145,7 @@ export const SFSwitch = ({
   sfColor = 'primary',
   label,
   size = 'medium',
+  'aria-label': ariaLabel,
   ...props
 }: SFSwitchProps): React.ReactElement<SFSwitchProps> => {
   return (
@@ -153,6 +154,7 @@ export const SFSwitch = ({
         control={
           <StyledSwitch
             {...props}
+            inputProps={{ 'aria-label': ariaLabel }}
             color={sfColor}
             disableRipple
             disableTouchRipple

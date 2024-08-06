@@ -38,6 +38,7 @@ export interface SFSelectProps extends SelectProps {
   options: SFMenuOption[];
   value?: string;
   helperText?: React.ReactNode;
+  label: string;
 }
 
 export const SFSelect = ({

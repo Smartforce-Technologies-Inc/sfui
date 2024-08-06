@@ -4,10 +4,9 @@ import { hexToRgba } from '../../../Helpers';
 import { SFGrey } from '../../../SFColors/SFColors';
 import { SFIcon } from '../../SFIcon/SFIcon';
 
-export interface SFCounterButtonProps {
-  disabled: boolean;
+export interface SFCounterButtonProps
+  extends Omit<React.HTMLProps<HTMLButtonElement>, 'type'> {
   icon: 'Add' | 'Remove';
-  onClick: () => void;
 }
 
 const counterButtonStyles = makeStyles((theme: Theme) => ({
@@ -74,14 +73,17 @@ const counterButtonStyles = makeStyles((theme: Theme) => ({
 }));
 
 export const SFCounterButton = ({
-  disabled,
   icon,
-  onClick
+  disabled,
+  onClick,
+  ...props
 }: SFCounterButtonProps): React.ReactElement<SFCounterButtonProps> => {
   const classes = counterButtonStyles();
 
   return (
     <button
+      {...props}
+      type='button'
       className={`${classes.button} ${disabled ? classes.buttonDisabled : ''} ${
         icon === 'Add' ? classes.right : classes.left
       }`}

@@ -12,7 +12,8 @@ export default {
   args: {
     sfColor: 'grey',
     sfIcon: 'Bell',
-    rotate: 'none'
+    rotate: 'none',
+    'aria-label': 'Icon button'
   },
   argTypes: {
     onClick: { action: 'onClick', table: { disable: true } },

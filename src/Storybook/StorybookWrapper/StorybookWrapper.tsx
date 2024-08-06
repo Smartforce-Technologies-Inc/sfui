@@ -142,7 +142,11 @@ const StorybookWrapper = ({
             >
               SFUI Library
             </h2>
-            <SFSwitch checked={nightMode} onChange={toggleSwitch} />
+            <SFSwitch
+              checked={nightMode}
+              onChange={toggleSwitch}
+              aria-label='Night mode switch'
+            />
           </div>
           <br />
         </div>

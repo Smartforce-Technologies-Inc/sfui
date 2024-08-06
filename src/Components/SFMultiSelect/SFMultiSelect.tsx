@@ -38,6 +38,7 @@ export interface SFMultiSelectProps extends SelectProps {
   defaultValue?: string[];
   value?: string[];
   helperText?: React.ReactNode;
+  label: string;
 }
 
 export const SFMultiSelect = ({

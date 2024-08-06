@@ -189,6 +189,9 @@ export const SFDateSlider = ({
     ]);
   };
 
+  const getAriaValueText = (value: number): string =>
+    startDateM.clone().add(value, 'minutes').toDate().toDateString();
+
   return (
     <div className={classes.root}>
       <div className={classes.dates}>
@@ -197,6 +200,7 @@ export const SFDateSlider = ({
       </div>
       <div className={classes.wrapper}>
         <StyledSlider
+          {...props}
           min={0}
           max={max}
           step={null}
@@ -205,7 +209,7 @@ export const SFDateSlider = ({
           value={internaValue}
           marks={marks}
           onChange={onSilderChange}
-          {...props}
+          getAriaValueText={getAriaValueText}
         />
       </div>
     </div>

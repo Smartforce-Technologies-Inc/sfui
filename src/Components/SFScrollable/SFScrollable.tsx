@@ -405,6 +405,7 @@ export const SFScrollable = React.forwardRef(
           className={`${classes.container} ${containerClassName || ''}`}
           ref={scrollHostRef}
           onScroll={onHostScroll}
+          tabIndex={0}
         >
           {children}
         </div>

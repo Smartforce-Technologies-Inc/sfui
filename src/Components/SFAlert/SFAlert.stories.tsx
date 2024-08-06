@@ -8,7 +8,8 @@ export default {
   parameters: { controls: { sort: 'alpha' } },
   args: {
     title: 'Lorem ipsum dolor sit amet.',
-    type: 'error'
+    type: 'error',
+    closeButtonProps: { 'aria-label': 'Close alert' }
   },
   argTypes: {
     children: {

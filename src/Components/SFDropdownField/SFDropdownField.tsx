@@ -97,6 +97,7 @@ export interface SFDropdownFieldProps {
   sfColor: 'blue' | 'grey';
   size?: 'medium' | 'large';
   variant: 'outlined' | 'contained';
+  openButtonAriaLabel?: string;
 }
 
 export const SFDropdownField = ({
@@ -106,7 +107,8 @@ export const SFDropdownField = ({
   renderSelectedOption,
   sfColor = 'blue',
   size = 'medium',
-  variant = 'contained'
+  variant = 'contained',
+  openButtonAriaLabel
 }: SFDropdownFieldProps): React.ReactElement<SFDropdownFieldProps> => {
   const classes = useStyles({ variant, sfColor });
 
@@ -157,6 +159,7 @@ export const SFDropdownField = ({
           aria-controls={isMenuOpen ? 'dropdown-field-menu' : undefined}
           aria-expanded={isMenuOpen ? 'true' : undefined}
           aria-haspopup='menu'
+          aria-label={openButtonAriaLabel}
           onClick={onToggleMenu}
         >
           <SFIcon icon='Down-2' size={13} />
