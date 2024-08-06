@@ -11,7 +11,6 @@ import {
   SFBlueMainDark,
   SFBlueMainLight,
   SFGrey,
-  SFRed,
   SFSurfaceLight,
   SFTextBlack,
   SFTextWhite
