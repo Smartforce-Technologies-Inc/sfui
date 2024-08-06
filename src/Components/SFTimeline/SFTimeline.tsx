@@ -75,7 +75,6 @@ export interface SFTimelineItem {
   title: string;
   subtitle: string;
   children?: React.ReactElement;
-  onClick: (item: SFTimelineItem, index: number) => void;
 }
 
 export interface SFTimelineProps {
