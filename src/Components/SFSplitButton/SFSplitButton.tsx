@@ -89,6 +89,7 @@ export interface SFSplitButtonProps {
   variant: 'outlined' | 'contained';
   sfColor: 'blue' | 'grey';
   size?: 'medium' | 'large';
+  openButtonAriaLabel?: string;
 }
 
 export const SFSplitButton = ({
@@ -96,7 +97,8 @@ export const SFSplitButton = ({
   defaultSelected = 0,
   variant = 'contained',
   sfColor = 'blue',
-  size = 'medium'
+  size = 'medium',
+  openButtonAriaLabel
 }: SFSplitButtonProps): React.ReactElement<SFSplitButtonProps> => {
   const classes = useStyles({ variant, sfColor });
 
@@ -145,6 +147,7 @@ export const SFSplitButton = ({
           aria-expanded={isMenuOpen ? 'true' : undefined}
           aria-haspopup='menu'
           onClick={onToggleMenu}
+          aria-label={openButtonAriaLabel}
         >
           <SFIcon icon='Down-2' size={13} />
         </SFButton>

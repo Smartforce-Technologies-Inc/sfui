@@ -36,7 +36,8 @@ export default {
   component: SFSplitButton,
   parameters: { controls: { sort: 'alpha' } },
   args: {
-    options: getOptions()
+    options: getOptions(),
+    openButtonAriaLabel: 'Open options'
   },
   argTypes: {
     sfColor: {

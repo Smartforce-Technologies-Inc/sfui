@@ -8,7 +8,10 @@ export default {
   parameters: { controls: { sort: 'alpha' } },
   args: {
     value: 0,
-    disabled: false
+    disabled: false,
+    decrementButtonProps: { 'aria-label': 'Decrement value' },
+    incrementButtonProps: { 'aria-label': 'Increment value' },
+    numericFieldProps: { inputProps: { 'aria-label': 'Counter input value' } }
   },
   argTypes: {
     onChange: {
@@ -22,6 +25,7 @@ export default {
 
 const Template: Story<SFCounterProps> = (args) => {
   const [value, setValue] = React.useState<number>(args.value);
+  console.log(args);
   return (
     <SFCounter
       {...args}

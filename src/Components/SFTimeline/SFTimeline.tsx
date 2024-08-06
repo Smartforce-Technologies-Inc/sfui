@@ -41,9 +41,7 @@ const StyledTimelineContent = withStyles((theme: Theme) => ({
 
 const StyledTimelineItem = withStyles(() => ({
   root: {
-    gap: '3px',
     minHeight: 'auto',
-
     '&:hover': {
       '@media (hover: hover)': {
         cursor: 'pointer'
@@ -77,6 +75,7 @@ export interface SFTimelineItem {
   title: string;
   subtitle: string;
   children?: React.ReactElement;
+  onClick: (item: SFTimelineItem, index: number) => void;
 }
 
 export interface SFTimelineProps {
@@ -116,6 +115,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   notSelectable: {
     cursor: 'auto',
     backgroundColor: 'transparent !important'
+  },
+  item: {
+    gap: '3px',
+    display: 'flex',
+    flex: 1
   }
 }));
 
@@ -138,15 +142,15 @@ export const SFTimeline = ({
           (index === 0 && itemsLength > 1);
 
         return (
-          <div
-            key={`timeline-item-${index}`}
-            onClick={
-              selectable
-                ? (): void => onItemClick && onItemClick(item, index)
-                : undefined
-            }
-          >
-            <StyledTimelineItem>
+          <StyledTimelineItem key={`timeline-item-${index}`}>
+            <div
+              className={classes.item}
+              onClick={
+                selectable
+                  ? (): void => onItemClick && onItemClick(item, index)
+                  : undefined
+              }
+            >
               <TimelineSeparator>
                 <StyledTimelineDot />
                 {hasConnector && <StyledTimelineConnector />}
@@ -165,8 +169,8 @@ export const SFTimeline = ({
                 {item.children}
                 <p className={classes.subtitle}>{item.subtitle}</p>
               </StyledTimelineContent>
-            </StyledTimelineItem>
-          </div>
+            </div>
+          </StyledTimelineItem>
         );
       })}
     </StyledTimeline>

@@ -159,22 +159,30 @@ const BadgeTemplate: Story<SFBadgeProps> = ({ overlap, ...args }) => {
   return (
     <Fragment>
       {headerNote()}
-      <h4>Default config</h4>
+      <h3>Default config</h3>
       <div style={{ display: 'flex', gap: '30px', alignItems: 'center' }}>
         <SFBadge {...args}>
           <SFIcon icon='Bell' />
         </SFBadge>
         <SFBadge {...args}>
-          <SFIconButton sfSize='medium' sfIcon='Bell' />
+          <SFIconButton
+            aria-label='Notification icon button'
+            sfSize='medium'
+            sfIcon='Bell'
+          />
         </SFBadge>
       </div>
-      <h4>Position adjusted</h4>
+      <h3>Position adjusted</h3>
       <div style={{ display: 'flex', gap: '30px', alignItems: 'center' }}>
         <SFBadge {...args}>
           <SFIcon icon='Bell' />
         </SFBadge>
         <SFBadge className={style.custom} {...args}>
-          <SFIconButton sfSize='medium' sfIcon='Bell' />
+          <SFIconButton
+            aria-label='Notification icon button'
+            sfSize='medium'
+            sfIcon='Bell'
+          />
         </SFBadge>
       </div>
     </Fragment>

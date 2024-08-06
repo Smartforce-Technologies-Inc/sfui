@@ -128,6 +128,7 @@ const StyledTimePicker = withStyles((theme: Theme) => ({
 }))(KeyboardTimePicker);
 
 export interface SFTimeFieldProps extends KeyboardTimePickerProps {
+  label: string;
   onChange: (
     date: SFMaterialUiPickersDate | null,
     value?: string | null
@@ -148,7 +149,10 @@ export const SFTimeField = ({
         inputVariant='filled'
         disableToolbar
         mask={mask}
-        keyboardIcon={null}
+        InputAdornmentProps={{
+          style: { display: 'none ' }
+        }}
+        inputProps={{ 'aria-label': props.label }}
       />
     </MuiPickersUtilsProvider>
   );

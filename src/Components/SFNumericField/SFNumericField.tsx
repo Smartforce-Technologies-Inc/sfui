@@ -42,14 +42,20 @@ export const SFNumericField = ({
   numberFormatProps,
   allowDecimals = true,
   allowNegative = false,
+  inputProps,
   ...props
 }: SFNumericFieldProps): React.ReactElement<SFNumericFieldProps> => {
   return (
     <SFTextField
       {...props}
-      inputProps={{ ...numberFormatProps, allowDecimals, allowNegative }}
       InputProps={{
-        inputComponent: NumberFormatCustom as any
+        inputComponent: NumberFormatCustom as any,
+        inputProps: {
+          ...numberFormatProps,
+          'aria-label': inputProps?.['aria-label'] || props.label,
+          allowDecimals,
+          allowNegative
+        }
       }}
     />
   );

@@ -1,8 +1,14 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { SFNumericField } from '../SFNumericField/SFNumericField';
-import { SFCounterButton } from './SFCounterButton/SFCounterButton';
+import {
+  SFNumericField,
+  SFNumericFieldProps
+} from '../SFNumericField/SFNumericField';
+import {
+  SFCounterButton,
+  SFCounterButtonProps
+} from './SFCounterButton/SFCounterButton';
 
 const counterStyles = makeStyles({
   counter: {
@@ -42,11 +48,23 @@ const counterStyles = makeStyles({
 export interface SFCounterProps {
   disabled?: boolean;
   value: number;
+  decrementButtonProps?: Partial<
+    Omit<SFCounterButtonProps, 'icon' | 'disabled' | 'onClick'>
+  >;
+  incrementButtonProps?: Partial<
+    Omit<SFCounterButtonProps, 'icon' | 'disabled' | 'onClick'>
+  >;
+  numericFieldProps?: Partial<
+    Omit<SFNumericFieldProps, 'onChange' | 'disabled' | 'value'>
+  >;
   onChange: (value: number) => void;
 }
 
 export const SFCounter = ({
   disabled = false,
+  decrementButtonProps,
+  incrementButtonProps,
+  numericFieldProps,
   value,
   onChange
 }: SFCounterProps): React.ReactElement<SFCounterProps> => {
@@ -64,17 +82,25 @@ export const SFCounter = ({
   return (
     <div className={classes.counter}>
       <SFCounterButton
+        {...incrementButtonProps}
         icon='Remove'
         disabled={isRemoveDisabled}
         onClick={onDecrement}
       />
       <SFNumericField
+        label=''
+        {...numericFieldProps}
         className={classes.input}
         disabled={disabled}
         value={value}
         onChange={(event): void => onChange(+event.target.value)}
       />
-      <SFCounterButton icon='Add' disabled={disabled} onClick={onIncrement} />
+      <SFCounterButton
+        {...decrementButtonProps}
+        icon='Add'
+        disabled={disabled}
+        onClick={onIncrement}
+      />
     </div>
   );
 };

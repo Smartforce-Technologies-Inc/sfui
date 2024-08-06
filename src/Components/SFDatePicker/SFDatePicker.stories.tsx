@@ -8,7 +8,10 @@ export default {
   component: SFDatePicker,
   parameters: { controls: { sort: 'alpha' } },
   args: {
-    label: 'mm/dd/yyyy'
+    label: 'Bagel',
+    KeyboardButtonProps: { 'aria-label': 'Open calendar' },
+    leftArrowButtonProps: { 'aria-label': 'See previous month' },
+    rightArrowButtonProps: { 'aria-label': 'See next month' }
   },
   argTypes: {
     onChange: { action: 'onChange', table: { disable: true } },
