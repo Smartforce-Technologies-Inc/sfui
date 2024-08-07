@@ -112,7 +112,7 @@ export interface SFSearchProps
   value: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   inputProps?: Record<string, any>;
-  clearButtonProps: Partial<
+  clearButtonProps?: Partial<
     Omit<SFIconButtonProps, 'sfSize' | 'sfIcon' | 'onClick'>
   >;
   onChange: (value: string) => void;
