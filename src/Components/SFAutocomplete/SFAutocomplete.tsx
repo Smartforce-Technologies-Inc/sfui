@@ -188,7 +188,7 @@ export const SFAutocomplete = React.forwardRef<
         if (props.freeSolo) {
           props.onChange(newValue);
         }
-      } else if (props.clearOnBlur) {
+      } else if (props.clearOnBlur && typeof value !== 'object') {
         setInputValue(value || '');
       }
     };
