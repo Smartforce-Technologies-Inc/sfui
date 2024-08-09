@@ -18,6 +18,9 @@ export const StyledAutocompleteChip = withStyles({
   },
   endAdornment: {
     display: 'none'
+  },
+  inputRoot: {
+    height: 'auto'
   }
 })(StyledAutocomplete);
 

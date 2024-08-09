@@ -138,12 +138,15 @@ export interface SFTimeFieldProps extends KeyboardTimePickerProps {
 export const SFTimeField = ({
   placeholder = '08:00 AM',
   mask = '__:__ _M',
+  inputProps,
+  label,
   ...props
 }: SFTimeFieldProps): React.ReactElement<SFTimeFieldProps> => {
   return (
     <MuiPickersUtilsProvider utils={MomentUtils}>
       <StyledTimePicker
         {...props}
+        label={label}
         fullWidth
         variant='inline'
         inputVariant='filled'
@@ -152,7 +155,7 @@ export const SFTimeField = ({
         InputAdornmentProps={{
           style: { display: 'none ' }
         }}
-        inputProps={{ 'aria-label': props.label }}
+        inputProps={{ ...inputProps, 'aria-label': label }}
       />
     </MuiPickersUtilsProvider>
   );
