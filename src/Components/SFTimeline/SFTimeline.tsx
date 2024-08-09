@@ -133,6 +133,16 @@ export const SFTimeline = ({
   const classes = useStyles({ size });
   const itemsLength: number = items.length;
 
+  const onKeyDown = (
+    e: React.KeyboardEvent<HTMLDivElement>,
+    item: SFTimelineItem,
+    index: number
+  ): void => {
+    if (e.key === 'Enter') {
+      onItemClick && onItemClick(item, index);
+    }
+  };
+
   return (
     <StyledTimeline align='left' className={className}>
       {items.map((item: SFTimelineItem, index: number) => {
@@ -143,7 +153,10 @@ export const SFTimeline = ({
         return (
           <StyledTimelineItem key={`timeline-item-${index}`}>
             <div
+              role='button'
+              tabIndex={0}
               className={classes.item}
+              onKeyDown={(e): void => onKeyDown(e, item, index)}
               onClick={
                 selectable
                   ? (): void => onItemClick && onItemClick(item, index)
