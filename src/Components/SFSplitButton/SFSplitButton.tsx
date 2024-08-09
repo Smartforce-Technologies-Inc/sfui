@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { uniqueId } from 'lodash';
+import uniqueId from 'lodash.uniqueid';
 import { makeStyles, withStyles, Theme } from '@material-ui/core/styles';
 import {
   ButtonGroup,
