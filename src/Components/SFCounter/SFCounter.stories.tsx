@@ -25,7 +25,6 @@ export default {
 
 const Template: Story<SFCounterProps> = (args) => {
   const [value, setValue] = React.useState<number>(args.value);
-  console.log(args);
   return (
     <SFCounter
       {...args}

@@ -88,7 +88,6 @@ export const SFCounter = ({
         onClick={onDecrement}
       />
       <SFNumericField
-        label=''
         {...numericFieldProps}
         className={classes.input}
         disabled={disabled}
