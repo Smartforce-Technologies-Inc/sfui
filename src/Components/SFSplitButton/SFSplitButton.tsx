@@ -1,4 +1,5 @@
 import * as React from 'react';
+import uniqueId from 'lodash.uniqueid';
 import { makeStyles, withStyles, Theme } from '@material-ui/core/styles';
 import {
   ButtonGroup,
@@ -107,6 +108,7 @@ export const SFSplitButton = ({
     defaultSelected
   );
   const refMenu = React.useRef<HTMLDivElement>(null);
+  const refMenuId = React.useRef<string>(uniqueId('sfsplitbutton-menu-'));
 
   const onMenuItemClick = (index: number): void => {
     setSelectedItemIndex(index);
@@ -128,6 +130,13 @@ export const SFSplitButton = ({
     setIsMenuOpen(false);
   };
 
+  const onKeyDown = (e: React.KeyboardEvent<HTMLUListElement>): void => {
+    if (e.key === 'Tab' || e.key === 'Escape') {
+      e.preventDefault();
+      setIsMenuOpen(false);
+    }
+  };
+
   return (
     <div>
       <StyledButtonGroup ref={refMenu} variant={variant} size='medium'>
@@ -143,9 +152,8 @@ export const SFSplitButton = ({
           sfColor={sfColor}
           className={classes.iconButton}
           size={size}
-          aria-controls={isMenuOpen ? 'split-button-menu' : undefined}
-          aria-expanded={isMenuOpen ? 'true' : undefined}
-          aria-haspopup='menu'
+          aria-controls={isMenuOpen ? refMenuId.current : undefined}
+          aria-haspopup='true'
           onClick={onToggleMenu}
           aria-label={openButtonAriaLabel}
         >
@@ -162,7 +170,11 @@ export const SFSplitButton = ({
       >
         <SFPaper className={classes.paper} elevation={8}>
           <ClickAwayListener onClickAway={onClickAway}>
-            <MenuList id='split-button-menu'>
+            <MenuList
+              autoFocusItem={isMenuOpen}
+              id={refMenuId.current}
+              onKeyDown={onKeyDown}
+            >
               {options.map((option, index) => (
                 <SFMenuItem
                   key={option.label}
