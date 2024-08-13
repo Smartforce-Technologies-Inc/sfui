@@ -259,6 +259,7 @@ export const SFAlert = ({
         onClose ? (
           <SFIconButton
             {...closeButtonProps}
+            aria-label={closeButtonProps?.['aria-label'] || 'Close alert'}
             sfIcon='Close'
             sfSize='medium'
             onClick={onClose}

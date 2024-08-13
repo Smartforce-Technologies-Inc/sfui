@@ -340,7 +340,12 @@ export const SFChip = ({
         disabled={disabled}
         clickable={clickable}
         deleteIcon={
-          <SFIconButton {...deleteButtonProps} sfIcon='Close' sfSize='tiny' />
+          <SFIconButton
+            {...deleteButtonProps}
+            aria-label={deleteButtonProps?.['aria-label'] || 'Remove chip'}
+            sfIcon='Close'
+            sfSize='tiny'
+          />
         }
         onDelete={deleteable ? onDelete : undefined}
       />

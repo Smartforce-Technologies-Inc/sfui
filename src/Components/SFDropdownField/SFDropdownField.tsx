@@ -168,7 +168,7 @@ export const SFDropdownField = ({
           aria-controls={isMenuOpen ? refMenuId.current : undefined}
           aria-expanded='true'
           aria-haspopup='menu'
-          aria-label={openButtonAriaLabel}
+          aria-label={openButtonAriaLabel || 'Open options'}
           onClick={onToggleMenu}
         >
           <SFIcon icon='Down-2' size={13} />
