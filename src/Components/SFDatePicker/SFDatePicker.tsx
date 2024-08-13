@@ -307,16 +307,23 @@ export const SFDatePicker = ({
         }}
         rightArrowButtonProps={{
           classes: arrowStyle,
-          ...props.rightArrowButtonProps
+          ...props.rightArrowButtonProps,
+          'aria-label': props.rightArrowButtonProps?.['aria-label'] || 'Next'
         }}
         rightArrowIcon={<SFIcon icon='Right-2' size='10' />}
         leftArrowButtonProps={{
           classes: arrowStyle,
-          ...props.leftArrowButtonProps
+          ...props.leftArrowButtonProps,
+          'aria-label': props.leftArrowButtonProps?.['aria-label'] || 'Previous'
         }}
         leftArrowIcon={<SFIcon icon='Left-2' size='10' />}
         keyboardIcon={<SFIcon icon='Callendar' size='24' />}
         TextFieldComponent={SFTextField}
+        KeyboardButtonProps={{
+          ...props.KeyboardButtonProps,
+          'aria-label':
+            props.KeyboardButtonProps?.['aria-label'] || 'Open calendar'
+        }}
       />
     </MuiPickersUtilsProvider>
   );

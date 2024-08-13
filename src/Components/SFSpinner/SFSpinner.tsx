@@ -7,6 +7,11 @@ export const SFSpinner = ({
   ...props
 }: SFSpinnerProps): React.ReactElement<SFSpinnerProps> => {
   return (
-    <CircularProgress {...props} color='primary' variant='indeterminate' />
+    <CircularProgress
+      {...props}
+      aria-label={props['aria-label'] || 'Loading'}
+      color='primary'
+      variant='indeterminate'
+    />
   );
 };

@@ -145,6 +145,7 @@ export const SFSearch = ({
             {value.length > 0 && (
               <SFIconButton
                 {...clearButtonProps}
+                aria-label={clearButtonProps?.['aria-label'] || 'Clear search'}
                 sfSize='medium'
                 sfIcon='Close'
                 onClick={onClean}

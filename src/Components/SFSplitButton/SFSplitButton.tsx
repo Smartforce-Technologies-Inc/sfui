@@ -155,7 +155,7 @@ export const SFSplitButton = ({
           aria-controls={isMenuOpen ? refMenuId.current : undefined}
           aria-haspopup='true'
           onClick={onToggleMenu}
-          aria-label={openButtonAriaLabel}
+          aria-label={openButtonAriaLabel || 'Open options'}
         >
           <SFIcon icon='Down-2' size={13} />
         </SFButton>

@@ -83,12 +83,14 @@ export const SFCounter = ({
     <div className={classes.counter}>
       <SFCounterButton
         {...incrementButtonProps}
+        aria-label={incrementButtonProps?.['aria-label'] || 'Add'}
         icon='Remove'
         disabled={isRemoveDisabled}
         onClick={onDecrement}
       />
       <SFNumericField
         {...numericFieldProps}
+        aria-label={numericFieldProps?.['aria-label'] || 'Counter display'}
         className={classes.input}
         disabled={disabled}
         value={value}
@@ -96,6 +98,7 @@ export const SFCounter = ({
       />
       <SFCounterButton
         {...decrementButtonProps}
+        aria-label={decrementButtonProps?.['aria-label'] || 'Remove'}
         icon='Add'
         disabled={disabled}
         onClick={onIncrement}
