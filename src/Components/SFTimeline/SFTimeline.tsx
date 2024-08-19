@@ -41,9 +41,7 @@ const StyledTimelineContent = withStyles((theme: Theme) => ({
 
 const StyledTimelineItem = withStyles(() => ({
   root: {
-    gap: '3px',
     minHeight: 'auto',
-
     '&:hover': {
       '@media (hover: hover)': {
         cursor: 'pointer'
@@ -116,6 +114,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   notSelectable: {
     cursor: 'auto',
     backgroundColor: 'transparent !important'
+  },
+  item: {
+    gap: '3px',
+    display: 'flex',
+    flex: 1
   }
 }));
 
@@ -130,6 +133,16 @@ export const SFTimeline = ({
   const classes = useStyles({ size });
   const itemsLength: number = items.length;
 
+  const onKeyDown = (
+    e: React.KeyboardEvent<HTMLDivElement>,
+    item: SFTimelineItem,
+    index: number
+  ): void => {
+    if (e.key === 'Enter') {
+      onItemClick && onItemClick(item, index);
+    }
+  };
+
   return (
     <StyledTimeline align='left' className={className}>
       {items.map((item: SFTimelineItem, index: number) => {
@@ -138,15 +151,18 @@ export const SFTimeline = ({
           (index === 0 && itemsLength > 1);
 
         return (
-          <div
-            key={`timeline-item-${index}`}
-            onClick={
-              selectable
-                ? (): void => onItemClick && onItemClick(item, index)
-                : undefined
-            }
-          >
-            <StyledTimelineItem>
+          <StyledTimelineItem key={`timeline-item-${index}`}>
+            <div
+              role='button'
+              tabIndex={0}
+              className={classes.item}
+              onKeyDown={(e): void => onKeyDown(e, item, index)}
+              onClick={
+                selectable
+                  ? (): void => onItemClick && onItemClick(item, index)
+                  : undefined
+              }
+            >
               <TimelineSeparator>
                 <StyledTimelineDot />
                 {hasConnector && <StyledTimelineConnector />}
@@ -165,8 +181,8 @@ export const SFTimeline = ({
                 {item.children}
                 <p className={classes.subtitle}>{item.subtitle}</p>
               </StyledTimelineContent>
-            </StyledTimelineItem>
-          </div>
+            </div>
+          </StyledTimelineItem>
         );
       })}
     </StyledTimeline>

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import uniqueId from 'lodash.uniqueid';
 import { makeStyles, withStyles, Theme } from '@material-ui/core/styles';
 import {
   ButtonGroup,
@@ -97,6 +98,7 @@ export interface SFDropdownFieldProps {
   sfColor: 'blue' | 'grey';
   size?: 'medium' | 'large';
   variant: 'outlined' | 'contained';
+  openButtonAriaLabel?: string;
 }
 
 export const SFDropdownField = ({
@@ -106,7 +108,8 @@ export const SFDropdownField = ({
   renderSelectedOption,
   sfColor = 'blue',
   size = 'medium',
-  variant = 'contained'
+  variant = 'contained',
+  openButtonAriaLabel
 }: SFDropdownFieldProps): React.ReactElement<SFDropdownFieldProps> => {
   const classes = useStyles({ variant, sfColor });
 
@@ -115,6 +118,7 @@ export const SFDropdownField = ({
     defaultSelected
   );
   const refMenu = React.useRef<HTMLDivElement>(null);
+  const refMenuId = React.useRef<string>(uniqueId('sfsplitbutton-menu-'));
 
   const onMenuItemClick = (index: number): void => {
     setSelectedItemIndex(index);
@@ -137,6 +141,13 @@ export const SFDropdownField = ({
     setIsMenuOpen(false);
   };
 
+  const onKeyDown = (e: React.KeyboardEvent<HTMLUListElement>): void => {
+    if (e.key === 'Tab' || e.key === 'Escape') {
+      e.preventDefault();
+      setIsMenuOpen(false);
+    }
+  };
+
   return (
     <div>
       <StyledButtonGroup ref={refMenu} variant={variant} size='medium'>
@@ -154,9 +165,10 @@ export const SFDropdownField = ({
           sfColor={sfColor}
           className={classes.iconButton}
           size={size}
-          aria-controls={isMenuOpen ? 'dropdown-field-menu' : undefined}
-          aria-expanded={isMenuOpen ? 'true' : undefined}
+          aria-controls={isMenuOpen ? refMenuId.current : undefined}
+          aria-expanded='true'
           aria-haspopup='menu'
+          aria-label={openButtonAriaLabel || 'Open options'}
           onClick={onToggleMenu}
         >
           <SFIcon icon='Down-2' size={13} />
@@ -172,7 +184,11 @@ export const SFDropdownField = ({
       >
         <SFPaper className={classes.paper} elevation={8}>
           <ClickAwayListener onClickAway={onClickAway}>
-            <MenuList id='dropdown-field-menu'>
+            <MenuList
+              autoFocusItem={isMenuOpen}
+              id={refMenuId.current}
+              onKeyDown={onKeyDown}
+            >
               {options.map((option, index) => {
                 if (hideSelectedOption && index === selectedItemIndex) {
                   return undefined;

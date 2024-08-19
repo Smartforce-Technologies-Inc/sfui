@@ -2,7 +2,7 @@ import React from 'react';
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, Meta } from '@storybook/react/types-6-0';
 
-import { SFNumericField } from './SFNumericField';
+import { SFNumericField, SFNumericFieldProps } from './SFNumericField';
 
 export default {
   title: 'Components/SFNumericField',
@@ -10,7 +10,6 @@ export default {
   parameters: { controls: { sort: 'alpha' } },
   args: {
     label: 'Bagel',
-    decimalScale: 2,
     disabled: false
   },
   argTypes: {
@@ -142,17 +141,8 @@ export default {
   }
 } as Meta;
 
-const Template: Story = ({
-  thousandSeparator,
-  decimalSeparator,
-  decimalScale,
-  fixedDecimalScale,
-  allowNegative,
-  allowLeadingZeros,
-  prefix,
-  suffix,
-  format,
-  mask,
+const Template: Story<SFNumericFieldProps> = ({
+  numberFormatProps,
   ...args
 }) => {
   const [value, setValue] = React.useState<string>('');
@@ -163,17 +153,7 @@ const Template: Story = ({
         {...args}
         value={value}
         onChange={(e): void => setValue(e.target.value)}
-        numberFormatProps={{
-          thousandSeparator,
-          decimalScale,
-          fixedDecimalScale,
-          allowNegative,
-          allowLeadingZeros,
-          prefix,
-          suffix,
-          format,
-          mask
-        }}
+        numberFormatProps={numberFormatProps}
       />
 
       <div style={{ marginTop: 30, fontSize: 12 }}>

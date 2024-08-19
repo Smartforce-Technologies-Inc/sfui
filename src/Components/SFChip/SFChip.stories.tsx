@@ -8,7 +8,10 @@ export default {
   component: SFChip,
   parameters: { controls: { sort: 'alpha' } },
   args: {
-    label: 'Bagel'
+    label: 'Bagel',
+    deleteButtonProps: {
+      'aria-label': 'Delete chip'
+    }
   },
   argTypes: {
     label: {

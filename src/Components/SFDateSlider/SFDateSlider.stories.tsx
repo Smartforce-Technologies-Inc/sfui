@@ -9,7 +9,8 @@ export default {
   args: {
     minDate: '2023-11-28T22:15',
     maxDate: '2023-11-29T06:30',
-    disabled: false
+    disabled: false,
+    'aria-label': 'Date slider'
   },
   argTypes: {
     onSliderChange: {
@@ -34,7 +35,6 @@ const Template: Story<SFDateSliderProps> = ({ minDate, maxDate, ...args }) => {
   ]);
 
   const onChange = (value: string[]): void => {
-    console.log(value);
     setValue(value);
   };
 

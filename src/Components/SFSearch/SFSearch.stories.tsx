@@ -10,7 +10,8 @@ export default {
   parameters: { controls: { sort: 'alpha' } },
   args: {
     label: 'Search',
-    value: ''
+    value: '',
+    clearButtonProps: { 'aria-label': 'Clear search value' }
   },
   argTypes: {
     label: {

@@ -36,7 +36,8 @@ export default {
   component: SFDropdownField,
   parameters: { controls: { sort: 'alpha' } },
   args: {
-    options: getOptions()
+    options: getOptions(),
+    openButtonAriaLabel: 'Open dropdown'
   },
   argTypes: {
     sfColor: {

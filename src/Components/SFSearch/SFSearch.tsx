@@ -10,7 +10,7 @@ import {
 } from '@material-ui/core';
 import { SFIcon } from '../SFIcon/SFIcon';
 import { SFBlue, SFGrey, SFRed } from '../../SFColors/SFColors';
-import { SFIconButton } from '../SFIconButton/SFIconButton';
+import { SFIconButton, SFIconButtonProps } from '../SFIconButton/SFIconButton';
 
 const StyledFormControl = withStyles((theme: Theme) => ({
   root: {
@@ -110,6 +110,11 @@ export interface SFSearchProps
   > {
   label: string;
   value: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  inputProps?: Record<string, any>;
+  clearButtonProps?: Partial<
+    Omit<SFIconButtonProps, 'sfSize' | 'sfIcon' | 'onClick'>
+  >;
   onChange: (value: string) => void;
 }
 
@@ -117,6 +122,8 @@ export const SFSearch = ({
   label,
   value,
   onChange,
+  inputProps,
+  clearButtonProps,
   ...props
 }: SFSearchProps): React.ReactElement<SFSearchProps> => {
   const classes = useStyles();
@@ -136,7 +143,13 @@ export const SFSearch = ({
         endAdornment={
           <div className={classes.endAdornmentContainer}>
             {value.length > 0 && (
-              <SFIconButton sfSize='medium' sfIcon='Close' onClick={onClean} />
+              <SFIconButton
+                {...clearButtonProps}
+                aria-label={clearButtonProps?.['aria-label'] || 'Clear search'}
+                sfSize='medium'
+                sfIcon='Close'
+                onClick={onClean}
+              />
             )}
             <SFIcon className='searchIcon' icon='Search' />
           </div>
@@ -145,6 +158,7 @@ export const SFSearch = ({
         onChange={onInputChange}
         value={value}
         disableUnderline
+        inputProps={{ ...inputProps, 'aria-label': label }}
       />
     </StyledFormControl>
   );

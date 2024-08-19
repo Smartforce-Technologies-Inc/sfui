@@ -136,23 +136,29 @@ const StyledTextField = withStyles((theme: Theme) => ({
   }
 }))(TextField);
 
-export interface SFTextFieldProps extends Partial<OutlinedTextFieldProps> {}
+export interface SFTextFieldProps extends Partial<OutlinedTextFieldProps> {
+  label?: string;
+}
 
 export const SFTextField = ({
   variant,
   autoComplete = 'off',
   rows = 4,
   color,
+  inputProps,
+  label,
   ...props
 }: SFTextFieldProps): React.ReactElement<SFTextFieldProps> => {
   return (
     <StyledTextField
       {...props}
+      label={label}
       fullWidth
       color='primary'
       variant='outlined'
       minRows={props.multiline ? rows : 1}
       autoComplete={autoComplete}
+      inputProps={{ ...inputProps, 'aria-label': label }}
     />
   );
 };

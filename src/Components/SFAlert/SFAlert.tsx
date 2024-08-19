@@ -1,7 +1,7 @@
 import React from 'react';
 import { Alert, AlertTitle, AlertProps } from '@material-ui/lab';
 import { SFIcon } from '../SFIcon/SFIcon';
-import { SFIconButton } from '../SFIconButton/SFIconButton';
+import { SFIconButton, SFIconButtonProps } from '../SFIconButton/SFIconButton';
 import { makeStyles, Theme, withStyles } from '@material-ui/core/styles';
 import { SFRed, SFBlue, SFGreen, SFGrey } from '../../SFColors/SFColors';
 import { hexToRgba } from '../../Helpers';
@@ -209,6 +209,9 @@ export interface SFAlertProps
   extends Omit<AlertProps, 'severity' | 'icon' | 'action'> {
   title?: string;
   type: 'error' | 'warning' | 'info' | 'success';
+  closeButtonProps?: Partial<
+    Omit<SFIconButtonProps, 'sfIcon' | 'sfSize' | 'onClick'>
+  >;
 }
 
 const getIcon = (type: string): JSX.Element | undefined => {
@@ -235,8 +238,10 @@ const useStyles = makeStyles({
 });
 
 export const SFAlert = ({
+  'aria-label': ariaLabel,
   title,
   type = 'error',
+  closeButtonProps,
   children,
   onClose,
   ...props
@@ -252,7 +257,13 @@ export const SFAlert = ({
       severity={type}
       action={
         onClose ? (
-          <SFIconButton sfIcon='Close' sfSize='medium' onClick={onClose} />
+          <SFIconButton
+            {...closeButtonProps}
+            aria-label={closeButtonProps?.['aria-label'] || 'Close alert'}
+            sfIcon='Close'
+            sfSize='medium'
+            onClick={onClose}
+          />
         ) : undefined
       }
     >

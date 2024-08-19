@@ -128,6 +128,7 @@ const StyledTimePicker = withStyles((theme: Theme) => ({
 }))(KeyboardTimePicker);
 
 export interface SFTimeFieldProps extends KeyboardTimePickerProps {
+  label: string;
   onChange: (
     date: SFMaterialUiPickersDate | null,
     value?: string | null
@@ -137,18 +138,24 @@ export interface SFTimeFieldProps extends KeyboardTimePickerProps {
 export const SFTimeField = ({
   placeholder = '08:00 AM',
   mask = '__:__ _M',
+  inputProps,
+  label,
   ...props
 }: SFTimeFieldProps): React.ReactElement<SFTimeFieldProps> => {
   return (
     <MuiPickersUtilsProvider utils={MomentUtils}>
       <StyledTimePicker
         {...props}
+        label={label}
         fullWidth
         variant='inline'
         inputVariant='filled'
         disableToolbar
         mask={mask}
-        keyboardIcon={null}
+        InputAdornmentProps={{
+          style: { display: 'none ' }
+        }}
+        inputProps={{ ...inputProps, 'aria-label': label }}
       />
     </MuiPickersUtilsProvider>
   );

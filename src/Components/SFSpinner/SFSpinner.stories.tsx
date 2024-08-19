@@ -7,7 +7,8 @@ export default {
   component: SFSpinner,
   parameters: { controls: { sort: 'alpha' } },
   args: {
-    size: 40
+    size: 40,
+    'aria-label': 'Spinner'
   },
   argTypes: {
     size: {

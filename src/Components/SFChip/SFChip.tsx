@@ -3,7 +3,7 @@ import FormControl from '@material-ui/core/FormControl';
 import { withStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import Chip, { ChipProps } from '@material-ui/core/Chip';
 import { SFBlue, SFGrey, SFRed, SFSurfaceLight } from '../../SFColors/SFColors';
-import { SFIconButton } from '../SFIconButton/SFIconButton';
+import { SFIconButton, SFIconButtonProps } from '../SFIconButton/SFIconButton';
 import { hexToRgba } from '../../Helpers';
 
 const StyledChip = withStyles((theme: Theme) => ({
@@ -305,6 +305,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 export interface SFChipProps extends ChipProps {
   sfColor: 'primary' | 'default';
   deleteable?: boolean;
+  deleteButtonProps?: Partial<Omit<SFIconButtonProps, 'sfIcon' | 'sfSize'>>;
   hasError?: boolean;
   fullWidth?: boolean;
 }
@@ -316,6 +317,7 @@ export const SFChip = ({
   label,
   disabled,
   deleteable,
+  deleteButtonProps,
   variant = 'default',
   fullWidth,
   hasError,
@@ -328,6 +330,7 @@ export const SFChip = ({
     <FormControl fullWidth={fullWidth}>
       <StyledChip
         {...props}
+        role='none'
         className={`${className} ${sfColor} ${fullWidth ? 'fullWidth' : ''} ${
           hasError ? 'hasError' : ''
         } ${!clickable ? classes.disableClick : ''}`}
@@ -336,7 +339,14 @@ export const SFChip = ({
         variant={variant}
         disabled={disabled}
         clickable={clickable}
-        deleteIcon={<SFIconButton sfIcon='Close' sfSize='tiny' />}
+        deleteIcon={
+          <SFIconButton
+            {...deleteButtonProps}
+            aria-label={deleteButtonProps?.['aria-label'] || 'Remove chip'}
+            sfIcon='Close'
+            sfSize='tiny'
+          />
+        }
         onDelete={deleteable ? onDelete : undefined}
       />
     </FormControl>
