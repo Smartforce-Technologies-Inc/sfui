@@ -86,6 +86,7 @@ const useStyles = makeStyles({
 });
 
 export interface CalendarProps {
+  className?: string;
   open: boolean;
   anchorEl: HTMLDivElement | null;
   value?: SFDateRangeValue;
@@ -133,7 +134,12 @@ export const Calendar = (
   const nextMonth = getNextMonth(year, month);
 
   return (
-    <Popper open={props.open} anchorEl={props.anchorEl} placement='top-start'>
+    <Popper
+      className={props.className}
+      open={props.open}
+      anchorEl={props.anchorEl}
+      placement='top-start'
+    >
       <ClickAwayListener onClickAway={onClickAway}>
         <SFPaper classes={{ root: classes.paper }}>
           <div className={classes.chips}>

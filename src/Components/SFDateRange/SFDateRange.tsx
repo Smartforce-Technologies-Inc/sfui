@@ -1,8 +1,8 @@
 import * as React from 'react';
+import moment from 'moment';
 import { InputAdornment, makeStyles } from '@material-ui/core';
 import { SFTextField } from '../SFTextField/SFTextField';
 import { SFIconButton } from '../SFIconButton/SFIconButton';
-import moment from 'moment';
 import { Calendar } from './Calendar/Calendar';
 
 const useStyles = makeStyles({
@@ -31,6 +31,7 @@ export interface SFDateRangeProps {
   max?: Date;
   initialRange?: number;
   disableFuture?: boolean;
+  calendarClassName?: string;
   onChange: (value: SFDateRangeValue) => void;
 }
 
@@ -94,6 +95,7 @@ export const SFDateRange = ({
   return (
     <React.Fragment>
       <Calendar
+        className={props.calendarClassName}
         open={isCalendarOpen}
         anchorEl={refFromInput.current}
         onClickAway={onClickAway}

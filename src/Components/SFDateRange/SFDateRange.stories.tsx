@@ -59,7 +59,11 @@ export default {
       }
     },
     value: {
-      action: 'onChange',
+      table: {
+        disable: true
+      }
+    },
+    calendarClassName: {
       table: {
         disable: true
       }
