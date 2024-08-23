@@ -13,6 +13,7 @@ export * from './Components/SFChipListField/SFChipListField';
 export * from './Components/SFCheckbox/SFCheckbox';
 export * from './Components/SFCounter/SFCounter';
 export * from './Components/SFDatePicker/SFDatePicker';
+export * from './Components/SFDateRange/SFDateRange';
 export * from './Components/SFDateSlider/SFDateSlider';
 export * from './Components/SFDialog/SFDialog';
 export * from './Components/SFDivider/SFDivider';

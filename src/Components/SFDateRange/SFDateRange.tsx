@@ -92,7 +92,7 @@ export const SFDateRange = ({
   };
 
   return (
-    <>
+    <React.Fragment>
       <Calendar
         open={isCalendarOpen}
         anchorEl={refFromInput.current}
@@ -162,6 +162,6 @@ export const SFDateRange = ({
           }
         />
       </div>
-    </>
+    </React.Fragment>
   );
 };
