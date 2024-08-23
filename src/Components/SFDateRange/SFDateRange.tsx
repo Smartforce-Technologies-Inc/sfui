@@ -7,9 +7,14 @@ import { Calendar } from './Calendar/Calendar';
 
 const useStyles = makeStyles({
   inputs: {
-    display: 'grid',
-    gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)',
-    gap: '12px'
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '12px',
+
+    '@media screen and (min-width: 768px)': {
+      display: 'grid',
+      gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)'
+    }
   }
 });
 
