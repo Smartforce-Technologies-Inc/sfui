@@ -11,6 +11,7 @@ import {
   SFBlueMainDark,
   SFBlueMainLight,
   SFGrey,
+  SFRed,
   SFSurfaceLight,
   SFTextBlack,
   SFTextWhite
@@ -23,7 +24,6 @@ import {
 } from '@material-ui/pickers';
 import { hexToRgba } from '../../Helpers';
 import { SFMaterialUiPickersDate } from '../../SFTypes';
-import { SFTextField } from '../SFTextField/SFTextField';
 
 const useButtonBackgrounds = makeStyles((theme: Theme) =>
   createStyles({
@@ -177,23 +177,34 @@ const StyledDatePicker = withStyles((theme: Theme) => ({
     boxSizing: 'border-box',
 
     '&.openCalendarStyle': {
-      '& .MuiInputBase-root': {
+      '& .MuiFilledInput-root': {
         border: `2px solid ${
           theme.palette.type === 'light' ? SFBlue[500] : SFBlue[200]
         }`,
 
-        '& .MuiInputBase-input': {
+        '& .MuiFilledInput-input': {
           padding: '26px 10px 7px'
         }
       },
-      '& .MuiInputLabel-root': {
+      '& .MuiFilledInput-adornedEnd': {
+        paddingRight: '11px'
+      },
+      '& .MuiInputLabel-filled': {
         '&.MuiInputLabel-shrink': {
           color: theme.palette.type === 'light' ? SFBlue[500] : SFBlue[200]
         }
       }
     },
 
-    '& .MuiInputBase-root': {
+    '& .MuiFilledInput-root': {
+      height: '56px',
+      backgroundColor: theme.palette.background.paper,
+      border: `1px solid ${
+        theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
+      }`,
+      borderRadius: 2,
+      boxSizing: 'border-box',
+
       '&:before': {
         content: `none !important`
       },
@@ -202,33 +213,73 @@ const StyledDatePicker = withStyles((theme: Theme) => ({
         content: `none !important`
       },
 
+      '&:hover': {
+        '@media (hover: hover)': {
+          borderColor: `${
+            theme.palette.type === 'light' ? SFGrey[900] : SFGrey[50]
+          }`
+        }
+      },
+
       '&.Mui-focused': {
-        '& .MuiInputBase-input': {
+        border: `2px solid ${
+          theme.palette.type === 'light' ? SFBlue[500] : SFBlue[200]
+        }`,
+
+        '& .MuiFilledInput-input': {
           padding: '26px 10px 7px'
         },
         '& .MuiInputAdornment-root': {
           marginRight: '-1px'
+        },
+
+        '&:hover': {
+          '@media (hover: hover)': {
+            borderColor: `${
+              theme.palette.type === 'light' ? SFBlue[500] : SFBlue[200]
+            }`
+          }
         }
       },
 
       '&.Mui-error': {
-        '&.MuiInputBase-adornedEnd': {
-          paddingRight: '12px'
+        border: `1px solid ${
+          theme.palette.type === 'light' ? SFRed[700] : SFRed[200]
+        } !important`,
+
+        '& .MuiFilledInput-input': {
+          padding: '26px 11px 7px !important'
+        },
+
+        '&.MuiFilledInput-adornedEnd': {
+          paddingRight: '12px !important'
         }
       },
 
       '&.Mui-disabled': {
-        '&.MuiInputBase-adornedEnd': {
-          paddingRight: '12px'
+        border: `1px solid ${
+          theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]
+        } !important`,
+
+        '& .MuiFilledInput-input': {
+          padding: '26px 11px 7px !important'
+        },
+
+        '&.MuiFilledInput-adornedEnd': {
+          paddingRight: '12px !important'
         }
       },
 
-      '& .MuiInputBase-input': {
+      '& .MuiFilledInput-input': {
         fontWeight: 400,
         fontSize: '16px',
         padding: '26px 11px 7px',
 
-        '&.MuiInputBase-adornedEnd': {
+        '&.Mui-disabled': {
+          color: `${theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]}`
+        },
+
+        '&.MuiFilledInput-adornedEnd': {
           paddingRight: '12px'
         }
       },
@@ -262,6 +313,43 @@ const StyledDatePicker = withStyles((theme: Theme) => ({
           }
         }
       }
+    },
+
+    '& .MuiInputLabel-filled': {
+      fontSize: '16px',
+      lineHeight: '24px',
+      color: `${theme.palette.type === 'light' ? SFGrey[600] : SFGrey[400]}`,
+
+      '&.MuiInputLabel-shrink': {
+        fontSize: '14px',
+        lineHeight: '20px',
+        transform: `translate(12px, 6px)`,
+
+        '&.Mui-focused': {
+          color: theme.palette.type === 'light' ? SFBlue[500] : SFBlue[200]
+        }
+      },
+
+      '&.Mui-error': {
+        color: `${
+          theme.palette.type === 'light' ? SFRed[700] : SFRed[200]
+        } !important`
+      },
+
+      '&.Mui-disabled': {
+        color: `${theme.palette.type === 'light' ? SFGrey[200] : SFGrey[700]}`
+      }
+    },
+
+    '& .MuiFormHelperText-root': {
+      margin: '5px 13px 0px',
+      backgroundColor: 'transparent',
+      lineHeight: '12px',
+      fontSize: '10px',
+
+      '&.Mui-error': {
+        color: `${theme.palette.type === 'light' ? SFRed[700] : SFRed[200]}`
+      }
     }
   }
 }))(KeyboardDatePicker);
@@ -292,6 +380,7 @@ export const SFDatePicker = ({
         className={openCalendarStyle ? 'openCalendarStyle' : ''}
         value={value}
         variant='inline'
+        inputVariant='filled'
         format='MM/DD/YYYY'
         label={label}
         onOpen={(): void => {
@@ -318,7 +407,6 @@ export const SFDatePicker = ({
         }}
         leftArrowIcon={<SFIcon icon='Left-2' size='10' />}
         keyboardIcon={<SFIcon icon='Callendar' size='24' />}
-        TextFieldComponent={SFTextField}
         KeyboardButtonProps={{
           ...props.KeyboardButtonProps,
           'aria-label':
