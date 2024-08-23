@@ -102,6 +102,13 @@ const useStyles = makeStyles((theme: Theme) => ({
       }
     },
 
+    '@media (hover: none)': {
+      '&:hover': {
+        backgroundColor: (props: DatePickProps): string =>
+          getBgColor(props, theme.palette.type === 'dark')
+      }
+    },
+
     '&:active': {
       backgroundColor: (props: DatePickProps): string =>
         getActiveBgColor(props, theme.palette.type === 'dark')
