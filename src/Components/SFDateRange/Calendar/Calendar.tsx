@@ -67,7 +67,11 @@ const StyledChip = withStyles((theme: Theme) => ({
 }))(Chip);
 
 const useStyles = makeStyles({
+  root: {
+    zIndex: 2
+  },
   paper: {
+    boxSizing: 'border-box',
     padding: '24px 0',
     display: 'flex',
     flexDirection: 'column',
@@ -79,9 +83,18 @@ const useStyles = makeStyles({
     padding: '0 24px'
   },
   days: {
-    display: 'flex',
+    width: '312px',
+    height: '270px',
+    display: 'grid',
     gap: '20px',
-    padding: '0 24px'
+    padding: '0 24px',
+    boxSizing: 'border-box',
+    gridTemplateColumns: '1fr',
+
+    '@media screen and (min-width: 768px)': {
+      gridTemplateColumns: '1fr 1fr',
+      width: '596px'
+    }
   }
 });
 
@@ -135,7 +148,7 @@ export const Calendar = (
 
   return (
     <Popper
-      className={props.className}
+      className={`${props.className} ${classes.root}`}
       open={props.open}
       anchorEl={props.anchorEl}
       placement='top-start'
