@@ -23,12 +23,16 @@ function getInitialMonth(value?: SFDateRangeValue): number {
   return (value?.from || new Date()).getMonth();
 }
 
-function getNextMonth(year: number, month: number): moment.Moment {
-  return moment(new Date(year, month, 1)).add(1, 'month');
+function getNextMonth(year: number, month: number): Date {
+  const nextYear = month === 11 ? year + 1 : year;
+  const nextMonth = month === 11 ? 0 : month + 1;
+  return new Date(nextYear, nextMonth, 1);
 }
 
-function getPrevMonth(year: number, month: number): moment.Moment {
-  return moment(new Date(year, month, 1)).subtract(1, 'month');
+function getPrevMonth(year: number, month: number): Date {
+  const prevYear = month === 0 ? year - 1 : year;
+  const prevMonth = month === 0 ? 11 : month - 1;
+  return new Date(prevYear, prevMonth, 1);
 }
 
 function formatDate(date: Date): string {
@@ -86,7 +90,7 @@ const useStyles = makeStyles({
   },
   days: {
     width: '312px',
-    height: '270px',
+    height: '304px',
     display: 'grid',
     gap: '20px',
     padding: '0 24px',
@@ -131,14 +135,14 @@ export const Calendar = (
 
   const onBack = (): void => {
     const prevMonth = getPrevMonth(year, month);
-    setYear(prevMonth.year());
-    setMonth(prevMonth.month());
+    setYear(prevMonth.getFullYear());
+    setMonth(prevMonth.getMonth());
   };
 
   const onNext = (): void => {
     const nextMonth = getNextMonth(year, month);
-    setYear(nextMonth.year());
-    setMonth(nextMonth.month());
+    setYear(nextMonth.getFullYear());
+    setMonth(nextMonth.getMonth());
   };
 
   const onSelectYear = (value: number): void => {
@@ -190,8 +194,8 @@ export const Calendar = (
 
               {!isPhone && (
                 <Month
-                  year={nextMonth.year()}
-                  month={nextMonth.month()}
+                  year={nextMonth.getFullYear()}
+                  month={nextMonth.getMonth()}
                   min={props.min}
                   max={props.disableFuture ? new Date() : props.max}
                   value={props.value}

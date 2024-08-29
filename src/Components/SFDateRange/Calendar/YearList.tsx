@@ -15,7 +15,7 @@ const useStyles = makeStyles({
     display: 'grid',
     gridTemplateColumns: 'repeat(4, 1fr)',
     width: '312px',
-    height: '270px',
+    height: '304px',
     overflowY: 'auto',
     padding: '0 24px',
     boxSizing: 'border-box'

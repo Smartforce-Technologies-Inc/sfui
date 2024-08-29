@@ -5,8 +5,7 @@ import { SFText } from '../../../../SFText/SFText';
 const useStyles = makeStyles({
   root: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(7, 1fr)',
-    gap: '2px'
+    gridTemplateColumns: 'repeat(7, 36px)'
   }
 });
 
