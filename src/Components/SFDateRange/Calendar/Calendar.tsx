@@ -68,7 +68,9 @@ const StyledChip = withStyles((theme: Theme) => ({
 
 const useStyles = makeStyles({
   root: {
-    zIndex: 2
+    zIndex: 2,
+    boxShadow: '0px 8px 10px 1px rgba(0, 0, 0, 0.14)',
+    marginTop: '3px'
   },
   paper: {
     boxSizing: 'border-box',
