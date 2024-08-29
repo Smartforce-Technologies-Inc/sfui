@@ -106,7 +106,6 @@ export const SFDateRange = ({
 
       <div className={classes.inputs}>
         <SFTextField
-          ref={refFromInput}
           label='From'
           required
           error={props.error}
@@ -116,6 +115,7 @@ export const SFDateRange = ({
             setIsFromFocused(true);
             onOpenCalendar();
           }}
+          inputRef={refFromInput}
           helperText={helperText}
           InputProps={{
             readOnly: true,
