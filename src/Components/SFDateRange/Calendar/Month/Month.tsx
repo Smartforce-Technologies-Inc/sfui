@@ -7,12 +7,12 @@ import { SFPaper } from '../../../SFPaper/SFPaper';
 import { DatePick } from '../DatePick';
 
 function getDays(year: number, month: number): string[] {
-  const daysInMonth = new Date(year, month, 0).getDate();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
   const days = Array(35).fill('');
-  const firstDayOfWeek = new Date(year, month, 0).getDay();
+  const firstDayOfWeek = new Date(year, month, 1).getDay();
   let dayIndex = 1;
   for (let i = firstDayOfWeek; i < firstDayOfWeek + daysInMonth; i++) {
-    days[i + 1] = dayIndex.toString();
+    days[i] = dayIndex.toString();
     dayIndex++;
   }
   return days;
@@ -102,7 +102,8 @@ const useStyles = makeStyles({
 
   days: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(7, 1fr)'
+    gridTemplateColumns: 'repeat(7, 36px)',
+    gridTemplateRows: 'repeat(6, 36px)'
   }
 });
 
