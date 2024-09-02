@@ -37,7 +37,7 @@ export interface SFDateRangeProps {
 
 export const SFDateRange = ({
   helperText,
-  initialRange = 31,
+  initialRange = 30,
   onChange,
   ...props
 }: SFDateRangeProps): React.ReactElement<SFDateRangeProps> => {

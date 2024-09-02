@@ -138,6 +138,9 @@ export const Month = ({
 
       <div className={classes.days}>
         {getDays(year, month).map((day, i) => {
+          const disabled = isDisabled(year, month, +day, min, max);
+          const isNextDisabled = isDisabled(year, month, +day + 1, min, max);
+
           if (day.length === 0) return <span key={`${year}-${month}-${i}`} />;
           else {
             return (
@@ -145,16 +148,15 @@ export const Month = ({
                 key={`${year}-${month}-${i}`}
                 label={day}
                 selected={isSelected(year, month, +day, value)}
-                disabled={isDisabled(year, month, +day, min, max)}
+                disabled={disabled}
                 current={isCurrent(year, month, +day)}
-                inRange={isInRange(year, month, +day, value, initialRange)}
-                lastInRange={isLastInRange(
-                  year,
-                  month,
-                  +day,
-                  value,
-                  initialRange
-                )}
+                inRange={
+                  !disabled && isInRange(year, month, +day, value, initialRange)
+                }
+                lastInRange={
+                  isNextDisabled ||
+                  isLastInRange(year, month, +day, value, initialRange)
+                }
                 onSelect={(): void => onSelect(new Date(year, month, +day))}
               />
             );
