@@ -20,7 +20,7 @@ function getInitialYear(value?: SFDateRangeValue): number {
 }
 
 function getInitialMonth(value?: SFDateRangeValue): number {
-  return (value?.from || new Date()).getMonth();
+  return (value?.from || new Date()).getMonth() - 1;
 }
 
 function getNextMonth(year: number, month: number): Date {
