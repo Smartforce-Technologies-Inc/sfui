@@ -15,12 +15,22 @@ import { Month } from './Month/Month';
 import { YearList } from './YearList';
 import { SFDateRangeValue } from '../SFDateRange';
 
-function getInitialYear(value?: SFDateRangeValue): number {
-  return (value?.from || new Date()).getFullYear();
+function getInitialYear(dateFrom?: string): number {
+  const from = dateFrom ? moment(dateFrom) : undefined;
+  if (from && from.isValid()) {
+    return from.year();
+  } else {
+    return new Date().getFullYear();
+  }
 }
 
-function getInitialMonth(value?: SFDateRangeValue): number {
-  return (value?.from || new Date()).getMonth();
+function getInitialMonth(dateFrom?: string): number {
+  const from = dateFrom ? moment(dateFrom) : undefined;
+  if (from && from.isValid()) {
+    return from.month();
+  } else {
+    return new Date().getMonth();
+  }
 }
 
 function getNextMonth(year: number, month: number): Date {
@@ -35,20 +45,17 @@ function getPrevMonth(year: number, month: number): Date {
   return new Date(prevYear, prevMonth, 1);
 }
 
-function formatDate(date: Date): string {
-  return moment(date).format('ddd, MMM DD');
+function formatDate(date?: string): string | undefined {
+  if (!date) return;
+
+  const dateM = moment(date);
+  return dateM.isValid() ? dateM.format('ddd, MMM DD') : undefined;
 }
 
 function getDateChipLabel(value?: SFDateRangeValue): string {
-  let label = '';
-  if (!value?.from) {
-    return 'From - To';
-  } else {
-    label = `${formatDate(value.from)} - ${
-      value?.to ? formatDate(value.to) : ''
-    }`;
-  }
-  return label;
+  return `${formatDate(value?.from) || 'From'} - ${
+    formatDate(value?.to) || 'To'
+  }`;
 }
 
 const StyledChip = withStyles((theme: Theme) => ({
@@ -115,6 +122,7 @@ export interface CalendarProps {
   disableFuture?: boolean;
   onSelect: (date: Date) => void;
   onClickAway: (e: React.MouseEvent<Document>) => void;
+  onClose: () => void;
 }
 
 export const Calendar = (
@@ -123,10 +131,19 @@ export const Calendar = (
   const classes = useStyles();
   const isPhone = useMediaQuery(`(max-width: ${SFMedia.SM_WIDTH - 1}px)`);
   const [view, setView] = React.useState<'month' | 'year'>('month');
-  const [year, setYear] = React.useState<number>(getInitialYear(props.value));
-  const [month, setMonth] = React.useState<number>(
-    getInitialMonth(props.value)
+  const [year, setYear] = React.useState<number>(
+    getInitialYear(props.value?.from)
   );
+  const [month, setMonth] = React.useState<number>(
+    getInitialMonth(props.value?.from)
+  );
+
+  React.useEffect(() => {
+    if (props.value?.from) {
+      setYear(getInitialYear(props?.value.from));
+      setMonth(getInitialMonth(props.value?.from));
+    }
+  }, [props.value?.from]);
 
   const onClickAway = (e: React.MouseEvent<Document>): void => {
     setView('month');
@@ -150,6 +167,12 @@ export const Calendar = (
     setView('month');
   };
 
+  const onKeyDown: React.KeyboardEventHandler<HTMLDivElement> = (e) => {
+    if (e.key === 'Escape') {
+      props.onClose();
+    }
+  };
+
   const nextMonth = getNextMonth(year, month);
 
   return (
@@ -160,7 +183,7 @@ export const Calendar = (
       placement='top-start'
     >
       <ClickAwayListener onClickAway={onClickAway}>
-        <SFPaper classes={{ root: classes.paper }}>
+        <SFPaper classes={{ root: classes.paper }} onKeyDown={onKeyDown}>
           <div className={classes.chips}>
             <StyledChip
               color='primary'

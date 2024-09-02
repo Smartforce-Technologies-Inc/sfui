@@ -172,7 +172,7 @@ const usePopOverStyle = makeStyles((theme: Theme) =>
   })
 );
 
-const StyledDatePicker = withStyles((theme: Theme) => ({
+export const StyledDatePicker = withStyles((theme: Theme) => ({
   root: {
     boxSizing: 'border-box',
 
@@ -361,58 +361,61 @@ export interface SFDatePickerProps extends KeyboardDatePickerProps {
   ) => void;
 }
 
-export const SFDatePicker = ({
-  value = null,
-  label,
-  ...props
-}: SFDatePickerProps): React.ReactElement<KeyboardDatePickerProps> => {
-  const popOverStyle: Record<'paper', string> = usePopOverStyle();
-  const arrowStyle: Record<'root', string> = useButtonBackgrounds();
-  const [openCalendarStyle, setOpenCalendarStyle] = React.useState<boolean>(
-    false
-  );
+export const SFDatePicker = React.forwardRef(
+  (
+    { value = null, label, ...props }: SFDatePickerProps,
+    ref: React.Ref<HTMLDivElement>
+  ): React.ReactElement<KeyboardDatePickerProps> => {
+    const popOverStyle: Record<'paper', string> = usePopOverStyle();
+    const arrowStyle: Record<'root', string> = useButtonBackgrounds();
+    const [openCalendarStyle, setOpenCalendarStyle] = React.useState<boolean>(
+      false
+    );
 
-  return (
-    <MuiPickersUtilsProvider utils={MomentUtils}>
-      <StyledDatePicker
-        {...props}
-        fullWidth
-        className={openCalendarStyle ? 'openCalendarStyle' : ''}
-        value={value}
-        variant='inline'
-        inputVariant='filled'
-        format='MM/DD/YYYY'
-        label={label}
-        onOpen={(): void => {
-          setOpenCalendarStyle(true);
-        }}
-        onClose={(): void => {
-          setOpenCalendarStyle(false);
-        }}
-        PopoverProps={{
-          classes: popOverStyle,
-          anchorOrigin: { vertical: 'bottom', horizontal: 'left' },
-          transformOrigin: { vertical: 'top', horizontal: 'left' }
-        }}
-        rightArrowButtonProps={{
-          classes: arrowStyle,
-          ...props.rightArrowButtonProps,
-          'aria-label': props.rightArrowButtonProps?.['aria-label'] || 'Next'
-        }}
-        rightArrowIcon={<SFIcon icon='Right-2' size='10' />}
-        leftArrowButtonProps={{
-          classes: arrowStyle,
-          ...props.leftArrowButtonProps,
-          'aria-label': props.leftArrowButtonProps?.['aria-label'] || 'Previous'
-        }}
-        leftArrowIcon={<SFIcon icon='Left-2' size='10' />}
-        keyboardIcon={<SFIcon icon='Callendar' size='24' />}
-        KeyboardButtonProps={{
-          ...props.KeyboardButtonProps,
-          'aria-label':
-            props.KeyboardButtonProps?.['aria-label'] || 'Open calendar'
-        }}
-      />
-    </MuiPickersUtilsProvider>
-  );
-};
+    return (
+      <MuiPickersUtilsProvider utils={MomentUtils}>
+        <StyledDatePicker
+          {...props}
+          ref={ref}
+          fullWidth
+          className={openCalendarStyle ? 'openCalendarStyle' : ''}
+          value={value}
+          variant='inline'
+          inputVariant='filled'
+          format='MM/DD/YYYY'
+          label={label}
+          onOpen={(): void => {
+            setOpenCalendarStyle(true);
+          }}
+          onClose={(): void => {
+            setOpenCalendarStyle(false);
+          }}
+          PopoverProps={{
+            classes: popOverStyle,
+            anchorOrigin: { vertical: 'bottom', horizontal: 'left' },
+            transformOrigin: { vertical: 'top', horizontal: 'left' }
+          }}
+          rightArrowButtonProps={{
+            classes: arrowStyle,
+            ...props.rightArrowButtonProps,
+            'aria-label': props.rightArrowButtonProps?.['aria-label'] || 'Next'
+          }}
+          rightArrowIcon={<SFIcon icon='Right-2' size='10' />}
+          leftArrowButtonProps={{
+            classes: arrowStyle,
+            ...props.leftArrowButtonProps,
+            'aria-label':
+              props.leftArrowButtonProps?.['aria-label'] || 'Previous'
+          }}
+          leftArrowIcon={<SFIcon icon='Left-2' size='10' />}
+          keyboardIcon={<SFIcon icon='Callendar' size='24' />}
+          KeyboardButtonProps={{
+            ...props.KeyboardButtonProps,
+            'aria-label':
+              props.KeyboardButtonProps?.['aria-label'] || 'Open calendar'
+          }}
+        />
+      </MuiPickersUtilsProvider>
+    );
+  }
+);
