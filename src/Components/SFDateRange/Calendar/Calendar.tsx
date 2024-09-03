@@ -27,9 +27,9 @@ function getInitialYear(dateFrom?: string): number {
 function getInitialMonth(dateFrom?: string): number {
   const from = dateFrom ? moment(dateFrom) : undefined;
   if (from && from.isValid()) {
-    return from.month();
+    return from.month() - 1;
   } else {
-    return new Date().getMonth();
+    return new Date().getMonth() - 1;
   }
 }
 
