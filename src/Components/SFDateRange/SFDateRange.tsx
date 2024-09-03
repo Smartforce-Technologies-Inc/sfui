@@ -4,6 +4,8 @@ import { InputAdornment, makeStyles } from '@material-ui/core';
 import { SFTextField } from '../SFTextField/SFTextField';
 import { SFIconButton } from '../SFIconButton/SFIconButton';
 import { Calendar } from './Calendar/Calendar';
+import { useSFMediaQuery } from '../../SFUtils/SFUtils';
+import { SFMedia } from '../../SFMedia/SFMedia';
 
 const useStyles = makeStyles({
   inputs: {
@@ -42,10 +44,12 @@ export const SFDateRange = ({
   ...props
 }: SFDateRangeProps): React.ReactElement<SFDateRangeProps> => {
   const classes = useStyles();
+  const isSmallScreen = useSFMediaQuery(`(min-width: ${SFMedia.SM_WIDTH}px)`);
 
   const [isCalendarOpen, setIsCalendarOpen] = React.useState<boolean>(false);
   const [isFromFocused, setIsFromFocused] = React.useState<boolean>(false);
   const [isToFocused, setIsToFocused] = React.useState<boolean>(false);
+  const refInputsContainer = React.useRef<HTMLDivElement>(null);
   const refFromInput = React.useRef<HTMLDivElement>(null);
   const refToInput = React.useRef<HTMLDivElement>(null);
 
@@ -53,13 +57,15 @@ export const SFDateRange = ({
 
   const onClickAway = (e: React.MouseEvent<Document>): void => {
     if (
-      e.target !== refFromInput.current?.querySelector('input') &&
-      e.target !== refToInput.current?.querySelector('input')
+      refInputsContainer.current &&
+      refInputsContainer.current?.contains(e.target as Node)
     ) {
-      setIsCalendarOpen(false);
-      setIsFromFocused(false);
-      setIsToFocused(false);
+      return;
     }
+
+    setIsCalendarOpen(false);
+    setIsFromFocused(false);
+    setIsToFocused(false);
   };
 
   const onSetFrom = (date: Date): void => {
@@ -97,14 +103,14 @@ export const SFDateRange = ({
       <Calendar
         className={props.calendarClassName}
         open={isCalendarOpen}
-        anchorEl={refFromInput.current}
+        anchorEl={isSmallScreen ? refFromInput.current : refToInput.current}
         onClickAway={onClickAway}
         onSelect={onSelect}
         initialRange={initialRange}
         {...props}
       />
 
-      <div className={classes.inputs}>
+      <div className={classes.inputs} ref={refInputsContainer}>
         <SFTextField
           label='From'
           required
@@ -113,6 +119,7 @@ export const SFDateRange = ({
           placeholder='mm/dd/yyyy'
           onFocus={(): void => {
             setIsFromFocused(true);
+            setIsToFocused(false);
             onOpenCalendar();
           }}
           inputRef={refFromInput}
@@ -145,7 +152,11 @@ export const SFDateRange = ({
           error={props.error}
           focused={isToFocused}
           placeholder='mm/dd/yyyy'
-          onFocus={onOpenCalendar}
+          onFocus={(): void => {
+            setIsFromFocused(false);
+            setIsToFocused(true);
+            onOpenCalendar();
+          }}
           InputProps={{
             readOnly: true,
             endAdornment: (
