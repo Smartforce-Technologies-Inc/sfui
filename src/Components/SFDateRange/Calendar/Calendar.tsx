@@ -19,8 +19,13 @@ function getInitialYear(value?: SFDateRangeValue): number {
   return (value?.from || new Date()).getFullYear();
 }
 
-function getInitialMonth(value?: SFDateRangeValue): number {
-  return (value?.from || new Date()).getMonth() - 1;
+function getInitialMonth(isPhone: boolean, value?: SFDateRangeValue): number {
+  if (value?.from) {
+    return value.from.getMonth();
+  } else {
+    const month = new Date().getMonth();
+    return isPhone ? month : month - 1;
+  }
 }
 
 function getNextMonth(year: number, month: number): Date {
@@ -125,8 +130,12 @@ export const Calendar = (
   const [view, setView] = React.useState<'month' | 'year'>('month');
   const [year, setYear] = React.useState<number>(getInitialYear(props.value));
   const [month, setMonth] = React.useState<number>(
-    getInitialMonth(props.value)
+    getInitialMonth(isPhone, props.value)
   );
+
+  React.useEffect(() => {
+    setMonth(getInitialMonth(isPhone, props.value));
+  }, [isPhone, props.value]);
 
   const onClickAway = (e: React.MouseEvent<Document>): void => {
     setView('month');
