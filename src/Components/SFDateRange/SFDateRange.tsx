@@ -1,11 +1,13 @@
 import * as React from 'react';
 import moment from 'moment';
 import { makeStyles } from '@material-ui/core';
+import MomentUtils from '@date-io/moment';
 import { Calendar } from './Calendar/Calendar';
 import { StyledDatePicker } from '../SFDatePicker/SFDatePicker';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
-import MomentUtils from '@date-io/moment';
 import { SFIcon } from '../SFIcon/SFIcon';
+import { useSFMediaQuery } from '../../SFUtils/SFUtils';
+import { SFMedia } from '../../SFMedia/SFMedia';
 
 const useStyles = makeStyles({
   inputs: {
@@ -54,12 +56,14 @@ export const SFDateRange = ({
   ...props
 }: SFDateRangeProps): React.ReactElement<SFDateRangeProps> => {
   const classes = useStyles();
+  const isSmallScreen = useSFMediaQuery(`(min-width: ${SFMedia.SM_WIDTH}px)`);
 
   const [isCalendarOpen, setIsCalendarOpen] = React.useState<boolean>(false);
   const [isFromFocused, setIsFromFocused] = React.useState<boolean>(false);
   const [isToFocused, setIsToFocused] = React.useState<boolean>(false);
   const refFrom = React.useRef<HTMLDivElement>(null);
   const refTo = React.useRef<HTMLDivElement>(null);
+  const refInputsContainer = React.useRef<HTMLDivElement>(null);
   const refFromInput = React.useRef<HTMLDivElement>(null);
   const refToInput = React.useRef<HTMLDivElement>(null);
 
@@ -76,8 +80,8 @@ export const SFDateRange = ({
 
   const onClickAway = (e: React.MouseEvent<Document>): void => {
     if (
-      (refFrom.current && refFrom.current?.contains(e.target as Node)) ||
-      (refTo.current && refTo.current?.contains(e.target as Node))
+      refInputsContainer.current &&
+      refInputsContainer.current?.contains(e.target as Node)
     ) {
       return;
     }
@@ -136,7 +140,7 @@ export const SFDateRange = ({
       <Calendar
         className={props.calendarClassName}
         open={isCalendarOpen}
-        anchorEl={refFrom.current}
+        anchorEl={isSmallScreen ? refFromInput.current : refToInput.current}
         onClickAway={onClickAway}
         onSelect={onSelect}
         initialRange={initialRange}
@@ -144,7 +148,7 @@ export const SFDateRange = ({
         {...props}
       />
 
-      <div className={classes.inputs}>
+      <div className={classes.inputs} ref={refInputsContainer}>
         <MuiPickersUtilsProvider utils={MomentUtils}>
           <div className={classes.inputContainer} ref={refFrom}>
             <StyledDatePicker
