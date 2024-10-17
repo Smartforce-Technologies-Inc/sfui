@@ -1,24 +1,31 @@
 import * as React from 'react';
 import moment from 'moment';
-import { InputAdornment, makeStyles } from '@material-ui/core';
+import { InputAdornment, makeStyles, withStyles } from '@material-ui/core';
 import { SFTextField } from '../SFTextField/SFTextField';
 import { SFIconButton } from '../SFIconButton/SFIconButton';
 import { Calendar } from './Calendar/Calendar';
-import { useSFMediaQuery } from '../../SFUtils/SFUtils';
-import { SFMedia } from '../../SFMedia/SFMedia';
 
 const useStyles = makeStyles({
   inputs: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '12px',
-
-    '@media screen and (min-width: 768px)': {
-      display: 'grid',
-      gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)'
-    }
+    display: 'grid',
+    gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)',
+    gap: '12px'
   }
 });
+
+const StyledTextField = withStyles({
+  root: {
+    '& .MuiInputBase-root': {
+      '& .MuiInputBase-input': {
+        padding: '27px 0 5px 13px',
+
+        '&::placeholder': {
+          fontSize: '15px'
+        }
+      }
+    }
+  }
+})(SFTextField);
 
 export interface SFDateRangeValue {
   from?: Date;
@@ -44,14 +51,11 @@ export const SFDateRange = ({
   ...props
 }: SFDateRangeProps): React.ReactElement<SFDateRangeProps> => {
   const classes = useStyles();
-  const isSmallScreen = useSFMediaQuery(`(min-width: ${SFMedia.SM_WIDTH}px)`);
-
   const [isCalendarOpen, setIsCalendarOpen] = React.useState<boolean>(false);
   const [isFromFocused, setIsFromFocused] = React.useState<boolean>(false);
   const [isToFocused, setIsToFocused] = React.useState<boolean>(false);
   const refInputsContainer = React.useRef<HTMLDivElement>(null);
   const refFromInput = React.useRef<HTMLDivElement>(null);
-  const refToInput = React.useRef<HTMLDivElement>(null);
 
   const onOpenCalendar = (): void => setIsCalendarOpen(true);
 
@@ -103,7 +107,7 @@ export const SFDateRange = ({
       <Calendar
         className={props.calendarClassName}
         open={isCalendarOpen}
-        anchorEl={isSmallScreen ? refFromInput.current : refToInput.current}
+        anchorEl={refFromInput.current}
         onClickAway={onClickAway}
         onSelect={onSelect}
         initialRange={initialRange}
@@ -111,7 +115,7 @@ export const SFDateRange = ({
       />
 
       <div className={classes.inputs} ref={refInputsContainer}>
-        <SFTextField
+        <StyledTextField
           label='From'
           required
           error={props.error}
@@ -144,9 +148,8 @@ export const SFDateRange = ({
           }
         />
 
-        <SFTextField
+        <StyledTextField
           aria-label='Date to'
-          ref={refToInput}
           label='To'
           required
           error={props.error}

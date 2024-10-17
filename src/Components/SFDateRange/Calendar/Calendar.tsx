@@ -58,6 +58,7 @@ function getDateChipLabel(value?: SFDateRangeValue): string {
 
 const StyledChip = withStyles((theme: Theme) => ({
   colorPrimary: {
+    fontSize: '14px',
     '&:hover, &:focus-visible': {
       '@media (hover: hover)': {
         backgroundColor:
